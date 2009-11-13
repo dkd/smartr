@@ -7,5 +7,13 @@ class Question < ActiveRecord::Base
   
   #Validations
   validates_presence_of [:body, :name]
-  validates_uniqueness_of :name 
+  validates_uniqueness_of :name
+  
+  #Extensions
+  acts_as_taggable_on :tags
+  
+  #Named Scopes
+  named_scope :latest, :order => "created_at DESC"
+  
+  
 end

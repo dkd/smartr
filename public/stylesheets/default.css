@@ -1,0 +1,14 @@
+body {
+  font-family: Helvetica, Arial;
+  margin: 0px;
+  margin-top: 0px; }
+  body #wrapper {
+    width: 960px;
+    margin: 0 25% 0 auto; }
+    body #wrapper #header {
+      border-bottom: 3px solid black; }
+      body #wrapper #header h1 {
+        color: green; }
+      body #wrapper #header .user {
+        color: red;
+        float: right; }

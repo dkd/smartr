@@ -3586,3 +3586,1667 @@ Migrating to ActsAsTaggableOnMigration (20091113153607)
   [4;35;1mSQL (23.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
   [4;36;1mSQL (3.6ms)[0m   [0;1mdescribe `users`[0m
   [4;35;1mSQL (1.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (17.8ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 16:53:48) [GET]
+
+ActionController::RoutingError (No route matches "/aktionen.xml" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 16:56:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (33.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:46:06') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (2.9ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-13 15:56:07', `last_request_at` = '2009-11-13 15:56:07' WHERE `id` = 1[0m
+  [4;35;1mSQL (67.7ms)[0m   [0mCOMMIT[0m
+Completed in 844ms (View: 671, DB: 172) | 200 OK [http://localhost/]
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mQuestion Columns (62.9ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (49.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (96.4ms)[0m   [0mSELECT * FROM `users` LIMIT 1[0m
+  [4;36;1mTagging Columns (1286.6ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT `questions`.id FROM `questions` WHERE (`questions`.`name` IS NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mQuestion Load (0.3ms)[0m   [0mSELECT `questions`.id FROM `questions` WHERE (`questions`.`name` = BINARY 'Brauch ich ein Feld im Model für\'s Tagging?') LIMIT 1[0m
+  [4;36;1mQuestion Create (366.0ms)[0m   [0;1mINSERT INTO `questions` (`name`, `created_at`, `body`, `updated_at`, `views`, `user_id`) VALUES('Brauch ich ein Feld im Model für\'s Tagging?', '2009-11-13 15:59:22', 'Ich glaube nicht :-)', '2009-11-13 15:59:22', NULL, 1)[0m
+  [4;35;1mTag Load (25.9ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Question') AND (context = 'tags')) [0m
+  [4;36;1mTag Load (3.4ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Question') AND (context = 'tags')) [0m
+  [4;35;1mTag Load (0.3ms)[0m   [0mSELECT * FROM `tags` WHERE (name LIKE 'ruby') LIMIT 1[0m
+  [4;36;1mTag Columns (27.9ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mTag Load (1.0ms)[0m   [0mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'ruby') LIMIT 1[0m
+  [4;36;1mTag Create (0.3ms)[0m   [0;1mINSERT INTO `tags` (`name`) VALUES('ruby')[0m
+  [4;35;1mTagging Create (0.4ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2009-11-13 15:59:23', 1, 4, 'tags', NULL, 'Question')[0m
+  [4;36;1mTag Load (14.4ms)[0m   [0;1mSELECT * FROM `tags` WHERE (name LIKE 'smartr') LIMIT 1[0m
+  [4;35;1mTag Load (0.4ms)[0m   [0mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'smartr') LIMIT 1[0m
+  [4;36;1mTag Create (0.2ms)[0m   [0;1mINSERT INTO `tags` (`name`) VALUES('smartr')[0m
+  [4;35;1mTagging Create (0.3ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2009-11-13 15:59:23', 2, 4, 'tags', NULL, 'Question')[0m
+  [4;36;1mTag Load (0.2ms)[0m   [0;1mSELECT * FROM `tags` WHERE (name LIKE 'git') LIMIT 1[0m
+  [4;35;1mTag Load (0.2ms)[0m   [0mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'git') LIMIT 1[0m
+  [4;36;1mTag Create (0.2ms)[0m   [0;1mINSERT INTO `tags` (`name`) VALUES('git')[0m
+  [4;35;1mTagging Create (0.3ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2009-11-13 15:59:23', 3, 4, 'tags', NULL, 'Question')[0m
+  [4;36;1mSQL (57.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY questions.id DESC LIMIT 1[0m
+  [4;36;1mTag Load (47.8ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:00:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (7.8ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:50:08') [0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:00:08', `last_request_at` = '2009-11-13 16:00:08' WHERE `id` = 1[0m
+  [4;36;1mSQL (27.5ms)[0m   [0;1mCOMMIT[0m
+Completed in 75ms (View: 32, DB: 42) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 17:00:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.6ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (26.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (26.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:50:11') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:00:11', `last_request_at` = '2009-11-13 16:00:11' WHERE `id` = 1[0m
+  [4;36;1mSQL (8.3ms)[0m   [0;1mCOMMIT[0m
+Completed in 308ms (View: 126, DB: 64) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:00:14) [GET]
+  Parameters: {"action"=>"show", "id"=>"4", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.7ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 4) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:50:14') [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:00:14', `last_request_at` = '2009-11-13 16:00:14' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 50ms (View: 33, DB: 8) | 200 OK [http://localhost/questions/4]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 17:00:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:50:16') [0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:00:16', `last_request_at` = '2009-11-13 16:00:16' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Completed in 137ms (View: 40, DB: 8) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 17:01:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:51:14') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:01:14', `last_request_at` = '2009-11-13 16:01:14' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 100ms (View: 83, DB: 8) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-13 17:01:21) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:01:21', `last_request_at` = '2009-11-13 16:01:21' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:51:21') [0m
+Completed in 52ms (View: 15, DB: 8) | 200 OK [http://localhost/questions/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-13 17:01:32) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.6ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:01:33', `last_request_at` = '2009-11-13 16:01:33' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:51:33') [0m
+Completed in 131ms (View: 95, DB: 7) | 200 OK [http://localhost/questions/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-13 17:01:44) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:01:44', `last_request_at` = '2009-11-13 16:01:44' WHERE `id` = 1[0m
+  [4;36;1mSQL (36.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:51:45') [0m
+Completed in 86ms (View: 14, DB: 42) | 200 OK [http://localhost/questions/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-13 17:02:11) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:02:11', `last_request_at` = '2009-11-13 16:02:11' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;36;1mTagging Columns (44.9ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mTag Load (0.8ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = NULL) AND (`taggings`.taggable_type = 'Question') AND (context = 'tags')) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:52:11') [0m
+Completed in 181ms (View: 22, DB: 52) | 200 OK [http://localhost/questions/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#create (for ::1 at 2009-11-13 17:02:39) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"questions", "question"=>{"name"=>"Geht's schon ?", "body"=>"Ich meine das Tagging!", "tag_list"=>"ruby, acts_as_taggable_on, smartr"}}
+  [4;36;1mQuestion Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-13 16:02:39', `last_request_at` = '2009-11-13 16:02:39' WHERE `id` = 1[0m
+  [4;35;1mSQL (35.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mQuestion Load (0.3ms)[0m   [0mSELECT `questions`.id FROM `questions` WHERE (`questions`.`name` = BINARY 'Geht\'s schon ?') LIMIT 1[0m
+  [4;36;1mQuestion Create (0.3ms)[0m   [0;1mINSERT INTO `questions` (`name`, `created_at`, `body`, `updated_at`, `views`, `user_id`) VALUES('Geht\'s schon ?', '2009-11-13 16:02:39', 'Ich meine das Tagging!', '2009-11-13 16:02:39', NULL, 1)[0m
+  [4;35;1mTag Load (0.6ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND (context = 'tags')) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND (context = 'tags')) [0m
+  [4;35;1mTag Load (0.2ms)[0m   [0mSELECT * FROM `tags` WHERE (name LIKE 'ruby') LIMIT 1[0m
+  [4;36;1mTag Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mTagging Create (0.5ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2009-11-13 16:02:39', 1, 5, 'tags', NULL, 'Question')[0m
+  [4;36;1mTag Load (0.3ms)[0m   [0;1mSELECT * FROM `tags` WHERE (name LIKE 'acts_as_taggable_on') LIMIT 1[0m
+  [4;35;1mTag Load (0.3ms)[0m   [0mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'acts_as_taggable_on') LIMIT 1[0m
+  [4;36;1mTag Create (0.2ms)[0m   [0;1mINSERT INTO `tags` (`name`) VALUES('acts_as_taggable_on')[0m
+  [4;35;1mTagging Create (0.3ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2009-11-13 16:02:39', 4, 5, 'tags', NULL, 'Question')[0m
+  [4;36;1mTag Load (0.2ms)[0m   [0;1mSELECT * FROM `tags` WHERE (name LIKE 'smartr') LIMIT 1[0m
+  [4;35;1mTagging Create (0.3ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2009-11-13 16:02:39', 2, 5, 'tags', NULL, 'Question')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/5
+Completed in 170ms (DB: 47) | 302 Found [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:02:39) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.0ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:52:39') [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:02:40', `last_request_at` = '2009-11-13 16:02:40' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 45ms (View: 27, DB: 9) | 200 OK [http://localhost/questions/5]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#edit (for ::1 at 2009-11-13 17:03:21) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mUser Columns (24.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:03:21', `last_request_at` = '2009-11-13 16:03:21' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (0.8ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/edit
+  [4;35;1mTag Load (1.6ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND (context = 'tags')) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:53:21') [0m
+Completed in 174ms (View: 22, DB: 31) | 200 OK [http://localhost/questions/5/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:03:26) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (2.6ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:53:26') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:03:26', `last_request_at` = '2009-11-13 16:03:26' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+Completed in 47ms (View: 27, DB: 10) | 200 OK [http://localhost/questions/5]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:03:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.2ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (4.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mTag Load (1.6ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:53:43') [0m
+  [4;36;1mUser Load (4.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-13 16:03:43', `last_request_at` = '2009-11-13 16:03:43' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 160ms (View: 39, DB: 21) | 200 OK [http://localhost/questions/5]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:04:21) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;35;1mQuestion Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (1.2ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+ERROR: compiling _run_erb_app47views47questions47show46html46erb RAISED compile error
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:18: syntax error, unexpected ')'
+...stion.tag_list.each do |tag| ).to_s); @output_buffer.concat ...
+                              ^
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:24: syntax error, unexpected kENSURE, expecting ')'
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:26: syntax error, unexpected kEND, expecting ')'
+Function body:           def _run_erb_app47views47questions47show46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<p>\n  <b>Name:</b>\n  "
+
+; @output_buffer.concat((h @question.name ).to_s); @output_buffer.concat "\n</p>\n\n<p>\n  <b>Body:</b>\n  "
+
+
+
+
+; @output_buffer.concat((h @question.body ).to_s); @output_buffer.concat "\n</p>\n\n<p>\n  <b>User:</b>\n  "
+
+
+
+
+; @output_buffer.concat((h @question.user.login ).to_s); @output_buffer.concat "\n</p>\n\n<p>\n  <b>Tags:</b>\n  "
+
+
+
+
+; @output_buffer.concat((@question.tag_list.each do |tag| ).to_s); @output_buffer.concat "\n  "
+;  end 
+@output_buffer.concat "</p>\n\n"
+
+; @output_buffer.concat(( link_to 'Edit', edit_question_path(@question) ).to_s); @output_buffer.concat " |\n"
+; @output_buffer.concat(( link_to 'Back', questions_path ).to_s); @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:26:in `compile!'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/renderable.rb:61:in `compile'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/renderable.rb:28:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/template.rb:199:in `render_template'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/base.rb:260:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/base.rb:343:in `_render_with_layout'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/base.rb:257:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:1250:in `render_for_file'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `send'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:179:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:179:in `respond'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:173:in `each'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:173:in `respond'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/dkd_hayes/Rails/smartr/app/controllers/questions_controller.rb:22:in `show'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:1331:in `send'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/flash.rb:146:in `perform_action'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:532:in `send'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:532:in `process_without_filters'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:391:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:386:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:437:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/session/abstract_store.rb:122:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/commands/server.rb:111
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:18: syntax error, unexpected ')'
+...stion.tag_list.each do |tag| ).to_s); @output_buffer.concat ...
+                              ^
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:24: syntax error, unexpected kENSURE, expecting ')'
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:26: syntax error, unexpected kEND, expecting ')') on line #18 of app/views/questions/show.html.erb:
+15: 
+16: <p>
+17:   <b>Tags:</b>
+18:   <%=@question.tag_list.each do |tag| %>
+19:   <% end -%>
+20: </p>
+21: 
+
+    app/views/questions/show.html.erb:26:in `compile!'
+    app/controllers/questions_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (119.3ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:04:26) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.8ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+ERROR: compiling _run_erb_app47views47questions47show46html46erb RAISED compile error
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:18: syntax error, unexpected ')'
+...@question.tags.each do |tag| ).to_s); @output_buffer.concat ...
+                              ^
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:24: syntax error, unexpected kENSURE, expecting ')'
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:26: syntax error, unexpected kEND, expecting ')'
+Function body:           def _run_erb_app47views47questions47show46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<p>\n  <b>Name:</b>\n  "
+
+; @output_buffer.concat((h @question.name ).to_s); @output_buffer.concat "\n</p>\n\n<p>\n  <b>Body:</b>\n  "
+
+
+
+
+; @output_buffer.concat((h @question.body ).to_s); @output_buffer.concat "\n</p>\n\n<p>\n  <b>User:</b>\n  "
+
+
+
+
+; @output_buffer.concat((h @question.user.login ).to_s); @output_buffer.concat "\n</p>\n\n<p>\n  <b>Tags:</b>\n  "
+
+
+
+
+; @output_buffer.concat((@question.tags.each do |tag| ).to_s); @output_buffer.concat "\n  "
+;  end 
+@output_buffer.concat "</p>\n\n"
+
+; @output_buffer.concat(( link_to 'Edit', edit_question_path(@question) ).to_s); @output_buffer.concat " |\n"
+; @output_buffer.concat(( link_to 'Back', questions_path ).to_s); @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:26:in `compile!'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/renderable.rb:61:in `compile'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/renderable.rb:28:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/template.rb:199:in `render_template'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/base.rb:260:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/base.rb:343:in `_render_with_layout'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_view/base.rb:257:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:1250:in `render_for_file'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `send'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:179:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:179:in `respond'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:173:in `each'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:173:in `respond'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/dkd_hayes/Rails/smartr/app/controllers/questions_controller.rb:22:in `show'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:1331:in `send'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/flash.rb:146:in `perform_action'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:532:in `send'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:532:in `process_without_filters'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:391:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:386:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:437:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/session/abstract_store.rb:122:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/dkd_hayes/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/commands/server.rb:111
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:18: syntax error, unexpected ')'
+...@question.tags.each do |tag| ).to_s); @output_buffer.concat ...
+                              ^
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:24: syntax error, unexpected kENSURE, expecting ')'
+/Users/dkd_hayes/Rails/smartr/app/views/questions/show.html.erb:26: syntax error, unexpected kEND, expecting ')') on line #18 of app/views/questions/show.html.erb:
+15: 
+16: <p>
+17:   <b>Tags:</b>
+18:   <%=@question.tags.each do |tag| %>
+19:   <% end -%>
+20: </p>
+21: 
+
+    app/views/questions/show.html.erb:26:in `compile!'
+    app/controllers/questions_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (34.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:04:35) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;35;1mQuestion Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (1.7ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mTag Load (0.8ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:54:35') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-13 16:04:35', `last_request_at` = '2009-11-13 16:04:35' WHERE `id` = 1[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCOMMIT[0m
+Completed in 136ms (View: 32, DB: 10) | 200 OK [http://localhost/questions/5]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:04:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (0.9ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mTag Load (0.8ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:54:43') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-13 16:04:44', `last_request_at` = '2009-11-13 16:04:44' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 129ms (View: 109, DB: 9) | 200 OK [http://localhost/questions/5]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:05:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:55:21') [0m
+Completed in 21ms (View: 17, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 17:05:26) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.6ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (416.3ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:55:26') [0m
+Completed in 543ms (View: 114, DB: 421) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:05:39) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (0.9ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mTag Load (0.8ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:55:39') [0m
+Completed in 42ms (View: 26, DB: 7) | 200 OK [http://localhost/questions/5]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:08:54) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (47.2ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.0ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mTag Load (0.9ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:58:55') [0m
+Completed in 100ms (View: 38, DB: 53) | 200 OK [http://localhost/questions/5]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:09:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 15:59:00') [0m
+Completed in 27ms (View: 22, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:10:33) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.0ms)[0m   [0;1mMysql::Error: Unknown column 'created_by' in 'order clause': SELECT * FROM `questions` ORDER BY created_by DESC[0m
+
+ActionView::TemplateError (Mysql::Error: Unknown column 'created_by' in 'order clause': SELECT * FROM `questions`  ORDER BY created_by DESC) on line #5 of app/views/home/index.html.erb:
+2: 
+3: <h2>Latest Questions</h2>
+4: 
+5: <% Question.latest.each do |question| %>
+6:   <div class="question">
+7:   <h3><%= link_to(h(question.name), question_path(question))%>
+8:   </div>
+
+    app/views/home/index.html.erb:5
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (112.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:10:42) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (27.7ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (17.0ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (9.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (10.0ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:00:42') [0m
+Completed in 95ms (View: 29, DB: 65) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:10:52) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:00:52') [0m
+Completed in 40ms (View: 33, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:12:23) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:02:23') [0m
+Completed in 118ms (View: 111, DB: 5) | 200 OK [http://localhost/]
+** acts_as_taggable_on: initialized properly.
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:23:12) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (1.1ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (4.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+
+ActionView::TemplateError (No expansion found for :application) on line #8 of app/views/layouts/application.html.erb:
+5: <head>
+6:   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+7:   <title>SmartR - be a smartass!</title>
+8:   <%= stylesheet_link_tag :application %>
+9:   
+10: </head>
+11: <body>
+
+    app/views/layouts/application.html.erb:8
+    haml (2.2.13) [v] lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.13) [v] lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.13) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (38.1ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:23:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.8ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:13:24') [0m
+Completed in 279ms (View: 267, DB: 9) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:23:24) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:23:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:13:47') [0m
+Completed in 120ms (View: 113, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:23:47) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:24:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.6ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:14:59') [0m
+Completed in 205ms (View: 195, DB: 9) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:24:59) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:26:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (2.2ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (3.8ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (10.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (3.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:16:16') [0m
+Completed in 149ms (View: 126, DB: 21) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:26:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:26:53) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.7ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:16:53') [0m
+Completed in 119ms (View: 111, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:26:53) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:26:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:16:54') [0m
+Completed in 115ms (View: 108, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:26:54) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:26:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:16:58') [0m
+Completed in 116ms (View: 108, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:26:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:26:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:16:59') [0m
+Completed in 43ms (View: 36, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:26:59) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:27:05) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.9ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:17:05') [0m
+Completed in 49ms (View: 41, DB: 6) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:27:05) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:27:09) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (6.2ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (15.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:17:09') [0m
+Completed in 60ms (View: 34, DB: 25) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:27:09) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:27:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:17:16') [0m
+Completed in 42ms (View: 35, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:27:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:27:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:17:27') [0m
+Completed in 41ms (View: 34, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:27:27) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:27:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (14.2ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (45.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (12.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:17:55') [0m
+Completed in 368ms (View: 291, DB: 75) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:27:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:27:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:18:00') [0m
+Completed in 117ms (View: 110, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:28:00) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:28:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.6ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:18:19') [0m
+Completed in 112ms (View: 105, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 17:28:19) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/appliction.css" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:28:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.6ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:18:59') [0m
+Completed in 133ms (View: 123, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:29:08) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.7ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mTagging Columns (24.4ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mTag Load (0.7ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 5) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;36;1mTag Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:19:09') [0m
+Completed in 72ms (View: 29, DB: 34) | 200 OK [http://localhost/questions/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:30:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (14.0ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (20.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:20:38') [0m
+Completed in 89ms (View: 48, DB: 38) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:30:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:20:48') [0m
+Completed in 117ms (View: 110, DB: 6) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:32:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (1.0ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:22:28') [0m
+Completed in 130ms (View: 121, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:32:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.6ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:22:43') [0m
+Completed in 43ms (View: 35, DB: 6) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:33:25) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:23:25') [0m
+Completed in 47ms (View: 40, DB: 6) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:33:41) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:23:41') [0m
+Completed in 125ms (View: 116, DB: 6) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:33:52) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.6ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:23:52') [0m
+Completed in 143ms (View: 135, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:34:04) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (1.2ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:24:04') [0m
+Completed in 42ms (View: 34, DB: 6) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:34:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:24:24') [0m
+Completed in 50ms (View: 42, DB: 6) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:34:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:24:44') [0m
+Completed in 120ms (View: 35, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:34:53) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.6ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:24:53') [0m
+Completed in 124ms (View: 115, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:35:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:01') [0m
+Completed in 45ms (View: 37, DB: 6) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:35:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:18') [0m
+Completed in 47ms (View: 40, DB: 6) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 17:35:36) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:36') [0m
+Completed in 58ms (View: 42, DB: 5) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:35:39) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:39') [0m
+Completed in 118ms (View: 111, DB: 6) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 17:35:40) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:40') [0m
+Completed in 47ms (View: 32, DB: 5) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 17:35:41) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` ORDER BY created_at DESC[0m
+  [4;36;1mQuestion Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:41') [0m
+Completed in 120ms (View: 112, DB: 6) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 17:35:46) [GET]
+  Parameters: {"action"=>"show", "id"=>"4", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (1.6ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 4) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mTag Load (0.9ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Question') AND ((taggings.context = 'tags'))) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 16:25:46') [0m
+Completed in 40ms (View: 23, DB: 8) | 200 OK [http://localhost/questions/4]

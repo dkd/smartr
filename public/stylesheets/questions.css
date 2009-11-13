@@ -1,0 +1,5 @@
+.question {
+  border-bottom: 3px solid #e9e9e9; }
+  .question .stats {
+    float: left;
+    background: red; }
