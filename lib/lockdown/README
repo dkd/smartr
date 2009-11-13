@@ -1,0 +1,42 @@
+#
+#                           !!!!IMPORTANT!!!!
+#
+#*** MUST define a current_user method that will return the current user object
+#
+#*** MUST add call to add_lockdown_session_values to your login method
+#
+#*** MAY NEED to add call to reset_lockdown_session to your logout method. 
+# ** Not needed if your authentication system resets the session
+#   
+# Definitely need to use the user_group and permission models.  The lockdown 
+# generator will provide those for you.  Just add the following to your user
+# model:
+#   has_and_belongs_to_many :user_groups
+#
+# That's it! 
+#
+#
+#                       ~~~~Method Descriptions~~~~
+
+# The Lockdown gem defines these session methods:
+#
+# current_user_id: returns the id of the current_user
+#
+# logged_in? : returns true if current_user_id > 0
+#
+# current_user_is_admin?: returns true if user is assigned 
+# administrator rights.
+#
+# reset_lockdown_session: This will nil the following session values:
+#   current_user_id
+#   access_rights
+#   expiry_time
+#
+# current_user_access_in_group?(grp):  grp is a symbol referencing a 
+# Lockdown::UserGroups method such as :registered_users
+# Will return true if the session[:access_rights] contain at 
+# least one match to the access_right list associated to the group
+#
+# If you want access to any of these methods in your view, just add them 
+# as helpers in your controller (application controller for global use).
+#

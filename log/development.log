@@ -1,0 +1,2247 @@
+# Logfile created on Thu Nov 12 10:20:38 +0100 2009  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (43.6ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (6.3ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081103171327)
+  [4;36;1mSQL (3.1ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime, `login` varchar(255) NOT NULL, `crypted_password` varchar(255) NOT NULL, `password_salt` varchar(255) NOT NULL, `persistence_token` varchar(255) NOT NULL, `login_count` int(11) DEFAULT 0 NOT NULL, `last_request_at` datetime, `last_login_at` datetime, `current_login_at` datetime, `last_login_ip` varchar(255), `current_login_ip` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (37.9ms)[0m   [0mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;36;1mSQL (6.7ms)[0m   [0;1mCREATE INDEX `index_users_on_persistence_token` ON `users` (`persistence_token`)[0m
+  [4;35;1mSQL (7.3ms)[0m   [0mCREATE INDEX `index_users_on_last_request_at` ON `users` (`last_request_at`)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081103171327')[0m
+Migrating to CreateSessions (20081106072031)
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.2ms)[0m   [0;1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;35;1mSQL (6.7ms)[0m   [0mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081106072031')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 10:20:55) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 09:10:56') [0m
+Completed in 277ms (View: 184, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 10:21:02) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.5ms)
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 09:11:02') [0m
+Completed in 28ms (View: 14, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for ::1 at 2009-11-12 10:21:03) [POST]
+  Parameters: {"commit"=>"Register", "action"=>"create", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>""}}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Exists (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY '') LIMIT 1[0m
+  [4;36;1mUser Exists (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '2dd1796c575099c5670bb3735a5bbcdf41040a3faaa150be04e871847246832d6768aeb3cefe200fc4e3d6888e0dbd0f1efab62885e0328b053129580b77204c') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.7ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 09:11:03') [0m
+Completed in 29ms (View: 5, DB: 4) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for ::1 at 2009-11-12 10:21:12) [POST]
+  Parameters: {"commit"=>"Register", "action"=>"create", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>"kieran"}}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Exists (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'kieran') LIMIT 1[0m
+  [4;35;1mUser Exists (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`created_at`, `last_request_at`, `crypted_password`, `updated_at`, `current_login_ip`, `password_salt`, `current_login_at`, `persistence_token`, `login_count`, `last_login_ip`, `login`, `last_login_at`) VALUES('2009-11-12 09:21:13', '2009-11-12 09:21:13', '556618af8e1c9af3b2a83c5dd6ee52dc0ec1755ce837f7e6ace4a9b0d48e15881e4c6bd4ef7aea9743947a4be9b6c21714504abb1074b1bbc71957cc6533463a', '2009-11-12 09:21:13', '::1', 'E92TDn7-aMVnQQbui-xH', '2009-11-12 09:21:13', 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f', 1, NULL, 'kieran', NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/account
+Completed in 211ms (DB: 5) | 302 Found [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 10:21:13) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 09:21:13', `last_request_at` = '2009-11-12 09:21:13' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 09:11:13') [0m
+Completed in 33ms (View: 6, DB: 5) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 10:21:15) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 09:21:15', `last_request_at` = '2009-11-12 09:21:15' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 09:11:15') [0m
+Completed in 29ms (View: 3, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` LIMIT 1[0m
+  [4;35;1mSQL (32.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (80.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (41.5ms)[0m   [0mSELECT * FROM `users` LIMIT 1[0m
+  [4;36;1mQuestion Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'authlogic_development.questions' doesn't exist: SHOW FIELDS FROM `questions`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mQuestion Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'authlogic_development.questions' doesn't exist: SHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (17.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (23.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081103171327)
+Migrating to CreateSessions (20081106072031)
+Migrating to CreateQuestions (20091112092312)
+  [4;35;1mSQL (526.0ms)[0m   [0mCREATE TABLE `questions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `body` text, `user_id` int(11), `views` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091112092312')[0m
+Migrating to CreateAnswers (20091112092345)
+  [4;35;1mSQL (28.9ms)[0m   [0mCREATE TABLE `answers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `body` text, `question_id` int(11), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091112092345')[0m
+Migrating to CreateComments (20091112092545)
+  [4;35;1mSQL (23.3ms)[0m   [0mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `body` text, `user_id` int(11), `commentable_id` int(11), `commentable_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091112092545')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (76.0ms)[0m   [0;1mSHOW FIELDS FROM `answers`[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mdescribe `answers`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW KEYS FROM `answers`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `comments`[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mdescribe `comments`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `comments`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `questions`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW KEYS FROM `questions`[0m
+  [4;35;1mSQL (17.5ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (23.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` LIMIT 1[0m
+  [4;35;1mSQL (21.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (51.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` LIMIT 1[0m
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mQuestion Create (1.1ms)[0m   [0mINSERT INTO `questions` (`name`, `created_at`, `body`, `updated_at`, `views`, `user_id`) VALUES('Wann kommt FLOW3?', '2009-11-12 13:03:42', 'Wir warten und warten und warten', '2009-11-12 13:03:42', NULL, 1)[0m
+  [4;36;1mSQL (58.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mQuestion Load (2.6ms)[0m   [0mSELECT * FROM `questions` LIMIT 1[0m
+  [4;36;1mComment Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` LIMIT 1[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mComment Create (0.3ms)[0m   [0mINSERT INTO `comments` (`created_at`, `body`, `commentable_type`, `commentable_id`, `updated_at`, `user_id`) VALUES('2009-11-12 13:05:10', 'Keine Ahnung, erst kommt Rails 3, dann FLOW3', 'Question', 1, '2009-11-12 13:05:10', 1)[0m
+  [4;36;1mSQL (33.9ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:09:42) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (56.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (14.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (26.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:09:42', `last_request_at` = '2009-11-12 14:09:42' WHERE `id` = 1[0m
+  [4;35;1mSQL (68.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/account
+Filter chain halted as [:require_no_user] rendered_or_redirected.
+Completed in 565ms (DB: 208) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:09:43) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:09:43', `last_request_at` = '2009-11-12 14:09:43' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (33.6ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 13:59:43') [0m
+Completed in 74ms (View: 17, DB: 38) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:10:00) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:00', `last_request_at` = '2009-11-12 14:10:00' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:00') [0m
+Completed in 36ms (View: 12, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:10:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (4.8ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:22') [0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:22', `last_request_at` = '2009-11-12 14:10:22' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Completed in 76ms (View: 35, DB: 11) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#edit (for ::1 at 2009-11-12 15:10:39) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (104.1ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering questions/edit
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:39') [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:39', `last_request_at` = '2009-11-12 14:10:39' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 245ms (View: 129, DB: 110) | 200 OK [http://localhost/questions/1/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:10:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.4ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (8.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (3.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:43') [0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:43', `last_request_at` = '2009-11-12 14:10:43' WHERE `id` = 1[0m
+  [4;36;1mSQL (47.1ms)[0m   [0;1mCOMMIT[0m
+Completed in 101ms (View: 33, DB: 62) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-12 15:10:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:45') [0m
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (38.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:45', `last_request_at` = '2009-11-12 14:10:45' WHERE `id` = 1[0m
+  [4;36;1mSQL (29.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 256ms (View: 171, DB: 76) | 200 OK [http://localhost/questions/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:10:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (3.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (4.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:48') [0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.6ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:48', `last_request_at` = '2009-11-12 14:10:48' WHERE `id` = 1[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCOMMIT[0m
+Completed in 72ms (View: 47, DB: 16) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-12 15:10:49) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"questions"}
+  [4;35;1mQuestion Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (1.3ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:49') [0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (5.8ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:49', `last_request_at` = '2009-11-12 14:10:49' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 266ms (View: 239, DB: 15) | 200 OK [http://localhost/questions/1]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:10:56) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:00:56') [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.6ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:10:56', `last_request_at` = '2009-11-12 14:10:56' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Completed in 45ms (View: 31, DB: 8) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:11:21) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:11:21', `last_request_at` = '2009-11-12 14:11:21' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:01:21') [0m
+Completed in 31ms (View: 7, DB: 7) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:11:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:01:28') [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:11:28', `last_request_at` = '2009-11-12 14:11:28' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 44ms (View: 31, DB: 7) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-12 15:11:36) [GET]
+  Parameters: {"action"=>"show", "id"=>"comments", "controller"=>"questions"}
+  [4;35;1mQuestion Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (38.3ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Question with ID=comments):
+  app/controllers/questions_controller.rb:16:in `show'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (25.9ms)
+Rendered rescues/_request_and_response (14.3ms)
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-12 15:11:46) [GET]
+
+ActionController::RoutingError (No route matches "/questions/1/comments" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CommentsController#index (for ::1 at 2009-11-12 15:12:03) [GET]
+  Parameters: {"question_id"=>"1", "action"=>"index", "controller"=>"comments"}
+  [4;35;1mComment Load (0.6ms)[0m   [0mSELECT * FROM `comments` [0m
+Rendering template within layouts/application
+Rendering comments/index
+  [4;36;1mComment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:02:03') [0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:12:03', `last_request_at` = '2009-11-12 14:12:03' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Completed in 187ms (View: 135, DB: 7) | 200 OK [http://localhost/questions/1/comments]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CommentsController#index (for ::1 at 2009-11-12 15:12:21) [GET]
+  Parameters: {"question_id"=>"1", "action"=>"index", "controller"=>"comments"}
+  [4;36;1mComment Load (0.4ms)[0m   [0;1mSELECT * FROM `comments` [0m
+Rendering template within layouts/application
+Rendering comments/index
+  [4;35;1mComment Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `comments`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:02:21') [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:12:21', `last_request_at` = '2009-11-12 14:12:21' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Completed in 113ms (View: 102, DB: 7) | 200 OK [http://localhost/questions/1/comments]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:12:23) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:12:23', `last_request_at` = '2009-11-12 14:12:23' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:02:23') [0m
+Completed in 33ms (View: 8, DB: 6) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:12:30) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:12:30', `last_request_at` = '2009-11-12 14:12:30' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:02:30') [0m
+Completed in 34ms (View: 7, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-12 15:12:45) [GET]
+
+ActionController::RoutingError (No route matches "/aktionen.xml" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:12:47) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:12:47', `last_request_at` = '2009-11-12 14:12:47' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:02:47') [0m
+Completed in 34ms (View: 12, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for ::1 at 2009-11-12 15:13:20) [GET]
+  Parameters: {"action"=>"edit", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:20', `last_request_at` = '2009-11-12 14:13:20' WHERE `id` = 1[0m
+  [4;35;1mSQL (20.4ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (2.8ms)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:20') [0m
+Completed in 71ms (View: 29, DB: 25) | 200 OK [http://localhost/account/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#update (for ::1 at 2009-11-12 15:13:22) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>"kieran"}}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:22', `last_request_at` = '2009-11-12 14:13:22' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/account
+Completed in 25ms (DB: 5) | 302 Found [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:13:22) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (4.9ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:22', `last_request_at` = '2009-11-12 14:13:22' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:22') [0m
+Completed in 35ms (View: 7, DB: 9) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for ::1 at 2009-11-12 15:13:25) [GET]
+  Parameters: {"action"=>"edit", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:25', `last_request_at` = '2009-11-12 14:13:25' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (1.6ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:25') [0m
+Completed in 105ms (View: 10, DB: 5) | 200 OK [http://localhost/account/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#update (for ::1 at 2009-11-12 15:13:27) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>""}}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:27', `last_request_at` = '2009-11-12 14:13:27' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (77.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY '' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (5.2ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:27') [0m
+Completed in 124ms (View: 21, DB: 82) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:13:31) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:31', `last_request_at` = '2009-11-12 14:13:31' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:31') [0m
+Completed in 30ms (View: 7, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for ::1 at 2009-11-12 15:13:35) [GET]
+  Parameters: {"action"=>"edit", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:35', `last_request_at` = '2009-11-12 14:13:35' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (1.6ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:35') [0m
+Completed in 106ms (View: 10, DB: 5) | 200 OK [http://localhost/account/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:13:39) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:39', `last_request_at` = '2009-11-12 14:13:39' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:39') [0m
+Completed in 30ms (View: 7, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for ::1 at 2009-11-12 15:13:46) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'ca84cd1d8be16f3f9a2ad314ea6dbcfa13ca9a3eeedd3d9aa13568d699564a0389063221ac03e4241ca8b8635cb1755200574f58a2b09b1f67536b4c4812d37f') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:13:46', `last_request_at` = '2009-11-12 14:13:46' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 24ms (DB: 4) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:13:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:46') [0m
+Completed in 117ms (View: 97, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:13:49) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>""}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:49') [0m
+Completed in 30ms (View: 10, DB: 3) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:13:51) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:51') [0m
+Completed in 24ms (View: 8, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 15:13:53) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (2.5ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:03:53') [0m
+Completed in 119ms (View: 103, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (41.9ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081103171327)
+Migrating to CreateSessions (20081106072031)
+Migrating to CreateQuestions (20091112092312)
+Migrating to CreateAnswers (20091112092345)
+Migrating to CreateComments (20091112092545)
+Migrating to AddUsersOpenidField (20091112141539)
+  [4;35;1mSQL (385.2ms)[0m   [0mALTER TABLE `users` ADD `openid_identifier` varchar(255)[0m
+  [4;36;1mSQL (516.6ms)[0m   [0;1mCREATE INDEX `index_users_on_openid_identifier` ON `users` (`openid_identifier`)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (209.2ms)[0m   [0;1mALTER TABLE `users` CHANGE `login` `login` varchar(255) DEFAULT NULL[0m
+  [4;35;1mSQL (14.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (218.7ms)[0m   [0;1mALTER TABLE `users` CHANGE `crypted_password` `crypted_password` varchar(255) DEFAULT NULL[0m
+  [4;35;1mSQL (15.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (144.6ms)[0m   [0;1mALTER TABLE `users` CHANGE `password_salt` `password_salt` varchar(255) DEFAULT NULL[0m
+  [4;35;1mSQL (6.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091112141539')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (50.7ms)[0m   [0mSHOW FIELDS FROM `answers`[0m
+  [4;36;1mSQL (17.3ms)[0m   [0;1mdescribe `answers`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `answers`[0m
+  [4;36;1mSQL (17.4ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mSQL (17.5ms)[0m   [0mdescribe `comments`[0m
+  [4;36;1mSQL (10.8ms)[0m   [0;1mSHOW KEYS FROM `comments`[0m
+  [4;35;1mSQL (9.9ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (11.9ms)[0m   [0;1mdescribe `questions`[0m
+  [4;35;1mSQL (7.3ms)[0m   [0mSHOW KEYS FROM `questions`[0m
+  [4;36;1mSQL (13.3ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (5.8ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (9.5ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (14.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (37.1ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (6.1ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081103171327)
+Migrating to CreateSessions (20081106072031)
+Migrating to CreateQuestions (20091112092312)
+Migrating to CreateAnswers (20091112092345)
+Migrating to CreateComments (20091112092545)
+Migrating to AddUsersOpenidField (20091112141539)
+Migrating to AddOpenIdAuthenticationTables (20091112141637)
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mCREATE TABLE `open_id_authentication_associations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `issued` int(11), `lifetime` int(11), `handle` varchar(255), `assoc_type` varchar(255), `server_url` blob, `secret` blob) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (57.1ms)[0m   [0;1mCREATE TABLE `open_id_authentication_nonces` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `timestamp` int(11) NOT NULL, `server_url` varchar(255), `salt` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091112141637')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `answers`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mdescribe `answers`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `answers`[0m
+  [4;36;1mSQL (30.7ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mdescribe `comments`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `comments`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_associations`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mdescribe `open_id_authentication_associations`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `open_id_authentication_associations`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `open_id_authentication_nonces`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `open_id_authentication_nonces`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `open_id_authentication_nonces`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `questions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW KEYS FROM `questions`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:18:39) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Redirected to http://localhost:3000/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 96ms (DB: 6) | 302 Found [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:18:39) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:08:39') [0m
+Completed in 100ms (View: 79, DB: 7) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:18:43) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:08:43') [0m
+Completed in 25ms (View: 10, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:18:49) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran.hayes@dkd.de"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran.hayes@dkd.de') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:08:50') [0m
+Completed in 236ms (View: 12, DB: 4) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:18:55) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran.hayes"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran.hayes') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:08:55') [0m
+Completed in 102ms (View: 84, DB: 3) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:18:58) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran.hayes"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran.hayes') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:08:58') [0m
+Completed in 34ms (View: 13, DB: 5) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:19:01) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran.hayes"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran.hayes') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:09:01') [0m
+Completed in 30ms (View: 12, DB: 3) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:19:12) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.6ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:19:12', `last_login_at` = '2009-11-12 09:21:13', `last_login_ip` = '::1', `current_login_at` = '2009-11-12 14:19:12', `login_count` = 2, `last_request_at` = '2009-11-12 14:19:12' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/account
+Completed in 69ms (DB: 5) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:19:12) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:19:12', `last_request_at` = '2009-11-12 14:19:12' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:09:12') [0m
+Completed in 33ms (View: 11, DB: 4) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for ::1 at 2009-11-12 15:19:16) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:19:16', `last_request_at` = '2009-11-12 14:19:16' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/user_session/new
+Completed in 26ms (DB: 5) | 302 Found [http://localhost/user_session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:19:16) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:09:16') [0m
+Completed in 116ms (View: 9, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 15:22:30) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (2.1ms)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:12:30') [0m
+Completed in 36ms (View: 17, DB: 4) | 200 OK [http://localhost/account/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for ::1 at 2009-11-12 15:25:11) [POST]
+  Parameters: {"commit"=>"Register", "action"=>"create", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>""}}
+  [4;36;1mUser Columns (4.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '0d415fa6d78bc00b6034b9909a86e00526e62a0b5938522c2b70e28477bbfcac257fdcc7fa41063411a89fd4067c76b4b8ec5c48818751a43a1cab5bc58423e5') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (8.1ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:15:11') [0m
+Completed in 159ms (View: 106, DB: 8) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for ::1 at 2009-11-12 15:28:08) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+
+SyntaxError (/Users/dkd_hayes/Rails/authlogic_example/app/controllers/user_sessions_controller.rb:26: syntax error, unexpected $end, expecting kEND):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (24.2ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for ::1 at 2009-11-12 15:28:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+
+SyntaxError (/Users/dkd_hayes/Rails/authlogic_example/app/controllers/user_sessions_controller.rb:26: syntax error, unexpected $end, expecting kEND):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:29:00) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:19:00') [0m
+Completed in 32ms (View: 15, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 15:30:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:20:37') [0m
+Completed in 40ms (View: 19, DB: 6) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:30:39) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+WARNING: making https request to https://www.google.com/accounts/o8/id without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `open_id_authentication_associations`[0m
+  [4;35;1mOpenIdAuthentication::Association Load (1.5ms)[0m   [0mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+WARNING: making https request to https://www.google.com/accounts/o8/ud without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Delete all (18.4ms)[0m   [0;1mDELETE FROM `open_id_authentication_associations` WHERE (server_url = 'https://www.google.com/accounts/o8/ud' AND handle = 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n') [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOpenIdAuthentication::Association Create (0.4ms)[0m   [0;1mINSERT INTO `open_id_authentication_associations` (`lifetime`, `handle`, `server_url`, `issued`, `assoc_type`, `secret`) VALUES(46799, 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n', x'68747470733a2f2f7777772e676f6f676c652e636f6d2f6163636f756e74732f6f382f7564', 1258036239, 'HMAC-SHA1', x'92b909f1e36f173fd75832213e084b7d201413c4')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+Generated checkid_setup request to https://www.google.com/accounts/o8/ud with assocication AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n
+Redirected to https://www.google.com/accounts/o8/ud?openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.ax.mode=fetch_request&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.realm=http%3A%2F%2Flocalhost%3A3000%2F&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1
+Completed in 510ms (DB: 26) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:30:44) [POST]
+  Parameters: {"openid.mode"=>"id_res", "openid.op_endpoint"=>"https://www.google.com/accounts/o8/ud", "openid.return_to"=>"http://localhost:3000/user_session?for_session=1&_method=post&open_id_complete=1", "openid.sig"=>"DNH+TvbOe+L3d2aj/41cCKGautA=", "openid.response_nonce"=>"2009-11-12T14:30:44ZM7qtk5cDSgf1Zg", "openid.ns"=>"http://specs.openid.net/auth/2.0", "action"=>"create", "for_session"=>"1", "_method"=>"post", "openid.identity"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk", "openid.assoc_handle"=>"AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n", "openid.signed"=>"op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle", "controller"=>"user_sessions", "open_id_complete"=>"1", "openid.claimed_id"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk"}
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Error attempting to use stored discovery information: OpenID::TypeURIMismatch
+Attempting discovery to verify endpoint
+Performing discovery on https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk
+WARNING: making https request to https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Load (0.6ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`handle` = 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n' AND `open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;35;1mOpenIdAuthentication::Nonce Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_nonces`[0m
+  [4;36;1mOpenIdAuthentication::Nonce Load (0.6ms)[0m   [0;1mSELECT * FROM `open_id_authentication_nonces` WHERE (`open_id_authentication_nonces`.`server_url` = 'https://www.google.com/accounts/o8/ud' AND `open_id_authentication_nonces`.`timestamp` = 1258036244 AND `open_id_authentication_nonces`.`salt` = 'M7qtk5cDSgf1Zg') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOpenIdAuthentication::Nonce Create (0.3ms)[0m   [0;1mINSERT INTO `open_id_authentication_nonces` (`salt`, `server_url`, `timestamp`) VALUES('M7qtk5cDSgf1Zg', 'https://www.google.com/accounts/o8/ud', 1258036244)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`openid_identifier` = 'https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:20:44') [0m
+Completed in 237ms (View: 18, DB: 8) | 200 OK [http://localhost/user_session?for_session=1&_method=post&open_id_complete=1&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2009-11-12T14%3A30%3A44ZM7qtk5cDSgf1Zg&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1&openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=DNH%2BTvbOe%2BL3d2aj%2F41cCKGautA%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:38:48) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:28:48') [0m
+Completed in 37ms (View: 15, DB: 4) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 15:38:56) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"kieran"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'kieran') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:38:56', `last_login_at` = '2009-11-12 14:19:12', `current_login_at` = '2009-11-12 14:38:56', `login_count` = 3, `last_request_at` = '2009-11-12 14:38:56' WHERE `id` = 1[0m
+  [4;35;1mSQL (26.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/account
+Completed in 51ms (DB: 30) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:38:56) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (8.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:38:56', `last_request_at` = '2009-11-12 14:38:56' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:28:56') [0m
+Completed in 38ms (View: 7, DB: 12) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:38:58) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:38:58', `last_request_at` = '2009-11-12 14:38:58' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:28:58') [0m
+Completed in 112ms (View: 7, DB: 5) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:41:39) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:41:39', `last_request_at` = '2009-11-12 14:41:39' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:31:39') [0m
+
+ActionView::TemplateError (undefined local variable or method `qeustions_path' for #<ActionView::Base:0x10325ec08>) on line #23 of app/views/layouts/application.html.erb:
+20:   <ul>
+21:     <li>Home</li>
+22:     <li>Account</li>
+23:     <li><%= link_to "Questions", qeustions_path %></li>
+24:     
+25:   </ul>
+26: </div>
+
+    app/views/layouts/application.html.erb:23
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (30.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:41:44) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:41:44', `last_request_at` = '2009-11-12 14:41:44' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:31:44') [0m
+
+ActionView::TemplateError (undefined local variable or method `qeustion_path' for #<ActionView::Base:0x102daa518>) on line #23 of app/views/layouts/application.html.erb:
+20:   <ul>
+21:     <li>Home</li>
+22:     <li>Account</li>
+23:     <li><%= link_to "Questions", qeustion_path %></li>
+24:     
+25:   </ul>
+26: </div>
+
+    app/views/layouts/application.html.erb:23
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (29.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for ::1 at 2009-11-12 15:41:49) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:41:49', `last_request_at` = '2009-11-12 14:41:49' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:31:49') [0m
+Completed in 120ms (View: 97, DB: 5) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:41:51) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.6ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:31:51') [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:41:51', `last_request_at` = '2009-11-12 14:41:51' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 48ms (View: 35, DB: 7) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:43:52) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.5ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:33:52') [0m
+
+ActionView::TemplateError (undefined local variable or method `home_path' for #<ActionView::Base:0x102fdf310>) on line #21 of app/views/layouts/application.html.erb:
+18: <br />
+19: <div id="menu">
+20:   <ul>
+21:     <li><%= link_to "Home", home_path%></li>
+22:     <li>Account</li>
+23:     <li><%= link_to "Questions", questions_path %></li>
+24:     
+
+    app/views/layouts/application.html.erb:21
+    app/controllers/questions_controller.rb:7:in `index'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (106.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:43:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:33:58') [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:43:58', `last_request_at` = '2009-11-12 14:43:58' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 49ms (View: 37, DB: 6) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:44:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+
+ActionView::MissingTemplate (Missing template home/index.erb in view path app/views):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:44:15) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:34:15') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:44:15', `last_request_at` = '2009-11-12 14:44:15' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 37ms (View: 31, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:44:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:34:45') [0m
+
+ActionView::TemplateError (undefined local variable or method `acount_path' for #<ActionView::Base:0x103024d20>) on line #24 of app/views/layouts/application.html.erb:
+21:     <li><%= link_to "Home", root_path %></li>
+22:    
+23:     <li><%= link_to "Questions", questions_path %></li>
+24:      <li><%= link_to "Account", acount_path %></li>
+25:     
+26:   </ul>
+27: </div>
+
+    app/views/layouts/application.html.erb:24
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:44:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:34:49') [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:44:49', `last_request_at` = '2009-11-12 14:44:49' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 36ms (View: 30, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:45:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:35:18') [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:45:18', `last_request_at` = '2009-11-12 14:45:18' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+Completed in 39ms (View: 30, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (2.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:45:29) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (4.9ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:35:29') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:45:29', `last_request_at` = '2009-11-12 14:45:29' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 115ms (View: 104, DB: 12) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:45:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:35:44') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:45:44', `last_request_at` = '2009-11-12 14:45:44' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Completed in 37ms (View: 30, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 15:45:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:35:55') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:45:55', `last_request_at` = '2009-11-12 14:45:55' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 113ms (View: 106, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:45:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.4ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:35:59') [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:45:59', `last_request_at` = '2009-11-12 14:45:59' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Completed in 42ms (View: 30, DB: 7) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:46:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:36:11') [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:46:12', `last_request_at` = '2009-11-12 14:46:12' WHERE `id` = 1[0m
+  [4;35;1mSQL (30.3ms)[0m   [0mCOMMIT[0m
+Completed in 76ms (View: 33, DB: 36) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:46:12) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.4ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:36:12') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:46:12', `last_request_at` = '2009-11-12 14:46:12' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Completed in 43ms (View: 31, DB: 7) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-12 15:47:13) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:37:13') [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:47:13', `last_request_at` = '2009-11-12 14:47:13' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 46ms (View: 34, DB: 6) | 200 OK [http://localhost/questions/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:47:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;36;1mQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;35;1mQuestion Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:37:17') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:47:17', `last_request_at` = '2009-11-12 14:47:17' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 121ms (View: 109, DB: 7) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#new (for ::1 at 2009-11-12 15:47:18) [GET]
+  Parameters: {"action"=>"new", "controller"=>"questions"}
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+Rendering template within layouts/application
+Rendering questions/new
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:37:18') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 14:47:18', `last_request_at` = '2009-11-12 14:47:18' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 41ms (View: 29, DB: 6) | 200 OK [http://localhost/questions/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-12 15:47:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.4ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:37:21') [0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2009-11-12 14:47:21', `last_request_at` = '2009-11-12 14:47:21' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+Completed in 132ms (View: 119, DB: 7) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 16:02:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:52:55') [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 15:02:55', `last_request_at` = '2009-11-12 15:02:55' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Completed in 36ms (View: 30, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for ::1 at 2009-11-12 16:02:58) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2009-11-12 15:02:58', `last_request_at` = '2009-11-12 15:02:58' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/user_session/new
+Completed in 23ms (DB: 4) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:02:59) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:52:59') [0m
+Completed in 41ms (View: 16, DB: 6) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:03:00) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: making https request to https://www.google.com/accounts/o8/id without verifying server certificate; no CA path was specified.
+  [4;35;1mOpenIdAuthentication::Association Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_associations`[0m
+  [4;36;1mOpenIdAuthentication::Association Load (0.4ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+Generated checkid_setup request to https://www.google.com/accounts/o8/ud with assocication AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n
+Redirected to https://www.google.com/accounts/o8/ud?openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.ax.mode=fetch_request&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.realm=http%3A%2F%2Flocalhost%3A3000%2F&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1
+Completed in 155ms (DB: 4) | 302 Found [http://localhost/user_session]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:03:01) [POST]
+  Parameters: {"openid.mode"=>"id_res", "openid.op_endpoint"=>"https://www.google.com/accounts/o8/ud", "openid.return_to"=>"http://localhost:3000/user_session?for_session=1&_method=post&open_id_complete=1", "openid.sig"=>"PWlaDrXO+4ZT2wGcgH8GIFEtQGU=", "openid.response_nonce"=>"2009-11-12T15:03:01ZaDLaelNNt3Ahug", "openid.ns"=>"http://specs.openid.net/auth/2.0", "action"=>"create", "for_session"=>"1", "_method"=>"post", "openid.identity"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk", "openid.assoc_handle"=>"AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n", "openid.signed"=>"op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle", "controller"=>"user_sessions", "open_id_complete"=>"1", "openid.claimed_id"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Error attempting to use stored discovery information: OpenID::TypeURIMismatch
+Attempting discovery to verify endpoint
+Performing discovery on https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk
+WARNING: making https request to https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk without verifying server certificate; no CA path was specified.
+  [4;35;1mOpenIdAuthentication::Association Load (0.5ms)[0m   [0mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`handle` = 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n' AND `open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;36;1mOpenIdAuthentication::Nonce Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `open_id_authentication_nonces`[0m
+  [4;35;1mOpenIdAuthentication::Nonce Load (0.4ms)[0m   [0mSELECT * FROM `open_id_authentication_nonces` WHERE (`open_id_authentication_nonces`.`server_url` = 'https://www.google.com/accounts/o8/ud' AND `open_id_authentication_nonces`.`timestamp` = 1258038181 AND `open_id_authentication_nonces`.`salt` = 'aDLaelNNt3Ahug') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOpenIdAuthentication::Nonce Create (0.3ms)[0m   [0mINSERT INTO `open_id_authentication_nonces` (`salt`, `server_url`, `timestamp`) VALUES('aDLaelNNt3Ahug', 'https://www.google.com/accounts/o8/ud', 1258038181)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`openid_identifier` = 'https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:53:01') [0m
+Completed in 193ms (View: 17, DB: 24) | 200 OK [http://localhost/user_session?for_session=1&_method=post&open_id_complete=1&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2009-11-12T15%3A03%3A01ZaDLaelNNt3Ahug&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1&openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=PWlaDrXO%2B4ZT2wGcgH8GIFEtQGU%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:03:22) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (2.6ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:53:22') [0m
+Completed in 112ms (View: 94, DB: 4) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:03:25) [POST]
+  Parameters: {"openid.mode"=>"id_res", "openid.op_endpoint"=>"https://www.google.com/accounts/o8/ud", "openid.return_to"=>"http://localhost:3000/user_session?for_session=1&_method=post&open_id_complete=1", "openid.sig"=>"PWlaDrXO+4ZT2wGcgH8GIFEtQGU=", "openid.response_nonce"=>"2009-11-12T15:03:01ZaDLaelNNt3Ahug", "openid.ns"=>"http://specs.openid.net/auth/2.0", "action"=>"create", "for_session"=>"1", "_method"=>"post", "openid.identity"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk", "openid.assoc_handle"=>"AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n", "openid.signed"=>"op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle", "controller"=>"user_sessions", "open_id_complete"=>"1", "openid.claimed_id"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+No pre-discovered information supplied
+Performing discovery on https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk
+WARNING: making https request to https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Load (0.5ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`handle` = 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n' AND `open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;35;1mOpenIdAuthentication::Nonce Load (0.3ms)[0m   [0mSELECT * FROM `open_id_authentication_nonces` WHERE (`open_id_authentication_nonces`.`server_url` = 'https://www.google.com/accounts/o8/ud' AND `open_id_authentication_nonces`.`timestamp` = 1258038181 AND `open_id_authentication_nonces`.`salt` = 'aDLaelNNt3Ahug') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:53:25') [0m
+Completed in 160ms (View: 13, DB: 4) | 200 OK [http://localhost/user_session?for_session=1&_method=post&open_id_complete=1&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2009-11-12T15%3A03%3A01ZaDLaelNNt3Ahug&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1&openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=PWlaDrXO%2B4ZT2wGcgH8GIFEtQGU%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:04:16) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.6ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:16') [0m
+Completed in 31ms (View: 15, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for ::1 at 2009-11-12 16:04:17) [POST]
+  Parameters: {"commit"=>"Login", "action"=>"create", "controller"=>"users", "user"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`openid_identifier` = BINARY 'https://www.google.com/accounts/o8/id') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'c90ca75dfec112d07eb226aa924e7af32689752120dec1f61c6ce7e7cd94dd21f994830941d2f3acb71f0658e2840d665ae6932ace149eda16b03103231dba89') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (4.3ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:17') [0m
+Completed in 43ms (View: 19, DB: 4) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for ::1 at 2009-11-12 16:04:38) [POST]
+  Parameters: {"commit"=>"Login", "action"=>"create", "controller"=>"users", "user"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}}
+  [4;36;1mUser Columns (439.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`openid_identifier` = BINARY 'https://www.google.com/accounts/o8/id') LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'c78120522b8cf2a12805acac379e731d6cc5f7b97be48b90a476a10680ea60b7e68e03179cba1d06d77992ca71bfc77fed51bccf65b2698a494e90d706932f3a') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (4.8ms)
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:38') [0m
+Completed in 548ms (View: 27, DB: 502) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:04:40) [POST]
+  Parameters: {"commit"=>"Login", "action"=>"create", "controller"=>"user_sessions", "user"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:40') [0m
+Completed in 106ms (View: 13, DB: 3) | 200 OK [http://localhost/user_session]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:04:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.6ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:45') [0m
+Completed in 27ms (View: 11, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:04:46) [POST]
+  Parameters: {"commit"=>"Login", "action"=>"create", "controller"=>"user_sessions", "user"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:46') [0m
+Completed in 27ms (View: 11, DB: 3) | 200 OK [http://localhost/user_session]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:04:53) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.6ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:53') [0m
+Completed in 107ms (View: 12, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:04:54) [POST]
+  Parameters: {"commit"=>"Login", "action"=>"create", "controller"=>"user_sessions", "user"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}}
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:55') [0m
+Completed in 30ms (View: 11, DB: 6) | 200 OK [http://localhost/user_session]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:04:56) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.6ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:54:56') [0m
+Completed in 27ms (View: 11, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:05:10) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.8ms)
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #10 of app/views/users/new.html.erb:
+7: <% end %>
+8: 
+9: <h2>Open ID</h2>
+10: <% form_for @user_session, :url => user_session_path do |f| %>
+11:   <%= f.error_messages %>
+12:   <%= f.label :openid_identifier	 %><br />
+13:   <%= f.text_field :openid_identifier, :value => "https://www.google.com/accounts/o8/id" %><br />
+
+    app/views/users/new.html.erb:10
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (32.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-12 16:05:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (1.6ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:55:25') [0m
+Completed in 33ms (View: 17, DB: 3) | 200 OK [http://localhost/account/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:05:27) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"openid_identifier"=>"https://www.google.com/accounts/o8/id"}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: making https request to https://www.google.com/accounts/o8/id without verifying server certificate; no CA path was specified.
+  [4;35;1mOpenIdAuthentication::Association Load (0.5ms)[0m   [0mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+Generated checkid_setup request to https://www.google.com/accounts/o8/ud with assocication AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n
+Redirected to https://www.google.com/accounts/o8/ud?openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.ax.mode=fetch_request&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.realm=http%3A%2F%2Flocalhost%3A3000%2F&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1
+Completed in 128ms (DB: 3) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:05:28) [POST]
+  Parameters: {"openid.mode"=>"id_res", "openid.op_endpoint"=>"https://www.google.com/accounts/o8/ud", "openid.return_to"=>"http://localhost:3000/user_session?for_session=1&_method=post&open_id_complete=1", "openid.sig"=>"noWWpGzJFplA9Z+Ndiq1ykU8xVY=", "openid.response_nonce"=>"2009-11-12T15:05:27ZfTio675xJrKo7g", "openid.ns"=>"http://specs.openid.net/auth/2.0", "action"=>"create", "for_session"=>"1", "_method"=>"post", "openid.identity"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk", "openid.assoc_handle"=>"AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n", "openid.signed"=>"op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle", "controller"=>"user_sessions", "open_id_complete"=>"1", "openid.claimed_id"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Error attempting to use stored discovery information: OpenID::TypeURIMismatch
+Attempting discovery to verify endpoint
+Performing discovery on https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk
+WARNING: making https request to https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Load (0.5ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`handle` = 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n' AND `open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;35;1mOpenIdAuthentication::Nonce Load (0.3ms)[0m   [0mSELECT * FROM `open_id_authentication_nonces` WHERE (`open_id_authentication_nonces`.`server_url` = 'https://www.google.com/accounts/o8/ud' AND `open_id_authentication_nonces`.`timestamp` = 1258038327 AND `open_id_authentication_nonces`.`salt` = 'fTio675xJrKo7g') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOpenIdAuthentication::Nonce Create (0.3ms)[0m   [0mINSERT INTO `open_id_authentication_nonces` (`salt`, `server_url`, `timestamp`) VALUES('fTio675xJrKo7g', 'https://www.google.com/accounts/o8/ud', 1258038327)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`openid_identifier` = 'https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 14:55:28') [0m
+Completed in 162ms (View: 10, DB: 5) | 200 OK [http://localhost/user_session?for_session=1&_method=post&open_id_complete=1&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2009-11-12T15%3A05%3A27ZfTio675xJrKo7g&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1&openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=noWWpGzJFplA9Z%2BNdiq1ykU8xVY%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for ::1 at 2009-11-12 16:10:15) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Redirected to http://localhost:3000/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 16ms (DB: 4) | 302 Found [http://localhost/user_session]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:15) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:15') [0m
+Completed in 25ms (View: 9, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:17) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:17') [0m
+Completed in 95ms (View: 8, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:31') [0m
+Completed in 26ms (View: 9, DB: 4) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:33) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:33') [0m
+Completed in 24ms (View: 8, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:34) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:34') [0m
+Completed in 99ms (View: 8, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:35) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (4.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:35') [0m
+Completed in 58ms (View: 23, DB: 10) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-12 16:10:50) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:50') [0m
+Completed in 29ms (View: 13, DB: 3) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:10:52) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "openid_identifier"=>"https://www.google.com/accounts/o8/id", "password"=>"[FILTERED]", "login"=>""}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+WARNING: making https request to https://www.google.com/accounts/o8/id without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Load (0.6ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+Generated checkid_setup request to https://www.google.com/accounts/o8/ud with assocication AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n
+Redirected to https://www.google.com/accounts/o8/ud?openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.ax.mode=fetch_request&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.realm=http%3A%2F%2Flocalhost%3A3000%2F&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1
+Completed in 228ms (DB: 3) | 302 Found [http://localhost/user_session]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-12 16:10:53) [POST]
+  Parameters: {"openid.mode"=>"id_res", "openid.op_endpoint"=>"https://www.google.com/accounts/o8/ud", "openid.return_to"=>"http://localhost:3000/user_session?for_session=1&_method=post&open_id_complete=1", "openid.sig"=>"5rRyHGTwLPLwEuDGIk4GbpcEdgo=", "openid.response_nonce"=>"2009-11-12T15:10:53ZC8ne_eBMDsAmaw", "openid.ns"=>"http://specs.openid.net/auth/2.0", "action"=>"create", "for_session"=>"1", "_method"=>"post", "openid.identity"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk", "openid.assoc_handle"=>"AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n", "openid.signed"=>"op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle", "controller"=>"user_sessions", "open_id_complete"=>"1", "openid.claimed_id"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Error attempting to use stored discovery information: OpenID::TypeURIMismatch
+Attempting discovery to verify endpoint
+Performing discovery on https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk
+WARNING: making https request to https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk without verifying server certificate; no CA path was specified.
+  [4;35;1mOpenIdAuthentication::Association Load (0.5ms)[0m   [0mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`handle` = 'AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n' AND `open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;36;1mOpenIdAuthentication::Nonce Load (0.4ms)[0m   [0;1mSELECT * FROM `open_id_authentication_nonces` WHERE (`open_id_authentication_nonces`.`server_url` = 'https://www.google.com/accounts/o8/ud' AND `open_id_authentication_nonces`.`timestamp` = 1258038653 AND `open_id_authentication_nonces`.`salt` = 'C8ne_eBMDsAmaw') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOpenIdAuthentication::Nonce Create (0.2ms)[0m   [0;1mINSERT INTO `open_id_authentication_nonces` (`salt`, `server_url`, `timestamp`) VALUES('C8ne_eBMDsAmaw', 'https://www.google.com/accounts/o8/ud', 1258038653)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`openid_identifier` = 'https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-12 15:00:53') [0m
+Completed in 162ms (View: 13, DB: 5) | 200 OK [http://localhost/user_session?for_session=1&_method=post&open_id_complete=1&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2009-11-12T15%3A10%3A53ZC8ne_eBMDsAmaw&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1&openid.assoc_handle=AOQobUf0P493mD2LV4fJSb-yhwxQivV2vIg8BxlVCgiRYtsCC_iVkd4n&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=5rRyHGTwLPLwEuDGIk4GbpcEdgo%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-12 16:13:07) [GET]
+
+ActionController::RoutingError (No route matches "/aktionen.xml" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-12 17:24:19) [GET]
+
+ActionController::RoutingError (No route matches "/aktionen.xml" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (13.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (13.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081103171327)
+Migrating to CreateSessions (20081106072031)
+Migrating to CreateQuestions (20091112092312)
+Migrating to CreateAnswers (20091112092345)
+Migrating to CreateComments (20091112092545)
+Migrating to AddUsersOpenidField (20091112141539)
+Migrating to AddOpenIdAuthenticationTables (20091112141637)
+Migrating to CreateUserGroups (20091112170805)
+  [4;35;1mSQL (2.7ms)[0m   [0mCREATE TABLE `user_groups` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (24.6ms)[0m   [0;1mCREATE TABLE `user_groups_users` (`user_group_id` int(11), `user_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091112170805')[0m
+Migrating to CreatePermissions (20091112170806)
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCREATE TABLE `permissions_user_groups` (`permission_id` int(11), `user_group_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091112170806')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (10.5ms)[0m   [0;1mSHOW FIELDS FROM `answers`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `answers`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `answers`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mSHOW FIELDS FROM `comments`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mdescribe `comments`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW KEYS FROM `comments`[0m
+  [4;36;1mSQL (8.2ms)[0m   [0;1mSHOW FIELDS FROM `open_id_authentication_associations`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `open_id_authentication_associations`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `open_id_authentication_associations`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_nonces`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `open_id_authentication_nonces`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `open_id_authentication_nonces`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `permissions_user_groups`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `permissions_user_groups`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `permissions_user_groups`[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `questions`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `questions`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `user_groups`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `user_groups`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `user_groups`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `user_groups_users`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `user_groups_users`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `user_groups_users`[0m
+  [4;36;1mSQL (31.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:05) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+  [4;35;1mSQL (18.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mPermission Load (8.7ms)[0m   [0mSELECT * FROM `permissions` [0m
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-12 18:27:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Redirected to http://localhost:3000/
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-12 18:40:08) [GET]
+
+ActionController::RoutingError (No route matches "/aktionen.xml" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 10:07:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:57:36') [0m
+Completed in 1708ms (View: 1699, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 10:07:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (37.8ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (4.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (12.8ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:57:49') [0m
+Completed in 131ms (View: 32, DB: 58) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 10:07:50) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (737.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (397.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:57:51') [0m
+Completed in 1462ms (View: 325, DB: 1136) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for ::1 at 2009-11-13 10:07:54) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;35;1mUser Columns (186.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mSQL (15.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:57:55') [0m
+Completed in 540ms (View: 212, DB: 203) | 200 OK [http://localhost/user_session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-13 10:07:56) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "openid_identifier"=>"https://www.google.com/accounts/o8/id", "password"=>"[FILTERED]", "login"=>""}, "action"=>"create", "controller"=>"user_sessions"}
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: making https request to https://www.google.com/accounts/o8/id without verifying server certificate; no CA path was specified.
+  [4;35;1mOpenIdAuthentication::Association Columns (26.6ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_associations`[0m
+  [4;36;1mOpenIdAuthentication::Association Load (0.4ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOpenIdAuthentication::Association Destroy (0.3ms)[0m   [0;1mDELETE FROM `open_id_authentication_associations` WHERE `id` = 1[0m
+  [4;35;1mSQL (22.2ms)[0m   [0mCOMMIT[0m
+WARNING: making https request to https://www.google.com/accounts/o8/ud without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Delete all (0.3ms)[0m   [0;1mDELETE FROM `open_id_authentication_associations` WHERE (server_url = 'https://www.google.com/accounts/o8/ud' AND handle = 'AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe') [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOpenIdAuthentication::Association Create (0.8ms)[0m   [0;1mINSERT INTO `open_id_authentication_associations` (`lifetime`, `handle`, `server_url`, `issued`, `assoc_type`, `secret`) VALUES(46800, 'AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe', x'68747470733a2f2f7777772e676f6f676c652e636f6d2f6163636f756e74732f6f382f7564', 1258103277, 'HMAC-SHA1', x'c616cacda10fe6edfe10a3238d8d407e1a4a8c71')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Generated checkid_setup request to https://www.google.com/accounts/o8/ud with assocication AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe
+Redirected to https://www.google.com/accounts/o8/ud?openid.assoc_handle=AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe&openid.ax.mode=fetch_request&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.realm=http%3A%2F%2Flocalhost%3A3000%2F&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1
+Completed in 791ms (DB: 54) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for ::1 at 2009-11-13 10:07:58) [POST]
+  Parameters: {"openid.mode"=>"id_res", "openid.op_endpoint"=>"https://www.google.com/accounts/o8/ud", "openid.return_to"=>"http://localhost:3000/user_session?for_session=1&_method=post&open_id_complete=1", "openid.sig"=>"fFK9sAWz4v2Q2xd+wuumPgXwtis=", "openid.response_nonce"=>"2009-11-13T09:07:57Z8JPGR0vyKVchIw", "openid.ns"=>"http://specs.openid.net/auth/2.0", "action"=>"create", "for_session"=>"1", "_method"=>"post", "openid.identity"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk", "openid.assoc_handle"=>"AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe", "openid.signed"=>"op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle", "controller"=>"user_sessions", "open_id_complete"=>"1", "openid.claimed_id"=>"https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Error attempting to use stored discovery information: OpenID::TypeURIMismatch
+Attempting discovery to verify endpoint
+Performing discovery on https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk
+WARNING: making https request to https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk without verifying server certificate; no CA path was specified.
+  [4;36;1mOpenIdAuthentication::Association Load (0.6ms)[0m   [0;1mSELECT * FROM `open_id_authentication_associations` WHERE (`open_id_authentication_associations`.`handle` = 'AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe' AND `open_id_authentication_associations`.`server_url` = 'https://www.google.com/accounts/o8/ud') [0m
+  [4;35;1mOpenIdAuthentication::Nonce Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_nonces`[0m
+  [4;36;1mOpenIdAuthentication::Nonce Load (0.4ms)[0m   [0;1mSELECT * FROM `open_id_authentication_nonces` WHERE (`open_id_authentication_nonces`.`server_url` = 'https://www.google.com/accounts/o8/ud' AND `open_id_authentication_nonces`.`timestamp` = 1258103277 AND `open_id_authentication_nonces`.`salt` = '8JPGR0vyKVchIw') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOpenIdAuthentication::Nonce Create (0.3ms)[0m   [0;1mINSERT INTO `open_id_authentication_nonces` (`salt`, `server_url`, `timestamp`) VALUES('8JPGR0vyKVchIw', 'https://www.google.com/accounts/o8/ud', 1258103277)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`openid_identifier` = 'https://www.google.com/accounts/o8/id?id=AItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:57:58') [0m
+Completed in 185ms (View: 15, DB: 9) | 200 OK [http://localhost/user_session?for_session=1&_method=post&open_id_complete=1&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud&openid.response_nonce=2009-11-13T09%3A07%3A57Z8JPGR0vyKVchIw&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fuser_session%3Ffor_session%3D1%26_method%3Dpost%26open_id_complete%3D1&openid.assoc_handle=AOQobUfKDe6WIJnpP_qvfEIcSP02xnffBzSdcnJi6Jz6Vh02RAOizzXe&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=fFK9sAWz4v2Q2xd%2BwuumPgXwtis%3D&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawmsHHhrKGadhGucl_E1ns22TBxY-LoZXpk]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for ::1 at 2009-11-13 10:09:01) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (12.7ms)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:59:01') [0m
+Completed in 139ms (View: 43, DB: 4) | 200 OK [http://localhost/account/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for ::1 at 2009-11-13 10:09:04) [POST]
+  Parameters: {"commit"=>"Register", "action"=>"create", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>""}}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY '') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '245d4807a504480895c4425d7ef9c7985fefd168beee4d1ee41c3d7a40c60b0cee454c3fb221c5c4363fafd527e09ec8722b9667b6466a994dea50cea44d9ab0') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (8.3ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 08:59:04') [0m
+Completed in 74ms (View: 43, DB: 4) | 200 OK [http://localhost/account]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::1 at 2009-11-13 10:20:27) [GET]
+
+ActionController::RoutingError (No route matches "/aktionen.xml" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for ::1 at 2009-11-13 10:28:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mUser Columns (631.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:07') [0m
+Completed in 1155ms (View: 518, DB: 635) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 10:28:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (100.5ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (4.1ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (30.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:08') [0m
+Completed in 235ms (View: 35, DB: 138) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 10:28:10) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (2.2ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (263.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:10') [0m
+Completed in 349ms (View: 58, DB: 283) | 200 OK [http://localhost/questions/1]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 10:28:12) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.4ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (33.0ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (21.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (21.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:12') [0m
+Completed in 108ms (View: 25, DB: 78) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#edit (for ::1 at 2009-11-13 10:28:13) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (0.9ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering questions/edit
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:13') [0m
+Completed in 66ms (View: 55, DB: 6) | 200 OK [http://localhost/questions/1/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#update (for ::1 at 2009-11-13 10:28:17) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "id"=>"1", "controller"=>"questions", "question"=>{"name"=>"Wann kommt FLOW3?", "body"=>"Wir warten und warten und warten", "views"=>"", "user_id"=>"1"}}
+  [4;35;1mQuestion Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mQuestion Load (0.8ms)[0m   [0;1mSELECT * FROM `questions` WHERE (`questions`.`id` = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/1
+Completed in 93ms (DB: 3) | 302 Found [http://localhost/questions/1]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#show (for ::1 at 2009-11-13 10:28:17) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"questions"}
+  [4;36;1mQuestion Columns (4.9ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (3.3ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering questions/show
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:17') [0m
+Completed in 41ms (View: 22, DB: 11) | 200 OK [http://localhost/questions/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing QuestionsController#index (for ::1 at 2009-11-13 10:28:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"questions"}
+  [4;35;1mQuestion Load (0.4ms)[0m   [0mSELECT * FROM `questions` [0m
+Rendering template within layouts/application
+Rendering questions/index
+  [4;36;1mQuestion Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 09:18:18') [0m
+Completed in 38ms (View: 26, DB: 6) | 200 OK [http://localhost/questions]
