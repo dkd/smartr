@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @question.name %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @question.body %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @question.user_id %>
+</p>
+
+<p>
+  <b>Views:</b>
+  <%=h @question.views %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
