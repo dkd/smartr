@@ -1,5 +1,18 @@
-.question {
+.question-list {
   border-bottom: 3px solid #e9e9e9; }
-  .question .stats {
+  .question-list .stats {
     float: left;
     background: red; }
+  .question-list h3 a:link {
+    text-decoration: none;
+    color: #7F5000; }
+  .question-list h3 a:visited {
+    text-decoration: none;
+    color: #AF6F00; }
+  .question-list h3 a:hover {
+    color: black;
+    text-decoration: underline; }
+  .question-list .body h3 .user {
+    float: right;
+    font-size: 12px;
+    text-align: right; }

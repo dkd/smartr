@@ -30,10 +30,13 @@
     </div>
     </div>
    
-
     <p style="color: green"><%= flash[:notice] %></p>
-
+    <div id="content">
     <%= yield  %>
+    </div>
+    <div id="sidebar">
+    <%= yield :sidebar%>
+    </div>
   </div>
   <%= javascript_include_tag :defaults %>
 </body>

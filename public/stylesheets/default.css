@@ -11,4 +11,24 @@ body {
         color: green; }
       body #wrapper #header .user {
         color: red;
-        float: right; }
+        float: right;
+        background: #f4f4f4;
+        padding: 10px;
+        -moz-box-shadow: green 2px 2px 10px; }
+    body #wrapper #menu ul {
+      display: inline;
+      margin-left: 0;
+      padding-left: 0; }
+      body #wrapper #menu ul li {
+        list-style: none;
+        display: inline;
+        margin-right: 20px; }
+        body #wrapper #menu ul li a:link, body #wrapper #menu ul li a:visited {
+          text-decoration: none;
+          color: green;
+          font-weight: bold; }
+        body #wrapper #menu ul li a:hover {
+          color: black; }
+  body #content {
+    float: left;
+    width: 600px; }
