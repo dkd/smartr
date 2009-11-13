@@ -1,14 +1,14 @@
-<h1>HOME</h1>
-
 <h2>Latest Questions</h2>
 
 <% Question.latest.each do |question| %>
-  <div class="question">
+  <div class="question-list">
   <div class="stats">
-  
   </div>
   <div class="body">
-    <h3><%= link_to(h(question.name), question_path(question)) %><span class="user"><%= question.user.login %></span></h3>
+    <h3><%= link_to(h(question.name), question_path(question)) %>
+      <span class="user"><%= question.user.login %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago</span></h3>
   </div>
   </div>
 <% end -%>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

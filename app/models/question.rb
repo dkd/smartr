@@ -16,4 +16,17 @@ class Question < ActiveRecord::Base
   named_scope :latest, :order => "created_at DESC"
   
   
+  #methods
+  
+  def self.recent_tags
+    list = []
+    self.latest(:limit => 10).each do |question|
+      question.tag_list.each do |tag|
+        list << tag unless list.include?(tag)
+      end
+    end    
+    list
+  end
+  
+  
 end

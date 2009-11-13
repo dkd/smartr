@@ -1,0 +1,6 @@
+<h3>Recent tags</h3>
+<% Question.recent_tags.each do |tag| -%>
+  
+  <%= link_to(h(tag), "#", :class=> "tag")%>
+  
+<% end -%>

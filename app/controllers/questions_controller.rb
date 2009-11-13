@@ -90,7 +90,7 @@ class QuestionsController < ApplicationController
   
   protected
   
-  def is_owner?
+  def is_owner
     
   end
   
