@@ -1,5 +1,8 @@
-= Smartr Example App
+= SmartR 
+== A knowledge base for small companies?!
+
+We need a better name!
 
 Nothing see right now ...
 
-Copyright (c) 2009 by d.k.d Internet Service GmbH
+Copyright (c) 2009 by d.k.d Internet Service GmbH, released under the MIT license
