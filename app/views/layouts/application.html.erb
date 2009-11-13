@@ -1,41 +1,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
-  
-  <%= javascript_include_tag :defaults %>
+  <title>SmartR - be a smartass!</title>
+  <%= stylesheet_link_tag "application" %>  
 </head>
 <body>
-
-<span style="float: right; text-align: right;"><%= link_to "Source code", "http://github.com/binarylogic/authlogic_example" %> | <%= link_to "Setup tutorial", "http://www.binarylogic.com/2008/11/3/tutorial-authlogic-basic-setup" %> | <%= link_to "Password reset tutorial", "http://www.binarylogic.com/2008/11/16/tutorial-reset-passwords-with-authlogic" %><br />
-<%= link_to "OpenID tutorial", "http://www.binarylogic.com/2008/11/21/tutorial-using-openid-with-authlogic" %> | <%= link_to "Authlogic Repo", "http://github.com/binarylogic/authlogic" %> | <%= link_to "Authlogic Doc", "http://authlogic.rubyforge.org/" %></span>
-<h1>SmartR</h1>
-<%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
-<br />
-<br />
-<div id="menu">
-  <ul>
-    <li><%= link_to "Home", root_path %></li>
-   
-    <li><%= link_to "Questions", questions_path %></li>
-     
+  <div id="wrapper">
+    <div id="header">
+    <h1>SmartR</h1>
+    <div class="user">
+    <%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
+     <% if !current_user %>
+      <%= link_to "Register", new_account_path %> |
+      <%= link_to "Log In", new_user_session_path %> |
+      <% else %>
+      <%= link_to "My Account", account_path %> |
+      <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+      <% end %>
+    </div>
     
-  </ul>
-</div>
-<% if !current_user %>
-  <%= link_to "Register", new_account_path %> |
-  <%= link_to "Log In", new_user_session_path %> |
-<% else %>
-  <%= link_to "My Account", account_path %> |
-  <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
-<% end %>
+    <div id="menu">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Questions", questions_path %></li>
+      </ul>
+    </div>
+    </div>
+   
 
-<p style="color: green"><%= flash[:notice] %></p>
+    <p style="color: green"><%= flash[:notice] %></p>
 
-<%= yield  %>
-
+    <%= yield  %>
+  </div>
+  <%= javascript_include_tag :defaults %>
 </body>
 </html>

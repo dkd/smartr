@@ -14,8 +14,10 @@
 </p>
 
 <p>
-  <b>Views:</b>
-  <%=h @question.views %>
+  <b>Tags:</b>
+  <%@question.tags.each do |tag| %>
+  <%= link_to tag, "#" %>
+  <% end -%>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
