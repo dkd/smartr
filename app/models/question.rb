@@ -7,5 +7,5 @@ class Question < ActiveRecord::Base
   
   #Validations
   validates_presence_of [:body, :name]
-  
+  validates_uniqueness_of :name 
 end

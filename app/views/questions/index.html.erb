@@ -12,7 +12,7 @@
   <tr>
     <td><%=h question.name %></td>
     <td><%=h question.body %></td>
-    <td><%=h question.user_id %></td>
+    <td><%=h question.user.login %></td>
     <td><%=h question.views %></td>
     <td><%= link_to 'Show', question %></td>
     <td><%= link_to 'Edit', edit_question_path(question) %></td>
