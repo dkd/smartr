@@ -1,0 +1,5 @@
+.DS_Store
+log/*.log
+tmp/**/*
+doc/api
+doc/appla
