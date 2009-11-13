@@ -3524,3 +3524,65 @@ Rendering template within layouts/application
 Rendering questions/new
   [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2009-11-13 14:17:46') [0m
 Completed in 45ms (View: 12, DB: 7) | 200 OK [http://localhost/questions/new]
+** acts_as_taggable_on: initialized properly.
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (33.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (33.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081103171327)
+Migrating to CreateSessions (20081106072031)
+Migrating to CreateQuestions (20091112092312)
+Migrating to CreateAnswers (20091112092345)
+Migrating to CreateComments (20091112092545)
+Migrating to AddUsersOpenidField (20091112141539)
+Migrating to AddOpenIdAuthenticationTables (20091112141637)
+Migrating to CreateUserGroups (20091112170805)
+Migrating to CreatePermissions (20091112170806)
+Migrating to ActsAsTaggableOnMigration (20091113153607)
+  [4;35;1mSQL (83.2ms)[0m   [0mCREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `taggings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tag_id` int(11), `taggable_id` int(11), `tagger_id` int(11), `tagger_type` varchar(255), `taggable_type` varchar(255), `context` varchar(255), `created_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (180.5ms)[0m   [0mCREATE INDEX `index_taggings_on_tag_id` ON `taggings` (`tag_id`)[0m
+  [4;36;1mSQL (149.2ms)[0m   [0;1mCREATE INDEX `index_taggings_on_taggable_id_and_taggable_type_and_context` ON `taggings` (`taggable_id`, `taggable_type`, `context`)[0m
+  [4;35;1mSQL (11.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091113153607')[0m
+  [4;36;1mSQL (32.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (127.5ms)[0m   [0mSHOW FIELDS FROM `answers`[0m
+  [4;36;1mSQL (21.3ms)[0m   [0;1mdescribe `answers`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW KEYS FROM `answers`[0m
+  [4;36;1mSQL (26.8ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mdescribe `comments`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `comments`[0m
+  [4;35;1mSQL (14.8ms)[0m   [0mSHOW FIELDS FROM `open_id_authentication_associations`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `open_id_authentication_associations`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `open_id_authentication_associations`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mSHOW FIELDS FROM `open_id_authentication_nonces`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `open_id_authentication_nonces`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `open_id_authentication_nonces`[0m
+  [4;35;1mSQL (15.1ms)[0m   [0mSHOW FIELDS FROM `permissions`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `permissions`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mSHOW KEYS FROM `permissions`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW FIELDS FROM `permissions_user_groups`[0m
+  [4;35;1mSQL (3.7ms)[0m   [0mdescribe `permissions_user_groups`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `permissions_user_groups`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mdescribe `questions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW KEYS FROM `questions`[0m
+  [4;36;1mSQL (28.9ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `taggings`[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mdescribe `taggings`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mSHOW KEYS FROM `taggings`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `tags`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `tags`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW FIELDS FROM `user_groups`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `user_groups`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW KEYS FROM `user_groups`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mSHOW FIELDS FROM `user_groups_users`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `user_groups_users`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `user_groups_users`[0m
+  [4;35;1mSQL (23.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
