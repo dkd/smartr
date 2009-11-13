@@ -1,4 +1,8 @@
 class QuestionsController < ApplicationController
+  
+  before_filter :require_user, :only => [:edit, :new, :update]
+  before_filter :is_owner, :only => :update
+  
   # GET /questions
   # GET /questions.xml
   def index
@@ -25,7 +29,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     @question = Question.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @question }
@@ -41,7 +45,7 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
-
+    @question.user = current_user
     respond_to do |format|
       if @question.save
         flash[:notice] = 'Question was successfully created.'
@@ -58,7 +62,7 @@ class QuestionsController < ApplicationController
   # PUT /questions/1.xml
   def update
     @question = Question.find(params[:id])
-
+    
     respond_to do |format|
       if @question.update_attributes(params[:question])
         flash[:notice] = 'Question was successfully updated.'
@@ -82,4 +86,12 @@ class QuestionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  protected
+  
+  def is_owner?
+    
+  end
+  
 end
