@@ -4,9 +4,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :answers, :has_many => :comments
 
   map.resources :questions, :has_many => :comments
-  
+  map.connect "tags/:tag", :controller => :tags, :action => :index
+  map.connect "tags", :controller => :tags, :action => :index
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
-  map.resources :tags
+  
+  #map.resources :tags
+  
   map.resource :account, :controller => "users"
   map.resources :users
   map.resource :user_session
