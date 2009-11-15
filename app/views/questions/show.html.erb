@@ -1,13 +1,9 @@
-<p>
-  <b>Name:</b>
-  <%=h @question.name %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%=h @question.body %>
-</p>
-
+<div class="question">
+  <h2>  <%=h @question.name %></h2>
+  <div class="body">
+    <%=h @question.body %>
+  </div>
+</div>
 <p>
   <b>User:</b>
   <%=h @question.user.login %>
@@ -20,5 +16,35 @@
   <% end -%>
 </p>
 
+<% if @question.answers.size %>
+  <h2>Answers</h2>
+  <% @question.answers.each do |answer| -%>
+  <div class="answer-list">
+    <div class="votes">
+      <%= link_to "up", "#{}", :class => "up" -%>  
+      <div class="counter">0</div>
+      <%= link_to "down", "#{}", :class => "down" -%>  
+    </div>
+    <div class="body"><span class="user"></span><%= h answer.body %></div>
+  </div>
+  <% end -%>
+<% end -%>
+
+<% if (current_user.present? && !Answer.is_answered?(@question, current_user)) %>
+      <% form_for(@question, :html => {:class => "form"}) do |f| %>
+      <%= f.error_messages %>
+        <%  f.fields_for "answers_attributes[]", Answer.new do |a| %>
+          <%= a.hidden_field :user_id, :value => current_user.id %>
+          <div class="group">
+            <%= f.label :body, "My answer:", :class => "label" %>
+            <%= a.text_area :body, :class => 'text_area answer' %>
+          </div>
+        <% end -%>
+        <div class="group navform">
+          <%= f.submit 'Save', :class => "awesome green" %>
+        </div>
+      <% end -%>
+      <% end %>
+    </div>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

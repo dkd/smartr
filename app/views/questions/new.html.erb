@@ -1,9 +1,9 @@
 <h1>New question</h1>
-
+<div class="question-new">
 <% form_for(@question) do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
+    <%= f.label "Enter your question here" %><br />
     <%= f.text_field :name %>
   </p>
   <p>
@@ -18,4 +18,5 @@
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-<%= link_to 'Back', questions_path %>
+</div>
+<% main_menu :questions %>

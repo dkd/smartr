@@ -1,28 +1,71 @@
-.question-list
-  border-bottom: 3px solid #e9e9e9
+.question-header
+  border-bottom: 3px solid black
   
-  .stats
+  h1
     float: left
-    background: red
+    width: 400px
+    margin-top: 0px
+    margin-bottom: 0px  
     
-  h3
-    a:link
-      text-decoration: none
-      color: #7F5000
+  .tabs  
+    width: 300px
+    float: right
+    text-align: right
     
-    a:visited
-      text-decoration: none
-      color: #AF6F00
+    ul
+      margin: 0px
+      padding: 0px
       
-    a:hover
-      color: black
-      text-decoration: underline
+      li
+        display: inline
+        list-style: none
+        margin-right: 10px
+        
+        a:link, a:visited
+          color: white
+          background: black
+          -moz-border-radius: 5px
+          -webkit-border-radius: 5px
+          padding: 5px
+          text-decoration: none
+          
+.question-list
+  background: #f4f4f4
+  padding: 5px 0px 5px 0px
+  margin-bottom: 10px
   
   .body
-    
+  
     h3
+      margin-top: 0px
+      a:link
+        text-decoration: none
+        color: #7F5000
+
+      a:visited
+        text-decoration: none
+        color: #AF6F00
+
+      a:hover
+        color: black
+        text-decoration: underline
+
       .user
         float: right
         font-size: 12px
         text-align: right
+        padding: 5px
+        
+    .tags
       
+      a:link, a:visited
+        font-size: 12px
+        text-decoration: none
+        background: orange
+        -moz-border-radius: 5px
+        -webkit-border-radius: 5px
+        color: white
+        padding: 5px
+      
+      a:hover
+        background: black

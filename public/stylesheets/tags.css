@@ -1,0 +1,13 @@
+.tag-list .tag {
+  padding: 5px;
+  float: left;
+  margin-bottom: 10px; }
+  .tag-list .tag a:link, .tag-list .tag a:visited {
+    text-decoration: none;
+    color: white;
+    background: green;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px; }
+  .tag-list .tag a:hover {
+    background: black; }

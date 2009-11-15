@@ -1,0 +1,21 @@
+<div class="question-list">
+  <div class="stats">
+    <div class="views">
+      <%=question.views %>
+      <span class="desc">Views</span>
+    </div>
+
+  </div>
+  <div class="body">
+    <h3><%= link_to(h(question.name), question_path(question)) %>
+      <span class="user"><%= question.user.login %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago</span></h3>
+    <% if question.tags.present? %>
+      <div class="tags">
+        <% question.tags.each do |tag| -%>
+          <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
+        <% end -%>
+      <% end -%>
+    </div>
+    </div>
+  <br style="clear: both">
+  </div>

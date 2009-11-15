@@ -2,55 +2,113 @@ body {
   font-family: Helvetica, Arial;
   margin: 0px;
   margin-top: 0px; }
+  body .clear {
+    clear: both; }
   body #wrapper {
     width: 960px;
     margin: 0 25% 0 auto; }
-    body #wrapper #header {
-      border-bottom: 3px solid black; }
-      body #wrapper #header h1 {
-        color: green; }
-      body #wrapper #header .user {
-        color: red;
-        float: right;
-        background: #f4f4f4;
-        padding: 10px;
-        -moz-box-shadow: green 2px 2px 10px; }
-    body #wrapper #menu ul {
-      display: inline;
-      margin-left: 0;
-      padding-left: 0; }
-      body #wrapper #menu ul li {
-        list-style: none;
+    body #wrapper #header h1 {
+      color: green;
+      width: 600px;
+      float: left; }
+      body #wrapper #header h1 a:link,
+      body #wrapper #header h1 a:visited {
+        color: green;
+        text-decoration: none; }
+    body #wrapper #header #user {
+      color: red;
+      float: right;
+      background: #f4f4f4;
+      padding: 10px;
+      width: 220px;
+      -moz-box-shadow: #e9e9e9 2px 2px 10px;
+      -webkit-box-shadow: #e9e9e9 2px 2px 10px;
+      margin-top: 10px; }
+    body #wrapper #header #menu {
+      border-bottom: 3px solid #737373;
+      width: 700px; }
+      body #wrapper #header #menu ul {
         display: inline;
-        margin-right: 20px; }
-        body #wrapper #menu ul li a:link, body #wrapper #menu ul li a:visited {
-          text-decoration: none;
-          color: green;
-          font-weight: bold; }
-        body #wrapper #menu ul li a:hover {
-          color: black; }
+        margin-left: 0;
+        padding-left: 0; }
+        body #wrapper #header #menu ul li.active {
+          background: green;
+          font-size: 18px;
+          padding: 10px;
+          overflow: hidden; }
+          body #wrapper #header #menu ul li.active a:link, body #wrapper #header #menu ul li.active a:visited {
+            color: white;
+            overflow: hidden; }
+        body #wrapper #header #menu ul li {
+          list-style: none;
+          display: inline;
+          margin-right: 20px; }
+          body #wrapper #header #menu ul li a:link, body #wrapper #header #menu ul li a:visited {
+            text-decoration: none;
+            color: green;
+            font-weight: bold; }
+          body #wrapper #header #menu ul li a:hover {
+            color: black; }
   body #content {
     float: left;
-    width: 600px; }
+    width: 700px; }
+
+.question-header {
+  border-bottom: 3px solid black; }
+  .question-header h1 {
+    float: left;
+    width: 400px;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+  .question-header .tabs {
+    width: 300px;
+    float: right;
+    text-align: right; }
+    .question-header .tabs ul {
+      margin: 0px;
+      padding: 0px; }
+      .question-header .tabs ul li {
+        display: inline;
+        list-style: none;
+        margin-right: 10px; }
+        .question-header .tabs ul li a:link, .question-header .tabs ul li a:visited {
+          color: white;
+          background: black;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          padding: 5px;
+          text-decoration: none; }
 
 .question-list {
-  border-bottom: 3px solid #e9e9e9; }
-  .question-list .stats {
-    float: left;
-    background: red; }
-  .question-list h3 a:link {
-    text-decoration: none;
-    color: #7F5000; }
-  .question-list h3 a:visited {
-    text-decoration: none;
-    color: #AF6F00; }
-  .question-list h3 a:hover {
-    color: black;
-    text-decoration: underline; }
-  .question-list .body h3 .user {
-    float: right;
+  background: #f4f4f4;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 10px; }
+  .question-list .body h3 {
+    margin-top: 0px; }
+    .question-list .body h3 a:link {
+      text-decoration: none;
+      color: #7F5000; }
+    .question-list .body h3 a:visited {
+      text-decoration: none;
+      color: #AF6F00; }
+    .question-list .body h3 a:hover {
+      color: black;
+      text-decoration: underline; }
+    .question-list .body h3 .user {
+      float: right;
+      font-size: 12px;
+      text-align: right;
+      padding: 5px; }
+  .question-list .body .tags a:link, .question-list .body .tags a:visited {
     font-size: 12px;
-    text-align: right; }
+    text-decoration: none;
+    background: orange;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: white;
+    padding: 5px; }
+  .question-list .body .tags a:hover {
+    background: black; }
 
 #errorExplanation {
   border: 3px solid red;
@@ -67,14 +125,14 @@ body {
 
 #sidebar {
   float: left;
-  width: 300px;
+  width: 230px;
   padding: 10px;
   background: #f4f4f4;
   margin-top: 30px;
   margin-left: 10px; }
   #sidebar h3 {
     margin-top: 0px; }
-  #sidebar a:link, #sidebar a:visited {
+  #sidebar .tags a:link, #sidebar .tags a:visited {
     color: black;
     text-decoration: none;
     -moz-border-radius: 5px;
@@ -85,5 +143,58 @@ body {
     color: white;
     float: left;
     margin: 2px; }
-  #sidebar a:hover {
+  #sidebar .tags a:hover {
+    background: black; }
+
+.answer-list {
+  margin-bottom: 10px; }
+  .answer-list .votes {
+    border: 3px solid orange;
+    width: 50px;
+    text-align: center;
+    float: left;
+    background: #e9e9e9;
+    margin-right: 10px; }
+    .answer-list .votes .counter {
+      font-weight: bold; }
+    .answer-list .votes .body .user {
+      float: right; }
+
+.votes {
+  border: 3px solid orange;
+  width: 50px;
+  text-align: center;
+  float: left;
+  background: #e9e9e9;
+  margin-right: 10px; }
+  .votes .counter {
+    font-weight: bold; }
+
+.views {
+  border: 3px solid #e9e9e9;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  vertical-align: center;
+  text-align: center;
+  float: left;
+  background: #f4f4f4;
+  margin-right: 20px;
+  padding-top: 2px; }
+  .views span.desc {
+    font-size: 12px; }
+
+.tag-list .tag {
+  padding: 5px;
+  float: left;
+  margin-bottom: 10px; }
+  .tag-list .tag a:link, .tag-list .tag a:visited {
+    text-decoration: none;
+    color: white;
+    background: green;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px; }
+  .tag-list .tag a:hover {
     background: black; }

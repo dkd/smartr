@@ -1,0 +1,16 @@
+<h2>Find Tags</h2>
+<div class="tag-search">
+  <% form_for "tag" do |f| %>
+    <%= f.text_field :tag  %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
+<br class="clear" />
+<div class="tag-list">
+  <% @tags.each do |tag| %>
+    <span class="tag">
+      <%=tag.count %>x <%=link_to tag, :controller => :questions, :tag => tag.name -%>
+    </span>
+  <% end -%>
+</div>
+<% main_menu :tags %>
