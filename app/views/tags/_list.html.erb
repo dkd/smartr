@@ -1,0 +1,5 @@
+<% @tags.each do |tag| %>
+   <span class="tag">
+     <%=tag.count %>x <%=link_to tag, :controller => :questions, :tag => tag.name -%>
+   </span>
+ <% end -%>

@@ -4,7 +4,7 @@ module ApplicationHelper
   def main_menu(active)
       menu = []
       menu << {:name => "Questions", :id => "questions", :link => questions_path}
-      menu << {:name => "Tags", :id => "tags", :link => tags_path}
+      menu << {:name => "Tags", :id => "tags", :link => url_for(:controller => :tags, :action => :index, :tag => nil)}
       content_for :main_menu, build_menu(menu, active)
   end
   
