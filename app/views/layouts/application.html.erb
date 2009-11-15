@@ -10,32 +10,29 @@
 <body>
   <div id="wrapper">
     <div id="header">
-    <h1>SmartR</h1>
-    <div class="user">
-    <%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
-     <% if !current_user %>
-      <%= link_to "Register", new_account_path %> |
-      <%= link_to "Log In", new_user_session_path %> |
-      <% else %>
-      <%= link_to "My Account", account_path %> |
-      <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
-      <% end %>
+      <h1><%= link_to "SmartR", root_url%></h1>
+      <div id="user">
+        <%= pluralize User.logged_in.count, "user" %> currently logged in<br /> 
+        <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
+        <% if !current_user %>
+        <%= link_to "Register", new_account_path %> |
+        <%= link_to "Log In", new_user_session_path %> |
+        <% else %>
+        <%= link_to "My Account", account_path %> |
+        <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+        <% end %>
+      </div>
+      <br style="clear: both" />
+      <div id="menu">
+        <%= yield :main_menu %>
+      </div>
     </div>
-    
-    <div id="menu">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Questions", questions_path %></li>
-      </ul>
-    </div>
-    </div>
-   
     <p style="color: green"><%= flash[:notice] %></p>
     <div id="content">
-    <%= yield  %>
+      <%= yield  %>
     </div>
     <div id="sidebar">
-    <%= yield :sidebar%>
+      <%= yield :sidebar%>
     </div>
   </div>
   <%= javascript_include_tag :defaults %>

@@ -1,26 +1,20 @@
-<h1>Listing questions</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Body</th>
-    <th>User</th>
-    <th>Views</th>
-  </tr>
-
+<div class="question-header">
+  <h1>Recent questions</h1>
+  <div class="tabs">
+    <ul>
+      <li><a href="#">Active</a></li>
+      <li><a href="#">Hot</a></li>
+      <li><a href="#">Unanswered</a></li>
+    </ul>
+  </div>
+  <br class="clear" />
+</div>
+<br class="clear" />
 <% @questions.each do |question| %>
-  <tr>
-    <td><%=h question.name %></td>
-    <td><%=h question.body %></td>
-    <td><%=h question.user.login %></td>
-    <td><%=h question.views %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => "/questions/question", :locals => {:question => question} %>
+<% end -%>
 
-<br />
+<% content_for :sidebar, link_to('New question', new_question_path) %>
 
-<%= link_to 'New question', new_question_path %>
+
+<% main_menu :questions  %>

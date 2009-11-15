@@ -3,22 +3,21 @@ class QuestionsController < ApplicationController
   before_filter :require_user, :only => [:edit, :new, :update]
   before_filter :is_owner, :only => :update
   
-  # GET /questions
-  # GET /questions.xml
   def index
-    @questions = Question.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @questions }
+    
+    if(params[:tag])
+      index_for_tag
+    else
+      @questions = Question.latest
     end
+    
   end
 
   # GET /questions/1
   # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
-
+    @question.update_views if @question.present?
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }
@@ -69,7 +68,13 @@ class QuestionsController < ApplicationController
         format.html { redirect_to(@question) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { 
+          if params[:question][:answers_attributes]
+            render :action => "show"
+          else
+            render :action => "edit"
+          end
+           }
         format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
       end
     end
@@ -89,6 +94,10 @@ class QuestionsController < ApplicationController
   
   
   protected
+  
+  def index_for_tag
+    @questions = Question.latest.tagged_with(params[:tag])
+  end
   
   def is_owner
     

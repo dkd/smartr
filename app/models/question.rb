@@ -6,18 +6,22 @@ class Question < ActiveRecord::Base
   has_many :answers
   
   #Validations
-  validates_presence_of [:body, :name]
+  validates_presence_of [:body, :name, :tag_list]
   validates_uniqueness_of :name
   
   #Extensions
   acts_as_taggable_on :tags
   
   #Named Scopes
-  named_scope :latest, :order => "created_at DESC"
+  default_scope :include => :user
+  named_scope :latest, :order => "created_at DESC", :include => [:user]
   
+  #Nested Attributes
+  accepts_nested_attributes_for :answers, :allow_destroy => true
   
-  #methods
+  #Accessor
   
+  #Methods
   def self.recent_tags
     list = []
     self.latest(:limit => 10).each do |question|
@@ -28,5 +32,10 @@ class Question < ActiveRecord::Base
     list
   end
   
+  def update_views
+    number_of_views = self.views.nil?? 0 : self.views
+    self.views = number_of_views + 1
+    self.save!
+  end
   
 end

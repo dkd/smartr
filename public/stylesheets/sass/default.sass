@@ -3,46 +3,70 @@ body
   margin: 0px
   margin-top: 0px
   
+  .clear
+    clear: both
+  
   #wrapper
     width: 960px
     margin: 0 25% 0 auto
     
     #header
-      border-bottom: 3px solid black
       
       h1
         color: green
-      
-      .user
+        width: 600px
+        float: left
+        
+        a:link,
+        a:visited
+          color: green
+          text-decoration: none
+          
+      #user
         color: red
         float: right
         background: #f4f4f4
         padding: 10px
-        -moz-box-shadow: green 2px 2px 10px
+        width: 220px
+        -moz-box-shadow: #e9e9e9 2px 2px 10px
+        -webkit-box-shadow: #e9e9e9 2px 2px 10px
+        margin-top: 10px
         
-    #menu
-      ul
-        display: inline
-        margin-left: 0
-        padding-left: 0
-        
-        li
-          list-style: none
+      #menu
+        border-bottom: 3px solid #737373
+        width: 700px
+        ul
           display: inline
-          margin-right: 20px
+          margin-left: 0
+          padding-left: 0
           
-          a:link, a:visited
-            text-decoration: none
-            color: green
-            font-weight: bold
-          
-          a:hover
-            color: black
+          li.active
+            background: green
+            font-size: 18px
+            padding: 10px
+            overflow: hidden
             
+            a:link, a:visited
+              color: white
+              overflow: hidden
+              
+          li
+            list-style: none
+            display: inline
+            margin-right: 20px
+            
+            a:link, a:visited
+              text-decoration: none
+              color: green
+              font-weight: bold
+            
+            a:hover
+              color: black
+              
     
   #content
     float: left
-    width: 600px
+    width: 700px
     
   
   

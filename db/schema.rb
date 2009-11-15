@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091113153607) do
+ActiveRecord::Schema.define(:version => 20091113212124) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20091113153607) do
     t.string   "last_login_ip"
     t.string   "current_login_ip"
     t.string   "openid_identifier"
+    t.integer  "views"
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"

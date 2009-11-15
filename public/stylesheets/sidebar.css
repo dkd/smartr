@@ -1,13 +1,13 @@
 #sidebar {
   float: left;
-  width: 300px;
+  width: 230px;
   padding: 10px;
   background: #f4f4f4;
   margin-top: 30px;
   margin-left: 10px; }
   #sidebar h3 {
     margin-top: 0px; }
-  #sidebar a:link, #sidebar a:visited {
+  #sidebar .tags a:link, #sidebar .tags a:visited {
     color: black;
     text-decoration: none;
     -moz-border-radius: 5px;
@@ -18,5 +18,5 @@
     color: white;
     float: left;
     margin: 2px; }
-  #sidebar a:hover {
+  #sidebar .tags a:hover {
     background: black; }
