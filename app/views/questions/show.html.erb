@@ -1,60 +1,46 @@
+<h2><%=h @question.name %></h2>
 <div class="question">
-  <h2>  <%=h @question.name %></h2>
   <div class="body">
     <%=h @question.body %>
+    <span class="user"><%= @question.user.login %><br /><%= distance_of_time_in_words_to_now @question.created_at %> ago</span>
   </div>
 
-<p>
-  <b>User:</b>
-  <%=h @question.user.login %>
-</p>
-
-<p>
-  <b>Tags:</b>
+<div class="tags">
   <%@question.tags.each do |tag| %>
-  <%= link_to tag, "#" %>
+   <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
   <% end -%>
-</p>
+<br class="clear" />
+</div>
+<%= link_to 'Edit', edit_question_path(@question) %>
 </div>
 <% if @question.answers.length > 0 %>
-<br class="clear" />
-<h2>Answers</h2>
-<% @question.answers.each do |answer| -%>
-  <div class="answer-list">
-    <div class="stats">
-      <div class="votes">
-        <%= link_to "up", "#{}", :class => "up" -%>  
-        <div class="counter">x</div>
-        <%= link_to "down", "#{}", :class => "down" -%>  
-      </div>
-    </div>
-    <div class="body">
-      <%= h answer.body %>
-      <span class="user"></span>
-       <br class="clear" />
-    </div>
-  </div>
   <br class="clear" />
+  <h2>Answers</h2>
+  <% @question.answers.each do |answer| -%>
+    <% if answer.id.present? %>
+      <div class="answer-item">
+        <%= render :partial => "answer", :locals => {:answer => answer}%>
+      </div>
+      <br class="clear" />
+    <% end -%>
   <% end -%>
 <% end -%>
 
-<% if (current_user.present? && !Answer.is_answered?(@question, current_user)) %>
+<% if (current_user.present? && !@question.answered?(current_user)) %>
 
-<% form_for(@question, :html => {:class => "form"}) do |f| %>
+  <% form_for(@question, :html => {:class => "form"}) do |f| %>
   <%= f.error_messages %>
   <%  f.fields_for "answers_attributes[]", Answer.new do |a| %>
-    <%= a.hidden_field :user_id, :value => current_user.id %>
-    <div class="group">
-      <%= f.label :body, "My answer:", :class => "label" %>
-      <%= a.text_area :body, :class => 'text_area answer' %>
-    </div>
-    <% end -%>
-    <div class="group navform">
-      <%= f.submit 'Save', :class => "awesome green" %>
-    </div>
+  <%= a.hidden_field :user_id, :value => current_user.id %>
+  
+    <%= f.label :body, "My answer:", :class => "label" %>
+    <%= a.text_area :body, :class => 'text_area answer' %>
+  
+  <% end -%>
+  <div class="group navform">
+    <%= f.submit 'Save', :class => "awesome green" %>
+  </div>
 
-    <% end -%>
-    <% end %>
-
-    <%= link_to 'Edit', edit_question_path(@question) %> |
-    <%= link_to 'Back', questions_path %>
+  <% end -%>
+  <% end %>
+  <% content_for :sidebar, render(:partial => "show_sidebar") %>

@@ -25,6 +25,28 @@
           padding: 5px;
           text-decoration: none; }
 
+.question {
+  background: #f4f4f4;
+  padding: 10px; }
+  .question .tags {
+    margin-bottom: 10px;
+    margin-top: 10px; }
+    .question .tags a:link, .question .tags a:visited {
+      float: left;
+      text-decoration: none;
+      background: green;
+      color: white;
+      margin-right: 10px;
+      padding: 5px;
+      background: orange;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
+    .question .tags a:hover {
+      background: black; }
+  .question .body .user {
+    float: right;
+    font-size: 12px; }
+
 .question-list {
   background: #f4f4f4;
   padding: 5px 0px 5px 0px;

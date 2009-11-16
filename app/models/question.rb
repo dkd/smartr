@@ -39,4 +39,12 @@ class Question < ActiveRecord::Base
     self.save!
   end
   
+  def answered?(user)
+    if(Answer.find_by_user_id_and_question_id(user.id, self.id))
+      true
+    else
+      false
+    end
+  end
+  
 end

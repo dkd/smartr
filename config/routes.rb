@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
   
   #map.resources :tags
-  
+  map.resources :votes
   map.resource :account, :controller => "users"
   map.resources :users
   map.resource :user_session
