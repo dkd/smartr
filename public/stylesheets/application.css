@@ -155,6 +155,17 @@ body {
   background: #f4f4f4;
   margin-top: 30px;
   margin-left: 10px; }
+  #sidebar .user {
+    margin-top: 10px;
+    background: #ffff99;
+    padding: 5px; }
+    #sidebar .user a:link, #sidebar .user a:visited {
+      background: none;
+      color: green; }
+    #sidebar .user a:hover {
+      text-decoration: underline; }
+    #sidebar .user img {
+      margin-right: 5px; }
   #sidebar a:link, #sidebar a:visited {
     text-decoration: none;
     -moz-border-radius: 5px;

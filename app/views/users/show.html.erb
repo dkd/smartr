@@ -33,6 +33,7 @@
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
 </p>
-
+<h2>Favourites</h2>
 <% main_menu :users%>
-<%= link_to 'Edit', edit_user_path(:id => @current_user.id) if @current_user && @current_user == @user%>
+<% content_for :sidebar, render(:partial => "show_sidebar", :locals => {:user => @user}) %>
+
