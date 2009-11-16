@@ -54,7 +54,8 @@ body {
     width: 700px; }
 
 .question-header {
-  border-bottom: 3px solid black; }
+  border-bottom: 3px solid black;
+  margin-top: 0px; }
   .question-header h1 {
     float: left;
     width: 400px;
@@ -130,10 +131,20 @@ body {
   background: #f4f4f4;
   margin-top: 30px;
   margin-left: 10px; }
+  #sidebar a:link, #sidebar a:visited {
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: green;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+    width: 100%; }
   #sidebar h3 {
-    margin-top: 0px; }
+    margin-top: 20px; }
   #sidebar .tags a:link, #sidebar .tags a:visited {
     color: black;
+    width: auto;
     text-decoration: none;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -147,43 +158,50 @@ body {
     background: black; }
 
 .answer-list {
-  margin-bottom: 10px; }
-  .answer-list .votes {
-    border: 3px solid orange;
-    width: 50px;
-    text-align: center;
-    float: left;
-    background: #e9e9e9;
-    margin-right: 10px; }
-    .answer-list .votes .counter {
-      font-weight: bold; }
-    .answer-list .votes .body .user {
-      float: right; }
-
-.votes {
-  border: 3px solid orange;
-  width: 50px;
-  text-align: center;
-  float: left;
-  background: #e9e9e9;
-  margin-right: 10px; }
-  .votes .counter {
+  margin-bottom: 10px;
+  background: #e9e9e9; }
+  .answer-list .counter {
     font-weight: bold; }
+  .answer-list .body .user {
+    float: right; }
 
-.views {
-  border: 3px solid #e9e9e9;
+.stats div {
   width: 50px;
-  height: 50px;
+  height: 44px;
   font-size: 25px;
   font-weight: bold;
   vertical-align: center;
   text-align: center;
   float: left;
-  background: #f4f4f4;
-  margin-right: 20px;
-  padding-top: 2px; }
-  .views span.desc {
-    font-size: 12px; }
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 2px; }
+  .stats div span.desc {
+    font-size: 12px;
+    display: block; }
+.stats .votes {
+  background: #FFE9CF; }
+.stats .views {
+  background: #cfcfcf; }
+.stats .answers {
+  background: #2F6F00;
+  color: white; }
+  .stats .answers span.desc {
+    font-size: 10px; }
+
+.answer-list .stats div {
+  width: 50px;
+  height: 44px;
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: center;
+  text-align: center;
+  float: left;
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 2px; }
+  .answer-list .stats div a:link, .answer-list .stats div a:visited {
+    width: 30px; }
 
 .tag-list .tag {
   padding: 5px;

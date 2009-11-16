@@ -1,24 +1,37 @@
-.votes {
-  border: 3px solid orange;
+.stats div {
   width: 50px;
-  text-align: center;
-  float: left;
-  background: #e9e9e9;
-  margin-right: 10px; }
-  .votes .counter {
-    font-weight: bold; }
-
-.views {
-  border: 3px solid #e9e9e9;
-  width: 50px;
-  height: 50px;
+  height: 44px;
   font-size: 25px;
   font-weight: bold;
   vertical-align: center;
   text-align: center;
   float: left;
-  background: #f4f4f4;
-  margin-right: 20px;
-  padding-top: 2px; }
-  .views span.desc {
-    font-size: 12px; }
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 2px; }
+  .stats div span.desc {
+    font-size: 12px;
+    display: block; }
+.stats .votes {
+  background: #FFE9CF; }
+.stats .views {
+  background: #cfcfcf; }
+.stats .answers {
+  background: #2F6F00;
+  color: white; }
+  .stats .answers span.desc {
+    font-size: 10px; }
+
+.answer-list .stats div {
+  width: 50px;
+  height: 44px;
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: center;
+  text-align: center;
+  float: left;
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 2px; }
+  .answer-list .stats div a:link, .answer-list .stats div a:visited {
+    width: 30px; }

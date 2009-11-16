@@ -14,7 +14,7 @@
 <%= render :partial => "/questions/question", :locals => {:question => question} %>
 <% end -%>
 
-<% content_for :sidebar, link_to('New question', new_question_path) %>
+<% content_for :sidebar, render(:partial => "sidebar") %>
 
 
 <% main_menu :questions  %>

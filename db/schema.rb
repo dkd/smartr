@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091113212124) do
+ActiveRecord::Schema.define(:version => 20091115205054) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20091113212124) do
     t.integer  "views"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "answers_count"
   end
 
   create_table "sessions", :force => true do |t|
@@ -122,5 +123,14 @@ ActiveRecord::Schema.define(:version => 20091113212124) do
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+
+  create_table "votes", :force => true do |t|
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.integer  "user_id"
+    t.integer  "value",         :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

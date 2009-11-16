@@ -1,13 +1,7 @@
 .answer-list {
-  margin-bottom: 10px; }
-  .answer-list .votes {
-    border: 3px solid orange;
-    width: 50px;
-    text-align: center;
-    float: left;
-    background: #e9e9e9;
-    margin-right: 10px; }
-    .answer-list .votes .counter {
-      font-weight: bold; }
-    .answer-list .votes .body .user {
-      float: right; }
+  margin-bottom: 10px;
+  background: #e9e9e9; }
+  .answer-list .counter {
+    font-weight: bold; }
+  .answer-list .body .user {
+    float: right; }

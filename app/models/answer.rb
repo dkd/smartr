@@ -1,10 +1,11 @@
 class Answer < ActiveRecord::Base
 
   #Associations
-  belongs_to :question
+  belongs_to :question, :counter_cache => true
   belongs_to :user
   has_many :comments, :as => :commentable
-
+  has_many :votes, :as => :voteable
+  
   #Validations
   validates_presence_of [:body]
   validate :only_answer_from_user

@@ -5,10 +5,20 @@
   background: #f4f4f4;
   margin-top: 30px;
   margin-left: 10px; }
+  #sidebar a:link, #sidebar a:visited {
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: green;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+    width: 100%; }
   #sidebar h3 {
-    margin-top: 0px; }
+    margin-top: 20px; }
   #sidebar .tags a:link, #sidebar .tags a:visited {
     color: black;
+    width: auto;
     text-decoration: none;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
