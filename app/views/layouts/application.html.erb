@@ -20,6 +20,7 @@
         <% else %>
         <%= link_to "My Account", account_path %> |
         <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+        <br ><%= current_user.login %>
         <% end %>
       </div>
       <br style="clear: both" />

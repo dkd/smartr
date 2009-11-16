@@ -1,5 +1,6 @@
 .question-header {
-  border-bottom: 3px solid black; }
+  border-bottom: 3px solid black;
+  margin-top: 0px; }
   .question-header h1 {
     float: left;
     width: 400px;

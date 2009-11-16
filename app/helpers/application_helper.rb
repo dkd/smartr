@@ -17,4 +17,8 @@ module ApplicationHelper
       content_tag(:ul, li)
     end
   
+  def correct_plural()
+    
+  end
+  
 end
