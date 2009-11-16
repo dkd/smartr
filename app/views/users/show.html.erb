@@ -35,4 +35,4 @@
 </p>
 
 <% main_menu :users%>
-<%= link_to 'Edit', edit_account_path if @current_user && @current_user == @user%>
+<%= link_to 'Edit', edit_user_path(:id => @current_user.id) if @current_user && @current_user == @user%>

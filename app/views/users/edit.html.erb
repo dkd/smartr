@@ -1,10 +1,10 @@
 <h1>Edit My Account</h1>
 <%= image_tag @user.avatar.url(:medium) %>
 
-<% form_for @user, :url => account_path , :html => { :multipart => true }do |f| %>
+<% form_for @user, :url => user_path(:id => @current_user.id), :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <%= render :partial => "form", :object => f %>
   <%= f.submit "Update" %>
 <% end %>
-
-<br /><%= link_to "My Profile", account_path %>
+<% main_menu :users %>
+<%= link_to "My Profile", user_path(:id => @current_user.id) %>

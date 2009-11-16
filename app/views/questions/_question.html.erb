@@ -4,17 +4,17 @@
       <%=question.votes.length %>
       <span class="desc"><%= "Vote".correctize_plural(question.votes.length) %></span>
     </div>
-    
+
     <div class="views">
       <%=question.views.humanize %>
       <span class="desc"><%= "View".correctize_plural(question.views) %></span>
     </div>
-    
+
     <div class="answers">
       <%=question.answers_count %>
       <span class="desc"><%= "Answer".correctize_plural(question.answers_count) %></span>
     </div>
-    
+
   </div>
   <div class="body">
     <h3><%= link_to(h(question.name), question_path(question)) %>

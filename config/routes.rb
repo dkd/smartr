@@ -10,7 +10,6 @@ ActionController::Routing::Routes.draw do |map|
   
   #map.resources :tags
   map.resources :votes
-  map.resource :account, :controller => "users"
   map.resources :users
   map.resource :user_session
   map.root :controller => "questions", :action => "index"
