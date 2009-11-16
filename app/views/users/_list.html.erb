@@ -1,0 +1,6 @@
+<% users.each do |user| %>
+<div class="user-item">
+  <%= image_tag user.avatar.url(:thumb) %>
+  <%= link_to user.login, user_path(user) %>
+</div>
+<% end -%>

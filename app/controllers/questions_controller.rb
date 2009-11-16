@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
-    @question.user = current_user
+    @question.user = @current_user
     respond_to do |format|
       if @question.save
         flash[:notice] = 'Question was successfully created.'
