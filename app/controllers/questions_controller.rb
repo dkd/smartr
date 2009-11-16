@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
-  before_filter :require_user, :only => [:edit, :new, :update]
-  before_filter :is_owner, :only => :update
+  before_filter :require_user, :only => [:edit, :new, :update, :destroy]
+  before_filter :is_owner, :only => [:update, :destroy, :edit]
   
   def index
     
@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
-    @question.user = @current_user
+    @question.user = current_user
     respond_to do |format|
       if @question.save
         flash[:notice] = 'Question was successfully created.'
@@ -93,7 +93,11 @@ class QuestionsController < ApplicationController
   end
   
   def is_owner
-    
+    @question = Question.find(params[:id])
+    if @question.user != current_user
+      #flash[:error] = "You are not the owner of the question!"
+      #redirect_to(questions_url)
+    end
   end
   
 end

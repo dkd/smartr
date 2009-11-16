@@ -1,1 +1,6 @@
-SHOW SIDEBAR
+<%= link_to 'Edit', edit_question_path(question) if (current_user && current_user = @question.user) %>
+<div class="user">
+  <%= image_tag question.user.avatar.url(:thumb), :align => "left" %><%= link_to question.user.login, user_path(question.user) %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago
+</div>
+<h2>Views</h2>
+<%= question.views %>

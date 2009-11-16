@@ -11,7 +11,7 @@
   <% end -%>
 <br class="clear" />
 </div>
-<%= link_to 'Edit', edit_question_path(@question) if @current_user && @current_user = @question.user %>
+
 </div>
 <% if @question.answers.length > 0 %>
   <br class="clear" />
@@ -27,21 +27,21 @@
 <% end -%>
 
 <% if (current_user.present? && !@question.answered?(current_user)) %>
-
+  <h2>My Answer</h2>
   <% form_for(@question, :html => {:class => "form"}) do |f| %>
   <%= f.error_messages %>
   <%  f.fields_for "answers_attributes[]", Answer.new do |a| %>
   <%= a.hidden_field :user_id, :value => current_user.id %>
   
-    <%= f.label :body, "My answer:", :class => "label" %>
+   
     <%= a.text_area :body, :class => 'text_area answer' %>
   
   <% end -%>
-  <div class="group navform">
-    <%= f.submit 'Save', :class => "awesome green" %>
-  </div>
+
+    <%= f.submit 'Save' %>
+
 
   <% end -%>
   <% end %>
-  <% content_for :sidebar, render(:partial => "show_sidebar") %>
+  <% content_for :sidebar, render(:partial => "show_sidebar", :locals => {:question => @question}) %>
 <% main_menu :questions %>

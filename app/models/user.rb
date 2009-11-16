@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   
+  
+  def count_view
+    views = self.views.nil?? 0 : self.views
+    self.update_attributes :views => (views+1)
+  end
+  
 end
