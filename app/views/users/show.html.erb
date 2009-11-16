@@ -34,5 +34,5 @@
   <%=h @user.current_login_ip %>
 </p>
 
-
-<%= link_to 'Edit', edit_account_path if current_user && current_user == @user%>
+<% main_menu :users%>
+<%= link_to 'Edit', edit_account_path if @current_user && @current_user == @user%>

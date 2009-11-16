@@ -1,0 +1,9 @@
+<h2>Find Users</h2>
+<div class="tag-search">
+  <input type="text" />
+</div>
+<br class="clear" />
+<div class="user-list">
+ <%= render :partial => "list", :locals => {:users => @users}%>
+</div>
+<% main_menu :users %>
