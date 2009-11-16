@@ -68,20 +68,13 @@ class QuestionsController < ApplicationController
         format.html { redirect_to(@question) }
         format.xml  { head :ok }
       else
-        format.html { 
-          if params[:question][:answers_attributes]
-            render :action => "show"
-          else
-            render :action => "edit"
-          end
-           }
+        format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
         format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
       end
     end
+    
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.xml
   def destroy
     @question = Question.find(params[:id])
     @question.destroy

@@ -4,4 +4,33 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :voteable, :polymorphic => true
   
+  
+  
+  def cast(direction)
+    
+    case direction
+      when "up"
+        value = self.value + 1
+      when "down"
+        value = self.value - 1
+    end
+    
+    if(value == 1 || value == -1)
+      self.update_attributes :value => value      
+    elsif(value == 0)
+      self.destroy
+    end
+    Vote.count_on(self.voteable_type, self.voteable_id)
+  end
+  
+  def self.count_on(type, id)
+    rating = 0
+    record = type.constantize.find(id)    
+    record.votes.each do |vote|
+     rating = rating + vote.value
+    end
+     rating
+  end
+  
+        
 end

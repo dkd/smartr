@@ -22,16 +22,31 @@
   .stats .answers span.desc {
     font-size: 10px; }
 
-.answer-list .stats div {
+.answer-item .stats div.votes {
   width: 50px;
-  height: 44px;
+  height: 54px;
   font-size: 12px;
   font-weight: bold;
   vertical-align: center;
   text-align: center;
   float: left;
   margin-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 2px; }
-  .answer-list .stats div a:link, .answer-list .stats div a:visited {
-    width: 30px; }
+  padding: 0px; }
+  .answer-item .stats div.votes div.value {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    height: auto; }
+  .answer-item .stats div.votes a:link, .answer-item .stats div.votes a:visited {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px; }
+  .answer-item .stats div.votes a:link, .answer-item .stats div.votes a:visited.up {
+    color: green; }
+  .answer-item .stats div.votes a:link, .answer-item .stats div.votes a:visited.down {
+    color: #9F0000; }
+  .answer-item .stats div.votes a:hover, .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover {
+    color: black;
+    text-shadow: #737373 0px 0px 5px; }

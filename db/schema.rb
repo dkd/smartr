@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091115205054) do
+ActiveRecord::Schema.define(:version => 20091116153208) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20091115205054) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "accepted"
   end
 
   create_table "comments", :force => true do |t|
@@ -117,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20091115205054) do
     t.string   "current_login_ip"
     t.string   "openid_identifier"
     t.integer  "views"
+    t.string   "email"
+    t.integer  "reputation"
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"

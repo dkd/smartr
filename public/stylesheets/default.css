@@ -52,3 +52,5 @@ body {
   body #content {
     float: left;
     width: 700px; }
+  body a:focus {
+    outline: 0px; }

@@ -1,0 +1,26 @@
+<div class="stats">
+  <div class="votes">
+    <%= link_to_remote "&uArr;", 
+                       :url => vote_path(
+                       :model => "answer",
+                       :direction => "up",
+                       :dom_id => "answer_#{answer.id}",
+                       :id => answer.id),
+                       :method => "put",
+                       :html => {:class => "up"} -%>                       
+    <div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
+    <%= link_to_remote "&dArr;",
+                       :url => vote_path(
+                       :model => "answer",
+                       :direction => "down",
+                       :dom_id => "answer_#{answer.id}",
+                       :id => answer.id),
+                       :method => "put",
+                       :html => {:class => "down"}   -%>   
+  </div>
+</div>
+<div class="body">
+  <%= h answer.body %>
+  <span class="user"><%= answer.user.login %><br /><%= distance_of_time_in_words_to_now answer.created_at %> ago</span>
+  <br class="clear" />
+</div>

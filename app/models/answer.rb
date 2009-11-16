@@ -16,13 +16,9 @@ class Answer < ActiveRecord::Base
       self.errors.add("Answer", 'You alread answered this question! Just edit your answer.')
     end
   end
-
-  def self.is_answered?(question, user)
-    if(Answer.find_by_user_id_and_question_id(user.id, question.id))
-      true
-    else
-      false
-    end
+  
+  def vote(direction, user, model)
+    logger.info "#{user.login} voting #{direction} on #{question.name}"
   end
-
+  
 end

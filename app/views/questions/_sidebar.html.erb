@@ -2,6 +2,6 @@
 <h3>Recent tags</h3>
 <div class="tags">
 <% Question.recent_tags.each do |tag| -%>
-  <%= link_to(h(tag), "#", :class=> "tag")%>
+  <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
 <% end -%>
 </div>
