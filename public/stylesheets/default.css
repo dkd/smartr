@@ -6,7 +6,7 @@ body {
     clear: both; }
   body #wrapper {
     width: 960px;
-    margin: 0 25% 0 auto; }
+    margin: 0 auto; }
     body #wrapper #header h1 {
       color: green;
       width: 600px;
