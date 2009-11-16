@@ -18,7 +18,7 @@
   </div>
   <div class="body">
     <h3><%= link_to(h(question.name), question_path(question)) %>
-      <span class="user"><%= question.user.login %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago</span></h3>
+      <span class="user"><%= image_tag question.user.avatar.url(:thumb) %><br /><%= question.user.login %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago</span></h3>
     <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>

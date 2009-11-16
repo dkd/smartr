@@ -1,3 +1,4 @@
+<%= image_tag @user.avatar.url(:medium) %>
 <p>
   <b>Login:</b>
   <%=h @user.login %>
@@ -34,4 +35,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_account_path %>
+<%= link_to 'Edit', edit_account_path if current_user && current_user == @user%>
