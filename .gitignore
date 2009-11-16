@@ -3,3 +3,4 @@ log/*.log
 tmp/**/*
 doc/api
 doc/appla
+public/system
