@@ -9,12 +9,17 @@ class Vote < ActiveRecord::Base
   
   
   def cast(direction)
+    
+    user = self.voteable_type.constantize.find(self.voteable_id).user
+    
     case direction
       when "up"
         value = self.value + 1
-        
+        Reputation.set("up", self.voteable_type, self.user, user) if self.value == -1 || self.value == 0
       when "down"
         value = self.value - 1
+        Reputation.set("down", self.voteable_type, self.user, user) if self.value == 1 || self.value == 0
+        Reputation.penalize(self.voteable_type, self.user, user) if value == -1
     end
     
     if(value == 1 || value == -1)
@@ -25,11 +30,6 @@ class Vote < ActiveRecord::Base
     
     Vote.count_on(self.voteable_type, self.voteable_id)
     
-  end
-  
-  def self.set_reputation(type, id)
-    #record = type.constantize
-    #logger.info record::SCORE_UP.to_s
   end
   
   def self.count_on(type, id)
