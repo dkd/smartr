@@ -4,6 +4,8 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :voteable, :polymorphic => true
   
+  #filter
+  after_save :update_vote_counts
   
   
   def cast(direction)
@@ -31,6 +33,5 @@ class Vote < ActiveRecord::Base
     end
      rating
   end
-  
         
 end

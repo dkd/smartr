@@ -33,7 +33,7 @@ test:
 production:
   adapter: mysql
   host: 127.0.0.1
-  database: authlogic_production
+  database: authlogic_development
   username: root
   password: 
   charset: UTF8
