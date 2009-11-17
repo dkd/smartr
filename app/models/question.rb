@@ -1,5 +1,9 @@
 class Question < ActiveRecord::Base
   
+  SCORE_UP = 10
+  SCORE_DOWN = -10
+  SCORE_PENALTY = -3
+  
   #Associations
   belongs_to :user
   has_many :comments, :as => :commentable

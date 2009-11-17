@@ -12,6 +12,7 @@ class Vote < ActiveRecord::Base
     case direction
       when "up"
         value = self.value + 1
+        
       when "down"
         value = self.value - 1
     end
@@ -23,8 +24,14 @@ class Vote < ActiveRecord::Base
     end
     
     Vote.count_on(self.voteable_type, self.voteable_id)
+    
   end
-
+  
+  def self.set_reputation(type, id)
+    #record = type.constantize
+    #logger.info record::SCORE_UP.to_s
+  end
+  
   def self.count_on(type, id)
     rating = 0
     record = type.constantize.find(id)    

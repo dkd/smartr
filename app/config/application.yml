@@ -1,0 +1,31 @@
+# app/config/application.yml
+defaults: &defaults
+  cool:
+    saweet: nested settings
+  neat_setting: 24
+  
+  reputation:
+    answer:
+      up: 10
+      down: 10
+      penalty: -5
+      
+    comment:
+      up: 5
+      down: 5
+      penalty: -2
+    
+    question:
+      up: 10
+      down: 10
+      penalty: -5  
+  
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
