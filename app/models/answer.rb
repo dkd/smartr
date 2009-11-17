@@ -1,9 +1,5 @@
 class Answer < ActiveRecord::Base
   
-  SCORE_UP = 10
-  SCORE_DOWN = -10
-  SCORE_PENALTY = -3
-  
   #Associations
   belongs_to :question, :counter_cache => true
   belongs_to :user

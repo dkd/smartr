@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   #Associations
   has_many :questions
   has_many :answers
-  
+  has_many :comments
+  has_many :votes
   
   def count_view
     views = self.views.nil?? 0 : self.views

@@ -7,18 +7,18 @@ defaults: &defaults
   reputation:
     answer:
       up: 10
-      down: 10
-      penalty: -5
+      down: -10
+      penalty: -2
       
     comment:
       up: 5
-      down: 5
+      down: -5
       penalty: -2
     
     question:
       up: 10
-      down: 10
-      penalty: -5  
+      down: -10
+      penalty: -4  
   
 development:
   <<: *defaults
