@@ -1,4 +1,9 @@
 class AnswersController < ApplicationController
+  
+  
+  
+  
+  
   # GET /answers
   # GET /answers.xml
   def index
