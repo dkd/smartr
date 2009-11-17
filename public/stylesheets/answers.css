@@ -22,3 +22,5 @@ h2.answer-header {
         color: black; }
       .answer-item .body .user a:hover {
         color: green; }
+        .answer-item .body .user a:hover img {
+          border: 0px; }

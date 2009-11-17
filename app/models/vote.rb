@@ -9,7 +9,6 @@ class Vote < ActiveRecord::Base
   
   
   def cast(direction)
-    
     case direction
       when "up"
         value = self.value + 1
@@ -22,16 +21,18 @@ class Vote < ActiveRecord::Base
     elsif(value == 0)
       self.destroy
     end
+    
     Vote.count_on(self.voteable_type, self.voteable_id)
   end
-  
+
   def self.count_on(type, id)
     rating = 0
     record = type.constantize.find(id)    
+    
     record.votes.each do |vote|
      rating = rating + vote.value
     end
      rating
   end
-        
+
 end

@@ -1,7 +1,7 @@
 <div class="question-list">
   <div class="stats">
     <div class="votes">
-      <%=question.votes.length %>
+      <%=question.votes.length == 0? 0 : Vote.count_on("Question", question.id) %>
       <span class="desc"><%= "Vote".correctize_plural(question.votes.length) %></span>
     </div>
 
@@ -17,15 +17,19 @@
 
   </div>
   <div class="body">
-    <h3><%= link_to(h(question.name), question_path(question)) %>
-      <span class="user"><%= image_tag question.user.avatar.url(:thumb) %><br /><%= question.user.login %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago</span></h3>
-    <% if question.tags.present? %>
+    <h3><%= link_to(h(question.name), question_path(question)) %></h3>
+      <span class="user">
+        <%= link_to image_tag(question.user.avatar.url(:thumb)), user_path(question.user) %><br />
+        <%= link_to question.user.login, user_path(question.user) %>
+        <br /><%= distance_of_time_in_words_to_now question.created_at %> ago
+        </span>
+      <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>
-          <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
+        <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
         <% end -%>
-      <% end -%>
+        <% end -%>
+      </div>
     </div>
-    </div>
-  <br style="clear: both">
+    <br style="clear: both">
   </div>

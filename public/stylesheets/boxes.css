@@ -23,7 +23,7 @@
   .stats .answers span.desc {
     font-size: 10px; }
 
-.answer-item .stats div.votes {
+.answer-item .stats div.votes, .question .stats div.votes {
   width: 50px;
   background: white;
   height: 74px;
@@ -34,7 +34,7 @@
   float: left;
   margin-right: 10px;
   padding: 0px; }
-  .answer-item .stats div.votes div.value {
+  .answer-item .stats div.votes div.value, .question .stats div.votes div.value {
     font-size: 36px;
     margin: 0;
     padding: 0;
@@ -42,7 +42,7 @@
     height: auto;
     text-align: center;
     margin-top: 5px; }
-  .answer-item .stats div.votes a.up:link, .answer-item .stats div.votes a:visited.up {
+  .answer-item .stats div.votes a.up:link, .answer-item .stats div.votes a:visited.up, .question .stats div.votes a.up:link, .question .stats div.votes a:visited.up {
     width: 50px;
     height: 10px;
     padding: 0x;
@@ -51,7 +51,7 @@
     text-decoration: none;
     text-align: center;
     opacity: 0.8; }
-  .answer-item .stats div.votes a.down:link, .answer-item .stats div.votes a:visited.down {
+  .answer-item .stats div.votes a.down:link, .answer-item .stats div.votes a:visited.down, .question .stats div.votes a.down:link, .question .stats div.votes a:visited.down {
     width: 50px;
     height: 10px;
     padding: 0x;
@@ -61,5 +61,5 @@
     clear: both;
     text-align: center;
     opacity: 0.8; }
-  .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover {
+  .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover, .question .stats div.votes a.up:hover, .question .stats div.votes a.down:hover {
     opacity: 1.0; }
