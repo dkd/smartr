@@ -26,12 +26,26 @@
           padding: 5px;
           text-decoration: none; }
 
-.question {
-  padding: 10px; }
-  .question .tags {
+.question .actions {
+  float: right; }
+  .question .actions a:link, .question .actions a:visited {
+    background: green;
+    color: white;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-decoration: none; }
+  .question .actions a:hover {
+    background: black; }
+.question .body {
+  background: #f4f4f4;
+  padding: 10px;
+  float: right;
+  width: 620px; }
+  .question .body .tags {
     margin-bottom: 10px;
     margin-top: 10px; }
-    .question .tags a:link, .question .tags a:visited {
+    .question .body .tags a:link, .question .body .tags a:visited {
       float: left;
       text-decoration: none;
       background: green;
@@ -40,17 +54,26 @@
       padding: 5px;
       background: orange;
       -moz-border-radius: 5px;
-      -webkit-border-radius: 5px; }
-    .question .tags a:hover {
+      -webkit-border-radius: 5px;
+      font-size: 12px; }
+    .question .body .tags a:hover {
       background: black; }
-  .question .body {
-    background: #f4f4f4; }
-    .question .body .user {
-      float: right;
-      font-size: 12px;
-      background: #e9e9e9;
-      padding: 5px;
-      margin: 5px; }
+  .question .body .user {
+    float: right;
+    font-size: 12px;
+    background: #fff5e1;
+    padding: 5px;
+    margin: 5px; }
+    .question .body .user a:link, .question .body .user a:visited {
+      color: green;
+      font-weight: bold;
+      text-decoration: none; }
+    .question .body .user a:hover {
+      color: black;
+      font-weight: bold;
+      text-decoration: underline; }
+    .question .body .user img {
+      margin-right: 5px; }
 
 .question-list {
   background: #f4f4f4;
@@ -67,11 +90,20 @@
     .question-list .body h3 a:hover {
       color: black;
       text-decoration: underline; }
-    .question-list .body h3 .user {
-      float: right;
-      font-size: 12px;
-      text-align: right;
-      padding: 5px; }
+  .question-list .body .user {
+    float: right;
+    font-size: 12px;
+    text-align: right;
+    padding: 5px; }
+    .question-list .body .user img {
+      margin-bottom: 5px; }
+    .question-list .body .user a:link, .question-list .body .user a:visited {
+      text-decoration: none;
+      color: green;
+      font-weight: bold; }
+    .question-list .body .user a:hover {
+      color: black;
+      text-decoration: underline; }
   .question-list .body .tags a:link, .question-list .body .tags a:visited {
     font-size: 12px;
     text-decoration: none;

@@ -23,16 +23,21 @@
   </div>
   <div class="body">
     <%=h @question.body %>
-    <span class="user"><%= image_tag @question.user.avatar.url(:thumb), :align => "left" %><%= link_to @question.user.login, user_path(@question.user) %><br /><%= distance_of_time_in_words_to_now @question.created_at %> ago
+    <span class="user"><%= link_to image_tag(@question.user.avatar.url(:thumb), :align => "left"), user_path(@question.user) %><%= link_to @question.user.login, user_path(@question.user) %><br /><%= distance_of_time_in_words_to_now @question.created_at %> ago
    </span>
+   <div class="tags">
+     <%@question.tags.each do |tag| %>
+       <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
+     <% end -%>
+     
+   </div>
+   
+   <br class="clear" />
   </div>
-
-<div class="tags">
-  <%@question.tags.each do |tag| %>
-   <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
-  <% end -%>
-</div>
-<br class="clear" />
+  <br class="clear" />
+  <div class="actions"><br class="clear" />
+     <%= link_to 'Edit Question', edit_question_path(@question) if (current_user && current_user == @question.user) %>
+   </div>
 
 </div>
 <% if @question.answers.length > 0 %>
@@ -53,10 +58,11 @@
   <h2>My Answer</h2>
   <% form_for(Answer.new, :html => {:class => "form"}) do |f| %>
     <%= f.error_messages %>
-    <%= f.hidden_field :question_id, :value => question.id %>
+    <%= f.hidden_field :question_id, :value => @question.id %>
     <%= f.text_area :body, :class => 'text_area answer' %>
+    <%= f.submit 'Save' %>
   <% end -%>
-  <%= f.submit 'Save' %>
+  
 <% end -%>
   
 <% content_for :sidebar, render(:partial => "show_sidebar", :locals => {:question => @question}) %>
