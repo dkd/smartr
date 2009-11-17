@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments
 
   map.resources :answers, :has_many => :comments
-
+  map.connect "questions/page/:page", :controller => :questions, :action => :index
   map.resources :questions, :has_many => :comments
   map.connect "tags/:tag", :controller => :tags, :action => :index
   map.connect "tags", :controller => :tags, :action => :index

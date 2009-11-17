@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     if(params[:tag])
       index_for_tag
     else
-      @questions = Question.latest
+      @questions = Question.latest.paginate :page => params[:page], :per_page => 2
     end
     
   end
@@ -89,7 +89,7 @@ class QuestionsController < ApplicationController
   protected
   
   def index_for_tag
-    @questions = Question.latest.tagged_with(params[:tag])
+    @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 5
   end
   
   def is_owner
