@@ -33,7 +33,8 @@
   .stats
     div.votes
       width: 50px
-      height: 54px
+      background: white
+      height: 74px
       font-size: 12px
       font-weight: bold
       vertical-align: center
@@ -43,29 +44,37 @@
       padding: 0px
       
       div.value
-        font-size: 12px
+        font-size: 36px
         margin: 0
         padding: 0
+        line-height: 36px
         height: auto
-      
-      a:link, a:visited
+        text-align: center
+        margin-top: 5px
+        
+      a.up:link, a:visited.up
+        width: 50px
+        height: 10px
+        padding: 0x
+        background: url(/images/arrow-up.png) no-repeat center top
         display: block
         text-decoration: none
-        font-weight: bold
-        font-size: 20px
-        line-height: 20px
+        text-align: center
+        opacity: 0.8
         
+      a.down:link, a:visited.down
+        width: 50px
+        height: 10px
+        padding: 0x
+        background: url(/images/arrow-down.png) no-repeat center bottom
+        display: block
+        text-decoration: none
+        clear: both
+        text-align: center
+        opacity: 0.8
         
-      a:link, a:visited.up
-        color: green
-        
-      a:link, a:visited.down
-        color: #9F0000
-      
-      a:hover,a.up:hover,a.down:hover
-        color: black
-        text-shadow: #737373 0px 0px 5px
-        
+      a.up:hover, a.down:hover
+        opacity: 1.0
         
         
       

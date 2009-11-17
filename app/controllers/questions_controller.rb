@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     if(params[:tag])
       index_for_tag
     else
-      @questions = Question.latest.paginate :page => params[:page], :per_page => 2
+      @questions = Question.latest.paginate :page => params[:page], :per_page => 5
     end
     
   end
@@ -95,8 +95,8 @@ class QuestionsController < ApplicationController
   def is_owner
     @question = Question.find(params[:id])
     if @question.user != current_user
-      #flash[:error] = "You are not the owner of the question!"
-      #redirect_to(questions_url)
+      flash[:error] = "You are not the owner of the question!"
+      redirect_to(question_path(@question))
     end
   end
   

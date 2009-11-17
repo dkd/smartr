@@ -25,7 +25,8 @@
 
 .answer-item .stats div.votes {
   width: 50px;
-  height: 54px;
+  background: white;
+  height: 74px;
   font-size: 12px;
   font-weight: bold;
   vertical-align: center;
@@ -34,20 +35,31 @@
   margin-right: 10px;
   padding: 0px; }
   .answer-item .stats div.votes div.value {
-    font-size: 12px;
+    font-size: 36px;
     margin: 0;
     padding: 0;
-    height: auto; }
-  .answer-item .stats div.votes a:link, .answer-item .stats div.votes a:visited {
+    line-height: 36px;
+    height: auto;
+    text-align: center;
+    margin-top: 5px; }
+  .answer-item .stats div.votes a.up:link, .answer-item .stats div.votes a:visited.up {
+    width: 50px;
+    height: 10px;
+    padding: 0x;
+    background: url(/images/arrow-up.png) no-repeat center top;
     display: block;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 20px; }
-  .answer-item .stats div.votes a:link, .answer-item .stats div.votes a:visited.up {
-    color: green; }
-  .answer-item .stats div.votes a:link, .answer-item .stats div.votes a:visited.down {
-    color: #9F0000; }
-  .answer-item .stats div.votes a:hover, .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover {
-    color: black;
-    text-shadow: #737373 0px 0px 5px; }
+    text-align: center;
+    opacity: 0.8; }
+  .answer-item .stats div.votes a.down:link, .answer-item .stats div.votes a:visited.down {
+    width: 50px;
+    height: 10px;
+    padding: 0x;
+    background: url(/images/arrow-down.png) no-repeat center bottom;
+    display: block;
+    text-decoration: none;
+    clear: both;
+    text-align: center;
+    opacity: 0.8; }
+  .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover {
+    opacity: 1.0; }

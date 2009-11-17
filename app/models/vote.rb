@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, :polymorphic => true
   
   #filter
-  after_save :update_vote_counts
+  #after_save :count_on
   
   
   def cast(direction)

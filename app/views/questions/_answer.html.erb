@@ -1,6 +1,6 @@
 <div class="stats">
   <div class="votes">
-    <%= link_to_remote "&uArr;", 
+    <%= link_to_remote "&nbsp;", 
                        :url => vote_path(
                        :model => "answer",
                        :direction => "up",
@@ -9,7 +9,7 @@
                        :method => "put",
                        :html => {:class => "up"} -%>                       
     <div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
-    <%= link_to_remote "&dArr;",
+    <%= link_to_remote "&nbsp;",
                        :url => vote_path(
                        :model => "answer",
                        :direction => "down",
@@ -21,6 +21,6 @@
 </div>
 <div class="body">
   <%= h answer.body %>
-  <span class="user"><%= answer.user.login %><br /><%= distance_of_time_in_words_to_now answer.created_at %> ago</span>
+  <span class="user"><%= link_to( image_tag(answer.user.avatar.url(:tiny)) + "  &middot; #{answer.user.login}", user_path(answer.user)) %> &middot; <%= distance_of_time_in_words_to_now answer.created_at %> ago</span>
   <br class="clear" />
 </div>
