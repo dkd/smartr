@@ -11,10 +11,11 @@ class Vote < ActiveRecord::Base
   def cast(direction)
     
     user = self.voteable_type.constantize.find(self.voteable_id).user
-    
+    orginal_value = self.value
     case direction
       when "up"
         value = self.value + 1
+        Reputation.unpenalize(self.voteable_type, self.user, user) if self.value == -1
         Reputation.set("up", self.voteable_type, self.user, user) if self.value == -1 || self.value == 0
       when "down"
         value = self.value - 1
