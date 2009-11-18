@@ -1,41 +1,7 @@
 class AnswersController < ApplicationController
   
+  before_filter :require_user, :only => [:create, :update, :destroy]
   
-  
-  
-  
-  # GET /answers
-  # GET /answers.xml
-  def index
-    @answers = Answer.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @answers }
-    end
-  end
-
-  # GET /answers/1
-  # GET /answers/1.xml
-  def show
-    @answer = Answer.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @answer }
-    end
-  end
-
-  # GET /answers/new
-  # GET /answers/new.xml
-  def new
-    @answer = Answer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @answer }
-    end
-  end
-
   # GET /answers/1/edit
   def edit
     @answer = Answer.find(params[:id])
@@ -45,14 +11,16 @@ class AnswersController < ApplicationController
   # POST /answers.xml
   def create
     @answer = Answer.new(params[:answer])
-
+    @answer.user = current_user
+    @question = @answer.question
+    
     respond_to do |format|
       if @answer.save
         flash[:notice] = 'Answer was successfully created.'
-        format.html { redirect_to(@answer) }
+        format.html { redirect_to(@question) }
         format.xml  { render :xml => @answer, :status => :created, :location => @answer }
       else
-        format.html { render :action => "new" }
+        format.html { render "questions/show" }
         format.xml  { render :xml => @answer.errors, :status => :unprocessable_entity }
       end
     end
@@ -86,4 +54,5 @@ class AnswersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end
