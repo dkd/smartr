@@ -1,5 +1,6 @@
 .DS_Store
 log/*.log
+log/development.log
 tmp/**/*
 doc/api
 doc/appla
