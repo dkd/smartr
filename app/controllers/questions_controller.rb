@@ -1,14 +1,14 @@
 class QuestionsController < ApplicationController
   
   before_filter :require_user, :only => [:edit, :new, :update, :destroy]
-  before_filter :is_owner, :only => [:update, :destroy, :edit]
+  #before_filter :is_owner, :only => [:update, :destroy, :edit]
   
   def index
     
     if(params[:tag])
       index_for_tag
     else
-      @questions = Question.latest.paginate :page => params[:page], :per_page => 5
+      @questions = Question.latest.paginate :page => params[:page], :per_page => 20
     end
     
   end
@@ -18,6 +18,8 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @question.update_views if @question.present?
+    @answer = Answer.new
+    @answer.question_id = @question.id
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }
@@ -43,18 +45,17 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.xml
   def create
-    @question = Question.new(params[:question])
     @question.user = current_user
-    respond_to do |format|
-      if @question.save
-        flash[:notice] = 'Question was successfully created.'
-        format.html { redirect_to(@question) }
-        format.xml  { render :xml => @question, :status => :created, :location => @question }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @question.save
+          flash[:notice] = 'Question was successfully created.'
+          format.html { redirect_to(@question) }
+          format.xml  { render :xml => @question, :status => :created, :location => @question }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PUT /questions/1
@@ -87,9 +88,10 @@ class QuestionsController < ApplicationController
   
   
   protected
+
   
   def index_for_tag
-    @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 5
+    @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 20
   end
   
   def is_owner
