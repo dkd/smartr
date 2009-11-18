@@ -15,14 +15,21 @@ class Reputation
     model = record.constantize.class_name.downcase
     points = Settings.reputation.fetch(model).fetch(direction)
     Tell.new "#{owner.login}, #{direction}: #{record.constantize.class_name}, Point: #{points}"
-    owner.update_attributes :reputation => (owner.reputation += points)
+    owner.update_attributes :reputation => (owner.reputation + points)
   end
   
   def self.penalize(record, user, owner)
     model = record.constantize.class_name.downcase
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     Tell.new "Penalty of #{penalty} points on #{user.login}"
-    user.update_attributes :reputation => (owner.reputation += penalty)
+    user.update_attributes :reputation => (user.reputation + penalty)
+  end
+  
+  def self.unpenalize(record, user, owner)
+    model = record.constantize.class_name.downcase
+    penalty = Settings.reputation.fetch(model).fetch("penalty")
+    Tell.new "Penalty of #{penalty} points on #{user.login}, removed(#{penalty.abs})"
+    user.update_attributes :reputation => (user.reputation + penalty.abs)
   end
 
 end
