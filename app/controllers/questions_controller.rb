@@ -40,11 +40,13 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @question = Question.find(params[:id])
+    @question.body = @question.body_plain
   end
 
   # POST /questions
   # POST /questions.xml
   def create
+    @question = Question.new(params[:question])
     @question.user = current_user
       respond_to do |format|
         if @question.save

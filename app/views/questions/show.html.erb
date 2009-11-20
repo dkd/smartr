@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="body">
-    <%=h @question.body %>
+    <%= @question.body %>
     <span class="user"><%= link_to image_tag(@question.user.avatar.url(:thumb), :align => "left"), user_path(@question.user) %><%= link_to @question.user.login, user_path(@question.user) %><br /><%= distance_of_time_in_words_to_now @question.created_at %> ago
    </span>
    <div class="tags">

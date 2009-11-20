@@ -1,22 +1,18 @@
 <h1>New question</h1>
-<div class="question-new">
+<div class="question-edit">
 <% form_for(@question) do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label "Enter your question here" %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :tag_list %><br />
-    <%= f.text_field :tag_list %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+    <h3>Enter your question here</h3>
+    <%= f.text_field :name, :class => "text" %>
+    <h3>Please provide more detail</h3>
+    <%= f.text_area :body, :id => "markdown", :class => "markdown" %>
+    <h3>Live preview</h3>
+    <div class="wmd-preview"></div>
+      <%= f.hidden_field :body_plain, :class => "plain" %>
+    <h3>Tags</h3>
+    <%= f.text_field :tag_list, :class => "text tags" %>
+    <%= f.submit 'Save', :class => "save" %>
+    <br class="clear" />
 <% end %>
 </div>
 <% main_menu :questions %>

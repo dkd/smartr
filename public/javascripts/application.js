@@ -16,4 +16,28 @@ $(document).ready(function(){
             }});
     
   });
+  
+  $(".question-edit form").submit(function(){
+    $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
+  });
+  $("textarea.markdown").change(function(){
+    var plain = $("input.plain").val();
+    var output = plain.replace(/&#95;/,"_");
+    $("input.plain").val(output);
+    
+  });
+  wmd_options = {
+			// format sent to the server.  Use "Markdown" to return the markdown source.
+			output: "Markdown",
+
+			// line wrapping length for lists, blockquotes, etc.
+			lineLength: 40,
+
+			// toolbar buttons.  Undo and redo get appended automatically.
+			buttons: "bold italic | link blockquote code image | ol ul heading hr",
+
+			// option to automatically add WMD to the first textarea found.  See apiExample.html for usage.
+			autostart: true
+		};
+  
 });

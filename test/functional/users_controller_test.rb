@@ -8,10 +8,9 @@ class UsersControllerTest < ActionController::TestCase
   
   test "should create user" do
     assert_difference('User.count') do
-      post :create, :user => { :login => "ben", :password => "benrocks", :password_confirmation => "benrocks" }
+      post :create, :user => { :login => "ben", :email => "ben@tester.com", :password => "benrocks", :password_confirmation => "benrocks" }
     end
-    
-    assert_redirected_to account_path
+    assert_redirect_to :controller => :users, :action => :show, :id => users(:ben).id
   end
   
   test "should show user" do
@@ -29,6 +28,6 @@ class UsersControllerTest < ActionController::TestCase
   test "should update user" do
     UserSession.create(users(:ben))
     put :update, :id => users(:ben).id, :user => { }
-    assert_redirected_to account_path
+    assert_response :success
   end
 end
