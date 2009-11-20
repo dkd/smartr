@@ -1,8 +1,5 @@
 # app/config/application.yml
 defaults: &defaults
-  cool:
-    saweet: nested settings
-  neat_setting: 24
   
   reputation:
     answer:

@@ -1,3 +1,38 @@
+.question-new, .question-edit {
+  background: #e9e9e9;
+  padding: 10px 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+  .question-new label, .question-edit label {
+    font-weight: bold;
+    display: block;
+    margin-top: 0px; }
+  .question-new textarea, .question-edit textarea {
+    border: 1x solid #737373;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 100%; }
+  .question-new input.text, .question-edit input.text {
+    border: 1x solid #737373;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px; }
+  .question-new input.tags, .question-edit input.tags {
+    width: 75%; }
+  .question-new input.create, .question-new input.edit, .question-edit input.create, .question-edit input.edit {
+    background: green;
+    padding: 10px;
+    color: white;
+    border: 0px;
+    font-size: 14px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: block;
+    float: right; }
+
 .question-header {
   border-bottom: 3px solid black;
   margin-top: 20px; }

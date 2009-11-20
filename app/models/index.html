@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="3600" />
+  <meta name="revisit-after" content="2 days" />
+  <meta name="robots" content="index,follow" />
+  <meta name="publisher" content="Dichodaemon" />
+  <meta name="copyright" content="Dichodaemon" />
+
+  <meta name="author" content="Dichodaemon" />
+  <meta name="distribution" content="global" />
+  <meta name="description" content="Ocatarinetabellachithchix" />
+  <meta name="keywords" content="arzaversperia flexilimosos toves" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="css/amy.css" />
+  <title>amy</title>
+<style type="text/css" media="screen">
+  pre.amy .PolymorphicVariants {
+     color: #60B0FF;
+     font-style: italic;
+  }
+  pre.amy .KeywordDecorator {
+     color: #D0D0FF;
+  }
+  pre.amy .Punctuation {
+     color: #805080;
+  }
+  pre.amy .InheritedClass {
+  }
+  pre.amy .InvalidDepricated {
+     background-color: #CC66FF;
+     color: #200020;
+  }
+  pre.amy .LibraryVariable {
+  }
+  pre.amy .TokenReferenceOcamlyacc {
+     color: #3CB0D0;
+  }
+  pre.amy .Storage {
+     color: #B0FFF0;
+  }
+  pre.amy .KeywordOperator {
+     color: #A0A0FF;
+  }
+  pre.amy .CharacterConstant {
+     color: #666666;
+  }
+  pre.amy .line-numbers {
+     background-color: #800000;
+     color: #000000;
+  }
+  pre.amy .ClassName {
+     color: #70E080;
+  }
+  pre.amy .Int64Constant {
+     font-style: italic;
+  }
+  pre.amy .NonTerminalReferenceOcamlyacc {
+     color: #C0F0F0;
+  }
+  pre.amy .TokenDefinitionOcamlyacc {
+     color: #3080A0;
+  }
+  pre.amy .ClassType {
+     color: #70E0A0;
+  }
+  pre.amy .ControlKeyword {
+     color: #80A0FF;
+  }
+  pre.amy .LineNumberDirectives {
+     text-decoration: underline;
+     color: #C080C0;
+  }
+  pre.amy .FloatingPointConstant {
+     text-decoration: underline;
+  }
+  pre.amy .Int32Constant {
+     font-weight: bold;
+  }
+  pre.amy .TagName {
+     color: #009090;
+  }
+  pre.amy .ModuleTypeDefinitions {
+     text-decoration: underline;
+     color: #B000B0;
+  }
+  pre.amy .Integer {
+     color: #7090B0;
+  }
+  pre.amy .Camlp4TempParser {
+  }
+  pre.amy .InvalidIllegal {
+     font-weight: bold;
+     background-color: #FFFF00;
+     color: #400080;
+  }
+  pre.amy .LibraryConstant {
+     background-color: #200020;
+  }
+  pre.amy .ModuleDefinitions {
+     color: #B000B0;
+  }
+  pre.amy .Variants {
+     color: #60B0FF;
+  }
+  pre.amy .CompilerDirectives {
+     color: #C080C0;
+  }
+  pre.amy .FloatingPointInfixOperator {
+     text-decoration: underline;
+  }
+  pre.amy .BuiltInConstant1 {
+  }
+  pre.amy {
+     background-color: #200020;
+     color: #D0D0FF;
+  }
+  pre.amy .FunctionArgument {
+     color: #80B0B0;
+  }
+  pre.amy .FloatingPointPrefixOperator {
+     text-decoration: underline;
+  }
+  pre.amy .NativeintConstant {
+     font-weight: bold;
+  }
+  pre.amy .BuiltInConstant {
+     color: #707090;
+  }
+  pre.amy .BooleanConstant {
+     color: #8080A0;
+  }
+  pre.amy .LibraryClassType {
+  }
+  pre.amy .TagAttribute {
+  }
+  pre.amy .Keyword {
+     color: #A080FF;
+  }
+  pre.amy .UserDefinedConstant {
+  }
+  pre.amy .String {
+     color: #999999;
+  }
+  pre.amy .Camlp4Code {
+     background-color: #350060;
+  }
+  pre.amy .NonTerminalDefinitionOcamlyacc {
+     color: #90E0E0;
+  }
+  pre.amy .FunctionName {
+     color: #50A0A0;
+  }
+  pre.amy .SupportModules {
+     color: #A00050;
+  }
+  pre.amy .Variable {
+     color: #008080;
+  }
+  pre.amy .Comment {
+     background-color: #200020;
+     color: #404080;
+     font-style: italic;
+  }
+  
+</style>
+</head>
+
+<body>
+<pre class="amy"><span class="line-numbers">   1 </span> <span class="ControlKeyword">class</span> <span class="ClassName">Vote<span class="InheritedClass"> <span class="Punctuation">&lt;</span> ActiveRecord::Base</span></span>
+<span class="line-numbers">   2 </span>   
+<span class="line-numbers">   3 </span>   <span class="Punctuation">#</span>Associations
+<span class="line-numbers">   4 </span>   belongs_to <span class="UserDefinedConstant"><span class="Punctuation">:</span>user</span>
+<span class="line-numbers">   5 </span>   belongs_to <span class="UserDefinedConstant"><span class="Punctuation">:</span>voteable</span><span class="Punctuation">,</span> <span class="UserDefinedConstant"><span class="Punctuation">:</span>polymorphic</span> <span class="Punctuation">=&gt;</span> <span class="BuiltInConstant">true</span>
+<span class="line-numbers">   6 </span>   
+<span class="line-numbers">   7 </span>   <span class="Punctuation">#</span>filter
+<span class="line-numbers">   8 </span>   <span class="Punctuation">#</span>after_save :count_on
+<span class="line-numbers">   9 </span>   
+<span class="line-numbers">  10 </span>   
+<span class="line-numbers">  11 </span>   <span class="ControlKeyword">def</span> <span class="FunctionName">cast</span><span class="Punctuation">(</span><span class="FunctionArgument">direction</span><span class="Punctuation">)</span>
+<span class="line-numbers">  12 </span>     
+<span class="line-numbers">  13 </span>     user <span class="KeywordOperator">=</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_type</span><span class="Punctuation">.</span><span class="FunctionName">constantize</span><span class="Punctuation">.</span><span class="FunctionName">find</span><span class="Punctuation">(</span><span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_id</span><span class="Punctuation">)</span><span class="Punctuation">.</span><span class="FunctionName">user</span>
+<span class="line-numbers">  14 </span>     orginal_value <span class="KeywordOperator">=</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span>
+<span class="line-numbers">  15 </span>     <span class="ControlKeyword">case</span> direction
+<span class="line-numbers">  16 </span>       <span class="ControlKeyword">when</span> <span class="String"><span class="Punctuation">&quot;</span>up<span class="Punctuation">&quot;</span></span>
+<span class="line-numbers">  17 </span>         value <span class="KeywordOperator">=</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">+</span> <span class="Integer">1</span>
+<span class="line-numbers">  18 </span>         <span class="LibraryClassType">Reputation</span><span class="Punctuation">.</span><span class="FunctionName">unpenalize</span><span class="Punctuation">(</span><span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_type</span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">user</span><span class="Punctuation">,</span> user<span class="Punctuation">)</span> <span class="ControlKeyword">if</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">==</span> <span class="KeywordOperator">-</span><span class="Integer">1</span>
+<span class="line-numbers">  19 </span>         <span class="LibraryClassType">Reputation</span><span class="Punctuation">.</span><span class="FunctionName">set</span><span class="Punctuation">(</span><span class="String"><span class="Punctuation">&quot;</span>up<span class="Punctuation">&quot;</span></span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_type</span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">user</span><span class="Punctuation">,</span> user<span class="Punctuation">)</span> <span class="ControlKeyword">if</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">==</span> <span class="KeywordOperator">-</span><span class="Integer">1</span> <span class="KeywordOperator">||</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">==</span> <span class="Integer">0</span>
+<span class="line-numbers">  20 </span>       <span class="ControlKeyword">when</span> <span class="String"><span class="Punctuation">&quot;</span>down<span class="Punctuation">&quot;</span></span>
+<span class="line-numbers">  21 </span>         value <span class="KeywordOperator">=</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">-</span> <span class="Integer">1</span>
+<span class="line-numbers">  22 </span>         <span class="LibraryClassType">Reputation</span><span class="Punctuation">.</span><span class="FunctionName">set</span><span class="Punctuation">(</span><span class="String"><span class="Punctuation">&quot;</span>down<span class="Punctuation">&quot;</span></span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_type</span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">user</span><span class="Punctuation">,</span> user<span class="Punctuation">)</span> <span class="ControlKeyword">if</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">==</span> <span class="Integer">1</span> <span class="KeywordOperator">||</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">value</span> <span class="KeywordOperator">==</span> <span class="Integer">0</span>
+<span class="line-numbers">  23 </span>         <span class="LibraryClassType">Reputation</span><span class="Punctuation">.</span><span class="FunctionName">penalize</span><span class="Punctuation">(</span><span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_type</span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">user</span><span class="Punctuation">,</span> user<span class="Punctuation">)</span> <span class="ControlKeyword">if</span> value <span class="KeywordOperator">==</span> <span class="KeywordOperator">-</span><span class="Integer">1</span>
+<span class="line-numbers">  24 </span>     <span class="ControlKeyword">end</span>
+<span class="line-numbers">  25 </span>     
+<span class="line-numbers">  26 </span>     <span class="ControlKeyword">if</span><span class="Punctuation">(</span>value <span class="KeywordOperator">==</span> <span class="Integer">1</span> <span class="KeywordOperator">||</span> value <span class="KeywordOperator">==</span> <span class="KeywordOperator">-</span><span class="Integer">1</span><span class="Punctuation">)</span>
+<span class="line-numbers">  27 </span>       <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">update_attributes</span> <span class="UserDefinedConstant"><span class="Punctuation">:</span>value</span> <span class="Punctuation">=&gt;</span> value      
+<span class="line-numbers">  28 </span>     <span class="ControlKeyword">elsif</span><span class="Punctuation">(</span>value <span class="KeywordOperator">==</span> <span class="Integer">0</span><span class="Punctuation">)</span>
+<span class="line-numbers">  29 </span>       <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">destroy</span>
+<span class="line-numbers">  30 </span>     <span class="ControlKeyword">end</span>
+<span class="line-numbers">  31 </span>     
+<span class="line-numbers">  32 </span>     <span class="LibraryClassType">Vote</span><span class="Punctuation">.</span><span class="FunctionName">count_on</span><span class="Punctuation">(</span><span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_type</span><span class="Punctuation">,</span> <span class="Variable">self</span><span class="Punctuation">.</span><span class="FunctionName">voteable_id</span><span class="Punctuation">)</span>
+<span class="line-numbers">  33 </span>     
+<span class="line-numbers">  34 </span>   <span class="ControlKeyword">end</span>
+<span class="line-numbers">  35 </span>   
+<span class="line-numbers">  36 </span>   <span class="ControlKeyword">def</span> <span class="FunctionName">self.count_on</span><span class="Punctuation">(</span><span class="FunctionArgument">type<span class="Punctuation">,</span> id</span><span class="Punctuation">)</span>
+<span class="line-numbers">  37 </span>     rating <span class="KeywordOperator">=</span> <span class="Integer">0</span>
+<span class="line-numbers">  38 </span>     record <span class="KeywordOperator">=</span> type<span class="Punctuation">.</span><span class="FunctionName">constantize</span><span class="Punctuation">.</span><span class="FunctionName">find</span><span class="Punctuation">(</span>id<span class="Punctuation">)</span>    
+<span class="line-numbers">  39 </span>     
+<span class="line-numbers">  40 </span>     record<span class="Punctuation">.</span><span class="FunctionName">votes</span><span class="Punctuation">.</span><span class="FunctionName">each</span> <span class="ControlKeyword">do </span><span class="Punctuation">|</span><span class="Variable">vote</span><span class="Punctuation">|</span>
+<span class="line-numbers">  41 </span>      rating <span class="KeywordOperator">=</span> rating <span class="KeywordOperator">+</span> vote<span class="Punctuation">.</span><span class="FunctionName">value</span>
+<span class="line-numbers">  42 </span>     <span class="ControlKeyword">end</span>
+<span class="line-numbers">  43 </span>      rating
+<span class="line-numbers">  44 </span>   <span class="ControlKeyword">end</span>
+<span class="line-numbers">  45 </span> 
+<span class="line-numbers">  46 </span> <span class="ControlKeyword">end</span>
+</pre>  <p>
+    <a href="http://validator.w3.org/check?uri=referer">
+      <img style="border:0"
+           src="http://www.w3.org/Icons/valid-xhtml10"
+           alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+    </a>
+    <a href="http://jigsaw.w3.org/css-validator/check?uri=referer">
+      <img style="border:0;width:88px;height:31px"
+           src="http://jigsaw.w3.org/css-validator/images/vcss" 
+           alt="Valid CSS!" />
+    </a>
+  </p>
+</body>
+</html>

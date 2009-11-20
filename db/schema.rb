@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091116222235) do
+ActiveRecord::Schema.define(:version => 20091119122303) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20091116222235) do
     t.datetime "updated_at"
     t.integer  "answers_count"
     t.integer  "votes_count"
+    t.text     "body_plain"
+    t.text     "body_html"
   end
 
   create_table "sessions", :force => true do |t|
