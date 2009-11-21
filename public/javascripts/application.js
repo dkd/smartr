@@ -39,5 +39,6 @@ $(document).ready(function(){
 			// option to automatically add WMD to the first textarea found.  See apiExample.html for usage.
 			autostart: true
 		};
-  
+     hljs.tabReplace = '    ';
+     hljs.initHighlightingOnLoad();
 });
