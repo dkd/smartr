@@ -19,10 +19,9 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.update_views if @question.present?
     @answer = Answer.new
-    @answer.question_id = @question.id
+    @answer.question = @question
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @question }
     end
   end
 

@@ -1,68 +1,20 @@
-<h2><%=h @question.name %></h2>
-<div class="question">
-  <div class="stats">
-    <div class="votes">
-      <%= link_to_remote "&nbsp;", 
-                         :url => vote_path(
-                         :model => "question",
-                         :direction => "up",
-                         :dom_id => "question_#{@question.id}",
-                         :id => @question.id),
-                         :method => "put",
-                         :html => {:class => "up"} -%>                       
-      <div class="value" id="<%="question_#{@question.id}"%>"><%=@question.votes.length==0? 0 : Vote.count_on("Question", @question.id)%></div>
-      <%= link_to_remote "&nbsp;",
-                         :url => vote_path(
-                         :model => "question",
-                         :direction => "down",
-                         :dom_id => "question_#{@question.id}",
-                         :id => @question.id),
-                         :method => "put",
-                         :html => {:class => "down"}   -%>   
-    </div>
-  </div>
-  <div class="body">
-    <%= @question.body %>
-    <span class="user"><%= link_to image_tag(@question.user.avatar.url(:thumb), :align => "left"), user_path(@question.user) %><%= link_to @question.user.login, user_path(@question.user) %><br /><%= distance_of_time_in_words_to_now @question.created_at %> ago
-   </span>
-   <div class="tags">
-     <%@question.tags.each do |tag| %>
-       <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
-     <% end -%>
-   </div>
-   <br class="clear" />
-  </div>
-  <br class="clear" />
-  <div class="actions"><br class="clear" />
-     <%= link_to 'Edit Question', edit_question_path(@question) if (current_user && current_user == @question.user) %>
-   </div>
-
-</div>
+<%= render :partial => "question_header", :locals => {:question => @question}%>
 <% if @question.answers.length > 0 %>
   <br class="clear" />
   <h2 class="answer-header">Answers</h2>
   <% @question.answers.each do |answer| -%>
-    <% if answer.id.present? %>
-      <div class="answer-item">
-        <%= render :partial => "/questions/answer", :locals => {:answer => answer}%>
+    
+      <div class="answer-item" id="answer_<%=answer.id%>">
+        <%= render :partial => "/answers/show", :locals => {:answer => answer, :question => @question} %>
         <br class="clear" />
       </div>
       <br class="clear" />
     <% end -%>
-  <% end -%>
+
 <% end -%>
 
 <% if (current_user.present? && !@question.answered?(current_user)) %>
-
-  <h2>My Answer</h2>
-  <% form_for(@answer, :url => question_answers_path(@question), :html => {:method => :post}) do |f| %>
-    <%= f.error_messages %>
-    <%= f.hidden_field :question_id, :value => @question.id %>
-    <%= f.text_area :body %>
-    <%= f.submit 'Save' %>
-  <% end -%>
-  
-<% end -%>
-  
+  <%= render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question} %>
+<% end -%>  
 <% content_for :sidebar, render(:partial => "/questions/show_sidebar", :locals => {:question => @question}) %>
 <% main_menu :questions %>

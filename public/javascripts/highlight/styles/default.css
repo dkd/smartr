@@ -6,8 +6,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 
 pre code[class]:after {
   content: 'highlight: ' attr(class);
-  display: block; 
-  text-align: right;
+  display: block; text-align: right;
   font-size: smaller;
   color: #CCC; background: white;
   border-top: solid 1px;

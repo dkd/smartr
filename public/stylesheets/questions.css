@@ -22,7 +22,7 @@
     font-size: 14px; }
   .question-new input.tags, .question-edit input.tags {
     width: 75%; }
-  .question-new input.create, .question-new input.edit, .question-edit input.create, .question-edit input.edit {
+  .question-new input.save, .question-edit input.save {
     background: green;
     padding: 10px;
     color: white;

@@ -2,7 +2,7 @@
 
 Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
 
-*/
+
 
 pre code[class]:after {
   content: 'highlight: ' attr(class);
@@ -12,10 +12,9 @@ pre code[class]:after {
   border-top: solid 1px;
   padding-top: 0.5em;
 }
-
+*/
 pre code {
   display: block;
-  background: #F0F0F0;
 }
 
 pre code,
