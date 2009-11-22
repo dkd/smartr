@@ -12,6 +12,16 @@ $(document).ready(function(){
     
   });
   
+  $("div.user-search input").keyup(function(){
+    var tag = $(this).val();
+    $.ajax({type: "GET",
+            url: "/users/search/" + tag,
+            success: function(data){
+              $("div.user-list").html(data);
+            }});
+    
+  });
+  
   
   $(".question-edit form, .answer-edit form").submit(function(){
     $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());

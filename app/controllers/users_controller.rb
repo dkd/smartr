@@ -3,7 +3,13 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   
   def index
-    @users = User.find :all
+    respond_to do |format|
+      format.html{ @users = User.find(:all).paginate :page => params[:page], :per_page => 20}
+      format.js {
+        @users = User.find(:all, :conditions => ["login like ?","#{params[:name]}%"]).paginate :page => params[:page], :per_page => 20
+        render :partial => "list", :locals => {:users => @users}
+        }
+    end
   end
   
   def new

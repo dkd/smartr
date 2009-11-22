@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :votes
   
+  #Plugins
+  acts_as_taggable_on :interesting_tags
+  acts_as_taggable_on :uninteresting_tags
+  has_friendly_id :login
+  
   def count_view
     views = self.views.nil?? 0 : self.views
     self.update_attributes :views => (views+1)
