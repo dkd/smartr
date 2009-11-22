@@ -79,7 +79,7 @@ body {
     font-size: 14px; }
   .question-new input.tags, .question-edit input.tags {
     width: 75%; }
-  .question-new input.create, .question-new input.edit, .question-edit input.create, .question-edit input.edit {
+  .question-new input.save, .question-edit input.save {
     background: green;
     padding: 10px;
     color: white;
@@ -265,6 +265,42 @@ body {
     margin: 2px; }
   #sidebar .tags a:hover {
     background: black; }
+
+.answer-edit {
+  background: #FFF5E1;
+  padding: 10px 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+  .answer-edit h2 {
+    margin: 0px;
+    margin-bottom: 20px; }
+  .answer-edit label {
+    font-weight: bold;
+    display: block;
+    margin-top: 0px; }
+  .answer-edit textarea {
+    border: 1x solid #737373;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 100%; }
+  .answer-edit input.text {
+    border: 1x solid #737373;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px; }
+  .answer-edit input.save {
+    background: green;
+    padding: 10px;
+    color: white;
+    border: 0px;
+    font-size: 14px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: block;
+    float: right; }
 
 h2.answer-header {
   border-bottom: 3px solid #737373; }

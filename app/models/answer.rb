@@ -12,7 +12,7 @@ class Answer < ActiveRecord::Base
 
 
   def only_answer_from_user
-    if(Answer.find_by_user_id_and_question_id(self.user_id,self.question_id))
+    if(Answer.find_all_by_user_id_and_question_id(self.user_id,self.question_id).size > 1)
       self.errors.add("Answer", 'You alread answered this question! Just edit your answer.')
     end
   end
