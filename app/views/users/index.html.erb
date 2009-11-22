@@ -1,9 +1,12 @@
 <h2>Find Users</h2>
-<div class="tag-search">
+<div class="user-search">
   <input type="text" />
 </div>
 <br class="clear" />
 <div class="user-list">
  <%= render :partial => "list", :locals => {:users => @users}%>
 </div>
+<br class="clear" />
+<%= will_paginate @users%>
 <% main_menu :users %>
+<% content_for :sidebar, render(:partial => "sidebar") %>

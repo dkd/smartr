@@ -33,7 +33,16 @@
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
 </p>
-<h2>Favourites</h2>
+
+
+<h2>Questions</h2>
+<% @user.questions.each do |question| %>
+  <%= render :partial => "/questions/question", :locals => {:question => question} %>
+<% end -%>
+<h2>Answers</h2>
+<% @user.answers.each do |answer| %>
+  <%= render :partial => "/questions/question", :locals => {:question => answer.question} %>
+<% end -%>
 <% main_menu :users%>
 <% content_for :sidebar, render(:partial => "show_sidebar", :locals => {:user => @user}) %>
 

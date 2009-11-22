@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
     question.resources :answers, :controller => :answers
   end
   map.connect "tags/:tag", :controller => :tags, :action => :index
+  map.connect "users/search/:name", :controller => :users, :action => :index
   map.connect "tags", :controller => :tags, :action => :index
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
   map.resources :votes
