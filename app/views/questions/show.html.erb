@@ -3,14 +3,9 @@
   <br class="clear" />
   <h2 class="answer-header">Answers</h2>
   <% @question.answers.each do |answer| -%>
-    
-      <div class="answer-item" id="answer_<%=answer.id%>">
-        <%= render :partial => "/answers/show", :locals => {:answer => answer, :question => @question} %>
-        <br class="clear" />
-      </div>
-      <br class="clear" />
-    <% end -%>
-
+    <%= render :partial => "/answers/show", :locals => {:answer => answer, :question => @question} %>
+    <br class="clear" />
+  <% end -%>
 <% end -%>
 
 <% if (current_user.present? && !@question.answered?(current_user)) %>

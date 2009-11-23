@@ -1,30 +1,14 @@
-<div class="stats">
-  <div class="votes">
-    <%= link_to_remote "&nbsp;", 
-                       :url => vote_path(
-                       :model => "answer",
-                       :direction => "up",
-                       :dom_id => "answer_#{answer.id}",
-                       :id => answer.id),
-                       :method => "put",
-                       :html => {:class => "up"} -%>                       
-    <div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
-    <%= link_to_remote "&nbsp;",
-                       :url => vote_path(
-                       :model => "answer",
-                       :direction => "down",
-                       :dom_id => "answer_#{answer.id}",
-                       :id => answer.id),
-                       :method => "put",
-                       :html => {:class => "down"}   -%>   
+<div class="answer-item" id="answer_<%=answer.id%>">
+  <div class="stats">
+    <div class="votes" id="vote-box-<%=answer.id%>">
+      <%= render :partial => "/answers/vote_box", :locals => {:answer => answer} %> 
+    </div>
   </div>
-</div>
-<div class="body">
-  <%= answer.body %>
-  <span class="user"><%= link_to( image_tag(answer.user.avatar.url(:tiny)), user_path(answer.user)) %>  &middot; 
-    <%= link_to answer.user.login, user_path(answer.user) %> &middot; <%= distance_of_time_in_words_to_now answer.created_at %> ago</span>
-  
-  <%= link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id)) if (answer.user == current_user) %>
-
-</div>
+  <div class="body">
+    <%= answer.body %>
+      <span class="user"><%= link_to( image_tag(answer.user.avatar.url(:tiny)), user_path(answer.user)) %>  &middot; 
+      <%= link_to answer.user.login, user_path(answer.user) %> &middot; <%= distance_of_time_in_words_to_now answer.created_at %> ago</span>
+      <%= link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id)) if (answer.user == current_user) %>
+    </div>
   <br class="clear" />
+</div>

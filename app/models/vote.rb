@@ -7,6 +7,14 @@ class Vote < ActiveRecord::Base
   #filter
   #after_save :count_on
   
+  def self.has_voted?(user, record)
+    v = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
+    if(v)
+      v.value
+    else
+      false
+    end
+  end
   
   def cast(direction)
     
