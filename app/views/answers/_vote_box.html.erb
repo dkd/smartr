@@ -1,0 +1,32 @@
+<%
+
+if current_user
+  vote_value = Vote.has_voted?(current_user, answer)
+  upclass = vote_value==1? "up" : "up-neutral"
+  downclass = vote_value==-1? "down" : "down-neutral"
+else
+  upclass = "up-neutral"
+  downclass = "down-neutral"
+end
+
+%>
+
+<%= link_to_remote "&nbsp;", 
+                 :url => vote_path(
+                 :model => "answer",
+                 :direction => "up",
+                 :dom_id => "votes_#{answer.id}",
+                 :vote_box_id => "vote-box-#{answer.id}",
+                 :id => answer.id),
+                 :method => "put",
+                 :html => {:class => upclass } -%>                       
+<div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
+<%= link_to_remote "&nbsp;",
+                 :url => vote_path(
+                 :model => "answer",
+                 :direction => "down",
+                 :dom_id => "votes_#{answer.id}",
+                 :vote_box_id => "vote-box-#{answer.id}",
+                 :id => answer.id),
+                 :method => "put",
+                 :html => {:class => downclass} -%>

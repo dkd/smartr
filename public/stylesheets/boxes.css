@@ -63,3 +63,25 @@
     opacity: 0.8; }
   .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover, .question .stats div.votes a.up:hover, .question .stats div.votes a.down:hover {
     opacity: 1.0; }
+  .answer-item .stats div.votes a.up-neutral:link, .answer-item .stats div.votes a.up-neutral:visited, .question .stats div.votes a.up-neutral:link, .question .stats div.votes a.up-neutral:visited {
+    width: 50px;
+    height: 10px;
+    padding: 0x;
+    background: url(/images/arrow-up-neutral.png) no-repeat center top;
+    display: block;
+    text-decoration: none;
+    clear: both;
+    text-align: center;
+    opacity: 0.8; }
+  .answer-item .stats div.votes a.down-neutral:link, .answer-item .stats div.votes a.down-neutral:visited, .question .stats div.votes a.down-neutral:link, .question .stats div.votes a.down-neutral:visited {
+    width: 50px;
+    height: 10px;
+    padding: 0x;
+    background: url(/images/arrow-down-neutral.png) no-repeat center bottom;
+    text-decoration: none;
+    clear: both;
+    text-align: center;
+    opacity: 0.8;
+    display: block; }
+  .answer-item .stats div.votes a.down-neutral:hover, .answer-item .stats div.votes a.up-neutral:hover, .question .stats div.votes a.down-neutral:hover, .question .stats div.votes a.up-neutral:hover {
+    opacity: 1.0; }
