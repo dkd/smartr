@@ -1,4 +1,8 @@
-<div class="question-list">
+<% if current_user && question.tag_list %>
+ <div class="question-list<%=" highlight-question" if (current_user.interesting_tag_list & question.tag_list).length > 0 %>">
+<% else %>
+  <div class="question-list">
+<% end -%>
   <div class="stats">
     <div class="votes">
       <%=question.votes.length == 0? 0 : Vote.count_on("Question", question.id) %>
@@ -26,7 +30,6 @@
         </span>
       <% end -%>
       <% if question.tags.present? %>
-      
       <div class="tags">
         <% question.tags.each do |tag| -%>
         <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>

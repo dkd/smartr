@@ -26,8 +26,10 @@ $(document).ready(function(){
   $(".question-edit form, .answer-edit form").submit(function(){
     $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
   });
-  
-  
+  $(".highlight-question").each(function(i){
+    //jQuery.easing.def = "easeInCubic";
+    $(this).animate({"backgroundColor":"#ffff99"},2000);
+  });
   
   wmd_options = {
 			// format sent to the server.  Use "Markdown" to return the markdown source.

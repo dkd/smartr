@@ -34,7 +34,14 @@
   <%=h @user.current_login_ip %>
 </p>
 
-
+<% if @user.interesting_tag_list %>
+  <h2>Interested in ...</h2>
+  <div class="tags">
+  <% @user.interesting_tag_list.each do |tag| %>
+    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <% end -%>
+  </div>
+<% end -%>
 <h2>Questions</h2>
 <% @user.questions.each do |question| %>
   <%= render :partial => "/questions/question", :locals => {:question => question} %>

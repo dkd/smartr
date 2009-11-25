@@ -17,8 +17,6 @@ class Question < ActiveRecord::Base
   default_scope :include => :user
   named_scope :latest, :order => "created_at DESC", :include => [:user]
   
-  #Nested Attributes
-  accepts_nested_attributes_for :answers, :allow_destroy => true
   
   #Accessor
   
@@ -34,7 +32,7 @@ class Question < ActiveRecord::Base
   end
   
   def before_save
-    self.answers_count = 0
+    self.answers_count = 0 if self.answers_count.nil?
   end
   
   def update_views
