@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     @question = Question.new
-    
+    @question.body = @question.body_plain
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @question }
@@ -51,10 +51,12 @@ class QuestionsController < ApplicationController
         if @question.save
           flash[:notice] = 'Question was successfully created.'
           format.html { redirect_to(@question) }
-          format.xml  { render :xml => @question, :status => :created, :location => @question }
         else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
+          format.html { 
+            @question.body = @question.body_plain
+            render :action => "new" 
+            
+            }
         end
       end
   end
