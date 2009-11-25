@@ -1,9 +1,5 @@
 class Question < ActiveRecord::Base
   
-  SCORE_UP = 10
-  SCORE_DOWN = -10
-  SCORE_PENALTY = -3
-  
   #Associations
   belongs_to :user
   has_many :comments, :as => :commentable
@@ -36,7 +32,7 @@ class Question < ActiveRecord::Base
     end    
     list
   end
-  
+ 
   def update_views
     number_of_views = self.views.nil?? 0 : self.views
     self.views = number_of_views + 1
