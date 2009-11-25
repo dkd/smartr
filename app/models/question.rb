@@ -32,7 +32,11 @@ class Question < ActiveRecord::Base
     end    
     list
   end
- 
+  
+  def before_save
+    self.answers_count = 0
+  end
+  
   def update_views
     number_of_views = self.views.nil?? 0 : self.views
     self.views = number_of_views + 1
