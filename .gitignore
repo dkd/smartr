@@ -1,4 +1,5 @@
 .DS_Store
+config/database.yml
 log/*.log
 log/development.log
 tmp/**/*
