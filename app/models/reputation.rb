@@ -1,4 +1,4 @@
-require "rubygems"
+#require "rubygems"
 #require 'ruby-growl' if RAILS_ENV == "development"
 
 class Tell
@@ -15,6 +15,9 @@ class Reputation
     model = record.constantize.class_name.downcase
     points = Settings.reputation.fetch(model).fetch(direction)
     Tell.new "#{owner.login}, #{direction}: #{record.constantize.class_name}, Point: #{points}"
+    if (owner.reputation.nil?)
+      owner.reputation = 0
+    end
     new_reputation = (owner.reputation + points)<0? 0:(owner.reputation + points)
     owner.update_attributes :reputation => (new_reputation)
   end
