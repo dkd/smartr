@@ -28,7 +28,12 @@ $(document).ready(function(){
   });
   $(".highlight-question").each(function(i){
     //jQuery.easing.def = "easeInCubic";
-    $(this).animate({"backgroundColor":"#ffff99"},2000);
+    $(this).animate({"backgroundColor":"#FFF4BF"}, 4000);
+  });
+  
+  $(".fade-question").each(function(i){
+    //jQuery.easing.def = "easeInCubic";
+    $(this).animate({"opacity":"0.5"}, 4000);
   });
   
   wmd_options = {
