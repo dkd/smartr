@@ -1,5 +1,5 @@
 <% if current_user && question.tag_list %>
- <div class="question-list<%=" highlight-question" if (current_user.interesting_tag_list & question.tag_list).length > 0 %>">
+ <div class="question-list<%=" highlight-question" if (current_user.interesting_tag_list & question.tag_list).length > 0 %><%=" fade-question" if (current_user.uninteresting_tag_list & question.tag_list).length > 0 %>">
 <% else %>
   <div class="question-list">
 <% end -%>
