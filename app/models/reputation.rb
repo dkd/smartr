@@ -1,11 +1,11 @@
 require "rubygems"
-require 'ruby-growl' if RAILS_ENV == "development"
+#require 'ruby-growl' if RAILS_ENV == "development"
 
 class Tell
   attr_accessor :g
   def initialize(message)
-    g = Growl.new("localhost", "ruby-growl", ["ruby-growl Notification"], ["ruby-growl Notification"], nil) if RAILS_ENV == "development"
-    g.notify("ruby-growl Notification", "Reputation", message, 1, true) if RAILS_ENV == "development"
+  #  g = Growl.new("localhost", "ruby-growl", ["ruby-growl Notification"], ["ruby-growl Notification"], nil) if RAILS_ENV == "development"
+  #  g.notify("ruby-growl Notification", "Reputation", message, 1, true) if RAILS_ENV == "development"
   end
 end 
 
