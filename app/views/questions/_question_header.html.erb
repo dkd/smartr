@@ -44,5 +44,11 @@
      <%= link_to 'Edit Question', edit_question_path(question) if (current_user && current_user == question.user) %>
    </div>
 <%= render :partial => "/comments/list"%>
-<%= render :partial => "/comments/new", :locals => {:comment => question.comments.new  }%>
+  <div class="comments">
+    <%= link_to_remote("Add Comment",
+                        :url => new_comment_path(:commentable_type => "Question", 
+                                                 :commenteable_id => question.id), 
+                        :method => :get,
+                        :html => {:class => "comment-new"}) %>
+  </div>
 </div>

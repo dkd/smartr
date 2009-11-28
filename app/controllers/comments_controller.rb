@@ -21,14 +21,15 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/new
-  # GET /comments/new.xml
   def new
     @comment = Comment.new
-
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
+      format.js { 
+        render :update do |page|
+          page[".comment-new"].hide
+          page.insert_html :bottom, ".comments", render(:partial => "new", :locals => {:comment => @comment}) 
+        end
+        }
     end
   end
 

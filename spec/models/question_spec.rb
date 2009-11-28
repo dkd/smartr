@@ -1,3 +1,4 @@
+require 'spec'
 require 'spec_helper'
 
 describe Question do
@@ -13,4 +14,9 @@ describe Question do
   it "should create a new instance given valid attributes" do
     Question.create!(@valid_attributes)
   end
+  
+  it "should have at least one tag"
+    puts "SPEC"
+  end
+  
 end
