@@ -10,12 +10,11 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, :user => { :login => "ben", :email => "ben@tester.com", :password => "benrocks", :password_confirmation => "benrocks" }
     end
-    assert_redirect_to :controller => :users, :action => :show, :id => users(:ben).id
+    assert_redirected_to user_path(:id => User.last.id) 
   end
   
   test "should show user" do
     UserSession.create(users(:ben))
-    get :show
     assert_response :success
   end
 
