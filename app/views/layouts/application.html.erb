@@ -28,6 +28,10 @@
       <br style="clear: both" />
       <div id="menu">
         <%= yield :main_menu %>
+        <% form_for(Question, :url => questions_path) do |f| %>
+          <%= f.text_field "name" %>
+          <%= f.submit "Search" %>
+        <% end -%> 
       </div>
     </div>
     <p style="color: green"><%= flash[:notice] %></p>

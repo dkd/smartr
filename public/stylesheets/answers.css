@@ -45,7 +45,8 @@ h2.answer-header {
     float: left;
     width: 630px;
     margin-top: 5px;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    overflow: auto; }
     .answer-item .body .user {
       float: right;
       font-size: 12px;

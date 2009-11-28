@@ -22,19 +22,27 @@
     </div>
   </div>
   <div class="body">
-    <%= question.body %>
+    <%= Sanitize.clean(BlueCloth.new(question.body).to_html, 
+        :elements => ['br','strong','ul','ol','blockquote','li','a','h1','h2','h3','p','span','pre','code','div','img'], 
+        :attributes =>{
+          'a' => ['href','title'],
+          'img' => ['src','title','alt']
+        })  %>
     <span class="user"><%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left"), user_path(question.user) %><%= link_to question.user.login, user_path(question.user) %><br /><%= distance_of_time_in_words_to_now question.created_at %> ago
    </span>
    <div class="tags">
      <%question.tags.each do |tag| %>
        <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
      <% end -%>
+     
    </div>
    <br class="clear" />
   </div>
   <br class="clear" />
-  <div class="actions"><br class="clear" />
+  <div class="actions">
+    <br class="clear" />
      <%= link_to 'Edit Question', edit_question_path(question) if (current_user && current_user == question.user) %>
    </div>
-
+<%= render :partial => "/comments/list"%>
+<%= render :partial => "/comments/new", :locals => {:comment => question.comments.new  }%>
 </div>
