@@ -86,7 +86,8 @@ h2.question-header a:hover {
   background: #f4f4f4;
   padding: 10px;
   float: right;
-  width: 615px; }
+  width: 615px;
+  overflow: auto; }
   .question .body .tags {
     margin-bottom: 10px;
     margin-top: 10px; }

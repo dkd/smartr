@@ -30,6 +30,9 @@ Rails::Initializer.run do |config|
   config.gem "haml"
   config.gem "settingslogic"
   config.gem "friendly_id"
+  config.gem "bluecloth"
+  config.gem "sanitize"
+  config.gem "searchlogic"
   
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
