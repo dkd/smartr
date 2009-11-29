@@ -7,10 +7,10 @@
     <%= f.text_area :body, :class => "markdown" %>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
-     <%= link_to "Cancel", question_path(@answer.question) %>
+    <%= link_to "Cancel", question_path(@answer.question) %>
   <% end -%>
    <br class="clear" />
    <h3>Live preview</h3>
    <div class="wmd-preview"></div>
-   <br class="clear" />  
+   <br class="clear" />
 </div>
