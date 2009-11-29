@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="body">
-    <%= Sanitize.clean(BlueCloth.new(question.body).to_html, 
+    <%= Sanitize.clean(BlueCloth.new(question.body).to_html,
         :elements => ['br','strong','ul','ol','blockquote','li','a','h1','h2','h3','p','span','pre','code','div','img'], 
         :attributes =>{
           'a' => ['href','title'],
@@ -34,21 +34,16 @@
      <%question.tags.each do |tag| %>
        <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
      <% end -%>
-     
    </div>
    <br class="clear" />
+     
   </div>
   <br class="clear" />
   <div class="actions">
     <br class="clear" />
      <%= link_to 'Edit Question', edit_question_path(question) if (current_user && current_user == question.user) %>
    </div>
-<%= render :partial => "/comments/list"%>
-  <div class="comments">
-    <%= link_to_remote("Add Comment",
-                        :url => new_comment_path(:commentable_type => "Question", 
-                                                 :commenteable_id => question.id), 
-                        :method => :get,
-                        :html => {:class => "comment-new"}) %>
-  </div>
+     <div class="comments" id="Question-comments-<%= question.id %>">
+      <%= render(:partial => "/comments/list", :locals => {:comments => question.comments, :parent => question}) %>
+    </div>
 </div>

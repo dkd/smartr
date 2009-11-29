@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.xml
+  
+  before_filter :require_user, :only => [:new, :edit, :create, :destroy, :update]
+  
   def index
     @comments = Comment.all
 
@@ -22,14 +23,18 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @comment = Comment.new(params[:comment])
     respond_to do |format|
       format.js { 
         render :update do |page|
           page[".comment-new"].hide
-          page.insert_html :bottom, ".comments", render(:partial => "new", :locals => {:comment => @comment}) 
+          page.insert_html :bottom, "#{params[:commentable_type]}-comments-#{params[:commentable_id]}", 
+                                    render(:partial => "new", :locals => {:comment => @comment, 
+                                                                          :commentable_type => params[:commentable_type], 
+                                                                          :commentable_id => params[:commentable_id]
+                                                                          }) 
         end
-        }
+      }
     end
   end
 
@@ -38,19 +43,29 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  # POST /comments
-  # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
-
+    @comment.user = @current_user
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(@comment) }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+        format.js { 
+          render :update do |page|
+            parent = @comment.commentable_type.classify.constantize.find(@comment.commentable_id)
+            page["#{@comment.commentable_type}-comments-#{@comment.commentable_id}"].replace_html(render(:partial => "list", 
+                                                                                                         :locals => {
+                 :comments => parent.comments,
+                 :parent => parent
+                 }
+                 ))
+          end
+        }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.js {
+          render :update do |page|
+            page << "alert('Please enter something!')"
+          end
+        }
       end
     end
   end

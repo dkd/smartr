@@ -11,4 +11,7 @@
       <%= link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id)) if (answer.user == current_user) %>
     </div>
   <br class="clear" />
+  <div class="comments" id="Answer-comments-<%= answer.id %>">
+      <%= render(:partial => "/comments/list", :locals => {:comments => answer.comments, :parent => answer}) %>
+    </div>
 </div>
