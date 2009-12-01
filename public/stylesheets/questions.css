@@ -59,6 +59,8 @@ h2.question-header a:hover {
     .question-header .tabs ul {
       margin: 0px;
       padding: 0px; }
+      .question-header .tabs ul li.active a:link, .question-header .tabs ul li.active a:visited {
+        background: green; }
       .question-header .tabs ul li {
         display: inline;
         list-style: none;

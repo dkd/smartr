@@ -9,6 +9,8 @@
   <%= stylesheet_link_tag "highlight.css" %>  
 </head>
 <body>
+  <div id="top-flash"><h4>Message</h4><p>I am the message! Fuck off!</p><span>close</span></div>
+  <div id="center-flash">Hello</div>
   <div id="wrapper">
     <div id="header">
       <h1><%= link_to "SmartR", root_url %></h1>
@@ -28,18 +30,25 @@
       <br style="clear: both" />
       <div id="menu">
         <%= yield :main_menu %>
-        <% form_for(Question, :url => questions_path) do |f| %>
-          <%= f.text_field "name" %>
-          <%= f.submit "Search" %>
-        <% end -%> 
       </div>
     </div>
-    <p style="color: green"><%= flash[:notice] %></p>
-    <p style="color: red"><%= flash[:error] %></p>
+    <div class="flash">
+      <% flash.each do |type, message| -%>
+        <div class="message <%= type %>">
+          <p><%= message %></p>
+        </div>
+      <% end -%>
+    </div>
     <div id="content">
       <%= yield  %>
     </div>
     <div id="sidebar">
+      <h3>Search</h3>
+      <% form_for(@search, :url => questions_path) do |f| %>
+        <%= f.text_field :name_like %>
+        <%= f.submit "Search" %>
+      <% end -%>
+      <br class="clear" />
       <%= yield :sidebar%>
     </div>
   </div>

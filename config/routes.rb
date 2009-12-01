@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  
+  map.connect "questions/hot/page/:page", :controller => :questions, :action => :index_for_hot, :page => nil
+  map.connect "questions/active/page/:page", :controller => :questions, :action => :index_for_active, :page => nil
+  map.connect "questions/unanswered/page/:page", :controller => :questions, :action => :index_for_unanswered, :page => nil
   map.connect "questions/page/:page", :controller => :questions, :action => :index
   map.resources :questions do |question|
     question.resources :answers, :controller => :answers
