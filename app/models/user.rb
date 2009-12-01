@@ -15,9 +15,17 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :uninteresting_tags
   has_friendly_id :login
   
+  #Search
+  
+  searchable do
+    text :login
+  end
+  
   def count_view
     views = self.views.nil?? 0 : self.views
     self.update_attributes :views => (views+1)
   end
+  
+  
   
 end

@@ -57,4 +57,7 @@ $(document).ready(function(){
 		};
      hljs.tabReplace = '    ';
      hljs.initHighlightingOnLoad();
+     
+     $("textarea").tabby();
+     
 });

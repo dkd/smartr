@@ -5,13 +5,21 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
-  before_filter :prepare_search
+  before_filter :search_options
+  
   protected
     
-    def prepare_search
-      @search = Question.search(params[:search])
+    def search_options
+      @user_facet = nil
+      if params[:search] && params[:search][:searchstring]
+        @searchstring =  params[:search][:searchstring]
+        @user_facet = params[:user_id] unless params[:user_id].nil?
+      else
+        @searchstring = nil
+      end
+      
     end
-
+    
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find

@@ -32,10 +32,12 @@ Rails::Initializer.run do |config|
   config.gem "friendly_id"
   config.gem "bluecloth"
   config.gem "sanitize"
-  config.gem "searchlogic"
+  #config.gem "searchlogic"
   config.gem "thoughtbot-factory_girl",
                :lib    => "factory_girl",
                :source => "http://gemcutter.org"
+  config.gem 'sunspot', :lib => 'sunspot'
+  config.gem 'sunspot_rails', :lib => 'sunspot/rails'
   
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

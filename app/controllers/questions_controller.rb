@@ -103,7 +103,22 @@ class QuestionsController < ApplicationController
   end
   
   def index_for_search
-    @questions = @search.paginate :page => params[:page], :per_page => 2
+    
+    page = params[:page] 
+    logger.info "Searchstring"
+    logger.info @searchstring
+    @questions = Sunspot.search(Question) do 
+      fulltext @searchstring #do
+       # highlight :name, :body_plain, :max_snippets => 3, :fragment_size => 200
+        #tie 0.1    
+      #end
+      #with :user_id, @user_facet unless @user_facet.nil?
+      facet :user_id
+      #facet :tags
+      paginate(:page =>  page, :per_page => 10)
+    end
+    
+    render :index_for_search
   end
   
   protected

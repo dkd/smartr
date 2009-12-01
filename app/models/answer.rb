@@ -9,7 +9,16 @@ class Answer < ActiveRecord::Base
   #Validations
   validates_presence_of [:body]
   validate :only_answer_from_user
-
+  
+ #Sunspot Solr
+ 
+ searchable do
+   text :body_plain
+   integer :question_id
+   integer :user_id
+   time :created_at
+   time :updated_at
+ end  
 
   def only_answer_from_user
     if(Answer.find_all_by_user_id_and_question_id(self.user_id,self.question_id).size > 1)
