@@ -44,11 +44,14 @@
     </div>
     <div id="sidebar">
       <h3>Search</h3>
-      <% form_for(@search, :url => questions_path) do |f| %>
-        <%= f.text_field :name_or_body_plain_like %>
+      <% form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
+        <%= f.text_field(:searchstring, :value => @searchstring) %>
         <%= f.submit "Search" %>
       <% end -%>
       <br class="clear" />
+      <%= yield :facets %>
+      <br class="clear" />
+      
       <%= yield :sidebar%>
     </div>
   </div>
@@ -58,6 +61,7 @@
   <%= javascript_include_tag "highlight/languages/html-xml"%>
   <%= javascript_include_tag "highlight/languages/php"%>
   <%= javascript_include_tag "highlight/languages/ruby"%>
-  <%#= javascript_include_tag "highlight/languages/typoscript"%>
+  <%= javascript_include_tag "highlight/languages/typoscript"%>
+  <%= javascript_include_tag "jquery.textarea"%>
   </body>
 </html>

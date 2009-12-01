@@ -24,6 +24,31 @@ class Question < ActiveRecord::Base
   #    tagged_with(tags, :on => :tags) 
   #}
   
+  #Sunspot Solr
+  searchable do
+    text :name, :boost => 2.0
+    text :body_plain
+    integer :user_id, :references => User
+    text :answers do 
+      answers.map {|answer| answer.body_plain}
+    end
+    text :user do
+      user.login
+    end
+    
+    string(:tags, :multiple => true) do 
+      tags.map{|tag| tag.name}
+    end
+    
+    time :updated_at
+    time :created_at
+    
+    integer :id
+    
+    string :sort_title do
+      name.downcase.sub(/^(an?|the) /, '')
+    end
+  end
   
   #Methods
   def self.recent_tags
@@ -35,6 +60,22 @@ class Question < ActiveRecord::Base
     end    
     list
   end
+  
+  def self.solr
+    searchstring = "ruby"
+    page = 1 
+    q = Sunspot.search(Question) do 
+      fulltext searchstring do
+        highlight :name, :body_plain, :max_snippets => 3, :fragment_size => 200
+        tie 0.1
+      end
+      facet :user_id
+      facet :tags
+      paginate(:page =>  page, :per_page => 10)
+    end
+    
+  end
+  
   
   def before_save
     self.answers_count = 0 if self.answers_count.nil?

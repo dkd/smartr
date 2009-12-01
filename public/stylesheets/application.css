@@ -280,6 +280,11 @@ h2.question-header a:hover {
   background: #f4f4f4;
   margin-top: 30px;
   margin-left: 10px; }
+  #sidebar .facets a:link, #sidebar .facets a:visited {
+    background: none;
+    color: black; }
+  #sidebar .facets a:hover {
+    text-decoration: underline; }
   #sidebar .user {
     margin-top: 10px;
     background: #ffff99;
