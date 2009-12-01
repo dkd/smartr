@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
-  
+  before_filter :prepare_search
   protected
+    
+    def prepare_search
+      @search = Question.search(params[:search])
+    end
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -25,13 +30,13 @@ class ApplicationController < ActionController::Base
             store_location
             flash[:notice] = "You must be logged in to access this page"
             redirect_to new_user_session_url
-            return false
+            false
           end
         }
         format.js{
-          unless current_user            
-            render :text => "alert('You must be logged in.')"
-            return false
+          unless current_user  
+            render :text => "You must be logged in to perform this action"
+            false
           end
         }
       end

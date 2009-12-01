@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
     
     if(params[:tag])
       index_for_tag
+    elsif(params[:search])
+      index_for_search
     else
       @questions = Question.latest.paginate :page => params[:page], :per_page => 20
     end
@@ -88,8 +90,25 @@ class QuestionsController < ApplicationController
   end
   
   
+  def index_for_hot
+    @questions = Question.hot.paginate :page => params[:page], :per_page => 2
+  end
+  
+  def index_for_active
+    @questions = Question.active.paginate :page => params[:page], :per_page => 20
+  end
+  
+  def index_for_unanswered
+    @questions = Question.unanswered.paginate :page => params[:page], :per_page => 20
+  end
+  
+  def index_for_search
+    @questions = @search.paginate :page => params[:page], :per_page => 2
+  end
+  
   protected
-
+  
+    
   
   def index_for_tag
     @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 20

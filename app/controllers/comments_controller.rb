@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js { 
         render :update do |page|
-          page[".comment-new"].hide
+          page["#{params[:commentable_type]}-comments-#{params[:commentable_id]} .comment-new"].hide
           page.insert_html :bottom, "#{params[:commentable_type]}-comments-#{params[:commentable_id]}", 
                                     render(:partial => "new", :locals => {:comment => @comment, 
                                                                           :commentable_type => params[:commentable_type], 

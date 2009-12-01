@@ -22,4 +22,8 @@ module ApplicationHelper
     
   end
   
+  def fancy_flash
+    
+  end
+  
 end

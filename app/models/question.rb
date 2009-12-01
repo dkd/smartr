@@ -15,10 +15,15 @@ class Question < ActiveRecord::Base
   
   #Named Scopes
   default_scope :include => :user
-  named_scope :latest, :order => "created_at DESC", :include => [:user]
+  named_scope :latest, :order => "created_at DESC"
+  named_scope :hot, :order => "updated_at DESC, answers_count DESC"
+  named_scope :active, :order => "updated_at DESC, answers_count DESC"
+  named_scope :unanswered, :order => "answers_count DESC, created_at ASC"
   
+  #scope_procedure :taggable_with_tags, lambda { |tags|
+  #    tagged_with(tags, :on => :tags) 
+  #}
   
-  #Accessor
   
   #Methods
   def self.recent_tags

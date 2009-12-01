@@ -1,5 +1,8 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+function top_message(message, type){
+  $("#top-flash").find("p").html(message).parent().slideDown("slow");
+}
 
 $(document).ready(function(){
   $("div.tag-search input").keyup(function(){
@@ -21,6 +24,9 @@ $(document).ready(function(){
             }});
     
   });
+  
+  //$("#top-flash").slideDown("slow");
+  $("#top-flash span").click(function(){$(this).parent().slideUp("fast")});
   
   
   $(".question-edit form, .answer-edit form").submit(function(){
