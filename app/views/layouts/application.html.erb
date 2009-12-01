@@ -45,7 +45,7 @@
     <div id="sidebar">
       <h3>Search</h3>
       <% form_for(@search, :url => questions_path) do |f| %>
-        <%= f.text_field :name_like %>
+        <%= f.text_field :name_or_body_plain_like %>
         <%= f.submit "Search" %>
       <% end -%>
       <br class="clear" />
