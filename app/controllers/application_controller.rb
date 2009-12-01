@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         @searchstring =  params[:search][:searchstring]
         @user_facet = params[:user_id] unless params[:user_id].nil?
       else
-        @searchstring = nil
+        @searchstring = ""
       end
       
     end
