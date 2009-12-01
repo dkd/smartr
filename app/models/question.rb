@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
   named_scope :latest, :order => "created_at DESC"
   named_scope :hot, :order => "updated_at DESC, answers_count DESC"
   named_scope :active, :order => "updated_at DESC, answers_count DESC"
-  named_scope :unanswered, :order => "answers_count DESC, created_at ASC"
+  named_scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
   
   #scope_procedure :taggable_with_tags, lambda { |tags|
   #    tagged_with(tags, :on => :tags) 
