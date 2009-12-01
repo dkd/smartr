@@ -106,13 +106,14 @@ class QuestionsController < ApplicationController
     
     page = params[:page] 
     logger.info "Searchstring"
-    logger.info @searchstring
+    searchstring = params[:search][:searchstring]
+    facet_user_id = params[:user_id] unless params[:user_id].nil?
     @questions = Sunspot.search(Question) do 
-      fulltext @searchstring #do
+      fulltext searchstring #do
        # highlight :name, :body_plain, :max_snippets => 3, :fragment_size => 200
         #tie 0.1    
       #end
-      #with :user_id, @user_facet unless @user_facet.nil?
+      with :user_id, facet_user_id unless facet_user_id.nil?
       facet :user_id
       #facet :tags
       paginate(:page =>  page, :per_page => 10)
