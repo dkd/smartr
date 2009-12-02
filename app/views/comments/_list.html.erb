@@ -1,0 +1,17 @@
+<% if comments.present? %>
+  <h3>Comments</h3>
+  <% for comment in comments do %>
+    <div class="comment-item">
+      <div class="user-info">
+        <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=comment.user.login%>
+      </div>
+      <br class="clear" />
+      <%= comment.body %>
+    </div>
+  <% end -%>
+<% end -%>
+<%= link_to_remote("Add Comment",
+                    :url => new_comment_path(:commentable_type => parent.class.name,
+                                             :commentable_id => parent.id), 
+                    :method => :get,
+                    :html => {:class => "comment-new"}) %>

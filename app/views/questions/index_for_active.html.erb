@@ -1,0 +1,14 @@
+<div class="question-header">
+  <h2>Hot questions</h2>
+  <div class="tabs">
+    <%=submenu(:active) %>
+  </div>
+  <br class="clear" />
+</div>
+<br class="clear" />
+<% @questions.each do |question| %>
+<%= render :partial => "/questions/question", :locals => {:question => question} %>
+<% end -%>
+<%= will_paginate @questions %>
+<% content_for :sidebar, render(:partial => "sidebar") %>
+<% main_menu :questions  %>
