@@ -36,7 +36,7 @@ class Question < ActiveRecord::Base
       user.login
     end
     
-    string(:tags, :multiple => true) do 
+    text(:tags) do 
       tags.map{|tag| tag.name}
     end
     
@@ -70,7 +70,7 @@ class Question < ActiveRecord::Base
         tie 0.1
       end
       facet :user_id
-      facet :tags
+      #facet :tags
       paginate(:page =>  page, :per_page => 10)
     end
     

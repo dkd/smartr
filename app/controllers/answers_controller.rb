@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
-    
+    @question = Question.find(params[:question_id])
     if @answer.update_attributes(params[:answer])
       flash[:notice] = "Saved your answer."
         redirect_to question_path(@answer.question)
