@@ -1,0 +1,19 @@
+<div class="question-header">
+  <h2>SolR Search</h2>
+  <div class="tabs">
+    <%=submenu(:latest) %>
+  </div>
+  <br class="clear" />
+</div>
+<br class="clear" />
+<% if @questions.results.present? %>
+  <% @questions.results.each do |question| %>
+  <%= render :partial => "/questions/question", :locals => {:question => question} %>
+  <% end -%>
+  <%= will_paginate @questions.results %>
+<% else %>
+<p>No results found. I am very sorry.</p>
+<% end -%>
+<% content_for :sidebar, render(:partial => "sidebar") %>
+<% content_for :facets, render(:partial => "facets", :locals => {:results => @questions}) %>
+<% main_menu :questions  %>
