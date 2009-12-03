@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
         }
         format.js{
           unless current_user  
-            render :text => "You must be logged in to perform this action"
+            render :text => "alert('You must be logged in to perform this action');"
             false
           end
         }
