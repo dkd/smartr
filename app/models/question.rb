@@ -84,7 +84,7 @@ class Question < ActiveRecord::Base
   def update_views
     number_of_views = self.views.nil?? 0 : self.views
     self.views = number_of_views + 1
-    self.save!
+    self.save(false)
   end
   
   def answered?(user)
