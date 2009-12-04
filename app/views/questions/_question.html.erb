@@ -32,10 +32,11 @@
       <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>
-        <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
+          <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
         <% end -%>
-        <% end -%>
-      </div>
+        </div>
+      <% end -%>
+      
     </div>
     <br style="clear: both">
   </div>
