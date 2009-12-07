@@ -12,6 +12,7 @@ class Question < ActiveRecord::Base
   
   #Extensions
   acts_as_taggable_on :tags
+  has_friendly_id :permalink
   
   #Named Scopes
   default_scope :include => :user
@@ -23,6 +24,8 @@ class Question < ActiveRecord::Base
   #scope_procedure :taggable_with_tags, lambda { |tags|
   #    tagged_with(tags, :on => :tags) 
   #}
+  
+  before_save :set_permalink
   
   #Sunspot Solr
   searchable do
@@ -59,6 +62,10 @@ class Question < ActiveRecord::Base
       end
     end    
     list
+  end
+  
+  def set_permalink
+    self.permalink = self.name.to_permalink
   end
   
   def self.solr
