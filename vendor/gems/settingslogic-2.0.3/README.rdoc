@@ -1,0 +1,79 @@
+= Settingslogic
+
+Settingslogic is a simple configuration / settings solution that uses an ERB enabled YAML file. It has been great for my apps, maybe you will enjoy it too.
+
+So here is my question to you.....is Settingslogic a great settings solution or the greatest?
+
+== Helpful links
+
+*	<b>Documentation:</b> http://rdoc.info/projects/binarylogic/settingslogic
+*	<b>Repository:</b> http://github.com/binarylogic/settingslogic/tree/master
+* <b>Issues:</b> http://github.com/binarylogic/settingslogic/issues
+
+== Install and use
+
+Install from rubyforge:
+
+  sudo gem install settingslogic
+
+Install from github:
+
+  sudo gem install binarylogic-settingslogic
+
+Or as a plugin
+
+  script/plugin install git://github.com/binarylogic/settingslogic.git
+
+== 1. Define your constant
+
+Instead of defining a Settings constant for you, that task is left to you. Simply create a class in your application that looks like:
+
+  class Settings < Settingslogic
+    source "#{Rails.root}/config/application.yml"
+    namespace Rails.env
+  end
+
+Name it Settings, name it Config, name it whatever you want. Add as many or as few as you like. A good place to put this file in a rails app is models/settings.rb
+
+I felt adding a settings file in your app was more straightforward, less tricky, and more flexible.
+
+== 2. Create your settings
+
+Notice above we specified an absolute path to our settings file called "application.yml". This is just a typical YAML file. Also notice above that we specified a namespace for our environment. This allows us to namespace our configuration depending on our environment:
+
+  # app/config/application.yml
+  defaults: &defaults
+    cool:
+      saweet: nested settings
+    neat_setting: 24
+    awesome_setting: <%= "Did you know 5 + 5 = " + (5 + 5) + "?" %>
+  
+  development:
+    <<: *defaults
+    neat_setting: 800
+
+  test:
+    <<: *defaults
+
+  production:
+    <<: *defaults
+
+== Access your settings
+
+  >> Rails.env.development?
+  => true
+  
+  >> Settings.cool
+  => "#<Settingslogic::Settings ... >"
+  
+  >> Settings.cool.saweet
+  => "nested settings"
+  
+  >> Settings.neat_setting
+  => 800
+  
+  >> Settings.awesome_setting
+  => "Did you know 5 + 5 = 10?"
+
+
+Copyright (c) 2008 {Ben Johnson}[http://github.com/binarylogic] of {Binary Logic}[http://www.binarylogic.com], released under the MIT license 

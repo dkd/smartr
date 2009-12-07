@@ -1,3 +1,5 @@
+require "unicode"
+
 class String
   
   def correctize_plural(number)

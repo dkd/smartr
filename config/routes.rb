@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  #RSS
+  map.connect "questions/index.xml", :controller => "questions", :action => "index"
+  
   map.connect "questions/hot/:page", :controller => :questions, :action => :index_for_hot, :page => nil
   map.connect "questions/active/:page", :controller => :questions, :action => :index_for_active, :page => nil
   map.connect "questions/unanswered/:page", :controller => :questions, :action => :index_for_unanswered, :page => nil
@@ -15,4 +19,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :user_session
   map.root :controller => "questions", :action => "index"
+  
 end

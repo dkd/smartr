@@ -11,6 +11,11 @@ class QuestionsController < ApplicationController
       index_for_search
     else
       @questions = Question.latest.paginate :page => params[:page], :per_page => 20
+      respond_to do |wants|
+        wants.html {  }
+        wants.xml { render "questions/rss/index" }
+      end
+      
     end
     
   end
