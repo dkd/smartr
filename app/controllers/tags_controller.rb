@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 
   def index
     if params[:tag].present?
-          @tags = Tag.find(:all, :conditions => ["name LIKE ?", "#{params[:tag]}%"])
+      @tags = Tag.find(:all, :conditions => ["name LIKE ?", "#{params[:tag]}%"])
     else
       @tags = Question.tag_counts
     end
