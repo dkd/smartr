@@ -1,5 +1,5 @@
 <% @tags.each do |tag| %>
    <span class="tag">
-     <%=tag.count %>x <%=link_to tag, :controller => :questions, :tag => tag.name -%>
+     <%=Tagging.find_all_by_taggable_type_and_tag_id("Question", tag.id).size %>x <%=link_to tag, :controller => :questions, :tag => tag.name -%>
    </span>
  <% end -%>
