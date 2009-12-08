@@ -28,6 +28,18 @@
   .stats .zero span.desc {
     font-size: 10px; }
 
+.answer-item .stats div.favourite, .question .stats div.favourite {
+  font-size: 60px;
+  font-weight: bold;
+  display: inline;
+  padding: 0px;
+  clear: left; }
+  .answer-item .stats div.favourite a:link, .answer-item .stats div.favourite a:visited, .question .stats div.favourite a:link, .question .stats div.favourite a:visited {
+    color: black;
+    text-decoration: none; }
+  .answer-item .stats div.favourite a:hover, .question .stats div.favourite a:hover {
+    color: orange;
+    text-shadow: 0px 0px 10px orange; }
 .answer-item .stats div.votes, .question .stats div.votes {
   width: 50px;
   background: white;

@@ -1,3 +1,32 @@
+.user-header {
+  margin-top: 20px; }
+  .user-header .image {
+    width: 100px;
+    float: left; }
+    .user-header .image .stats {
+      margin-top: 10px;
+      background: green;
+      padding: 5px;
+      color: white;
+      width: 100%; }
+      .user-header .image .stats h3 {
+        margin: 0px;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 5px black; }
+    .user-header .image img {
+      border: 1px solid #e9e9e9;
+      padding: 5px; }
+  .user-header .info {
+    float: left;
+    background: #e9e9e9;
+    width: 550px;
+    margin: 10px;
+    margin-top: 0px;
+    margin-left: 20px;
+    padding: 10px; }
+    .user-header .info h2 {
+      margin: 0px; }
+
 .user-list .user-item {
   float: left;
   background: #e9e9e9;

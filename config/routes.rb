@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :votes
   map.resources :users
   map.resource :user_session
+  map.resources :favourites
   map.root :controller => "questions", :action => "index"
   
 end

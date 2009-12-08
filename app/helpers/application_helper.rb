@@ -26,4 +26,13 @@ module ApplicationHelper
     
   end
   
+  def code(html)
+    Sanitize.clean(BlueCloth.new(html).to_html,
+        :elements => ['br','strong','ul','ol','blockquote','li','a','h1','h2','h3','p','span','pre','code','div','img'], 
+        :attributes =>{
+          'a' => ['href','title'],
+          'img' => ['src','title','alt']
+        })
+  end
+  
 end

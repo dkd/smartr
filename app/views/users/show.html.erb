@@ -1,38 +1,43 @@
-<%= image_tag @user.avatar.url(:medium) %>
-<p>
-  <b>Login:</b>
-  <%=h @user.login %>
-</p>
+<div class="user-header">
+  <div class="image">
+    <%= image_tag @user.avatar.url(:medium) %> 
+    <div class="stats">
+      <h3>Views</h3>
+      <%= @user.views %>
+    </div>
+    <div class="stats">
+      <h3>Reputation</h3>
+      <%= @user.reputation.to_s %>
+    </div>
+  </div>
+  <div class="info">
+    <h2><%=h @user.login %></h2>
+    <h3>Login count:</h3>
+        <p>
+      <%=h @user.login_count %>
+    </p>
 
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
+      <h3>Last request</h3>
+      <p>
+      <%=h distance_of_time_in_words_to_now @user.last_request_at %> ago
+    </p>
 
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
+    <p>
+      <h3>Last login</h3>
+      <%=h distance_of_time_in_words_to_now  @user.last_login_at %> ago
+    </p>
 
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
+    
+      <h3>Current login</h3>
+      <p>
+      <%=h distance_of_time_in_words_to_now  @user.current_login_at %> ago
+    </p>
 
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
+    <%= link_to 'Edit', edit_user_path(current_user) if current_user && current_user == @user%>
+    
+  </div>
+  <br class="clear" />
+</div>
 
 <% if @user.interesting_tags.length>0 %>
   <h2>Interested in ...</h2>
@@ -42,12 +47,20 @@
     <% end -%>
   </div>
 <% end -%>
+<% if @user.uninteresting_tags.length>0 %>
+  <h2>Not interested in ...</h2>
+  <div class="tags">
+  <% @user.uninteresting_tags.each do |tag| %>
+    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <% end -%>
+  </div>
+<% end -%>
 <h2>Questions</h2>
-<% @user.questions.each do |question| %>
+<% Question.find_all_by_user_id(@user.id, :limit => 5).each do |question| %>
   <%= render :partial => "/questions/question", :locals => {:question => question} %>
 <% end -%>
 <h2>Answers</h2>
-<% @user.answers.each do |answer| %>
+<% Answer.find_all_by_user_id(@user.id, :limit => 5).each do |answer| %>
   <%= render :partial => "/questions/question", :locals => {:question => answer.question} %>
 <% end -%>
 <% main_menu :users%>

@@ -12,7 +12,10 @@ class VotesController < ApplicationController
           render :update do |page|
             page[params[:dom_id]].replace_html vote.cast(params[:direction])
             if params[:model] == "answer"
-            page[params[:vote_box_id]].replace_html render(:partial => "/answers/vote_box", :locals => {:answer => record})
+              page[params[:vote_box_id]].replace_html render(:partial => "/answers/vote_box", :locals => {:answer => record})
+            end
+            if params[:model] == "question"
+              page[params[:vote_box_id]].replace_html render(:partial => "/questions/vote_box", :locals => {:question => record})
             end
           end
         end
