@@ -17,6 +17,6 @@ describe Question do
   
   it "should have at least one tag"
     puts "SPEC"
-  end
+  end  
   
 end

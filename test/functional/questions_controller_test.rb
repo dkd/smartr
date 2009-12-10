@@ -11,10 +11,30 @@ class QuestionsControllerTest < ActionController::TestCase
   end
   
   test "logged in user should be able to enter a question" do
-    post :create, :controller => :user_sessions, :user_session => { :login => "bjohnson", :password => "benrocks" }
+    UserSession.create Factory.build(:user)
     get :new
-    assert_redirected_to new_question_path
+    assert_response :success
   end
+  
+  test "Logged in user should not be able to save empty question" do
+    UserSession.create Factory.build(:user)
+    get :new
+    assert_response :success
+    post :create
+    #assert_redirected_to question_path(controller.instance_variable_get :@question)
+    assert_template :new
+  end
+  
+  test "Show question" do
+    Factory(:question)
+    get :show, :id => Question.last.id
+  end
+  
+  test "Remove question from favourites" do
+  
+  end
+  
+  
   
 end
  

@@ -33,7 +33,9 @@ class Question < ActiveRecord::Base
     text :body_plain
     integer :user_id, :references => User
     text :answers do 
-      answers.map {|answer| answer.body_plain}
+      answers.map {|answer| 
+        answer.body_plain
+      }
     end
     text :user do
       user.login
@@ -68,20 +70,7 @@ class Question < ActiveRecord::Base
     self.permalink = self.name.to_permalink
   end
   
-  def self.solr
-    searchstring = "ruby"
-    page = 1 
-    q = Sunspot.search(Question) do 
-      fulltext searchstring do
-        highlight :name, :body_plain, :max_snippets => 3, :fragment_size => 200
-        tie 0.1
-      end
-      facet :user_id
-      #facet :tags
-      paginate(:page =>  page, :per_page => 10)
-    end
-    
-  end
+  
   
   
   def before_save
