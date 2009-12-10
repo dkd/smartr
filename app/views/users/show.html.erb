@@ -14,23 +14,23 @@
     <h2><%=h @user.login %></h2>
     <h3>Login count:</h3>
         <p>
-      <%=h @user.login_count %>
+      <%=h @user.login_count unless @user.login_count.nil? %>
     </p>
 
       <h3>Last request</h3>
       <p>
-      <%=h distance_of_time_in_words_to_now @user.last_request_at %> ago
+      <%=h(distance_of_time_in_words_to_now(@user.last_request_at)) unless @user.last_request_at.nil? %> ago
     </p>
 
     <p>
       <h3>Last login</h3>
-      <%=h distance_of_time_in_words_to_now  @user.last_login_at %> ago
+      <%=h(distance_of_time_in_words_to_now(@user.last_login_at)) unless @user.last_login_at.nil? %> ago
     </p>
 
     
       <h3>Current login</h3>
       <p>
-      <%=h distance_of_time_in_words_to_now  @user.current_login_at %> ago
+      <%=h(distance_of_time_in_words_to_now(@user.current_login_at)) unless @user.current_login_at.nil? %> ago
     </p>
 
     <%= link_to 'Edit', edit_user_path(current_user) if current_user && current_user == @user%>

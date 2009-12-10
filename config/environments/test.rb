@@ -4,6 +4,14 @@
 # test suite.  You never need to work with it otherwise.  Remember that
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs.  Don't rely on the data there!
+config.gem 'rspec-rails', :lib => false 
+config.gem 'rspec', :lib => false
+config.gem "thoughtbot-factory_girl",
+           :lib    => "factory_girl",
+           :source => "http://gemcutter.org"
+           
+#config.gem 'jscruggs-metric_fu', :version => '1.1.5', :lib => 'metric_fu', :source => 'http://gems.github.com'
+
 config.cache_classes = true
 
 # Log error messages when you accidentally call methods on nil.

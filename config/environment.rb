@@ -33,9 +33,7 @@ Rails::Initializer.run do |config|
   config.gem "bluecloth"
   config.gem "sanitize"
   #config.gem "searchlogic"
-  config.gem "thoughtbot-factory_girl",
-               :lib    => "factory_girl",
-               :source => "http://gemcutter.org"
+  
   config.gem 'sunspot', :lib => 'sunspot'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails'
   
