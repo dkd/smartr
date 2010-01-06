@@ -1,6 +1,6 @@
 <br />
-<% if Favourite.find_by_user_id_and_question_id(current_user.id, question.id) %>
-  <%= link_to_remote "*", :url => "favourites_path()"%>REMOVE
-<% else %>
-  <%= link_to_remote "*", :url => favourites_path(:favourite => {:question_id => question.id}), :method => "post" %>
-<% end -%>
+<%# if Favourite.find_by_user_id_and_question_id(current_user.id, question.id) %>
+  <%#= link_to_remote "*", :url => "favourites_path()"%>
+<%# else %>
+  <%#= link_to_remote "*", :url => favourites_path(:favourite => {:question_id => question.id}), :method => "post" %>
+<%# end -%>

@@ -7,11 +7,19 @@
     a:link, a:visited
       text-decoration: none
       color: white
-      background: green
+      background = !standard_color
       padding: 5px
-      -webkit-border-radius: 5px
-      -moz-border-radius: 5px
+      +border_radius
     
-    a:hover
-      background: black
-    
+      a:hover
+        background = !standard_color * 1.1
+  
+  a:link, a:visited
+    text-decoration: none
+    color: white
+    background = !standard_color
+    padding: 5px
+    +border_radius
+
+  a:hover
+    background = !standard_color * 1.1

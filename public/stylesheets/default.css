@@ -1,94 +1,130 @@
-body {
-  font-family: Helvetica, Arial;
-  margin: 0px;
-  margin-top: 0px; }
-  body #center-flash {
-    position: absolute;
-    left: 25%;
-    right: 25%;
-    z-index: 100;
-    margin: auto;
-    top: 25%;
-    width: 300px;
-    height: 100px;
-    background: red;
-    color: white;
-    padding: 10px;
-    display: none; }
-  body #top-flash {
-    position: absolute;
-    height: 25px;
-    border-bottom: 2px solid #737373;
-    background: green;
-    color: white;
-    width: 100%;
-    z-index: 100;
-    top: 0px;
-    left: 0px;
-    opacity: 0.8;
-    display: none; }
-    body #top-flash p {
-      display: inline;
-      color: white;
-      margin: 0px; }
-    body #top-flash h4 {
-      display: inline;
-      margin-right: 10px;
-      margin: 10px 10px 1px 10px; }
-    body #top-flash span {
-      position: relative;
-      right: 0px;
-      padding: 5px;
-      color: white; }
-  body .clear {
-    clear: both; }
-  body #wrapper {
-    width: 960px;
-    margin: 0 auto; }
-    body #wrapper #header h1 {
-      color: green;
-      width: 600px;
-      float: left; }
-      body #wrapper #header h1 a:link,
-      body #wrapper #header h1 a:visited {
-        color: green;
-        text-decoration: none; }
-    body #wrapper #header #user {
-      color: red;
-      float: right;
-      background: #f4f4f4;
-      padding: 10px;
-      width: 220px;
-      -moz-box-shadow: #e9e9e9 2px 2px 10px;
-      -webkit-box-shadow: #e9e9e9 2px 2px 10px;
-      margin-top: 10px; }
-    body #wrapper #header #menu {
-      border-bottom: 3px solid #737373;
-      width: 700px; }
-      body #wrapper #header #menu ul {
-        display: inline;
-        margin-left: 0;
-        padding-left: 0; }
-        body #wrapper #header #menu ul li.active {
-          background: green;
-          font-size: 18px;
-          padding: 10px;
-          overflow: hidden; }
-          body #wrapper #header #menu ul li.active a:link, body #wrapper #header #menu ul li.active a:visited {
-            color: white;
-            overflow: hidden; }
-        body #wrapper #header #menu ul li {
-          list-style: none;
-          display: inline;
-          margin-right: 20px; }
-          body #wrapper #header #menu ul li a:link, body #wrapper #header #menu ul li a:visited {
-            text-decoration: none;
-            color: green;
-            font-weight: bold; }
-          body #wrapper #header #menu ul li a:hover {
-            color: black; }
-  body #content {
-    float: left;
-    width: 700px; }
-  body a:focus {
-    outline: 0px; }
+/*
+Sass::SyntaxError: Undefined variable: "!standard_color".
+on line 88 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass
+
+84:           margin-left: 0
+85:           padding-left: 0
+86:           
+87:           li.active
+88:             background = !standard_color
+89:             font-size: 18px
+90:             padding: 10px
+91:             overflow: hidden
+92:             
+93:             a:link, a:visited
+94:               color: white
+
+
+Backtrace:
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass:88
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:103:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:94:in `update_stylesheet'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:80:in `update_stylesheets'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:75:in `each'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:75:in `update_stylesheets'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:73:in `each'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:73:in `update_stylesheets'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:60:in `check_for_updates'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin/rails.rb:18:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:391:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:386:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:437:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/session/abstract_store.rb:122:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/commands/server.rb:111
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: Undefined variable: \"!standard_color\".\A on line 88 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass\A \A 84:           margin-left: 0\A 85:           padding-left: 0\A 86:           \A 87:           li.active\A 88:             background = !standard_color\A 89:             font-size: 18px\A 90:             padding: 10px\A 91:             overflow: hidden\A 92:             \A 93:             a:link, a:visited\A 94:               color: white\A "; }

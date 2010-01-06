@@ -1,48 +1,93 @@
-#sidebar {
-  float: left;
-  width: 230px;
-  padding: 10px;
-  background: #f4f4f4;
-  margin-top: 30px;
-  margin-left: 10px; }
-  #sidebar .facets a:link, #sidebar .facets a:visited {
-    background: none;
-    color: black; }
-  #sidebar .facets a:hover {
-    text-decoration: underline; }
-  #sidebar .user {
-    margin-top: 10px;
-    background: #ffff99;
-    padding: 5px; }
-    #sidebar .user a:link, #sidebar .user a:visited {
-      background: none;
-      color: green; }
-    #sidebar .user a:hover {
-      text-decoration: underline; }
-    #sidebar .user img {
-      margin-right: 5px; }
-  #sidebar a:link, #sidebar a:visited {
-    text-decoration: none;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    background: green;
-    padding: 5px;
-    font-size: 16px;
-    color: white;
-    width: 100%; }
-  #sidebar h3 {
-    margin-top: 20px; }
-  #sidebar .tags a:link, #sidebar .tags a:visited {
-    color: black;
-    width: auto;
-    text-decoration: none;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    background: green;
-    padding: 5px;
-    font-size: 12px;
-    color: white;
-    float: left;
-    margin: 2px; }
-  #sidebar .tags a:hover {
-    background: black; }
+/*
+Sass::SyntaxError: Undefined mixin 'border_radius'.
+on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass
+
+4:   padding: 10px
+5:   background: #f4f4f4
+6:   margin-top: 30px
+7:   margin-left: 10px
+8:   +border_radius
+9:   
+10:   .facets
+11:     a:link, a:visited
+12:       background: none
+13:       color: black
+14:   
+
+
+Backtrace:
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass:8
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:103:in `render'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:94:in `update_stylesheet'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:80:in `update_stylesheets'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:75:in `each'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:75:in `update_stylesheets'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:73:in `each'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:73:in `update_stylesheets'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:60:in `check_for_updates'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin/rails.rb:18:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:391:in `process'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:386:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:437:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/session/abstract_store.rb:122:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/commands/server.rb:111
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 4:   padding: 10px\A 5:   background: #f4f4f4\A 6:   margin-top: 30px\A 7:   margin-left: 10px\A 8:   +border_radius\A 9:   \A 10:   .facets\A 11:     a:link, a:visited\A 12:       background: none\A 13:       color: black\A 14:   \A "; }

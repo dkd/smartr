@@ -41,7 +41,7 @@
 
 <% if @user.interesting_tags.length>0 %>
   <h2>Interested in ...</h2>
-  <div class="tags">
+  <div class="tag-list">
   <% @user.interesting_tag_list.each do |tag| %>
     <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
     <% end -%>
@@ -49,7 +49,7 @@
 <% end -%>
 <% if @user.uninteresting_tags.length>0 %>
   <h2>Not interested in ...</h2>
-  <div class="tags">
+  <div class="tag-list">
   <% @user.uninteresting_tags.each do |tag| %>
     <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
     <% end -%>

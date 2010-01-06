@@ -70,7 +70,7 @@ body {
         margin-left: 0;
         padding-left: 0; }
         body #wrapper #header #menu ul li.active {
-          background: green;
+          background: #4e7700;
           font-size: 18px;
           padding: 10px;
           overflow: hidden; }
@@ -80,10 +80,12 @@ body {
         body #wrapper #header #menu ul li {
           list-style: none;
           display: inline;
-          margin-right: 20px; }
+          margin-right: 20px;
+          -moz-border-radius: 10px;
+          -webkit-border-radius: 10px; }
           body #wrapper #header #menu ul li a:link, body #wrapper #header #menu ul li a:visited {
             text-decoration: none;
-            color: green;
+            color: #4e7700;
             font-weight: bold; }
           body #wrapper #header #menu ul li a:hover {
             color: black; }
@@ -183,7 +185,9 @@ h2.question-header a:hover {
   background: #f4f4f4;
   padding: 10px;
   width: 615px;
-  overflow: auto; }
+  overflow: auto;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
   .question .body p {
     margin-top: 0px; }
   .question .body .tags {
@@ -218,9 +222,23 @@ h2.question-header a:hover {
       text-decoration: underline; }
     .question .body .user img {
       margin-right: 5px; }
+  .question .body .edit {
+    float: right;
+    margin-top: 1em; }
+    .question .body .edit a:link,
+    .question .body .edit a:visited {
+      background: green;
+      color: white;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      text-decoration: none;
+      padding: 5px; }
 
 .question-list {
-  background: #f4f4f4;
+  background: #e9e9e9;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #e9e9e9));
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   padding: 5px 5px 5px 0px;
   margin-bottom: 10px; }
   .question-list .body h3 {
@@ -253,13 +271,13 @@ h2.question-header a:hover {
   .question-list .body .tags a:link, .question-list .body .tags a:visited {
     font-size: 12px;
     text-decoration: none;
-    background: orange;
+    background: #ae5a00;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     color: white;
     padding: 5px; }
   .question-list .body .tags a:hover {
-    background: black; }
+    background: #8b4800; }
 
 #errorExplanation {
   border: 3px solid red;
@@ -280,7 +298,9 @@ h2.question-header a:hover {
   padding: 10px;
   background: #f4f4f4;
   margin-top: 30px;
-  margin-left: 10px; }
+  margin-left: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
   #sidebar .facets a:link, #sidebar .facets a:visited {
     background: none;
     color: black; }
@@ -399,7 +419,10 @@ h2.answer-header {
   margin-right: 10px;
   padding-top: 5px;
   padding-bottom: 2px;
-  line-height: 23px; }
+  line-height: 23px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow: 1px 1px 1px #444444; }
   .stats div span.desc {
     font-size: 12px;
     display: block; }
@@ -408,7 +431,7 @@ h2.answer-header {
 .stats .views {
   background: #cfcfcf; }
 .stats .answers {
-  background: #2F6F00;
+  background: #4e7700;
   color: white; }
   .stats .answers span.desc {
     font-size: 10px; }
@@ -499,12 +522,21 @@ h2.answer-header {
   .tag-list .tag a:link, .tag-list .tag a:visited {
     text-decoration: none;
     color: white;
-    background: green;
+    background: #4e7700;
     padding: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px; }
-  .tag-list .tag a:hover {
-    background: black; }
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px; }
+    .tag-list .tag a:link a:hover, .tag-list .tag a:visited a:hover {
+      background: #558200; }
+.tag-list a:link, .tag-list a:visited {
+  text-decoration: none;
+  color: white;
+  background: #4e7700;
+  padding: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+.tag-list a:hover {
+  background: #558200; }
 
 .pagination a:link, .pagination a:visited {
   padding: 5px;
@@ -535,10 +567,12 @@ h2.answer-header {
     float: left; }
     .user-header .image .stats {
       margin-top: 10px;
-      background: green;
+      background: #a87300;
       padding: 5px;
       color: white;
-      width: 100%; }
+      width: 100%;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
       .user-header .image .stats h3 {
         margin: 0px;
         margin-bottom: 10px;
@@ -561,18 +595,25 @@ h2.answer-header {
   float: left;
   background: #e9e9e9;
   padding: 10px;
-  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   margin: 10px 10px 0px 0px; }
   .user-list .user-item a:link, .user-list .user-item a:visited {
     text-decoration: none;
-    color: green; }
+    color: #4e7700; }
   .user-list .user-item a:hover {
     text-decoration: underline;
-    color: black; }
+    color: #5d8e00; }
 
 .comments {
   margin-left: 33%; }
+  .comments .comment-item a:link, .comments .comment-item a:visited {
+    background: none;
+    text-decoration: underline;
+    color: red;
+    float: none;
+    margin: 0px;
+    padding: 0px; }
   .comments a:link, .comments a:visited {
     float: right;
     margin: 10px;
@@ -592,3 +633,8 @@ h2.answer-header {
     padding-top: 0px; }
     .comments .comment-item .user-info {
       float: right; }
+
+#footer {
+  margin-top: 20px;
+  border-top: 3px solid #737373;
+  padding: 10px; }

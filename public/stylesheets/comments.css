@@ -1,5 +1,12 @@
 .comments {
   margin-left: 33%; }
+  .comments .comment-item a:link, .comments .comment-item a:visited {
+    background: none;
+    text-decoration: underline;
+    color: red;
+    float: none;
+    margin: 0px;
+    padding: 0px; }
   .comments a:link, .comments a:visited {
     float: right;
     margin: 10px;
