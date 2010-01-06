@@ -85,7 +85,7 @@ body
           padding-left: 0
           
           li.active
-            background: green
+            background = !standard_color
             font-size: 18px
             padding: 10px
             overflow: hidden
@@ -98,10 +98,11 @@ body
             list-style: none
             display: inline
             margin-right: 20px
+            +border_radius_big
             
             a:link, a:visited
               text-decoration: none
-              color: green
+              color = !standard_color
               font-weight: bold
             
             a:hover

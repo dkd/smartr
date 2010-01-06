@@ -18,12 +18,16 @@
      <% end -%>
    </div>
    <br class="clear" />
-     
+  <% if (current_user && current_user == question.user) %>
+    <div class="edit">
+      <%= link_to 'Edit Question', edit_question_path(question) if (current_user && current_user == question.user) %>   
+    </div>
+  <% end -%>
   </div>
-  <br class="clear" />
+  <br class="clear" /> 
   <div class="actions">
     <br class="clear" />
-     <%= link_to 'Edit Question', edit_question_path(question) if (current_user && current_user == question.user) %>
+     
    </div>
      <div class="comments" id="Question-comments-<%= question.id %>">
       <%= render(:partial => "/comments/list", :locals => {:comments => question.comments, :parent => question}) %>

@@ -6,7 +6,7 @@
         <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=comment.user.login%>
       </div>
       <br class="clear" />
-      <%= comment.body %>
+      <%= auto_link_urls comment.body,{:target => "_blank"} %><br class="clear" />
     </div>
   <% end -%>
 <% end -%>
