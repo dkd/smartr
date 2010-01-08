@@ -35,4 +35,10 @@ module ApplicationHelper
         })
   end
   
+  def current_url
+    port = ""
+    port = ":#{request.port}" unless request.port == 80
+    request.host + port 
+  end
+  
 end
