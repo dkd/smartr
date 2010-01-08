@@ -7,7 +7,7 @@ on line 15 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/boxes.sass
 13:     padding-bottom: 2px
 14:     line-height: 23px
 15:     +border_radius
-16:     text-shadow: 1px 1px 1px #444444
+16:     
 17:     span.desc
 18:       font-size: 12px
 19:       display: block
@@ -97,4 +97,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 15 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/boxes.sass\A \A 11:     margin-right: 10px\A 12:     padding-top: 5px\A 13:     padding-bottom: 2px\A 14:     line-height: 23px\A 15:     +border_radius\A 16:     text-shadow: 1px 1px 1px #444444\A 17:     span.desc\A 18:       font-size: 12px\A 19:       display: block\A 20:   \A 21:   .votes\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 15 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/boxes.sass\A \A 11:     margin-right: 10px\A 12:     padding-top: 5px\A 13:     padding-bottom: 2px\A 14:     line-height: 23px\A 15:     +border_radius\A 16:     \A 17:     span.desc\A 18:       font-size: 12px\A 19:       display: block\A 20:   \A 21:   .votes\A "; }
