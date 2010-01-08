@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "highlight.css" %>
   <link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="http://<%=current_url%>/questions.xml" />
+
 </head>
 <body>
   <div id="top-flash"><h4>Message</h4><p>I am the message! Fuck off!</p><span>close</span></div>
@@ -41,10 +42,9 @@
       <%= yield  %>
     </div>
     <div id="sidebar">
-      <h3>Search</h3>
       <% form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
-        <%= f.text_field(:searchstring, :value => @searchstring) %>
-        <%= f.submit "Search" %>
+        <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
+        <%#= f.submit "Search" %>
       <% end -%>
       <br class="clear" />
       <%= yield :facets %>
@@ -65,5 +65,6 @@
   <%= javascript_include_tag "highlight/languages/ruby"%>
   <%= javascript_include_tag "highlight/languages/typoscript"%>
   <%= javascript_include_tag "jquery.textarea"%>
+  <%= javascript_include_tag "jquery.toggle-value"%>
   </body>
 </html>

@@ -3,10 +3,10 @@
   <% for comment in comments do %>
     <div class="comment-item">
       <div class="user-info">
-        <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=comment.user.login%>
+        <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=link_to comment.user.login, user_path(comment.user)%>
       </div>
       <br class="clear" />
-      <%= auto_link_urls comment.body,{:target => "_blank"} %><br class="clear" />
+      <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
     </div>
   <% end -%>
 <% end -%>

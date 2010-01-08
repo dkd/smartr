@@ -4,9 +4,14 @@
     <div class="votes" id="vote-box-<%=question.id %>">
       <%= render :partial => "/questions/vote_box", :locals => {:question => question} %>
     </div>
+    <div class="views">
+      <%=question.views.humanize %>
+      <span class="desc"><%= "View".correctize_plural(question.views) %></span>
+    </div>
     <div class="favourite">
       <%= render :partial => "/questions/favourite", :locals => {:question =>question }%>
     </div>
+    
   </div>
   <div class="body">
     <%= code(question.body) %>

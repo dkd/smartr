@@ -183,7 +183,7 @@ h2.question-header a:hover {
   .question .actions a:hover {
     background: black; }
 .question .body {
-  background: #f4f4f4;
+  background: #fff;
   padding: 10px;
   width: 615px;
   overflow: auto;
@@ -237,7 +237,7 @@ h2.question-header a:hover {
 
 .question-list {
   background: #e9e9e9;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #e9e9e9));
+  background: #e9e9e9;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   padding: 5px 5px 5px 0px;
@@ -302,6 +302,13 @@ h2.question-header a:hover {
   margin-left: 10px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px; }
+  #sidebar form input {
+    background: #FFF4BF;
+    padding: 5px;
+    border: 1px solid #e9e9e9;
+    font-size: 1.07em;
+    width: 200px;
+    color: #737373; }
   #sidebar .facets a:link, #sidebar .facets a:visited {
     background: none;
     color: black; }
@@ -385,6 +392,8 @@ h2.answer-header {
 
 .answer-item {
   border-bottom: 1px dotted black; }
+  .answer-item .stats {
+    float: left; }
   .answer-item .counter {
     font-weight: bold; }
   .answer-item .body {
@@ -393,6 +402,9 @@ h2.answer-header {
     margin-top: 5px;
     margin-bottom: 5px;
     overflow: auto; }
+    .answer-item .body p {
+      margin-bottom: 1em;
+      margin-top: 0px; }
     .answer-item .body .user {
       float: right;
       font-size: 12px;
@@ -440,6 +452,12 @@ h2.answer-header {
   .stats .zero span.desc {
     font-size: 10px; }
 
+.answer-item .stats div.status, .question .stats div.status {
+  clear: left;
+  font-size: 10px; }
+.answer-item .stats div.views, .question .stats div.views {
+  clear: left;
+  margin-bottom: 10px; }
 .answer-item .stats div.favourite, .question .stats div.favourite {
   font-size: 60px;
   font-weight: bold;
@@ -624,15 +642,23 @@ h2.answer-header {
     color: white;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px; }
+  .comments a:hover {
+    background: black; }
   .comments .comment-item {
     margin-top: 5px;
     padding: 5px;
-    background: #FCFFDF;
+    background: #f4f4f4;
     display: block;
-    font-size: 12px;
-    padding-top: 0px; }
+    font-size: 12px; }
     .comments .comment-item .user-info {
-      float: right; }
+      float: right;
+      margin-bottom: 5px; }
+      .comments .comment-item .user-info a:link, .comments .comment-item .user-info a:visited {
+        color: green;
+        text-decoration: none;
+        font-weight: bold; }
+      .comments .comment-item .user-info a:hover {
+        color: black; }
 
 #footer {
   margin-top: 20px;

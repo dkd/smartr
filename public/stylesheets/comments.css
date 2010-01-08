@@ -17,12 +17,20 @@
     color: white;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px; }
+  .comments a:hover {
+    background: black; }
   .comments .comment-item {
     margin-top: 5px;
     padding: 5px;
-    background: #FCFFDF;
+    background: #f4f4f4;
     display: block;
-    font-size: 12px;
-    padding-top: 0px; }
+    font-size: 12px; }
     .comments .comment-item .user-info {
-      float: right; }
+      float: right;
+      margin-bottom: 5px; }
+      .comments .comment-item .user-info a:link, .comments .comment-item .user-info a:visited {
+        color: green;
+        text-decoration: none;
+        font-weight: bold; }
+      .comments .comment-item .user-info a:hover {
+        color: black; }
