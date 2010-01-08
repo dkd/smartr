@@ -1,24 +1,29 @@
 /*
-Sass::SyntaxError: Undefined variable: "!standard_color".
-on line 88 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass
+Sass::SyntaxError: Undefined mixin 'text_shadow'.
+on line 96 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass
 
-84:           margin-left: 0
-85:           padding-left: 0
-86:           
-87:           li.active
-88:             background = !standard_color
-89:             font-size: 18px
-90:             padding: 10px
-91:             overflow: hidden
 92:             
 93:             a:link, a:visited
 94:               color: white
+95:               overflow: hidden
+96:               +text_shadow
+97:           li
+98:             list-style: none
+99:             display: inline
+100:             margin-right: 20px
+101:             +border_radius_big
+102:             
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass:88
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass:96
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -127,4 +132,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!standard_color\".\A on line 88 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass\A \A 84:           margin-left: 0\A 85:           padding-left: 0\A 86:           \A 87:           li.active\A 88:             background = !standard_color\A 89:             font-size: 18px\A 90:             padding: 10px\A 91:             overflow: hidden\A 92:             \A 93:             a:link, a:visited\A 94:               color: white\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'text_shadow'.\A on line 96 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass\A \A 92:             \A 93:             a:link, a:visited\A 94:               color: white\A 95:               overflow: hidden\A 96:               +text_shadow\A 97:           li\A 98:             list-style: none\A 99:             display: inline\A 100:             margin-right: 20px\A 101:             +border_radius_big\A 102:             \A "; }

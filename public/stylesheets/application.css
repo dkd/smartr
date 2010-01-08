@@ -70,13 +70,14 @@ body {
         margin-left: 0;
         padding-left: 0; }
         body #wrapper #header #menu ul li.active {
-          background: #4e7700;
+          background: orange;
           font-size: 18px;
           padding: 10px;
           overflow: hidden; }
           body #wrapper #header #menu ul li.active a:link, body #wrapper #header #menu ul li.active a:visited {
             color: white;
-            overflow: hidden; }
+            overflow: hidden;
+            text-shadow: 1px 1px 1px #444444; }
         body #wrapper #header #menu ul li {
           list-style: none;
           display: inline;
@@ -421,8 +422,7 @@ h2.answer-header {
   padding-bottom: 2px;
   line-height: 23px;
   -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  text-shadow: 1px 1px 1px #444444; }
+  -webkit-border-radius: 5px; }
   .stats div span.desc {
     font-size: 12px;
     display: block; }

@@ -85,7 +85,7 @@ body
           padding-left: 0
           
           li.active
-            background = !standard_color
+            background: orange
             font-size: 18px
             padding: 10px
             overflow: hidden
@@ -93,18 +93,19 @@ body
             a:link, a:visited
               color: white
               overflow: hidden
-              
+              +text_shadow
           li
             list-style: none
             display: inline
             margin-right: 20px
             +border_radius_big
             
+            
             a:link, a:visited
               text-decoration: none
               color = !standard_color
               font-weight: bold
-            
+              
             a:hover
               color: black
               
