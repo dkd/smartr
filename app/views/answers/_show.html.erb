@@ -3,6 +3,9 @@
     <div class="votes" id="vote-box-<%=answer.id%>">
       <%= render :partial => "/answers/vote_box", :locals => {:answer => answer} %> 
     </div>
+    <div class="status">
+      <%= render :partial => "/answers/status", :locals => {:answer => answer} %>
+    </div>
   </div>
   <div class="body">
     <%= code(answer.body) %>

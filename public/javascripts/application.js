@@ -35,12 +35,15 @@ $(document).ready(function(){
   $(".highlight-question").each(function(i){
     //jQuery.easing.def = "easeInCubic";
     $(this).animate({"backgroundColor":"#FFF4BF"}, 4000);
+    
   });
   
   $(".fade-question").each(function(i){
     //jQuery.easing.def = "easeInCubic";
     $(this).animate({"opacity":"0.5"}, 4000);
   });
+  
+  $("input.toggle").toggleValue();
   
   wmd_options = {
 			// format sent to the server.  Use "Markdown" to return the markdown source.

@@ -1,0 +1,19 @@
+
+<% if current_user %>
+
+  <% if current_user==answer.question.user %>
+    
+    <% if answer.accepted==1%>
+      <%= link_to_remote("accepted", :url =>  question_answers_path(answer.question, :method => :put)) %>
+    <% else%>
+       <%= link_to_remote("accept", :url => question_answers_path(answer.question, :method => :put)) %>
+    <% end -%>
+    
+  <% end -%>
+
+<% else -%>
+
+  <%=answer.accepted==1? "accepted":"not accepted"%>
+
+<% end -%>
+

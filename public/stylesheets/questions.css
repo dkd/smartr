@@ -2,7 +2,7 @@
 Sass::SyntaxError: Undefined mixin 'border_radius'.
 on line 110 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
 
-106:     background: #f4f4f4
+106:     background: #fff
 107:     padding: 10px
 108:     width: 615px
 109:     overflow: auto
@@ -97,4 +97,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 110 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 106:     background: #f4f4f4\A 107:     padding: 10px\A 108:     width: 615px\A 109:     overflow: auto\A 110:     +border_radius\A 111:     \A 112:     p\A 113:       margin-top: 0px\A 114:     \A 115:     .tags\A 116:       margin-bottom: 10px\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 110 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 106:     background: #fff\A 107:     padding: 10px\A 108:     width: 615px\A 109:     overflow: auto\A 110:     +border_radius\A 111:     \A 112:     p\A 113:       margin-top: 0px\A 114:     \A 115:     .tags\A 116:       margin-bottom: 10px\A "; }

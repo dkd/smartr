@@ -39,6 +39,8 @@ h2.answer-header {
 
 .answer-item {
   border-bottom: 1px dotted black; }
+  .answer-item .stats {
+    float: left; }
   .answer-item .counter {
     font-weight: bold; }
   .answer-item .body {
@@ -47,6 +49,9 @@ h2.answer-header {
     margin-top: 5px;
     margin-bottom: 5px;
     overflow: auto; }
+    .answer-item .body p {
+      margin-bottom: 1em;
+      margin-top: 0px; }
     .answer-item .body .user {
       float: right;
       font-size: 12px;
