@@ -7,7 +7,5 @@ class FavouritesControllerTest < ActionController::TestCase
     UserSession.create Factory.build(:user)
     xhr :post, :create, {:favourite => {:question_id => Factory(:question).id}}
   end
-  
-  
-  
+
 end

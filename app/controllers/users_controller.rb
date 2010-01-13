@@ -44,4 +44,15 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  
+  protected
+  
+  def index_for_winner
+     format.html{ @users = User.find(:all).paginate :page => params[:page], :per_page => 20}
+      render :index
+  end
+  
+  
+  
 end
