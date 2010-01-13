@@ -1,22 +1,22 @@
 /*
 Sass::SyntaxError: Undefined mixin 'border_radius'.
-on line 110 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
+on line 86 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
 
-106:     background: #fff
-107:     padding: 10px
-108:     width: 615px
-109:     overflow: auto
-110:     +border_radius
-111:     
-112:     p
-113:       margin-top: 0px
-114:     
-115:     .tags
-116:       margin-bottom: 10px
+82:     background: #fff
+83:     padding: 10px
+84:     width: 615px
+85:     overflow: auto
+86:     +border_radius
+87:     
+88:     p
+89:       margin-top: 0px
+90:     
+91:     .tags
+92:       margin-bottom: 10px
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:110
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:86
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -97,4 +97,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 110 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 106:     background: #fff\A 107:     padding: 10px\A 108:     width: 615px\A 109:     overflow: auto\A 110:     +border_radius\A 111:     \A 112:     p\A 113:       margin-top: 0px\A 114:     \A 115:     .tags\A 116:       margin-bottom: 10px\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 86 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 82:     background: #fff\A 83:     padding: 10px\A 84:     width: 615px\A 85:     overflow: auto\A 86:     +border_radius\A 87:     \A 88:     p\A 89:       margin-top: 0px\A 90:     \A 91:     .tags\A 92:       margin-bottom: 10px\A "; }

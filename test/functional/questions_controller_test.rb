@@ -30,11 +30,5 @@ class QuestionsControllerTest < ActionController::TestCase
     get :show, :id => Question.last.id
   end
   
-  test "Remove question from favourites" do
-  
-  end
-  
-  
-  
 end
  

@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  helper :all
+  
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
   before_filter :search_options

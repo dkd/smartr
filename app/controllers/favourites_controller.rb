@@ -1,6 +1,6 @@
 class FavouritesController < ApplicationController
   before_filter :require_user
-  before_filter :is_owner
+  
   
   def create
     @favourite = Favourite.new(params[:favourite])
@@ -23,13 +23,6 @@ class FavouritesController < ApplicationController
           }
       end
     end
-  end
-  
-  
-  private 
-  
-  def is_owner
-    true
   end
         
 end
