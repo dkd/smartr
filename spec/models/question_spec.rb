@@ -20,14 +20,16 @@ describe Question do
     end
     
     it "should have a unique name" do
-      
       q1 = valid_question
       q1.save!
       q2 = valid_question
       q2.should have(1).error_on :name
-                        
     end
-          
+    
+    it "should be invalid without a body"
+    
+    
+              
   end
   
   it "should generate a valid permalink" do
