@@ -38,7 +38,6 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :lib => 'sunspot/rails'
   config.gem 'bluecloth'
   
-  config.gem 'rsolr'
   config.gem 'escape'
   config.gem 'unicode'  
   
