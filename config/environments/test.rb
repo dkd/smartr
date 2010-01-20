@@ -9,7 +9,8 @@ config.gem 'rspec', :lib => false
 config.gem "thoughtbot-factory_girl",
            :lib    => "factory_girl",
            :source => "http://gemcutter.org"
-           
+config.gem 'faker'
+     
 #config.gem 'jscruggs-metric_fu', :version => '1.1.5', :lib => 'metric_fu', :source => 'http://gems.github.com'
 
 config.cache_classes = true
