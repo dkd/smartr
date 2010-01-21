@@ -25,7 +25,10 @@ class Question < ActiveRecord::Base
   #    tagged_with(tags, :on => :tags) 
   #}
   
+  # Callbacks
   before_save :set_permalink
+  before_save :check_anwswer_count
+  
   
   #Sunspot Solr
   searchable do
@@ -66,14 +69,12 @@ class Question < ActiveRecord::Base
     list
   end
   
+  # Callback methods
   def set_permalink
     self.permalink = self.name.to_permalink
   end
   
-  
-  
-  
-  def before_save
+  def check_anwswer_count
     self.answers_count = 0 if self.answers_count.nil?
   end
   
