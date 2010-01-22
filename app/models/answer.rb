@@ -30,4 +30,9 @@ class Answer < ActiveRecord::Base
     logger.info "#{user.login} voting #{direction} on #{question.name}"
   end
   
+  def accept
+    
+  end
+  
+  
 end
