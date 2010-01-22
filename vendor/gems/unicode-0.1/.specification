@@ -1,0 +1,63 @@
+--- !ruby/object:Gem::Specification 
+name: unicode
+version: !ruby/object:Gem::Version 
+  version: "0.1"
+platform: ruby
+authors: []
+
+autorequire: 
+bindir: bin
+cert_chain: 
+date: 2005-08-13 00:00:00 +02:00
+default_executable: 
+dependencies: []
+
+description: 
+email: yoshidam@yoshidam.net
+executables: []
+
+extensions: 
+- ext/extconf.rb
+extra_rdoc_files: 
+- README
+files: 
+- bin/mkunidata.rb
+- ext/ustring.c
+- ext/ustring.h
+- ext/unicode.c
+- ext/wstring.c
+- ext/wstring.h
+- ext/extconf.rb
+- ext/unidata.map
+- test/test.rb
+- README
+has_rdoc: true
+homepage: http://www.yoshidam.net/Ruby.html#unicode
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- .
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">"
+    - !ruby/object:Gem::Version 
+      version: 0.0.0
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 1
+summary: Unicode normalization library.
+test_files: []
+
