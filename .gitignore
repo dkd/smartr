@@ -1,5 +1,6 @@
 .DS_Store
 config/database.yml
+config/sunspot.yml
 log/*.log
 log/development.log
 tmp/**/*
