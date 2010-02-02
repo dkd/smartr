@@ -6,11 +6,17 @@ module UserSpecHelper
     @valid_user = Factory(:user, options)
   end
   
+  def logged_in_user
+    @logged_in_user = Factory(:user, options)
+    UserSession.create(@logged_in_user)
+  end
+  
 end
 
 
 describe User do
   include UserSpecHelper
+  setup :activate_authlogic
   
   context "Validations" do
     
@@ -27,6 +33,8 @@ describe User do
       user.should be_invalid
     end
     
-  end
+    it "should create a new user_session"
     
+
+  end
 end

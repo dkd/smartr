@@ -1,7 +1,28 @@
 .comments
-  margin-left: 33%
+  float: right
   
   .comment-item
+    margin-top: 5px
+    comment-item
+    padding: 5px
+    padding-left: 10px
+    padding-right: 10px
+    background: #f4f4f4
+    display: block
+    font-size: 12px
+    +border_radius
+    
+    .user-info
+      float: right
+      margin-bottom: 5px
+      
+      a:link, a:visited
+        color: green
+        text-decoration: none
+        font-weight: bold
+      a:hover
+        color: black
+        
     a:link, a:visited
       background: none
       text-decoration: underline
@@ -9,6 +30,7 @@
       float: none
       margin: 0px
       padding: 0px
+      +border_radius
       
   a:link, a:visited
     float: right
@@ -24,22 +46,5 @@
   a:hover
     background: black
   
-  .comment-item
-    margin-top: 5px
-    comment-item
-    padding: 5px
-    background: #f4f4f4
-    display: block
-    font-size: 12px
+  
     
-    
-    .user-info
-      float: right
-      margin-bottom: 5px
-      
-      a:link, a:visited
-        color: green
-        text-decoration: none
-        font-weight: bold
-      a:hover
-        color: black

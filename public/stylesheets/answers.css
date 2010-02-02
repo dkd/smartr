@@ -41,11 +41,20 @@ h2.answer-header {
   border-bottom: 1px dotted black; }
   .answer-item .stats {
     float: left; }
+    .answer-item .stats .status a {
+      display: block;
+      width: 44px;
+      height: 45px;
+      padding: 0px;
+      background: url(../images/unchecked.png) no-repeat 0 0;
+      color: white; }
+    .answer-item .stats .status a.accepted {
+      background: url(../images/checked.png) no-repeat 0 0; }
   .answer-item .counter {
     font-weight: bold; }
   .answer-item .body {
     float: left;
-    width: 630px;
+    width: 930px;
     margin-top: 5px;
     margin-bottom: 5px;
     overflow: auto; }

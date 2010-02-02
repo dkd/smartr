@@ -35,7 +35,6 @@ $(document).ready(function(){
   $(".highlight-question").each(function(i){
     //jQuery.easing.def = "easeInCubic";
     $(this).animate({"backgroundColor":"#FFF4BF"}, 4000);
-    
   });
   
   $(".fade-question").each(function(i){
@@ -44,6 +43,21 @@ $(document).ready(function(){
   });
   
   $("input.toggle").toggleValue();
+  
+  $(".tags a, #sidebar a.new_question").click(function(){
+      $(this).effect("pulsate", { times:2, mode: "show" }, 200);
+
+  });
+  $("#search_searchstring").focus(function()
+    {
+      $(this).addClass("active");
+    }
+  );
+  $("#search_searchstring").blur(function()
+    {
+      $(this).removeClass("active");
+    }
+  );
   
   wmd_options = {
 			// format sent to the server.  Use "Markdown" to return the markdown source.

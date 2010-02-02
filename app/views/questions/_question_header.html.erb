@@ -8,9 +8,10 @@
       <%=question.views.humanize %>
       <span class="desc"><%= "View".correctize_plural(question.views) %></span>
     </div>
-    <div class="favourite">
-      <%= render :partial => "/questions/favourite", :locals => {:question =>question }%>
+    <!--><div class="favourite">
+      <%#= render :partial => "/questions/favourite", :locals => {:question =>question }%>
     </div>
+   -->
     
   </div>
   <div class="body">

@@ -5,8 +5,8 @@ class Question < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :votes, :as => :voteable
   has_many :answers
-  has_one :accepted_answer, :class_name => "Answer", :foreign_key => :question_id, :conditions => ["accepted=?", 1]
-  
+  belongs_to :answer
+    
   #Validations
   validates_presence_of [:body, :name, :tag_list]
   validates_uniqueness_of :name

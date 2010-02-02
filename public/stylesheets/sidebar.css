@@ -3,16 +3,16 @@ Sass::SyntaxError: Undefined mixin 'border_radius'.
 on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass
 
 4:   padding: 10px
-5:   background: #f4f4f4
+5:   
 6:   margin-top: 30px
 7:   margin-left: 10px
 8:   +border_radius
 9:   
-10:   form
-11:     input
-12:       background: #FFF4BF
-13:       padding: 5px
-14:       border: 1px solid #e9e9e9
+10:   a.new_question:link, a.new_question:visited
+11:     background: #bc330d
+12:     width: 100%
+13:     display: block
+14:     text-align: center
 
 
 Backtrace:
@@ -41,34 +41,35 @@ Backtrace:
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:73:in `update_stylesheets'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin.rb:60:in `check_for_updates'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/plugin/rails.rb:18:in `process'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:391:in `process'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/base.rb:386:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:437:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:87:in `dispatch'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/session/abstract_store.rb:122:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/abstract_store.rb:122:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
 /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
@@ -82,7 +83,7 @@ Backtrace:
 /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
 /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
 /opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
-/Users/dkd_hayes/Rails/smartr/vendor/rails/railties/lib/commands/server.rb:111
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
 /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
 script/server:3
@@ -90,4 +91,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 4:   padding: 10px\A 5:   background: #f4f4f4\A 6:   margin-top: 30px\A 7:   margin-left: 10px\A 8:   +border_radius\A 9:   \A 10:   form\A 11:     input\A 12:       background: #FFF4BF\A 13:       padding: 5px\A 14:       border: 1px solid #e9e9e9\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 4:   padding: 10px\A 5:   \A 6:   margin-top: 30px\A 7:   margin-left: 10px\A 8:   +border_radius\A 9:   \A 10:   a.new_question:link, a.new_question:visited\A 11:     background: #bc330d\A 12:     width: 100%\A 13:     display: block\A 14:     text-align: center\A "; }

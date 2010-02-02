@@ -4,4 +4,3 @@ Factory.define :user do |u|
   u.password 'benrocks'
   u.password_confirmation 'benrocks'
 end
-
