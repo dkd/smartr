@@ -4,4 +4,5 @@ Factory.define :question do |q|
   q.body "I can't take it anymore! Help!"
   q.tag_list "php, testing"
   q.association(:user)
+
 end

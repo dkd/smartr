@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   before_filter :search_options
   
+  
+  def rescue_action(exception)
+
+     log_error(exception) if logger
+
+     if exception
+       render :text => "The page you requested, does not exist."
+     end
+   end
+  
   protected
     
     def search_options
@@ -44,7 +54,14 @@ class ApplicationController < ActionController::Base
         }
         format.js{
           unless current_user  
-            render :text => "alert('You must be logged in to perform this action');"
+            
+            render :update do |page|
+              page << "$.gritter.add({
+              	title: 'Notice',              	
+              	text: 'You must be logged in order to perform this action.',
+              	time: 8000
+              });"
+            end
             false
           end
         }

@@ -6,26 +6,41 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>SmartR - be a smartass!</title>
   <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "highlight.css" %>
+  <%= stylesheet_link_tag "/javascripts/highlight/styles/github.css" %>
+  <style type="text/css" media="screen">
+    @-webkit-keyframes redPulse {
+      from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
+      50% { background-color: #e33100; -webkit-box-shadow: 0 0 18px #e33100; }
+      to { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
+    }
+    
+    
+  </style>
   <link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="http://<%=current_url%>/questions.xml" />
 
 </head>
 <body>
-  <div id="top-flash"><h4>Message</h4><p>I am the message! Fuck off!</p><span>close</span></div>
+  <div id="top-flash"><h4>Message</h4><p>I am the message!</p><span>close</span></div>
   <div id="center-flash">Hello</div>
   <div id="wrapper">
     <div id="header">
       <h1><%= link_to(image_tag("smartr-logo.png", :border => 0), root_url) %></h1><br /><br />
       <div id="user">
         <% if !current_user %>
-          <%= link_to "Register", new_user_path %> |
+          <%= link_to "Register", new_user_path %>
           <%= link_to "Log In", new_user_session_path %>
         <% else %>
           <%= image_tag current_user.avatar.url(:tiny) %>
-          <%= link_to "My Account", user_path(current_user) %> | 
+          <%= link_to "My Account", user_path(current_user) %>
           <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        
         <% end %>
+       
       </div>
+      <br style="clear: both" />
+       <% form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
+          <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
+          <%#= f.submit "Search" %>
+        <% end -%>
       <br style="clear: both" />
       <div id="menu">
         <%= yield :main_menu %>
@@ -42,14 +57,8 @@
       <%= yield  %>
     </div>
     <div id="sidebar">
-      <% form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
-        <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
-        <%#= f.submit "Search" %>
-      <% end -%>
-      <br class="clear" />
       <%= yield :facets %>
       <br class="clear" />
-      
       <%= yield :sidebar%>
     </div>
     <br class="clear" />
@@ -57,14 +66,16 @@
       <%= pluralize User.logged_in.count, "user" %> currently logged in<br />
     </div>
   </div>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "wmd/wmd" %>
-  <%= javascript_include_tag "highlight/highlight" %>
-  <%= javascript_include_tag "highlight/languages/html-xml"%>
-  <%= javascript_include_tag "highlight/languages/php"%>
-  <%= javascript_include_tag "highlight/languages/ruby"%>
-  <%= javascript_include_tag "highlight/languages/typoscript"%>
-  <%= javascript_include_tag "jquery.textarea"%>
-  <%= javascript_include_tag "jquery.toggle-value"%>
+  
+  <%= javascript_include_tag :defaults, 
+                             "wmd/wmd", 
+                             "highlight/highlight",
+                             "highlight/languages/html-xml",
+                             "highlight/languages/php",
+                             "highlight/languages/ruby",
+                             "highlight/languages/typoscript",
+                             "jquery.textarea",
+                             "jquery.toggle-value",
+                             "jquery.gritter.min", :cache => true %>
   </body>
 </html>

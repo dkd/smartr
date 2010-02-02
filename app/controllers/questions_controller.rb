@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
   before_filter :require_user, :only => [:edit, :new, :update, :destroy]
-  #before_filter :is_owner, :only => [:update, :destroy, :edit]
+  before_filter :is_owner, :only => [:update, :destroy, :edit]
   
   def index
     
@@ -39,7 +39,6 @@ class QuestionsController < ApplicationController
     @question.body = @question.body_plain
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @question }
     end
   end
 
@@ -70,18 +69,21 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.xml
   def update
+    
     @question = Question.find(params[:id])
-    respond_to do |format|
-      if @question.update_attributes(params[:question])
-        flash[:notice] = 'Question was successfully updated.'
-        format.html { redirect_to(@question) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
-        format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
+        
+    if(params[:mode].present? && params[:mode] == "toggle_acceptance")
+      update_for_toggle_acceptance
+    else
+      respond_to do |format|
+        if @question.update_attributes(params[:question])
+          flash[:notice] = 'Question was successfully updated.'
+          format.html { redirect_to(@question) }
+        else
+          format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
+        end
       end
     end
-    
   end
 
   def destroy
@@ -90,13 +92,12 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(questions_url) }
-      format.xml  { head :ok }
     end
   end
   
   
   def index_for_hot
-    @questions = Question.hot.paginate :page => params[:page], :per_page => 2
+    @questions = Question.hot.paginate :page => params[:page], :per_page => 20
   end
   
   def index_for_active
@@ -106,6 +107,7 @@ class QuestionsController < ApplicationController
   def index_for_unanswered
     @questions = Question.unanswered.paginate :page => params[:page], :per_page => 20
   end
+  
   
   def index_for_search
     
@@ -129,7 +131,26 @@ class QuestionsController < ApplicationController
   
   protected
   
-    
+  def update_for_toggle_acceptance
+    respond_to do |format|
+      format.js{
+        render :update do |page|
+          
+          @answer = Answer.find(params[:answer_id])
+          
+          if @answer
+            
+            answer_id = Reputation.toggle_acceptance(@question, @answer)
+            
+            page << "$('.answer-item .status a').removeClass('accepted')"
+            page << "$('#answer_#{answer_id} .status a').addClass('accepted')" unless answer_id == 0
+                          
+          end
+          
+        end
+      }
+    end
+  end  
   
   def index_for_tag
     @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 20

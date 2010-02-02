@@ -18,7 +18,7 @@
     -moz-border-radius: 5px
     -webkit-border-radius: 5px
     width: 100%
-    
+  
   input.text
     border: 1x solid #737373
     -moz-border-radius: 5px
@@ -27,6 +27,7 @@
     width: 100%
     font-weight: bold
     font-size: 14px
+    
   input.save
     background: green
     padding: 10px
@@ -41,20 +42,29 @@
 h2.answer-header
   border-bottom: 3px solid #737373
   
-
 .answer-item
   
   border-bottom: 1px dotted black
   
   .stats
     float: left
-  
+    
+    .status
+      a
+        display: block
+        width: 44px
+        height: 45px
+        padding: 0px
+        background: url(../images/unchecked.png) no-repeat 0 0
+        color: white 
+      a.accepted
+        background: url(../images/checked.png) no-repeat 0 0
   .counter
     font-weight: bold
     
   .body
     float: left
-    width: 630px
+    width: 930px
     margin-top: 5px
     margin-bottom: 5px
     overflow: auto

@@ -1,6 +1,6 @@
-<%= link_to 'Ask a question', new_question_path %>
+<%= link_to 'Ask a question!', new_question_path, :class => "new_question" %>
 <% if current_user && current_user.interesting_tag_list %>
-  <h3>I am interested in</h3>
+  <h3>I am interested in ...</h3>
   <div class="tags interesting">
   <% current_user.interesting_tag_list.each do |tag| %>
     <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>

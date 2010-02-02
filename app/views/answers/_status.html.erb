@@ -1,19 +1,11 @@
-
 <% if current_user %>
-
   <% if current_user==answer.question.user %>
-    
-    <% if answer.accepted==1%>
-      <%= link_to_remote("accepted", :url =>  question_answers_path(answer.question, :method => :put)) %>
+    <% if answer == answer.question.answer %>
+      <%= link_to_remote("&nbsp;", :url => question_path(answer.question, :answer_id => answer.id, :mode => :toggle_acceptance), :method => :put, :html => {:class => "accepted"}) %>
     <% else%>
-       <%= link_to_remote("accept", :url => question_answers_path(answer.question, :method => :put)) %>
+       <%= link_to_remote("&nbsp;", :url => question_path(answer.question, :answer_id => answer.id, :mode => :toggle_acceptance), :method => :put, :html => { :class => ""}) %>
     <% end -%>
-    
+  <% else %>
+    <%= "accepted" if answer.question.answer.present? %>
   <% end -%>
-
-<% else -%>
-
-  <%=answer.accepted==1? "accepted":"not accepted"%>
-
 <% end -%>
-

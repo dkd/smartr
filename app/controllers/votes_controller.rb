@@ -6,7 +6,13 @@ class VotesController < ApplicationController
       format.js{
         record = "#{params[:model]}".classify.constantize.find(params[:id])        
         if(record.user == @current_user)
-          render :text => "alert('You cannot vote on yourself!')"
+          render :update do |page|
+            page << "$.gritter.add({
+            	title: 'Notice',              	
+            	text: 'You cannot vote on yourself',
+            	time: 8000
+            });"
+          end
         else
           vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("#{params[:model]}".classify, params[:id], @current_user.id)
           render :update do |page|
