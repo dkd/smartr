@@ -1,13 +1,13 @@
 /*
-Language: TypoScript
-Author: Kieran Hayes <kieran.hayes@dkd.de>
+Language: PHP
+Author: Victor Karamzin <Victor.Karamzin@enterra-inc.com>
 */
 
-hljs.LANGUAGES.typoscript = {
+hljs.LANGUAGES.php = {
   defaultMode: {
     lexems: [hljs.IDENT_RE],
     contains: ['comment', 'number', 'string', 'variable'],
-    keywords: {'TEXT': 100, 'IMAGE': 1, 'PAGE': 10, 'value': 5,'insertData': 10, 'wrap': 10, 'wrap2': 10}
+    keywords: {'TEXT': 1, 'IMAGE': 1, '.value': 1}
   },
   case_insensitive: true,
   modes: [
@@ -26,27 +26,25 @@ hljs.LANGUAGES.typoscript = {
     hljs.C_NUMBER_MODE,
     {
       className: 'string',
-      begin: '[\d\w+]', end: '=',
-      contains: ['escape'],
-      relevance: 10
-    },
-    {
-      className: 'string',
-      begin: '"', end: '= ',
+      begin: '\'', end: '\'',
       contains: ['escape'],
       relevance: 0
     },
     {
       className: 'string',
-      begin: '^', end: '=',
+      begin: '"', end: '"',
       contains: ['escape'],
       relevance: 0
     },
     hljs.BACKSLASH_ESCAPE,
     {
       className: 'variable',
-      begin: '^[\d\w+](.*)', end: '='
+      begin: '\[a-zA-Z_\x7f-\xff\.][a-zA-Z0-9_\x7f-\xff]*', end: '^'
     },
     
+    {
+      className: 'preprocessor',
+      begin: '\\?>', end: '^'
+    }
   ]
 };

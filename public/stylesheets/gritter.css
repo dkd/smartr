@@ -13,6 +13,12 @@
   top: 7px;
   left: 7px; }
 
+.gritter-error {
+  background: red !important;
+  background-image: none !important; }
+  .gritter-error .gritter-top, .gritter-error .gritter-bottom, .gritter-error .gritter-item {
+    background-image: none !important; }
+
 #gritter-notice-wrapper {
   position: fixed;
   top: 20px;

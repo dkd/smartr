@@ -63,7 +63,12 @@ class CommentsController < ApplicationController
       else
         format.js {
           render :update do |page|
-            page << "alert('Please enter something!')"
+            page << "$.gritter.add({
+            	title: 'Validation failed',              	
+            	text: 'You must enter something in order to perform this action.',
+            	time: 5000,
+            	class_name: 'gritter-error'
+            });"
           end
         }
       end

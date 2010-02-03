@@ -1,23 +1,30 @@
 /*
 Sass::SyntaxError: Undefined mixin 'border_radius'.
-on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
+on line 12 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
 
-9:     padding-right: 10px
-10:     background: #f4f4f4
-11:     display: block
-12:     font-size: 12px
-13:     +border_radius
-14:     
-15:     .user-info
-16:       float: right
-17:       margin-bottom: 5px
+8:     a.cancel:link, a.cancel:visited
+9:       color: white
+10:       background: red
+11:       padding: 5px
+12:       +border_radius
+13:       float: left
+14:       margin-left: 0px
+15:       
+16:     a.cancel:hover, input.save:hover
+17:       background: black
 18:       
-19:       a:link, a:visited
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass:13
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass:12
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
@@ -98,4 +105,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 9:     padding-right: 10px\A 10:     background: #f4f4f4\A 11:     display: block\A 12:     font-size: 12px\A 13:     +border_radius\A 14:     \A 15:     .user-info\A 16:       float: right\A 17:       margin-bottom: 5px\A 18:       \A 19:       a:link, a:visited\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 12 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 8:     a.cancel:link, a.cancel:visited\A 9:       color: white\A 10:       background: red\A 11:       padding: 5px\A 12:       +border_radius\A 13:       float: left\A 14:       margin-left: 0px\A 15:       \A 16:     a.cancel:hover, input.save:hover\A 17:       background: black\A 18:       \A "; }

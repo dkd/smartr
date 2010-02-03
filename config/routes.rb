@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "questions/unanswered/:page", :controller => :questions, :action => :index_for_unanswered, :page => nil
   map.connect "questions/page/:page", :controller => :questions, :action => :index
   
-  map.resources :questions do |question|
+  map.resources :questions, :member => {:update_for_toggle_acceptance => :put} do |question|
     question.resources :answers
   end
   

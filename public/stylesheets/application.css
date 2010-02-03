@@ -126,15 +126,35 @@ body {
         body .tabs ul li a:hover {
           background: green; }
 
-h2.question-header a:link {
+h2.show-question {
+  border-bottom: 3px solid #737373; }
+  h2.show-question a:link {
+    text-decoration: none;
+    color: #7F5000; }
+  h2.show-question a:visited {
+    text-decoration: none;
+    color: #AF6F00; }
+  h2.show-question a:hover {
+    color: black;
+    text-decoration: none; }
+
+.question-header h2 a:link {
   text-decoration: none;
   color: #7F5000; }
-h2.question-header a:visited {
+.question-header h2 a:visited {
   text-decoration: none;
   color: #AF6F00; }
-h2.question-header a:hover {
+.question-header h2 a:hover {
   color: black;
   text-decoration: none; }
+.question-header h2 span.tagged {
+  color: white;
+  background: green;
+  font-size: 0.65em;
+  padding: 10px;
+  font-style: italic;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
 
 .question-new, .question-edit {
   background: #e9e9e9;
@@ -164,12 +184,15 @@ h2.question-header a:hover {
     background: green;
     padding: 10px;
     color: white;
+    font-weight: bold;
     border: 0px;
     font-size: 14px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     display: block;
     float: right; }
+  .question-new input.save:hover, .question-edit input.save:hover {
+    background: black; }
 
 .question-header {
   border-bottom: 3px solid black;
@@ -195,7 +218,7 @@ h2.question-header a:hover {
 .question .body {
   background: #fff;
   padding: 10px;
-  width: 865px;
+  width: 855px;
   overflow: auto;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px; }
@@ -207,11 +230,10 @@ h2.question-header a:hover {
     .question .body .tags a:link, .question .body .tags a:visited {
       float: left;
       text-decoration: none;
-      background: green;
       color: white;
       margin-right: 10px;
       padding: 5px;
-      background: orange;
+      background: #ae5a00;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       font-size: 12px; }
@@ -247,6 +269,8 @@ h2.question-header a:hover {
       -webkit-border-radius: 5px;
       text-decoration: none;
       padding: 5px; }
+    .question .body .edit a:hover {
+      background: black; }
 
 .question-list {
   background: #e9e9e9;
@@ -430,10 +454,19 @@ h2.answer-header {
     font-weight: bold; }
   .answer-item .body {
     float: left;
-    width: 930px;
+    width: 875px;
     margin-top: 5px;
     margin-bottom: 5px;
     overflow: auto; }
+    .answer-item .body a:link, .answer-item .body a:visited {
+      background: green;
+      color: white;
+      padding: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      text-decoration: none; }
+    .answer-item .body a:hover {
+      background: black; }
     .answer-item .body p {
       margin-bottom: 1em;
       margin-top: 0px; }
@@ -443,10 +476,13 @@ h2.answer-header {
       background: #f4f4f4;
       margin: 5px;
       padding: 5px;
-      margin-right: 0px; }
+      margin-right: 0px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
       .answer-item .body .user a:link, .answer-item .body .user a:visited {
         text-decoration: none;
-        color: black; }
+        color: black;
+        background: none; }
       .answer-item .body .user a:hover {
         color: green; }
         .answer-item .body .user a:hover img {
@@ -675,7 +711,27 @@ h2.answer-header {
     color: #5d8e00; }
 
 .comments {
-  float: right; }
+  float: right;
+  width: 66%; }
+  .comments .comment-new {
+    float: right; }
+    .comments .comment-new a.cancel:link, .comments .comment-new a.cancel:visited {
+      color: white;
+      background: red;
+      padding: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      float: left;
+      margin-left: 0px; }
+    .comments .comment-new a.cancel:hover, .comments .comment-new input.save:hover {
+      background: black; }
+    .comments .comment-new input.save {
+      background: green;
+      color: white;
+      padding: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border: none; }
   .comments .comment-item {
     margin-top: 5px;
     padding: 5px;
@@ -685,7 +741,8 @@ h2.answer-header {
     display: block;
     font-size: 12px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; }
+    -webkit-border-radius: 5px;
+    margin-right: 0px; }
     .comments .comment-item .user-info {
       float: right;
       margin-bottom: 5px; }
@@ -736,6 +793,12 @@ h2.answer-header {
   height: 22px;
   top: 7px;
   left: 7px; }
+
+.gritter-error {
+  background: red !important;
+  background-image: none !important; }
+  .gritter-error .gritter-top, .gritter-error .gritter-bottom, .gritter-error .gritter-item {
+    background-image: none !important; }
 
 #gritter-notice-wrapper {
   position: fixed;

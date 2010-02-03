@@ -1,6 +1,28 @@
 .comments
   float: right
+  width: 66%
   
+  .comment-new
+    float: right
+  
+    a.cancel:link, a.cancel:visited
+      color: white
+      background: red
+      padding: 5px
+      +border_radius
+      float: left
+      margin-left: 0px
+      
+    a.cancel:hover, input.save:hover
+      background: black
+      
+    input.save
+      background: green
+      color: white
+      padding: 5px
+      +border_radius
+      border: none
+      
   .comment-item
     margin-top: 5px
     comment-item
@@ -11,7 +33,7 @@
     display: block
     font-size: 12px
     +border_radius
-    
+    margin-right: 0px
     .user-info
       float: right
       margin-bottom: 5px

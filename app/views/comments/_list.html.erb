@@ -10,7 +10,7 @@
     </div>
   <% end -%>
 <% end -%>
-<%= link_to_remote("Add Comment",
+<%= link_to_remote("+ Comment",
                     :url => new_comment_path(:commentable_type => parent.class.name,
                                              :commentable_id => parent.id), 
                     :method => :get,

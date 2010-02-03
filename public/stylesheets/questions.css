@@ -1,25 +1,29 @@
 /*
-Sass::SyntaxError: Undefined variable: "!min_width".
-on line 59 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
+Sass::SyntaxError: Undefined mixin 'border_radius'.
+on line 35 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
 
-55:   
-56:   h2
-57:     float: left
-58:     font-size: 34px
-59:     width = !min_width - 300px
-60:     margin-top: 0px
-61:     margin-bottom: 0px  
-62:     
-63:   
-64: 
-65: .question
+31:       background: green
+32:       font-size: 0.65em
+33:       padding: 10px
+34:       font-style: italic
+35:       +border_radius
+36:     
+37: .question-new,.question-edit
+38:   background: #e9e9e9
+39:   padding: 10px 20px
+40:   -moz-border-radius: 5px
+41:   -webkit-border-radius: 5px
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:59
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/operation.rb:35:in `perform'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:35
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -101,4 +105,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!min_width\".\A on line 59 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 55:   \A 56:   h2\A 57:     float: left\A 58:     font-size: 34px\A 59:     width = !min_width - 300px\A 60:     margin-top: 0px\A 61:     margin-bottom: 0px  \A 62:     \A 63:   \A 64: \A 65: .question\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 35 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 31:       background: green\A 32:       font-size: 0.65em\A 33:       padding: 10px\A 34:       font-style: italic\A 35:       +border_radius\A 36:     \A 37: .question-new,.question-edit\A 38:   background: #e9e9e9\A 39:   padding: 10px 20px\A 40:   -moz-border-radius: 5px\A 41:   -webkit-border-radius: 5px\A "; }
