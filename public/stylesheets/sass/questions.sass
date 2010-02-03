@@ -1,16 +1,39 @@
-h2.question-header
+h2.show-question
+  border-bottom: 3px solid #737373
   a:link
     text-decoration: none
     color: #7F5000
-  
+
   a:visited
     text-decoration: none
     color: #AF6F00
-  
+
   a:hover
     color: black
     text-decoration: none
 
+.question-header
+  h2
+    a:link
+      text-decoration: none
+      color: #7F5000
+  
+    a:visited
+      text-decoration: none
+      color: #AF6F00
+  
+    a:hover
+      color: black
+      text-decoration: none
+
+    span.tagged
+      color: white
+      background: green
+      font-size: 0.65em
+      padding: 10px
+      font-style: italic
+      +border_radius
+    
 .question-new,.question-edit
   background: #e9e9e9
   padding: 10px 20px
@@ -29,8 +52,7 @@ h2.question-header
     width: 100%
   input.text
     border: 1x solid #737373
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
+    +border_radius
     height: 20px
     width: 100%
     font-weight: bold
@@ -42,13 +64,14 @@ h2.question-header
     background: green
     padding: 10px
     color: white
+    font-weight: bold
     border: 0px
     font-size: 14px
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
+    +border_radius
     display: block
     float: right
-    
+  input.save:hover
+    background: black
 .question-header
   border-bottom: 3px solid black
   margin-top: 20px
@@ -71,8 +94,7 @@ h2.question-header
       background: green
       color: white
       padding: 5px
-      -moz-border-radius: 5px
-      -webkit-border-radius: 5px
+      +border_radius
       text-decoration: none
     
     a:hover
@@ -81,7 +103,7 @@ h2.question-header
   .body
     background: #fff
     padding: 10px
-    width = !min_width - 335px
+    width: 855px
     overflow: auto
     +border_radius
     
@@ -95,13 +117,11 @@ h2.question-header
       a:link, a:visited
         float: left
         text-decoration: none
-        background: green
         color: white
         margin-right: 10px
         padding: 5px
-        background: orange
-        -moz-border-radius: 5px
-        -webkit-border-radius: 5px
+        background = !question_tags_color
+        +border_radius
         font-size: 12px
         
       a:hover
@@ -140,7 +160,8 @@ h2.question-header
         +border_radius
         text-decoration: none
         padding: 5px
-
+      a:hover
+        background: black
   
 .question-list
   

@@ -1,6 +1,10 @@
-<h3>by users</h3>
+<h3>By user</h3>
 <ul class="facets">
 <% results.facet(:user_id).rows.each do |result| %>
   <li><%=link_to result.instance.login, questions_path(:search => params[:search], :user_id => result.value) %></li>
 <% end -%>
 </ul>
+<% if params[:user_id]%>
+  <%=link_to "Remove facet", questions_path(:search => params[:search])%>
+  <br class="clear" />
+<% end -%>

@@ -34,8 +34,7 @@
     color: white
     border: 0px
     font-size: 14px
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
+    +border_radius
     display: block
     float: right
   
@@ -64,11 +63,20 @@ h2.answer-header
     
   .body
     float: left
-    width: 930px
+    width: 875px
     margin-top: 5px
     margin-bottom: 5px
     overflow: auto
     
+    a:link, a:visited
+      background: green
+      color: white
+      padding: 5px
+      +border_radius
+      text-decoration: none
+    
+    a:hover
+      background: black
     p
       margin-bottom: 1em
       margin-top: 0px
@@ -80,10 +88,12 @@ h2.answer-header
       margin: 5px
       padding: 5px
       margin-right: 0px
+      +border_radius
       
       a:link, a:visited
         text-decoration: none
         color: black
+        background: none
       
       a:hover
         color: green

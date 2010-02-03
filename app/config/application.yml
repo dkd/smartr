@@ -19,8 +19,9 @@ defaults: &defaults
     question:
       up: 10
       down: -10
-      penalty: -4  
-  
+      penalty: -4
+      new: 5 
+
 development:
   <<: *defaults
 

@@ -59,6 +59,20 @@ $(document).ready(function(){
     }
   );
   
+  $(".status a").hover(
+    function(){
+    
+      $(this).toggleClass("accepted");
+    
+    },
+    function(){
+    
+      $(this).toggleClass("accepted");
+    
+    }
+  );
+  
+  
   wmd_options = {
 			// format sent to the server.  Use "Markdown" to return the markdown source.
 			output: "Markdown",

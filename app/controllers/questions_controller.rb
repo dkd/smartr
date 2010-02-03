@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
-  before_filter :require_user, :only => [:edit, :new, :update, :destroy]
-  before_filter :is_owner, :only => [:update, :destroy, :edit]
+  before_filter :require_user, :only => [:edit, :new, :update, :destroy, :update_for_toggle_acceptance]
+  before_filter :is_owner, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
   
   def index
     
@@ -66,22 +66,13 @@ class QuestionsController < ApplicationController
       end
   end
 
-  # PUT /questions/1
-  # PUT /questions/1.xml
   def update
-    
-    @question = Question.find(params[:id])
-        
-    if(params[:mode].present? && params[:mode] == "toggle_acceptance")
-      update_for_toggle_acceptance
-    else
-      respond_to do |format|
-        if @question.update_attributes(params[:question])
-          flash[:notice] = 'Question was successfully updated.'
-          format.html { redirect_to(@question) }
-        else
-          format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
-        end
+    respond_to do |format|
+      if @question.update_attributes(params[:question])
+        flash[:notice] = 'Question was successfully updated.'
+        format.html { redirect_to(@question) }
+      else
+        format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
       end
     end
   end
@@ -118,7 +109,7 @@ class QuestionsController < ApplicationController
     @questions = Sunspot.search(Question) do 
       fulltext searchstring do
         highlight :name, :body_plain, :max_snippets => 3, :fragment_size => 200
-        tie 0.1    
+        tie 0.1
       end
       with :user_id, facet_user_id unless facet_user_id.nil?
       facet :user_id
@@ -129,9 +120,11 @@ class QuestionsController < ApplicationController
     render :index_for_search
   end
   
-  protected
+  
   
   def update_for_toggle_acceptance
+    @question = Question.find(params[:id])
+    
     respond_to do |format|
       format.js{
         render :update do |page|
@@ -142,9 +135,9 @@ class QuestionsController < ApplicationController
             
             answer_id = Reputation.toggle_acceptance(@question, @answer)
             
-            page << "$('.answer-item .status a').removeClass('accepted')"
-            page << "$('#answer_#{answer_id} .status a').addClass('accepted')" unless answer_id == 0
-                          
+            page << "$('.answer-item .status a').removeClass('accepted');"
+            page << "$('#answer_#{answer_id} .status a').addClass('accepted');" unless answer_id == 0
+            page << "$('#answer_#{answer_id} .status').effect('pulsate', { times:2, mode: 'show' }, 400);";             
           end
           
         end
@@ -155,6 +148,8 @@ class QuestionsController < ApplicationController
   def index_for_tag
     @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 20
   end
+  
+  protected
   
   def is_owner
     @question = Question.find(params[:id])

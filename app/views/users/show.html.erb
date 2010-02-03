@@ -55,11 +55,11 @@
     <% end -%>
   </div>
 <% end -%>
-<h2>Questions</h2>
+<h2>Latest Questions</h2>
 <% Question.find_all_by_user_id(@user.id, :limit => 5).each do |question| %>
   <%= render :partial => "/questions/question", :locals => {:question => question} %>
 <% end -%>
-<h2>Answers</h2>
+<h2>Latest Answers</h2>
 <% Answer.find_all_by_user_id(@user.id, :limit => 5).each do |answer| %>
   <%= render :partial => "/questions/question", :locals => {:question => answer.question} %>
 <% end -%>
