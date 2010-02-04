@@ -25,7 +25,7 @@
       <% unless controller.controller_name == "users" %>
       <span class="user">
         <%= link_to image_tag(question.user.avatar.url(:thumb)), user_path(question.user) %><br />
-        <%= link_to question.user.login, user_path(question.user) %>
+        <%= link_to question.user.login, user_path(question.user) %> &middot; <%=question.user.reputation%>
         <br /><%= distance_of_time_in_words_to_now question.created_at %> ago
         </span>
       <% end -%>

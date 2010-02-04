@@ -135,8 +135,9 @@ class QuestionsController < ApplicationController
             
             answer_id = Reputation.toggle_acceptance(@question, @answer)
             
+            page << "$('.answer-item').removeClass('accepted')"
             page << "$('.answer-item .status a').removeClass('accepted');"
-            page << "$('#answer_#{answer_id} .status a').addClass('accepted');" unless answer_id == 0
+            page << "$('#answer_#{answer_id} .status a, #answer_#{answer_id}').addClass('accepted');" unless answer_id == 0
             page << "$('#answer_#{answer_id} .status').effect('pulsate', { times:2, mode: 'show' }, 400);";             
           end
           

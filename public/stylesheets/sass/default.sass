@@ -2,51 +2,7 @@ body
   font-family: Helvetica, Arial
   margin: 0px
   margin-top: 0px
-  
-  #center-flash
-    position: absolute
-    left: 25%
-    right: 25%
-    z-index: 100
-    margin: auto
-    top: 25%
-    width: 300px
-    height: 100px
-    background: red
-    color: white
-    padding: 10px
-    display: none
-  
-  #top-flash
-    position: absolute
-    height: 25px
-    border-bottom: 2px solid #737373
-    background: green
-    color: white
-    width: 100%
-    z-index: 100
-    top: 0px
-    left: 0px
-    opacity: 0.8
-    display: none
-    
-    p
-      display: inline
-      color: white
-      margin: 0px
-    
-    h4
-      display: inline
-      margin-right: 10px
-      margin: 10px 10px 1px 10px
-      
-    span
-      position: relative
-      right: 0px
-      border:1px solid white
-      padding: 5px
-      color: white
-      
+
   .clear
     clear: both
   
@@ -75,7 +31,7 @@ body
           padding: 5px
           border: 1px solid #e9e9e9
           font-size: 1.07em
-          width: 240px
+          width: 230px
           color: #737373
           +border_radius
         
@@ -85,7 +41,6 @@ body
         
         
       #menu
-        border-bottom: 3px solid #737373
         
         ul
           display: inline
@@ -94,33 +49,42 @@ body
           
           li.active
             background: orange
-            font-size: 18px
-            padding: 10px
-            overflow: hidden
-            
-            a:link, a:visited
-              color: white
-              overflow: hidden
-              +text_shadow
+
           li
+            background= !standard_color
             list-style: none
             display: inline
-            margin-right: 20px
-            +border_radius_big
-            
+            margin-right: 10px
+            +border_radius
+            padding: 10px
+            line-height: 30px
+            +text_shadow
+            padding-top: 20px
+            vertical-align: middle
             
             a:link, a:visited
+              font-size: 30px
               text-decoration: none
-              color = !standard_color
+              color: white
               font-weight: bold
+              line-height: 10px
               
-            a:hover
-              color: black
               
-    
+          li:hover
+            background: black
+                  
   #content
     float: left
     width= !min_width - 260px
+    
+    h2
+      margin: 0px
+      display: block
+      font-size: 34px
+      margin-bottom: 10px
+      margin-top: 30px
+      
+      border-bottom: 3px solid #000
   
   a:focus
     outline: 0px
@@ -155,10 +119,3 @@ body
         
         a:hover
           background: green
-          
-  
-  
-  
-  
-  
-        
