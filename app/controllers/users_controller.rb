@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def index
     respond_to do |format|
-      format.html{ @users = User.find(:all).paginate :page => params[:page], :per_page => 20, :order => "reputation desc"}
+      format.html{ @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 20}
       format.js {
         if params[:name].present?
           @users = User.find(:all, :conditions => ["login like ?","#{params[:name]}%"]).paginate :page => params[:page], :per_page => 20
