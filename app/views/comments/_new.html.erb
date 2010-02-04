@@ -4,7 +4,7 @@
     <%= f.text_area :body, :style => "width: 300px;height:75px;border: 1px solid black;", :class => "wmd-ignore" %>
     <%= f.hidden_field :commentable_type, :value => commentable_type %>
     <%= f.hidden_field :commentable_id, :value => commentable_id %>
-    <%= f.submit "Save", :class => "save" %>
+    <br /><%= f.submit "Save", :class => "save" %>
   <% end -%>
   <%=link_to "Cancel", "#{}", :onclick => "$.gritter.removeAll();$('.comments a.comment-new').show();$('.comments div.comment-new').hide(); return false;", :class => "cancel" %>
 </div>

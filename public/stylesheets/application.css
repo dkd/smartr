@@ -73,7 +73,9 @@ body {
     width: 300px;
     float: right;
     text-align: right;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 100; }
     body .tabs ul {
       margin: 0px;
       padding: 0px; }
@@ -300,15 +302,18 @@ h2.show-question {
     background: #8b4800; }
 
 #errorExplanation {
-  border: 3px solid red;
   padding: 10px;
   margin: 10px 0px 20px 0px;
-  -moz-box-shadow: red 2px 2px 10px;
-  -webkit-box-shadow: red 2px 2px 10px; }
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: red;
+  color: white; }
   #errorExplanation h2 {
-    margin-top: 0px;
-    font-size: 20px;
-    font-weight: bold; }
+    margin-top: 0px !important;
+    font-size: 26px !important;
+    text-shadow: 1px 1px 1px #444444;
+    font-weight: bold;
+    border: 0px !important; }
   #errorExplanation li {
     list-style: square; }
 
@@ -743,7 +748,8 @@ h2.answer-header {
   float: right;
   width: 66%; }
   .comments .comment-new {
-    float: right; }
+    float: right;
+    margin-right: 10px; }
     .comments .comment-new a.cancel:link, .comments .comment-new a.cancel:visited {
       color: white;
       background: red;
@@ -760,7 +766,8 @@ h2.answer-header {
       padding: 5px;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
-      border: none; }
+      border: none;
+      float: right; }
   .comments .comment-item {
     margin-top: 5px;
     padding: 5px;

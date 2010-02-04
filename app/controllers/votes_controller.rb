@@ -10,7 +10,8 @@ class VotesController < ApplicationController
             page << "$.gritter.add({
             	title: 'Notice',              	
             	text: 'You cannot vote on yourself',
-            	time: 8000
+            	time: 8000,
+            	class_name: 'gritter-error'
             });"
           end
         else

@@ -1,22 +1,22 @@
 /*
 Sass::SyntaxError: Undefined mixin 'border_radius'.
-on line 12 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
+on line 14 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
 
-8:     a.cancel:link, a.cancel:visited
-9:       color: white
-10:       background: red
-11:       padding: 5px
-12:       +border_radius
-13:       float: left
-14:       margin-left: 0px
-15:       
-16:     a.cancel:hover, input.save:hover
-17:       background: black
+10:     a.cancel:link, a.cancel:visited
+11:       color: white
+12:       background: red
+13:       padding: 5px
+14:       +border_radius
+15:       float: left
+16:       margin-left: 0px
+17:   
 18:       
+19:     a.cancel:hover, input.save:hover
+20:       background: black
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass:12
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass:14
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -105,4 +105,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 12 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 8:     a.cancel:link, a.cancel:visited\A 9:       color: white\A 10:       background: red\A 11:       padding: 5px\A 12:       +border_radius\A 13:       float: left\A 14:       margin-left: 0px\A 15:       \A 16:     a.cancel:hover, input.save:hover\A 17:       background: black\A 18:       \A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 14 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 10:     a.cancel:link, a.cancel:visited\A 11:       color: white\A 12:       background: red\A 13:       padding: 5px\A 14:       +border_radius\A 15:       float: left\A 16:       margin-left: 0px\A 17:   \A 18:       \A 19:     a.cancel:hover, input.save:hover\A 20:       background: black\A "; }
