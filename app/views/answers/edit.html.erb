@@ -1,15 +1,17 @@
 <%= render :partial => "/questions/question_header", :locals => {:answer => @answer, :question => @question}%>
 <br class="clear" />
-<div class="answer-edit">
   <h2>Editing Answer</h2>
+<div class="answer-edit">
+
   <% form_for(@answer, :url => question_answer_path) do |f| %>
     <%= f.error_messages %>
     <%= f.text_area :body, :class => "markdown" %>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
-    <%= link_to "Cancel", question_path(@answer.question) %>
+    
   <% end -%>
-   <br class="clear" />
+  
+   <br class="clear" /><%= link_to "Cancel", question_path(@answer.question), :class => "cancel" %>
    <h3>Live preview</h3>
    <div class="wmd-preview"></div>
    <br class="clear" />

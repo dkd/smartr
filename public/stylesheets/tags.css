@@ -1,22 +1,22 @@
 /*
 Sass::SyntaxError: Undefined variable: "!standard_color".
-on line 11 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass
+on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass
 
-7:     
-8:     a:link, a:visited
-9:       text-decoration: none
-10:       color: white
-11:       background = !standard_color
-12:       padding: 5px
-13:       +border_radius
-14:     
-15:       a:hover
-16:         background = !standard_color * 1.1
-17:   
+9:     
+10:     a:link, a:visited
+11:       text-decoration: none
+12:       color: white
+13:       background = !standard_color
+14:       padding: 5px
+15:       +border_radius
+16:     
+17:       a:hover
+18:         background = !standard_color * 1.1
+19:   
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass:11
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass:13
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
@@ -107,4 +107,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!standard_color\".\A on line 11 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass\A \A 7:     \A 8:     a:link, a:visited\A 9:       text-decoration: none\A 10:       color: white\A 11:       background = !standard_color\A 12:       padding: 5px\A 13:       +border_radius\A 14:     \A 15:       a:hover\A 16:         background = !standard_color * 1.1\A 17:   \A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!standard_color\".\A on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass\A \A 9:     \A 10:     a:link, a:visited\A 11:       text-decoration: none\A 12:       color: white\A 13:       background = !standard_color\A 14:       padding: 5px\A 15:       +border_radius\A 16:     \A 17:       a:hover\A 18:         background = !standard_color * 1.1\A 19:   \A "; }

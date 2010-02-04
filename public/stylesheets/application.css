@@ -3,7 +3,8 @@ body {
   margin: 0px;
   margin-top: 0px; }
   body .clear {
-    clear: both; }
+    clear: both;
+    line-height: 0px; }
   body #wrapper {
     width: 1200px;
     margin: 0 auto; }
@@ -24,11 +25,11 @@ body {
         border: 1px solid #e9e9e9;
         font-size: 1.07em;
         width: 230px;
-        color: #737373;
+        color: green;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px; }
       body #wrapper #header form input.active {
-        color: black;
+        color: green;
         border-color: black; }
     body #wrapper #header #menu ul {
       display: inline;
@@ -95,40 +96,44 @@ body {
           background: green; }
 
 h2.show-question {
-  margin-top: 30px; }
+  margin-top: 30px;
+  margin-bottom: 30px !important;
+  display: block !important; }
   h2.show-question a:link, h2.show-question a:visited {
     text-decoration: none;
-    background: #4e7700;
-    color: white;
-    padding: 10px;
-    text-shadow: 1px 1px 1px #444444;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; }
+    color: #AE5A00;
+    padding: 10px; }
   h2.show-question a:hover {
     text-decoration: none;
     background: black;
     color: white; }
 
-.question-header h2 {
-  border: 0px !important;
-  margin-top: 0px !important; }
-  .question-header h2 a:link {
-    text-decoration: none;
-    color: #7F5000; }
-  .question-header h2 a:visited {
-    text-decoration: none;
-    color: #AF6F00; }
-  .question-header h2 a:hover {
-    color: black;
-    text-decoration: none; }
-  .question-header h2 span.tagged {
-    color: white;
-    background: green;
-    font-size: 0.65em;
-    padding: 10px;
-    font-style: italic;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; }
+.question-header {
+  position: relative;
+  margin-top: 30px !important;
+  margin-bottom: 10px !important; }
+  .question-header h2 {
+    position: absolute;
+    bottom: 0;
+    border: 0px !important;
+    margin-top: 0px !important; }
+    .question-header h2 a:link {
+      text-decoration: none;
+      color: #7F5000; }
+    .question-header h2 a:visited {
+      text-decoration: none;
+      color: #AF6F00; }
+    .question-header h2 a:hover {
+      color: black;
+      text-decoration: none; }
+    .question-header h2 span.tagged {
+      color: white;
+      background: green;
+      font-size: 0.65em;
+      padding: 10px;
+      font-style: italic;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
 
 .question-new, .question-edit {
   background: #e9e9e9;
@@ -389,6 +394,19 @@ h2.show-question {
   padding: 10px 20px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px; }
+  .answer-edit a.cancel:link, .answer-edit a.cancel:visited {
+    background: red;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    clear: both;
+    margin-top: 10px;
+    font-weight: bold; }
+  .answer-edit a.cancel:hover {
+    margin-top: 10px;
+    background: black; }
   .answer-edit h2 {
     margin: 0px;
     margin-bottom: 20px; }
@@ -418,7 +436,10 @@ h2.show-question {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     display: block;
-    float: right; }
+    float: right;
+    font-weight: bold; }
+  .answer-edit input.save:hover {
+    background: black; }
 
 h2.answer-header {
   border-bottom: 3px solid #737373; }
@@ -426,11 +447,20 @@ h2.answer-header {
 .accepted {
   background: #EAFFDF;
   padding: 10px 0px; }
+  .accepted .body .user {
+    background: #4e7700 !important;
+    color: white;
+    margin-right: 10px !important; }
+    .accepted .body .user a:link, .accepted .body .user a:visited {
+      color: #ffff99 !important; }
+    .accepted .body .user a:hover {
+      color: white !important; }
   .accepted .votes {
     background: none !important; }
 
 .answer-item {
-  border-bottom: 1px dotted black; }
+  border-bottom: 1px dotted black;
+  padding: 10px 0px; }
   .answer-item .stats {
     float: left; }
     .answer-item .stats .status a {
@@ -456,7 +486,9 @@ h2.answer-header {
       padding: 5px;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
-      text-decoration: none; }
+      text-decoration: none;
+      font-weight: normal;
+      line-height: 25px; }
     .answer-item .body a:hover {
       background: black; }
     .answer-item .body p {
@@ -471,10 +503,13 @@ h2.answer-header {
       margin-right: 0px;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px; }
+      .answer-item .body .user img {
+        margin-right: 0px; }
       .answer-item .body .user a:link, .answer-item .body .user a:visited {
         text-decoration: none;
         color: black;
-        background: none; }
+        background: none;
+        font-weight: bold; }
       .answer-item .body .user a:hover {
         color: green; }
         .answer-item .body .user a:hover img {
@@ -593,29 +628,31 @@ h2.answer-header {
   .answer-item .stats div.votes a.down-neutral:hover, .answer-item .stats div.votes a.up-neutral:hover, .question .stats div.votes a.down-neutral:hover, .question .stats div.votes a.up-neutral:hover {
     opacity: 1.0; }
 
-.tag-list .tag {
-  padding: 5px;
-  float: left;
-  margin-bottom: 10px;
-  color: black; }
-  .tag-list .tag a:link, .tag-list .tag a:visited {
+.tag-list {
+  margin-top: 10px; }
+  .tag-list .tag {
+    padding: 5px;
+    float: left;
+    margin-bottom: 10px;
+    color: black; }
+    .tag-list .tag a:link, .tag-list .tag a:visited {
+      text-decoration: none;
+      color: white;
+      background: #4e7700;
+      padding: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
+      .tag-list .tag a:link a:hover, .tag-list .tag a:visited a:hover {
+        background: #558200; }
+  .tag-list a:link, .tag-list a:visited {
     text-decoration: none;
     color: white;
     background: #4e7700;
     padding: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px; }
-    .tag-list .tag a:link a:hover, .tag-list .tag a:visited a:hover {
-      background: #558200; }
-.tag-list a:link, .tag-list a:visited {
-  text-decoration: none;
-  color: white;
-  background: #4e7700;
-  padding: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; }
-.tag-list a:hover {
-  background: black !important; }
+  .tag-list a:hover {
+    background: black !important; }
 
 .pagination a:link, .pagination a:visited {
   padding: 5px;
