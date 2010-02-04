@@ -1,24 +1,29 @@
 /*
-Sass::SyntaxError: Undefined variable: "!standard_color".
-on line 6 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
+Sass::SyntaxError: Undefined mixin 'border_radius'.
+on line 46 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
 
-2:   margin-top: 30px
-3:   
-4:   a:link, a:visited
-5:     text-decoration: none
-6:     background = !standard_color
-7:     color: white
-8:     padding: 10px
-9:     +text_shadow
-10:     +border_radius
-11: 
-12:   a:hover
+42:       background: green
+43:       font-size: 0.65em
+44:       padding: 10px
+45:       font-style: italic
+46:       +border_radius
+47:     
+48: .question-new,.question-edit
+49:   background: #e9e9e9
+50:   padding: 10px 20px
+51:   +border_radius
+52:   
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:6
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:46
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -100,4 +105,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!standard_color\".\A on line 6 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 2:   margin-top: 30px\A 3:   \A 4:   a:link, a:visited\A 5:     text-decoration: none\A 6:     background = !standard_color\A 7:     color: white\A 8:     padding: 10px\A 9:     +text_shadow\A 10:     +border_radius\A 11: \A 12:   a:hover\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 46 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 42:       background: green\A 43:       font-size: 0.65em\A 44:       padding: 10px\A 45:       font-style: italic\A 46:       +border_radius\A 47:     \A 48: .question-new,.question-edit\A 49:   background: #e9e9e9\A 50:   padding: 10px 20px\A 51:   +border_radius\A 52:   \A "; }
