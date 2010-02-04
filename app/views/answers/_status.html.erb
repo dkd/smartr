@@ -7,6 +7,6 @@
     <% end -%>
   
   <% else %>
-    <%= "accepted" if answer.question.answer == answer %>
+    <%= image_tag("checked.png") if answer.question.answer == answer %>
   <% end -%>
  

@@ -12,7 +12,7 @@ on line 37 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass
 40:   
 41: h2.answer-header
 42:   border-bottom: 3px solid #737373
-43:   
+43: 
 
 
 Backtrace:
@@ -98,4 +98,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 37 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass\A \A 33:     padding: 10px\A 34:     color: white\A 35:     border: 0px\A 36:     font-size: 14px\A 37:     +border_radius\A 38:     display: block\A 39:     float: right\A 40:   \A 41: h2.answer-header\A 42:   border-bottom: 3px solid #737373\A 43:   \A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 37 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass\A \A 33:     padding: 10px\A 34:     color: white\A 35:     border: 0px\A 36:     font-size: 14px\A 37:     +border_radius\A 38:     display: block\A 39:     float: right\A 40:   \A 41: h2.answer-header\A 42:   border-bottom: 3px solid #737373\A 43: \A "; }

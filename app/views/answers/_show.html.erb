@@ -1,4 +1,4 @@
-<div class="answer-item" id="answer_<%=answer.id%>">
+<div class="answer-item<%=" accepted" unless answer != answer.question.answer%>" id="answer_<%=answer.id%>">
   <div class="stats">
     <div class="votes" id="vote-box-<%=answer.id%>">
       <%= render :partial => "/answers/vote_box", :locals => {:answer => answer} %> 

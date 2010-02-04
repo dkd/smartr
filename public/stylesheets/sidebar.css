@@ -1,22 +1,22 @@
 /*
 Sass::SyntaxError: Undefined mixin 'border_radius'.
-on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass
+on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass
 
-4:   padding: 10px
-5:   
-6:   margin-top: 30px
-7:   margin-left: 10px
-8:   +border_radius
-9:   
-10:   a.new_question:link, a.new_question:visited
-11:     background: #bc330d
-12:     width: 100%
-13:     display: block
-14:     text-align: center
+5:   padding-top: 0px
+6:   padding-right: 0px
+7:   margin-top: 0px
+8:   margin-left: 10px
+9:   +border_radius
+10:   
+11:   .guide
+12:     background: #FFDAAF
+13:     +border_radius
+14:     padding: 10px
+15:     color: black
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass:8
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass:9
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -91,4 +91,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 4:   padding: 10px\A 5:   \A 6:   margin-top: 30px\A 7:   margin-left: 10px\A 8:   +border_radius\A 9:   \A 10:   a.new_question:link, a.new_question:visited\A 11:     background: #bc330d\A 12:     width: 100%\A 13:     display: block\A 14:     text-align: center\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 5:   padding-top: 0px\A 6:   padding-right: 0px\A 7:   margin-top: 0px\A 8:   margin-left: 10px\A 9:   +border_radius\A 10:   \A 11:   .guide\A 12:     background: #FFDAAF\A 13:     +border_radius\A 14:     padding: 10px\A 15:     color: black\A "; }

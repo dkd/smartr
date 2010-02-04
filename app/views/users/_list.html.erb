@@ -1,7 +1,6 @@
 <% users.each do |user| %>
 <div class="user-item">
-  <%= link_to image_tag(user.avatar.url(:thumb)), user_path(user)%>
-  <%= link_to user.login, user_path(user) %>
-  <br /><%= user.reputation %> Points
+  <%= link_to image_tag(user.avatar.url(:thumb), :border => 0, :align => "left"), user_path(user)%>
+  <%= link_to user.login, user_path(user) %> &middot; <%= user.reputation %> points
 </div>
 <% end -%>
