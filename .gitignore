@@ -8,3 +8,4 @@ doc/api
 doc/appla
 public/system
 solr/data/*
+vendor/gems/*
