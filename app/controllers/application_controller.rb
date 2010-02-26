@@ -52,6 +52,15 @@ class ApplicationController < ActionController::Base
             false
           end
         }
+        format.xml{
+         if current_user
+           true
+          else
+            authenticate_or_request_with_http_basic do |username, password|
+              username == "smartr" && password == "dingdongdiehexisttod"
+            end
+          end
+        }
         format.js{
           unless current_user  
             
@@ -73,7 +82,7 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_to root_url
         return false
       end
     end

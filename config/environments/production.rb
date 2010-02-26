@@ -10,7 +10,9 @@ config.cache_classes = true
 # Full error reports are disabled and caching is turned on
 config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
-
+#config.action_controller.page_cache_directory = RAILS_ROOT + "/public"  
+config.action_controller.cache_store = [:file_store, "#{RAILS_ROOT}/tmp/cache"]
+#config.cache_store = :mem_cache_store, '127.0.0.1', { :namespace => RAILS_ENV.to_s, :username => "nobody", :timeout => nil }
 # Use a different cache store in production
 # config.cache_store = :mem_cache_store
 

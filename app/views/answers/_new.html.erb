@@ -5,7 +5,8 @@
   
   <% form_for(answer, :url => question_answers_path(question, :question_id => question.id)) do |f| %>
     <%= f.error_messages %>
-    <%= f.text_area :body, :class => "markdown" %>
+    <div id="wmd-button-bar"></div>
+    <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
      
@@ -13,5 +14,5 @@
 <br class="clear" />
 <%= link_to "Cancel", question_path(answer.question), :class => "cancel" if controller.controller_name == "answers"%>
      <h3>Live preview</h3>
-   <div class="wmd-preview"></div>
+   <div id="wmd-preview" class="wmd-preview"></div>
 </div>

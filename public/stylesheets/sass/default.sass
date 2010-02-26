@@ -2,7 +2,7 @@ body
   font-family: Helvetica, Arial
   margin: 0px
   margin-top: 0px
-
+ 
   .clear
     clear: both
     line-height: 0px
@@ -94,31 +94,46 @@ body
     width: 300px
     float: right
     text-align: right
-    margin-bottom: 20px
+    margin-bottom: 2px
     position: relative
     z-index: 100
+    background: white
 
     ul
       margin: 0px
       padding: 0px
 
       li.active
+        
+        a
+          padding-bottom: 6px
+          
         a:link, a:visited
-          background: green
+          background: white
+          color: green
+          padding-bottom: 6px
         a:hover
-          background: black
-
+          background: white
+          color: black
+          padding-bottom: 6px
       li
         display: inline
         list-style: none
         margin-left: 8px
-
+        
+        a
+          border-top: 1px solid black
+          border-right: 1px solid black
+          border-left: 1px solid black
+          font-size: 13px
+          font-weight: bold
+          
         a:link, a:visited
-          color: white
-          background: black
-          +border_radius
+          color: #737373
           padding: 5px
           text-decoration: none
         
         a:hover
-          background: green
+          background: white
+          color: black
+          padding-bottom: 6px

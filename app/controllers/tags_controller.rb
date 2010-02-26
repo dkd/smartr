@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
-
+  before_filter :require_user
+  
   def index
     if params[:tag].present?
       @tags = Question.tagged_with("#{params[:tag]}%").tag_counts.collect{ |t| t if t.name.match /#{params[:tag]}/ }.delete_if{ |t| t==nil }

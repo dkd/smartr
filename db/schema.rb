@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100130233914) do
+ActiveRecord::Schema.define(:version => 20100211170854) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20100130233914) do
     t.string   "openid_identifier"
     t.integer  "views"
     t.string   "email"
-    t.integer  "reputation"
+    t.integer  "reputation",          :default => 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
