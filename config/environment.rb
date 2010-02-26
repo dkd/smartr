@@ -80,5 +80,5 @@ Rails::Initializer.run do |config|
   # config.active_record.schema_format = :sql
 
   # Activate observers that should always be running
-  config.active_record.observers = :comment_observer
+  config.active_record.observers = [:comment_observer, :question_observer, :tag_observer]
 end

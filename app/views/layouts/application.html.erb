@@ -65,8 +65,9 @@
     </div>
   </div>
   
-  <%= javascript_include_tag :defaults, 
-                             "wmd/wmd", 
+  <%= javascript_include_tag :defaults,
+                             "wmd/jquery.wmd.min",
+                             "wmd/showdown",
                              "highlight/highlight",
                              "highlight/languages/html-xml",
                              "highlight/languages/php",
@@ -74,6 +75,6 @@
                              "highlight/languages/typoscript",
                              "jquery.textarea",
                              "jquery.toggle-value",
-                             "jquery.gritter.min", :cache => true %>
+                             "jquery.gritter.min",  :cache => true %>
   </body>
 </html>

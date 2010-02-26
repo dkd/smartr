@@ -4,7 +4,7 @@
 
 class AnswersController < ApplicationController
   
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_user #, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :require_owner, :only => [:edit, :update_default, :destroy]
   before_filter :require_question_owner, :only => :update_for_switch_acceptance
   

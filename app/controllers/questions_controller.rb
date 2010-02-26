@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   
-  before_filter :require_user, :only => [:edit, :new, :update, :destroy, :update_for_toggle_acceptance]
+  before_filter :require_user , :only => [:edit, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :is_owner, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
   
   def index
@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
     elsif(params[:search])
       index_for_search
     else
-      @questions = Question.latest.paginate :page => params[:page], :per_page => 20
+      @questions = Question.latest.paginate :page => params[:page], :per_page => 15
       respond_to do |wants|
         wants.html {  }
         wants.xml { render "questions/rss/index" }
@@ -88,15 +88,15 @@ class QuestionsController < ApplicationController
   
   
   def index_for_hot
-    @questions = Question.hot.paginate :page => params[:page], :per_page => 20
+    @questions = Question.hot.paginate :page => params[:page], :per_page => 15
   end
   
   def index_for_active
-    @questions = Question.active.paginate :page => params[:page], :per_page => 20
+    @questions = Question.active.paginate :page => params[:page], :per_page => 15
   end
   
   def index_for_unanswered
-    @questions = Question.unanswered.paginate :page => params[:page], :per_page => 20
+    @questions = Question.unanswered.paginate :page => params[:page], :per_page => 15
   end
   
   
@@ -114,7 +114,7 @@ class QuestionsController < ApplicationController
       with :user_id, facet_user_id unless facet_user_id.nil?
       facet :user_id
       
-      paginate(:page =>  page, :per_page => 10)
+      paginate(:page =>  page, :per_page => 15)
     end
     
     render :index_for_search
