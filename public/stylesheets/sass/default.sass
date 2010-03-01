@@ -14,57 +14,62 @@ body
     #header
       
       h1
-        color: green
+        color = !color_6
         width: 900px
         float: left
+        font-weight: normal
+        font-size: 24px
+        margin-bottom: 0px
         
         a:link,
         a:visited
-          color: green
+          color = !color_6
           text-decoration: none
+        a:hover
+          text-decoration: underline
           
       form
         float: right
-        margin-top: -17px
         
         input
-          background: #FFF4BF
+          background = !color_5 * 1.2
           padding: 5px
           border: 1px solid #e9e9e9
           font-size: 1.07em
           width: 230px
-          color: green
+          color = !color_2
           +border_radius
         
         input.active
-          color: green
+          color = !color_2
           border-color: black
         
         
       #menu
-        
+        display: inline
+        margin-top: -20px
         ul
           display: inline
           margin-left: 0
           padding-left: 0
           
           li.active
-            background: orange
+            background = !color_2
 
           li
-            background= !standard_color
+            background= !color_1
             list-style: none
             display: inline
             margin-right: 10px
             +border_radius
             padding: 10px
-            line-height: 30px
+            line-height: 34px
             +text_shadow
-            padding-top: 20px
+            padding-top: 17px
             vertical-align: middle
             
             a:link, a:visited
-              font-size: 30px
+              font-size: 24px
               text-decoration: none
               color: white
               font-weight: bold
@@ -102,6 +107,7 @@ body
     ul
       margin: 0px
       padding: 0px
+      margin-right: 10px
 
       li.active
         
@@ -110,11 +116,11 @@ body
           
         a:link, a:visited
           background: white
-          color: green
+          color = !color_2
           padding-bottom: 6px
         a:hover
           background: white
-          color: black
+          color = !color_2_hover
           padding-bottom: 6px
       li
         display: inline
@@ -123,7 +129,7 @@ body
         
         a
           border-top: 1px solid black
-          border-right: 1px solid black
+          border-right: 2px solid black
           border-left: 1px solid black
           font-size: 13px
           font-weight: bold
@@ -134,6 +140,4 @@ body
           text-decoration: none
         
         a:hover
-          background: white
           color: black
-          padding-bottom: 6px

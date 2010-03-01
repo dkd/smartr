@@ -12,7 +12,7 @@ on line 11 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass
 14:     #header
 15:       
 16:       h1
-17:         color: green
+17:         color = !color_6
 
 
 Backtrace:
@@ -100,4 +100,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!min_width\".\A on line 11 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass\A \A 7:     clear: both\A 8:     line-height: 0px\A 9:   \A 10:   #wrapper\A 11:     width = !min_width\A 12:     margin: 0 auto\A 13:     \A 14:     #header\A 15:       \A 16:       h1\A 17:         color: green\A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!min_width\".\A on line 11 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/default.sass\A \A 7:     clear: both\A 8:     line-height: 0px\A 9:   \A 10:   #wrapper\A 11:     width = !min_width\A 12:     margin: 0 auto\A 13:     \A 14:     #header\A 15:       \A 16:       h1\A 17:         color = !color_6\A "; }

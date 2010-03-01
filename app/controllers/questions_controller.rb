@@ -112,8 +112,7 @@ class QuestionsController < ApplicationController
         tie 0.1
       end
       with :user_id, facet_user_id unless facet_user_id.nil?
-      facet :user_id
-      
+      facet :user_id, :minimum_count => 2
       paginate(:page =>  page, :per_page => 15)
     end
     

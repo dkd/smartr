@@ -1,17 +1,17 @@
 /*
-Sass::SyntaxError: Undefined variable: "!standard_color".
+Sass::SyntaxError: Undefined variable: "!color_2".
 on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass
 
 9:     
 10:     a:link, a:visited
 11:       text-decoration: none
 12:       color: white
-13:       background = !standard_color
+13:       background = !color_2
 14:       padding: 5px
 15:       +border_radius
 16:     
 17:       a:hover
-18:         background = !standard_color * 1.1
+18:         background = !color_2_hover
 19:   
 
 
@@ -107,4 +107,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!standard_color\".\A on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass\A \A 9:     \A 10:     a:link, a:visited\A 11:       text-decoration: none\A 12:       color: white\A 13:       background = !standard_color\A 14:       padding: 5px\A 15:       +border_radius\A 16:     \A 17:       a:hover\A 18:         background = !standard_color * 1.1\A 19:   \A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!color_2\".\A on line 13 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/tags.sass\A \A 9:     \A 10:     a:link, a:visited\A 11:       text-decoration: none\A 12:       color: white\A 13:       background = !color_2\A 14:       padding: 5px\A 15:       +border_radius\A 16:     \A 17:       a:hover\A 18:         background = !color_2_hover\A 19:   \A "; }

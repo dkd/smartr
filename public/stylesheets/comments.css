@@ -1,29 +1,24 @@
 /*
-Sass::SyntaxError: Undefined mixin 'border_radius'.
-on line 14 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
+Sass::SyntaxError: Undefined variable: "!color_6".
+on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
 
-10:     a.cancel:link, a.cancel:visited
-11:       color: white
-12:       background: red
-13:       padding: 5px
-14:       +border_radius
-15:       float: left
-16:       margin-left: 0px
-17:   
-18:       
-19:     a.cancel:hover, input.save:hover
-20:       background: black
+3:   padding-left: 5px
+4:   
+5:   h3
+6:     margin-bottom: 0.1em
+7:     color = !color_6
+8:   
+9:   .comment-new
+10:     float: right
+11:     margin-right: 10px
+12:     
+13:     
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass:14
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:193:in `perform!'
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/rule_node.rb:159:in `perform!'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass:7
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -105,4 +100,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 14 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 10:     a.cancel:link, a.cancel:visited\A 11:       color: white\A 12:       background: red\A 13:       padding: 5px\A 14:       +border_radius\A 15:       float: left\A 16:       margin-left: 0px\A 17:   \A 18:       \A 19:     a.cancel:hover, input.save:hover\A 20:       background: black\A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!color_6\".\A on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 3:   padding-left: 5px\A 4:   \A 5:   h3\A 6:     margin-bottom: 0.1em\A 7:     color = !color_6\A 8:   \A 9:   .comment-new\A 10:     float: right\A 11:     margin-right: 10px\A 12:     \A 13:     \A "; }

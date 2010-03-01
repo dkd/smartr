@@ -10,6 +10,7 @@
   <% @questions.results.each do |question| %>
   <%= render :partial => "/questions/question", :locals => {:question => question} %>
   <% end -%>
+  <br class="clear" />
   <%= will_paginate @questions.results %>
 <% else %>
 <p>No results found. I am very sorry.</p>

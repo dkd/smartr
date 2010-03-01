@@ -5,7 +5,7 @@
   -webkit-border-radius: 5px
   
   a.cancel:link, a.cancel:visited
-    background: red
+    background = !color_4
     padding: 5px
     color: white
     text-decoration: none
@@ -29,21 +29,20 @@
   
   textarea
     border: 1x solid #737373
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
+    +border_radius
+    padding: 5px
     width: 100%
   
   input.text
     border: 1x solid #737373
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
+    +border_radius
     height: 20px
     width: 100%
     font-weight: bold
     font-size: 14px
     
   input.save
-    background: green
+    background = !color_2
     padding: 10px
     color: white
     border: 0px
@@ -59,22 +58,7 @@
 h2.answer-header
   border-bottom: 3px solid #737373
 
-.accepted
-  background: #EAFFDF
-  padding: 10px 0px
-  
-  .body
-    .user
-      background= !standard_color !important
-      color: white
-      margin-right: 10px !important
-      a:link, a:visited
-        color: #ffff99 !important
-      a:hover
-        color: white !important
-        
-  .votes
-    background: none !important
+
   
 .answer-item  
   border-bottom: 1px dotted black
@@ -102,8 +86,13 @@ h2.answer-header
     margin-bottom: 5px
     overflow: auto
     
+    pre
+      code
+        padding: 5px
+        overflow: auto
+    
     a:link, a:visited
-      background: green
+      background = !color_2
       color: white
       padding: 5px
       +border_radius
@@ -131,12 +120,12 @@ h2.answer-header
         
       a:link, a:visited
         text-decoration: none
-        color: black
+        color = !color_2
         background: none
         font-weight: bold
       
       a:hover
-        color: green
+        color = !color_2_hover
         
         img
           border: 0px

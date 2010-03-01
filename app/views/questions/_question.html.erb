@@ -1,9 +1,5 @@
 <% cache("question_view_#{question.id}") do %>
-<% if current_user && question.tag_list %>
- <div class="question-list<%=" highlight-question" if (current_user.interesting_tag_list & question.tag_list).length > 0 %><%=" fade-question" if (current_user.uninteresting_tag_list & question.tag_list).length > 0 %>">
-<% else %>
-  <div class="question-list">
-<% end -%>
+<div class="question-list">
   <div class="stats">
     <div class="votes">
       <%=question.votes.length == 0? 0 : Vote.count_on("Question", question.id) %>
@@ -15,11 +11,10 @@
       <span class="desc"><%= "View".correctize_plural(question.views) %></span>
     </div>
 
-    <div class="answers <%=" zero" if question.answers_count == 0 %>">
+    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.answer.nil? %>">
       <%=question.answers_count %>
       <span class="desc"><%= "Answer".correctize_plural(question.answers_count) %></span>
     </div>
-
   </div>
   <div class="body">
     <h3><%= link_to(h(question.name), question_path(question)) %></h3>
@@ -39,6 +34,6 @@
       <% end -%>
       
     </div>
-    <br style="clear: both">
+    <br class="clear" />
   </div>
 <% end -%>

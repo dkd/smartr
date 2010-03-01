@@ -9,17 +9,17 @@
   +border_radius
   
   .guide
-    background: #FFDAAF
+    background = #FFDAAF
     +border_radius
     padding: 10px
     color: black
     
     h3
       margin-top: 0px
-      color: red
+      color = !color_3
  
   a.new_question:link, a.new_question:visited
-    background: #bc330d
+    background = #bc330d
     width: 100%
     display: block
     text-align: center
@@ -32,11 +32,13 @@
     -webkit-animation-duration: 5s
     -webkit-animation-iteration-count: infinite
     border: 1px solid #bc330d
+    +border_radius
      
   a.new_question:hover
     border: 1px solid black
       
   .facets
+    font-size: 12px
     a:link, a:visited
       background: none
       color: black
@@ -62,9 +64,7 @@
   
   a:link, a:visited
     text-decoration: none
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
-    background: green
+    background = !color_1
     padding: 5px
     font-size: 16px
     color: white
@@ -72,6 +72,7 @@
     
   h3
     margin-top: 20px
+    margin-bottom: 5px
     
   .tags
     
@@ -79,9 +80,8 @@
       color: black
       width: auto
       text-decoration: none
-      -moz-border-radius: 5px
-      -webkit-border-radius: 5px
-      background: green
+      +border_radius
+      background = !color_4
       padding: 5px
       font-size: 12px
       color: white
@@ -89,5 +89,5 @@
       margin: 2px
       
     a:hover
-      background: black
+      background = !color_2_hover
       

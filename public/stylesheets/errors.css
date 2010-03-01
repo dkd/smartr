@@ -7,7 +7,7 @@ on line 5 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass
 3:   padding: 10px
 4:   margin: 10px 0px 20px 0px
 5:   +border_radius_big
-6:   background: red
+6:   background = !color_4
 7:   color: white
 8:   
 9:   h2
@@ -91,4 +91,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius_big'.\A on line 5 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass\A \A 1: #errorExplanation\A 2:  \A 3:   padding: 10px\A 4:   margin: 10px 0px 20px 0px\A 5:   +border_radius_big\A 6:   background: red\A 7:   color: white\A 8:   \A 9:   h2\A 10:     margin-top: 0px !important\A 11:     font-size: 26px !important\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius_big'.\A on line 5 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass\A \A 1: #errorExplanation\A 2:  \A 3:   padding: 10px\A 4:   margin: 10px 0px 20px 0px\A 5:   +border_radius_big\A 6:   background = !color_4\A 7:   color: white\A 8:   \A 9:   h2\A 10:     margin-top: 0px !important\A 11:     font-size: 26px !important\A "; }

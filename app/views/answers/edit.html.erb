@@ -5,15 +5,15 @@
 
   <% form_for(@answer, :url => question_answer_path) do |f| %>
     <%= f.error_messages %>
-    <%= f.text_area :body, :class => "markdown" %>
+    <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
     
   <% end -%>
   
    <br class="clear" /><%= link_to "Cancel", question_path(@answer.question), :class => "cancel" %>
-   <h3>Live preview</h3>
-   <div class="wmd-preview"></div>
+   
+   
    <br class="clear" />
 </div>
 <% main_menu :questions  %>
