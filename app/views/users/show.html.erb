@@ -59,12 +59,12 @@
 <% Question.find_all_by_user_id(@user.id, :limit => 5).each do |question| %>
   <%= render :partial => "/questions/question", :locals => {:question => question} %>
 <% end -%>
-<% if Answer.find_all_by_user_id(@user.id).count > 0 %>
+<%# if Answer.find_all_by_user_id(@user.id).count > 0 %>
   <h2>Latest Answers</h2>
   <% Answer.find_all_by_user_id(@user.id, :limit => 5).each do |answer| %>
     <%= render :partial => "/questions/question", :locals => {:question => answer.question} %>
   <% end -%>
-<% end -%>
+<%# end -%>
 <% main_menu :users%>
 <% content_for :sidebar, render(:partial => "show_sidebar", :locals => {:user => @user}) %>
 
