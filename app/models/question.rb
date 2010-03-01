@@ -36,7 +36,6 @@ class Question < ActiveRecord::Base
     text :name, :boost => 2.0
     text :body_plain
     integer :user_id, :references => User
-    integer :views
     text :answers do 
       answers.map {|answer| 
         answer.body_plain

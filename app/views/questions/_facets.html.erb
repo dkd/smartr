@@ -1,4 +1,4 @@
-<% if results.facet(:user_id).rows.count > 0 %>
+<% if results.facet(:user_id).rows %>
 <h3>By user</h3>
 <ul class="facets">
 <% results.facet(:user_id).rows.each do |result| %>
