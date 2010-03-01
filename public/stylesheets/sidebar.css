@@ -9,7 +9,7 @@ on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass
 9:   +border_radius
 10:   
 11:   .guide
-12:     background: #FFDAAF
+12:     background = #FFDAAF
 13:     +border_radius
 14:     padding: 10px
 15:     color: black
@@ -91,4 +91,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 5:   padding-top: 0px\A 6:   padding-right: 0px\A 7:   margin-top: 0px\A 8:   margin-left: 10px\A 9:   +border_radius\A 10:   \A 11:   .guide\A 12:     background: #FFDAAF\A 13:     +border_radius\A 14:     padding: 10px\A 15:     color: black\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/sidebar.sass\A \A 5:   padding-top: 0px\A 6:   padding-right: 0px\A 7:   margin-top: 0px\A 8:   margin-left: 10px\A 9:   +border_radius\A 10:   \A 11:   .guide\A 12:     background = #FFDAAF\A 13:     +border_radius\A 14:     padding: 10px\A 15:     color: black\A "; }

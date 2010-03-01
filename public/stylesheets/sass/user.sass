@@ -1,20 +1,21 @@
 #user
-  color: red
+  color = !color_2
   float: right
   text-align: right
   width: 220px
-  margin-top: 10px
-  +border_radius
+  margin-bottom: 1em
+  margin-top: 0.5em
+  font-size: 12px
   
   a:link, a:visited
     text-decoration: none
-    color: white
-    background = !standard_color
-    padding: 5px
-    +border_radius
-  
+    color = !color_2
+    font-size: 12px
+    text-decoration: underline
+    
   a:hover
-    background: black
+    color = !color_1
+    text-decoration: underline
 
 .user-header
   margin-top: 20px

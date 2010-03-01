@@ -20,19 +20,23 @@
       display: block
   
   .votes
-    background: #FFE9CF
+    background = !color_5 * 1.1
 
   .views
-    background: #cfcfcf
+    background = !color_6
+    color: white
   
   .answers
-    background = !standard_color
+    background = !color_2
     color: white
     span.desc
       font-size: 10px
-      
+  .answered
+    color: #ffff99
+    span.desc
+      color: white
   .zero
-    background: #6F1D00
+    background = !color_3
     span.desc
       font-size: 10px
   
@@ -48,6 +52,8 @@
     div.views
       clear: left
       margin-bottom: 10px
+      background: white
+      color = !color_6
     
     div.favourite
       

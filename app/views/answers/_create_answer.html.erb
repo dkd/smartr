@@ -4,13 +4,10 @@
   <% form_for(answer, :url => answers_path(question), :html => {:method => :post}) do |f| %>
     <%= f.error_messages %>
     <%= f.hidden_field :question_id, :value => question.id %>
-    <%= f.text_area :body, :class => "markdown" %>
+    <%= f.text_area :body, :id => 'wmd-input' , :class => "markdown" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
     
     <%= f.submit 'Save', :class => "save" %>
    
   <% end -%>
-   <br class="clear" />
-   <h3>Live preview</h3>
-   <div class="wmd-preview"></div>     
 </div>

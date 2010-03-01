@@ -1,4 +1,4 @@
-<% cache "questions_sidebar_view" do %>
+
   <%= link_to 'Ask a question!', new_question_path, :class => "new_question" %>
   <% if current_user && current_user.interesting_tag_list %>
     <h3>I am interested in ...</h3>
@@ -7,8 +7,14 @@
       <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
       <% end -%>
     </div>
+     <div class="tags uninteresting" style="display:none">
+      <% current_user.uninteresting_tag_list.each do |tag| %>
+        <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+      <% end -%>
+      </div>
     <br class="clear">
   <% end -%>
+<% cache "questions_sidebar_tags_view" do %>
   <h3>Recent tags</h3>
   <div class="tags">
   <% Question.recent_tags.each do |tag| -%>

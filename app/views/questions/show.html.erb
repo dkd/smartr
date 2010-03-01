@@ -11,5 +11,4 @@
 <% if (current_user.present? && !@question.answered?(current_user)) %>
   <%= render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question} %>
 <% end -%>  
-<% content_for :sidebar, render(:partial => "/questions/show_sidebar", :locals => {:question => @question}) %>
 <% main_menu :questions %>

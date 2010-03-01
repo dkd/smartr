@@ -22,14 +22,14 @@
 <body>
   <div id="wrapper">
     <div id="header">
-      <h1><%= link_to(image_tag("smartr-logo.png", :border => 0), root_url) %></h1><br /><br />
+      <h1><%= link_to("SmartR", root_url) %></h1>
       <div id="user">
         <% if !current_user %>
-          <%= link_to "Register", new_user_path %>
+          <%= link_to "Register", new_user_path %> | 
           <%= link_to "Log In", new_user_session_path %>
         <% else %>
           <%= image_tag current_user.avatar.url(:tiny) %>
-          <%= link_to "My Account", user_path(current_user) %>
+          <%= link_to "My Account", user_path(current_user) %> | 
           <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        
         <% end %>
        

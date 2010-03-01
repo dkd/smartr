@@ -1,23 +1,25 @@
 /*
-Sass::SyntaxError: Undefined mixin 'border_radius'.
-on line 12 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass
+Sass::SyntaxError: Undefined variable: "!color_4".
+on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass
 
-8:     background: red
+4:   -moz-border-radius: 5px
+5:   -webkit-border-radius: 5px
+6:   
+7:   a.cancel:link, a.cancel:visited
+8:     background = !color_4
 9:     padding: 5px
 10:     color: white
 11:     text-decoration: none
 12:     +border_radius
 13:     clear: both
 14:     margin-top: 10px
-15:     font-weight: bold
-16:     
-17:   a.cancel:hover
-18:     margin-top: 10px
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass:12
-/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass:8
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
+/Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `map'
@@ -98,4 +100,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius'.\A on line 12 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass\A \A 8:     background: red\A 9:     padding: 5px\A 10:     color: white\A 11:     text-decoration: none\A 12:     +border_radius\A 13:     clear: both\A 14:     margin-top: 10px\A 15:     font-weight: bold\A 16:     \A 17:   a.cancel:hover\A 18:     margin-top: 10px\A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!color_4\".\A on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/answers.sass\A \A 4:   -moz-border-radius: 5px\A 5:   -webkit-border-radius: 5px\A 6:   \A 7:   a.cancel:link, a.cancel:visited\A 8:     background = !color_4\A 9:     padding: 5px\A 10:     color: white\A 11:     text-decoration: none\A 12:     +border_radius\A 13:     clear: both\A 14:     margin-top: 10px\A "; }

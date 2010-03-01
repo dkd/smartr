@@ -1,6 +1,10 @@
 .comments
-  float: right
-  width: 66%
+  background-color: white
+  padding-left: 5px
+  
+  h3
+    margin-bottom: 0.1em
+    color = !color_6
   
   .comment-new
     float: right
@@ -9,7 +13,7 @@
     
     a.cancel:link, a.cancel:visited
       color: white
-      background: red
+      background = !color_4
       padding: 5px
       +border_radius
       float: left
@@ -20,35 +24,43 @@
       background: black
       
     input.save
-      background: green
+      background = !color_2
       color: white
       padding: 5px
       +border_radius
       border: none
       float: right
+      padding-top: 2px
+      padding-bottom: 2px
+      margin-top: 10px
+      font-size: 12px
       
   .comment-item
-    margin-top: 5px
-    comment-item
-    padding: 5px
-    padding-left: 10px
-    padding-right: 10px
-    background: #f4f4f4
+    padding-top: 5px
+    padding-bottom: 5px
+    padding-left: 0px
+    padding-right: 0px
+    border-top: 1px dotted
+    border-color = !color_5
     display: block
     font-size: 12px
     +border_radius
     margin-right: 0px
+    
+    p
+      margin: 0px
+    
     .user-info
       float: right
       margin-bottom: 5px
       
       a:link, a:visited
-        color: green
+        color = !color_3
         text-decoration: none
         font-weight: bold
       a:hover
         color: black
-        
+        text-decoration: underline
     a:link, a:visited
       background: none
       text-decoration: underline
@@ -63,7 +75,7 @@
     margin: 10px
     text-decoration: none
     font-size: 12px
-    background: green
+    background = !color_2
     padding: 5px
     color: white
     -moz-border-radius: 5px

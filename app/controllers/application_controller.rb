@@ -66,9 +66,9 @@ class ApplicationController < ActionController::Base
             
             render :update do |page|
               page << "$.gritter.add({
-              	title: 'Notice',              	
+              	title: 'Nothing',              	
               	text: 'You must be logged in order to perform this action.',
-              	time: 8000
+              	time: 5000
               });"
             end
             false

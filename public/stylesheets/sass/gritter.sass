@@ -19,33 +19,34 @@
     left: 7px
 
 .gritter-error
-  background: red !important
+  background =  !color_1 !important
   background-image: none !important
   .gritter-top, .gritter-bottom, .gritter-item
     background-image: none !important
   
 #gritter-notice-wrapper
   position: fixed
-  top: 20px
-  right: 20px
-  width: 301px
+  top: 0px
+  right: 0px
+  width: 100%
   z-index: 9999
+  
 
 .gritter-item-wrapper
   position: relative
-  margin: 0 0 10px 0
+  margin: 0 0 0 0
   background: url('.')
 
 .gritter-top
-  background: url(/images/gritter//gritter.png) no-repeat left -30px
-  height: 10px
+  //background: url(/images/gritter//gritter.png) no-repeat left -30px
+  //height: 10px
 
 .hover .gritter-top
   background-position: right -30px
 
 .gritter-bottom
-  background: url(/images/gritter/gritter.png) no-repeat left bottom
-  height: 8px
+  //background: url(/images/gritter/gritter.png) no-repeat left bottom
+  //height: 8px
   margin: 0
 
 
@@ -55,27 +56,28 @@
 
 .gritter-item
   display: block
-  background: url(/images/gritter//gritter.png) no-repeat left -40px
+  background = !color_4
+  //background: url(/images/gritter//gritter.png) no-repeat left -40px
   color: #eee
-  padding: 2px 11px 8px 11px
-  font-size: 11px
-  font-family: verdana
-
+  font-size: 14px
+  border-bottom: 1px solid
+  border-color = !color_3
+  padding: 10px
 
 .hover .gritter-item
-  background-position: right -40px
+  //background-position: right -40px
 
 
 .gritter-item p
   padding: 0
   margin: 0
-
-
+  margin-left: 30px
+    
 .gritter-close
   position: absolute
   top: 5px
   left: 3px
-  background: url(/images/gritter//gritter.png) no-repeat left top
+  background: url(/images/gritter/gritter.png) no-repeat left top
   cursor: pointer
   width: 30px
   height: 30px
@@ -85,7 +87,7 @@
   font-size: 14px
   font-weight: bold
   padding: 0 0 7px 0
-  display: block
+  display: none
   text-shadow: 1px 1px #000
 
 
@@ -96,8 +98,8 @@
 
 
 .gritter-with-image, .gritter-without-image
-  padding: 0 0 5px 0
-
+  padding: 0 0 0px 0
+  
 
 .gritter-with-image
   width: 220px
