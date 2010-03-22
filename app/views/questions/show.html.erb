@@ -11,4 +11,3 @@
 <% if (current_user.present? && !@question.answered?(current_user)) %>
   <%= render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question} %>
 <% end -%>  
-<% main_menu :questions %>
