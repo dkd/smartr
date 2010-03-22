@@ -1,9 +1,10 @@
 <h2>Find Tags</h2>
 <div class="tag-search">
-  <input type="text" />
+  <input type="text" class="toggle text" title="Enter a tag" size="25" />
 </div>
 <br class="clear" />
+<%= debug @tags.first.inspect%>
 <div class="tag-list">
- <%= render :partial => "list", :locals => {:question => @question}%>
+ <%= render :partial => "list"%>
 </div>
 <% main_menu :tags %>

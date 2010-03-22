@@ -701,6 +701,16 @@ h2.answer-header {
   .answer-item .stats div.votes a.down-neutral:hover, .answer-item .stats div.votes a.up-neutral:hover, .question .stats div.votes a.down-neutral:hover, .question .stats div.votes a.up-neutral:hover {
     opacity: 1.0; }
 
+.tag-search input {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #e9e9e9;
+  background: #f4f4f4;
+  color: #738500;
+  font-weight: bold; }
+
 .tag-list {
   margin-top: 10px; }
   .tag-list .tag {
@@ -711,7 +721,7 @@ h2.answer-header {
     .tag-list .tag a:link, .tag-list .tag a:visited {
       text-decoration: none;
       color: white;
-      background: #738500;
+      background: #853e00;
       padding: 5px;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
