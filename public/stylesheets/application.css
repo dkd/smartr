@@ -305,42 +305,44 @@ h2.show-question {
 .question-list {
   padding: 5px 0px 5px 0px;
   border-bottom: 1px dotted #333; }
-  .question-list .body h3 {
-    margin-top: 0px; }
-    .question-list .body h3 a:link {
+  .question-list .body {
+    margin-left: 21%; }
+    .question-list .body h3 {
+      margin-top: 0px; }
+      .question-list .body h3 a:link {
+        text-decoration: none;
+        color: #313900; }
+      .question-list .body h3 a:visited {
+        text-decoration: none;
+        color: #313900; }
+      .question-list .body h3 a:hover {
+        color: black;
+        text-decoration: underline; }
+    .question-list .body .user {
+      float: right;
+      font-size: 12px;
+      text-align: right;
+      padding: 5px; }
+      .question-list .body .user img {
+        border: 0px; }
+      .question-list .body .user a:link, .question-list .body .user a:visited {
+        text-decoration: none;
+        color: #738500;
+        font-weight: bold; }
+      .question-list .body .user a:hover {
+        color: black;
+        text-decoration: underline; }
+    .question-list .body .tags a:link, .question-list .body .tags a:visited {
+      font-size: 12px;
       text-decoration: none;
-      color: #313900; }
-    .question-list .body h3 a:visited {
-      text-decoration: none;
-      color: #313900; }
-    .question-list .body h3 a:hover {
-      color: black;
-      text-decoration: underline; }
-  .question-list .body .user {
-    float: right;
-    font-size: 12px;
-    text-align: right;
-    padding: 5px; }
-    .question-list .body .user img {
-      border: 0px; }
-    .question-list .body .user a:link, .question-list .body .user a:visited {
-      text-decoration: none;
-      color: #738500;
-      font-weight: bold; }
-    .question-list .body .user a:hover {
-      color: black;
-      text-decoration: underline; }
-  .question-list .body .tags a:link, .question-list .body .tags a:visited {
-    font-size: 12px;
-    text-decoration: none;
-    background: #853e00;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    color: white;
-    padding: 5px; }
-  .question-list .body .tags a:hover {
-    background: black; }
+      background: #853e00;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      color: white;
+      padding: 5px; }
+    .question-list .body .tags a:hover {
+      background: black; }
 
 #errorExplanation {
   padding: 10px;
