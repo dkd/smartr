@@ -5,7 +5,6 @@
     <h3>Enter your question here</h3>
     <%= f.text_field :name, :class => "text" %>
     <h3>Please provide more detail</h3>
-    <div id="wmd-button-bar"></div>
     <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
     
     <%= f.hidden_field :body_plain, :class => "plain" %>
