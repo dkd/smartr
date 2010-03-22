@@ -87,12 +87,12 @@ $(document).ready(function(){
       $(this).effect("pulsate", { times:2, mode: "show" }, 200);
 
   });
-  $("#search_searchstring").focus(function()
+  $("input[type=text],input[type=password]").focus(function()
     {
       $(this).addClass("active");
     }
   );
-  $("#search_searchstring").blur(function()
+  $("input[type=text],input[type=password]").blur(function()
     {
       $(this).removeClass("active");
     }

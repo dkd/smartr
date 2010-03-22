@@ -34,8 +34,8 @@ Rails::Initializer.run do |config|
   config.gem "sanitize"
   #config.gem "searchlogic"
   
-  config.gem 'sunspot', :lib => 'sunspot'
-  config.gem 'sunspot_rails', :lib => 'sunspot/rails'
+  config.gem 'sunspot', :lib => 'sunspot', :version => '0.10.8'
+  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '0.11.5'
   config.gem 'bluecloth'
   
   config.gem 'escape'

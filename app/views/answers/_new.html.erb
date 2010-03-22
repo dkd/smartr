@@ -9,9 +9,11 @@
     <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
-     
+    <%= link_to "Cancel", question_path(answer.question), :class => "cancel" if controller.controller_name == "answers"%>
+    <br class="clear" />
   <% end -%>
 <br class="clear" />
-<%= link_to "Cancel", question_path(answer.question), :class => "cancel" if controller.controller_name == "answers"%>
+
      
 </div>
+<% main_menu :questions %>

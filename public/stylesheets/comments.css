@@ -12,7 +12,7 @@ on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass
 10:     float: right
 11:     margin-right: 10px
 12:     
-13:     
+13:     textarea
 
 
 Backtrace:
@@ -100,4 +100,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!color_6\".\A on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 3:   padding-left: 5px\A 4:   \A 5:   h3\A 6:     margin-bottom: 0.1em\A 7:     color = !color_6\A 8:   \A 9:   .comment-new\A 10:     float: right\A 11:     margin-right: 10px\A 12:     \A 13:     \A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!color_6\".\A on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/comments.sass\A \A 3:   padding-left: 5px\A 4:   \A 5:   h3\A 6:     margin-bottom: 0.1em\A 7:     color = !color_6\A 8:   \A 9:   .comment-new\A 10:     float: right\A 11:     margin-right: 10px\A 12:     \A 13:     textarea\A "; }

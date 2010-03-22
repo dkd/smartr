@@ -1,21 +1,24 @@
 .answer-edit
   background: #FFF5E1
   padding: 10px 20px
-  -moz-border-radius: 5px
-  -webkit-border-radius: 5px
+  +border_radius
+  position: relative
+  
   
   a.cancel:link, a.cancel:visited
     background = !color_4
-    padding: 5px
+    padding: 7px
     color: white
     text-decoration: none
     +border_radius
-    clear: both
     margin-top: 10px
     font-weight: bold
+    position: relative
+    left: 0px
+    font-size: 14px
+    bottom: -8px
     
   a.cancel:hover
-    margin-top: 10px
     background: black
   
   h2
@@ -31,7 +34,7 @@
     border: 1x solid #737373
     +border_radius
     padding: 5px
-    width: 100%
+    width: 890px
   
   input.text
     border: 1x solid #737373
@@ -42,14 +45,16 @@
     font-size: 14px
     
   input.save
+    float: right
     background = !color_2
-    padding: 10px
+    padding: 5px
+    padding-left: 7px
+    padding-right: 7px
     color: white
     border: 0px
     font-size: 14px
     +border_radius
     display: block
-    float: right
     font-weight: bold
   
   input.save:hover
@@ -90,8 +95,17 @@ h2.answer-header
       code
         padding: 5px
         overflow: auto
-    
+      
     a:link, a:visited
+      padding: 5px
+      font-weight: normal
+      line-height: 25px
+      color = !color_2
+      
+    a:hover
+      color: black
+      
+    a.edit:link, a.edit:visited
       background = !color_2
       color: white
       padding: 5px
@@ -100,7 +114,7 @@ h2.answer-header
       font-weight: normal
       line-height: 25px
     
-    a:hover
+    a.edit:hover
       background: black
     p
       margin-bottom: 1em
