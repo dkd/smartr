@@ -3,7 +3,7 @@
     <% cache (:key => "tag_list_view_#{tag.name}") do %>
        <span class="tag">
          <%=Tagging.find_all_by_taggable_type_and_tag_id("Question", tag.id).size %>x 
-         <%=link_to tag, :controller => :questions, :tag => tag.name, :class => "tag" -%>
+         <%=link_to tag, :controller => :questions, :q => tag.name, :class => "tag" -%>
        </span>
     <% end -%>
   <% end -%>
