@@ -21,7 +21,7 @@ $(document).ready(function(){
   $("div.tag-search input").keyup(function(){
     var tag = $(this).val();
     $.ajax({type: "GET",
-            url: "/tags/" + tag,
+            url: "/tags?q=" + tag,
             success: function(data){
               $("div.tag-list").html(data);
             }});
@@ -100,11 +100,21 @@ $(document).ready(function(){
   
   /* Tag auto-completion */
  
-  $("input.tags").autocomplete("/tags.json", {
-  		multiple: true,
-  		mustMatch: true,
-  		autoFill: true
-  	});
+  $("input.tags").autocomplete('/tags.json', {
+      dataType: 'json',
+      parse: function(data) {
+          var rows = new Array();
+          for(var i=0; i<data.length; i++){
+              rows[i] = { data: data[i], value:data[i], result:data[i]};
+          }
+          return rows;
+      },
+      formatItem: function(row, i, n) {
+          return row;
+      },
+      multiple: true,
+      autoFill: true
+  });
   
   $(".status a").hover(
     function(){

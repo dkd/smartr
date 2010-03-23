@@ -1,5 +1,4 @@
-<h1>Edit My Account</h1>
-<%= image_tag @user.avatar.url(:medium) %>
+<h2>Edit My Account</h2>
 
 <% form_for @user, :url => user_path(:id => @current_user.id), :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
