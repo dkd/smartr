@@ -98,6 +98,14 @@ $(document).ready(function(){
     }
   );
   
+  /* Tag auto-completion */
+ 
+  $("input.tags").autocomplete("/tags.json", {
+  		multiple: true,
+  		mustMatch: true,
+  		autoFill: true
+  	});
+  
   $(".status a").hover(
     function(){
     

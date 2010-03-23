@@ -44,6 +44,7 @@ class ApplicationController < ActionController::Base
     def require_user
       
       respond_to do |format|
+
         format.html{
           unless current_user
             store_location
@@ -52,6 +53,7 @@ class ApplicationController < ActionController::Base
             false
           end
         }
+
         format.xml{
          if current_user
            true
@@ -61,6 +63,11 @@ class ApplicationController < ActionController::Base
             end
           end
         }
+
+        format.json{
+          true# if current_user
+        }
+
         format.js{
           unless current_user  
             

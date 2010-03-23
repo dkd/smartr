@@ -10,7 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :comments
-  map.connect "tags/:tag", :controller => :tags, :action => :index
+  map.connect "tags/:q", :controller => :tags, :action => :index
+  map.connect "tags.json", :controller => :tags, :action => :index, :format => :json
   map.connect "users/search/:name", :controller => :users, :action => :index
   map.connect "tags", :controller => :tags, :action => :index
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
