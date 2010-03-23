@@ -48,7 +48,6 @@ class CommentsController < ApplicationController
     @comment.user = @current_user
     respond_to do |format|
       if @comment.save
-        flash[:notice] = 'Comment was successfully created.'
         format.js { 
           render :update do |page|
             parent = @comment.commentable_type.classify.constantize.find(@comment.commentable_id)

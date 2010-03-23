@@ -4,17 +4,25 @@ class UsersController < ApplicationController
   
   def index
     respond_to do |format|
-      format.html{ @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 20}
+      format.html{ @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10}
       format.js {
-        if params[:name].present?
-          @users = User.find(:all, :conditions => ["login like ?","#{params[:name]}%"]).paginate :page => params[:page], :per_page => 20
+        unless params[:q].blank?
+          @users = User.find(:all, :conditions => ["login like ?","#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
         else
-          @users = User.find(:all).paginate :page => params[:page], :per_page => 20
+          @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
         end  
         
         render :partial => "list", :locals => {:users => @users}
         }
     end
+  end
+  
+  def search
+    index
+  end
+  
+  def who_is_online
+    @users = User.logged_in
   end
   
   def new

@@ -31,9 +31,18 @@ $(document).ready(function(){
   $("div.user-search input").keyup(function(){
     var tag = $(this).val();
     $.ajax({type: "GET",
-            url: "/users/search/" + tag,
+            url: "/users/search/?q=" + tag,
             success: function(data){
-              $("div.user-list").html(data);
+              if(data){
+                var header = "<tr>" + $("div.user-list table tr").html() + "</tr>";
+                $("div.user-list table").html(header + data);
+                $("div.user-list .no-result").hide();
+                $("div.user-list table").show();
+              }
+              else{
+                $("div.user-list table").hide();
+                $("div.user-list .no-result").fadeIn();
+              }
             }});
     
   });

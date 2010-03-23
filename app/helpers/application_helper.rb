@@ -9,6 +9,11 @@ module ApplicationHelper
       content_for :main_menu, build_menu(menu, active)
   end
   
+  def title(text)    
+    text = "smartR - be a smartass" if text.blank?
+    content_for :title, text
+  end
+  
   def build_menu(menu, active)
       li = ""
       menu.each do |m|
@@ -17,14 +22,6 @@ module ApplicationHelper
       end
       content_tag(:ul, li)
     end
-  
-  def correct_plural()
-    
-  end
-  
-  def fancy_flash
-    
-  end
   
   def code(html)
     auto_link(Sanitize.clean(BlueCloth.new(html).to_html,
