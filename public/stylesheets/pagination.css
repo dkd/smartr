@@ -1,22 +1,22 @@
 /*
-Sass::SyntaxError: Undefined variable: "!color_3".
-on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/pagination.sass
+Sass::SyntaxError: Undefined variable: "!color_2".
+on line 19 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/pagination.sass
 
-3:   a:link, a:visited
-4:     padding: 5px
-5:     font-size: 12px
-6:     text-decoration: none
-7:     background = !color_3
-8:     color: white
-9:     +border_radius
-10:   
-11:   a:hover
-12:     background = !color_3_hover
-13:     color: white
+15:   a:link, a:visited
+16:     font-size: 12px
+17:     text-decoration: none
+18:     background: white 
+19:     color = !color_2
+20:   
+21:   a:hover
+22:     color = !color_2_hover
+23:   
+24:   a.prev_page,a.next_page
+25:     padding: 5px
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/pagination.sass:7
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/pagination.sass:19
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:181:in `_perform'
@@ -100,4 +100,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!color_3\".\A on line 7 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/pagination.sass\A \A 3:   a:link, a:visited\A 4:     padding: 5px\A 5:     font-size: 12px\A 6:     text-decoration: none\A 7:     background = !color_3\A 8:     color: white\A 9:     +border_radius\A 10:   \A 11:   a:hover\A 12:     background = !color_3_hover\A 13:     color: white\A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!color_2\".\A on line 19 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/pagination.sass\A \A 15:   a:link, a:visited\A 16:     font-size: 12px\A 17:     text-decoration: none\A 18:     background: white \A 19:     color = !color_2\A 20:   \A 21:   a:hover\A 22:     color = !color_2_hover\A 23:   \A 24:   a.prev_page,a.next_page\A 25:     padding: 5px\A "; }

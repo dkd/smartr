@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100211170854) do
+ActiveRecord::Schema.define(:version => 20100323145357) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20100211170854) do
     t.text     "body_html"
     t.string   "permalink"
     t.integer  "answer_id"
+    t.boolean  "send_email"
   end
 
   create_table "sessions", :force => true do |t|

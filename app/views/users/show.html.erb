@@ -1,4 +1,6 @@
+  <h2><%=h @user.login %></h2>
 <div class="user-header">
+
   <div class="image">
     <%= image_tag @user.avatar.url(:medium) %> 
     <div class="stats">
@@ -11,7 +13,7 @@
     </div>
   </div>
   <div class="info">
-    <h2><%=h @user.login %></h2>
+    
     <h3>Login count:</h3>
         <p>
       <%=h @user.login_count unless @user.login_count.nil? %>

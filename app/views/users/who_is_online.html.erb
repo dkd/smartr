@@ -1,14 +1,10 @@
 <div class="user-header">
   <h2>Users</h2>
   <div class="tabs">
-    <%=submenu(:winner) %>
+    <%=submenu(:who_is_online) %>
   </div>
   <br class="clear" />
 </div>
-<div class="user-search">
-  <input type="text" class="toggle" title="Enter a username ..." size="25" />
-</div>
-<br class="clear" />
 <div class="user-list">
   <table border="0" cellpadding="0" cellspacing="0">
     <tr>
@@ -20,9 +16,5 @@
     </tr>
     <%= render :partial => "list", :locals => {:users => @users}%>
  </table>
- <div class="no-result">Sorry, could not find user.</div>
 </div>
-<br class="clear" />
-<%= will_paginate @users%>
 <% main_menu :users %>
-<%# content_for :sidebar, render(:partial => "sidebar") %>

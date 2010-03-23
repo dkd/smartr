@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
   #Validations
   validates_presence_of [:body, :name, :tag_list]
   validates_uniqueness_of :name
+  validates_length_of :name, :minimum => 30
+  validates_length_of :body, :minimum => 100
   
   #Extensions
   acts_as_taggable_on :tags
@@ -18,7 +20,7 @@ class Question < ActiveRecord::Base
   #Named Scopes
   default_scope :include => :user
   named_scope :latest, :order => "created_at DESC"
-  named_scope :hot, :order => "updated_at DESC, answers_count DESC"
+  named_scope :hot, :order => "answers_count DESC,updated_at DESC"
   named_scope :active, :order => "updated_at DESC, answers_count DESC"
   named_scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
   
@@ -30,17 +32,24 @@ class Question < ActiveRecord::Base
   before_save :set_permalink
   before_save :check_anwswer_count
   
-  
   #Sunspot Solr
   searchable do
     text :name, :boost => 2.0
     text :body_plain
     integer :user_id, :references => User
+    
     text :answers do 
       answers.map {|answer| 
         answer.body_plain
       }
     end
+    
+    text :comments do
+      comments.map {|comment|
+        comment.body
+      }
+    end
+    
     text :user do
       user.login
     end
