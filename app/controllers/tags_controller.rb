@@ -8,6 +8,7 @@ class TagsController < ApplicationController
     else
       @tags = Question.tag_counts
     end
+    
     respond_to do |format|
       
       format.html{}
@@ -16,8 +17,7 @@ class TagsController < ApplicationController
         render :partial => "list"
       }
       format.json{
-        puts "Hallo"
-        render :json, @tags.to_json
+        render :json => @tags.map { |tag| tag.name}.to_json
       }
     end
   end

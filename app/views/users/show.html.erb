@@ -34,7 +34,6 @@
     </p>
 
     <%= link_to 'Edit', edit_user_path(current_user) if current_user && current_user == @user%>
-    
   </div>
   <br class="clear" />
 </div>
@@ -50,7 +49,7 @@
 <% if @user.uninteresting_tags.length>0 %>
   <h2>Not interested in ...</h2>
   <div class="tag-list">
-  <% @user.uninteresting_tags.each do |tag| %>
+  <% @user.uninteresting_tag_list.each do |tag| %>
     <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
     <% end -%>
   </div>

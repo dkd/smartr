@@ -1,12 +1,13 @@
-<%= form.label :login %><br />
+<%= form.label :avatar %><br />
+<%= image_tag @user.avatar.url(:medium) %>
+<%= form.file_field :avatar %><br />
+<br /><%= form.label :login %><br />
 <%= form.text_field :login %><br />
 <br />
 <%= form.label :email %><br />
 <%= form.text_field :email %><br />
 <br />
-<%= form.label :avatar %><br />
-<%= form.file_field :avatar %><br />
-<br />
+
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password %><br />
 <br />
@@ -14,9 +15,9 @@
 <%= form.password_field :password_confirmation %><br />
 <h3>Interesting Tags</h3>
 <%= form.label :interesting_tags %><br />
-<%= form.text_field :interesting_tag_list %><br />
+<%= form.text_field :interesting_tag_list, :class => :tags %><br />
 <h3>Ignore Tags</h3>
 <%= form.label :uninteresting_tags %><br />
-<%= form.text_field :uninteresting_tag_list %><br />
+<%= form.text_field :uninteresting_tag_list, :class => :tags %><br />
 
 
