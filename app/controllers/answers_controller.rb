@@ -38,7 +38,7 @@ class AnswersController < ApplicationController
         flash[:notice] = 'Answer was successfully created.'
         format.html { redirect_to(@question) }
       else
-        format.html {  render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question}, :layout => true} 
+        format.html {  render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question}, :layout => true}
       end
     end
   end
