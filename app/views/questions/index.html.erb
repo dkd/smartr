@@ -1,5 +1,5 @@
 <div class="question-header">
-  <h2>Latest questions <%="<span class='tagged'>##{params[:tag]}" unless params[:tag].nil? %></h2>
+  <h2><%=I18n.t(:"questions.latest.header")%><%="<span class='tagged'>##{params[:tag]}" unless params[:tag].nil? %></h2>
   <div class="tabs">
     <%=submenu(:latest) %>
   </div>

@@ -24,13 +24,9 @@ class Question < ActiveRecord::Base
   named_scope :active, :order => "updated_at DESC, answers_count DESC"
   named_scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
   
-  #scope_procedure :taggable_with_tags, lambda { |tags|
-  #    tagged_with(tags, :on => :tags) 
-  #}
-  
   # Callbacks
   before_save :set_permalink
-  before_save :check_anwswer_count
+  before_save :check_answer_count
   
   #Sunspot Solr
   searchable do
@@ -71,7 +67,7 @@ class Question < ActiveRecord::Base
   #Methods
   def self.recent_tags
     list = []
-    self.latest(:limit => 10).each do |question|
+    self.latest(:limit => 5).each do |question|
       question.tag_list.each do |tag|
         list << tag unless list.include?(tag)
       end
@@ -84,7 +80,7 @@ class Question < ActiveRecord::Base
     self.permalink = self.name.to_permalink
   end
   
-  def check_anwswer_count
+  def check_answer_count
     self.answers_count = 0 if self.answers_count.nil?
   end
   

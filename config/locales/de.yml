@@ -1,0 +1,17 @@
+de:
+  
+  main_menu:
+    questions: Fragen
+    tags: Schlagworte
+    users: Benutzer
+  
+  questions:
+    
+    sub_menu:
+      latest: Neu
+      hot:  Heiß
+      active: Aktiv
+      unanswered: Unbeantwortet
+    
+    latest:
+      header: Neuste Fragen

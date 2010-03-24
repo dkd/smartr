@@ -1,0 +1,17 @@
+en:
+  
+  main_menu:
+    questions: Questions
+    tags: Tags
+    users: Users
+  
+  questions:
+    
+    sub_menu:
+      latest: Latest
+      hot:  Hot
+      active: Active
+      unanswered: Unanswered
+    
+    latest:
+      header: Latest questions

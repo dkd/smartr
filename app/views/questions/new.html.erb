@@ -15,11 +15,12 @@
       <%= f.error_message_on(:body) %>
       <%= f.hidden_field :body_plain, :class => "plain" %>
     </div>
-    
     <div class="<%="error" if f.error_message_on(:tag_list).present? %>">
       <h3>Tags</h3>
       <%= f.text_field :tag_list, :class => "text tags" %>
       <%= f.error_message_on(:tag_list) %>
+      <br class="clear" />
+      <%= f.check_box :send_email %> Send E-Mail if an answer or comment is posted.
       <%= f.submit 'Save', :class => "save" %>
     </div>
 <% end %>

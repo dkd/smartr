@@ -23,10 +23,13 @@ defaults: &defaults
       new: 5 
 
 development:
+  host: http://localhost:3000
   <<: *defaults
 
 test:
+  host: http://localhost:3000
   <<: *defaults
 
 production:
+  host: http://smartr.dkd.de
   <<: *defaults
