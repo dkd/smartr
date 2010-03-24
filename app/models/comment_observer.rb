@@ -5,7 +5,9 @@ class CommentObserver < ActiveRecord::Observer
   end
   
   def after_create(comment)
-    UserMailer.deliver_question_update(comment.commentable, comment) if (comment.user != comment.commentable.user && comment.commentable.send_email == true)
+    if comment.commentable.class.name == "Question"
+      UserMailer.deliver_question_update(comment.commentable, comment) if (comment.user != comment.commentable.user && comment.commentable.send_email == true)
+    end
   end
 
 end
