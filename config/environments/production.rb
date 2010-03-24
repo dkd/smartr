@@ -20,4 +20,7 @@ config.action_controller.cache_store = [:file_store, "#{RAILS_ROOT}/tmp/cache"]
 # config.action_controller.asset_host                  = "http://assets.example.com"
 
 # Disable delivery errors, bad email addresses will be ignored
-# config.action_mailer.raise_delivery_errors = false
+ActionMailer::Base.delivery_method = :sendmail
+config.action_mailer.raise_delivery_errors = false
+config.action_mailer.sendmail_settings = { :location  => "/usr/sbin/sendmail", :arguments => "-i -t" }
+config.action_mailer.perform_deliveries = true

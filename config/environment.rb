@@ -68,7 +68,7 @@ Rails::Initializer.run do |config|
   #  :session_key => '_authgasm_example_session',
   #  :secret      => '94b9c594695e69bdef6b1d4be037af5853be976b39a52a02f260fca0d0a36a8f913572bfdb631f55971a3b10b8dd9a875f9776ca61371741544e6ccc064dd41e'
   #}
-
+  config.i18n.default_locale = :en
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
@@ -80,5 +80,5 @@ Rails::Initializer.run do |config|
   # config.active_record.schema_format = :sql
 
   # Activate observers that should always be running
-  config.active_record.observers = [:comment_observer, :question_observer, :tag_observer]
+  config.active_record.observers = [:comment_observer, :question_observer, :tag_observer, :answer_observer]
 end

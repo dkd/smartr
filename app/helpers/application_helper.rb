@@ -3,15 +3,14 @@ module ApplicationHelper
   
   def main_menu(active)
       menu = []
-      menu << {:name => "Questions", :id => "questions", :link => questions_path}
-      menu << {:name => "Tags", :id => "tags", :link => url_for(:controller => :tags, :action => :index, :tag => nil)}
-      menu << {:name => "Users", :id => "users", :link => users_path}
+      menu << {:name => I18n.t(:"main_menu.questions"), :id => "questions", :link => questions_path}
+      menu << {:name => I18n.t(:"main_menu.tags"), :id => "tags", :link => url_for(:controller => :tags, :action => :index, :tag => nil)}
+      menu << {:name => I18n.t(:"main_menu.users"), :id => "users", :link => users_path}
       content_for :main_menu, build_menu(menu, active)
   end
   
-  def title(text)    
-    text = "smartR - be a smartass" if text.blank?
-    content_for :title, text
+  def title(text)
+    content_for(:title, "#{text} | " ) if text.present?
   end
   
   def build_menu(menu, active)

@@ -4,4 +4,8 @@ class CommentObserver < ActiveRecord::Observer
     comment.body = Sanitize.clean(comment.body, :elements => ['a'])
   end
   
+  def after_create(comment)
+    UserMailer.deliver_question_update(comment.commentable, comment) if (comment.user != comment.commentable.user && comment.commentable.send_email == true)
+  end
+
 end

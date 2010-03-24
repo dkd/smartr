@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       format.html{ @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10}
       format.js {
         unless params[:q].blank?
-          @users = User.find(:all, :conditions => ["login like ?","#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
+          @users = User.find(:all, :conditions => ["login like ?","%#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
         else
           @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
         end  
