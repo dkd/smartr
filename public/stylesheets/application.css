@@ -181,6 +181,11 @@ h2.show-question {
     font-weight: bold;
     display: block;
     margin-top: 0px; }
+  .question-new .send-email, .question-edit .send-email {
+    margin-top: 10px; }
+    .question-new .send-email label, .question-edit .send-email label {
+      display: inline;
+      font-size: 12px; }
   .question-new textarea, .question-edit textarea {
     border: 1px solid;
     -moz-border-radius: 5px;

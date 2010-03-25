@@ -20,7 +20,9 @@
       <%= f.text_field :tag_list, :class => "text tags" %>
       <%= f.error_message_on(:tag_list) %>
       <br class="clear" />
-      <%= f.check_box :send_email %> Send E-Mail if an answer or comment is posted.
+      <div class="send-email">
+        <%= f.check_box :send_email %> <%=f.label :send_email, "Send E-Mail if an answer or comment is posted." %>
+      </div>
       <%= f.submit 'Save', :class => "save" %>
     </div>
 <% end %>
