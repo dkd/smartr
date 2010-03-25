@@ -131,13 +131,11 @@ class QuestionsController < ApplicationController
           @answer = Answer.find(params[:answer_id])
           
           if @answer
-            
             answer_id = Reputation.toggle_acceptance(@question, @answer)
-            
             page << "$('.answer-item').removeClass('accepted')"
             page << "$('.answer-item .status a,.answer-item .votes div').removeClass('accepted');"
             page << "$('#answer_#{answer_id} .status a, #answer_#{answer_id}').addClass('accepted');" unless answer_id == 0
-            #page << "$('#answer_#{answer_id} .status').effect('pulsate', { times:2, mode: 'show' }, 400);";             
+            page << "$('#answer_#{answer_id}, #answer_#{answer_id} .body,#answer_#{answer_id} .comments').effect('highlight',{backgroundColor: '#FFF4BF'}, 5000)"
           end
           
         end

@@ -8,4 +8,12 @@ module UsersHelper
        build_menu(menu, active)
    end
    
+  def show_submenu(active)
+      menu = []
+      #menu << {:name => "Latest questions", :id => "latest_questions", :link => users_path(:page => nil)}
+      menu << {:name => "Detail", :id => "detail", :link => users_path(params[:user])}
+      menu << {:name => "Favourites", :id => "favourites", :link => favourites_users_path(params[:user])}
+      build_menu(menu, active)
+  end
+   
 end

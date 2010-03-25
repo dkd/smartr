@@ -1,4 +1,5 @@
   <h2><%=h @user.login %></h2>
+  <%=show_submenu(:winner) %>
 <div class="user-header">
 
   <div class="image">
@@ -18,7 +19,6 @@
         <p>
       <%=h @user.login_count unless @user.login_count.nil? %>
     </p>
-
       <h3>Last request</h3>
       <p>
       <%=h(distance_of_time_in_words_to_now(@user.last_request_at)) unless @user.last_request_at.nil? %> ago

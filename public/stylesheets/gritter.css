@@ -1,22 +1,22 @@
 /*
 Sass::SyntaxError: Undefined variable: "!color_1".
-on line 22 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/gritter.sass
+on line 23 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/gritter.sass
 
-18:     top: 7px
 19:     left: 7px
 20: 
-21: .gritter-error
-22:   background =  !color_1 !important
-23:   background-image: none !important
-24:   .gritter-top, .gritter-bottom, .gritter-item
-25:     background-image: none !important
-26:   
-27: #gritter-notice-wrapper
-28:   position: fixed
+21: 
+22: .gritter-error, .gritter-info
+23:   background-color = !color_1 !important
+24:   background-image: none !important
+25:   .gritter-top, .gritter-bottom, .gritter-item
+26:     background-image: none !important
+27: 
+28: .gritter-info
+29:   background-color = !color_2 !important
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/gritter.sass:22
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/gritter.sass:23
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/variable.rb:27:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/script/operation.rb:35:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/prop_node.rb:99:in `perform!'
@@ -94,4 +94,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined variable: \"!color_1\".\A on line 22 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/gritter.sass\A \A 18:     top: 7px\A 19:     left: 7px\A 20: \A 21: .gritter-error\A 22:   background =  !color_1 !important\A 23:   background-image: none !important\A 24:   .gritter-top, .gritter-bottom, .gritter-item\A 25:     background-image: none !important\A 26:   \A 27: #gritter-notice-wrapper\A 28:   position: fixed\A "; }
+  content: "Sass::SyntaxError: Undefined variable: \"!color_1\".\A on line 23 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/gritter.sass\A \A 19:     left: 7px\A 20: \A 21: \A 22: .gritter-error, .gritter-info\A 23:   background-color = !color_1 !important\A 24:   background-image: none !important\A 25:   .gritter-top, .gritter-bottom, .gritter-item\A 26:     background-image: none !important\A 27: \A 28: .gritter-info\A 29:   background-color = !color_2 !important\A "; }

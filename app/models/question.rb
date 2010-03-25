@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :votes, :as => :voteable
   has_many :answers
+  has_many :favourites
   belongs_to :answer
     
   #Validations
@@ -73,6 +74,10 @@ class Question < ActiveRecord::Base
       end
     end    
     list
+  end
+  
+  def favourited?
+    Favourite.find_by_user_id_and_question_id(user, self).present?
   end
   
   # Callback methods
