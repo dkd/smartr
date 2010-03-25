@@ -1,28 +1,42 @@
 class FavouritesController < ApplicationController
   before_filter :require_user
   
-  
-  def create
-    @favourite = Favourite.new(params[:favourite])
-    @favourite.user = @current_user
-    if @favourite.save
-      respond_to do |wants|
-        wants.js { 
-          render :text => "alert('saved')" 
-          }
-      end
-    end
+  def index
+    
   end
   
-  def destroy
-    @favourite = Favourite.find_by_user_id_and_question_id(@current_user.id, params[:question_id])
-    if @favourite.delete
-      respond_to do |wants|
-        wants.js { 
-          render :text => "alert('deleted')"  
-          }
-      end
-    end
+  def toggle
+    @favourite = Favourite.find_by_user_id_and_question_id(@current_user.id, params[:favourite][:question_id])
+    
+    respond_to do |format|
+      format.js { 
+        render :update do |page|
+          
+          if @favourite.blank?
+            page << "$('#favourite-question-#{params[:favourite][:question_id]}').attr('class', 'favourite-saved')"
+            page << "$.gritter.add({
+                        	title: 'Favourite saved',              	
+                        	text: 'You successfully saved this question!',
+                        	time: 5000,
+                        	class_name: 'gritter-info'
+                        });"
+            @favourite = Favourite.new(params[:favourite])
+            @favourite.user = @current_user
+            @favourite.save
+          else
+            page << "$('#favourite-question-#{params[:favourite][:question_id]}').attr('class', 'favourite')"
+            page << "$.gritter.add({
+                        	title: 'Favourite deleted',              	
+                        	text: 'You successfully deleted this question!',
+                        	time: 5000,
+                        	class_name: 'gritter-info'
+                        });"
+            @favourite.destroy
+            end
+          page
+        end
+        }
+    end    
   end
-        
+  
 end

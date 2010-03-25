@@ -251,6 +251,7 @@ h2.show-question {
 .question .body {
   background: #fff;
   padding: 10px;
+  padding-top: 0px;
   width: 855px;
   overflow: auto;
   -moz-border-radius: 5px;
@@ -267,7 +268,10 @@ h2.show-question {
     margin-top: 0px; }
   .question .body pre code {
     padding: 5px;
-    overflow: auto; }
+    overflow: auto;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
   .question .body .user {
     font-size: 16px;
     -moz-border-radius: 5px;
@@ -644,18 +648,27 @@ h2.answer-header {
   margin-bottom: 10px;
   background: white;
   color: #383838; }
-.answer-item .stats div.favourite, .question .stats div.favourite {
+.answer-item .stats div.favourite, .question .stats div.favourite,
+.answer-item .stats div.favourite-saved, .question .stats div.favourite-saved {
   font-size: 60px;
   font-weight: bold;
   display: inline;
   padding: 0px;
   clear: left; }
-  .answer-item .stats div.favourite a:link, .answer-item .stats div.favourite a:visited, .question .stats div.favourite a:link, .question .stats div.favourite a:visited {
+  .answer-item .stats div.favourite a:link, .answer-item .stats div.favourite a:visited, .question .stats div.favourite a:link, .question .stats div.favourite a:visited,
+  .answer-item .stats div.favourite-saved a:link, .answer-item .stats div.favourite-saved a:visited, .question .stats div.favourite-saved a:link, .question .stats div.favourite-saved a:visited {
     color: black;
     text-decoration: none; }
-  .answer-item .stats div.favourite a:hover, .question .stats div.favourite a:hover {
+  .answer-item .stats div.favourite a:hover, .question .stats div.favourite a:hover,
+  .answer-item .stats div.favourite-saved a:hover, .question .stats div.favourite-saved a:hover {
     color: orange;
     text-shadow: 0px 0px 10px orange; }
+.answer-item .stats div.favourite-saved a:link, .answer-item .stats div.favourite-saved a:visited, .question .stats div.favourite-saved a:link, .question .stats div.favourite-saved a:visited {
+  color: orange;
+  text-decoration: none; }
+.answer-item .stats div.favourite-saved a:hover, .question .stats div.favourite-saved a:hover {
+  color: black;
+  text-shadow: 0px 0px 10px black; }
 .answer-item .stats div.votes, .question .stats div.votes {
   width: 50px;
   background: white;
@@ -1068,11 +1081,17 @@ h2.answer-header {
   top: 7px;
   left: 7px; }
 
-.gritter-error {
-  background: #313900 !important;
+.gritter-error, .gritter-info {
+  background-color: #313900 !important;
   background-image: none !important; }
-  .gritter-error .gritter-top, .gritter-error .gritter-bottom, .gritter-error .gritter-item {
+  .gritter-error .gritter-top, .gritter-error .gritter-bottom, .gritter-error .gritter-item, .gritter-info .gritter-top, .gritter-info .gritter-bottom, .gritter-info .gritter-item {
     background-image: none !important; }
+
+.gritter-info {
+  background-color: #738500 !important;
+  background-image: none !important; }
+  .gritter-info .gritter-item {
+    background-color: #738500 !important; }
 
 #gritter-notice-wrapper {
   position: fixed;

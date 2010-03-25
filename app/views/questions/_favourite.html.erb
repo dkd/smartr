@@ -1,8 +1,6 @@
 <% if current_user %>
-  <br />
-  <% if Favourite.find_by_user_id_and_question_id(current_user.id, question.id) %>
-    <%= link_to_remote "*", :url => favourites_path() %>
-  <% else %>
-    <%= link_to_remote "*", :url => favourites_path(:favourite => {:question_id => question.id}), :method => "post" %>
-  <% end -%>
+  <div class="<%=question.favourited? "favourite-saved": "favourite"%>" id="favourite-question-<%=question.id%>">
+      <br />
+      <%= link_to_remote "*", :url => toggle_favourite_path(:favourite => {:question_id => question.id}), :method => "put"%>
+    </div>
 <% end -%>

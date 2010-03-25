@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :comments
   has_many :votes
+  has_many :favourites
   
   #Plugins
   acts_as_taggable_on :interesting_tags
