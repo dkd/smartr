@@ -27,6 +27,12 @@ class User < ActiveRecord::Base
     self.update_attributes :views => (views+1)
   end
   
+  def latest_questions
+    Question.find_all_by_user_id(self.id, :limit => 5, :order => 'created_at desc')
+  end
   
+  def latest_answers
+    Answer.find_all_by_user_id(self.id, :limit => 5, :order => 'created_at desc')
+  end
   
 end

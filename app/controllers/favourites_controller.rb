@@ -6,7 +6,7 @@ class FavouritesController < ApplicationController
   
   def index
     @user = User.find params[:user_id]
-    @questions = Question.find(:all, :joins => :favourites, :conditions => ['favourites.user_id', params[:user_id]])
+    @questions = Question.find(:all, :joins => :favourites, :conditions => ['favourites.user_id', params[:user_id]]).paginate :page => params[:page], :per_page => 25
     render "/users/favourites", :layout => true
   end
   
@@ -32,10 +32,11 @@ class FavouritesController < ApplicationController
             page << "$('#favourite-question-#{params[:favourite][:question_id]}').attr('class', 'favourite')"
             page << "$.gritter.add({
                         	title: 'Favourite deleted',              	
-                        	text: 'You successfully deleted this question!',
+                        	text: 'You successfully removed this question from your favourtites!',
                         	time: 5000,
                         	class_name: 'gritter-info'
-                        });"
+                        });
+                    $('#user-favourite-question-#{params[:favourite][:question_id]}').hide();"
             @favourite.destroy
             end
           page

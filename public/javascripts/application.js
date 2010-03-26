@@ -92,7 +92,7 @@ $(document).ready(function(){
   $("input.toggle").toggleValue();
   
   /* Fancy question button */
-  $(".tags a, #sidebar a.new_question").click(function(){
+  $(".tags a, #sidebar a.new_question, #menu li, .tag-list span a").click(function(){
       $(this).effect("pulsate", { times:2, mode: "show" }, 200);
 
   });

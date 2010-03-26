@@ -1,0 +1,37 @@
+<%= link_to 'Ask a question!', new_question_path, :class => "new_question" %>
+<h3>Reputation</h3>
+<div class="stats"><%= @user.reputation.to_s %></div>
+
+<h3>Views</h3>
+<div class="stats"><%= @user.views %></div>
+
+<% if @user.interesting_tags.length>0 %>
+  <h3>Interested in ...</h3>
+  <div class="tags">
+  <% @user.interesting_tag_list.each do |tag| %>
+    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <% end -%>
+  </div>
+  <br class="clear" />
+<% end -%>
+<% if @user.uninteresting_tags.length>0 %>
+  <h3>Not interested in ...</h3>
+  <div class="tags">
+  <% @user.uninteresting_tag_list.each do |tag| %>
+    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <% end -%>
+  </div>
+  <br class="clear" />
+<% end -%>
+
+<h3>Last request</h3>
+<div class="stats">
+  <%=h(distance_of_time_in_words_to_now(@user.last_request_at)) unless @user.last_request_at.nil? %> ago
+</div>
+
+<h3>Is online?</h3>
+<div class="stats">
+  <%=@user.logged_in?? "Yes":"No" %>
+</div>
+
+
