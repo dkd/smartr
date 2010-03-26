@@ -16,7 +16,7 @@
 </div>
 
 <br class="clear" />
-<% if @user.latest_questions.count > 0 %>
+<% if @user.latest_questions.size > 0 %>
   <div class="user-questions">
     <h2>Latest Questions</h2>
     <% @user.latest_questions.each do |question| %>
@@ -25,7 +25,7 @@
   </div>
   <br class="clear" />
 <% end -%>
-<% if @user.latest_questions.count > 0 %>
+<% if @user.latest_questions.size > 0 %>
   <div class="user-questions">
     <h2>Latest Answers</h2>
     <% @user.latest_questions.each do |question| %>
