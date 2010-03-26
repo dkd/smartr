@@ -1,4 +1,10 @@
-<h2>Favourites for</h2>
-<%=show_submenu :favourites%>
+<div class="header-with-tabs">
+  <h2><%=h @user.login %></h2>
+    <div class="tabs">
+      <%=show_submenu(:favourites) %>
+    </div>
+    <br class="clear" />
+</div>
+
 <% main_menu :users%>
-<% content_for :sidebar, render(:partial => "show_sidebar", :locals => {:user => @user}) %>
+<% content_for :sidebar, render(:partial => "/users/show_sidebar", :locals => {:user => @user}) %>

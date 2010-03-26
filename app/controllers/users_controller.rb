@@ -20,11 +20,7 @@ class UsersController < ApplicationController
   def search
     index
   end
-  
-  def favourites
-    @questions = Question.find(:all, :joins => :favourites, :conditions => ['favourites.user_id', params[:user_id]])
-  end
-  
+
   def who_is_online
     @users = User.logged_in
   end

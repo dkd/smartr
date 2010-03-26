@@ -79,16 +79,44 @@ body {
       margin-bottom: 10px;
       margin-top: 30px;
       border-bottom: 3px solid #000; }
-    body #content form div.error {
+  body .header-with-tabs {
+    position: relative;
+    margin-top: 45px !important;
+    margin-bottom: 10px;
+    border-bottom: 3px solid black; }
+    body .header-with-tabs .tabs {
+      width: 400px;
+      background: transparent; }
+    body .header-with-tabs h2 {
+      z-index: 100;
+      position: absolute;
+      bottom: 0;
+      border: 0px !important;
+      display: inline;
+      margin: 0px !important; }
+      body .header-with-tabs h2 .tagged {
+        color: #853e00;
+        font-size: 0.5em;
+        padding-left: 10px; }
+      body .header-with-tabs h2 a:link {
+        text-decoration: none;
+        color: black; }
+      body .header-with-tabs h2 a:visited {
+        text-decoration: none;
+        color: decoration; }
+      body .header-with-tabs h2 a:hover {
+        color: black;
+        text-decoration: none; }
+    body .header-with-tabs form div.error {
       color: #7F0000; }
-      body #content form div.error div.formError {
+      body .header-with-tabs form div.error div.formError {
         font-size: 12px;
         color: #7F0000;
         font-weight: bold;
         width: 100%; }
-      body #content form div.error input {
+      body .header-with-tabs form div.error input {
         border-color: #7F0000; }
-      body #content form div.error textarea {
+      body .header-with-tabs form div.error textarea {
         border-color: #7F0000; }
   body a:focus {
     outline: 0px; }
@@ -226,15 +254,6 @@ h2.show-question {
   .question-new input.save:hover, .question-edit input.save:hover {
     background: black; }
 
-.question-header {
-  border-bottom: 3px solid black;
-  margin-top: 20px; }
-  .question-header h2 {
-    float: left;
-    font-size: 34px;
-    width: 900px;
-    margin-top: 0px;
-    margin-bottom: 0px; }
 
 .question .actions {
   float: right; }
@@ -836,33 +855,6 @@ h2.answer-header {
   background: #f4f4f4;
   color: #738500;
   font-weight: bold; }
-
-.user-header {
-  position: relative;
-  margin-top: 45px !important;
-  margin-bottom: 10px;
-  border-bottom: 3px solid black; }
-  .user-header .tabs {
-    width: 500px; }
-  .user-header h2 {
-    position: absolute;
-    bottom: 0;
-    border: 0px !important;
-    display: inline;
-    margin: 0px !important; }
-    .user-header h2 a:link {
-      text-decoration: none;
-      color: black; }
-    .user-header h2 a:visited {
-      text-decoration: none;
-      color: decoration; }
-    .user-header h2 a:hover {
-      color: black;
-      text-decoration: none; }
-    .user-header h2 span.tagged {
-      color: #853e00;
-      font-size: 18px;
-      font-style: italic; }
 
 #new_user_session label {
   color: #738500;

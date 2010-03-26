@@ -1,5 +1,11 @@
+<div class="header-with-tabs">
   <h2><%=h @user.login %></h2>
-  <%=show_submenu(:winner) %>
+    <div class="tabs">
+      <%=show_submenu(:detail) %>
+    </div>
+    <br class="clear" />
+</div>
+
 <div class="user-header">
 
   <div class="image">
