@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   
   
   def rescue_action(exception)
-
+     
+     return super if Rails.env != "production"
+     
      log_error(exception) if logger
-
      if exception
        render :text => "The page you requested, does not exist."
      end

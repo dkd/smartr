@@ -5,8 +5,21 @@ en:
     tags: Tags
     users: Users
   
+  answers:
+    label:
+      one: answer
+      other: answers
+  
+  comments:
+    label:
+      one: comment
+      other: comments
+  
   questions:
-    
+    label: 
+      one: question
+      other: questions
+      
     sub_menu:
       latest: Latest
       hot:  Hot

@@ -76,8 +76,8 @@ class Question < ActiveRecord::Base
     list
   end
   
-  def favourited?
-    Favourite.find_by_user_id_and_question_id(user, self).present?
+  def favourited?(user)
+    Favourite.find_by_user_id_and_question_id(user.id, self).present?
   end
   
   # Callback methods
