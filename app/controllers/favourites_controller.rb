@@ -1,8 +1,13 @@
 class FavouritesController < ApplicationController
+  
   before_filter :require_user
   
+  helper UsersHelper
+  
   def index
-    
+    @user = User.find params[:user_id]
+    @questions = Question.find(:all, :joins => :favourites, :conditions => ['favourites.user_id', params[:user_id]])
+    render "/users/favourites", :layout => true
   end
   
   def toggle

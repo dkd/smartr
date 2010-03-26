@@ -72,7 +72,7 @@ class Question < ActiveRecord::Base
       question.tag_list.each do |tag|
         list << tag unless list.include?(tag)
       end
-    end    
+    end
     list
   end
   

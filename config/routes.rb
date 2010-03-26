@@ -13,9 +13,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
   map.resources :votes
-  map.resources :users, :collection => {:who_is_online => :get, :search => :get, :favourites => :get}
+  
+  map.resources :users, :collection => {:who_is_online => :get, :search => :get} do |users|
+    users.resources :favourites
+  end
+  
   map.resource :user_session
   map.resources :favourites, :only => :none, :member => {:toggle => :put}
-  map.root :controller => "questions", :action => "index"
-  
+  map.root :controller => :questions, :action => :index
 end
