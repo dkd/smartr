@@ -25,10 +25,10 @@
   </div>
   <br class="clear" />
 <% end -%>
-<% if @user.latest_questions.size > 0 %>
+<% if @user.latest_answers.size > 0 %>
   <div class="user-questions">
     <h2>Latest Answers</h2>
-    <% @user.latest_questions.each do |question| %>
+    <% @user.latest_answers.each do |question| %>
       <%= render :partial => "question", :locals => {:question => question} %>
     <% end -%>
   </div>
