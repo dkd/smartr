@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
   
   def latest_answers
-    Answer.find_all_by_user_id(self.id, :limit => 5, :order => 'created_at desc')
+    Question.find(:all, :limit => 5, :order => "answers.created_at desc", :joins => :answers, :conditions => ['answers.user_id=?', self.id])
   end
   
 end
