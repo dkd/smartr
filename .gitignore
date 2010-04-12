@@ -9,3 +9,4 @@ doc/appla
 public/system
 solr/data/*
 vendor/gems/*
+vendor/plugins/access_settings

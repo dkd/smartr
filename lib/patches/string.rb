@@ -3,7 +3,6 @@ require "unicode"
 class String
   
   def correctize_plural(number)
-    
     if(number==1)
       self.singularize
     else

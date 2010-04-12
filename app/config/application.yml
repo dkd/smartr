@@ -3,6 +3,12 @@ defaults: &defaults
   
   copyright: d.k.d Internet Service GmbH
   
+  questions:
+    restrict_access: true
+  
+  user:
+    restrict_access: true
+  
   reputation:
     answer:
       up: 10

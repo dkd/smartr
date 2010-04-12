@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   
-  before_filter :require_user #, :only => [:edit, :new, :update, :destroy, :update_for_toggle_acceptance]
+  before_filter :require_user, :only => [:edit, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :is_owner, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
   
   def index
@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
       @questions = Question.latest.paginate :page => params[:page], :per_page => 15
       respond_to do |wants|
         wants.html {  }
+        wants.json{ render :json => @questions.to_json}
         wants.xml { render "questions/rss/index" }
       end
       

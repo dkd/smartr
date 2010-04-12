@@ -14,8 +14,8 @@ class Answer < ActiveRecord::Base
   #Associations
   belongs_to :question, :counter_cache => true
   belongs_to :user
-  has_many :comments, :as => :commentable
-  has_many :votes, :as => :voteable
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :votes, :as => :voteable, :dependent => :destroy
   
   #Validations
   validates_presence_of [:body]
