@@ -2,10 +2,10 @@ class Question < ActiveRecord::Base
   
   #Associations
   belongs_to :user
-  has_many :comments, :as => :commentable
-  has_many :votes, :as => :voteable
-  has_many :answers
-  has_many :favourites
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :votes, :as => :voteable, :dependent => :destroy
+  has_many :answers, :dependent => :destroy
+  has_many :favourites, :dependent => :destroy
   belongs_to :answer
     
   #Validations

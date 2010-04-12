@@ -1,5 +1,4 @@
 class TagsController < ApplicationController
-  before_filter :require_user
   
   def index
     
@@ -21,7 +20,5 @@ class TagsController < ApplicationController
       }
     end
   end
-  
-  
   
 end
