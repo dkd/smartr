@@ -400,6 +400,13 @@ h2.show-question {
   #errorExplanation li {
     list-style: square; }
 
+form .error .fieldWithErrors input, form .error .fieldWithErrors text-area {
+  border-color: red; }
+form .error div.formError {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px; }
+
 #sidebar {
   float: left;
   width: 240px;
