@@ -20,5 +20,15 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :user_session
   map.resources :favourites, :only => :none, :member => {:toggle => :put}
+  
+  map.namespace :api do |api|
+    api.namespace :v1 do |v1|
+      v1.resources :questions
+      v1.resources :users
+    end
+  end
+  
+  
   map.root :controller => :questions, :action => :index
+    
 end

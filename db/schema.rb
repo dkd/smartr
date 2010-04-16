@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100326140425) do
+ActiveRecord::Schema.define(:version => 20100413092534) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(:version => 20100326140425) do
     t.string   "login"
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token",                  :null => false
-    t.integer  "login_count",         :default => 0, :null => false
+    t.string   "persistence_token",                      :null => false
+    t.integer  "login_count",         :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
     t.datetime "current_login_at"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20100326140425) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "is_admin",            :default => false
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
