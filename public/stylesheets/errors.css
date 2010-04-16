@@ -1,22 +1,21 @@
 /*
 Sass::SyntaxError: Undefined mixin 'border_radius_big'.
-on line 5 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass
+on line 4 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass
 
 1: #errorExplanation
-2:  
-3:   padding: 10px
-4:   margin: 10px 0px 20px 0px
-5:   +border_radius_big
-6:   background = !color_4
-7:   color: white
-8:   
-9:   h2
-10:     margin-top: 0px !important
-11:     font-size: 26px !important
+2:   padding: 10px
+3:   margin: 10px 0px 20px 0px
+4:   +border_radius_big
+5:   background = !color_4
+6:   color: white
+7:   
+8:   h2
+9:     margin-top: 0px !important
+10:     font-size: 26px !important
 
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass:5
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass:4
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/mixin_node.rb:27:in `_perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:158:in `perform'
 /Users/dkd_hayes/Rails/smartr/vendor/gems/haml-2.2.13/rails/../lib/sass/tree/node.rb:202:in `perform_children'
@@ -91,4 +90,4 @@ script/server:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'border_radius_big'.\A on line 5 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass\A \A 1: #errorExplanation\A 2:  \A 3:   padding: 10px\A 4:   margin: 10px 0px 20px 0px\A 5:   +border_radius_big\A 6:   background = !color_4\A 7:   color: white\A 8:   \A 9:   h2\A 10:     margin-top: 0px !important\A 11:     font-size: 26px !important\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'border_radius_big'.\A on line 4 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/errors.sass\A \A 1: #errorExplanation\A 2:   padding: 10px\A 3:   margin: 10px 0px 20px 0px\A 4:   +border_radius_big\A 5:   background = !color_4\A 6:   color: white\A 7:   \A 8:   h2\A 9:     margin-top: 0px !important\A 10:     font-size: 26px !important\A "; }

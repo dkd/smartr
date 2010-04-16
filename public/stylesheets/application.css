@@ -383,30 +383,6 @@ h2.show-question {
     .question-list .body .tags a:hover {
       background: black; }
 
-#errorExplanation {
-  padding: 10px;
-  margin: 10px 0px 20px 0px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #853e00;
-  color: white; }
-  #errorExplanation h2 {
-    margin-top: 0px !important;
-    font-size: 26px !important;
-    text-shadow: 1px 1px 1px #444444;
-    font-weight: bold;
-    border: 0px !important; }
-  #errorExplanation li {
-    list-style: square; }
-
-form .error .fieldWithErrors input, form .error .fieldWithErrors text-area {
-  border-color: red; }
-form .error div.formError {
-  color: red;
-  font-size: 0.8em;
-  margin-top: 5px; }
-
 #sidebar {
   float: left;
   width: 240px;
@@ -1367,6 +1343,31 @@ form.user div {
     font-family: trebuchet MS, helvetica, sans-serif;
     font-size: 0.8em;
     font-weight: bold; }
+
+#errorExplanation {
+  padding: 10px;
+  margin: 10px 0px 20px 0px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #853e00;
+  color: white; }
+  #errorExplanation h2 {
+    margin-top: 0px !important;
+    font-size: 26px !important;
+    text-shadow: 1px 1px 1px #444444;
+    font-weight: bold;
+    border: 0px !important; }
+  #errorExplanation li {
+    list-style: square; }
+
+form .error .fieldWithErrors input, form .error .fieldWithErrors textarea {
+  border-color: red; }
+form .error div.formError {
+  color: red;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-top: 5px; }
 
 .ac_results {
   padding: 0px;

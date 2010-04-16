@@ -8,6 +8,13 @@ class AnswersController < ApplicationController
   before_filter :require_owner, :only => [:edit, :update_default, :destroy]
   before_filter :require_question_owner, :only => :update_for_switch_acceptance
   
+  
+  def index
+    if params[:question_id]
+      redirect_to question_path(params[:question_id])
+    end
+  end
+  
   def show
     @answer = Answer.find(params[:id])
     respond_to do |format|
@@ -47,8 +54,8 @@ class AnswersController < ApplicationController
     
     params.delete(:accepted)
     @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
     
-     @question = Question.find(params[:question_id])
      if @answer.update_attributes(params[:answer])
        flash[:notice] = "Saved your answer."
          redirect_to question_path(@answer.question)

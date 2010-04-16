@@ -11,8 +11,8 @@ class Question < ActiveRecord::Base
   #Validations
   validates_presence_of [:body, :name, :tag_list]
   validates_uniqueness_of :name
-  validates_length_of :name, :minimum => 30
-  validates_length_of :body, :minimum => 100
+  validates_length_of :name, :minimum => 20
+  validates_length_of :body, :minimum => 75
   
   #Extensions
   acts_as_taggable_on :tags

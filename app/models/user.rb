@@ -11,13 +11,17 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :favourites
   
+  attr_accessor :image_url
+  
   #Plugins
   acts_as_taggable_on :interesting_tags
   acts_as_taggable_on :uninteresting_tags
   has_friendly_id :login
   
-  #Search
+  #Named Scopes
+  named_scope :latest, :order => "created_at DESC"
   
+  #Search
   searchable do
     text :login
   end
@@ -33,6 +37,10 @@ class User < ActiveRecord::Base
   
   def latest_answers
     Question.find(:all, :limit => 5, :order => "answers.created_at desc", :joins => :answers, :conditions => ['answers.user_id=?', self.id])
+  end
+  
+  def image_url
+    self.image_url = self.avatar.url(:medium)
   end
   
 end

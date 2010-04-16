@@ -11,32 +11,32 @@ class FavouritesController < ApplicationController
   end
   
   def toggle
-    @favourite = Favourite.find_by_user_id_and_question_id(@current_user.id, params[:favourite][:question_id])
+    @favourite = Favourite.find_by_user_id_and_question_id(@current_user.id, params[:id])
     
     respond_to do |format|
       format.js { 
         render :update do |page|
           
           if @favourite.blank?
-            page << "$('#favourite-question-#{params[:favourite][:question_id]}').attr('class', 'favourite-saved')"
+            page << "$('#favourite-question-#{params[:id]}').attr('class', 'favourite-saved')"
             page << "$.gritter.add({
                         	title: 'Favourite saved',              	
                         	text: 'You successfully saved this question!',
                         	time: 5000,
                         	class_name: 'gritter-info'
                         });"
-            @favourite = Favourite.new(params[:favourite])
+            @favourite = Favourite.new({:question_id => params[:id]})
             @favourite.user = @current_user
             @favourite.save
           else
-            page << "$('#favourite-question-#{params[:favourite][:question_id]}').attr('class', 'favourite')"
+            page << "$('#favourite-question-#{params[:id]}').attr('class', 'favourite')"
             page << "$.gritter.add({
                         	title: 'Favourite deleted',              	
                         	text: 'You successfully removed this question from your favourtites!',
                         	time: 5000,
                         	class_name: 'gritter-info'
                         });
-                    $('#user-favourite-question-#{params[:favourite][:question_id]}').hide();"
+                    $('#user-favourite-question-#{params[:id]}').hide();"
             @favourite.destroy
             end
           page
