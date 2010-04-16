@@ -18,8 +18,8 @@ class Answer < ActiveRecord::Base
   has_many :votes, :as => :voteable, :dependent => :destroy
   
   #Validations
-  validates_presence_of [:body]
   validate :only_answer_from_user
+  validates_length_of :body, :minimum => 75
   
  #Sunspot Solr
  
