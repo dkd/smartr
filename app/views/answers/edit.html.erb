@@ -3,8 +3,10 @@
 <h2>Editing Answer</h2>
 <div class="answer-edit">
   <% form_for(@answer, :url => question_answer_path) do |f| %>
-    <%= f.error_messages %>
+    <div class="<%="error" if f.error_message_on(:body).present? %>">
     <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
+    <%= f.error_message_on(:body) %>
+    </div>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
     <%= link_to "Cancel", question_path(@answer.question), :class => "cancel" %>
