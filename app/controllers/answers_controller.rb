@@ -28,7 +28,7 @@ class AnswersController < ApplicationController
   def edit
     @answer = Answer.find(params[:id])
     @question = @answer.question
-    @answer.body = @answer.body_plain
+    @answer.body = @answer.body
   end
   
   def new
