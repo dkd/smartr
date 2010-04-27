@@ -83,9 +83,9 @@ class ApplicationController < ActionController::Base
           end
         }
       end
-      
     end
-
+    
+      
     def require_no_user
       if current_user
         store_location
