@@ -85,7 +85,11 @@ class ApplicationController < ActionController::Base
       end
       
     end
-
+    
+    def is_admin?
+    
+    end
+    
     def require_no_user
       if current_user
         store_location
