@@ -36,7 +36,7 @@ on your question:</p>
 <br />
 <div class="object-info"><%= @object.class.name %> posted <%= @object.updated_at %> by <b><%=link_to(@object.user.login, "#{Settings.host}#{url_for(@object.user)}")%></b>.</div>
 <div class="question">
-<% if @object.class.name == "Comment" %>
+<% if %w(Comment Answer).include?(@object.class.name) %>
 <%= code(@object.body) %>
 <% else %>
 <%= code(@object.body_plain)%>
