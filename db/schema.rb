@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413092534) do
+ActiveRecord::Schema.define(:version => 20100507085516) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -38,46 +38,20 @@ ActiveRecord::Schema.define(:version => 20100413092534) do
     t.datetime "updated_at"
   end
 
-  create_table "open_id_authentication_associations", :force => true do |t|
-    t.integer "issued"
-    t.integer "lifetime"
-    t.string  "handle"
-    t.string  "assoc_type"
-    t.binary  "server_url"
-    t.binary  "secret"
-  end
-
-  create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :null => false
-    t.string  "server_url"
-    t.string  "salt",       :null => false
-  end
-
-  create_table "permissions", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "permissions_user_groups", :id => false, :force => true do |t|
-    t.integer "permission_id"
-    t.integer "user_group_id"
-  end
-
   create_table "questions", :force => true do |t|
     t.string   "name"
     t.text     "body"
     t.integer  "user_id"
-    t.integer  "views"
+    t.integer  "views",         :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "answers_count"
-    t.integer  "votes_count"
+    t.integer  "answers_count", :default => 0
+    t.integer  "votes_count",   :default => 0
     t.text     "body_plain"
     t.text     "body_html"
     t.string   "permalink"
     t.integer  "answer_id"
-    t.boolean  "send_email"
+    t.boolean  "send_email",    :default => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -105,17 +79,6 @@ ActiveRecord::Schema.define(:version => 20100413092534) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "user_groups", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_groups_users", :id => false, :force => true do |t|
-    t.integer "user_group_id"
-    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
