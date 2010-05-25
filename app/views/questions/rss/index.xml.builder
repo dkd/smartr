@@ -3,6 +3,7 @@ xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.channel do
     xml.title "Questions - #{request.host}"
+    
     xml.description "Recent questions"
     xml.link formatted_questions_url(:xml)
     xml.copyright Settings.copyright

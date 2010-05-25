@@ -41,6 +41,17 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
+    respond_to do |format|
+      format.js do
+        render :update do |page|
+          page["comment-#{params[:id]}"].html(
+                                    render(:partial => "new", :locals => {:comment => @comment, 
+                                                                          :commentable_type => params[:commentable_type], 
+                                                                          :commentable_id => params[:commentable_id]
+                                                                          }) )
+        end
+      end
+    end
   end
 
   def create
