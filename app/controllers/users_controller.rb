@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:edit, :update]
+  before_filter :is_admin?, :only => [:admin]
   
   def index
     respond_to do |format|
@@ -16,6 +17,10 @@ class UsersController < ApplicationController
         render :partial => "list", :locals => {:users => @users}
         }
     end
+  end
+  
+  def admin
+    @user = current_user
   end
   
   def search

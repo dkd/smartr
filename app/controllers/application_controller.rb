@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :is_admin?
   filter_parameter_logging :password, :password_confirmation
   before_filter :search_options
   
@@ -86,8 +86,16 @@ class ApplicationController < ActionController::Base
       
     end
     
-    def is_admin?
+    def require_admin
+      self.is_admin?
+    end
     
+    def is_admin?
+      if current_user && current_user.is_admin?
+       true
+     else
+       false
+     end
     end
     
     def require_no_user
