@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.namespace :admin do |admin|
+  map.namespace :admin do |admin|    
     admin.resources :comments
     admin.resources :answers
     admin.resources :questions
