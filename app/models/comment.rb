@@ -9,5 +9,4 @@ class Comment < ActiveRecord::Base
   #Validations
   validates_presence_of [:body]
   
-  
 end
