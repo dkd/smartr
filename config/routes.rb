@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :questions
     admin.resources :users
   end
-  
+  map.connect "admin", :controller => :admin, :action => :index
   map.connect "questions/hot/:page", :controller => :questions, :action => :index_for_hot, :page => nil
   map.connect "questions/active/:page", :controller => :questions, :action => :index_for_active, :page => nil
   map.connect "questions/unanswered/:page", :controller => :questions, :action => :index_for_unanswered, :page => nil
@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
   map.resources :votes
-  map.connect "/admin", :controller => :users, :action => :admin
+  
   map.resources :users, :collection => {:who_is_online => :get, :search => :get} do |users|
     users.resources :favourites
   end
@@ -35,7 +35,6 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   
-  
   map.root :controller => :questions, :action => :index
-    
+  
 end

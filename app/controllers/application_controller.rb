@@ -84,10 +84,14 @@ class ApplicationController < ActionController::Base
         }
       end
     end
-
     
     def require_admin
-      self.is_admin?
+      if current_user && current_user.is_admin?
+       true
+     else
+       flash[:notice] = "You must be logged in as admin to access this page"
+       redirect_to root_url
+     end
     end
 
     
