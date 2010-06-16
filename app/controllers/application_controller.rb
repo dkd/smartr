@@ -84,15 +84,12 @@ class ApplicationController < ActionController::Base
         }
       end
     end
-<<<<<<< HEAD
 
-    def is_admin?
-=======
     
     def require_admin
       self.is_admin?
     end
->>>>>>> adminfeatures
+
     
     def is_admin?
       if current_user && current_user.is_admin?
