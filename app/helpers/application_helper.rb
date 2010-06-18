@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def direction(value)
+    value==1? "up" : "down"
+  end
+  
   def main_menu(active)
       menu = []
       menu << {:name => I18n.t(:"main_menu.questions"), :id => "questions", :link => questions_path}

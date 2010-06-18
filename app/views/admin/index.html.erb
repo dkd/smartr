@@ -1,0 +1,7 @@
+<h2>Administration</h2>
+<% main_menu :admin  %>
+
+<h3>Latest Up Votes</h3>
+<% @votes.each do |vote| %>
+  <%=link_to vote.user.login, admin_user_path(vote.user)%> voted <%=link_to vote.voteable.user.login, admin_user_path(vote.voteable.user)%> <%=direction(vote.value)%><br />
+<% end -%>

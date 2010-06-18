@@ -25,7 +25,6 @@
           <%= link_to "Register", new_user_path %> | 
           <%= link_to "Log In", new_user_session_path %>
         <% else %>
-          <%= link_to "Admin", "/admin" unless !is_admin? %>
           <%= image_tag current_user.avatar.url(:tiny) %>
           <%= link_to "My Account", user_path(:id => current_user.id) %> | 
           <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        

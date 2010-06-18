@@ -2,8 +2,7 @@ class Admin::UsersController < ApplicationController
   # GET /admin_users
   # GET /admin_users.xml
   def index
-    @admin_users = Admin::User.all
-
+    @users = User.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @admin_users }
@@ -13,7 +12,7 @@ class Admin::UsersController < ApplicationController
   # GET /admin_users/1
   # GET /admin_users/1.xml
   def show
-    @user = Admin::User.find(params[:id])
+    @user = User.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +23,7 @@ class Admin::UsersController < ApplicationController
   # GET /admin_users/new
   # GET /admin_users/new.xml
   def new
-    @user = Admin::User.new
+    @user = User.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +33,13 @@ class Admin::UsersController < ApplicationController
 
   # GET /admin_users/1/edit
   def edit
-    @user = Admin::User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   # POST /admin_users
   # POST /admin_users.xml
   def create
-    @user = Admin::User.new(params[:user])
+    @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
@@ -57,7 +56,7 @@ class Admin::UsersController < ApplicationController
   # PUT /admin_users/1
   # PUT /admin_users/1.xml
   def update
-    @user = Admin::User.find(params[:id])
+    @user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -74,7 +73,7 @@ class Admin::UsersController < ApplicationController
   # DELETE /admin_users/1
   # DELETE /admin_users/1.xml
   def destroy
-    @user = Admin::User.find(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|

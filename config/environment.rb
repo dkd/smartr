@@ -25,21 +25,18 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "authlogic"
-  config.gem "authlogic-oid", :lib => "authlogic_openid"
-  config.gem "haml"
-  config.gem "settingslogic"
-  config.gem "friendly_id"
-  config.gem "bluecloth"
-  config.gem "sanitize"
-  #config.gem "searchlogic"
   
-  config.gem 'sunspot', :lib => 'sunspot', :version => '0.10.8'
-  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '0.11.5'
-  config.gem 'bluecloth'
-  
-  config.gem 'escape'
-  config.gem 'unicode'  
+  #config.gem "authlogic", :version => '2.1.2'
+  #config.gem "haml", :version => '2.2.13'
+  #config.gem "settingslogic", :version => '2.0.3'
+  #config.gem "friendly_id", :version => '2.2.4'
+  #config.gem "bluecloth"
+  #config.gem "sanitize"
+  #config.gem 'sunspot', :lib => 'sunspot', :version => '1.1.0'
+  #config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '1.1.0'
+  #config.gem 'bluecloth'
+  #config.gem 'escape'
+  #config.gem 'unicode'
   
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
