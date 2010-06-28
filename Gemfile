@@ -31,4 +31,7 @@ group :test do
   gem "rspec-rails", "1.3.2"
   gem "faker", "0.3.1"
   gem "factory_girl", "1.2.3"
+	gem "cucumber-rails"
+	gem "capybara"
+	gem "database_cleaner"
 end
