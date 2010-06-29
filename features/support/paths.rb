@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new question page/
+      new_question_path
+
     when /the new user page/
       new_user_path
 
