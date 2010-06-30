@@ -9,6 +9,7 @@ When /^I delete the (\d+)(?:st|nd|rd|th) account$/ do |pos|
   end
 end
 
+
 Given /^a valid user$/ do
   @user = Factory.create(:user, 
                          :login => "tester", 

@@ -1,11 +1,14 @@
-#Feature: Manage questions
-#  In order to [goal]
-#  [stakeholder]
-#  wants [behaviour]
-#  
-#  Scenario: Post new question
-#    Given I am on the new question page
-#    And I press "Create"
+Feature: Manage questions
+
+  Scenario: Post new question
+    Given a valid user
+    When I put his login and correct password into the form
+    Then I should be on the questions page
+    Then I should see "Ask a question"
+    When I follow "new_question"
+    Then I should see "New question"
+    Then I fill in "What took you so long using cucumber in SmartR?" for "question_name"
+    
 #
 #  # Rails generates Delete links that use Javascript to pop up a confirmation
 #  # dialog and then do a HTTP POST request (emulated DELETE request).
