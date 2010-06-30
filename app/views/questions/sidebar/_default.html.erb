@@ -1,5 +1,5 @@
 
-  <%= link_to 'Ask a question!', new_question_path, :class => "new_question" %>
+  <%= link_to 'Ask a question!', new_question_path, :class => "new_question", :id => "new_question" %>
   <% if current_user && current_user.interesting_tag_list %>
     <h3>I am interested in ...</h3>
     <div class="tags interesting">

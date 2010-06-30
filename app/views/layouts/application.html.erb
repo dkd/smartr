@@ -26,7 +26,7 @@
           <%= link_to "Log In", new_user_session_path %>
         <% else %>
           <%= image_tag current_user.avatar.url(:tiny) %>
-          <%= link_to "My Account", user_path(:id => current_user.id) %> | 
+          <%= link_to "My Account", user_path(:id => current_user.id), :id => "my_account" %> | 
           <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        
         <% end %>
       </div>
@@ -60,7 +60,6 @@
       <%= pluralize User.logged_in.count, "user" %> currently logged in<br />
     </div>
   </div>
-  
   <%= javascript_include_tag :defaults,
                              "wmd/jquery.wmd.min",
                              "wmd/showdown",

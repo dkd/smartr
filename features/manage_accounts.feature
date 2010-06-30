@@ -10,16 +10,18 @@ Feature: Manage accounts
     
   Scenario: Register new account
     Given I am on the new user page
-    And I fill in "tester" for "user_login"
+    And I fill in "hallodri" for "user_login"
     And I fill in "password123" for "user_password"
     And I fill in "password123" for "user_password_confirmation"
+    And I fill in "hallodri@gmail.com" for "user_email"
     And I press "user_submit"
-    #Then I should be on tester's profile page
+    Then I should be on hallodri's profile page
   
   Scenario: Log in as a valid user
     Given a valid user
     When I put his login and correct password into the form
     Then I should be on the questions page
+    And I should see "Login successful!"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

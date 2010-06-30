@@ -23,7 +23,7 @@ module NavigationHelpers
     # Here is an example that pulls values out of the Regexp:
     #
     when /^(.*)'s profile page$/i
-      user_path(User.find_by_login($1))
+      user_path(User.find_by_login($1).id)
     else
       begin
         page_name =~ /the (.*) page/
