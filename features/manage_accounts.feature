@@ -16,7 +16,10 @@ Feature: Manage accounts
     And I press "user_submit"
     #Then I should be on tester's profile page
   
-  
+  Scenario: Log in as a valid user
+    Given a valid user
+    When I put his login and correct password into the form
+    Then I should be on the questions page
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).
