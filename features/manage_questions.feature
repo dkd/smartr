@@ -8,8 +8,10 @@ Feature: Manage questions
     When I follow "new_question"
     Then I should see "New question"
     Then I fill in "What took you so long using cucumber in SmartR?" for "question_name"
-    
-#
+    Then I fill in "Microsoft pulls the plug on Kin  —  Microsoft has decided not to move forward with the Kin, a phone aimed at avid social-networking users.  —  Amid slow sales, Microsoft has decided to halt work on its Kin phone, focusing instead on its Windows Phone 7 effort, CNET has learned. Discussion: Digital Daily, Yahoo! News, ZDNet, BetaNews, VentureBeat, blogs.ft.com, The Register, Guardian, Macworld, Phone Arena, TechSpot, Gadgetell, DailyFinance, 9 to 5 Mac, Electronista, Tech Trader Daily, MobileBurn.com, The Huffington Post, Velocity, Black Web 2.0, Silicon Alley Insider and Microsoft News Tracker" for "wmd-input"
+    Then I fill in "test, cucumber" for "question_tag_list"
+    Then I press "question_submit"
+    Then I should see "What took you so long using cucumber in SmartR"
 #  # Rails generates Delete links that use Javascript to pop up a confirmation
 #  # dialog and then do a HTTP POST request (emulated DELETE request).
 #  #
