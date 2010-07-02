@@ -45,6 +45,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def reputation
+    @user = User.find(params[:id])
+  end
+  
   def show
     @user = User.find(params[:id])
     @user.count_view unless current_user == @user

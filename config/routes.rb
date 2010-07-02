@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "questions/tagged/:tag", :controller => :questions, :action => :index
   map.resources :votes
   
-  map.resources :users, :collection => {:who_is_online => :get, :search => :get} do |users|
+  map.resources :users, :collection => {:who_is_online => :get, :search => :get}, :member => {:reputation => :get} do |users|
     users.resources :favourites
   end
   
