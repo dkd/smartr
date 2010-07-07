@@ -50,5 +50,9 @@ class Vote < ActiveRecord::Base
     end
      rating
   end
+  
+  def direction
+    self.value == 1? "up":"down"
+  end
 
 end

@@ -1400,3 +1400,43 @@ form .error div.formError {
 .ac_over {
   background-color: #313900;
   color: white; }
+
+.admin div.votes {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top: 1px solid #e9e9e9; }
+
+table {
+  width: 100%; }
+  table tr:hover td {
+    background: #FFF4BF; }
+  table th {
+    border-bottom: 3px solid black;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    padding: 10px;
+    padding-bottom: 3px;
+    color: black;
+    font-size: 1.5em; }
+  table th.number {
+    text-align: right;
+    color: black; }
+  table td {
+    padding: 10px;
+    border-bottom: 1px dashed #e9e9e9; }
+  table td.link {
+    font-size: 1.5em; }
+    table td.link a:link,
+    table td.link a:visited {
+      color: #738500; }
+    table td.link a:hover {
+      color: black; }
+  table td.avatar img {
+    padding: 5px;
+    border: 1px solid #e9e9e9; }
+  table td.number {
+    font-size: 3em;
+    text-align: right;
+    color: black;
+    font-weight: bold; }

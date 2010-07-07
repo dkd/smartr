@@ -1,7 +1,23 @@
 <h2>Administration</h2>
 <% main_menu :admin  %>
 
-<h3>Latest Up Votes</h3>
-<% @votes.each do |vote| %>
-  <%=link_to vote.user.login, admin_user_path(vote.user)%> voted <%=link_to vote.voteable.user.login, admin_user_path(vote.voteable.user)%> <%=direction(vote.value)%><br />
-<% end -%>
+<h3>Latest Votes</h3>
+<div class="admin">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th>Time</th>
+      <th>Action</th>
+      <th>Points</th>
+    </tr>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td><%= vote.updated_at %></td>
+        <td><%= link_to image_tag(vote.user.avatar.url(:tiny)), admin_user_path(vote.user) %> <%=link_to vote.user.login, admin_user_path(vote.user)%> 
+          voted <%= link_to image_tag(vote.voteable.user.avatar.url(:tiny)), admin_user_path(vote.voteable.user) %>
+          <%=link_to vote.voteable.user.login, admin_user_path(vote.voteable.user)%>'s <%=vote.voteable.class%>  <%=direction(vote.value)%></td>
+        <td><%=Settings.reputation.fetch(vote.voteable.class.to_s.downcase).fetch(vote.direction)%></td>
+      </tr>
+  <% end -%>
+  </table>
+  <%= will_paginate @votes %>
+</div>
