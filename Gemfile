@@ -19,7 +19,7 @@ gem "unicode", "0.3.1"
 gem "will_paginate", "2.3.14"
 gem "paperclip", "2.3.1.1"
 gem "acts-as-taggable-on", "1.1.0"
-
+#gem "pdfkit"
 group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"

@@ -7,15 +7,15 @@
     <tr>
       <th>Time</th>
       <th>Action</th>
-      <th>Points</th>
+      <th class="right">Points</th>
     </tr>
     <% @votes.each do |vote| %>
       <tr>
-        <td><%= vote.updated_at %></td>
+        <td><%= distance_of_time_in_words_to_now vote.updated_at%> ago<br /><%= vote.updated_at %></td>
         <td><%= link_to image_tag(vote.user.avatar.url(:tiny)), admin_user_path(vote.user) %> <%=link_to vote.user.login, admin_user_path(vote.user)%> 
           voted <%= link_to image_tag(vote.voteable.user.avatar.url(:tiny)), admin_user_path(vote.voteable.user) %>
           <%=link_to vote.voteable.user.login, admin_user_path(vote.voteable.user)%>'s <%=vote.voteable.class%>  <%=direction(vote.value)%></td>
-        <td><%=Settings.reputation.fetch(vote.voteable.class.to_s.downcase).fetch(vote.direction)%></td>
+        <td class="right"><%=Settings.reputation.fetch(vote.voteable.class.to_s.downcase).fetch(vote.direction)>0? "+":""%><%=Settings.reputation.fetch(vote.voteable.class.to_s.downcase).fetch(vote.direction)%></td>
       </tr>
   <% end -%>
   </table>
