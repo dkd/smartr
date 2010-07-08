@@ -51,7 +51,7 @@ class Question < ActiveRecord::Base
       user.login
     end
     
-    text(:tags) do 
+    text(:tags) do
       tags.map{|tag| tag.name}
     end
     

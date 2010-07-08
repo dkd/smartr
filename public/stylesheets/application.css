@@ -57,7 +57,8 @@ body {
           line-height: 34px;
           text-shadow: 1px 1px 1px #444444;
           padding-top: 17px;
-          vertical-align: middle; }
+          vertical-align: middle;
+          cursor: pointer; }
           body #wrapper #header #menu ul li a:link, body #wrapper #header #menu ul li a:visited {
             font-size: 24px;
             text-decoration: none;
@@ -942,40 +943,6 @@ form.user div {
   margin-top: 2em; }
   .user-list .no-result {
     display: none; }
-  .user-list table {
-    width: 100%; }
-    .user-list table tr:hover td {
-      background: #FFF4BF; }
-    .user-list table th {
-      border-bottom: 3px solid black;
-      font-weight: bold;
-      font-size: 16px;
-      text-align: left;
-      padding: 10px;
-      padding-bottom: 3px;
-      color: black;
-      font-size: 1.5em; }
-    .user-list table th.number {
-      text-align: right;
-      color: black; }
-    .user-list table td {
-      padding: 10px;
-      border-bottom: 1px dashed #e9e9e9; }
-    .user-list table td.link {
-      font-size: 1.5em; }
-      .user-list table td.link a:link,
-      .user-list table td.link a:visited {
-        color: #738500; }
-      .user-list table td.link a:hover {
-        color: black; }
-    .user-list table td.avatar img {
-      padding: 5px;
-      border: 1px solid #e9e9e9; }
-    .user-list table td.number {
-      font-size: 3em;
-      text-align: right;
-      color: black;
-      font-weight: bold; }
   .user-list .user-item {
     float: left;
     background: #e9e9e9;
@@ -1440,3 +1407,5 @@ table {
     text-align: right;
     color: black;
     font-weight: bold; }
+  table th.right, table td.right {
+    text-align: right; }

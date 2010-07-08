@@ -44,7 +44,7 @@ Rails::Initializer.run do |config|
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
   #config.plugin_paths += ["#{RAILS_ROOT}/../../Libs"]
   #config.plugins = [:authlogic]
-
+  #config.middleware.use "PDFKit::Middleware"
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 

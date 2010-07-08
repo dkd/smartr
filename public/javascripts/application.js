@@ -94,7 +94,13 @@ $(document).ready(function(){
   /* Fancy question button */
   $(".tags a, #sidebar a.new_question, #menu li, .tag-list span a").click(function(){
       $(this).effect("pulsate", { times:2, mode: "show" }, 200);
-
+      
+      if($(this).attr("href") == undefined){
+        
+        if($(this).children("a:first").length > 0) {
+          window.location.href = $(this).children("a:first").attr("href");
+        }
+      }
   });
   $("input[type=text],input[type=password]").focus(function()
     {
