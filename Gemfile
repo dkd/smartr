@@ -1,13 +1,13 @@
-source "http://rubygems.org"
-gem "rails", "2.3.5"
+source 'http://rubygems.org'
+gem 'rails', '3.0.0.beta4'
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"
 # gem "geokit"
 
 gem "mysql", "2.8.1"
-gem "authlogic", "2.1.2"
-gem "haml", "2.2.13"
+gem "authlogic", "2.1.5"
+gem "haml"
 gem "settingslogic", "2.0.3"
 gem "friendly_id", "2.2.4"
 gem "sanitize", "1.2.1"
@@ -16,9 +16,14 @@ gem "sunspot_rails", "1.1.0", :require => "sunspot/rails"
 gem "bluecloth", "2.0.7"
 gem "escape", "0.0.4"
 gem "unicode", "0.3.1"
-gem "will_paginate", "2.3.14"
-gem "paperclip", "2.3.1.1"
-gem "acts-as-taggable-on", "1.1.0"
+gem 'will_paginate', '3.0.pre'
+gem "paperclip", "2.3.3"
+gem "acts-as-taggable-on", "2.0.6"
+
+gem 'cgi_multipart_eof_fix'
+gem 'fastthread'
+gem 'mongrel_experimental'
+
 #gem "pdfkit"
 group :development do
   # bundler requires these gems in development
