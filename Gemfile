@@ -5,10 +5,11 @@ gem 'rails', '3.0.0.beta4'
 # gem "nokogiri", "1.4.2"
 # gem "geokit"
 
-gem "mysql", "2.8.1"
-gem "authlogic", "2.1.5"
+gem "mysql"
+
+gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem "haml"
-gem "settingslogic", "2.0.6"
+#gem "settingslogic", "2.0.6"
 gem "friendly_id"
 gem "sanitize", "1.2.1"
 gem "sunspot", :require => "sunspot"
@@ -32,10 +33,11 @@ end
 
 group :test do
   # bundler requires these gems while running tests
-  gem "rspec", "1.3.0"
-  gem "rspec-rails", "1.3.2"
+  gem "rspec", "2.0.0.beta.4"
+  gem "rspec-rails", "2.0.0.beta.4"
+  gem "factory_girl", :git => "git://github.com/szimek/factory_girl.git", :branch => "rails3"
+  
   gem "faker", "0.3.1"
-  gem "factory_girl", "1.2.3"
 	gem "cucumber-rails"
 	gem "capybara"
 	gem "database_cleaner"
