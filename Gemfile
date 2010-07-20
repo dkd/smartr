@@ -9,7 +9,7 @@ gem "mysql"
 
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem "haml"
-#gem "settingslogic", "2.0.6"
+gem "settingslogic", "2.0.6"
 gem "friendly_id"
 gem "sanitize", "1.2.1"
 gem "sunspot", :require => "sunspot"

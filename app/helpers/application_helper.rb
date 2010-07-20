@@ -24,7 +24,7 @@ module ApplicationHelper
         class_name = (m[:id]==active.to_s)? 'active' : ''
         li +=content_tag(:li, link_to(m[:name], m[:link]), :class => class_name)
       end
-      content_tag(:ul, li)
+      content_tag(:ul, raw( li))
     end
   
   def code(html)

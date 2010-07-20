@@ -11,7 +11,7 @@
       <% if current_user %>
         <div class="<%=question.favourited?(current_user)? "favourite-saved": "favourite"%>" id="favourite-question-<%=question.id%>">
             <br />
-            <%= link_to_remote "*", :url => toggle_favourite_path(question.id), :method => "put" %>
+            <%= link_to "*", :url => toggle_favourite_path(question.id), :method => "put", :remote => true %>
           </div>
       <% end -%>
 </div>
