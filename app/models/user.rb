@@ -21,11 +21,6 @@ class User < ActiveRecord::Base
   #Named Scopes
   named_scope :latest, :order => "created_at DESC"
   
-  ##Search
-  #searchable do
-  #  text :login
-  #end
-  
   def count_view
     views = self.views.nil?? 0 : self.views
     self.update_attributes :views => (views+1)
@@ -43,4 +38,9 @@ class User < ActiveRecord::Base
     self.image_url = self.avatar.url(:medium)
   end
   
+end
+
+#Sunspot Solr Configuration
+Sunspot.setup(User) do
+  text :login
 end
