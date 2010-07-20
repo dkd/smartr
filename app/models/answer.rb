@@ -34,3 +34,13 @@ class Answer < ActiveRecord::Base
           
   end
 end
+
+
+#Sunspot Solr Configuration
+Sunspot.setup(Answer) do
+  text :body_plain
+  integer :question_id
+  integer :user_id
+  time :created_at
+  time :updated_at
+end
