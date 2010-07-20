@@ -30,40 +30,40 @@ class Question < ActiveRecord::Base
   before_save :check_answer_count
   
   #Sunspot Solr
-  searchable do
-    text :name, :boost => 2.0
-    text :body_plain
-    integer :user_id, :references => User
-    
-    text :answers do 
-      answers.map {|answer| 
-        answer.body_plain
-      }
-    end
-    
-    text :comments do
-      comments.map {|comment|
-        comment.body
-      }
-    end
-    
-    text :user do
-      user.login
-    end
-    
-    text(:tags) do
-      tags.map{|tag| tag.name}
-    end
-    
-    time :updated_at
-    time :created_at
-    
-    integer :id
-    
-    string :sort_title do
-      name.downcase.sub(/^(an?|the) /, '')
-    end
-  end
+  #searchable do
+  #  text :name, :boost => 2.0
+  #  text :body_plain
+  #  integer :user_id, :references => User
+  #  
+  #  text :answers do 
+  #    answers.map {|answer| 
+  #      answer.body_plain
+  #    }
+  #  end
+  #  
+  #  text :comments do
+  #    comments.map {|comment|
+  #      comment.body
+  #    }
+  #  end
+  #  
+  #  text :user do
+  #    user.login
+  #  end
+  #  
+  #  text(:tags) do
+  #    tags.map{|tag| tag.name}
+  #  end
+  #  
+  #  time :updated_at
+  #  time :created_at
+  #  
+  #  integer :id
+  #  
+  #  string :sort_title do
+  #    name.downcase.sub(/^(an?|the) /, '')
+  #  end
+  #end
   
   #Methods
   def self.recent_tags
