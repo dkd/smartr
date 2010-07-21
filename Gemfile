@@ -1,10 +1,6 @@
 source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta4'
 
-# bundler requires these gems in all environments
-# gem "nokogiri", "1.4.2"
-# gem "geokit"
-
 gem "mysql"
 
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
