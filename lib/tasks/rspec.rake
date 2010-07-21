@@ -1,48 +1,68 @@
-require 'spec/rake/spectask'
+begin
+  require 'rspec/core'
+  require 'rspec/core/rake_task'
+rescue MissingSourceFile 
+  module Rspec
+    module Core
+      class RakeTask
+        def initialize(name)
+          task name do
+            # if rspec-rails is a configured gem, this will output helpful material and exit ...
+            require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
 
-desc 'Run all model and controller specs'
-task :spec do
-  Rake::Task["spec:models"].invoke       rescue got_error = true
-  Rake::Task["spec:controllers"].invoke rescue got_error = true
+            # ... otherwise, do this:
+            raise <<-MSG
 
-  # not yet supported
-  #if File.exist?("spec/integration")
-  #  Rake::Task["spec:integration"].invoke rescue got_error = true
-  #end
-
-  raise "RSpec failures" if got_error
-end
-
-namespace :spec do
-  desc "Run the specs under spec/models"
-  Spec::Rake::SpecTask.new(:models => "db:test:prepare") do |t|
-    t.spec_files = FileList['spec/models/**/*_spec.rb']
-  end
-
-  desc "Run the specs under spec/controllers"
-  Spec::Rake::SpecTask.new(:controllers => "db:test:prepare") do |t|
-    t.spec_files = FileList['spec/controllers/**/*_spec.rb']
-  end
-  
-  desc "Print Specdoc for all specs"
-  Spec::Rake::SpecTask.new('doc') do |t|
-    t.spec_files = FileList[
-      'spec/models/**/*_spec.rb',
-      'spec/controllers/**/*_spec.rb'
-    ]
-    t.spec_opts = ["--format", "specdoc"]
-  end
-
-  namespace :db do
-    namespace :fixtures do
-      desc "Load fixtures (from spec/fixtures) into the current environment's database.  Load specific fixtures using FIXTURES=x,y"
-      task :load => :environment do
-        require 'active_record/fixtures'
-        ActiveRecord::Base.establish_connection(RAILS_ENV.to_sym)
-        (ENV['FIXTURES'] ? ENV['FIXTURES'].split(/,/) : Dir.glob(File.join(RAILS_ROOT, 'spec', 'fixtures', '*.{yml,csv}'))).each do |fixture_file|
-          Fixtures.create_fixtures('spec/fixtures', File.basename(fixture_file, '.*'))
+#{"*" * 80}
+*  You are trying to run an rspec rake task defined in
+*  #{__FILE__},
+*  but rspec can not be found in vendor/gems, vendor/plugins or system gems.
+#{"*" * 80}
+MSG
+          end
         end
       end
     end
+  end
+end
+
+Rake.application.instance_variable_get('@tasks').delete('default')
+
+spec_prereq = File.exist?(File.join(Rails.root, 'config', 'database.yml')) ? "db:test:prepare" : :noop
+task :noop do
+end
+
+task :default => :spec
+task :stats => "spec:statsetup"
+
+desc "Run all specs in spec directory (excluding plugin specs)"
+Rspec::Core::RakeTask.new(:spec => spec_prereq)
+
+namespace :spec do
+  [:requests, :models, :controllers, :views, :helpers, :mailers, :lib].each do |sub|
+    desc "Run the code examples in spec/#{sub}"
+    Rspec::Core::RakeTask.new(sub => spec_prereq) do |t|
+      t.pattern = "./spec/#{sub}/**/*_spec.rb"
+    end
+  end
+
+  task :statsetup do
+    require 'rails/code_statistics'
+    ::STATS_DIRECTORIES << %w(Model\ specs spec/models) if File.exist?('spec/models')
+    ::STATS_DIRECTORIES << %w(View\ specs spec/views) if File.exist?('spec/views')
+    ::STATS_DIRECTORIES << %w(Controller\ specs spec/controllers) if File.exist?('spec/controllers')
+    ::STATS_DIRECTORIES << %w(Helper\ specs spec/helpers) if File.exist?('spec/helpers')
+    ::STATS_DIRECTORIES << %w(Library\ specs spec/lib) if File.exist?('spec/lib')
+    ::STATS_DIRECTORIES << %w(Mailer\ specs spec/mailers) if File.exist?('spec/mailers')
+    ::STATS_DIRECTORIES << %w(Routing\ specs spec/routing) if File.exist?('spec/routing')
+    ::STATS_DIRECTORIES << %w(Request\ specs spec/requests) if File.exist?('spec/requests')
+    ::CodeStatistics::TEST_TYPES << "Model specs" if File.exist?('spec/models')
+    ::CodeStatistics::TEST_TYPES << "View specs" if File.exist?('spec/views')
+    ::CodeStatistics::TEST_TYPES << "Controller specs" if File.exist?('spec/controllers')
+    ::CodeStatistics::TEST_TYPES << "Helper specs" if File.exist?('spec/helpers')
+    ::CodeStatistics::TEST_TYPES << "Library specs" if File.exist?('spec/lib')
+    ::CodeStatistics::TEST_TYPES << "Mailer specs" if File.exist?('spec/mailer')
+    ::CodeStatistics::TEST_TYPES << "Routing specs" if File.exist?('spec/routing')
+    ::CodeStatistics::TEST_TYPES << "Request specs" if File.exist?('spec/requests')
   end
 end
