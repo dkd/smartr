@@ -12,7 +12,7 @@ end
 %>
 
 <%= link_to raw("&nbsp;"), 
-                 :url => vote_path(
+                 vote_path(
                  :model => "question",
                  :direction => "up",
                  :dom_id => "votes_#{question.id}",
@@ -20,10 +20,10 @@ end
                  :id => question.id),
                  :method => "put",
                  :remote => true,
-                 :html => {:class => upclass } -%>                       
+                 :class => upclass -%>                       
 <div class="value" id="<%="question_#{question.id}"%>"><%=question.votes.length==0? 0 : Vote.count_on("Question", question.id)%></div>
 <%= link_to raw("&nbsp;"),
-                 :url => vote_path(
+                 vote_path(
                  :model => "question",
                  :direction => "down",
                  :dom_id => "votes_#{question.id}",
@@ -31,4 +31,4 @@ end
                  :id => question.id),
                  :method => "put",
                  :remote => true,
-                 :html => {:class => downclass} -%>
+                 :class => downclass -%>
