@@ -11,24 +11,24 @@ end
 
 %>
 
-<%= link_to "&nbsp;", 
-                 :url => vote_path(
-                 :model => "answer",
-                 :direction => "up",
-                 :dom_id => "votes_#{answer.id}",
-                 :vote_box_id => "vote-box-#{answer.id}",
-                 :id => answer.id),
-                 :method => "put",                 
-                 :remote => true,
-                 :html => {:class => upclass } -%>                       
+<%= link_to raw("&nbsp;"), 
+            vote_path(
+            :model => "answer",
+            :direction => "up",
+            :dom_id => "votes_#{answer.id}",
+            :vote_box_id => "vote-box-#{answer.id}",
+            :id => answer.id),
+            :method => "put",                 
+            :remote => true,
+            :class => upclass -%>                       
 <div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
-<%= link_to "&nbsp;",
-                 :url => vote_path(
-                 :model => "answer",
-                 :direction => "down",
-                 :dom_id => "votes_#{answer.id}",
-                 :vote_box_id => "vote-box-#{answer.id}",
-                 :id => answer.id),
-                 :remote => true,
-                 :method => "put",
-                 :html => {:class => downclass} -%>
+<%= link_to raw("&nbsp;"),
+            vote_path(
+            :model => "answer",
+            :direction => "down",
+            :dom_id => "votes_#{answer.id}",
+            :vote_box_id => "vote-box-#{answer.id}",
+            :id => answer.id),
+            :remote => true,
+            :method => "put",
+            :class => downclass -%>
