@@ -105,5 +105,3 @@ Sunspot.setup(Question) do
     name.downcase.sub(/^(an?|the) /, '')
   end
 end
-
-
