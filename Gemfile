@@ -29,12 +29,13 @@ end
 
 group :test do
   # bundler requires these gems while running tests
-  gem "rspec", "2.0.0.beta.4"
-  gem "rspec-rails", "2.0.0.beta.4"
-  gem "factory_girl", :git => "git://github.com/szimek/factory_girl.git", :branch => "rails3"
-  
+  gem "rspec", "2.0.0.beta.17 "
+  gem "rspec-rails", "2.0.0.beta.17"
+  gem "factory_girl", :git => "git://github.com/szimek/factory_girl.git", :branch => "rails3"  
   gem "faker", "0.3.1"
 	gem "cucumber-rails"
+	gem "cucumber"
 	gem "capybara"
 	gem "database_cleaner"
+	gem "rspec-expectations"
 end

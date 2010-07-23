@@ -1,9 +1,21 @@
 <% if current_user && answer.question.user == current_user %>
   
     <% if answer == answer.question.answer %>
-      <%= link_to_remote("&nbsp;", :url => update_for_toggle_acceptance_question_path(answer.question, :answer_id => answer.id, :mode => :toggle_acceptance), :method => :put, :html => {:class => "accepted"}) %>
-    <% else%>
-       <%= link_to_remote("&nbsp;", :url => update_for_toggle_acceptance_question_path(answer.question, :answer_id => answer.id, :mode => :toggle_acceptance), :method => :put, :html => { :class => ""}) %>
+      <%= link_to(raw("&nbsp;"), 
+                  update_for_toggle_acceptance_question_path(answer.question, 
+                                                             :answer_id => answer.id, 
+                                                             :mode => :toggle_acceptance), 
+                  :method => :put,
+                  :remote => true,
+                  :class => "accepted") %>
+    <% else %>
+       <%= link_to(raw("&nbsp;"), 
+                   update_for_toggle_acceptance_question_path(answer.question, 
+                                                              :answer_id => answer.id, 
+                                                              :mode => :toggle_acceptance), 
+                   :method => :put,
+                   :remote => true,
+                   :class => "") %>
     <% end -%>
   
   <% else %>
