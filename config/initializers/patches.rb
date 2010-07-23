@@ -1,1 +1,1 @@
-Dir["#{RAILS_ROOT}/lib/patches/*.rb"].each {|file| require file }
+Dir["#{Rails.root}/lib/patches/*.rb"].each {|file| require file }
