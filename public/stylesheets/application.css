@@ -79,7 +79,7 @@ body {
       font-size: 34px;
       margin-bottom: 10px;
       margin-top: 30px;
-      border-bottom: 3px solid #000; }
+      border-bottom: 3px solid black; }
   body .header-with-tabs {
     position: relative;
     margin-top: 45px !important;
@@ -109,16 +109,16 @@ body {
         color: black;
         text-decoration: none; }
     body .header-with-tabs form div.error {
-      color: #7F0000; }
+      color: #7f0000; }
       body .header-with-tabs form div.error div.formError {
         font-size: 12px;
-        color: #7F0000;
+        color: #7f0000;
         font-weight: bold;
         width: 100%; }
       body .header-with-tabs form div.error input {
-        border-color: #7F0000; }
+        border-color: #7f0000; }
       body .header-with-tabs form div.error textarea {
-        border-color: #7F0000; }
+        border-color: #7f0000; }
   body a:focus {
     outline: 0px; }
   body .tabs {
@@ -228,7 +228,7 @@ h2.show-question {
     border-radius: 5px;
     padding-right: 0px; }
   .question-new input.text, .question-edit input.text {
-    border: 1px solid #000;
+    border: 1px solid black;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -255,7 +255,6 @@ h2.show-question {
   .question-new input.save:hover, .question-edit input.save:hover {
     background: black; }
 
-
 .question .actions {
   float: right; }
   .question .actions a:link, .question .actions a:visited {
@@ -269,7 +268,7 @@ h2.show-question {
   .question .actions a:hover {
     background: black; }
 .question .body {
-  background: #fff;
+  background: white;
   padding: 10px;
   padding-top: 0px;
   width: 855px;
@@ -344,7 +343,7 @@ h2.show-question {
 
 .question-list {
   padding: 5px 0px 5px 0px;
-  border-bottom: 1px dotted #333; }
+  border-bottom: 1px dotted #333333; }
   .question-list .body {
     margin-left: 21%; }
     .question-list .body h3 {
@@ -469,7 +468,7 @@ h2.show-question {
     background: black; }
 
 .answer-edit {
-  background: #FFF5E1;
+  background: #fff5e1;
   padding: 10px 20px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -644,6 +643,7 @@ h2.answer-header {
       font-size: 10px; }
 
 .answer-item .stats div.status, .question .stats div.status {
+  width: 30px;
   clear: left;
   font-size: 10px; }
 .answer-item .stats div.views, .question .stats div.views {
@@ -651,19 +651,20 @@ h2.answer-header {
   margin-bottom: 10px;
   background: white;
   color: #383838; }
-.answer-item .stats div.favourite, .question .stats div.favourite,
-.answer-item .stats div.favourite-saved, .question .stats div.favourite-saved {
+.answer-item .stats div.favourite,
+.answer-item .stats div.favourite-saved, .question .stats div.favourite, .question .stats div.favourite-saved {
   font-size: 60px;
   font-weight: bold;
   display: inline;
   padding: 0px;
   clear: left; }
-  .answer-item .stats div.favourite a:link, .answer-item .stats div.favourite a:visited, .question .stats div.favourite a:link, .question .stats div.favourite a:visited,
-  .answer-item .stats div.favourite-saved a:link, .answer-item .stats div.favourite-saved a:visited, .question .stats div.favourite-saved a:link, .question .stats div.favourite-saved a:visited {
+  .answer-item .stats div.favourite a:link, .answer-item .stats div.favourite a:visited,
+  .answer-item .stats div.favourite-saved a:link,
+  .answer-item .stats div.favourite-saved a:visited, .question .stats div.favourite a:link, .question .stats div.favourite a:visited, .question .stats div.favourite-saved a:link, .question .stats div.favourite-saved a:visited {
     color: black;
     text-decoration: none; }
-  .answer-item .stats div.favourite a:hover, .question .stats div.favourite a:hover,
-  .answer-item .stats div.favourite-saved a:hover, .question .stats div.favourite-saved a:hover {
+  .answer-item .stats div.favourite a:hover,
+  .answer-item .stats div.favourite-saved a:hover, .question .stats div.favourite a:hover, .question .stats div.favourite-saved a:hover {
     color: orange;
     text-shadow: 0px 0px 10px orange; }
 .answer-item .stats div.favourite-saved a:link, .answer-item .stats div.favourite-saved a:visited, .question .stats div.favourite-saved a:link, .question .stats div.favourite-saved a:visited {
@@ -711,7 +712,7 @@ h2.answer-header {
     text-align: center;
     opacity: 0.8; }
   .answer-item .stats div.votes a.up:hover, .answer-item .stats div.votes a.down:hover, .question .stats div.votes a.up:hover, .question .stats div.votes a.down:hover {
-    opacity: 1.0; }
+    opacity: 1; }
   .answer-item .stats div.votes a.up-neutral:link, .answer-item .stats div.votes a.up-neutral:visited, .question .stats div.votes a.up-neutral:link, .question .stats div.votes a.up-neutral:visited {
     width: 50px;
     height: 10px;
@@ -733,7 +734,7 @@ h2.answer-header {
     opacity: 0.8;
     display: block; }
   .answer-item .stats div.votes a.down-neutral:hover, .answer-item .stats div.votes a.up-neutral:hover, .question .stats div.votes a.down-neutral:hover, .question .stats div.votes a.up-neutral:hover {
-    opacity: 1.0; }
+    opacity: 1; }
 
 .tag-search input {
   -moz-border-radius: 5px;
@@ -909,8 +910,7 @@ form.user div {
     color: white;
     padding: 5px;
     float: left; }
-  .user-questions h4 a:link,
-  .user-questions h4 a:visited {
+  .user-questions h4 a:link, .user-questions h4 a:visited {
     color: #313900;
     text-decoration: none;
     font-size: 14px; }
@@ -1089,8 +1089,7 @@ form.user div {
 .gritter-item-wrapper {
   position: relative;
   margin: 0 0 0 0;
-  background: url('.'); }
-
+  background: url("."); }
 
 .hover .gritter-top {
   background-position: right -30px; }
@@ -1104,12 +1103,11 @@ form.user div {
 .gritter-item {
   display: block;
   background: #853e00;
-  color: #eee;
+  color: #eeeeee;
   font-size: 14px;
   border-bottom: 1px solid;
   border-color: #381a00;
   padding: 10px; }
-
 
 .gritter-item p {
   padding: 0;
@@ -1130,7 +1128,7 @@ form.user div {
   font-weight: bold;
   padding: 0 0 7px 0;
   display: none;
-  text-shadow: 1px 1px #000; }
+  text-shadow: 1px 1px black; }
 
 .gritter-image {
   width: 48px;
@@ -1298,7 +1296,7 @@ form.user div {
 
 .wmd-prompt-dialog {
   border: 1px solid #999999;
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
   .wmd-prompt-dialog > div {
     font-size: 0.8em;
     font-family: arial, helvetica, sans-serif; }
@@ -1328,9 +1326,9 @@ form.user div {
   #errorExplanation li {
     list-style: square; }
 
-form .error .fieldWithErrors input, form .error .fieldWithErrors textarea {
-  border-color: red; }
-form .error div.formError {
+form .field_with_errors input, form .field_with_errors textarea {
+  border-color: red !important; }
+form div.formError {
   color: red;
   font-weight: bold;
   font-size: 0.8em;
@@ -1359,10 +1357,10 @@ form .error div.formError {
     overflow: hidden; }
 
 .ac_loading {
-  background: white url('indicator.gif') right center no-repeat; }
+  background: white url("indicator.gif") right center no-repeat; }
 
 .ac_odd {
-  background-color: #eee; }
+  background-color: #eeeeee; }
 
 .ac_over {
   background-color: #313900;
@@ -1376,7 +1374,7 @@ form .error div.formError {
 table {
   width: 100%; }
   table tr:hover td {
-    background: #FFF4BF; }
+    background: #fff4bf; }
   table th {
     border-bottom: 3px solid black;
     font-weight: bold;
