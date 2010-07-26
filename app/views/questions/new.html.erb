@@ -1,7 +1,8 @@
 <h2>New question</h2>
 <div class="question-edit">
 
-<% form_for(@question) do |f| %>
+<%= form_for(@question) do |f| %>
+<%= f.error_messages %>
     <div class="<%="error" if f.error_message_on(:name).present? %>">
       <h3>Enter your question here<%= mark_required(@question, :name) %><%= f.text_field :name, :class => "text" %></h3>
       

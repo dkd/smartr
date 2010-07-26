@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <br style="clear: both" />
-       <% form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
+       <%= form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
           <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
           <%#= f.submit "Search" %>
         <% end -%>
