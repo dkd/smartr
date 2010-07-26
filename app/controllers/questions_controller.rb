@@ -60,7 +60,8 @@ class QuestionsController < ApplicationController
           format.html { redirect_to(@question) }
         else
           format.html { 
-            @question.body = @question.body_plain
+            flash[:notice] = 'Question was not created.'
+            @question.body = @question.body
             render :action => "new" 
             }
         end

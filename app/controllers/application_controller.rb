@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   
   helper_method :current_user_session, :current_user, :is_admin?
-  filter_parameter_logging :password, :password_confirmation
   before_filter :search_options
   
   

@@ -20,10 +20,10 @@ class Question < ActiveRecord::Base
   
   #Named Scopes
   default_scope :include => :user
-  named_scope :latest, :order => "created_at DESC"
-  named_scope :hot, :order => "answers_count DESC,updated_at DESC"
-  named_scope :active, :order => "updated_at DESC, answers_count DESC"
-  named_scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
+  scope :latest, :order => "created_at DESC"
+  scope :hot, :order => "answers_count DESC,updated_at DESC"
+  scope :active, :order => "updated_at DESC, answers_count DESC"
+  scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
   
   # Callbacks
   before_save :set_permalink
