@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507085516) do
+ActiveRecord::Schema.define(:version => 20100727200521) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -36,32 +36,6 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "open_id_authentication_associations", :force => true do |t|
-    t.integer "issued"
-    t.integer "lifetime"
-    t.string  "handle"
-    t.string  "assoc_type"
-    t.binary  "server_url"
-    t.binary  "secret"
-  end
-
-  create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :null => false
-    t.string  "server_url"
-    t.string  "salt",       :null => false
-  end
-
-  create_table "permissions", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "permissions_user_groups", :id => false, :force => true do |t|
-    t.integer "permission_id"
-    t.integer "user_group_id"
   end
 
   create_table "questions", :force => true do |t|
@@ -107,17 +81,6 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.string "name"
   end
 
-  create_table "user_groups", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_groups_users", :id => false, :force => true do |t|
-    t.integer "user_group_id"
-    t.integer "user_id"
-  end
-
   create_table "users", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -131,8 +94,7 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.string   "openid_identifier"
-    t.integer  "views"
+    t.integer  "views",               :default => 0
     t.string   "email"
     t.integer  "reputation",          :default => 0
     t.string   "avatar_file_name"
@@ -144,7 +106,6 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
   add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
   create_table "votes", :force => true do |t|
