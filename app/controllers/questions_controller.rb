@@ -37,7 +37,6 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     @question = Question.new
-    @question.body = @question.body_plain
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -45,8 +44,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @question = Question.find(params[:id])
-    @question.body = @question.body_plain
+    @question = Question.find(params[:id])    
   end
 
   # POST /questions
@@ -60,9 +58,8 @@ class QuestionsController < ApplicationController
           format.html { redirect_to(@question) }
         else
           format.html { 
-            flash[:notice] = 'Question was not created.'
-            @question.body = @question.body
-            render :action => "new" 
+            flash[:error] = 'Please fill in all requested fields!'
+            render :action => "new"
             }
         end
       end
@@ -110,7 +107,7 @@ class QuestionsController < ApplicationController
     facet_user_id = params[:user_id] unless params[:user_id].nil?
     @questions = Sunspot.search(Question) do 
       fulltext searchstring do
-        highlight :name, :body_plain, :max_snippets => 3, :fragment_size => 200
+        highlight :name, :body, :max_snippets => 3, :fragment_size => 200
         tie 0.1
       end
       with :user_id, facet_user_id unless facet_user_id.nil?
