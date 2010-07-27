@@ -26,7 +26,7 @@ class Question < ActiveRecord::Base
   scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
   
   # Callbacks
-  before_save :set_permalink
+  before_validation :set_permalink
   before_save :check_answer_count
   
   #Methods
@@ -73,7 +73,7 @@ end
 #Sunspot Configuration
 Sunspot.setup(Question) do
   text :name, :boost => 2.0
-  text :body_plain
+  text :body
   integer :user_id, :references => User
   
   text :answers do 
