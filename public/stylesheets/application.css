@@ -841,31 +841,6 @@ h2.answer-header {
   color: #738500;
   font-weight: bold; }
 
-#new_user_session label {
-  color: #738500;
-  font-weight: bold;
-  font-size: 0.8em; }
-#new_user_session input {
-  border: 1px solid #e9e9e9;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 5px;
-  background: #f4f4f4; }
-#new_user_session #user_session_submit {
-  background: #738500;
-  border-color: #313900;
-  -moz-box-shadow: 2px 2px 2px #737373;
-  -webkit-box-shadow: 2px 2px 2px #737373;
-  box-shadow: 2px 2px 2px #737373;
-  outline: none;
-  color: white; }
-#new_user_session #user_session_submit:focus {
-  -moz-box-shadow: 0px 0px 1px #737373;
-  -webkit-box-shadow: 0px 0px 1px #737373;
-  box-shadow: 0px 0px 1px #737373;
-  outline: none; }
-
 form.user div {
   border-bottom: 1px dashed;
   border-color: #c7c7c7;
@@ -1407,3 +1382,38 @@ table {
     font-weight: bold; }
   table th.right, table td.right {
     text-align: right; }
+
+form.new_user_session div {
+  margin-bottom: 15px; }
+  form.new_user_session div label {
+    color: #738500;
+    font-weight: bold;
+    font-size: 0.8em;
+    display: block; }
+  form.new_user_session div input {
+    border: 1px solid #e9e9e9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    background: #f4f4f4; }
+  form.new_user_session div #user_session_submit {
+    background: #738500;
+    border-color: #313900;
+    -moz-box-shadow: 2px 2px 2px #737373;
+    -webkit-box-shadow: 2px 2px 2px #737373;
+    box-shadow: 2px 2px 2px #737373;
+    outline: none;
+    color: white; }
+  form.new_user_session div #user_session_submit:focus {
+    -moz-box-shadow: 0px 0px 1px #737373;
+    -webkit-box-shadow: 0px 0px 1px #737373;
+    box-shadow: 0px 0px 1px #737373;
+    outline: none; }
+  form.new_user_session div div.field_with_errors {
+    margin-bottom: 0px; }
+    form.new_user_session div div.field_with_errors label {
+      color: red; }
+
+div.flash div.message.error {
+  color: red; }
