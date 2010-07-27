@@ -1,37 +1,50 @@
-<div>
-  <%= image_tag @user.avatar.url(:medium), :align => :top %>
-  <%= form.file_field :avatar %>
-  <br class="clear" />
+<%= image_tag @user.avatar.url(:medium), :align => :top %>
+<%= form.file_field :avatar %>
+<br class="clear" />
+<div class="label">
+  <%= form.label :login %><%= mark_required(@user, :login) %>
 </div>
-<div>
-  <%= form.label :login %>
-  <br class="clear" />
+<div class="text_field">
   <%= form.text_field :login %>
-  
+  <%= form.error_message_on :login %>
 </div>
-<div>
-  <%= form.label :email %>
-  <br class="clear" />
+
+<div class="label">
+  <%= form.label :email %><%= mark_required(@user, :email) %>
+</div>
+<div class="text_field">
   <%= form.text_field :email %>
+  <%= form.error_message_on :email %>
 </div>
-<div>
-  <%= form.label :password, form.object.new_record? ? nil : "Change password" %>
-  <br class="clear" />
+
+
+<div class="label">
+  <%= form.label :password, form.object.new_record? ? nil : "Change password" %>*
+</div>
+<div class="text_field">
   <%= form.password_field :password %>
+  <%= form.error_message_on :password %>
 </div>
-<div>
-  <%= form.label :password_confirmation %>
-  <br class="clear" />
+
+<div class="label">
+  <%= form.label :password_confirmation %>*
+</div>
+<div class="text_field">
   <%= form.password_field :password_confirmation %>
+  <%= form.error_message_on :password_confirmation %>
 </div>
-<div>
-  <%= form.label :interesting_tags %>
-  <br class="clear" />
+
+<div class="label">
+  <%= form.label :interesting_tag_list %>
+</div>
+<div class="text_field">
   <%= form.text_field :interesting_tag_list, :class => :tags %>
 </div>
-<div>
-  <%= form.label :uninteresting_tags %>
-  <br class="clear" />
+
+<div class="label">
+  <%= form.label :uninteresting_tag_list %>
+</div>
+<div class="text_field">
   <%= form.text_field :uninteresting_tag_list, :class => :tags %>
 </div>
 
