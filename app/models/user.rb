@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
   has_friendly_id :login
   
   #Named Scopes
-  named_scope :latest, :order => "created_at DESC"
+  scope :latest, :order => "created_at DESC"
+  
+  # Validations
+  validates :email, :presence => true
   
   def count_view
     views = self.views.nil?? 0 : self.views

@@ -12,8 +12,7 @@ class UsersController < ApplicationController
           @users = User.find(:all, :conditions => ["login like ?","%#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
         else
           @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
-        end  
-        
+        end
         render :partial => "list", :locals => {:users => @users}
         }
     end
@@ -41,6 +40,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account registered!"
       redirect_to user_path(:id => @user.id)
     else
+      flash[:error] = "Please fill out the required fields!"
       render :action => :new
     end
   end

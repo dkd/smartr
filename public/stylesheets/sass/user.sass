@@ -27,41 +27,36 @@
     font-weight: bold
 
 form.user
-  div
-    border-bottom: 1px dashed
-    border-color = !color_5
-    padding-top: 10px
-    padding-bottom: 10px
+  img
+    width: 100px
+    float: left
+    +image_border
+    padding: 5px
+    clear: both
+    margin-bottom: 10px
     
-    img
-      width: 100px
-      float: left
-      +image_border
-      padding: 5px
-      clear: both
-    
-    label
-      font-weight: bold
-      margin-bottom: 15px
+  div.label
+    display: inline
+    font-weight: bold
+
+    div.field_with_errors
+      display: inline
       
+  div.text_field
+    margin-bottom: 15px
+    
     input
       +border_radius
       border-width: 1px
-      border-color = !color_5
+      border-color: $color_5
       padding: 5px
       &.tags
         width: 400px
-    #user_avatar
-      +border_radius
-      border-width: 0px
-      border-color = !color_5
-      padding: 5px
-      margin-left: 10px
 
 .user-questions
   h2
     font-size: 24px !important
-  
+
   h4
     margin: 0px
     padding: 0px
