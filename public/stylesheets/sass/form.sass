@@ -1,0 +1,30 @@
+form.new_user_session
+  div
+    label
+      color = !color_2
+      font-weight: bold
+      font-size: 0.8em
+      display: block
+      
+    input
+      border: 1px solid #e9e9e9
+      +border_radius
+      padding: 5px
+      background: #f4f4f4
+    #user_session_submit
+      background = !color_2
+      border-color = !color_1
+      +box_shadow
+      color: white
+    #user_session_submit:focus
+      +box_shadow_focus
+    
+    margin-bottom: 15px
+    
+    div.field_with_errors
+      margin-bottom: 0px
+      
+      label
+        color: red
+
+    

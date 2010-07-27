@@ -13,6 +13,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       redirect_back_or_default questions_path
     else
+      flash[:error] = "Please provide correct credentials!"
       render :action => :new
     end
     
