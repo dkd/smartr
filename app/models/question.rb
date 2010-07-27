@@ -23,7 +23,7 @@ class Question < ActiveRecord::Base
   named_scope :latest, :order => "created_at DESC"
   named_scope :hot, :order => "answers_count DESC,updated_at DESC"
   named_scope :active, :order => "updated_at DESC, answers_count DESC"
-  named_scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
+  named_scope :unanswered, :order => "created_at DESC", :conditions => ["answers_count = ?", "0"]
   
   # Callbacks
   before_save :set_permalink
