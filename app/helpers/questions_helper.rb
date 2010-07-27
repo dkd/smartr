@@ -1,4 +1,5 @@
 module QuestionsHelper
+
   def submenu(active)
       menu = []
       menu << {:name => I18n.t(:"questions.sub_menu.latest"), :id => "latest", :link => questions_path(:page => nil)}

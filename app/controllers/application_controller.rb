@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :is_admin?
   before_filter :search_options
   
-  
   def rescue_action(exception)
      
      return super if Rails.env != "production"
