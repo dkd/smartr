@@ -1,13 +1,13 @@
 <div class="header-with-tabs">
   <h2>Active questions</h2>
   <div class="tabs">
-    <%=submenu(:active) %>
+    <%=QuestionHelper::submenu(:active) %>
   </div>
   <br class="clear" />
 </div>
 <br class="clear" />
 <% @questions.each do |question| %>
-<%= render :partial => "/questions/question", :locals => {:question => question} %>
+  <%= render :partial => "/questions/question", :locals => {:question => question} %>
 <% end -%>
 <br class="clear" />
 <%= will_paginate @questions %>

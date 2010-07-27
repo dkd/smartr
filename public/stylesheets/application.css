@@ -1,7 +1,8 @@
 body {
   font-family: Helvetica, Arial;
   margin: 0px;
-  margin-top: 0px; }
+  margin-top: 0px;
+  background: url(../../images/body_bg.png) repeat-x; }
   body .clear {
     clear: both;
     line-height: 0px; }
