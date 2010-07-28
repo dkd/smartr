@@ -1,10 +1,12 @@
-<% if @tags.present? %>  
+<% unless @tags.nil? %>  
   <% @tags.each do |tag| %>
-    <% cache (:key => "tag_list_view_#{tag.name}") do %>
+    <%= cache (:key => "tag_list_view_#{tag.name}") do %>
+      <div style="width: 25%; float: left">
        <span class="tag">
-         <%=Tagging.find_all_by_taggable_type_and_tag_id("Question", tag.id).size %>x 
+         <%=ActsAsTaggableOn::Tagging.find_all_by_taggable_type_and_tag_id("Question", tag.id).size %>x 
          <%=link_to tag, :controller => :questions, :tag => tag.name-%>
        </span>
+       </div>
     <% end -%>
   <% end -%>
 <% else -%>
