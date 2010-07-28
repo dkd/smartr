@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   
   before_filter :require_user, :only => [:edit, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :is_owner, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
-
+  
   def index
     
     if(params[:tag])
