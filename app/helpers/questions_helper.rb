@@ -1,6 +1,6 @@
 module QuestionsHelper
 
-  def submenu(active)
+  def question_submenu(active)
       menu = []
       menu << {:name => I18n.t(:"questions.sub_menu.latest"), :id => "latest", :link => questions_path(:page => nil)}
       menu << {:name => I18n.t(:"questions.sub_menu.hot"), :id => "hot", :link => url_for(:controller => :questions, :action => :index_for_hot, :page => nil)}

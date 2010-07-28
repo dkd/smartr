@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
        render :text => "The page you requested, does not exist."
      end
    end
-  
+
   protected
     
     def search_options
