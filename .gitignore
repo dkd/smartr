@@ -3,6 +3,7 @@ config/database.yml
 config/sunspot.yml
 log/*.log
 log/development.log
+log/*
 tmp/**/*
 doc/api
 doc/appla
