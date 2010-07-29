@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
     elsif(params[:search])
       index_for_search
     else
-      @questions = Question.latest.paginate :page => params[:page], :per_page => 15
+      @questions = Question.latest.includes([:votes,:user]).paginate :page => params[:page], :per_page => 15
       respond_to do |wants|
         wants.html {  }
         wants.json{ render :json => @questions.to_json}

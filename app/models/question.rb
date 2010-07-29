@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
   has_many :favourites, :dependent => :destroy
   belongs_to :answer
-    
+
   #Validations
   validates_presence_of [:body, :name, :tag_list]
   validates_uniqueness_of :name
@@ -30,16 +30,7 @@ class Question < ActiveRecord::Base
   before_save :check_answer_count
   
   #Methods
-  def self.recent_tags
-    list = []
-    self.latest(:limit => 5).each do |question|
-      question.tag_list.each do |tag|
-        list << tag unless list.include?(tag)
-      end
-    end
-    list
-  end
-  
+
   def favourited?(user)
     Favourite.find_by_user_id_and_question_id(user.id, self).present?
   end
