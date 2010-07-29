@@ -1,17 +1,11 @@
 class TagsController < ApplicationController
   
   def index
-    # Refactor
-    # select count(*), T.name from tags as T, taggings as G 
-    # WHERE g.tag_id = T.id
-    # GROUP by T.id
-    # ORDER BY
-    # count(*) DESC
-    
+
     if params[:q].present?
-      @tags = Question.tagged_with("#{params[:q]}%").tag_counts.collect{ |t| t if t.name.match /#{params[:q]}/ }.delete_if{ |t| t==nil }
+      @tags = ActsAsTaggableOn::Tag.group('id').joins(:taggings).select("count(*) as count,tags.id,tags.name").order('count desc').where("name like ?","#{params[:q]}%")
     else
-      @tags = Question.tag_counts
+      @tags = ActsAsTaggableOn::Tag.group('tags.id').joins(:taggings).select("count(*) as count,tags.id,tags.name").order('count(*) desc').paginate :page => params[:page], :per_page => 60
     end
     
     respond_to do |format|
