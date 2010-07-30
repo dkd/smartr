@@ -46,10 +46,9 @@ module Sunspot #:nodoc:
         #
         # ActiveRecord::Base:: ActiveRecord model
         # 
-        def load(id)
-          @clazz.first(options_for_find.merge(
-            :conditions => { @clazz.primary_key => id.to_i}
-          ))
+        def load(id) 
+          options_for_find 
+          @clazz.first(:conditions => { @clazz.primary_key => id.to_i})
         end
 
         # 
@@ -63,19 +62,18 @@ module Sunspot #:nodoc:
         #
         # Array:: Collection of ActiveRecord models
         #
-        def load_all(ids)
-          @clazz.all(options_for_find.merge(
-            :conditions => { @clazz.primary_key => ids.map { |id| id.to_i }}
-          ))
+        def load_all(ids) 
+          options_for_find 
+            @clazz.all(:conditions => { @clazz.primary_key => ids.map { |id| 
+                    id.to_i }} 
+                  ) 
         end
         
         private
         
-        def options_for_find
-          returning({}) do |options|
-            options[:include] = @include unless @include.blank?
-            options[:select]  =  @select unless  @select.blank?
-          end
+        def options_for_find 
+          options[:include] = @include unless @include.blank? 
+          options[:select]  =  @select unless  @select.blank? 
         end
       end
     end
