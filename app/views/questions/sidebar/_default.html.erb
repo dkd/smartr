@@ -18,7 +18,7 @@
   <h3>Recent tags</h3>
   <div class="tags">
   <% ActsAsTaggableOn::Tag.limit(20).joins(:taggings).group("tags.id").where("taggings.taggable_type='Question'").order('created_at desc').each do |tag| -%>
-    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <%= link_to(tag.name, :controller => "questions", :action => "index", :tag => tag.name)%>
   <% end -%>
   </div>
 <% end -%>

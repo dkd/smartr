@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   
   #Named Scopes
   default_scope :include => :user
-  scope :latest, :order => "created_at DESC"
+  scope :latest, :order => "created_at DESC", :include => :user
   scope :hot, :order => "answers_count DESC,updated_at DESC"
   scope :active, :order => "updated_at DESC, answers_count DESC"
   scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
