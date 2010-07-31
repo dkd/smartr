@@ -5,8 +5,21 @@ de:
     tags: Schlagworte
     users: Benutzer
   
+  answers:
+    label:
+      one: Antwort
+      other: Antworten
+  
+  comments:
+    label:
+      one: Kommentar
+      other: Kommentare
+  
   questions:
-    
+    label: 
+      one: Frage
+      other: Fragen
+
     sub_menu:
       latest: Neu
       hot:  Heiß
