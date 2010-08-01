@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   
   # Validations
   validates :email, :presence => true
+  validates :login, :presence => true, :length => {:within => 6..12}
   
   def count_view
     views = self.views.nil?? 0 : self.views

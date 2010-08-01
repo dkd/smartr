@@ -15,18 +15,18 @@ end
                  vote_path(
                  :model => "question",
                  :direction => "up",
-                 :dom_id => "votes_#{question.id}",
+                 :dom_id => "votes-question-#{question.id}",
                  :vote_box_id => "vote-box-#{question.id}",
                  :id => question.id),
                  :method => "put",
                  :remote => true,
                  :class => upclass -%>                       
-<div class="value" id="<%="question_#{question.id}"%>"><%=question.votes.length==0? 0 : Vote.count_on("Question", question.id)%></div>
+<div class="value" id="<%="votes-question-#{question.id}"%>"><%=question.votes.length==0? 0 : Vote.count_on("Question", question.id)%></div>
 <%= link_to raw("&nbsp;"),
                  vote_path(
                  :model => "question",
                  :direction => "down",
-                 :dom_id => "votes_#{question.id}",
+                 :dom_id => "votes-question-#{question.id}",
                  :vote_box_id => "vote-box-#{question.id}",
                  :id => question.id),
                  :method => "put",

@@ -1,0 +1,14 @@
+<%= link_to 'Ask a question!', new_question_path, :class => "new_question", :id => "new_question" %>
+<h3>Users are interested in ...</h3>
+<div class="tags">
+<% ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='interesting_tags'").order('created_at desc').each do |tag| -%>
+  <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name))%>
+<% end -%>
+</div>
+<br class="clear" />
+<h3>Users are not interested in ...</h3>
+<div class="tags">
+<% ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='uninteresting_tags'").order('created_at desc').each do |tag| -%>
+  <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name))%>
+<% end -%>
+</div>

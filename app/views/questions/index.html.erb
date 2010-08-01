@@ -1,5 +1,5 @@
 <div class="header-with-tabs">
-  <h2><%=I18n.t(:"questions.latest.header")%><%= raw "<span class='tagged'>##{params[:tag]}" unless params[:tag].nil? %></h2>
+  <h2><%=I18n.t(:"questions.latest.header")%><%= raw "<span class='tagged'>##{params[:tag]}</span>" + link_to(I18n.t("remove_tag"), questions_path) unless params[:tag].nil? %></h2>
   <div class="tabs">
     <%=question_submenu(:latest) %>
   </div>

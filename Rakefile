@@ -7,5 +7,4 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 #require 'sunspot/rails/tasks'
-
-Rails::Application.load_tasks
+Smartr::Application.load_tasks

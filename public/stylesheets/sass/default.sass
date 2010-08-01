@@ -7,19 +7,21 @@ body
     clear: both
     line-height: 0px
   
-  #wrapper
-    width = !min_width
-    margin: 0 auto
-    
+  #topwrapper
+    background: url(../../images/topwrapper_bg.png) repeat-x
     #header
-      
+      width = !min_width
+      margin: 0 auto
+      padding: 0 5%
       h1
         color = !color_6
         width: 900px
         float: left
         font-weight: normal
-        font-size: 24px
+        font-size: 36px
         margin-bottom: 0px
+        font-family: 'Molengo', arial, serif
+        text-shadow: 1px 1px 1px #ffffff
         
         a:link,
         a:visited
@@ -79,10 +81,17 @@ body
               
           li:hover
             background: black
+  
+  #wrapper
+    width = !min_width
+    margin: 0 auto
+    padding: 0 5%
+    
+    
                   
   #content
     float: left
-    width= !min_width - 260px
+    width: 75%
     
     input.active
       color = !color_2
@@ -155,7 +164,6 @@ body
     margin-bottom: 2px
     position: relative
     z-index: 100
-    background: white
 
     ul
       margin: 0px
@@ -168,11 +176,11 @@ body
           padding-bottom: 6px
           
         a:link, a:visited
-          background: white
+          background: url(../../images/bg.png)
           color = !color_2
           padding-bottom: 6px
         a:hover
-          background: white
+          background: url(../../images/bg.png)
           color = !color_2_hover
           padding-bottom: 6px
       li

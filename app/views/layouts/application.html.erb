@@ -7,6 +7,7 @@
   <title><%= yield :title %>SmartR - be a smartass!</title>
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "/javascripts/highlight/styles/github.css" %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Molengo" %>
   <style type="text/css" media="screen">
     @-webkit-keyframes redPulse {
       from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
@@ -17,29 +18,36 @@
   <link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="http://<%=current_url%>/questions.xml" />
 </head>
 <body>
-  <div id="wrapper">
+  <div id="user">
+    <div>
+    <% if !current_user %>
+      <%= link_to "Register", new_user_path %> | 
+      <%= link_to "Log In", new_user_session_path %>
+    <% else %>
+      <%= image_tag current_user.avatar.url(:tiny) %>
+      <%= link_to "My Account", user_path(:id => current_user.id), :id => "my_account" %> | 
+      <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        
+    <% end %>
+    </div>
+  </div>
+  <div id="topwrapper">
+    
     <div id="header">
       <h1><%= link_to("SmartR", root_url) %></h1>
-      <div id="user">
-        <% if !current_user %>
-          <%= link_to "Register", new_user_path %> | 
-          <%= link_to "Log In", new_user_session_path %>
-        <% else %>
-          <%= image_tag current_user.avatar.url(:tiny) %>
-          <%= link_to "My Account", user_path(:id => current_user.id), :id => "my_account" %> | 
-          <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        
-        <% end %>
-      </div>
-      <br style="clear: both" />
-       <%= form_for("search", :url => {:controller => :questions, :action => :index, :page => nil}, :html => {:method => :get}) do |f| %>
-          <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
-          <%#= f.submit "Search" %>
-        <% end -%>
-      <br style="clear: both" />
+      
+          <br class="clear" />
       <div id="menu">
+        <br class="clear" />
         <%= yield :main_menu %>
+        <%= form_for("search", :url => {:controller => :questions, :action => :search, :page => nil}, :html => {:method => :get}) do |f| %>
+            <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
+            <%#= f.submit "Search" %>
+          <% end -%>
       </div>
     </div>
+  </div>
+  <div id="wrapper">
+    
     <div class="flash">
       <% flash.each do |type, message| -%>
         <div class="message <%= type %>">
