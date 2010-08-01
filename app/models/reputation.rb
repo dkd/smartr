@@ -1,25 +1,26 @@
 class Reputation
   
-  def self.set(direction, record, user, owner)
-    model = record.constantize.class_name.downcase
+  def self.set(direction, record, user, owner, vote)
+    model = record.downcase
     points = Settings.reputation.fetch(model).fetch(direction)
     if (owner.reputation.nil?)
       owner.reputation = 0
     end
     new_reputation = (owner.reputation + points)<0? 0:(owner.reputation + points)
     owner.update_attributes :reputation => (new_reputation)
+    
   end
   
-  def self.penalize(record, user, owner)
-    model = record.constantize.class_name.downcase
+  def self.penalize(record, user, owner, vote)
+    model = record.downcase
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     reputation = user.reputation.nil?? 0 : user.reputation
     new_reputation = (reputation + penalty) <0 ? 0:(reputation + penalty)
     user.update_attributes(:reputation => (new_reputation))
   end
   
-  def self.unpenalize(record, user, owner)
-    model = record.constantize.class_name.downcase
+  def self.unpenalize(record, user, owner, vote)
+    model = record.downcase
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     reputation = user.reputation.nil?? 0 : user.reputation
     user.update_attributes(:reputation => (reputation + penalty.abs))
@@ -51,7 +52,6 @@ class Reputation
     
     question.attributes = {:answer_id => answer.id}
     question.save(false)
-   
     return answer.id
   
   end

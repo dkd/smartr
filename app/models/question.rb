@@ -30,7 +30,6 @@ class Question < ActiveRecord::Base
   before_save :check_answer_count
   
   #Methods
-
   def favourited?(user)
     Favourite.find_by_user_id_and_question_id(user.id, self).present?
   end
@@ -50,14 +49,13 @@ class Question < ActiveRecord::Base
     self.save(false)
   end
   
-  def answered?(user)
+  def answered_by?(user)
     if(Answer.find_by_user_id_and_question_id(user.id, self.id))
       true
     else
       false
     end
   end
-  
 end
 
 

@@ -17,7 +17,7 @@ class VotesController < ApplicationController
         else
           vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("#{params[:model]}".classify, params[:id], @current_user.id)
           render :update do |page|
-            page[params[:dom_id]].replace_html vote.cast(params[:direction])
+            page["##{params[:dom_id]}"].replace_html vote.cast(params[:direction])
             if params[:model] == "answer"
               page[params[:vote_box_id]].replace_html render(:partial => "/answers/vote_box", :locals => {:answer => record})
             end

@@ -4,21 +4,16 @@ class QuestionsController < ApplicationController
   before_filter :is_owner, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
   
   def index
-    
-    if(params[:tag])
-      index_for_tag
-    elsif(params[:search])
-      index_for_search
-    else
-      @questions = Question.latest.includes([:votes,:user]).paginate :page => params[:page], :per_page => 15
+      if (params[:tag].present?)
+        @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
+      else
+        @questions = Question.latest.includes([:votes, :user]).paginate :page => params[:page], :per_page => 15
+      end
       respond_to do |wants|
         wants.html {  }
         wants.json{ render :json => @questions.to_json}
         wants.xml { render "questions/rss/index" }
       end
-      
-    end
-    
   end
 
   # GET /questions/1
@@ -84,22 +79,28 @@ class QuestionsController < ApplicationController
       format.html { redirect_to(questions_url) }
     end
   end
-  
-  
-  def index_for_hot
+
+  def hot
     @questions = Question.hot.paginate :page => params[:page], :per_page => 15
+    render :index_for_hot
   end
   
-  def index_for_active
+  def active
     @questions = Question.active.paginate :page => params[:page], :per_page => 15
+    render :index_for_active
   end
   
-  def index_for_unanswered
+  def unanswered
     @questions = Question.unanswered.paginate :page => params[:page], :per_page => 15
+    render :index_for_unanswered
   end
   
+  #def tagged
+  #  @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
+  #end
   
-  def index_for_search
+  
+  def search
     
     page = params[:page] 
     logger.info "Searchstring"
@@ -117,8 +118,6 @@ class QuestionsController < ApplicationController
     
     render :index_for_search
   end
-  
-  
   
   def update_for_toggle_acceptance
     @question = Question.find(params[:id])
@@ -140,13 +139,17 @@ class QuestionsController < ApplicationController
         end
       }
     end
-  end  
-  
-  def index_for_tag
-    @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 20
   end
   
   protected
+  
+  def check_for_tag
+    if (params[:tag].present?)
+      @questions = @questions.tagged_with(params[:tag])
+    else
+      @questions
+    end
+  end
   
   def is_owner
     @question = Question.find(params[:id])

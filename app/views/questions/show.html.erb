@@ -1,14 +1,14 @@
 <%= render :partial => "question_header", :locals => {:question => @question}%>
 <% if @question.answers.length > 0 %>
   <br class="clear" />
-  <h2 class="answer-header">Answers</h2>
+  <h2 class="answer-header"><%=@question.answers_count%> Answers</h2>
   <% @question.answers.each do |answer| -%>
     <%= render :partial => "/answers/show", :locals => {:answer => answer, :question => @question} %>
     <br class="clear" />
   <% end -%>
 <% end -%>
 
-<% if (current_user.present? && !@question.answered?(current_user)) %>
+<% if (current_user.present? && !@question.answered_by?(current_user)) %>
   <%= render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question} %>
 <% end -%>  
 <% main_menu :questions %>

@@ -6,71 +6,80 @@ body {
   body .clear {
     clear: both;
     line-height: 0px; }
-  body #wrapper {
-    width: 1200px;
-    margin: 0 auto; }
-    body #wrapper #header h1 {
-      color: #383838;
-      width: 900px;
-      float: left;
-      font-weight: normal;
-      font-size: 24px;
-      margin-bottom: 0px; }
-      body #wrapper #header h1 a:link,
-      body #wrapper #header h1 a:visited {
+  body #topwrapper {
+    background: url(../../images/topwrapper_bg.png) repeat-x; }
+    body #topwrapper #header {
+      width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%; }
+      body #topwrapper #header h1 {
         color: #383838;
-        text-decoration: none; }
-      body #wrapper #header h1 a:hover {
-        text-decoration: underline; }
-    body #wrapper #header form {
-      float: right; }
-      body #wrapper #header form input {
-        background: #eeeeee;
-        padding: 5px;
-        border: 1px solid #e9e9e9;
-        font-size: 1.07em;
-        width: 230px;
-        color: #738500;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px; }
-      body #wrapper #header form input.active {
-        color: #738500;
-        border-color: black; }
-    body #wrapper #header #menu {
-      display: inline;
-      margin-top: -20px; }
-      body #wrapper #header #menu ul {
-        display: inline;
-        margin-left: 0;
-        padding-left: 0; }
-        body #wrapper #header #menu ul li.active {
-          background: #738500; }
-        body #wrapper #header #menu ul li {
-          background: #313900;
-          list-style: none;
-          display: inline;
-          margin-right: 10px;
+        width: 900px;
+        float: left;
+        font-weight: normal;
+        font-size: 36px;
+        margin-bottom: 0px;
+        font-family: "Molengo", arial, serif;
+        text-shadow: 1px 1px 1px white; }
+        body #topwrapper #header h1 a:link,
+        body #topwrapper #header h1 a:visited {
+          color: #383838;
+          text-decoration: none; }
+        body #topwrapper #header h1 a:hover {
+          text-decoration: underline; }
+      body #topwrapper #header form {
+        float: right; }
+        body #topwrapper #header form input {
+          background: #eeeeee;
+          padding: 5px;
+          border: 1px solid #e9e9e9;
+          font-size: 1.07em;
+          width: 230px;
+          color: #738500;
           -moz-border-radius: 5px;
           -webkit-border-radius: 5px;
-          border-radius: 5px;
-          padding: 10px;
-          line-height: 34px;
-          text-shadow: 1px 1px 1px #444444;
-          padding-top: 17px;
-          vertical-align: middle;
-          cursor: pointer; }
-          body #wrapper #header #menu ul li a:link, body #wrapper #header #menu ul li a:visited {
-            font-size: 24px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            line-height: 10px; }
-        body #wrapper #header #menu ul li:hover {
-          background: black; }
+          border-radius: 5px; }
+        body #topwrapper #header form input.active {
+          color: #738500;
+          border-color: black; }
+      body #topwrapper #header #menu {
+        display: inline;
+        margin-top: -20px; }
+        body #topwrapper #header #menu ul {
+          display: inline;
+          margin-left: 0;
+          padding-left: 0; }
+          body #topwrapper #header #menu ul li.active {
+            background: #738500; }
+          body #topwrapper #header #menu ul li {
+            background: #313900;
+            list-style: none;
+            display: inline;
+            margin-right: 10px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 10px;
+            line-height: 34px;
+            text-shadow: 1px 1px 1px #444444;
+            padding-top: 17px;
+            vertical-align: middle;
+            cursor: pointer; }
+            body #topwrapper #header #menu ul li a:link, body #topwrapper #header #menu ul li a:visited {
+              font-size: 24px;
+              text-decoration: none;
+              color: white;
+              font-weight: bold;
+              line-height: 10px; }
+          body #topwrapper #header #menu ul li:hover {
+            background: black; }
+  body #wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%; }
   body #content {
     float: left;
-    width: 940px; }
+    width: 75%; }
     body #content input.active {
       color: #738500;
       border-color: black; }
@@ -128,8 +137,7 @@ body {
     text-align: right;
     margin-bottom: 2px;
     position: relative;
-    z-index: 100;
-    background: white; }
+    z-index: 100; }
     body .tabs ul {
       margin: 0px;
       padding: 0px;
@@ -137,11 +145,11 @@ body {
       body .tabs ul li.active a {
         padding-bottom: 6px; }
       body .tabs ul li.active a:link, body .tabs ul li.active a:visited {
-        background: white;
+        background: url(../../images/bg.png);
         color: #738500;
         padding-bottom: 6px; }
       body .tabs ul li.active a:hover {
-        background: white;
+        background: url(../../images/bg.png);
         color: black;
         padding-bottom: 6px; }
       body .tabs ul li {
@@ -272,7 +280,6 @@ h2.show-question {
   background: white;
   padding: 10px;
   padding-top: 0px;
-  width: 855px;
   overflow: auto;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -385,7 +392,7 @@ h2.show-question {
       background: black; }
 
 #sidebar {
-  float: left;
+  float: right;
   width: 240px;
   padding: 10px;
   padding-top: 0px;
@@ -551,8 +558,6 @@ h2.answer-header {
   .answer-item .counter {
     font-weight: bold; }
   .answer-item .body {
-    float: left;
-    width: 875px;
     margin-top: 5px;
     margin-bottom: 5px;
     overflow: auto; }
@@ -650,7 +655,7 @@ h2.answer-header {
 .answer-item .stats div.views, .question .stats div.views {
   clear: left;
   margin-bottom: 10px;
-  background: white;
+  background: transparent;
   color: #383838; }
 .answer-item .stats div.favourite,
 .answer-item .stats div.favourite-saved, .question .stats div.favourite, .question .stats div.favourite-saved {
@@ -676,7 +681,7 @@ h2.answer-header {
   text-shadow: 0px 0px 10px black; }
 .answer-item .stats div.votes, .question .stats div.votes {
   width: 50px;
-  background: white;
+  background: transparent;
   height: 74px;
   font-size: 12px;
   font-weight: bold;
@@ -816,13 +821,17 @@ h2.answer-header {
     color: #c7c7c7; }
 
 #user {
+  background: #431801;
+  padding: 5px 0;
   color: #738500;
-  float: right;
   text-align: right;
-  width: 220px;
-  margin-bottom: 1em;
-  margin-top: 0.5em;
+  padding: 0;
   font-size: 12px; }
+  #user div {
+    background: #431801;
+    padding: 5px 0;
+    margin: 0 auto;
+    width: 1200px; }
   #user a:link, #user a:visited {
     text-decoration: none;
     color: #738500;

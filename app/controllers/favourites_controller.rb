@@ -1,7 +1,5 @@
 class FavouritesController < ApplicationController
-  
-  before_filter :require_user
-  
+
   helper UsersHelper
   
   def index

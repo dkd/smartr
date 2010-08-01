@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="body">
-    <h3><%= link_to(h(question.name), question_path(question)) %></h3>
+    <h3><%= link_to(h(question.name), url_for(:controller => :questions, :action => :show, :id => question.id, :friendly_id => question.friendly_id)) %></h3>
       <% unless controller.controller_name == "users" %>
       <span class="user">
         <%= link_to image_tag(question.user.avatar.url(:tiny)), user_path(question.user) %>

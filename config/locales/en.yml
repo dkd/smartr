@@ -28,3 +28,5 @@ en:
     
     latest:
       header: Latest questions
+  
+  remove_tag: Remove Tag

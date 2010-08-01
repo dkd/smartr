@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730084703) do
+ActiveRecord::Schema.define(:version => 20100801131036) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(:version => 20100730084703) do
     t.integer  "answer_id"
     t.boolean  "send_email",    :default => false
   end
+
+  create_table "reputation_histories", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "context"
+    t.integer  "points",     :default => 0
+    t.integer  "reputation", :default => 0
+    t.integer  "vote_id",    :default => 0
+    t.integer  "answer_id",  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reputation_histories", ["user_id", "context"], :name => "index_reputation_histories_on_user_id_and_context"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
