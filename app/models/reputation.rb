@@ -1,6 +1,6 @@
 class Reputation
   
-  def self.set(direction, record, user, owner, vote)
+  def self.set(direction, record, user, owner)
     model = record.downcase
     points = Settings.reputation.fetch(model).fetch(direction)
     if (owner.reputation.nil?)
@@ -11,7 +11,7 @@ class Reputation
     
   end
   
-  def self.penalize(record, user, owner, vote)
+  def self.penalize(record, user, owner)
     model = record.downcase
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     reputation = user.reputation.nil?? 0 : user.reputation
@@ -19,7 +19,7 @@ class Reputation
     user.update_attributes(:reputation => (new_reputation))
   end
   
-  def self.unpenalize(record, user, owner, vote)
+  def self.unpenalize(record, user, owner)
     model = record.downcase
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     reputation = user.reputation.nil?? 0 : user.reputation

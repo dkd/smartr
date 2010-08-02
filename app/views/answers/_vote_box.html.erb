@@ -10,18 +10,25 @@ else
 end
 
 %>
+<% if vote_value == 1 %>
+  <%= link_to raw("&nbsp;"), "javascript:;", :class => upclass %>
+<% else %>
+  <%= link_to raw("&nbsp;"),
+              vote_path(
+              :model => "answer",
+              :direction => "up",
+              :dom_id => "votes_#{answer.id}",
+              :vote_box_id => "vote-box-#{answer.id}",
+              :id => answer.id),
+              :method => "put",
+              :remote => true,
+              :class => upclass -%>
+<% end %>
 
-<%= link_to raw("&nbsp;"),
-            vote_path(
-            :model => "answer",
-            :direction => "up",
-            :dom_id => "votes_#{answer.id}",
-            :vote_box_id => "vote-box-#{answer.id}",
-            :id => answer.id),
-            :method => "put",
-            :remote => true,
-            :class => upclass -%>
 <div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
+<% if vote_value == -1 %>
+  <%= link_to raw("&nbsp;"), "javascript:;", :class => downclass %>
+<% else %>
 <%= link_to raw("&nbsp;"),
             vote_path(
             :model => "answer",
@@ -32,3 +39,4 @@ end
             :remote => true,
             :method => "put",
             :class => downclass -%>
+<% end %>
