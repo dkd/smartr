@@ -4,9 +4,19 @@ require 'sunspot'
 namespace :smartr do
   
   namespace :sunspot do
-  
-    namespace :reindex do
     
+    desc "Start Server"
+    task :start => :environment do
+      exec "sunspot-solr start -p 8982 -d solr/data/#{Rails.env} -s solr --pid-dir=tmp/pids -l FINE --log-file=log/sunspot-solr-#{Rails.env}.log"
+    end
+    
+    desc "Stop Server"
+    task :stop => :environment do
+      exec "sunspot-solr stop -p 8982 -d solr/data/#{Rails.env} -s solr --pid-dir=tmp/pids -l FINE --log-file=log/sunspot-solr-#{Rails.env}.log"
+    end
+
+    namespace :reindex do
+
       desc "Reindex all models"
       task :all => :environment do
         %w(question answer user).each do |model|
