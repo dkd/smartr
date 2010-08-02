@@ -19,19 +19,24 @@ class Vote < ActiveRecord::Base
     end
   end
   
+  def already_voted?(direction)
+    
+  end
+  
   def cast(direction)
     
-    user = self.voteable_type.constantize.find(self.voteable_id).user
+    target_user = self.voteable_type.constantize.find(self.voteable_id).user
     orginal_value = self.value
+    
     case direction
       when "up"
         value = self.value + 1
-        Reputation.unpenalize(self.voteable_type, self.user, user, self) if self.value == -1
-        Reputation.set("up", self.voteable_type, self.user, user, self) if self.value == -1 || self.value == 0
+        Reputation.unpenalize(self.voteable_type, self.user, target_user) if self.value == -1
+        Reputation.set("up", self.voteable_type, self.user, target_user) if self.value == -1 || self.value == 0
       when "down"
         value = self.value - 1
-        Reputation.set("down", self.voteable_type, self.user, user, self) if self.value == 1 || self.value == 0
-        Reputation.penalize(self.voteable_type, self.user, user, self) if value == -1
+        Reputation.set("down", self.voteable_type, self.user, target_user) if self.value == 1 || self.value == 0
+        Reputation.penalize(self.voteable_type, self.user, target_user) if value == -1
     end
     
     if(value == 1 || value == -1)
