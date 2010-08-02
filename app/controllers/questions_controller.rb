@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
       if (params[:tag].present?)
         @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
       else
-        @questions = Question.latest.includes([:votes, :user]).paginate :page => params[:page], :per_page => 15
+        @questions = Question.includes([:user,:votes]).paginate :page => params[:page], :per_page => 15
       end
       respond_to do |wants|
         wants.html {  }
