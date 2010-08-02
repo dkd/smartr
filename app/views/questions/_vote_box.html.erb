@@ -10,25 +10,32 @@ else
 end
 
 %>
-
-<%= link_to raw("&nbsp;"), 
-                 vote_path(
-                 :model => "question",
-                 :direction => "up",
-                 :dom_id => "votes-question-#{question.id}",
-                 :vote_box_id => "vote-box-#{question.id}",
-                 :id => question.id),
-                 :method => "put",
-                 :remote => true,
-                 :class => upclass -%>                       
+<% if vote_value == 1 %>
+  <%= link_to raw("&nbsp;"), "javascript:;", :class => upclass %>
+<% else %>
+  <%= link_to raw("&nbsp;"), 
+                   vote_path(
+                   :model => "question",
+                   :direction => "up",
+                   :dom_id => "votes-question-#{question.id}",
+                   :vote_box_id => "vote-box-#{question.id}",
+                   :id => question.id),
+                   :method => "put",
+                   :remote => true,
+                   :class => upclass -%>
+<% end -%>
 <div class="value" id="<%="votes-question-#{question.id}"%>"><%=question.votes.length==0? 0 : Vote.count_on("Question", question.id)%></div>
-<%= link_to raw("&nbsp;"),
-                 vote_path(
-                 :model => "question",
-                 :direction => "down",
-                 :dom_id => "votes-question-#{question.id}",
-                 :vote_box_id => "vote-box-#{question.id}",
-                 :id => question.id),
-                 :method => "put",
-                 :remote => true,
-                 :class => downclass -%>
+<% if vote_value == -1 %>
+  <%= link_to raw("&nbsp;"), "javascript:;", :class => downclass %>
+<% else %>
+  <%= link_to raw("&nbsp;"),
+                   vote_path(
+                   :model => "question",
+                   :direction => "down",
+                   :dom_id => "votes-question-#{question.id}",
+                   :vote_box_id => "vote-box-#{question.id}",
+                   :id => question.id),
+                   :method => "put",
+                   :remote => true,
+                   :class => downclass -%>
+<% end -%>
