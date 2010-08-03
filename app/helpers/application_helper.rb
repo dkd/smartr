@@ -29,7 +29,7 @@ module ApplicationHelper
   
   def code(html)
     auto_link(Sanitize.clean(BlueCloth.new(html).to_html,
-        :elements => ['br','strong','ul','ol','blockquote','li','a','h1','h2','h3','p','span','pre','code','div','img'], 
+        :elements => ['br','strong','ul','ol','blockquote','hr','li','a','h1','h2','h3','p','span','pre','code','div','img'], 
         :attributes =>{
           'a' => ['href','title'],
           'img' => ['src','title','alt']
