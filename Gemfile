@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-gem 'rails', '3.0.0.rc'
+gem 'rails'
 
 gem "mysql"
 
@@ -8,15 +8,13 @@ gem "haml"
 gem "settingslogic", "2.0.6"
 gem "friendly_id"
 gem "sanitize", "1.2.1"
-gem "sunspot", :require => "sunspot"
-#gem "sunspot_rails", :require => "sunspot/rails"
 gem "bluecloth", "2.0.7"
 gem "escape", "0.0.4"
 gem "unicode", "0.3.1"
 gem 'will_paginate', '3.0.pre'
 gem "paperclip", "2.3.3"
 gem "acts-as-taggable-on", "2.0.6"
-
+gem "sunspot_rails", ">= 1.2.rc3"
 gem 'cgi_multipart_eof_fix'
 gem 'fastthread'
 gem 'mongrel_experimental'
@@ -29,9 +27,9 @@ end
 
 group :test do
   # bundler requires these gems while running tests
-  gem "rspec", "2.0.0.beta.17 "
-  gem "rspec-rails", "2.0.0.beta.17"
-  gem "factory_girl" #, :git => "git://github.com/szimek/factory_girl.git", :branch => "rails3"  
+  gem "rspec", ">=2.0.0.beta.17 "
+  gem "rspec-rails", ">=2.0.0.beta.17"
+  gem "factory_girl" , ">=1.3.2"
   gem "faker", "0.3.1"
 	gem "cucumber-rails"
 	gem "cucumber"
