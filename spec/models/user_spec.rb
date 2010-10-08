@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 module UserSpecHelper
   
   def valid_user(options = {})
-    @valid_user = Factory(:user, options)
+    Factory(:user, options)
   end
   
   def logged_in_user
@@ -16,25 +16,36 @@ end
 
 describe User do
   include UserSpecHelper
-  setup :activate_authlogic
+  #setup :activate_authlogic
   
   context "Validations" do
     
     it "should be valid given valid attributes" do
-    
-      user = valid_user
+      user = User.new
+      user.email = "kieran@example.com"
+      user.password = "12345ZZZZZAAA"
+      user.password_confirmation = "12345ZZZZZAAA"
+      user.login = "kieran"
       user.should be_valid
-    
     end
     
-    it "should be invalid without an email address" do
-      user = valid_user
-      user.email = nil
+    it "should be invalid without a correct email address" do
+      user = User.new
+      user.email = "kieran@example.comasfas"
+      user.password = "12345ZZZZZAAA"
+      user.password_confirmation = "12345ZZZZZAAA"
+      user.login = "kieran"
       user.should be_invalid
     end
     
-    it "should create a new user_session"
+  end
+  
+  context "Questions" do
     
+    it "should have a question"
+      user = @valid_user
+      #user.questions.length should_be 1
+    end
 
   end
-end
+
