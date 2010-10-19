@@ -1,9 +1,15 @@
 class User < ActiveRecord::Base
   
   #Plugins
-  acts_as_authentic
-  has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
+  #acts_as_authentic
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatablem,
+         :token_authenticatable, :confirmable, :lockable, :timeoutable
   
+  has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
+  attr_accessible :email, :login, :password, :password_confirmation, :remember_me
   #Associations
   has_many :questions
   has_many :answers

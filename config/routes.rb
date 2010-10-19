@@ -1,5 +1,7 @@
 Smartr::Application.routes.draw do  
-
+  
+  devise_for :users
+  
   namespace :admin do
     resources :comments
     resources :answers
@@ -52,7 +54,6 @@ Smartr::Application.routes.draw do
     
   end
   
-  resource :user_session
   
   resources :favourites do
     member do

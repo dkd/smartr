@@ -20,14 +20,10 @@
 <body>
   <div id="user">
     <div>
-    <% if !current_user %>
-      <%= link_to "Register", new_user_path %> | 
-      <%= link_to "Log In", new_user_session_path %>
-    <% else %>
-      <%= image_tag current_user.avatar.url(:tiny) %>
-      <%= link_to "My Account", user_path(:id => current_user.id), :id => "my_account" %> | 
-      <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>        
-    <% end %>
+       <ul class="hmenu">
+          <%= render 'devise/menu/registration_items' %>
+          <%= render 'devise/menu/login_items' %>
+        </ul>
     </div>
   </div>
   <div id="topwrapper">
@@ -39,14 +35,16 @@
       <div id="menu">
         <br class="clear" />
         <%= yield :main_menu %>
-        <%= form_for("search", :url => {:controller => :questions, :action => :search, :page => nil}, :html => {:method => :get}) do |f| %>
-            <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
+        <%#= form_for("search", :url => {:controller => :questions, :action => :search, :page => nil}, :html => {:method => :get}) do |f| %>
+            <%#= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
             <%#= f.submit "Search" %>
-          <% end -%>
+          <%# end -%>
       </div>
     </div>
   </div>
   <div id="wrapper">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     
     <div class="flash">
       <% flash.each do |type, message| -%>
@@ -65,7 +63,7 @@
     </div>
     <br class="clear" />
     <div id="footer">
-      <%= pluralize User.logged_in.count, "user" %> currently logged in<br />
+      <%#= pluralize User.user_signed_in?, "user" %> currently logged in<br />
     </div>
   </div>
   <%= javascript_include_tag "jquery",

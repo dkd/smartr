@@ -1,9 +1,7 @@
 source 'http://rubygems.org'
 gem 'rails'
-
 gem "mysql"
-
-gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
+#gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem "haml"
 gem "settingslogic", "2.0.6"
 gem "friendly_id"
@@ -18,20 +16,21 @@ gem "sunspot_rails", ">= 1.2.rc3"
 gem 'cgi_multipart_eof_fix'
 gem 'fastthread'
 gem 'mongrel_experimental'
-gem "rspec-rails", ">=2.0.0.beta.20"
+gem "rspec-rails", ">=2.0.1"
 #gem "pdfkit"
+gem "devise"
 
 # bundler requires these gems in development
 
 group :development do
   # gem "rails-footnotes"
-  gem "rspec-rails", ">=2.0.0.beta.20"
+  gem "rspec-rails", ">=2.0.1"
 end
 
 group :test do
   # bundler requires these gems while running tests
-  #gem "rspec", ">=2.0.0.beta.20"
-  gem "rspec-rails", ">=2.0.0.beta.20"
+  gem "rspec", ">=2.0.0"
+  gem "rspec-rails", ">=2.0.1"
   gem "factory_girl" , ">=1.3.2"
   gem "faker", "0.3.1"
   gem "cucumber-rails"
@@ -39,4 +38,5 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "rspec-expectations"
+  gem "autotest"
 end

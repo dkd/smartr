@@ -1184,7 +1184,7 @@ form.user div.text_field {
   height: 20px;
   margin-left: 14px;
   position: absolute;
-  background-color: Silver;
+  background-color: silver;
   display: inline-block;
   list-style: none; }
 
@@ -1269,7 +1269,7 @@ form.user div.text_field {
   background-position: -240px 0; }
 
 .wmd-prompt-background {
-  background-color: Black; }
+  background-color: black; }
 
 .wmd-prompt-dialog {
   border: 1px solid #999999;
