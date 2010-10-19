@@ -1,8 +1,8 @@
-# This file is auto-generated from the current state of the database. Instead 
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your 
+# Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100801131036) do
+ActiveRecord::Schema.define(:version => 20101015214736) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -99,28 +99,39 @@ ActiveRecord::Schema.define(:version => 20100801131036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "login"
-    t.string   "crypted_password"
+    t.string   "encrypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token",                      :null => false
-    t.integer  "login_count",         :default => 0,     :null => false
+    t.string   "authentication_token",                    :null => false
+    t.integer  "sign_in_count",        :default => 0,     :null => false
     t.datetime "last_request_at"
-    t.datetime "last_login_at"
-    t.datetime "current_login_at"
-    t.string   "last_login_ip"
-    t.string   "current_login_ip"
-    t.integer  "views",               :default => 0
+    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at"
+    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.integer  "views",                :default => 0
     t.string   "email"
-    t.integer  "reputation",          :default => 0
+    t.integer  "reputation",           :default => 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "is_admin",            :default => false
+    t.boolean  "is_admin",             :default => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer  "failed_attempts"
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
-  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
-  add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
   create_table "votes", :force => true do |t|
     t.string   "voteable_type"
