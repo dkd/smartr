@@ -32,7 +32,7 @@
    
   <% if (current_user && current_user == question.user) %>
     <div class="edit">
-      <%= link_to 'Edit Question', edit_question_path(question) if (current_user && current_user == question.user) %>   
+      <%= link_to "Edit Question",  url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id)  if (current_user && current_user == question.user) %>   
     </div>
   <% end -%>
   </div>

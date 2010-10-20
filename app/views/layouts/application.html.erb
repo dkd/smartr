@@ -27,25 +27,20 @@
     </div>
   </div>
   <div id="topwrapper">
-    
     <div id="header">
       <h1><%= link_to("SmartR", root_url) %></h1>
-      
           <br class="clear" />
       <div id="menu">
         <br class="clear" />
         <%= yield :main_menu %>
-        <%#= form_for("search", :url => {:controller => :questions, :action => :search, :page => nil}, :html => {:method => :get}) do |f| %>
-            <%#= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
+        <%= form_for("questions#search", :html => {:method => :get}) do |f| %>
+            <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
             <%#= f.submit "Search" %>
-          <%# end -%>
+          <% end -%>
       </div>
     </div>
   </div>
   <div id="wrapper">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
     <div class="flash">
       <% flash.each do |type, message| -%>
         <div class="message <%= type %>">
@@ -63,7 +58,7 @@
     </div>
     <br class="clear" />
     <div id="footer">
-      <%#= pluralize User.user_signed_in?, "user" %> currently logged in<br />
+       user currently logged in<br /><%= anybody_signed_in?%>
     </div>
   </div>
   <%= javascript_include_tag "jquery",

@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatablem,
-         :token_authenticatable, :confirmable, :lockable, :timeoutable
+         :token_authenticatable, :confirmable, :lockable, :timeoutable,
+         :authentication_keys => [:login] 
   
   has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
   attr_accessible :email, :login, :password, :password_confirmation, :remember_me
