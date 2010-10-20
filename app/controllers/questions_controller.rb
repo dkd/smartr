@@ -64,7 +64,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update_attributes(params[:question])
         flash[:notice] = 'Question was successfully updated.'
-        format.html { redirect_to(@question) }
+        format.html { redirect_to url_for(:controller => :questions, :action => :show, :id => @question.id, :friendly_id => @question.friendly_id)  }
       else
         format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
       end
