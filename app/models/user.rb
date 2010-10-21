@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   
   #Validations
   validates :email, :presence => true
-  validates :login, :presence => true, :length => {:within => 6..12}
+  validates :login, :presence => true, :length => {:within => 6..12}, :uniqueness => true
   
   
   def is_online?
