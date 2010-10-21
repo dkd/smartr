@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user_session, :current_user, :is_admin?
   before_filter :search_options
+  before_filter :set_last_request_at
   
   def rescue_action(exception)
      
@@ -29,7 +30,6 @@ class ApplicationController < ActionController::Base
       
     end
     
-
     
     def require_user
       
@@ -83,7 +83,6 @@ class ApplicationController < ActionController::Base
      end
     end
 
-    
     def is_admin?
       if current_user && current_user.is_admin?
        true
@@ -108,5 +107,11 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+    
+    private
+    
+    def set_last_request_at 
+      current_user.update_attribute(:last_request_at, Time.now) if user_signed_in? 
     end
 end

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   
   has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
   attr_accessible :email, :login, :password, :password_confirmation, :remember_me
+  
   #Associations
   has_many :questions
   has_many :answers
@@ -27,10 +28,22 @@ class User < ActiveRecord::Base
   
   #Named Scopes
   scope :latest, :order => "created_at DESC"
+  scope :online, lambda {
+    where "last_request_at > ?", (Time.now - 5.minutes)
+  }
   
-  # Validations
+  #Validations
   validates :email, :presence => true
   validates :login, :presence => true, :length => {:within => 6..12}
+  
+  
+  def is_online?
+    if self.last_request_at > (Time.now - 5.minutes)
+      true
+    else
+      false
+    end
+  end
   
   def count_view
     views = self.views.nil?? 0 : self.views

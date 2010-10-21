@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def who_is_online
-    @users = User.where(:login => "dkd-hayes2")
+    @users = User.online
   end
   
   def new
