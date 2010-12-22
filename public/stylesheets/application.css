@@ -402,6 +402,15 @@ h2.show-question {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px; }
+  #sidebar #devise-shared-links div {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px; }
+    #sidebar #devise-shared-links div a:link, #sidebar #devise-shared-links div a:visited {
+      background: none;
+      color: #313900;
+      padding: 10px 0px; }
+    #sidebar #devise-shared-links div a:hover {
+      color: black; }
   #sidebar .guide {
     background: #ffdaaf;
     -moz-border-radius: 5px;
@@ -827,7 +836,7 @@ h2.answer-header {
   text-align: right;
   padding: 0;
   font-size: 12px; }
-  #user div {
+  #user ul {
     background: #431801;
     padding: 5px 0;
     margin: 0 auto;
@@ -838,7 +847,7 @@ h2.answer-header {
     font-size: 12px;
     text-decoration: underline; }
   #user a:hover {
-    color: #313900;
+    color: white;
     text-decoration: underline; }
 
 .user-search input {

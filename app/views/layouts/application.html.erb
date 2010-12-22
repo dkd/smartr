@@ -19,12 +19,10 @@
 </head>
 <body>
   <div id="user">
-    <div>
-       <ul class="hmenu">
-          <%= render 'devise/menu/registration_items' %>
+       <ul>
+          <%= render 'devise/menu/registration_items' %> |
           <%= render 'devise/menu/login_items' %>
         </ul>
-    </div>
   </div>
   <div id="topwrapper">
     <div id="header">
@@ -33,7 +31,7 @@
       <div id="menu">
         <br class="clear" />
         <%= yield :main_menu %>
-        <%= form_for("questions#search", :html => {:method => :get}) do |f| %>
+        <%= form_for(:question, :url => search_questions_path, :html => {:method => :get}) do |f| %>
             <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
             <%#= f.submit "Search" %>
           <% end -%>
