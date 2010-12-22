@@ -1,100 +1,112 @@
 /*
-Syntax error: Undefined variable: "$color_2".
-        on line 9 of /Users/kieran/rails3/smartr/public/stylesheets/sass/user.sass
+Syntax error: Undefined variable: "$min_width".
+        on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/user.sass
 
-4:   div
+3:   padding: 5px 0
+4:   ul
 5:     background: #431801
 6:     padding: 5px 0
 7:     margin: 0 auto
-8:     width: 1200px
+8:     width = !min_width
 9:   color = !color_2
 10:   text-align: right
-11:   
-12:   padding: 0 
-13: 
-14:   font-size: 12px
+11:   padding: 0 
+12:   font-size: 12px
+13:   
 
 Backtrace:
-/Users/kieran/rails3/smartr/public/stylesheets/sass/user.sass:9
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/script/variable.rb:39:in `_perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/script/node.rb:61:in `perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/prop_node.rb:132:in `perform!'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:301:in `_perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:209:in `perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:322:in `perform_children'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:322:in `map'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:322:in `perform_children'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:313:in `perform!'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/rule_node.rb:191:in `perform!'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:301:in `_perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:209:in `perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:322:in `perform_children'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:322:in `map'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:322:in `perform_children'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:313:in `perform!'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/root_node.rb:59:in `perform!'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:301:in `_perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/node.rb:209:in `perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/root_node.rb:37:in `perform'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/tree/root_node.rb:29:in `render'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:220:in `update_stylesheet'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:85:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:78:in `each'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:78:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:76:in `each'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:76:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin.rb:50:in `check_for_updates'
-/Library/Ruby/Gems/1.8/gems/haml-3.0.14/lib/sass/plugin/rack.rb:40:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/flash.rb:177:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/cookies.rb:268:in `call'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:32:in `call'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:12:in `cache'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:31:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.rc/lib/active_support/callbacks.rb:410:in `_run_call_callbacks'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/show_exceptions.rb:48:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/rack/logger.rb:13:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.rc/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/static.rb:30:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:168:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:77:in `send'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:77:in `method_missing'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/rack/log_tailer.rb:15:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/chunked.rb:15:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/handler/mongrel.rb:67:in `process'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:155:in `process_client'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:154:in `each'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:154:in `process_client'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `run'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `initialize'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `new'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `run'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:264:in `initialize'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:264:in `new'
-/Library/Ruby/Gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:264:in `run'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/handler/mongrel.rb:38:in `run'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/commands/server.rb:65:in `start'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/commands.rb:30
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/commands.rb:27:in `tap'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.rc/lib/rails/commands.rb:27
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/user.sass:8
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/variable.rb:39:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/node.rb:61:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/prop_node.rb:132:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:59:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:37:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:29:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:220:in `update_stylesheet'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:85:in `update_stylesheets'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `update_stylesheets'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `update_stylesheets'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:50:in `check_for_updates'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin/rack.rb:40:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:35:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `catch'
+/opt/local/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/head.rb:14:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/cookies.rb:287:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.1/lib/active_record/query_cache.rb:32:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.1/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.1/lib/active_record/query_cache.rb:12:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.1/lib/active_record/query_cache.rb:31:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-3.0.1/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/rack/logger.rb:13:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-3.0.1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/static.rb:30:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/application.rb:168:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/application.rb:77:in `send'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/application.rb:77:in `method_missing'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/rack/log_tailer.rb:14:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/chunked.rb:15:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/mongrel.rb:67:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:155:in `process_client'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:154:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:154:in `process_client'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `initialize'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `new'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:281:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:264:in `initialize'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:264:in `new'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1/lib/mongrel.rb:264:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/mongrel.rb:38:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/commands/server.rb:65:in `start'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/commands.rb:30
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/commands.rb:27:in `tap'
+/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.1/lib/rails/commands.rb:27
 script/rails:9:in `require'
 script/rails:9
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_2\".\A         on line 9 of /Users/kieran/rails3/smartr/public/stylesheets/sass/user.sass\A \A 4:   div\A 5:     background: #431801\A 6:     padding: 5px 0\A 7:     margin: 0 auto\A 8:     width: 1200px\A 9:   color = !color_2\A 10:   text-align: right\A 11:   \A 12:   padding: 0 \A 13: \A 14:   font-size: 12px"; }
+  content: "Syntax error: Undefined variable: \"$min_width\".\A         on line 8 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/user.sass\A \A 3:   padding: 5px 0\A 4:   ul\A 5:     background: #431801\A 6:     padding: 5px 0\A 7:     margin: 0 auto\A 8:     width = !min_width\A 9:   color = !color_2\A 10:   text-align: right\A 11:   padding: 0 \A 12:   font-size: 12px\A 13:   "; }

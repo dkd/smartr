@@ -10,7 +10,7 @@ Smartr::Application.routes.draw do
   end
 
   match "/admin", :to => "admin#index"
-  match "/questions/hot(/:page)", :to => "/questions#hot"
+  match "/questions/hot(/:page)", :to => "questions#hot"
   match "/questions/active(/:page)", :to => "questions#active"
   match "/questions/unanswered(/:page)", :to => "questions#unanswered"
   match "/questions/page/:page", :to => "questions#index"
