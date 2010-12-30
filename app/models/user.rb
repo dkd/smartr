@@ -1,16 +1,12 @@
 class User < ActiveRecord::Base
   
-  #Plugins
-  #acts_as_authentic
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  # Devise
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatablem,
-         :token_authenticatable, :confirmable, :lockable, :timeoutable,
-         :authentication_keys => [:login] 
+         :recoverable, :rememberable, :trackable, :validatable
+
   
   has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
-  attr_accessible :email, :login, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :login, :password, :password_confirmation, :remember_me, :avatar, :interesting_tag_list, :uninteresting_tag_list
   
   #Associations
   has_many :questions

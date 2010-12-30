@@ -1,24 +1,31 @@
 /*
-Syntax error: Undefined variable: "$color_2".
-        on line 16 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass
+Syntax error: Undefined mixin 'border_radius'.
+        on line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass, in `border_radius'
+        from line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass
 
-11:   div.text_field,
-12:   div.text_field_long
-13:     margin-bottom: 15px
-14:     
-15:     label
-16:       color = $color_2
-17:       font-weight: bold
-18:       font-size: 0.8em
-19:       display: block
-20:       
-21:     input
+24:         margin-top: -8px
+25:         -webkit-animation-name:  greenPulse
+26:         -webkit-animation-duration: 5s
+27:         -webkit-animation-iteration-count: infinite
+28:         border: 1px solid #bc330d
+29:         +border_radius
+30:         
+31:     
+32:   div.text_field,
+33:   div.text_field_long
+34:     margin-bottom: 15px
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:16
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/variable.rb:39:in `_perform'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/node.rb:61:in `perform'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/prop_node.rb:132:in `perform!'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:29:in `border_radius'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:29
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/mixin_node.rb:62:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
@@ -116,4 +123,4 @@ script/rails:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_2\".\A         on line 16 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass\A \A 11:   div.text_field,\A 12:   div.text_field_long\A 13:     margin-bottom: 15px\A 14:     \A 15:     label\A 16:       color = $color_2\A 17:       font-weight: bold\A 18:       font-size: 0.8em\A 19:       display: block\A 20:       \A 21:     input"; }
+  content: "Syntax error: Undefined mixin 'border_radius'.\A         on line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass, in `border_radius'\A         from line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass\A \A 24:         margin-top: -8px\A 25:         -webkit-animation-name:  greenPulse\A 26:         -webkit-animation-duration: 5s\A 27:         -webkit-animation-iteration-count: infinite\A 28:         border: 1px solid #bc330d\A 29:         +border_radius\A 30:         \A 31:     \A 32:   div.text_field,\A 33:   div.text_field_long\A 34:     margin-bottom: 15px"; }
