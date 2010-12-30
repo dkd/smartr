@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101015214736) do
+ActiveRecord::Schema.define(:version => 20101230164240) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(:version => 20101015214736) do
     t.string   "login"
     t.string   "encrypted_password"
     t.string   "password_salt"
-    t.string   "authentication_token",                    :null => false
     t.integer  "sign_in_count",        :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "last_sign_in_at"

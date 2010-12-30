@@ -31,7 +31,14 @@
       <%= f.label :uninteresting_tag_list %>
       <%= f.text_field :uninteresting_tag_list%>
     </div>
-    <p><%= f.submit "Sign up" %></p>
+  </div>
+  <div class="right">
+    <div class="text_field">
+      <%= f.label :avatar %>
+      <%= image_tag @user.avatar.url(:medium), :align => :top %>
+      <%= f.file_field :avatar %>
+    </div>
+    <p><%= f.submit "Sign up >>" %></p>
   </div>
 <% end %>
 
