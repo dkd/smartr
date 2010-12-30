@@ -1,7 +1,19 @@
-form.new_user_session
-  div
+form.user_new
+
+  div.left
+    float: left
+    border-right: 1px dashed black
+    padding-right: 2em
+  div.right
+    float: left
+    margin-left: 2em
+    
+  div.text_field,
+  div.text_field_long
+    margin-bottom: 15px
+    
     label
-      color = !color_2
+      color = $color_2
       font-weight: bold
       font-size: 0.8em
       display: block
@@ -11,20 +23,10 @@ form.new_user_session
       +border_radius
       padding: 5px
       background: #f4f4f4
-    #user_session_submit
-      background = !color_2
-      border-color = !color_1
-      +box_shadow
-      color: white
-    #user_session_submit:focus
-      +box_shadow_focus
-    
-    margin-bottom: 15px
-    
+      display: block
+
     div.field_with_errors
       margin-bottom: 0px
-      
+
       label
         color: red
-
-    
