@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe UsersController do
+  let(:user)    { make_user }
   describe "routing" do
 
     it "recognizes and generates #index" do
@@ -8,7 +9,7 @@ describe UsersController do
     end
 
     it "recognizes and generates #new" do
-      { :get => "/users/new" }.should route_to(:controller => "users", :action => "new")
+      { :get => "/users/sign_up" }.should route_to(:controller => "devise/registrations", :action => "new")
     end
 
     it "recognizes and generates #show" do
@@ -20,7 +21,7 @@ describe UsersController do
     end
 
     it "recognizes and generates #create" do
-      { :post => "/users" }.should route_to(:controller => "users", :action => "create")
+      { :post => "/users" }.should route_to(:controller => "devise/registrations", :action => "create")
     end
 
     it "recognizes and generates #update" do
