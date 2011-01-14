@@ -1,49 +1,72 @@
-form.user_new
+form#user_new
 
   div.left
     float: left
-    margin-right: 2em
+    padding-right: 2em
+    border-right: 1px dashed black
+    
+    &.noborder
+      border-right: 0px
+    
+    &.middle
+      margin-left: 2em
+      div.description
+        font-size: 0.9em
   div.right
     float: left
-    border-left: 1px dashed black
-    padding-left: 2em
-    padding-right: 2em
+    margin-left: 2em
+    min-width: 290px
+    img
+      +image_border
+      padding: 5px
+    a:hover
+      color: green
+    a
+      color: black
+      position: absolute
+      z-index: 1
+      #user_avatar
+        position: relative
+        z-index: 2
+        top: -20px
+        opacity: 0
+        cursor: pointer
     
-    p
-      input
-        background: green
-        color: white
-        display: block
-        float: right
-        width: 100%
-        text-align: center
-        font-weight: bold
-        font-size: 26px
-        padding-top: 10px
-        padding-bottom: 10px
-        margin-top: -8px
-        -webkit-animation-name:  greenPulse
-        -webkit-animation-duration: 5s
-        -webkit-animation-iteration-count: infinite
-        border: 1px solid #bc330d
-        +border_radius
-        
+  input.submit
+    background: green
+    color: white
+    display: block
+    float: right
+    text-align: center
+    font-weight: bold
+    font-size: 18px
+    padding-top: 5px
+    padding-bottom: 5px
+    background: -moz-linear-gradient(#98ba40, #a6c250 35%, #618926)
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #98ba40),color-stop(.35, #a6c250),color-stop(1, #618926))
+    border: 1px solid #618926
+    +border_radius
+    +text_shadow
+    font-family: Helvetica, Arial, sans-serif
+    
+    input:hover
+      background-color: black
+      
     
   div.text_field,
   div.text_field_long
     margin-bottom: 15px
     
     label
-      color = $color_2
+      color = #000
       font-weight: bold
       font-size: 0.8em
       display: block
       
     input
       border: 1px solid #e9e9e9
-      +border_radius
       padding: 5px
-      background: #f4f4f4
+      background: url(../images/input-bg.png) no-repeat #ffffff
       display: block
 
     div.field_with_errors
@@ -51,3 +74,7 @@ form.user_new
 
       label
         color: red
+
+  div.text_field_long
+    input
+      width: 230px

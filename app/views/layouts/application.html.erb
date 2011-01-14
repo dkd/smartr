@@ -14,20 +14,13 @@
       50% { background-color: #e33100; -webkit-box-shadow: 0 0 18px #e33100; }
       to { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
     }
-    @-webkit-keyframes greenPulse {
-      from { background-color: #738500; -webkit-box-shadow: 0 0 9px #333; }
-      50% { background-color: #738500; -webkit-box-shadow: 0 0 18px #e33100; }
-      to { background-color: #738500; -webkit-box-shadow: 0 0 9px #333; }
-    }
   </style>
   <link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="http://<%=current_url%>/questions.xml" />
 </head>
 <body>
   <div id="user">
-       <ul>
           <%= render 'users/menu/registration_items' %> |
           <%= render 'users/menu/login_items' %>
-        </ul>
   </div>
   <div id="topwrapper">
     <div id="header">
@@ -44,14 +37,14 @@
     </div>
   </div>
   <div id="wrapper">
-    <div class="flash">
-      <% flash.each do |type, message| -%>
-        <div class="message <%= type %>">
-          <p><%= message %></p>
-        </div>
-      <% end -%>
-    </div>
     <div id="content">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
       <%= yield  %>
     </div>
     <div id="sidebar">
