@@ -1390,36 +1390,46 @@ table {
   table th.right, table td.right {
     text-align: right; }
 
-form#user_new div.left {
+form#user_new div.left,
+form#user_edit div.left {
   float: left;
   padding-right: 2em;
   border-right: 1px dashed black; }
-  form#user_new div.left.noborder {
+  form#user_new div.left.noborder,
+  form#user_edit div.left.noborder {
     border-right: 0px; }
-  form#user_new div.left.middle {
+  form#user_new div.left.middle,
+  form#user_edit div.left.middle {
     margin-left: 2em; }
-    form#user_new div.left.middle div.description {
+    form#user_new div.left.middle div.description,
+    form#user_edit div.left.middle div.description {
       font-size: 0.9em; }
-form#user_new div.right {
+form#user_new div.right,
+form#user_edit div.right {
   float: left;
   margin-left: 2em;
   min-width: 290px; }
-  form#user_new div.right img {
+  form#user_new div.right img,
+  form#user_edit div.right img {
     border: 1px solid #e9e9e9;
     padding: 5px; }
-  form#user_new div.right a:hover {
+  form#user_new div.right a:hover,
+  form#user_edit div.right a:hover {
     color: green; }
-  form#user_new div.right a {
+  form#user_new div.right a,
+  form#user_edit div.right a {
     color: black;
     position: absolute;
     z-index: 1; }
-    form#user_new div.right a #user_avatar {
+    form#user_new div.right a #user_avatar,
+    form#user_edit div.right a #user_avatar {
       position: relative;
       z-index: 2;
       top: -20px;
       opacity: 0;
       cursor: pointer; }
-form#user_new input.submit {
+form#user_new input.submit,
+form#user_edit input.submit {
   background: green;
   color: white;
   display: block;
@@ -1437,30 +1447,42 @@ form#user_new input.submit {
   border-radius: 3px;
   text-shadow: 1px 1px 1px #444444;
   font-family: Helvetica, Arial, sans-serif; }
-  form#user_new input.submit input:hover {
+  form#user_new input.submit input:hover,
+  form#user_edit input.submit input:hover {
     background-color: black; }
 form#user_new div.text_field,
-form#user_new div.text_field_long {
+form#user_new div.text_field_long,
+form#user_edit div.text_field,
+form#user_edit div.text_field_long {
   margin-bottom: 15px; }
   form#user_new div.text_field label,
-  form#user_new div.text_field_long label {
+  form#user_new div.text_field_long label,
+  form#user_edit div.text_field label,
+  form#user_edit div.text_field_long label {
     color: black;
     font-weight: bold;
     font-size: 0.8em;
     display: block; }
   form#user_new div.text_field input,
-  form#user_new div.text_field_long input {
+  form#user_new div.text_field_long input,
+  form#user_edit div.text_field input,
+  form#user_edit div.text_field_long input {
     border: 1px solid #e9e9e9;
     padding: 5px;
     background: url(../images/input-bg.png) no-repeat white;
     display: block; }
   form#user_new div.text_field div.field_with_errors,
-  form#user_new div.text_field_long div.field_with_errors {
+  form#user_new div.text_field_long div.field_with_errors,
+  form#user_edit div.text_field div.field_with_errors,
+  form#user_edit div.text_field_long div.field_with_errors {
     margin-bottom: 0px; }
     form#user_new div.text_field div.field_with_errors label,
-    form#user_new div.text_field_long div.field_with_errors label {
+    form#user_new div.text_field_long div.field_with_errors label,
+    form#user_edit div.text_field div.field_with_errors label,
+    form#user_edit div.text_field_long div.field_with_errors label {
       color: red; }
-form#user_new div.text_field_long input {
+form#user_new div.text_field_long input,
+form#user_edit div.text_field_long input {
   width: 230px; }
 
 div.flash div.message.error, div.flash div.message.alert {
