@@ -102,12 +102,12 @@ $(document).ready(function(){
         }
       }
   });
-  $("input[type=text],input[type=password]").focus(function()
+  $("input[type=text], input[type=password]").focus(function()
     {
       $(this).addClass("active");
     }
   );
-  $("input[type=text],input[type=password]").blur(function()
+  $("input[type=text], input[type=password]").blur(function()
     {
       $(this).removeClass("active");
     }

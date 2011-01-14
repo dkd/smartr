@@ -1,31 +1,24 @@
 /*
-Syntax error: Undefined mixin 'border_radius'.
-        on line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass, in `border_radius'
-        from line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass
+Syntax error: Undefined mixin 'image_border'.
+        on line 20 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass, in `image_border'
+        from line 20 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass
 
-24:         margin-top: -8px
-25:         -webkit-animation-name:  greenPulse
-26:         -webkit-animation-duration: 5s
-27:         -webkit-animation-iteration-count: infinite
-28:         border: 1px solid #bc330d
-29:         +border_radius
-30:         
-31:     
-32:   div.text_field,
-33:   div.text_field_long
-34:     margin-bottom: 15px
+15:   div.right
+16:     float: left
+17:     margin-left: 2em
+18:     min-width: 290px
+19:     img
+20:       +image_border
+21:       padding: 5px
+22:     a:hover
+23:       color: green
+24:     a
+25:       color: black
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:29:in `border_radius'
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:29
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:20:in `image_border'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass:20
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/mixin_node.rb:62:in `perform!'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
@@ -123,4 +116,4 @@ script/rails:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'border_radius'.\A         on line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass, in `border_radius'\A         from line 29 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass\A \A 24:         margin-top: -8px\A 25:         -webkit-animation-name:  greenPulse\A 26:         -webkit-animation-duration: 5s\A 27:         -webkit-animation-iteration-count: infinite\A 28:         border: 1px solid #bc330d\A 29:         +border_radius\A 30:         \A 31:     \A 32:   div.text_field,\A 33:   div.text_field_long\A 34:     margin-bottom: 15px"; }
+  content: "Syntax error: Undefined mixin 'image_border'.\A         on line 20 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass, in `image_border'\A         from line 20 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/form.sass\A \A 15:   div.right\A 16:     float: left\A 17:     margin-left: 2em\A 18:     min-width: 290px\A 19:     img\A 20:       +image_border\A 21:       padding: 5px\A 22:     a:hover\A 23:       color: green\A 24:     a\A 25:       color: black"; }

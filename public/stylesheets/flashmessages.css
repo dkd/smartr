@@ -1,2 +1,2 @@
-div.flash div.message.error {
+div.flash div.message.error, div.flash div.message.alert {
   color: red; }
