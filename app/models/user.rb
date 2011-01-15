@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates :login, :presence => true, :length => {:within => 6..12}, :uniqueness => true
   
+  #filter
+  before_validation :strip_and_downcase_login
   
   def is_online?
     if self.last_request_at > (Time.now - 5.minutes)
@@ -56,6 +58,15 @@ class User < ActiveRecord::Base
   
   def image_url
     self.image_url = self.avatar.url(:medium)
+  end
+  
+  private
+  
+  def strip_and_downcase_login
+    if login.present?
+      login.strip!
+      login.downcase!
+    end
   end
   
 end
