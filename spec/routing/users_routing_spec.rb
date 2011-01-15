@@ -1,7 +1,9 @@
 require "spec_helper"
 
 describe UsersController do
-  let(:user)    { make_user }
+  
+  let(:user){ make_user}
+  
   describe "routing" do
 
     it "recognizes and generates #index" do
