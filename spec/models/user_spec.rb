@@ -2,6 +2,16 @@ require 'spec_helper'
 
 describe User do
   let(:user) {Factory.create :user}
+  
+  describe "new user record" do
+    
+    it "has zero reputation" do
+      user = Factory.create(:user2)
+      user.reputation.should == 0
+    end
+    
+  end
+  
   describe "validation" do
     
     describe "of passwords" do

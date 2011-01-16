@@ -10,9 +10,10 @@ class Question < ActiveRecord::Base
 
   #Validations
   validates_presence_of [:body, :name, :tag_list]
-  validates_uniqueness_of :name
+  validates_uniqueness_of [:name, :body]
   validates_length_of :name, :minimum => 20
   validates_length_of :body, :minimum => 75
+  validates_length_of :tag_list, :maximum => 8
   
   #Extensions
   acts_as_taggable_on :tags
@@ -36,7 +37,7 @@ class Question < ActiveRecord::Base
   
   # Callback methods
   def set_permalink
-    self.permalink = self.name.to_permalink
+    self.permalink = self.name.to_permalink unless self.name.nil?
   end
   
   def check_answer_count
@@ -46,7 +47,7 @@ class Question < ActiveRecord::Base
   def update_views
     number_of_views = self.views.nil?? 0 : self.views
     self.views = number_of_views + 1
-    self.save(false)
+    self.save(:validate => false)
   end
   
   def answered_by?(user)
@@ -57,7 +58,6 @@ class Question < ActiveRecord::Base
     end
   end
 end
-
 
 #Sunspot Configuration
 Sunspot.setup(Question) do

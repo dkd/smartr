@@ -60,6 +60,11 @@ class User < ActiveRecord::Base
     self.image_url = self.avatar.url(:medium)
   end
   
+  def self.find_for_database_authentication(conditions)
+    value = conditions[authentication_keys.first]
+    where(["login = :value OR email = :value", { :value => value }]).first
+  end
+  
   private
   
   def strip_and_downcase_login

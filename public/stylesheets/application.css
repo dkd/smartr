@@ -207,8 +207,6 @@ h2.show-question {
       font-style: italic; }
 
 .question-new, .question-edit {
-  background: #e9e9e9;
-  padding: 10px 20px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px; }
@@ -276,7 +274,6 @@ h2.show-question {
   .question .actions a:hover {
     background: black; }
 .question .body {
-  background: white;
   padding: 10px;
   padding-top: 0px;
   overflow: auto;
@@ -629,7 +626,6 @@ h2.answer-header {
     vertical-align: center;
     text-align: center;
     float: left;
-    margin-left: 5px;
     margin-right: 10px;
     padding-top: 5px;
     padding-bottom: 2px;
@@ -1190,7 +1186,7 @@ form.user div.text_field {
   margin-left: 14px;
   position: absolute;
   background-color: silver;
-  display: inline-block;
+  display: none;
   list-style: none; }
 
 .wmd-button {
