@@ -28,11 +28,11 @@ class CommentsController < ApplicationController
       format.js { 
         render :update do |page|
           page["##{params[:commentable_type]}-comments-#{params[:commentable_id]} .comment-new"].hide
-          page.insert_html :bottom, "#{params[:commentable_type]}-comments-#{params[:commentable_id]}", 
+          page["##{params[:commentable_type]}-comments-#{params[:commentable_id]}"].append(
                                     render(:partial => "new", :locals => {:comment => @comment, 
                                                                           :commentable_type => params[:commentable_type], 
                                                                           :commentable_id => params[:commentable_id]
-                                                                          }) 
+                                                                          }) )
         end
       }
     end
