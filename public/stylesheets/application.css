@@ -703,7 +703,7 @@ h2.answer-header {
   .answer-item .stats div.votes a.up:link, .answer-item .stats div.votes a:visited.up, .question .stats div.votes a.up:link, .question .stats div.votes a:visited.up {
     width: 50px;
     height: 10px;
-    padding: 0x;
+    padding: 0px;
     background: url(/images/arrow-up.png) no-repeat center top;
     display: block;
     text-decoration: none;
@@ -712,7 +712,7 @@ h2.answer-header {
   .answer-item .stats div.votes a.down:link, .answer-item .stats div.votes a:visited.down, .question .stats div.votes a.down:link, .question .stats div.votes a:visited.down {
     width: 50px;
     height: 10px;
-    padding: 0x;
+    padding: 0px;
     background: url(/images/arrow-down.png) no-repeat center bottom;
     display: block;
     text-decoration: none;
@@ -934,7 +934,6 @@ form.user div.text_field {
       color: #5d8e00; }
 
 .comments {
-  background-color: white;
   padding-left: 5px; }
   .comments h3 {
     margin-bottom: 0.1em;
