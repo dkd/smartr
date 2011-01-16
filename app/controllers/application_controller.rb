@@ -112,6 +112,6 @@ class ApplicationController < ActionController::Base
     private
     
     def set_last_request_at 
-      current_user.update_attribute(:last_request_at, Time.now) if user_signed_in? 
+      current_user.update_attribute(:last_request_at, Time.now) if current_user.present? 
     end
 end

@@ -29,6 +29,7 @@ end
 group :test do
   # bundler requires these gems while running tests
   gem 'rspec-rails', '>= 2.4.0'
-  gem 'factory_girl_rails'
-  gem "autotest"
+  gem 'factory_girl_rails', '>=1.1.beta1'
+  gem 'autotest'
+  gem 'faker'
 end

@@ -18,7 +18,7 @@
   <div class="body">
     <%= code(question.body) %>
     <div class="user">Asked by 
-    <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0), user_path(question.user) %>
+    <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0), user_path(question.user) unless question.user.avatar.nil?%>
     <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %> ago, 
     saved in <span class="tags">
        <%question.tags.each do |tag| %>

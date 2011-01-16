@@ -1,4 +1,4 @@
-Smartr::Application.routes.draw do  
+Smartr::Application.routes.draw do
   
   devise_for :users
   
