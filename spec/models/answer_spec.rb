@@ -15,6 +15,11 @@ describe Answer do
         answer.should_not be_valid
       end
       
+      it "cannot be longer than 2048 characters" do
+        answer = Factory.build(:answer, :body => "a"*2049)
+        answer.should_not be_valid
+      end
+      
     end
     
   end
