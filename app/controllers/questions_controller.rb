@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
       respond_to do |format|
         if @question.save
           flash[:notice] = 'Question was successfully created.'
-          format.html { redirect_to(@question) }
+          format.html { redirect_to show_question_url(@question.id, @question.friendly_id) }
         else
           format.html { 
             flash[:error] = 'Please fill in all requested fields!'
@@ -65,9 +65,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update_attributes(params[:question])
         flash[:notice] = 'Question was successfully updated.'
-        format.html { redirect_to url_for(:controller => :questions, :action => :show, :id => @question.id, :friendly_id => @question.friendly_id)  }
+        format.html { redirect_to url_for(:controller => :questions, :action => :show, :id => @question.id, :friendly_id => @question.friendly_id) }
       else
-        format.html { render :action => (params[:question][:answers_attributes]) ? "show" : "edit" }
+        format.html { render :action => "edit" }
       end
     end
   end
@@ -155,7 +155,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.user != current_user
       flash[:error] = "You are not the owner of the question!"
-      redirect_to(question_path(@question))
+      redirect_to(show_question_url(:id => @question.id, :friendly_id => @question.friendly_id))
     end
   end
   
