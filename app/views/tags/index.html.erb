@@ -1,6 +1,6 @@
 <h2>Find Tags</h2>
 <div class="tag-search">
-  <% form_for("tags", :url => tags_path, :html => {:method => "get"}) do |f| %>
+  <%= form_for("tags", :url => tags_path, :html => {:method => "get"}) do |f| %>
     <%= f.text_field(:q, :value => @q, :title => "Search ...", :class => "toggle") %>
     <%= f.submit "Search"%>
   <% end %>
