@@ -21,4 +21,28 @@ describe QuestionsController do
 
   end
   
+  context "Unauthorized" do
+    
+    describe "GET new" do
+      it "should redirect to the login page" do
+        get :new
+        response.should redirect_to :controller => "devise/sessions", :action => "new"
+      end
+    end
+    
+    describe "POST question" do
+      it "should redirect to the login page" do
+        post :create
+        response.should redirect_to :controller => "devise/sessions", :action => "new"
+      end
+    end
+    
+    describe "PUT question" do
+      it "should redirect to the login page" do
+        post :update, :id => question.id
+        response.should redirect_to :controller => "devise/sessions", :action => "new"
+      end
+    end
+    
+  end
 end 
