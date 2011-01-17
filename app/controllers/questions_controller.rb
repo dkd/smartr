@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
       else
         @questions = Question.latest.includes([:user,:votes]).paginate :page => params[:page], :per_page => 15
       end
+      
       respond_to do |wants|
         wants.html {  }
         wants.json{ render :json => @questions.to_json}
