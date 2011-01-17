@@ -5,7 +5,6 @@ FactoryGirl.define do
   
   factory :answer_on_my_own_question, :class => Answer do
     body 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    association :user, :factory => :user
     association :question, :factory => :question2
   end
   
