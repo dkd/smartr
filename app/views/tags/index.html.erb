@@ -1,6 +1,9 @@
 <h2>Find Tags</h2>
 <div class="tag-search">
-  <input type="text" class="toggle text" title="Enter a tag" size="25" />
+  <% form_for("tags", :url => tags_path, :html => {:method => "get"}) do |f| %>
+    <%= f.text_field(:q, :value => @q, :title => "Search ...", :class => "toggle") %>
+    <%= f.submit "Search"%>
+  <% end %>
 </div>
 <br class="clear" />
 <div class="tag-list">
@@ -10,3 +13,4 @@
 <br class="clear" />
 <%=will_paginate @tags%>
 <% main_menu :tags %>
+<% content_for :sidebar, render("sidebar")%>
