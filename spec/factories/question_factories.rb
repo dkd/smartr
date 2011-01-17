@@ -10,6 +10,7 @@ FactoryGirl.define do
     body 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     tag_list 'testing, rspec'
     association :user, :factory => :user
+    association :answer, :factory => :answer
   end
   
   factory :question3, :class => Question do
