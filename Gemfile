@@ -32,5 +32,5 @@ group :test do
   gem 'factory_girl_rails', '>=1.1.beta1'
   gem 'autotest'
   gem 'faker'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
 end
