@@ -44,5 +44,42 @@ describe QuestionsController do
       end
     end
     
+    describe "DELETE question" do
+      it "should redirect to the login page" do
+        post :destroy, :id => question.id
+        response.should redirect_to :controller => "devise/sessions", :action => "new"
+      end
+    end
+    
   end
+  
+  context "authorized user" do
+    before do
+      sign_in Factory.create(:user2)
+    end
+      
+    describe "GET new" do
+      it "should show the new question page" do
+        get :new
+        response.should be_success
+        response.should render_template(:new)
+      end
+    end
+    
+   describe "POST question with correct parameters" do
+      it "should redirect created question" do
+        post :create, :question => {:name => "How many PHP Frameworks try to emulate Ruby on Rails?", :body => Faker::Lorem.sentences(10).to_s, :tag_list => "testing, rails, rspec"}
+        response.should be_redirect
+      end
+    end
+    
+  end
+
+  context "authorized question owner" do
+    before do
+      sign_in question.user
+    end
+
+  end
+  
 end 
