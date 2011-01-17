@@ -8,7 +8,7 @@ class Answer < ActiveRecord::Base
   
   #Validations
   validate :only_answer_from_user
-  validates_length_of :body, :minimum => 75
+  validates :body, :presence => true, :length => {:minimum => 75}
 
   def only_answer_from_user
     if(Answer.find_all_by_user_id_and_question_id(self.user_id,self.question_id).size > 1)

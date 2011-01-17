@@ -11,4 +11,11 @@ FactoryGirl.define do
     tag_list 'testing, rspec'
     association :user, :factory => :user
   end
+  
+  factory :question3, :class => Question do
+    name Faker::Lorem.sentences(3).to_s
+    body Faker::Lorem.sentences(10).to_s
+    tag_list 'testing, rspec'
+    association :user, :factory => :user2
+  end
 end
