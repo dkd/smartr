@@ -60,15 +60,7 @@ class ApplicationController < ActionController::Base
 
         format.js{
           unless current_user  
-            
-            render :update do |page|
-              page << "$.gritter.add({
-              	title: 'Nothing',              	
-              	text: 'You must be logged in order to perform this action.',
-              	time: 5000
-              });"
-            end
-            false
+            render "not_authorized"
           end
         }
       end

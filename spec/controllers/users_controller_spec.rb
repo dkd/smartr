@@ -3,6 +3,20 @@ require "spec_helper"
 describe UsersController do
   include Devise::TestHelpers
   
+  describe "GET :who_is_online" do
+    let(:user) {Factory.create(:user)}
+    
+    it "shows the people online" do
+      sign_in user
+      get :who_is_online
+      response.should be_success
+      assigns(:users).should eq(User.online)
+      response.should render_template(:who_is_online)
+    end
+    
+  end
+  
+  
   describe "Counting number of users online within the last 5 minutes" do
     
     describe "with no user" do
