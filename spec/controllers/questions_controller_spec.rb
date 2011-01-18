@@ -67,7 +67,7 @@ describe QuestionsController do
     end
     
    describe "POST question with correct parameters" do
-      it "should redirect created question" do
+      it "should redirect to created question" do
         post :create, :question => {:name => "How many PHP Frameworks try to emulate Ruby on Rails?", :body => Faker::Lorem.sentences(10).to_s, :tag_list => "testing, rails, rspec"}
         response.should redirect_to(:controller => "questions", :action => "show", :id => Question.last.id, :friendly_id => Question.last.friendly_id)
         assigns(:question).should eq(Question.last)
