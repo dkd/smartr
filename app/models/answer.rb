@@ -1,3 +1,11 @@
+class AnswerCountValidator < ActiveModel::Validator
+  def validate(record)
+    if(Answer.find_all_by_user_id_and_question_id(record.user_id,record.question_id).size > 1)
+      record.errors[:base] << "You alread answered this question! Just edit your answer."
+    end
+  end
+end
+
 class Answer < ActiveRecord::Base
   
   #Associations
@@ -7,15 +15,8 @@ class Answer < ActiveRecord::Base
   has_many :votes, :as => :voteable, :dependent => :destroy
   
   #Validations
-  validate :only_answer_from_user
+  validates_with AnswerCountValidator
   validates :body, :presence => true, :length => {:minimum => 75, :maximum => 2048}
-
-  def only_answer_from_user
-    if(Answer.find_all_by_user_id_and_question_id(self.user_id,self.question_id).size > 1)
-      self.errors.add("Answer", 'You alread answered this question! Just edit your answer.')
-    end
-  end
-
 end
 
 #Sunspot Solr Configuration

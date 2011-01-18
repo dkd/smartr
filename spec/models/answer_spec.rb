@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Answer do
-
   describe "Validations of" do
     
     describe "of body" do
@@ -21,13 +20,13 @@ describe Answer do
       end
       
     end
-    
+     
     describe "restrict number of answers for question" do
       it "permit only one one answer from the same user" do
         user = Factory(:user2) 
         question = Factory(:question, :user_id => user.id)
         answer = Factory(:answer, :question => question, :user => question.user)
-        another_answer_from_same_user = Factory.build(:answer, :question => question, :user => question.user)
+        another_answer_from_same_user = Factory(:answer, :question => question, :user => question.user)
         another_answer_from_same_user.should_not be_valid
       end
     end
