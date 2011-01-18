@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user_session, :current_user, :is_admin?
   before_filter :search_options
-  before_filter :set_last_request_at
+  before_filter :set_last_request_at, :store_location
   
   def rescue_action(exception)
      
