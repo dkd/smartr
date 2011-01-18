@@ -31,5 +31,14 @@ describe Answer do
       end
     end
     
+    describe "saving record" do
+      it "should create the record" do
+        user = Factory(:user2) 
+        question = Factory(:question, :user_id => user.id)
+        answer = Factory(:answer, :question => question, :user => question.user)
+        answer.should be_valid
+      end
+    end
+    
   end
 end

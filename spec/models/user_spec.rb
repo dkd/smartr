@@ -33,11 +33,13 @@ describe User do
       it "requires presence" do
         user = Factory.build(:user, :login => nil)
         user.should_not be_valid
+        user.should have(3).error_on(:login)
       end
 
       it "requires uniqueness" do
-        duplicate_user =  Factory.build(:user, :login => user.login)
+        duplicate_user =  Factory.build(:user, :login => user.login, :email => Faker::Internet.email)
         duplicate_user.should_not be_valid
+        duplicate_user.should have(1).error_on(:login)
       end
       
       it "downcases login name" do
@@ -47,7 +49,7 @@ describe User do
       end
       
       it "fails if the requested login name is only different in case from an existing username" do
-        duplicate_user = Factory.build(:user, :login => user.login.upcase)
+        duplicate_user = Factory.build(:user, :login => user.login.upcase, :email => Faker::Internet.email)
         duplicate_user.should_not be_valid
       end
 
@@ -62,13 +64,15 @@ describe User do
     describe "of email"  do
       
       it "requires presence" do
-        user = Factory.build(:user, :email => nil)
+        user = Factory.build(:user, :login => "anotheruser", :email => nil)
         user.should_not be_valid
+        user.should have(2).error_on(:email)
       end
 
       it "requires uniqueness" do
-        duplicate_user =  Factory.build(:user, :email => user.email)
+        duplicate_user =  Factory.build(:user, :login => "anotheruser", :email => user.email)
         duplicate_user.should_not be_valid
+        duplicate_user.should have(1).error_on(:email)
       end
     
     end
