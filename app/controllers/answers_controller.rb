@@ -43,7 +43,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         flash[:notice] = 'Answer was successfully created.'
-        format.html { redirect_to(@question) }
+        format.html { redirect_to show_question_url(@question.id, @question.friendly_id) }
       else
         format.html {  render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question}, :layout => true}
       end
