@@ -15,19 +15,19 @@ gem "acts-as-taggable-on", ">=2.0.6"
 gem "sunspot_rails", ">= 1.2.rc3"
 #gem 'fastthread'
 gem 'mongrel', :platform => :mri_18
-gem "rspec-rails", ">=2.4.0"
 gem "devise"
 gem "unicorn", :platform => :mri_19
+
 
 # bundler requires these gems in development
 
 group :development do
   # gem "rails-footnotes"
-  gem 'rspec-rails', '>= 2.4.0'
 end
 
 group :test do
   # bundler requires these gems while running tests
+  gem "metric_fu"
   gem 'rspec-rails', '>= 2.4.0'
   gem 'factory_girl_rails', '>=1.1.beta1'
   gem 'autotest'

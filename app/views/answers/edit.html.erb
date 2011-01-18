@@ -2,7 +2,7 @@
 <br class="clear" />
 <h2>Editing Answer</h2>
 <div class="answer-edit">
-  <% form_for(@answer, :url => question_answer_path) do |f| %>
+  <% form_for(@answer, :url => answer_path) do |f| %>
     <div class="<%="error" if f.error_message_on(:body).present? %>">
     <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
     <%= f.error_message_on(:body) %>
