@@ -17,6 +17,7 @@ Smartr::Application.routes.draw do
   match "/questions/tagged/:tag(/:page)", :to => "question#index"
   match "/questions/:id/:friendly_id", :to => "questions#show", :as => :show_question
   match "/questions/:id/:friendly_id/edit", :to => "questions#edit"
+  
   resources :questions do
     
     member do 
@@ -28,11 +29,9 @@ Smartr::Application.routes.draw do
       get :unanswered
       get :search
     end
-    
-    resources :answers
-  
   end
 
+  resources :answers
 
   resources :comments
   resources :tags, :only => [:index]

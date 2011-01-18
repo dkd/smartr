@@ -1,11 +1,7 @@
-
-
-
-
 class AnswersController < ApplicationController
   
-  before_filter :require_user
-  before_filter :require_owner, :only => [:edit, :update_default, :destroy]
+  before_filter :require_user, :except => [:show, :index]
+  before_filter :require_owner, :only => [:edit, :destroy]
   before_filter :require_question_owner, :only => :update_for_switch_acceptance
   
   
@@ -31,10 +27,6 @@ class AnswersController < ApplicationController
     @answer.body = @answer.body
   end
   
-  def new
-    
-  end
-  
   def create
     @answer = Answer.new(params[:answer])
     @question = Question.find(params[:question_id])
@@ -45,7 +37,7 @@ class AnswersController < ApplicationController
         flash[:notice] = 'Answer was successfully created.'
         format.html { redirect_to show_question_url(@question.id, @question.friendly_id) }
       else
-        format.html {  render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question}, :layout => true}
+        format.html { render("_new", :locals => {:answer => @answer, :question => @question}, :layout => true) }
       end
     end
   end
@@ -54,7 +46,7 @@ class AnswersController < ApplicationController
     
     params.delete(:accepted)
     @answer = Answer.find(params[:id])
-    @question = Question.find(params[:question_id])
+    @question = @answer.question
     
      if @answer.update_attributes(params[:answer])
        flash[:notice] = "Saved your answer."
@@ -81,7 +73,6 @@ class AnswersController < ApplicationController
      respond_to do |format|
        format.js{
          render :update do |page|
-             #page[".answer-item .status"]
              page["#answer_#{@answer.id} .status"].html render :partial => "/answers/status", :locals => {:answer => @answer}
          end
        }
