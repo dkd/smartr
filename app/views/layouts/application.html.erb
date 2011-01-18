@@ -54,7 +54,7 @@
     </div>
     <br class="clear" />
     <div id="footer">
-      <%=pluralize User.online.count,"user"%> currently logged in.
+      <%= pluralize User.online.count, "user"%> currently logged in.
     </div>
   </div>
   <%= javascript_include_tag "jquery",
