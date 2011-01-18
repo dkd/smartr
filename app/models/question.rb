@@ -9,11 +9,11 @@ class Question < ActiveRecord::Base
   belongs_to :answer
 
   #Validations
-  validates_presence_of [:body, :name, :tag_list]
+  validates_presence_of [:body, :name]
   validates_uniqueness_of [:name, :body]
   validates_length_of :name, :minimum => 20
   validates_length_of :body, :minimum => 75
-  validates_length_of :tag_list, :maximum => 8
+  validates :tag_list, :presence => true, :length => {:maximum => 8}
   
   #Extensions
   acts_as_taggable_on :tags

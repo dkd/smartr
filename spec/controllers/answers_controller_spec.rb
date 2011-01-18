@@ -27,11 +27,11 @@ describe AnswersController do
     before do
       sign_in answer.user
     end
-    
+
     describe "POST answer" do
       it "should redirect to the question of the answer" do
         post :create, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :answer => {:body => Faker::Lorem.sentences(10).to_s}
-        response.should redirect_to(:controller => "questions", :action => "show", :question_id => answer.question.id, :friendly_id => answer.question.friendly_id)
+        response.should redirect_to(:controller => "questions", :action => "show", :id => answer.question.id, :friendly_id => answer.question.friendly_id)
         assigns(:question).should eq(answer.question)
       end
     end
