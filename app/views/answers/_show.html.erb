@@ -10,7 +10,7 @@
   <div class="body">
     <%= code(answer.body) %>
       <span class="user"><%= link_to( image_tag(answer.user.avatar.url(:tiny), :border =>"0"), user_path(answer.user)) %><%= link_to answer.user.login, user_path(answer.user) %> &middot; <span class="user-<%=answer.user.id%>-reputation"><%=answer.user.reputation %></span>  &middot; <%= distance_of_time_in_words_to_now answer.created_at %> ago</span>
-      <%= link_to("edit", edit_answer_path(:question_id => question.id, :id => answer.id), :class => "edit") if (answer.user == current_user) %>
+      <%= link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id), :class => "edit") if (answer.user == current_user) %>
     </div>
   <br class="clear" />
   <div class="comments" id="Answer-comments-<%= answer.id %>">

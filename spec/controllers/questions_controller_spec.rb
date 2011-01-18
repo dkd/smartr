@@ -14,7 +14,7 @@ describe QuestionsController do
   
   describe "GET show" do
     it "should should show the question" do
-      get :show, :id => question.id
+      get :show, :question_id => question.id, :friendly_id => question.friendly_id
       response.code.should eq("200")
       assigns(:question).should eq(question)
     end
@@ -69,7 +69,7 @@ describe QuestionsController do
    describe "POST question with correct parameters" do
       it "should redirect to created question" do
         post :create, :question => {:name => "How many PHP Frameworks try to emulate Ruby on Rails?", :body => Faker::Lorem.sentences(10).to_s, :tag_list => "testing, rails, rspec"}
-        response.should redirect_to(:controller => "questions", :action => "show", :id => Question.last.id, :friendly_id => Question.last.friendly_id)
+        response.should redirect_to(:controller => "questions", :action => "show", :question_id => Question.last.id, :friendly_id => Question.last.friendly_id)
         assigns(:question).should eq(Question.last)
       end
     end
@@ -77,7 +77,7 @@ describe QuestionsController do
     describe "PUT question with wrong question owner" do
        it "should redirect to question" do
          put :update, :id => question.id
-         response.should redirect_to(:controller => "questions", :action => "show", :id => question.id, :friendly_id => question.friendly_id)
+         response.should redirect_to(:controller => "questions", :action => "show", :question_id => question.id, :friendly_id => question.friendly_id)
          assigns(:question).should eq(question)
        end
      end
@@ -90,7 +90,7 @@ describe QuestionsController do
     end
     
    describe "PUT question with with incorrect parameters" do
-       it "should redirect to question" do
+       it "should render edit form" do
          put :update, :id => question.id, :question => {:name => ""}
          response.should render_template(:edit)
          assigns(:question).should eq(question)
