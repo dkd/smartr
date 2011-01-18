@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.xml
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:question_id])
     @question.update_views if @question.present?
     @answer = Answer.new
     @answer.question = @question
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @question = Question.find(params[:id])    
+    @question = Question.find(params[:id])
   end
 
   # POST /questions
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
       respond_to do |format|
         if @question.save
           flash[:notice] = 'Question was successfully created.'
-          format.html { redirect_to show_question_url(@question.id, @question.friendly_id) }
+          format.html { redirect_to question_url(@question.id, @question.friendly_id) }
         else
           format.html { 
             flash[:error] = 'Please fill in all requested fields!'
@@ -65,7 +65,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update_attributes(params[:question])
         flash[:notice] = 'Question was successfully updated.'
-        format.html { redirect_to url_for(:controller => :questions, :action => :show, :id => @question.id, :friendly_id => @question.friendly_id) }
+        format.html { redirect_to url_for(:controller => :questions, :action => :show, :question_id => @question.id, :friendly_id => @question.friendly_id) }
       else
         format.html { render :action => "edit" }
       end
@@ -155,7 +155,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.user != current_user
       flash[:error] = "You are not the owner of the question!"
-      redirect_to(show_question_url(:id => @question.id, :friendly_id => @question.friendly_id))
+      redirect_to(question_url(:question_id => @question.id, :friendly_id => @question.friendly_id))
     end
   end
   

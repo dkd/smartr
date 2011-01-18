@@ -15,14 +15,23 @@ Smartr::Application.routes.draw do
   match "/questions/unanswered(/:page)", :to => "questions#unanswered"
   match "/questions/page/:page", :to => "questions#index"
   match "/questions/tagged/:tag(/:page)", :to => "question#index"
-  match "/questions/:id/:friendly_id", :to => "questions#show", :as => :show_question
-  match "/questions/:id/:friendly_id/edit", :to => "questions#edit"
-  
+  #match "/questions/:id/:friendly_id", :to => "questions#show", :as => :show_question
+  #match "/questions/:id/:friendly_id/edit", :to => "questions#edit"
+  #match "/questions/:id/:friendly_id/answer", :to => "answers#create"
+  #match "/questions/:id/:friendly_id/answer/new", :to => "answers#new"
+  match "/questions/:question_id/:friendly_id/answer/:id/edit", :to => "answers#edit", :as => :edit_question_answer
+  match "/questions/:question_id/:friendly_id/answer/:id", :to => "answers#update", :as => :question_answer
+  match "/questions/:question_id/:friendly_id/answer", :to => "answers#create", :as => :new_question_answer
+
   resources :questions do
     
     member do 
       put :update_for_toggle_acceptance
     end
+    
+    match "/:friendly_id", :to => "questions#show"
+    match "/:friendly_id/edit", :to => "questions#edit"
+    
     collection do
       get :hot
       get :active
@@ -31,7 +40,7 @@ Smartr::Application.routes.draw do
     end
   end
 
-  resources :answers
+  
 
   resources :comments
   resources :tags, :only => [:index]
