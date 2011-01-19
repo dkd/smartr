@@ -3,6 +3,14 @@ require 'spec_helper'
 describe User do
   let(:user) {Factory.create :user}
   
+  it { should have_many :questions  
+       should have_many :answers    
+       should have_many :comments   
+       should have_many :favourites 
+       should have_many(:interesting_tags).through(:interesting_tag_taggings)
+       should have_many(:uninteresting_tags).through(:uninteresting_tag_taggings) 
+     }
+  
   describe "new user record" do
     
     it "has zero reputation" do

@@ -3,6 +3,13 @@ require 'spec_helper'
 describe Question do
   let(:question) {Factory.create :question}
   
+  it { should have_many :votes
+       should have_many :comments
+       should have_many :answers
+       should belong_to :user
+       should have_many(:tags).through(:tag_taggings) 
+     }
+  
   describe "validation" do
     
     describe "of name" do
