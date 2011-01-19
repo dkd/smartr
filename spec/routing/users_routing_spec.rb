@@ -1,11 +1,9 @@
 require "spec_helper"
 
 describe UsersController do
-  
-  let(:user){ make_user}
-  
+
   describe "routing" do
-  
+
     it "recognizes and generates #index" do
       { :get => "/users" }.should route_to(:controller => "users", :action => "index")
     end
@@ -32,6 +30,10 @@ describe UsersController do
   
     it "recognizes and generates #destroy" do
       { :delete => "/users/1" }.should route_to(:controller => "users", :action => "destroy", :id => "1")
+    end
+    
+    it "recognizes and generates #reputation" do
+      { :get => "/users/1/reputation" }.should route_to(:controller => "users", :action => "reputation", :id => "1")
     end
   
   end
