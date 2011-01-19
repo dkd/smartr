@@ -16,7 +16,7 @@ describe AnswersController do
     end
     
     it "recognizes and generates #update" do
-      { :post => "/questions/1/some-friendly-id/answer/33" }.should route_to(:controller => "answers", :action => "update", :question_id => "1", :friendly_id => "some-friendly-id", :id => "33")
+      { :put => "/questions/1/some-friendly-id/answer/33" }.should route_to(:controller => "answers", :action => "update", :question_id => "1", :friendly_id => "some-friendly-id", :id => "33")
     end
     
   end
