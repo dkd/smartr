@@ -4,9 +4,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :commentable, :polymorphic => true
   has_many :votes, :as => :voteable
-  belongs_to :question, :polymorphic => true
   
   #Validations
-  validates_presence_of [:body]
+  validates :body, :presence => true, :length => {:minimum => 25, :maximum => 280}
   
 end

@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Answer do
+ 
+  it { should have_many :votes }
+  its(:question) { should be_nil}
+  its(:user) { should be_nil}
+  
   describe "Validations of" do
     
     describe "of body" do
