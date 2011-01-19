@@ -19,8 +19,7 @@ Smartr::Application.routes.draw do
   match "/questions/:question_id/:friendly_id/answer/:id/edit", :to => "answers#edit", :as => :edit_question_answer
   match "/questions/:question_id/:friendly_id/answer/:id", :to => "answers#update", :as => :question_answer
   match "/questions/:question_id/:friendly_id/answer", :to => "answers#create", :as => :new_question_answer
-  match "/questions/:id(/:friendly_id)", :to => "questions#show", :as => :question
-  match "/questions/:id/:friendly_id/edit", :to => "questions#edit"
+  
 
   resources :questions, :except => [:show, :edit] do
     
@@ -39,7 +38,8 @@ Smartr::Application.routes.draw do
     end
   end
 
-  
+  match "/questions/:id(/:friendly_id)", :to => "questions#show", :as => :question
+  match "/questions/:id/:friendly_id/edit", :to => "questions#edit"
 
   resources :comments
   resources :tags, :only => [:index]
