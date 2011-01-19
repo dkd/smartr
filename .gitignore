@@ -12,3 +12,4 @@ solr/data/*
 vendor/gems/*
 vendor/plugins/access_settings
 coverage
+.rspec
