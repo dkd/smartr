@@ -8,7 +8,6 @@ gem "friendly_id"
 gem "sanitize"
 gem "bluecloth"
 gem "escape"
-gem "unicode", "0.3.1"
 gem 'will_paginate', '3.0.pre'
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
@@ -17,7 +16,7 @@ gem "sunspot_rails", ">= 1.2.rc3"
 gem 'mongrel', :platform => :mri_18
 gem "devise"
 gem "unicorn", :platform => :mri_19
-
+gem "stringex"
 
 # bundler requires these gems in development
 

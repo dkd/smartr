@@ -35,9 +35,14 @@ class Question < ActiveRecord::Base
     Favourite.find_by_user_id_and_question_id(user.id, self).present?
   end
   
+  def normalize_friendly_id(text)
+    permalink.to_url
+  end
+  
   # Callback methods
   def set_permalink
-    self.permalink = self.name.to_permalink unless self.name.nil?
+    #self.permalink = self.name.to_permalink unless self.name.nil?
+    self.permalink = self.name.to_url unless self.name.nil?
   end
   
   def check_answer_count
