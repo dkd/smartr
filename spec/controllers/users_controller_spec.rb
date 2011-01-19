@@ -10,7 +10,7 @@ describe UsersController do
       sign_in user
       get :who_is_online
       response.should be_success
-      assigns(:users).should eq(User.online)
+      assigns(:users).should == User.online
       response.should render_template(:who_is_online)
     end
     
