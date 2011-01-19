@@ -17,11 +17,7 @@ class UsersController < ApplicationController
         }
     end
   end
-  
-  def admin
-    @user = current_user
-  end
-  
+
   def search
     index
   end

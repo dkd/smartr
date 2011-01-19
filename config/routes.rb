@@ -9,26 +9,11 @@ Smartr::Application.routes.draw do
     resources :users
   end
 
-  match "/admin", :to => "admin#index"
-  match "/questions/hot(/:page)", :to => "questions#hot"
-  match "/questions/active(/:page)", :to => "questions#active"
-  match "/questions/unanswered(/:page)", :to => "questions#unanswered"
-  match "/questions/page/:page", :to => "questions#index"
-  match "/questions/tagged/:tag(/:page)", :to => "question#index"
-  
-  match "/questions/:question_id/:friendly_id/answer/:id/edit", :to => "answers#edit", :as => :edit_question_answer
-  match "/questions/:question_id/:friendly_id/answer/:id", :to => "answers#update", :as => :question_answer
-  match "/questions/:question_id/:friendly_id/answer", :to => "answers#create", :as => :new_question_answer
-  
-
   resources :questions, :except => [:show, :edit] do
     
     member do 
       put :update_for_toggle_acceptance
     end
-    
-    #match "/:friendly_id", :to => "questions#show"
-    #match "/:friendly_id/edit", :to => "questions#edit"
     
     collection do
       get :hot
@@ -40,7 +25,19 @@ Smartr::Application.routes.draw do
 
   match "/questions/:id(/:friendly_id)", :to => "questions#show", :as => :question
   match "/questions/:id/:friendly_id/edit", :to => "questions#edit"
-
+  
+  match "/questions/:question_id/:friendly_id/answer/:id/edit", :to => "answers#edit", :as => :edit_question_answer
+  match "/questions/:question_id/:friendly_id/answer/:id", :to => "answers#update", :as => :question_answer
+  match "/questions/:question_id/:friendly_id/answers/new", :to => "answers#new", :as => :new_question_answer
+  match "/questions/:question_id/:friendly_id/answers", :to => "answers#create", :as => :question_answers
+  
+  match "/admin", :to => "admin#index"
+  match "/questions/hot(/:page)", :to => "questions#hot"
+  match "/questions/active(/:page)", :to => "questions#active"
+  match "/questions/unanswered(/:page)", :to => "questions#unanswered"
+  match "/questions/page/:page", :to => "questions#index"
+  match "/questions/tagged/:tag(/:page)", :to => "question#index"
+  
   resources :comments
   resources :tags, :only => [:index]
   resources :votes
