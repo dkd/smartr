@@ -21,6 +21,14 @@ describe AnswersController do
       end
     end
     
+    describe "GET answer" do
+      it "edit should redirect to the login page" do
+        get :edit, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :id => answer.id
+        response.should redirect_to :controller => "devise/sessions", :action => "new"
+      end
+    end
+
+    
   end
   
   describe "authorized user" do
