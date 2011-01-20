@@ -14,6 +14,14 @@ describe UsersController do
       response.should render_template(:who_is_online)
     end
     
+    it "shows the reputation history of the user" do
+      sign_in user
+      get :reputation, :id => user.id
+      response.should be_success
+      assigns(:user).should eq(user)
+      response.should render_template(:reputation)
+    end
+    
   end
   
   
