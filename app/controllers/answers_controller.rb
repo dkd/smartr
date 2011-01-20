@@ -50,7 +50,7 @@ class AnswersController < ApplicationController
     
      if @answer.update_attributes(params[:answer])
        flash[:notice] = "Saved your answer."
-         redirect_to question_path(@answer.question)
+         redirect_to question_path(@question.id, @question.friendly_id)
       else
           render "edit"
       end
