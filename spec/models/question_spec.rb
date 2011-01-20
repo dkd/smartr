@@ -53,6 +53,10 @@ describe Question do
         question = Factory.build(:question, :tag_list => tags.join(","))
         question.should_not be_valid
       end
+      
+      it "should have only downcase tags" do
+        
+      end
     
     end
     
