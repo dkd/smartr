@@ -5,7 +5,7 @@ describe VotesController do
   describe "routing" do
     
     it "recognizes and generates #put" do
-      { :post => "/votes/1" }.should route_to(:controller => "votes", 
+      { :put => "/votes" }.should route_to(:controller => "votes", 
                                               :action => "update",
                                               :id => "1",
                                               :model => "question")
