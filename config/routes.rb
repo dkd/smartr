@@ -29,7 +29,6 @@ Smartr::Application.routes.draw do
   scope "/questions/:question_id/:friendly_id/" do
     get "answer/:id/edit", :to => "answers#edit", :as => :edit_question_answer
     put "answer/:id", :to => "answers#update", :as => :question_answer
-    get "answers/new", :to => "answers#new", :as => :new_question_answer
     post "answers", :to => "answers#create", :as => :question_answers
   end
   
@@ -43,7 +42,7 @@ Smartr::Application.routes.draw do
   
   resources :comments
   resources :tags, :only => [:index]
-  resources :votes
+  resources :votes, :only => [:update]
   
   resources :users do
     

@@ -3,7 +3,7 @@
 <h2>My Answer</h2>
 <div class="answer-edit">
   
-  <%= form_for(answer, :url => new_question_answer_path(:question_id => question.id, :friendly_id => question.friendly_id)) do |f| %>
+  <%= form_for(answer, :url => question_answers_path(:question_id => question.id, :friendly_id => question.friendly_id)) do |f| %>
     <div id="wmd-button-bar"></div>
     <div class="<%="error" if f.error_message_on(:body).present? %>">
     <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
