@@ -2,12 +2,14 @@ require "spec_helper"
 
 describe VotesController do
   include Devise::TestHelpers
-  
-  context "As a user who is" do
+ 
+  describe "As a user who is" do
 
     context "not logged in" do
       describe "he votes on a question" do
         it "and fails" do
+          xhr :put, :update, :id => 1000
+          response.should render_template("shared/not_authorized")
         end 
       end
     end

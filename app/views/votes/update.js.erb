@@ -1,5 +1,3 @@
-//page["##{params[:dom_id]}"].html vote.cast(params[:direction])
-//page[".user-#{vote.voteable.user.id}-reputation"].html(vote.voteable.user.reputation)
-//page[".user-#{vote.voteable.user.id}-reputation"].effect('pulsate', :duration => 0.3)
-
-$('#<%=@vote_box_id=>').html(<% render(:partial => "/#{@model.pluralize}/vote_box", :locals => {@model.to_sym=> record})%>);
+$('#<%= @vote_box_id %>').html('<%= escape_javascript(render(:partial => "/#{@vote.voteable_type.downcase.pluralize}/vote_box", :locals => {@vote.voteable_type.downcase.to_sym => @record})) %>');
+$('#<%=@dom_id%>').html('<%=@vote_count%>');
+$('.user-<%=@vote.voteable.user.id %>-reputation').html('<%=@vote.voteable.user.reputation%>');

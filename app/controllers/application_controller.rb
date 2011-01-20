@@ -60,7 +60,8 @@ class ApplicationController < ActionController::Base
 
         format.js{
           unless current_user  
-            render "not_authorized"
+            render "shared/not_authorized"
+            false
           end
         }
       end
