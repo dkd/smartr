@@ -1,6 +1,5 @@
 module Smartr
-  
-  class Settings
+  class Settings < Hash
     def self.[](value, environment = Rails.env)
       @@settings ||= YAML::load( File.open( 'app/config/application.yml' ) ).with_indifferent_access
       @@settings[environment][value]
@@ -8,5 +7,4 @@ module Smartr
       []
     end
   end
-
 end
