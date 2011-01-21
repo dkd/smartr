@@ -61,7 +61,6 @@ class ApplicationController < ActionController::Base
         format.js{
           unless current_user  
             render "shared/not_authorized"
-            false
           end
         }
       end
@@ -94,7 +93,7 @@ class ApplicationController < ActionController::Base
     end
     
     def store_location
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.fullpath
     end
     
     def redirect_back_or_default(default)
