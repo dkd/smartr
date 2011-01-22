@@ -33,4 +33,5 @@ group :test do
   gem 'faker'
   gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
   gem 'shoulda'
+  gem 'capybara'
 end
