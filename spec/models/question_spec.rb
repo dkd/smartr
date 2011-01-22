@@ -3,12 +3,13 @@ require 'spec_helper'
 describe Question do
   let(:question) {Factory.create :question}
   
-  it { should have_many :votes
-       should have_many :comments
-       should have_many :answers
-       should belong_to :user
-       should have_many(:tags).through(:tag_taggings) 
-     }
+  it { should have_many :votes }
+  it { should have_many :comments }
+  it { should have_many :answers }
+  it { should belong_to :user }
+  it { should have_many :favourites }
+  it { should have_many(:tags).through(:tag_taggings) }
+
   
   describe "validation" do
     
@@ -48,9 +49,8 @@ describe Question do
       end
       
       it "should have not more than 8 tags" do
-        tags = []
-        9.times { tags << Faker::Name.last_name}
-        question = Factory.build(:question, :tag_list => tags.join(","))
+
+        question = Factory.build(:question, :tag_list => "tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9")
         question.should_not be_valid
       end
       

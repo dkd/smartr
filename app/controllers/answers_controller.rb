@@ -4,7 +4,6 @@ class AnswersController < ApplicationController
   before_filter :require_owner, :only => [:edit, :destroy]
   before_filter :require_question_owner, :only => :update_for_switch_acceptance
   
-  
   def index
     if params[:question_id]
       redirect_to question_path(params[:question_id])
@@ -43,7 +42,6 @@ class AnswersController < ApplicationController
   end
 
   def update
-    
     params.delete(:accepted)
     @answer = Answer.find(params[:id])
     @question = @answer.question
@@ -58,7 +56,6 @@ class AnswersController < ApplicationController
 
 
   def destroy
-    
     @answer.destroy
     respond_to do |format|
       format.html { redirect_to(answers_url) }
@@ -68,7 +65,6 @@ class AnswersController < ApplicationController
   
   
   def update_for_switch_acceptance
-     
      @answer.toggle_acception
      respond_to do |format|
        format.js{

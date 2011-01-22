@@ -2,40 +2,30 @@ class QuestionsController < ApplicationController
   
   before_filter :require_user, :only => [:edit, :create, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :check_ownership, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
-  
+  respond_to :html, :js, :xml
   def index
       if (params[:tag].present?)
         @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
       else
         @questions = Question.latest.includes([:user,:votes]).paginate :page => params[:page], :per_page => 15
       end
-      
-      respond_to do |wants|
-        wants.html {  }
-        wants.json{ render :json => @questions.to_json}
-        wants.xml { render "questions/rss/index" }
+      respond_to do |format|
+        format.xml {render "questions/rss/index"}
+        format.html
       end
   end
 
-  # GET /questions/1
-  # GET /questions/1.xml
+  # GET /questions/1/friendly_id
   def show
     @question = Question.find(params[:id])
     @question.update_views if @question.present?
     @answer = Answer.new
     @answer.question = @question
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   # GET /questions/new
-  # GET /questions/new.xml
   def new
     @question = Question.new
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   # GET /questions/1/edit
@@ -44,41 +34,33 @@ class QuestionsController < ApplicationController
   end
 
   # POST /questions
-  # POST /questions.xml
   def create
     @question = Question.new(params[:question])
     @question.user = current_user
-      respond_to do |format|
-        if @question.save
-          flash[:notice] = 'Question was successfully created.'
-          format.html { redirect_to question_url(@question.id, @question.friendly_id) }
-        else
-          format.html { 
-            flash[:error] = 'Please fill in all requested fields!'
-            render :action => "new"
-            }
-        end
+      if @question.save
+        flash[:notice] = 'Question was successfully created.'
+        redirect_to question_url(@question.id, @question.friendly_id)
+      else
+        flash[:error] = 'Please fill in all requested fields!'
+        render :action => "new"
       end
   end
 
   def update
-    respond_to do |format|
       if @question.update_attributes(params[:question])
         flash[:notice] = 'Question was successfully updated.'
-        format.html { redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id) }
+        redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id)
       else
-        format.html { render :action => "edit" }
+        render :action => "edit"
       end
-    end
+
   end
 
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
+    redirect_to(questions_url)
 
-    respond_to do |format|
-      format.html { redirect_to(questions_url) }
-    end
   end
 
   def hot

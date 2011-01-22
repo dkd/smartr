@@ -10,6 +10,12 @@ class Vote < ActiveRecord::Base
   #scopes
   default_scope :order => "updated_at asc"
   
+  #Virtual Attribute
+  attr_accessor :direction
+  
+  #validations
+  validates :direction, :presence => true, :format => /u|down/
+  
   def self.has_voted?(user, record)
     v = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
     if(v)
@@ -57,10 +63,6 @@ class Vote < ActiveRecord::Base
      rating = rating + vote.value
     end
      rating
-  end
-  
-  def direction
-    self.value == 1? "up" : "down"
   end
 
 end

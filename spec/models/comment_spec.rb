@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe Comment do
-  its(:commentable) { should be_nil }
-  it { should have(0).votes
-       should validate_presence_of :body
-       should ensure_length_of :body
-       should belong_to :user
-       should belong_to :commentable
-       should have_many :votes 
-     }
-
+  describe "relations" do
+    its(:commentable) { should be_nil }
+    it { should have(0).votes }
+    it { should validate_presence_of :body }
+    it { should ensure_length_of :body }
+    it { should belong_to :user }
+    it { should belong_to :commentable }
+    it { should have_many :votes }
+  end
   describe "Validations of" do
   
     describe "body" do

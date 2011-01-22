@@ -2,13 +2,11 @@ require 'spec_helper'
 
 describe Answer do
  
-  it { should have_many :votes
-       should belong_to :question
-       should belong_to :user
-     }
-     
-  its(:question) { should be_nil}
-  its(:user) { should be_nil}
+  describe "relations" do
+    it { should have_many :votes }
+    it { should belong_to :question }
+    it { should belong_to :user }
+  end
   
   describe "Validations of" do
     
