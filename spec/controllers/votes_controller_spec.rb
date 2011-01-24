@@ -15,10 +15,23 @@ describe VotesController do
     end
     
     context "logged in" do
-
+      let(:user2) {Factory.create :user2}
+      before do
+        sign_in user2
+      end
+      
       describe "and votes up a question" do
+        let(:question) { Factory.create :question2 }
         describe "he already voted up" do
+          before do
+            vote = Factory.build(:vote)
+            vote.user = user2
+            vote.voteable = question
+            vote.value = 1
+            vote.save
+          end
           it "and fails" do
+            
           end
         end
       end
