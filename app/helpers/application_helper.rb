@@ -42,8 +42,8 @@ module ApplicationHelper
     request.host + port 
   end
   
-  def mark_required(object, attribute)  
-    "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator  
+  def mark_required(model, attribute)
+    "*" if model.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
   
 end

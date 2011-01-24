@@ -1,17 +1,17 @@
 <div class="<%="error" if f.error_message_on(:name).present? %>">
-  <h3>Enter your question here<%= mark_required(@question, :name) %></h3>
+  <h3>Enter your question here<%= mark_required(Question, :name) %></h3>
   <%= f.text_field :name, :class => "text" %>
   <%= f.error_message_on(:name) %>
 </div>
 
 <div class="<%="error" if f.error_message_on(:body).present? %>">
-  <h3>Please provide more detail<%= mark_required(@question, :body) %></h3>
+  <h3>Please provide more detail<%= mark_required(Question, :body) %></h3>
   <div id="wmd-button-bar"></div>
   <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
   <%= f.error_message_on(:body) %>
 </div>
 <div class="<%="error" if f.error_message_on(:tag_list).present? %>">
-  <h3>Tags<%= mark_required(@question, :tag_list) %></h3>
+  <h3>Tags<%= mark_required(Question, :tag_list) %></h3>
   <%= f.text_field :tag_list, :class => "text tags" %>
   <%= f.error_message_on(:tag_list) %><%= f.submit 'Save Question', :class => "save" %>
   <br class="clear" />
