@@ -42,7 +42,7 @@ Smartr::Application.routes.draw do
   
   resources :comments
   resources :tags, :only => [:index]
-  resources :votes, :only => [:update]
+  resources :votes, :only => [:create]
   
   resources :users do
     
