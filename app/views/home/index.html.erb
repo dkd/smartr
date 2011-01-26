@@ -1,7 +1,0 @@
-<h2>Latest Questions</h2>
-
-<% @questions.each do |question| %>
-  <%= render :partial => "/questions/question", :locals => {:question => question} %>
-<% end -%>
-
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
