@@ -8,7 +8,7 @@ describe VotesController do
     context "not logged in" do
       describe "he votes on a question" do
         it "and fails" do
-          xhr :put, :update, :id => 1000
+          xhr :post, :create, :id => 1000
           response.should render_template("shared/not_authorized")
         end 
       end

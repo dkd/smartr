@@ -18,8 +18,31 @@ describe QuestionsController do
       response.code.should eq("200")
       assigns(:question).should eq(question)
     end
-
   end 
+  
+  describe "GET hot" do
+    it "should show the latest questions" do
+      get :hot
+      response.code.should eq("200")
+      response.should render_template("index_for_hot")
+    end
+  end
+  
+  describe "GET active" do
+    it "should show the most active questions" do
+      get :active
+      response.code.should eq("200")
+      response.should render_template("index_for_active")
+    end
+  end
+  
+  describe "GET unanswered" do
+    it "should show the latest unanswered questions" do
+      get :unanswered
+      response.code.should eq("200")
+      response.should render_template("index_for_unanswered")
+    end
+  end
   
   context "Unauthorized" do
     
