@@ -8,10 +8,10 @@
       <%=question.views.humanize %>
       <span class="desc"><%= "View".correctize_plural(question.views) %></span>
     </div>
-      <% if current_user %>
+      <% if user_signed_in? %>
         <div class="<%=question.favourited?(current_user)? "favourite-saved": "favourite"%>" id="favourite-question-<%=question.id%>">
             <br />
-            <%= link_to "*", :url => toggle_favourite_path(question.id), :method => "put", :remote => true %>
+            <%= link_to "*", toggle_favourite_path(question.id), :method => "post", :remote => true %>
           </div>
       <% end -%>
 </div>
@@ -30,7 +30,7 @@
     <br class="clear" />
    </div>
    
-  <% if (current_user && current_user == question.user) %>
+  <% if (user_signed_in? && current_user == question.user) %>
     <div class="edit">
       <%= link_to "Edit Question",  url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id)  if (current_user && current_user == question.user) %>   
     </div>
