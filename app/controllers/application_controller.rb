@@ -74,7 +74,17 @@ class ApplicationController < ActionController::Base
        redirect_to root_url
      end
     end
-
+    
+    def authenticate_admin!
+      if user_signed_in? && current_user.is_admin?
+        true
+      else
+        flash[:notice] = "You must be logged in as admin to access this page"
+        redirect_to root_url
+        false
+      end
+    end
+    
     def is_admin?
       if current_user && current_user.is_admin?
        true
@@ -88,7 +98,7 @@ class ApplicationController < ActionController::Base
         store_location
         flash[:notice] = "You must be logged out to access this page"
         redirect_to root_url
-        return false
+        false
       end
     end
     
