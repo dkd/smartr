@@ -1,0 +1,5 @@
+$('#<%="#{@comment.commentable_type}-comments-#{@comment.commentable_id}"%>').html('<%=escape_javascript(render(:partial => "list", 
+																										:locals => {
+																										:comments => @parent.comments,
+																			                            :parent => @parent
+																			                            }))%>');
