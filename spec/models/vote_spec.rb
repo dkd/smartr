@@ -11,7 +11,7 @@ describe Vote do
   describe "Check" do
 
     describe "if the user can vote" do
-      "it should return false" do
+      it "should return false" do
         
       end
     end
