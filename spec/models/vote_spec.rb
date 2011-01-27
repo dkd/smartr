@@ -7,7 +7,16 @@ describe Vote do
         should belong_to :voteable
       }  
   end
+  
+  describe "Check" do
 
+    describe "if the user can vote" do
+      "it should return false" do
+        
+      end
+    end
+  end
+  
   describe "validation" do
     describe "of direction" do
       #let(:vote) { Factory.build(:vote) }
