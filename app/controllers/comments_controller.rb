@@ -1,26 +1,6 @@
 class CommentsController < ApplicationController
   
   before_filter :require_user, :only => [:new, :edit, :create, :destroy, :update]
-  
-  def index
-    @comments = Comment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
-  end
-
-  # GET /comments/1
-  # GET /comments/1.xml
-  def show
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @comment }
-    end
-  end
 
   def new
     @comment = Comment.new(params[:comment])
@@ -56,37 +36,19 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(params[:comment])
-    @comment.user = @current_user
+    @comment.user = current_user
     respond_to do |format|
+      format.js { 
       if @comment.save
-        format.js { 
-          render :update do |page|
-            parent = @comment.commentable_type.classify.constantize.find(@comment.commentable_id)
-            page["#{@comment.commentable_type}-comments-#{@comment.commentable_id}"].replace_html(render(:partial => "list", 
-                                                                                                         :locals => {
-                 :comments => parent.comments,
-                 :parent => parent
-                 }
-                 ))
-          end
-        }
+        @parent = @comment.commentable_type.classify.constantize.find(@comment.commentable_id)
       else
-        format.js {
-          render :update do |page|
-            page << "$.gritter.add({
-            	title: 'Validation failed',              	
-            	text: 'You must enter something in order to perform this action.',
-            	time: 5000,
-            	class_name: 'gritter-error'
-            });"
-          end
-        }
+        render "invalid_comment"
       end
+     }
     end
   end
 
   # PUT /comments/1
-  # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:id])
 
@@ -94,23 +56,19 @@ class CommentsController < ApplicationController
       if @comment.update_attributes(params[:comment])
         flash[:notice] = 'Comment was successfully updated.'
         format.html { redirect_to(@comment) }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /comments/1
-  # DELETE /comments/1.xml
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
     respond_to do |format|
       format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
+
     end
   end
 end

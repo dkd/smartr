@@ -27,47 +27,30 @@ class ApplicationController < ActionController::Base
       else
         @searchstring = ""
       end
-      
     end
     
-    
     def require_user
-      
-      respond_to do |format|
-
-        format.html{
-          unless current_user
-            store_location
+      if user_signed_in?
+        true
+      else
+        respond_to do |format|
+          format.html{
             flash[:notice] = "You must be logged in to access this page"
             redirect_to new_user_session_url
-            false
-          end
-        }
-
-        format.xml{
-         if current_user
-           true
-          else
-            authenticate_or_request_with_http_basic do |username, password|
-              username == "smartr" && password == "dingdongdiehexisttod"
+          }
+          format.xml{
+              authenticate_or_request_with_http_basic do |username, password|
+                username == "smartr" && password == "dingdongdiehexisttod"
             end
-          end
-        }
-
-        format.json{
-          true# if current_user
-        }
-
-        format.js{
-          unless current_user  
-            render "shared/not_authorized"
-          end
-        }
+          }
+          format.js{ render "shared/not_authorized" }
+        end
+        false
       end
     end
     
     def require_admin
-      if current_user && current_user.is_admin?
+      if user_signed_in? && current_user.is_admin?
        true
      else
        flash[:notice] = "You must be logged in as admin to access this page"
@@ -86,7 +69,7 @@ class ApplicationController < ActionController::Base
     end
     
     def is_admin?
-      if current_user && current_user.is_admin?
+      if user_signed_in? && current_user.is_admin?
        true
      else
        false
@@ -94,8 +77,7 @@ class ApplicationController < ActionController::Base
     end
 
     def require_no_user
-      if current_user
-        store_location
+      if user_signed_in?
         flash[:notice] = "You must be logged out to access this page"
         redirect_to root_url
         false
