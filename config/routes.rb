@@ -44,7 +44,7 @@ Smartr::Application.routes.draw do
   resources :tags, :only => [:index]
   resources :votes, :only => [:create]
   
-  resources :users do
+  resources :users, :except => [:destroy] do
     
     collection do
       get :who_is_online
@@ -73,7 +73,7 @@ Smartr::Application.routes.draw do
   end
   
   root :to => 'questions#index'
-  
+  match '*a', :to => 'errors#routing' 
 end
 
 #ActionController::Routing::Routes.draw do |map|

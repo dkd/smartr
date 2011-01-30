@@ -28,6 +28,10 @@ class Vote < ActiveRecord::Base
   def already_voted?(direction)
     
   end
+  
+  def direction
+    self.value == 1? "up":"down"
+  end
  
   def set(direction)
     
