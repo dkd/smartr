@@ -3,6 +3,19 @@ require "spec_helper"
 describe UsersController do
   include Devise::TestHelpers
   
+  describe "GET :index" do
+    before do
+      Factory.create(:user)
+    end
+   
+    it "shows the users list" do
+      get :index
+      response.should be_success
+      assigns(:users).count.should eq(1)
+      response.should render_template(:index) 
+    end
+  end
+  
   describe "GET :who_is_online" do
     let(:user) {Factory.create(:user)}
     
@@ -20,6 +33,43 @@ describe UsersController do
       response.should be_success
       assigns(:user).should eq(user)
       response.should render_template(:reputation)
+    end
+    
+  end
+  
+  describe "An authorized User" do
+    let(:user) {Factory.create(:user)}
+    before do
+      sign_in user
+    end
+    
+    describe "edits his account" do
+      it "should load the edit form" do
+        get :edit, :id => user.id
+        response.should be_success
+        response.should render_template(:edit)
+      end
+    end
+    
+  end
+  
+  describe "An unauthorized User" do
+    let(:user) {Factory.create(:user)}
+    
+    describe "tries to edit an account" do
+      it "should not load the edit form" do
+        get :edit, :id => user.id
+        response.should_not be_success
+        response.should redirect_to(:controller => "devise/sessions", :action => "new")
+      end
+    end
+    
+    describe "tries to post an update to an user account" do
+      it "should not load the edit form" do
+        put :update, :id => user.id
+        response.should_not be_success
+        response.should redirect_to(:controller => "devise/sessions", :action => "new")
+      end
     end
     
   end

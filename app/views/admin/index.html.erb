@@ -19,7 +19,7 @@
             <%=vote.voteable.class%>  <%=direction(vote.value)%>
         </td>
         <td class="right">
-          <%=Settings.reputation.fetch(vote.voteable.class.to_s.downcase).fetch(vote.direction)>0? "+":""%><%=Settings.reputation.fetch(vote.voteable.class.to_s.downcase).fetch(vote.direction)%></td>
+          <%=Smartr::Settings[:reputation]["#{vote.voteable.class.to_s.downcase}".to_sym][vote.direction.to_sym]%></td>
       </tr>
   <% end -%>
   </table>

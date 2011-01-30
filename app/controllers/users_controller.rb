@@ -1,25 +1,19 @@
 class UsersController < ApplicationController
   
-  before_filter :require_no_user, :only => [:new, :create, :index]
+  before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:edit, :update]
   before_filter :is_admin?, :only => [:admin]
   
   def index
-    respond_to do |format|
-      format.html{ @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10}
-      format.js {
-        unless params[:q].blank?
-          @users = User.find(:all, :conditions => ["login like ?","%#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
-        else
-          @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
-        end
-        render :partial => "list", :locals => {:users => @users}
-        }
-    end
+    @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
   end
 
   def search
-    index
+    unless params[:q].blank?
+      @users = User.find(:all, :conditions => ["login like ?","%#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
+    else
+      @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
+    end
   end
 
   def who_is_online
@@ -63,15 +57,5 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
-  
-  
-  protected
-  
-  def index_for_winner
-     format.html{ @users = User.find(:all).paginate :page => params[:page], :per_page => 20}
-      render :index
-  end
-  
-  
-  
+
 end
