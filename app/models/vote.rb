@@ -70,3 +70,17 @@ class Vote < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: votes
+#
+#  id            :integer(4)      not null, primary key
+#  voteable_type :string(255)
+#  voteable_id   :integer(4)
+#  user_id       :integer(4)
+#  value         :integer(4)      default(0)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+

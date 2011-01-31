@@ -99,3 +99,23 @@ Sunspot.setup(Question) do
     name.downcase.sub(/^(an?|the) /, '')
   end
 end
+# == Schema Information
+#
+# Table name: questions
+#
+#  id            :integer(4)      not null, primary key
+#  name          :string(255)
+#  body          :text
+#  user_id       :integer(4)
+#  views         :integer(4)      default(0)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  answers_count :integer(4)      default(0)
+#  votes_count   :integer(4)      default(0)
+#  body_plain    :text
+#  body_html     :text
+#  permalink     :string(255)
+#  answer_id     :integer(4)
+#  send_email    :boolean(1)      default(FALSE)
+#
+

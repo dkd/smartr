@@ -17,6 +17,7 @@ gem 'mongrel', :platform => :mri_18
 gem "devise"
 gem "unicorn", :platform => :mri_19
 gem "stringex"
+gem "annotate"
 
 # bundler requires these gems in development
 

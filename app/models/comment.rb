@@ -9,3 +9,16 @@ class Comment < ActiveRecord::Base
   validates :body, :presence => true, :length => {:minimum => 25, :maximum => 280}
   
 end
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :integer(4)      not null, primary key
+#  body             :text
+#  user_id          :integer(4)
+#  commentable_id   :integer(4)
+#  commentable_type :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+

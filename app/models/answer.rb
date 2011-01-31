@@ -27,3 +27,19 @@ Sunspot.setup(Answer) do
   time :created_at
   time :updated_at
 end
+
+# == Schema Information
+#
+# Table name: answers
+#
+#  id          :integer(4)      not null, primary key
+#  body        :text
+#  question_id :integer(4)
+#  user_id     :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  accepted    :boolean(1)
+#  body_plain  :text
+#  send_email  :boolean(1)      default(FALSE)
+#
+
