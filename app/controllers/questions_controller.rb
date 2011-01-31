@@ -86,10 +86,10 @@ class QuestionsController < ApplicationController
   def search
     page = params[:page] 
     logger.info "Searchstring"
-    searchstring = params[:question][:searchstring]
+    @searchstring = params[:question][:searchstring]
     facet_user_id = params[:user_id] unless params[:user_id].nil?
     @questions = Sunspot.search(Question) do 
-      fulltext searchstring do
+      fulltext @searchstring do
         highlight :name, :body, :max_snippets => 3, :fragment_size => 200
         tie 0.1
       end

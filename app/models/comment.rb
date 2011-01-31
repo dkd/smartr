@@ -7,7 +7,9 @@ class Comment < ActiveRecord::Base
   
   #Validations
   validates :body, :presence => true, :length => {:minimum => 25, :maximum => 280}
-  
+  searchable do
+    text :body
+  end
 end
 # == Schema Information
 #

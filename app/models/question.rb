@@ -62,60 +62,42 @@ class Question < ActiveRecord::Base
       false
     end
   end
-end
+  
+  #Sunspot Configuration
+  searchable do
+    text :name, :boost => 2.0
+    text :body
+    integer :user_id, :references => User
 
-#Sunspot Configuration
-Sunspot.setup(Question) do
-  text :name, :boost => 2.0
-  text :body
-  integer :user_id, :references => User
-  
-  text :answers do 
-    answers.map {|answer| 
-      answer.body_plain
-    }
+    text :answers do 
+      answers.map {|answer| 
+        answer.body_plain
+      }
+    end
+
+    text :comments do
+      comments.map {|comment|
+        comment.body
+      }
+    end
+
+    text :user do
+      user.login
+    end
+
+    text(:tags) do
+      tags.map{|tag| tag.name}
+    end
+
+    time :updated_at
+    time :created_at
+
+    integer :id
+
+    string :sort_title do
+      name.downcase.sub(/^(an?|the) /, '')
+    end
   end
   
-  text :comments do
-    comments.map {|comment|
-      comment.body
-    }
-  end
-  
-  text :user do
-    user.login
-  end
-  
-  text(:tags) do
-    tags.map{|tag| tag.name}
-  end
-  
-  time :updated_at
-  time :created_at
-  
-  integer :id
-  
-  string :sort_title do
-    name.downcase.sub(/^(an?|the) /, '')
-  end
 end
-# == Schema Information
-#
-# Table name: questions
-#
-#  id            :integer(4)      not null, primary key
-#  name          :string(255)
-#  body          :text
-#  user_id       :integer(4)
-#  views         :integer(4)      default(0)
-#  created_at    :datetime
-#  updated_at    :datetime
-#  answers_count :integer(4)      default(0)
-#  votes_count   :integer(4)      default(0)
-#  body_plain    :text
-#  body_html     :text
-#  permalink     :string(255)
-#  answer_id     :integer(4)
-#  send_email    :boolean(1)      default(FALSE)
-#
 
