@@ -32,31 +32,20 @@ class Admin::CommentsController < ApplicationController
   end
 
   # PUT /admin_comments/1
-  # PUT /admin_comments/1.xml
   def update
     @comment = Admin::Comment.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        flash[:notice] = 'Admin::Comment was successfully updated.'
-        format.html { redirect_to(@comment) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
+   if @comment.update_attributes(params[:comment])
+      flash[:notice] = 'Admin::Comment was successfully updated.'
+      redirect_to(@comment)
+    else
+      render :action => "edit"
     end
   end
 
   # DELETE /admin_comments/1
-  # DELETE /admin_comments/1.xml
   def destroy
     @comment = Admin::Comment.find(params[:id])
     @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(admin_comments_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(admin_comments_url)
   end
 end

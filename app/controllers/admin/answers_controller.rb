@@ -26,7 +26,7 @@ class Admin::AnswersController < ApplicationController
     @answer = Admin::Answer.new(params[:answer])
     if @answer.save
       flash[:notice] = 'Admin::Answer was successfully created.'
-      fredirect_to(@answer)
+      redirect_to(@answer)
     else
       render :action => "new"
     end
