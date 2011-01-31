@@ -6,8 +6,6 @@
     <%= f.hidden_field :question_id, :value => question.id %>
     <%= f.text_area :body, :id => 'wmd-input' , :class => "markdown" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>
-    
     <%= f.submit 'Save', :class => "save" %>
-   
   <% end -%>
 </div>
