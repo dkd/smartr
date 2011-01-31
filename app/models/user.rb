@@ -74,11 +74,10 @@ class User < ActiveRecord::Base
     end
   end
   
-end
-
-#Sunspot Solr Configuration
-Sunspot.setup(User) do
-  text :login
+  searchable do
+    text :login
+  end
+  
 end
 
 # == Schema Information

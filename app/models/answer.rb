@@ -17,15 +17,16 @@ class Answer < ActiveRecord::Base
   #Validations
   validates_with AnswerCountValidator
   validates :body, :presence => true, :length => {:minimum => 75, :maximum => 2048}
-end
-
-#Sunspot Solr Configuration
-Sunspot.setup(Answer) do
-  text :body_plain
-  integer :question_id
-  integer :user_id
-  time :created_at
-  time :updated_at
+  
+  #Sunspot Solr Configuration
+  searchable do
+    text :body
+    integer :question_id
+    integer :user_id
+    time :created_at
+    time :updated_at
+  end
+  
 end
 
 # == Schema Information

@@ -11,8 +11,7 @@ gem "escape"
 gem 'will_paginate', '3.0.pre'
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
-gem "sunspot_rails", ">= 1.2.rc3"
-#gem 'fastthread'
+gem "sunspot_rails", "1.2.rc4"
 gem 'mongrel', :platform => :mri_18
 gem "devise"
 gem "unicorn", :platform => :mri_19
