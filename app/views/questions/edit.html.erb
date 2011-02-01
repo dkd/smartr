@@ -1,6 +1,6 @@
 <h2>Editing question</h2>
 <div class="question-edit">
-  <%= form_for(@question, :url => question_path(:id => @question.id, :friendly_id => @question.friendly_id)) do |f| %>
+  <%= form_for(@question, :url => question_path(:id => @question.id), :method => "put") do |f| %>
       <%= render :partial => '/questions/form', :locals => {:f => f}%>
   <% end %>
 </div>
