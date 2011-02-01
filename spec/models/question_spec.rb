@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Question do
-  let(:question) {Factory.create :question}
+  let(:question) {Factory.create :question2}
   
   it { should have_many :votes }
   it { should have_many :comments }
@@ -21,7 +21,7 @@ describe Question do
       end
     
       it "requires uniqueness" do
-        duplicate_question =  Factory.build(:question, :name => question.name)
+        duplicate_question =  Factory.build(:question, :name => question.name,  :user => Factory(:user2))
         duplicate_question.should_not be_valid
       end
     
@@ -35,7 +35,7 @@ describe Question do
       end
     
       it "requires uniqueness" do
-        duplicate_question =  Factory.build(:question, :body => question.body)
+        duplicate_question =  Factory.build(:question2, :body => question.body, :user => Factory(:user2))
         duplicate_question.should_not be_valid
       end
     
