@@ -12,6 +12,13 @@ describe QuestionsController do
     end
   end
   
+  describe "GET XML feed" do
+    it "has a 200 status code" do
+      get :index, :format => :xml
+      response.code.should eq("200")
+    end
+  end
+  
   describe "GET show" do
     it "should should show the question" do
       get :show, :id => question.id, :friendly_id => question.friendly_id

@@ -5,8 +5,8 @@ xml.rss :version => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
     xml.title "Questions - #{request.host}"
     
     xml.description "Recent questions"
-    xml.link formatted_questions_url(:xml)
-    xml.copyright Settings.copyright
+    xml.link questions_url(:xml)
+    xml.copyright Smartr::Settings[:copyright]
     
     for question in @questions
       xml.item do
