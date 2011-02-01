@@ -73,11 +73,11 @@ class User < ActiveRecord::Base
       login.downcase!
     end
   end
-  
+
   searchable do
     text :login
   end
-  
+
 end
 
 # == Schema Information
