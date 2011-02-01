@@ -1,13 +1,14 @@
 <div class="header-with-tabs">
-  <h2>solr Search</h2>
+  <h2>Solr Search</h2>
+  <span style="float: right"><%= page_entries_info @questions.results %></span>
   <div class="tabs">
-    <%=question_submenu(:latest) %>
+    <%#=question_submenu(:latest) %>
   </div>
   <br class="clear" />
 </div>
 <br class="clear" />
 <% if @questions.results.present? %>
-  <% @questions.results.each do |question| %>
+  <% @questions.each_hit_with_result do |hit, question| %>
   <%= render :partial => "/questions/question", :locals => {:question => question} %>
   <% end -%>
   <br class="clear" />

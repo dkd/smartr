@@ -1,9 +1,7 @@
-
-
 class TagsController < ApplicationController
   respond_to :html, :js, :json
-  def index
 
+  def index
     if params[:tags].present? && params[:tags][:q].present?
       @q = params[:tags][:q]
       @tags = Question.tag_counts_on(:tags).order("count(*) desc").where("tags.name like ?","%#{params[:tags][:q]}%").paginate :page => params[:page], :per_page => 60

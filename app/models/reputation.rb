@@ -27,50 +27,41 @@ class Reputation
   end
   
   def self.toggle_acceptance(question, answer)
-    
-    if question.answer == answer
+    if question.accepted_answer == answer
       id = reject_answer(question, answer)
     else
       id = accept_answer(question, answer)
     end
-    
-    return id
   end
   
   def self.accept_answer(question, answer)
    
-    if question.answer.present?
+    if question.accepted_answer.present?
       reject_answer(question, answer)
     end
     
     if(question.user != answer.user)
       reputation = answer.user.reputation <= 0?  0 : answer.user.reputation
       new_reputation = reputation + Settings.reputation.answer.accept
-      answer.user.attributes = {:reputation => new_reputation}
-      answer.user.save(false)
+      answer.user.reputation = new_reputation
+      answer.user.save(:validate => false)
     end
     
     question.attributes = {:answer_id => answer.id}
-    question.save(false)
-    return answer.id
-  
+    question.save(:validate => false)
   end
   
   def self.reject_answer(question, answer)
-    
     points = Settings.reputation.answer.accept
-    new_reputation = (question.answer.user.reputation - points) <= 0? 0 : (question.answer.user.reputation - points)
+    new_reputation = (question.accepted_answer.user.reputation - points) <= 0? 0 : (question.accepted_answer.user.reputation - points)
     
-    if question.user != question.answer.user
-      question.answer.user.attributes = {:reputation => new_reputation}
-      question.answer.user.save(false)
+    if question.user != question.accepted_answer.user
+      question.accepted_answer.user.reputation = new_reputation
+      question.accepted_answer.user.save(false)
     end
     
     question.attributes = {:answer_id => 0}
-    question.save(false)
-    
-    return 0
-  
+    question.save(:validate => false)
   end
   
 end

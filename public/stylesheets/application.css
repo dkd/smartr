@@ -823,19 +823,29 @@ h2.answer-header {
 #user {
   background: url(../images/bg_dark.jpg);
   padding: 10px;
+  padding-right: 0px;
+  margin-right: 0px;
   color: #738500;
   text-align: right;
-  font-size: 12px; }
-  #user a:link, #user a:visited {
-    text-decoration: none;
-    color: #a1ba00;
-    font-size: 12px;
-    text-decoration: underline; }
-  #user a:hover {
-    color: white;
-    text-decoration: underline; }
-    #user a:hover img {
-      border: 0px; }
+  font-size: 12px;
+  border-bottom: 1px solid #787878;
+  box-shadow: 0px 4px 5px #888888; }
+  #user .inner {
+    width: 1200px;
+    margin: 0 auto; }
+    #user .inner a:link, #user .inner a:visited {
+      text-decoration: none;
+      color: #a1ba00;
+      font-size: 12px;
+      text-decoration: underline; }
+    #user .inner a:hover {
+      color: white;
+      text-decoration: underline; }
+    #user .inner img {
+      border: 0px;
+      padding: 1px;
+      background: white;
+      vertical-align: middle; }
 
 .user-search input {
   -moz-border-radius: 3px;

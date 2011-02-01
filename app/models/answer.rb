@@ -18,6 +18,15 @@ class Answer < ActiveRecord::Base
   validates_with AnswerCountValidator
   validates :body, :presence => true, :length => {:minimum => 75, :maximum => 2048}
   
+  def accepted?
+    if self.question.accepted_answer == self
+      true
+    else
+      false
+    end
+  end
+  
+  
   #Sunspot Solr Configuration
   searchable do
     text :body

@@ -1,6 +1,5 @@
-<% if current_user && answer.question.user == current_user %>
-  
-    <% if answer == answer.question.answer %>
+<% if user_signed_in? && answer.question.user == current_user %>
+    <% if answer == answer.question.accepted_answer %>
       <%= link_to(raw("&nbsp;"), 
                   update_for_toggle_acceptance_question_path(answer.question, 
                                                              :answer_id => answer.id, 
@@ -19,6 +18,6 @@
     <% end -%>
   
   <% else %>
-    <%= image_tag("checked.png") if answer.question.answer == answer %>
+    <%= image_tag("checked.png") if answer.question.accepted_answer == answer %>
   <% end -%>
  

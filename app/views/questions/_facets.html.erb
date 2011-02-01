@@ -2,8 +2,8 @@
 <h3>By user</h3>
 <ul class="facets">
 <% results.facet(:user_id).rows.each do |result| %>
-  <li><%=link_to result.instance.login, questions_path(:search => params[:search], :user_id => result.value) %>
-    <%=link_to "-remove", questions_path(:search => params[:search]), :class => "remove" if params[:user_id]%>
+  <li><%=link_to "#{result.instance.login} (#{result.count})", search_questions_path(:question => {:user_id => result.value}.reverse_merge(params[:question])) %>
+    <%=link_to "-remove", search_questions_path(:question => {:searchstring => params[:question][:searchstring]}), :class => "remove" if params[:question][:user_id].present?%>
   </li>
 <% end -%>
 </ul>
