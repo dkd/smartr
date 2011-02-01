@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
         @questions = Question.latest.includes([:user,:votes]).paginate :page => params[:page], :per_page => 15
       end
       respond_to do |format|
-        format.xml {render "questions/rss/index"}
+        format.xml
         format.html
       end
   end
