@@ -82,43 +82,30 @@ class QuestionsController < ApplicationController
   #  @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
   #end
   
-  
   def search
-    page = params[:page] 
-    logger.info "Searchstring"
     @searchstring = params[:question][:searchstring]
-    facet_user_id = params[:user_id] unless params[:user_id].nil?
-    @questions = Sunspot.search(Question) do 
-      fulltext @searchstring do
-        highlight :name, :body, :max_snippets => 3, :fragment_size => 200
+    @questions = Sunspot.search(Question) do
+      logger.info @searchstring
+      fulltext params[:question][:searchstring] do
+        highlight :name
         tie 0.1
       end
-      with :user_id, facet_user_id unless facet_user_id.nil?
+      with :user_id, params[:question][:user_id] unless params[:question][:user_id].blank?
       facet :user_id, :minimum_count => 2
-      paginate(:page =>  page, :per_page => 15)
+      paginate(:page =>  params[:page], :per_page => 15)
     end
-    
-    render :index_for_search
   end
   
   def update_for_toggle_acceptance
     @question = Question.find(params[:id])
-    
+    logger.info request.inspect
     respond_to do |format|
       format.js{
-        render :update do |page|
-          
           @answer = Answer.find(params[:answer_id])
-          
-          if @answer
-            answer_id = Reputation.toggle_acceptance(@question, @answer)
-            page << "$('.answer-item').removeClass('accepted')"
-            page << "$('.answer-item .status a,.answer-item .votes div').removeClass('accepted');"
-            page << "$('#answer_#{answer_id} .status a, #answer_#{answer_id}').addClass('accepted');" unless answer_id == 0
-            page << "$('#answer_#{answer_id}, #answer_#{answer_id} .body,#answer_#{answer_id} .comments').effect('highlight',{backgroundColor: '#FFF4BF'}, 5000)"
+          if @answer.present?
+            Reputation.toggle_acceptance(@question, @answer)
+            @answer.reload
           end
-          
-        end
       }
     end
   end

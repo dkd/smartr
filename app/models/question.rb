@@ -1,12 +1,12 @@
 class Question < ActiveRecord::Base
   
   #Associations
-  belongs_to :user
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :votes, :as => :voteable, :dependent => :destroy
-  has_many :answers, :dependent => :destroy
-  has_many :favourites, :dependent => :destroy
-  belongs_to :answer
+  belongs_to  :user
+  has_many    :comments, :as => :commentable, :dependent => :destroy
+  has_many    :votes, :as => :voteable, :dependent => :destroy
+  has_many    :answers, :dependent => :destroy
+  has_many    :favourites, :dependent => :destroy
+  belongs_to  :accepted_answer, :class_name => "Answer", :foreign_key => :answer_id
 
   #Validations
   validates_presence_of [:body, :name]
@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   has_friendly_id :permalink
   
   #Named Scopes
-  default_scope :include => :user
+  default_scope :include => [:user, :tags]
   scope :latest, :order => "created_at DESC"
   scope :hot, :order => "answers_count DESC,updated_at DESC"
   scope :active, :order => "updated_at DESC, answers_count DESC"
@@ -62,12 +62,10 @@ class Question < ActiveRecord::Base
       false
     end
   end
-  
-  begin
-  
+ 
   #Sunspot Configuration
   searchable do
-    text :name, :boost => 2.0
+    text :name, :boost => 5.0
     text :body
     integer :user_id, :references => User
 
@@ -100,9 +98,6 @@ class Question < ActiveRecord::Base
       name.downcase.sub(/^(an?|the) /, '')
     end
   end
-  
-  rescue
-   
-  end
+
 end
 

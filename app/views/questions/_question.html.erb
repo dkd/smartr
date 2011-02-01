@@ -10,7 +10,7 @@
       <span class="desc"><%= "View".correctize_plural(question.views) %></span>
     </div>
 
-    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.answer_id.nil? %>">
+    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.accepted_answer.nil? %>">
       <%=question.answers_count %>
       <span class="desc"><%= "Answer".correctize_plural(question.answers_count) %></span>
     </div>
