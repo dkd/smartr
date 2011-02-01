@@ -17,9 +17,9 @@ class Vote < ActiveRecord::Base
   #validates :direction, :presence => true, :format => /u|down/
   
   def self.has_voted?(user, record)
-    v = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
-    if(v)
-      v.value
+    vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
+    if(vote)
+      vote.value
     else
       false
     end
