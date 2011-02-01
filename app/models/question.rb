@@ -63,6 +63,8 @@ class Question < ActiveRecord::Base
     end
   end
   
+  begin
+  
   #Sunspot Configuration
   searchable do
     text :name, :boost => 2.0
@@ -99,5 +101,8 @@ class Question < ActiveRecord::Base
     end
   end
   
+  rescue
+   
+  end
 end
 
