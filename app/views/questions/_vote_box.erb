@@ -1,5 +1,5 @@
 <%
-if current_user
+if user_signed_in?
   vote_value = Vote.has_voted?(current_user, question)
   upclass = vote_value==1? "up" : "up-neutral"
   downclass = vote_value==-1? "down" : "down-neutral"
