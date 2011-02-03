@@ -42,7 +42,7 @@ class Reputation
     
     if(question.user != answer.user)
       reputation = answer.user.reputation <= 0?  0 : answer.user.reputation
-      new_reputation = reputation + Settings.reputation.answer.accept
+      new_reputation = reputation + Smartr::Settings[:reputation][:answer][:accept]
       answer.user.reputation = new_reputation
       answer.user.save(:validate => false)
     end
@@ -52,7 +52,7 @@ class Reputation
   end
   
   def self.reject_answer(question, answer)
-    points = Settings.reputation.answer.accept
+    points = Smartr::Settings[:reputation][:answer][:accept]
     new_reputation = (question.accepted_answer.user.reputation - points) <= 0? 0 : (question.accepted_answer.user.reputation - points)
     
     if question.user != question.accepted_answer.user

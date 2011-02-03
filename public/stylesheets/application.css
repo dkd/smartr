@@ -14,16 +14,16 @@ body {
       color: #383838;
       width: 900px;
       float: left;
-      font-weight: normal;
       margin-bottom: 0px;
-      font: 48px "BebasNeueRegular", helvetica, arial, sans-serif;
-      text-shadow: 1px 1px 1px white; }
+      font: 48px helvetica, arial, sans-serif; }
       body #topwrapper #header h1 a:link,
       body #topwrapper #header h1 a:visited {
         color: #383838;
-        text-decoration: none; }
+        text-decoration: none;
+        font-weight: bold; }
       body #topwrapper #header h1 a:hover {
-        text-decoration: underline; }
+        text-decoration: underline;
+        color: #738500; }
     body #topwrapper #header form {
       float: right; }
       body #topwrapper #header form input {
@@ -829,7 +829,8 @@ h2.answer-header {
   text-align: right;
   font-size: 12px;
   border-bottom: 1px solid #787878;
-  box-shadow: 0px 4px 5px #888888; }
+  box-shadow: 0px 4px 5px #888888;
+  -webkit-box-shadow: 0px 4px 5px #888888; }
   #user .inner {
     width: 1200px;
     margin: 0 auto; }
