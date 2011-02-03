@@ -8,7 +8,13 @@ Smartr::Application.routes.draw do
     resources :questions
     resources :users
   end
-
+  
+  match "/questions/page/:page", :to => "questions#index"
+  match "/questions/hot(/:page)", :to => "questions#hot"
+  match "/questions/active(/:page)", :to => "questions#active"
+  match "/questions/unanswered(/:page)", :to => "questions#unanswered"
+  match "/questions/tagged/:tag(/:page)", :to => "question#index"
+  
   resources :questions, :except => [:show, :edit] do
     
     member do 
@@ -34,11 +40,7 @@ Smartr::Application.routes.draw do
   
   match "/admin", :to => "admin#index"
   
-  match "/questions/hot(/:page)", :to => "questions#hot"
-  match "/questions/active(/:page)", :to => "questions#active"
-  match "/questions/unanswered(/:page)", :to => "questions#unanswered"
-  match "/questions/page/:page", :to => "questions#index"
-  match "/questions/tagged/:tag(/:page)", :to => "question#index"
+
   
   resources :comments
   resources :tags, :only => [:index]

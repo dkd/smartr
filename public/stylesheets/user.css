@@ -12,7 +12,7 @@ Syntax error: Undefined variable: "$color_2".
 8:   font-size: 12px
 9:   border-bottom: 1px solid #787878
 10:   box-shadow: 0px 4px 5px #888
-11:   .inner
+11:   -webkit-box-shadow: 0px 4px 5px #888
 
 Backtrace:
 /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/user.sass:6
@@ -102,4 +102,4 @@ script/rails:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_2\".\A         on line 6 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/user.sass\A \A 1: #user\A 2:   background: url(../images/bg_dark.jpg)\A 3:   padding: 10px\A 4:   padding-right: 0px\A 5:   margin-right: 0px\A 6:   color = !color_2\A 7:   text-align: right\A 8:   font-size: 12px\A 9:   border-bottom: 1px solid #787878\A 10:   box-shadow: 0px 4px 5px #888\A 11:   .inner"; }
+  content: "Syntax error: Undefined variable: \"$color_2\".\A         on line 6 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/user.sass\A \A 1: #user\A 2:   background: url(../images/bg_dark.jpg)\A 3:   padding: 10px\A 4:   padding-right: 0px\A 5:   margin-right: 0px\A 6:   color = !color_2\A 7:   text-align: right\A 8:   font-size: 12px\A 9:   border-bottom: 1px solid #787878\A 10:   box-shadow: 0px 4px 5px #888\A 11:   -webkit-box-shadow: 0px 4px 5px #888"; }
