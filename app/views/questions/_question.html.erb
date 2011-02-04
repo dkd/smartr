@@ -1,7 +1,7 @@
 <div class="question-list">
   <div class="stats">
     <div class="votes">
-      <%=question.votes.length == 0? 0 : question.votes.inject(0) {|result, vote| result += vote.value } %>
+      <%=question.votes.length == 0? 0 : count_votes(question) %>
       <span class="desc"><%= "Vote".correctize_plural(question.votes.length) %></span>
     </div>
 
