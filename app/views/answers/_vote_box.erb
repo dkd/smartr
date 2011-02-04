@@ -23,7 +23,7 @@ end
               :class => upclass -%>
 <% end %>
 
-<div class="value" id="<%="answer_#{answer.id}"%>"><%=answer.votes.length==0? 0 : Vote.count_on("Answer", answer.id)%></div>
+<div class="value" id="<%="answer_#{answer.id}"%>"><%=count_votes answer%></div>
 <% if vote_value == -1 %>
   <%= link_to raw("&nbsp;"), "javascript:;", :class => downclass %>
 <% else %>
