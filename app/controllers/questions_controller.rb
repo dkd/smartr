@@ -5,9 +5,9 @@ class QuestionsController < ApplicationController
   respond_to :html, :js, :xml
   def index
       if (params[:tag].present?)
-        @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
+        @questions = Question.latest.list.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
       else
-        @questions = Question.latest.includes([:user,:votes]).paginate :page => params[:page], :per_page => 15
+        @questions = Question.latest.list.paginate :page => params[:page], :per_page => 15
       end
       respond_to do |format|
         format.xml
@@ -64,17 +64,17 @@ class QuestionsController < ApplicationController
   end
 
   def hot
-    @questions = Question.hot.paginate :page => params[:page], :per_page => 15
+    @questions = Question.hot.list.paginate :page => params[:page], :per_page => 15
     render :index_for_hot
   end
   
   def active
-    @questions = Question.active.paginate :page => params[:page], :per_page => 15
+    @questions = Question.active.list.paginate :page => params[:page], :per_page => 15
     render :index_for_active
   end
   
   def unanswered
-    @questions = Question.unanswered.paginate :page => params[:page], :per_page => 15
+    @questions = Question.unanswered.list.paginate :page => params[:page], :per_page => 15
     render :index_for_unanswered
   end
   
