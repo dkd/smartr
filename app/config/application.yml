@@ -3,6 +3,9 @@ defaults: &defaults
   
   copyright: d.k.d Internet Service GmbH
   
+  syntax_highlighting:
+    languages: "ruby, php, html-xml, typoscript"
+  
   questions:
     restrict_access: true
   

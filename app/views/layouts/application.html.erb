@@ -22,7 +22,7 @@
     <div class="inner">
       <%= render 'users/menu/registration_items' %> |
       <%= render 'users/menu/login_items' %>
-    </div>   
+    </div>
   </div>
   <div id="topwrapper">
     <div id="header">
@@ -56,7 +56,7 @@
     </div>
     <br class="clear" />
     <div id="footer">
-      <%= pluralize User.online.count, "user"%> currently logged in. <%= session[:return_to]%>
+      <%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%>
     </div>
   </div>
   <%= javascript_include_tag "jquery",
@@ -66,14 +66,13 @@
                              "wmd/showdown",
                              "jquery-autocomplete/jquery.autocomplete.pack",
                              "highlight/highlight",
-                             "highlight/languages/html-xml",
-                             "highlight/languages/php",
-                             "highlight/languages/ruby",
-                             "highlight/languages/typoscript",
                              "jquery.textarea",
                              "jquery.toggle-value",
                              "jquery.gritter.min",
-                             "application",  :cache => true %>
+                             "application", :cache => true %>
+    <% Smartr::Settings[:syntax_highlighting][:languages].split(/,/).each do |lang| %>
+      <%= javascript_include_tag "highlight/languages/#{lang.strip}", :cache => true %>
+    <% end -%> 
   </body>
 </html>
-<% title "smartR - be a smartass!" %>
+<% title "SmartR - be a smartass!" %>
