@@ -15,7 +15,6 @@ Smartr::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.perform_deliveries = true
-  #config.gem "rails-footnotes"
   
   config.active_support.deprecation = :log
   

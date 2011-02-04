@@ -13,11 +13,9 @@
       </div>
     <br class="clear">
   <% end -%>
-<% cache "questions_sidebar_tags_view" do %>
   <h3>Recent tags</h3>
   <div class="tags">
   <% ActsAsTaggableOn::Tag.limit(20).joins(:taggings).group("tags.id").where("taggings.taggable_type='Question'").order('created_at desc').each do |tag| -%>
     <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name))%>
   <% end -%>
   </div>
-<% end -%>
