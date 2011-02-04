@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   has_friendly_id :permalink
   
   #Named Scopes
-  default_scope :include => [:user, :tags]
+  default_scope :include => [:user], :joins => [:taggings]
   scope :latest, :order => "created_at DESC"
   scope :hot, :order => "answers_count DESC,updated_at DESC"
   scope :active, :order => "updated_at DESC, answers_count DESC"

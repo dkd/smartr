@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 gem 'rails', ">=3.0.3"
-gem "mysql", :platforms => :mri_18
-gem "ruby-mysql", :platforms => :mri_19
 gem "haml"
 gem "settingslogic"
 gem "friendly_id"
@@ -12,7 +10,7 @@ gem 'will_paginate', '3.0.pre'
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
 gem "sunspot_rails", "1.2.rc4"
-gem 'mongrel', :platform => :mri_18
+
 gem "devise"
 gem "unicorn", :platform => :mri_19
 gem "stringex"
@@ -20,9 +18,21 @@ gem "annotate"
 
 # bundler requires these gems in development
 
-group :development do
-  # gem "rails-footnotes"
+platforms :jruby do
+  gem 'activerecord-jdbcmysql-adapter'
 end
+
+platforms :mri_18 do
+  gem 'mongrel'
+  gem 'mysql'
+end
+
+platforms :mri_19 do
+  gem "ruby-mysql"
+  gem 'unicorn'
+end  
+
+
 
 group :test do
   # bundler requires these gems while running tests
