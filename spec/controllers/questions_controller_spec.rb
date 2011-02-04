@@ -23,7 +23,7 @@ describe QuestionsController do
     it "should should show the question" do
       get :show, :id => question.id, :friendly_id => question.friendly_id
       response.code.should eq("200")
-      assigns(:question).should eq(question)
+      assigns(:question).should eq(Question.find(question.id))
     end
   end 
   
