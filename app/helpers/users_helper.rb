@@ -1,4 +1,5 @@
 module UsersHelper
+  include ActsAsTaggableOn::TagsHelper
   
   def user_submenu(active)
        menu = []
@@ -12,7 +13,8 @@ module UsersHelper
       menu = []
       menu << {:name => "Detail", :id => "detail", :link => user_path(:id => @user.id)}
       menu << {:name => "Reputation History", :id => "reputation", :link => reputation_user_path(:id => @user.id)}
-      menu << {:name => "Edit account", :id => "edit", :link => edit_user_path(:id => @user.id)}  if current_user && current_user == @user
+      menu << {:name => "Edit account", :id => "edit", :link => edit_user_path(:id => @user.id)}  if user_signed_in? && current_user == @user
+      menu << {:name => "Tag Cloud", :id => "tag_cloud", :link => tag_cloud_user_path(:user_id => @user.id)}
       menu << {:name => "Favourites", :id => "favourites", :link => user_favourites_path(:user_id => @user.id)}
       build_menu(menu, active)
   end

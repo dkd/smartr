@@ -25,6 +25,9 @@
     </div>
   </div>
   <div id="topwrapper">
+    
+  </div>
+  <div id="wrapper">
     <div id="header">
       <h1><%= link_to("SmartR", root_url) %></h1>
           <br class="clear" />
@@ -32,14 +35,13 @@
         <br class="clear" />
         <%= yield :main_menu %>
         <%= form_for(:question, :url => search_questions_path, :html => {:method => :get}) do |f| %>
-            <%= f.text_field(:searchstring, :value => @searchstring, :title => "Search ...", :class => "toggle") %>
+            <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "toggle") %>
             <%#= f.submit "Search" %>
           <% end -%>
       </div>
     </div>
-  </div>
-  <div id="wrapper">
     <div id="content">
+      <div id="ajax-search" style="display: none"></div>
       <div class="flash">
         <% flash.each do |type, message| -%>
           <div class="message <%= type %>">
@@ -51,8 +53,9 @@
     </div>
     <div id="sidebar">
       <%= yield :facets %>
-      <br class="clear" />
+      
       <%= yield :sidebar%>
+      <br class="clear" />
     </div>
     <br class="clear" />
     <div id="footer">
@@ -71,7 +74,7 @@
                              "jquery.gritter.min",
                              "application", :cache => true %>
     <% Smartr::Settings[:syntax_highlighting][:languages].split(/,/).each do |lang| %>
-      <%= javascript_include_tag "highlight/languages/#{lang.strip}", :cache => true %>
+      <%= javascript_include_tag "highlight/languages/#{lang.strip}" %>
     <% end -%> 
   </body>
 </html>

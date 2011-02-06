@@ -35,6 +35,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def tag_cloud
+    @user = User.find(params[:id])
+    @tags = @user.questions.tag_counts_on(:tags)
+  end
+  
   def reputation
     @user = User.find(params[:id])
   end
@@ -45,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = @current_user
+    @user = current_user
   end
   
   def update

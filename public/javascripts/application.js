@@ -104,16 +104,7 @@ $(document).ready(function(){
         }
       }
   });
-  $("input[type=text], input[type=password]").focus(function()
-    {
-      $(this).addClass("active");
-    }
-  );
-  $("input[type=text], input[type=password]").blur(function()
-    {
-      $(this).removeClass("active");
-    }
-  );
+
   
   /* Tag auto-completion */
  
@@ -131,6 +122,21 @@ $(document).ready(function(){
       },
       multiple: true,
       autoFill: true
+  });
+  
+  /* Tag auto-completion */
+ 
+  $("#question_searchstring").keyup(function() {
+    $.ajax({ url: "/questions/search.js", 
+             data: "question[searchstring]="+$("#question_searchstring").val(),
+             dataType: "html",
+             success:function(data) {
+                      $("#ajax-search").html(data).show();
+                     }
+    });
+    if ($(this).val() == "") {
+      $("#ajax-search").hide().html("");
+    }
   });
   
   $(".status a").hover(

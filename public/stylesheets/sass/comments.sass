@@ -40,17 +40,13 @@
       font-size: 12px
       
   .comment-item
-    padding-top: 5px
-    padding-bottom: 5px
-    padding-left: 0px
-    padding-right: 0px
-    border-top: 1px dotted
-    border-color = !color_5
+    border: 1px solid rgba(255,231,189,1)
     display: block
     font-size: 12px
     +border_radius
     margin-right: 0px
-    
+    margin-bottom: 5px
+    background: rgba(255,231,189,.3)
     p
       margin: 0px
     
@@ -73,7 +69,11 @@
       margin: 0px
       padding: 0px
       +border_radius
-      
+    
+    .inner
+      border: 1px solid rgba(255,255,255,.8)
+      padding: 5px
+    
   a:link, a:visited
     float: right
     margin: 10px
