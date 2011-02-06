@@ -1,16 +1,18 @@
 <% if comments.present? %>
-  <h3>Comments</h3>
+  <h3><%=t("comments.label.other") %></h3>
   <% for comment in comments do %>
     <div class="comment-item" id="comment-<%=comment.id%>">
-      <div class="user-info">
-        <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=link_to comment.user.login, user_path(comment.user)%>
+      <div class="inner">
+        <div class="user-info">
+          <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=link_to comment.user.login, user_path(comment.user)%>
+        </div>
+        <br class="clear" />
+        <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
+        <%= link_to("Edit ",
+                    :url => edit_comment_path(comment),
+                    :remote => true,
+                    :class => "comment-edit") unless current_user != comment.user %>
       </div>
-      <br class="clear" />
-      <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
-      <%= link_to("Edit ",
-                  :url => edit_comment_path(comment),
-                  :remote => true,
-                  :class => "comment-edit") unless current_user != comment.user %>
     </div>
   <% end -%>
 <% end -%>

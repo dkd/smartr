@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   #Plugins
   acts_as_taggable_on :interesting_tags
   acts_as_taggable_on :uninteresting_tags
+  acts_as_tagger
   has_friendly_id :login
   
   #Named Scopes

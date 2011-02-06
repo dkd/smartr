@@ -1,0 +1,5 @@
+de:
+  devise:
+    sessions:
+      user:
+        signed_in: Erfolgreich angemeldet.

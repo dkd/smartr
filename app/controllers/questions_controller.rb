@@ -94,6 +94,10 @@ class QuestionsController < ApplicationController
       facet :user_id, :minimum_count => 2
       paginate(:page =>  params[:page], :per_page => 15)
     end
+    respond_with(@questions) do |format|
+      format.html
+      format.js
+    end
   end
   
   def update_for_toggle_acceptance

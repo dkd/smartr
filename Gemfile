@@ -28,7 +28,7 @@ platforms :mri_18 do
 end
 
 platforms :mri_19 do
-  gem "ruby-mysql"
+  gem "mysql"
   gem 'unicorn'
 end  
 

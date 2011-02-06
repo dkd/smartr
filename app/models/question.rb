@@ -20,11 +20,11 @@ class Question < ActiveRecord::Base
   has_friendly_id :permalink
   
   #Named Scopes
-  scope :list, :joins => [:taggings, :user]
-  scope :latest, :order => "created_at DESC"
-  scope :hot, :order => "answers_count DESC,updated_at DESC"
-  scope :active, :order => "updated_at DESC, answers_count DESC"
-  scope :unanswered, :order => "created_at ASC", :conditions => ["answers_count = ?", "0"]
+  scope :list, :joins => [:taggings, :user], :group => "questions.id", :include => [:user, :votes, :taggings]
+  scope :latest, :order => "questions.created_at DESC"
+  scope :hot, :order => "answers_count DESC, questions.updated_at DESC"
+  scope :active, :order => "questions.updated_at DESC, answers_count DESC"
+  scope :unanswered, :order => "questions.created_at ASC", :conditions => ["answers_count = ?", "0"]
   
   # Callbacks
   before_validation :set_permalink

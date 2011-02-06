@@ -30,3 +30,6 @@ en:
       header: Latest questions
   
   remove_tag: Remove Tag
+  
+  sidebar:
+    ask_a_question: Ask a question!

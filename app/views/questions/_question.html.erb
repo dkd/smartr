@@ -21,7 +21,7 @@
     <span class="user">
       <%= link_to image_tag(question.user.avatar.url(:tiny)), user_path(question.user) %>
       <%= link_to question.user.login, user_path(question.user) %> &middot; <%=question.user.reputation%>
-      &middot; <%= distance_of_time_in_words_to_now question.created_at %> ago
+      &middot; <%= distance_of_time_in_words_to_now question.created_at %>
     </span>
     <% end -%>
     <% if question.tag_list.present? %>
