@@ -423,6 +423,7 @@ h2.show-question {
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 1em;
+    color: white;
     -webkit-animation-name: redPulse;
     -webkit-animation-duration: 5s;
     -webkit-animation-iteration-count: infinite;
@@ -433,7 +434,7 @@ h2.show-question {
     -webkit-border-radius: 3px;
     border-radius: 3px; }
   #sidebar a.new_question:hover {
-    border: 1px solid black;
+    order: 1px solid black;
     text-shadow: 1px 1px 1px #444444; }
   #sidebar .facets {
     font-size: 12px; }
@@ -455,11 +456,19 @@ h2.show-question {
       margin-right: 5px; }
   #sidebar a:link, #sidebar a:visited {
     text-decoration: none;
-    background: #313900;
-    padding: 5px;
-    font-size: 16px;
-    color: white;
-    width: 100%; }
+    font-size: 0.9em;
+    color: #313900;
+    font-weight: bold; }
+  #sidebar a:hover {
+    color: black; }
+  #sidebar ul {
+    padding-left: 0px;
+    margin-left: 0px; }
+    #sidebar ul li {
+      margin-left: 0px;
+      list-style-type: none;
+      padding-left: 0px;
+      margin-bottom: 5px; }
   #sidebar h3 {
     margin-top: 20px;
     margin-bottom: 5px; }
@@ -475,7 +484,8 @@ h2.show-question {
     font-size: 12px;
     color: white;
     float: left;
-    margin: 2px; }
+    margin: 2px;
+    font-weight: normal; }
   #sidebar .tags a:hover {
     background: black; }
 
@@ -960,15 +970,19 @@ form.user div.text_field {
   .comments h3 {
     margin-bottom: 0.1em;
     color: #383838; }
-  .comments .comment-new {
+  .comments .comment-edit {
+    margin-top: 10px; }
+    .comments .comment-edit a.cancel {
+      margin-top: 4px; }
+  .comments .comment-new, .comments .comment-edit {
     float: right;
     margin-right: 10px; }
-    .comments .comment-new textarea {
+    .comments .comment-new textarea, .comments .comment-edit textarea {
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px;
       padding: 2px; }
-    .comments .comment-new a.cancel:link, .comments .comment-new a.cancel:visited {
+    .comments .comment-new a.cancel:link, .comments .comment-new a.cancel:visited, .comments .comment-edit a.cancel:link, .comments .comment-edit a.cancel:visited {
       color: white;
       background: #853e00;
       padding: 5px;
@@ -978,10 +992,11 @@ form.user div.text_field {
       float: left;
       margin-left: 0px;
       padding-top: 4px;
-      padding-bottom: 3px; }
-    .comments .comment-new a.cancel:hover, .comments .comment-new input.save:hover {
+      padding-bottom: 3px;
+      text-decoration: none; }
+    .comments .comment-new a.cancel:hover, .comments .comment-new input.save:hover, .comments .comment-edit a.cancel:hover, .comments .comment-edit input.save:hover {
       background: black; }
-    .comments .comment-new input.save {
+    .comments .comment-new input.save, .comments .comment-edit input.save {
       background: #738500;
       color: white;
       padding: 5px;

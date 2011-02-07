@@ -44,7 +44,7 @@ describe CommentsController do
     context "with Javascript enabled" do
       
       describe "wants to post a comment" do
-        it "should load the new comment form" do
+        it "loads the new comment form" do
           xhr :get, :new, :commentable_type => "question", :commentable_id => question.id
           response.should be_success
           response.should render_template("new")
@@ -52,7 +52,7 @@ describe CommentsController do
       end
       
       describe "posts a valid new comment" do
-        it "should display the comment" do
+        it "displays the comment" do
           xhr :post, :create, :comment => {:commentable_type => "Question", :commentable_id => question.id, :body => "I am a valid comment! I can be saved!"}
           response.should be_success 
           response.should render_template("create")
@@ -60,10 +60,29 @@ describe CommentsController do
       end
       
       describe "posts an invalid new comment" do
-        it "should display the new comment form" do
+        it "displays the new comment form" do
           xhr :post, :create, :comment => {:commentable_type => "Question", :commentable_id => question.id, :body => nil}
           response.should be_success
           response.should render_template("invalid_comment")
+        end
+      end
+      
+      describe "edits his comment" do
+          let(:comment) {comment = question.comments.new
+          comment.user = question.user
+          comment.body = Faker::Lorem.sentence(5)
+          comment.save
+          comment
+          }
+        it "loads the edit form" do
+          xhr :get, :edit, :id => comment.id
+          response.should be_success
+          response.should render_template("edit")
+        end
+        it "saves the comment" do
+          xhr :put, :update, :id => comment.id, :comment => {:body => Faker::Lorem.sentence(6)}
+          response.should be_success
+          response.should render_template("update")
         end
       end
       

@@ -2,43 +2,7 @@ require 'active_record'
 require 'sunspot'
 
 namespace :smartr do
-  
-  namespace :sunspot do
-    
-    desc "Start Server"
-    task :start => :environment do
-      exec "sunspot-solr start -p 8982 -d solr/data/#{Rails.env} -s solr --pid-dir=tmp/pids -l FINE --log-file=log/sunspot-solr-#{Rails.env}.log"
-    end
-    
-    desc "Stop Server"
-    task :stop => :environment do
-      exec "sunspot-solr stop -p 8982 -d solr/data/#{Rails.env} -s solr --pid-dir=tmp/pids -l FINE --log-file=log/sunspot-solr-#{Rails.env}.log"
-    end
-
-    namespace :reindex do
-
-      desc "Reindex all models"
-      task :all => :environment do
-        %w(question answer user).each do |model|
-          
-          model.classify.constantize.all.each do |record|
-            Sunspot.index(record)
-            Sunspot.commit
-          end
-          
-        end
-      end
-    
-      desc "Reindex just the user model"
-      task :user => :environment do
-        User.all.each do |record|
-          Sunspot.index(record)
-          Sunspot.commit
-        end
-      end
-  end
-  end
-  
+ 
   namespace :tags do
      task :reformat => :environment do
        Tag.all.each do |tag|
