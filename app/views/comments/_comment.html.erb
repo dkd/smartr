@@ -1,0 +1,13 @@
+<div class="comment-item" id="comment-<%=comment.id%>">
+  <div class="inner">
+    <div class="user-info">
+      <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=link_to comment.user.login, user_path(comment.user)%>
+    </div>
+    <br class="clear" />
+    <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
+    <%= link_to(t("edit"),
+                edit_comment_path(comment),
+                :remote => true,
+                :class => "comment-edit") if user_signed_in? && current_user == comment.user %>
+  </div>
+</div>

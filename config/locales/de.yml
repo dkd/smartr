@@ -190,7 +190,9 @@ de:
         format: "%{attribute}%{message}"
 
   searchstring_default: Hier nach Fragen suchen ...
-  
+  cancel: abbrechen
+  save: speichern
+  edit: bearbeiten
   main_menu:
     questions: Fragen
     tags: Tags
@@ -202,6 +204,7 @@ de:
       other: Antworten
   
   comments:
+    new: Kommentar schreiben
     label:
       one: Kommentar
       other: Kommentare
