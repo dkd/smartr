@@ -12,6 +12,9 @@ defaults: &defaults
   user:
     restrict_access: true
   
+  mailer:
+    from: do-not-reply@smartr.localhost
+  
   reputation:
     answer:
       up: 10
