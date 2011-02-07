@@ -10,7 +10,7 @@ gem 'will_paginate', '3.0.pre'
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
 gem "sunspot_rails", "1.2.rc4"
-
+gem "mysql2"
 gem "devise"
 gem "unicorn", :platform => :mri_19
 gem "stringex"
@@ -24,11 +24,9 @@ end
 
 platforms :mri_18 do
   gem 'mongrel'
-  gem 'mysql'
 end
 
 platforms :mri_19 do
-  gem "mysql"
   gem 'unicorn'
 end  
 

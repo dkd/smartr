@@ -130,7 +130,7 @@ GEM
       daemons (>= 1.0.3)
       fastthread (>= 1.0.1)
       gem_plugin (>= 0.2.3)
-    mysql (2.8.1)
+    mysql2 (0.2.6)
     nokogiri (1.4.4)
     nokogiri (1.4.4-java)
       weakling (>= 0.0.3)
@@ -247,7 +247,7 @@ DEPENDENCIES
   haml
   metric_fu
   mongrel
-  mysql
+  mysql2
   paperclip
   rails (>= 3.0.3)
   rspec-rails (>= 2.4.0)
