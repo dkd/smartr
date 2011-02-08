@@ -1,7 +1,28 @@
+<%
+if user_signed_in?
+  vote_value = Vote.has_voted?(current_user, comment)
+  upclass = vote_value==1? "up" : "up-neutral"
+  downclass = vote_value==-1? "down" : "down-neutral"
+else
+  upclass = "up-neutral"
+  downclass = "down-neutral"
+end
+%>
+
 <div class="comment-item" id="comment-<%=comment.id%>">
   <div class="inner">
-    <div class="user-info">
-      <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> ago by <%=link_to comment.user.login, user_path(comment.user)%>
+    <div class="user-info"><span id="<%="votes-comment-#{comment.id}"%>"><%=comment.votes.count%></span> votes &middot; 
+      <%= link_to raw("&uarr;"), 
+                       votes_path(
+                       :model => "comment",
+                       :direction => "up",
+                       :dom_id => "votes-comment-#{comment.id}",
+                       :vote_box_id => "vote-box-#{comment.id}",
+                       :id => comment.id),
+                       :method => "post",
+                       :remote => true,
+                       :class => upclass -%> &middot;
+      <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> &middot; <%=link_to comment.user.login, user_path(comment.user)%>
     </div>
     <br class="clear" />
     <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />

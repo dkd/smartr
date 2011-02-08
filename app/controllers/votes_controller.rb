@@ -15,11 +15,14 @@ class VotesController < ApplicationController
   private
   
   def check_params
-    render "shared/message" unless %w(answer question).include?(params[:model])
+    render "shared/message" unless %w(answer question comment).include?(params[:model])
   end
   
   def check_owner
     @record = "#{params[:model]}".classify.constantize.find(params[:id])
+    logger.info @record.user.login
+    logger.info current_user.login
+    
     if(@record.user == current_user) then
       render "shared/message"
       false

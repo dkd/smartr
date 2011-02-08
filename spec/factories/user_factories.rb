@@ -24,4 +24,12 @@ FactoryGirl.define do
     is_admin false
   end
   
+  factory :endless_user, :class => User do
+    sequence(:login) {|n| "HansDampf#{n}"}
+    sequence(:email) {|n| "hans#{n}@dampf-industries.com"}
+    password 'leanderTaler3000'
+    password_confirmation 'leanderTaler3000'
+    is_admin false
+  end
+  
 end

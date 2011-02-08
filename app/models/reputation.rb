@@ -6,9 +6,9 @@ class Reputation
     if (owner.reputation.nil?)
       owner.reputation = 0
     end
-    new_reputation = (owner.reputation + points)<0? 0:(owner.reputation + points)
-    owner.update_attributes :reputation => (new_reputation)
-    
+    new_reputation = (owner.reputation + points) < 0? 0:(owner.reputation + points)
+    owner.reputation = new_reputation
+    owner.save(:validate => false)
   end
   
   def self.penalize(record, user, owner)
@@ -16,7 +16,8 @@ class Reputation
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     reputation = user.reputation.nil?? 0 : user.reputation
     new_reputation = (reputation + penalty) <0 ? 0:(reputation + penalty)
-    user.update_attributes(:reputation => (new_reputation))
+    user.reputation = new_reputation
+    user.save(:validate => false)
   end
   
   def self.unpenalize(record, user, owner)

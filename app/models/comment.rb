@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   has_many :votes, :as => :voteable
   
   #Validations
-  validates :body, :presence => true, :length => {:minimum => 25, :maximum => 280}
+  validates :body, :presence => true, :length => {:minimum => 10, :maximum => 280}
   searchable do
     text :body
   end
