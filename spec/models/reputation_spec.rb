@@ -10,7 +10,7 @@ describe Reputation do
       it "increases the reputation" do
         question.user.reputation.should == 0
         vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
-        vote_count = vote.set("up")
+        vote.set("up")
         question.votes.count.should == 1
         question.user.reload
         question.user.reputation.should == Smartr::Settings[:reputation][:question][:up]
@@ -20,11 +20,26 @@ describe Reputation do
       it "does not result in a negative reputation" do
         question.user.reputation.should == 0
         vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
-        vote_count = vote.set("down")
+        vote.set("down")
         question.votes.count.should == 1
         question.user.reload
         question.user.reputation.should_not == Smartr::Settings[:reputation][:question][:down]
         question.user.reputation.should == 0
+      end
+      
+      it "puts a penalty on the voter's reputation" do
+        user = Factory(:endless_user, :reputation => 100)
+        vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
+        vote_count = vote.set("down")
+        user.reload
+        user.reputation.should == (100 + Smartr::Settings[:reputation][:question][:penalty])
+      end
+      it "puts a penalty on the voter's reputation but not less than zero" do
+        user = Factory(:endless_user, :reputation => 0)
+        vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
+        vote_count = vote.set("down")
+        user.reload
+        user.reputation.should == 0
       end
     end
     describe "5 upvotes" do
