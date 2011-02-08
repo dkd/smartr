@@ -34,11 +34,7 @@ class UsersController < ApplicationController
       render :action => :new
     end
   end
-  
-  def tag_cloud
-    @user = User.find(params[:id])
-    @tags = @user.questions.tag_counts_on(:tags)
-  end
+
   
   def reputation
     @user = User.find(params[:id])

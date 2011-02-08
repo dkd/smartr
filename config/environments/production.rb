@@ -3,7 +3,7 @@ Smartr::Application.configure do
   config.whiny_nils = false
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.action_controller.cache_store = [:file_store, "#{RAILS_ROOT}/tmp/cache"]
+  config.action_controller.cache_store = [:file_store, "#{Rails.root}/tmp/cache"]
   config.action_mailer.perform_deliveries = true
   config.active_support.deprecation = :log
   config.action_mailer.raise_delivery_errors = false

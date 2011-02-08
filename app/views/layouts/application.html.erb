@@ -53,7 +53,6 @@
     </div>
     <div id="sidebar">
       <%= yield :facets %>
-      
       <%= yield :sidebar%>
       <br class="clear" />
     </div>
@@ -62,6 +61,10 @@
       <%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%>
     </div>
   </div>
+  <%= javascript_include_tag "highlight/highlight" %>
+  <% Smartr::Settings[:syntax_highlighting][:languages].split(/,/).each do |lang| %>
+    <%= javascript_include_tag "highlight/languages/#{lang.strip}" %>
+  <% end -%>
   <%= javascript_include_tag "jquery",
                              "jquery-ui",
                              "rails",
@@ -73,9 +76,7 @@
                              "jquery.toggle-value",
                              "jquery.gritter.min",
                              "application", :cache => true %>
-    <% Smartr::Settings[:syntax_highlighting][:languages].split(/,/).each do |lang| %>
-      <%= javascript_include_tag "highlight/languages/#{lang.strip}" %>
-    <% end -%> 
+
   </body>
 </html>
 <% title "SmartR - be a smartass!" %>

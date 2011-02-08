@@ -207,7 +207,132 @@ jQuery.effects||(function(d){d.effects={version:"1.7.2",save:function(g,h){for(v
  */
 (function(a){a.effects.transfer=function(b){return this.queue(function(){var f=a(this),h=a(b.options.to),e=h.offset(),g={top:e.top,left:e.left,height:h.innerHeight(),width:h.innerWidth()},d=f.offset(),c=a('<div class="ui-effects-transfer"></div>').appendTo(document.body).addClass(b.options.className).css({top:d.top,left:d.left,height:f.innerHeight(),width:f.innerWidth(),position:"absolute"}).animate(g,b.duration,b.options.easing,function(){c.remove();(b.callback&&b.callback.apply(f[0],arguments));f.dequeue()})})}})(jQuery);;
 
-(function($){$.ajaxSettings.accepts._default="text/javascript, text/html, application/xml, text/xml, */*"})(jQuery);(function($){$.fn.reset=function(){return this.each(function(){if(typeof this.reset=="function"||(typeof this.reset=="object"&&!this.reset.nodeType)){this.reset()}})};$.fn.enable=function(){return this.each(function(){this.disabled=false})};$.fn.disable=function(){return this.each(function(){this.disabled=true})}})(jQuery);(function($){$.extend({fieldEvent:function(el,obs){var field=el[0]||el,e="change";if(field.type=="radio"||field.type=="checkbox"){e="click"}else{if(obs&&(field.type=="text"||field.type=="textarea"||field.type=="password")){e="keyup"}}return e}});$.fn.extend({delayedObserver:function(delay,callback){var el=$(this);if(typeof window.delayedObserverStack=="undefined"){window.delayedObserverStack=[]}if(typeof window.delayedObserverCallback=="undefined"){window.delayedObserverCallback=function(stackPos){var observed=window.delayedObserverStack[stackPos];if(observed.timer){clearTimeout(observed.timer)}observed.timer=setTimeout(function(){observed.timer=null;observed.callback(observed.obj,observed.obj.formVal())},observed.delay*1000);observed.oldVal=observed.obj.formVal()}}window.delayedObserverStack.push({obj:el,timer:null,delay:delay,oldVal:el.formVal(),callback:callback});var stackPos=window.delayedObserverStack.length-1;if(el[0].tagName=="FORM"){$(":input",el).each(function(){var field=$(this);field.bind($.fieldEvent(field,delay),function(){var observed=window.delayedObserverStack[stackPos];if(observed.obj.formVal()==observed.oldVal){return}else{window.delayedObserverCallback(stackPos)}})})}else{el.bind($.fieldEvent(el,delay),function(){var observed=window.delayedObserverStack[stackPos];if(observed.obj.formVal()==observed.oldVal){return}else{window.delayedObserverCallback(stackPos)}})}},formVal:function(){var el=this[0];if(el.tagName=="FORM"){return this.serialize()}if(el.type=="checkbox"||el.type=="radio"){return this.filter("input:checked").val()||""}else{return this.val()}}})})(jQuery);(function($){$.fn.extend({visualEffect:function(o,options){if(options){speed=options.duration*1000}else{speed=null}e=o.replace(/\_(.)/g,function(m,l){return l.toUpperCase()});return eval("$(this)."+e+"("+speed+")")},appear:function(speed,callback){return this.fadeIn(speed,callback)},blindDown:function(speed,callback){return this.show("blind",{direction:"vertical"},speed,callback)},blindUp:function(speed,callback){return this.hide("blind",{direction:"vertical"},speed,callback)},blindRight:function(speed,callback){return this.show("blind",{direction:"horizontal"},speed,callback)},blindLeft:function(speed,callback){this.hide("blind",{direction:"horizontal"},speed,callback);return this},dropOut:function(speed,callback){return this.hide("drop",{direction:"down"},speed,callback)},dropIn:function(speed,callback){return this.show("drop",{direction:"up"},speed,callback)},fade:function(speed,callback){return this.fadeOut(speed,callback)},fadeToggle:function(speed,callback){return this.animate({opacity:"toggle"},speed,callback)},fold:function(speed,callback){return this.hide("fold",{},speed,callback)},foldOut:function(speed,callback){return this.show("fold",{},speed,callback)},grow:function(speed,callback){return this.show("scale",{},speed,callback)},highlight:function(speed,callback){return this.show("highlight",{},speed,callback)},puff:function(speed,callback){return this.hide("puff",{},speed,callback)},pulsate:function(speed,callback){return this.show("pulsate",{},speed,callback)},shake:function(speed,callback){return this.show("shake",{},speed,callback)},shrink:function(speed,callback){return this.hide("scale",{},speed,callback)},squish:function(speed,callback){return this.hide("scale",{origin:["top","left"]},speed,callback)},slideUp:function(speed,callback){return this.hide("slide",{direction:"up"},speed,callback)},slideDown:function(speed,callback){return this.show("slide",{direction:"up"},speed,callback)},switchOff:function(speed,callback){return this.hide("clip",{},speed,callback)},switchOn:function(speed,callback){return this.show("clip",{},speed,callback)}})})(jQuery);
+jQuery(function ($) {
+    var csrf_token = $('meta[name=csrf-token]').attr('content'),
+        csrf_param = $('meta[name=csrf-param]').attr('content');
+
+    $.fn.extend({
+        /**
+         * Triggers a custom event on an element and returns the event result
+         * this is used to get around not being able to ensure callbacks are placed
+         * at the end of the chain.
+         *
+         * TODO: deprecate with jQuery 1.4.2 release, in favor of subscribing to our
+         *       own events and placing ourselves at the end of the chain.
+         */
+        triggerAndReturn: function (name, data) {
+            var event = new $.Event(name);
+            this.trigger(event, data);
+
+            return event.result !== false;
+        },
+
+        /**
+         * Handles execution of remote calls firing overridable events along the way
+         */
+        callRemote: function () {
+            var el      = this,
+                data    = el.is('form') ? el.serializeArray() : [],
+                method  = el.attr('method') || el.attr('data-method') || 'GET',
+                url     = el.attr('action') || el.attr('href');
+
+            if (url === undefined) {
+              throw "No URL specified for remote call (action or href must be present).";
+            } else {
+                if (el.triggerAndReturn('ajax:before')) {
+                    $.ajax({
+                        url: url,
+                        data: data,
+                        dataType: 'script',
+                        type: method.toUpperCase(),
+                        beforeSend: function (xhr) {
+                            el.trigger('ajax:loading', xhr);
+                        },
+                        success: function (data, status, xhr) {
+                            el.trigger('ajax:success', [data, status, xhr]);
+                        },
+                        complete: function (xhr) {
+                            el.trigger('ajax:complete', xhr);
+                        },
+                        error: function (xhr, status, error) {
+                            el.trigger('ajax:failure', [xhr, status, error]);
+                        }
+                    });
+                }
+
+                el.trigger('ajax:after');
+            }
+        }
+    });
+
+    /**
+     *  confirmation handler
+     */
+    $('a[data-confirm],input[data-confirm]').live('click', function () {
+        var el = $(this);
+        if (el.triggerAndReturn('confirm')) {
+            if (!confirm(el.attr('data-confirm'))) {
+                return false;
+            }
+        }
+    });
+
+
+    /**
+     * remote handlers
+     */
+    $('form[data-remote]').live('submit', function (e) {
+        $(this).callRemote();
+        e.preventDefault();
+    });
+
+    $('a[data-remote],input[data-remote]').live('click', function (e) {
+        $(this).callRemote();
+        e.preventDefault();
+    });
+
+    $('a[data-method]:not([data-remote])').live('click', function (e){
+        var link = $(this),
+            href = link.attr('href'),
+            method = link.attr('data-method'),
+            form = $('<form method="post" action="'+href+'">'),
+            metadata_input = '<input name="_method" value="'+method+'" type="hidden" />';
+
+        if (csrf_param != null && csrf_token != null) {
+          metadata_input += '<input name="'+csrf_param+'" value="'+csrf_token+'" type="hidden" />';
+        }
+
+        form.hide()
+            .append(metadata_input)
+            .appendTo('body');
+
+        e.preventDefault();
+        form.submit();
+    });
+
+    /**
+     * disable-with handlers
+     */
+    var disable_with_input_selector = 'input[data-disable-with]';
+    var disable_with_form_selector = 'form[data-remote]:has(' + disable_with_input_selector + ')';
+
+    $(disable_with_form_selector).live('ajax:before', function () {
+        $(this).find(disable_with_input_selector).each(function () {
+            var input = $(this);
+            input.data('enable-with', input.val())
+                 .attr('value', input.attr('data-disable-with'))
+                 .attr('disabled', 'disabled');
+        });
+    });
+
+    $(disable_with_form_selector).live('ajax:after', function () {
+        $(this).find(disable_with_input_selector).each(function () {
+            var input = $(this);
+            input.removeAttr('disabled')
+                 .val(input.data('enable-with'));
+        });
+    });
+});
 
 
 (function($){var counter=0;$.fn.wmd=function(_options){this.each(function(){var defaults={"preview":true};var options=$.extend({},_options||{},defaults);if(!options.button_bar){options.button_bar="wmd-button-bar-"+counter;$("<div/>").attr("class","wmd-button-bar").attr("id",options.button_bar).insertBefore(this);}
@@ -1778,6 +1903,19 @@ if (Attacklab.fileLoaded) {
 
 
 /*
+ * jQuery Autocomplete plugin 1.1
+ *
+ * Copyright (c) 2009 Jörn Zaefferer
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Revision: $Id: jquery.autocomplete.js 15 2009-08-22 10:30:27Z joern.zaefferer $
+ */
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}(';(3($){$.2e.1u({19:3(b,d){5 c=W b=="1B";d=$.1u({},$.M.1T,{Y:c?b:P,y:c?P:b,1J:c?$.M.1T.1J:10,X:d&&!d.1D?10:48},d);d.1y=d.1y||3(a){6 a};d.1v=d.1v||d.1R;6 A.I(3(){1M $.M(A,d)})},L:3(a){6 A.11("L",a)},1k:3(a){6 A.14("1k",[a])},2b:3(){6 A.14("2b")},28:3(a){6 A.14("28",[a])},24:3(){6 A.14("24")}});$.M=3(o,r){5 t={2Y:38,2S:40,2N:46,2I:9,2E:13,2B:27,2x:3I,2v:33,2p:34,2n:8};5 u=$(o).3r("19","3o").Q(r.2Q);5 p;5 m="";5 n=$.M.3c(r);5 s=0;5 k;5 h={1F:C};5 l=$.M.32(r,o,1Z,h);5 j;$.1Y.2X&&$(o.2U).11("45.19",3(){4(j){j=C;6 C}});u.11(($.1Y.2X?"43":"42")+".19",3(a){s=1;k=a.2M;3V(a.2M){O t.2Y:a.1d();4(l.N()){l.30()}w{12(0,D)}R;O t.2S:a.1d();4(l.N()){l.2D()}w{12(0,D)}R;O t.2v:a.1d();4(l.N()){l.2C()}w{12(0,D)}R;O t.2p:a.1d();4(l.N()){l.2A()}w{12(0,D)}R;O r.17&&$.1c(r.S)==","&&t.2x:O t.2I:O t.2E:4(1Z()){a.1d();j=D;6 C}R;O t.2B:l.Z();R;3J:1P(p);p=1O(12,r.1J);R}}).2t(3(){s++}).3E(3(){s=0;4(!h.1F){2r()}}).2q(3(){4(s++>1&&!l.N()){12(0,D)}}).11("1k",3(){5 c=(1r.7>1)?1r[1]:P;3 1N(q,a){5 b;4(a&&a.7){16(5 i=0;i<a.7;i++){4(a[i].L.J()==q.J()){b=a[i];R}}}4(W c=="3")c(b);w u.14("L",b&&[b.y,b.F])}$.I(15(u.K()),3(i,a){21(a,1N,1N)})}).11("2b",3(){n.1o()}).11("28",3(){$.1u(r,1r[1]);4("y"2h 1r[1])n.1e()}).11("24",3(){l.1p();u.1p();$(o.2U).1p(".19")});3 1Z(){5 e=l.2g();4(!e)6 C;5 v=e.L;m=v;4(r.17){5 b=15(u.K());4(b.7>1){5 f=r.S.7;5 c=$(o).18().1I;5 d,1H=0;$.I(b,3(i,a){1H+=a.7;4(c<=1H){d=i;6 C}1H+=f});b[d]=v;v=b.3f(r.S)}v+=r.S}u.K(v);1l();u.14("L",[e.y,e.F]);6 D}3 12(b,c){4(k==t.2N){l.Z();6}5 a=u.K();4(!c&&a==m)6;m=a;a=1m(a);4(a.7>=r.29){u.Q(r.26);4(!r.1s)a=a.J();21(a,3a,1l)}w{1q();l.Z()}};3 15(b){4(!b)6[""];4(!r.17)6[$.1c(b)];6 $.4h(b.23(r.S),3(a){6 $.1c(b).7?$.1c(a):P})}3 1m(a){4(!r.17)6 a;5 c=15(a);4(c.7==1)6 c[0];5 b=$(o).18().1I;4(b==a.7){c=15(a)}w{c=15(a.22(a.37(b),""))}6 c[c.7-1]}3 1G(q,a){4(r.1G&&(1m(u.K()).J()==q.J())&&k!=t.2n){u.K(u.K()+a.37(1m(m).7));$(o).18(m.7,m.7+a.7)}};3 2r(){1P(p);p=1O(1l,4g)};3 1l(){5 c=l.N();l.Z();1P(p);1q();4(r.36){u.1k(3(a){4(!a){4(r.17){5 b=15(u.K()).1n(0,-1);u.K(b.3f(r.S)+(b.7?r.S:""))}w{u.K("");u.14("L",P)}}})}};3 3a(q,a){4(a&&a.7&&s){1q();l.35(a,q);1G(q,a[0].F);l.20()}w{1l()}};3 21(f,d,g){4(!r.1s)f=f.J();5 e=n.31(f);4(e&&e.7){d(f,e)}w 4((W r.Y=="1B")&&(r.Y.7>0)){5 c={4f:+1M 4e()};$.I(r.2Z,3(a,b){c[a]=W b=="3"?b():b});$.4d({4c:"4b",4a:"19"+o.49,2V:r.2V,Y:r.Y,y:$.1u({q:1m(f),47:r.X},c),44:3(a){5 b=r.1A&&r.1A(a)||1A(a);n.1i(f,b);d(f,b)}})}w{l.2T();g(f)}};3 1A(c){5 d=[];5 b=c.23("\\n");16(5 i=0;i<b.7;i++){5 a=$.1c(b[i]);4(a){a=a.23("|");d[d.7]={y:a,F:a[0],L:r.1z&&r.1z(a,a[0])||a[0]}}}6 d};3 1q(){u.1h(r.26)}};$.M.1T={2Q:"41",2P:"3Z",26:"3Y",29:1,1J:3W,1s:C,1f:D,1w:C,1g:10,X:3U,36:C,2Z:{},1X:D,1R:3(a){6 a[0]},1v:P,1G:C,E:0,17:C,S:", ",1y:3(b,a){6 b.22(1M 3T("(?![^&;]+;)(?!<[^<>]*)("+a.22(/([\\^\\$\\(\\)\\[\\]\\{\\}\\*\\.\\+\\?\\|\\\\])/2K,"\\\\$1")+")(?![^<>]*>)(?![^&;]+;)","2K"),"<2J>$1</2J>")},1D:D,1E:3S};$.M.3c=3(g){5 h={};5 j=0;3 1f(s,a){4(!g.1s)s=s.J();5 i=s.2H(a);4(g.1w=="3R"){i=s.J().1k("\\\\b"+a.J())}4(i==-1)6 C;6 i==0||g.1w};3 1i(q,a){4(j>g.1g){1o()}4(!h[q]){j++}h[q]=a}3 1e(){4(!g.y)6 C;5 f={},2G=0;4(!g.Y)g.1g=1;f[""]=[];16(5 i=0,2F=g.y.7;i<2F;i++){5 c=g.y[i];c=(W c=="1B")?[c]:c;5 d=g.1v(c,i+1,g.y.7);4(d===C)1V;5 e=d.3Q(0).J();4(!f[e])f[e]=[];5 b={F:d,y:c,L:g.1z&&g.1z(c)||d};f[e].1U(b);4(2G++<g.X){f[""].1U(b)}};$.I(f,3(i,a){g.1g++;1i(i,a)})}1O(1e,25);3 1o(){h={};j=0}6{1o:1o,1i:1i,1e:1e,31:3(q){4(!g.1g||!j)6 P;4(!g.Y&&g.1w){5 a=[];16(5 k 2h h){4(k.7>0){5 c=h[k];$.I(c,3(i,x){4(1f(x.F,q)){a.1U(x)}})}}6 a}w 4(h[q]){6 h[q]}w 4(g.1f){16(5 i=q.7-1;i>=g.29;i--){5 c=h[q.3O(0,i)];4(c){5 a=[];$.I(c,3(i,x){4(1f(x.F,q)){a[a.7]=x}});6 a}}}6 P}}};$.M.32=3(e,g,f,k){5 h={H:"3N"};5 j,z=-1,y,1t="",1S=D,G,B;3 2y(){4(!1S)6;G=$("<3M/>").Z().Q(e.2P).T("3L","3K").1Q(1K.2w);B=$("<3H/>").1Q(G).3G(3(a){4(U(a).2u&&U(a).2u.3F()==\'2s\'){z=$("1L",B).1h(h.H).3D(U(a));$(U(a)).Q(h.H)}}).2q(3(a){$(U(a)).Q(h.H);f();g.2t();6 C}).3C(3(){k.1F=D}).3B(3(){k.1F=C});4(e.E>0)G.T("E",e.E);1S=C}3 U(a){5 b=a.U;3A(b&&b.3z!="2s")b=b.3y;4(!b)6[];6 b}3 V(b){j.1n(z,z+1).1h(h.H);2o(b);5 a=j.1n(z,z+1).Q(h.H);4(e.1D){5 c=0;j.1n(0,z).I(3(){c+=A.1a});4((c+a[0].1a-B.1b())>B[0].3x){B.1b(c+a[0].1a-B.3w())}w 4(c<B.1b()){B.1b(c)}}};3 2o(a){z+=a;4(z<0){z=j.1j()-1}w 4(z>=j.1j()){z=0}}3 2m(a){6 e.X&&e.X<a?e.X:a}3 2l(){B.2z();5 b=2m(y.7);16(5 i=0;i<b;i++){4(!y[i])1V;5 a=e.1R(y[i].y,i+1,b,y[i].F,1t);4(a===C)1V;5 c=$("<1L/>").3v(e.1y(a,1t)).Q(i%2==0?"3u":"3P").1Q(B)[0];$.y(c,"2k",y[i])}j=B.3t("1L");4(e.1X){j.1n(0,1).Q(h.H);z=0}4($.2e.2W)B.2W()}6{35:3(d,q){2y();y=d;1t=q;2l()},2D:3(){V(1)},30:3(){V(-1)},2C:3(){4(z!=0&&z-8<0){V(-z)}w{V(-8)}},2A:3(){4(z!=j.1j()-1&&z+8>j.1j()){V(j.1j()-1-z)}w{V(8)}},Z:3(){G&&G.Z();j&&j.1h(h.H);z=-1},N:3(){6 G&&G.3s(":N")},3q:3(){6 A.N()&&(j.2j("."+h.H)[0]||e.1X&&j[0])},20:3(){5 a=$(g).3p();G.T({E:W e.E=="1B"||e.E>0?e.E:$(g).E(),2i:a.2i+g.1a,1W:a.1W}).20();4(e.1D){B.1b(0);B.T({2L:e.1E,3n:\'3X\'});4($.1Y.3m&&W 1K.2w.3l.2L==="1x"){5 c=0;j.I(3(){c+=A.1a});5 b=c>e.1E;B.T(\'3k\',b?e.1E:c);4(!b){j.E(B.E()-2R(j.T("2O-1W"))-2R(j.T("2O-3j")))}}}},2g:3(){5 a=j&&j.2j("."+h.H).1h(h.H);6 a&&a.7&&$.y(a[0],"2k")},2T:3(){B&&B.2z()},1p:3(){G&&G.3i()}}};$.2e.18=3(b,f){4(b!==1x){6 A.I(3(){4(A.2d){5 a=A.2d();4(f===1x||b==f){a.4n("2c",b);a.3h()}w{a.4m(D);a.4l("2c",b);a.4k("2c",f);a.3h()}}w 4(A.3g){A.3g(b,f)}w 4(A.1C){A.1C=b;A.3e=f}})}5 c=A[0];4(c.2d){5 e=1K.18.4j(),3d=c.F,2a="<->",2f=e.3b.7;e.3b=2a;5 d=c.F.2H(2a);c.F=3d;A.18(d,d+2f);6{1I:d,39:d+2f}}w 4(c.1C!==1x){6{1I:c.1C,39:c.3e}}}})(4i);',62,272,'|||function|if|var|return|length|||||||||||||||||||||||||else||data|active|this|list|false|true|width|value|element|ACTIVE|each|toLowerCase|val|result|Autocompleter|visible|case|null|addClass|break|multipleSeparator|css|target|moveSelect|typeof|max|url|hide||bind|onChange||trigger|trimWords|for|multiple|selection|autocomplete|offsetHeight|scrollTop|trim|preventDefault|populate|matchSubset|cacheLength|removeClass|add|size|search|hideResultsNow|lastWord|slice|flush|unbind|stopLoading|arguments|matchCase|term|extend|formatMatch|matchContains|undefined|highlight|formatResult|parse|string|selectionStart|scroll|scrollHeight|mouseDownOnSelect|autoFill|progress|start|delay|document|li|new|findValueCallback|setTimeout|clearTimeout|appendTo|formatItem|needsInit|defaults|push|continue|left|selectFirst|browser|selectCurrent|show|request|replace|split|unautocomplete||loadingClass||setOptions|minChars|teststring|flushCache|character|createTextRange|fn|textLength|selected|in|top|filter|ac_data|fillList|limitNumberOfItems|BACKSPACE|movePosition|PAGEDOWN|click|hideResults|LI|focus|nodeName|PAGEUP|body|COMMA|init|empty|pageDown|ESC|pageUp|next|RETURN|ol|nullData|indexOf|TAB|strong|gi|maxHeight|keyCode|DEL|padding|resultsClass|inputClass|parseInt|DOWN|emptyList|form|dataType|bgiframe|opera|UP|extraParams|prev|load|Select|||display|mustMatch|substring||end|receiveData|text|Cache|orig|selectionEnd|join|setSelectionRange|select|remove|right|height|style|msie|overflow|off|offset|current|attr|is|find|ac_even|html|innerHeight|clientHeight|parentNode|tagName|while|mouseup|mousedown|index|blur|toUpperCase|mouseover|ul|188|default|absolute|position|div|ac_over|substr|ac_odd|charAt|word|180|RegExp|100|switch|400|auto|ac_loading|ac_results||ac_input|keydown|keypress|success|submit||limit|150|name|port|abort|mode|ajax|Date|timestamp|200|map|jQuery|createRange|moveEnd|moveStart|collapse|move'.split('|'),0,{}))
+
+/*
 Syntax highlighting with language autodetection.
 http://softwaremaniacs.org/soft/highlight/
 */
@@ -2350,434 +2488,6 @@ var initHighlightingOnLoad = hljs.initHighlightingOnLoad;
 
 
 /*
-Language: HTML, XML
-*/
-
-hljs.XML_COMMENT = {
-  className: 'comment',
-  begin: '<!--', end: '-->'
-};
-hljs.XML_ATTR = {
-  className: 'attribute',
-  begin: '\\s[a-zA-Z\\:-]+=', end: '^',
-  contains: ['value']
-};
-hljs.XML_VALUE_QUOT = {
-  className: 'value',
-  begin: '"', end: '"'
-};
-hljs.XML_VALUE_APOS = {
-  className: 'value',
-  begin: '\'', end: '\''
-};
-
-
-hljs.LANGUAGES.xml = {
-  defaultMode: {
-    contains: ['pi', 'comment', 'cdata', 'tag']
-  },
-  case_insensitive: true,
-  modes: [
-    {
-      className: 'pi',
-      begin: '<\\?', end: '\\?>',
-      relevance: 10
-    },
-    hljs.XML_COMMENT,
-    {
-      className: 'cdata',
-      begin: '<\\!\\[CDATA\\[', end: '\\]\\]>'
-    },
-    {
-      className: 'tag',
-      begin: '</?', end: '>',
-      contains: ['title', 'tag_internal'],
-      relevance: 1.5
-    },
-    {
-      className: 'title',
-      begin: '[A-Za-z:_][A-Za-z0-9\\._:-]+', end: '^',
-      relevance: 0
-    },
-    {
-      className: 'tag_internal',
-      begin: '^', endsWithParent: true, noMarkup: true,
-      contains: ['attribute'],
-      relevance: 0,
-      illegal: '[\\+\\.]'
-    },
-    hljs.XML_ATTR,
-    hljs.XML_VALUE_QUOT,
-    hljs.XML_VALUE_APOS
-  ]
-};
-
-hljs.HTML_TAGS = {'code': 1, 'kbd': 1, 'font': 1, 'noscript': 1, 'style': 1, 'img': 1, 'title': 1, 'menu': 1, 'tt': 1, 'tr': 1, 'param': 1, 'li': 1, 'tfoot': 1, 'th': 1, 'input': 1, 'td': 1, 'dl': 1, 'blockquote': 1, 'fieldset': 1, 'big': 1, 'dd': 1, 'abbr': 1, 'optgroup': 1, 'dt': 1, 'button': 1, 'isindex': 1, 'p': 1, 'small': 1, 'div': 1, 'dir': 1, 'em': 1, 'frame': 1, 'meta': 1, 'sub': 1, 'bdo': 1, 'label': 1, 'acronym': 1, 'sup': 1, 'body': 1, 'xml': 1, 'basefont': 1, 'base': 1, 'br': 1, 'address': 1, 'strong': 1, 'legend': 1, 'ol': 1, 'script': 1, 'caption': 1, 's': 1, 'col': 1, 'h2': 1, 'h3': 1, 'h1': 1, 'h6': 1, 'h4': 1, 'h5': 1, 'table': 1, 'select': 1, 'noframes': 1, 'span': 1, 'area': 1, 'dfn': 1, 'strike': 1, 'cite': 1, 'thead': 1, 'head': 1, 'option': 1, 'form': 1, 'hr': 1, 'var': 1, 'link': 1, 'b': 1, 'colgroup': 1, 'ul': 1, 'applet': 1, 'del': 1, 'iframe': 1, 'pre': 1, 'frameset': 1, 'ins': 1, 'tbody': 1, 'html': 1, 'samp': 1, 'map': 1, 'object': 1, 'a': 1, 'xmlns': 1, 'center': 1, 'textarea': 1, 'i': 1, 'q': 1, 'u': 1};
-hljs.HTML_DOCTYPE = {
-  className: 'doctype',
-  begin: '<!DOCTYPE', end: '>',
-  relevance: 10
-};
-hljs.HTML_ATTR = {
-  className: 'attribute',
-  begin: '\\s[a-zA-Z\\:-]+=', end: '^',
-  contains: ['value']
-};
-hljs.HTML_SHORT_ATTR = {
-  className: 'attribute',
-  begin: ' [a-zA-Z]+', end: '^'
-};
-hljs.HTML_VALUE = {
-  className: 'value',
-  begin: '[a-zA-Z0-9]+', end: '^'
-};
-
-hljs.LANGUAGES.html = {
-  defaultMode: {
-    contains: ['tag', 'comment', 'doctype', 'vbscript']
-  },
-  case_insensitive: true,
-  modes: [
-    hljs.XML_COMMENT,
-    hljs.HTML_DOCTYPE,
-    {
-      className: 'tag',
-      lexems: [hljs.IDENT_RE],
-      keywords: hljs.HTML_TAGS,
-      begin: '<style', end: '>',
-      contains: ['attribute'],
-      illegal: '[\\+\\.]',
-      starts: 'css'
-    },
-    {
-      className: 'tag',
-      lexems: [hljs.IDENT_RE],
-      keywords: hljs.HTML_TAGS,
-      begin: '<script', end: '>',
-      contains: ['attribute'],
-      illegal: '[\\+\\.]',
-      starts: 'javascript'
-    },
-    {
-      className: 'tag',
-      lexems: [hljs.IDENT_RE],
-      keywords: hljs.HTML_TAGS,
-      begin: '<[A-Za-z/]', end: '>',
-      contains: ['attribute'],
-      illegal: '[\\+\\.]'
-    },
-    {
-      className: 'css',
-      end: '</style>', returnEnd: true,
-      subLanguage: 'css'
-    },
-    {
-      className: 'javascript',
-      end: '</script>', returnEnd: true,
-      subLanguage: 'javascript'
-    },
-    hljs.HTML_ATTR,
-    hljs.HTML_SHORT_ATTR,
-    hljs.XML_VALUE_QUOT,
-    hljs.XML_VALUE_APOS,
-    hljs.HTML_VALUE,
-    {
-      className: 'vbscript',
-      begin: '<%', end: '%>',
-      subLanguage: 'vbscript'
-    }
-  ]
-};
-
-
-
-/*
-Language: PHP
-Author: Victor Karamzin <Victor.Karamzin@enterra-inc.com>
-*/
-
-hljs.LANGUAGES.php = {
-  defaultMode: {
-    lexems: [hljs.IDENT_RE],
-    contains: ['comment', 'number', 'string', 'variable', 'preprocessor'],
-    keywords: {'TEXT': 1, 'and': 1, 'include_once': 1, 'list': 1, 'abstract': 1, 'global': 1, 'private': 1, 'echo': 1, 'interface': 1, 'as': 1, 'static': 1, 'endswitch': 1, 'array': 1, 'null': 1, 'if': 1, 'endwhile': 1, 'or': 1, 'const': 1, 'for': 1, 'endforeach': 1, 'self': 1, 'var': 1, 'while': 1, 'isset': 1, 'public': 1, 'protected': 1, 'exit': 1, 'foreach': 1, 'throw': 1, 'elseif': 1, 'extends': 1, 'include': 1, '__FILE__': 1, 'empty': 1, 'require_once': 1, 'function': 1, 'do': 1, 'xor': 1, 'return': 1, 'implements': 1, 'parent': 1, 'clone': 1, 'use': 1, '__CLASS__': 1, '__LINE__': 1, 'else': 1, 'break': 1, 'print': 1, 'eval': 1, 'new': 1, 'catch': 1, '__METHOD__': 1, 'class': 1, 'case': 1, 'exception': 1, 'php_user_filter': 1, 'default': 1, 'die': 1, 'require': 1, '__FUNCTION__': 1, 'enddeclare': 1, 'final': 1, 'try': 1, 'this': 1, 'switch': 1, 'continue': 1, 'endfor': 1, 'endif': 1, 'declare': 1, 'unset': 1}
-  },
-  case_insensitive: true,
-  modes: [
-    hljs.C_LINE_COMMENT_MODE,
-    hljs.HASH_COMMENT_MODE,
-    {
-      className: 'comment',
-      begin: '/\\*', end: '\\*/',
-      contains: ['phpdoc']
-    },
-    {
-      className: 'phpdoc',
-      begin: '\\s@[A-Za-z]+', end: '^',
-      relevance: 10
-    },
-    hljs.C_NUMBER_MODE,
-    {
-      className: 'string',
-      begin: '\'', end: '\'',
-      contains: ['escape'],
-      relevance: 0
-    },
-    {
-      className: 'string',
-      begin: '"', end: '"',
-      contains: ['escape'],
-      relevance: 0
-    },
-    hljs.BACKSLASH_ESCAPE,
-    {
-      className: 'variable',
-      begin: '\\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*', end: '^'
-    },
-    {
-      className: 'preprocessor',
-      begin: '<\\?php', end: '^',
-      relevance: 10
-    },
-    {
-      className: 'preprocessor',
-      begin: '\\?>', end: '^'
-    }
-  ]
-};
-
-
-/*
-Language: Ruby
-Author: Anton Kovalyov <anton@kovalyov.net>
-Contributors: Peter Leonov <gojpeg@yandex.ru>, Vasily Polovnyov <vast@whiteants.net>
-*/
-
-hljs.LANGUAGES.ruby = function(){
-  var RUBY_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?';
-  var RUBY_DEFAULT_CONTAINS = ['comment', 'string', 'char', 'class', 'function', 'module_name', 'symbol', 'number', 'variable', 'regexp_container']
-  var RUBY_KEYWORDS = {
-    'keyword': {'and': 1, 'false': 1, 'then': 1, 'defined': 1, 'module': 1, 'in': 1, 'return': 1, 'redo': 1, 'if': 1, 'BEGIN': 1, 'retry': 1, 'end': 1, 'for': 1, 'true': 1, 'self': 1, 'when': 1, 'next': 1, 'until': 1, 'do': 1, 'begin': 1, 'unless': 1, 'END': 1, 'rescue': 1, 'nil': 1, 'else': 1, 'break': 1, 'undef': 1, 'not': 1, 'super': 1, 'class': 1, 'case': 1, 'require': 1, 'yield': 1, 'alias': 1, 'while': 1, 'ensure': 1, 'elsif': 1, 'or': 1, 'def': 1},
-    'keymethods': {'__id__': 1, '__send__': 1, 'abort': 1, 'abs': 1, 'all?': 1, 'allocate': 1, 'ancestors': 1, 'any?': 1, 'arity': 1, 'assoc': 1, 'at': 1, 'at_exit': 1, 'autoload': 1, 'autoload?': 1, 'between?': 1, 'binding': 1, 'binmode': 1, 'block_given?': 1, 'call': 1, 'callcc': 1, 'caller': 1, 'capitalize': 1, 'capitalize!': 1, 'casecmp': 1, 'catch': 1, 'ceil': 1, 'center': 1, 'chomp': 1, 'chomp!': 1, 'chop': 1, 'chop!': 1, 'chr': 1, 'class': 1, 'class_eval': 1, 'class_variable_defined?': 1, 'class_variables': 1, 'clear': 1, 'clone': 1, 'close': 1, 'close_read': 1, 'close_write': 1, 'closed?': 1, 'coerce': 1, 'collect': 1, 'collect!': 1, 'compact': 1, 'compact!': 1, 'concat': 1, 'const_defined?': 1, 'const_get': 1, 'const_missing': 1, 'const_set': 1, 'constants': 1, 'count': 1, 'crypt': 1, 'default': 1, 'default_proc': 1, 'delete': 1, 'delete!': 1, 'delete_at': 1, 'delete_if': 1, 'detect': 1, 'display': 1, 'div': 1, 'divmod': 1, 'downcase': 1, 'downcase!': 1, 'downto': 1, 'dump': 1, 'dup': 1, 'each': 1, 'each_byte': 1, 'each_index': 1, 'each_key': 1, 'each_line': 1, 'each_pair': 1, 'each_value': 1, 'each_with_index': 1, 'empty?': 1, 'entries': 1, 'eof': 1, 'eof?': 1, 'eql?': 1, 'equal?': 1, 'eval': 1, 'exec': 1, 'exit': 1, 'exit!': 1, 'extend': 1, 'fail': 1, 'fcntl': 1, 'fetch': 1, 'fileno': 1, 'fill': 1, 'find': 1, 'find_all': 1, 'first': 1, 'flatten': 1, 'flatten!': 1, 'floor': 1, 'flush': 1, 'for_fd': 1, 'foreach': 1, 'fork': 1, 'format': 1, 'freeze': 1, 'frozen?': 1, 'fsync': 1, 'getc': 1, 'gets': 1, 'global_variables': 1, 'grep': 1, 'gsub': 1, 'gsub!': 1, 'has_key?': 1, 'has_value?': 1, 'hash': 1, 'hex': 1, 'id': 1, 'include?': 1, 'included_modules': 1, 'index': 1, 'indexes': 1, 'indices': 1, 'induced_from': 1, 'inject': 1, 'insert': 1, 'inspect': 1, 'instance_eval': 1, 'instance_method': 1, 'instance_methods': 1, 'instance_of?': 1, 'instance_variable_defined?': 1, 'instance_variable_get': 1, 'instance_variable_set': 1, 'instance_variables': 1, 'integer?': 1, 'intern': 1, 'invert': 1, 'ioctl': 1, 'is_a?': 1, 'isatty': 1, 'iterator?': 1, 'join': 1, 'key?': 1, 'keys': 1, 'kind_of?': 1, 'lambda': 1, 'last': 1, 'length': 1, 'lineno': 1, 'ljust': 1, 'load': 1, 'local_variables': 1, 'loop': 1, 'lstrip': 1, 'lstrip!': 1, 'map': 1, 'map!': 1, 'match': 1, 'max': 1, 'member?': 1, 'merge': 1, 'merge!': 1, 'method': 1, 'method_defined?': 1, 'method_missing': 1, 'methods': 1, 'min': 1, 'module_eval': 1, 'modulo': 1, 'name': 1, 'nesting': 1, 'new': 1, 'next': 1, 'next!': 1, 'nil?': 1, 'nitems': 1, 'nonzero?': 1, 'object_id': 1, 'oct': 1, 'open': 1, 'pack': 1, 'partition': 1, 'pid': 1, 'pipe': 1, 'pop': 1, 'popen': 1, 'pos': 1, 'prec': 1, 'prec_f': 1, 'prec_i': 1, 'print': 1, 'printf': 1, 'private_class_method': 1, 'private_instance_methods': 1, 'private_method_defined?': 1, 'private_methods': 1, 'proc': 1, 'protected_instance_methods': 1, 'protected_method_defined?': 1, 'protected_methods': 1, 'public_class_method': 1, 'public_instance_methods': 1, 'public_method_defined?': 1, 'public_methods': 1, 'push': 1, 'putc': 1, 'puts': 1, 'quo': 1, 'raise': 1, 'rand': 1, 'rassoc': 1, 'read': 1, 'read_nonblock': 1, 'readchar': 1, 'readline': 1, 'readlines': 1, 'readpartial': 1, 'rehash': 1, 'reject': 1, 'reject!': 1, 'remainder': 1, 'reopen': 1, 'replace': 1, 'require': 1, 'respond_to?': 1, 'reverse': 1, 'reverse!': 1, 'reverse_each': 1, 'rewind': 1, 'rindex': 1, 'rjust': 1, 'round': 1, 'rstrip': 1, 'rstrip!': 1, 'scan': 1, 'seek': 1, 'select': 1, 'send': 1, 'set_trace_func': 1, 'shift': 1, 'singleton_method_added': 1, 'singleton_methods': 1, 'size': 1, 'sleep': 1, 'slice': 1, 'slice!': 1, 'sort': 1, 'sort!': 1, 'sort_by': 1, 'split': 1, 'sprintf': 1, 'squeeze': 1, 'squeeze!': 1, 'srand': 1, 'stat': 1, 'step': 1, 'store': 1, 'strip': 1, 'strip!': 1, 'sub': 1, 'sub!': 1, 'succ': 1, 'succ!': 1, 'sum': 1, 'superclass': 1, 'swapcase': 1, 'swapcase!': 1, 'sync': 1, 'syscall': 1, 'sysopen': 1, 'sysread': 1, 'sysseek': 1, 'system': 1, 'syswrite': 1, 'taint': 1, 'tainted?': 1, 'tell': 1, 'test': 1, 'throw': 1, 'times': 1, 'to_a': 1, 'to_ary': 1, 'to_f': 1, 'to_hash': 1, 'to_i': 1, 'to_int': 1, 'to_io': 1, 'to_proc': 1, 'to_s': 1, 'to_str': 1, 'to_sym': 1, 'tr': 1, 'tr!': 1, 'tr_s': 1, 'tr_s!': 1, 'trace_var': 1, 'transpose': 1, 'trap': 1, 'truncate': 1, 'tty?': 1, 'type': 1, 'ungetc': 1, 'uniq': 1, 'uniq!': 1, 'unpack': 1, 'unshift': 1, 'untaint': 1, 'untrace_var': 1, 'upcase': 1, 'upcase!': 1, 'update': 1, 'upto': 1, 'value?': 1, 'values': 1, 'values_at': 1, 'warn': 1, 'write': 1, 'write_nonblock': 1, 'zero?': 1, 'zip': 1}
-  }
-  return {
-    defaultMode: {
-      lexems: [RUBY_IDENT_RE],
-      contains: RUBY_DEFAULT_CONTAINS,
-      keywords: RUBY_KEYWORDS
-    },
-    modes: [
-      hljs.HASH_COMMENT_MODE,
-      {
-        className: 'comment',
-        begin: '^\\=begin', end: '^\\=end',
-        relevance: 10
-      },
-      {
-        className: 'comment',
-        begin: '^__END__', end: '\\n$'
-      },
-      {
-        className: 'params',
-        begin: '\\(', end: '\\)',
-        lexems: [RUBY_IDENT_RE],
-        keywords: RUBY_KEYWORDS,
-        contains: RUBY_DEFAULT_CONTAINS
-      },
-      {
-        className: 'function',
-        begin: '\\bdef\\b', end: '$|;',
-        lexems: [RUBY_IDENT_RE],
-        keywords: RUBY_KEYWORDS,
-        contains: ['title', 'params', 'comment']
-      },
-      {
-        className: 'class',
-        begin: '\\b(class|module)\\b', end: '$',
-        lexems: [hljs.UNDERSCORE_IDENT_RE],
-        keywords: RUBY_KEYWORDS,
-        contains: ['title', 'inheritance', 'comment'],
-        keywords: {'class': 1, 'module': 1}
-      },
-      {
-        className: 'title',
-        begin: '[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?', end: '^',
-        relevance: 0
-      },
-      {
-        className: 'inheritance',
-        begin: '<\\s*', end: '^',
-        contains: ['parent']
-      },
-      {
-        className: 'parent',
-        begin: '(' + hljs.IDENT_RE + '::)?' + hljs.IDENT_RE, end: '^'
-      },
-      {
-        className: 'number',
-        begin: '(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b', end: '^',
-        relevance: 0
-      },
-      {
-        className: 'number',
-        begin: '\\?\\w', end: '^'
-      },
-      {
-        className: 'string',
-        begin: '\'', end: '\'',
-        contains: ['escape', 'subst'],
-        relevance: 0
-      },
-      {
-        className: 'string',
-        begin: '"', end: '"',
-        contains: ['escape', 'subst'],
-        relevance: 0
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?\\(', end: '\\)',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?\\[', end: '\\]',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?{', end: '}',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?<', end: '>',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?/', end: '/',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?%', end: '%',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?-', end: '-',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'string',
-        begin: '%[qw]?\\|', end: '\\|',
-        contains: ['escape', 'subst'],
-        relevance: 10
-      },
-      {
-        className: 'module_name',
-        begin: ':{2}' + RUBY_IDENT_RE, end: '^',
-        noMarkup: true
-      },
-      {
-        className: 'symbol',
-        begin: ':' + RUBY_IDENT_RE, end: '^'
-      },
-      {
-        className: 'symbol',
-        begin: ':', end: '^',
-        contains: ['string']
-      },
-      hljs.BACKSLASH_ESCAPE,
-      {
-        className: 'subst',
-        begin: '#\\{', end: '}',
-        lexems: [RUBY_IDENT_RE],
-        keywords: RUBY_KEYWORDS,
-        contains: RUBY_DEFAULT_CONTAINS
-      },
-      {
-        className: 'regexp_container',
-        begin: '(' + hljs.RE_STARTERS_RE + ')\\s*', end: '^', noMarkup: true,
-        contains: ['comment', 'regexp'],
-        relevance: 0
-      },
-      {
-        className: 'regexp',
-        begin: '/', end: '/[a-z]*',
-        illegal: '\\n',
-        contains: ['escape']
-      },
-      {
-        className: 'variable',
-        begin: '(\\$\\W)|((\\$|\\@\\@?)(\\w+))', end: '^'
-      }
-    ]
-  };
-}();
-
-
-/*
-Language: PHP
-Author: Victor Karamzin <Victor.Karamzin@enterra-inc.com>
-*/
-
-hljs.LANGUAGES.php = {
-  defaultMode: {
-    lexems: [hljs.IDENT_RE],
-    contains: ['comment', 'number', 'string', 'variable'],
-    keywords: {'TEXT': 1, 'IMAGE': 1, '.value': 1}
-  },
-  case_insensitive: true,
-  modes: [
-    hljs.C_LINE_COMMENT_MODE,
-    hljs.HASH_COMMENT_MODE,
-    {
-      className: 'comment',
-      begin: '/\\*', end: '\\*/',
-      contains: ['phpdoc']
-    },
-    {
-      className: 'phpdoc',
-      begin: '\\s@[A-Za-z]+', end: '^',
-      relevance: 10
-    },
-    hljs.C_NUMBER_MODE,
-    {
-      className: 'string',
-      begin: '\'', end: '\'',
-      contains: ['escape'],
-      relevance: 0
-    },
-    {
-      className: 'string',
-      begin: '"', end: '"',
-      contains: ['escape'],
-      relevance: 0
-    },
-    hljs.BACKSLASH_ESCAPE,
-    {
-      className: 'variable',
-      begin: '\[a-zA-Z_\x7f-\xff\.][a-zA-Z0-9_\x7f-\xff]*', end: '^'
-    },
-    
-    {
-      className: 'preprocessor',
-      begin: '\\?>', end: '^'
-    }
-  ]
-};
-
-
-/*
  *	Tabby jQuery plugin version 0.12
  *
  *	Ted Devito - http://teddevito.com/demos/textarea.html
@@ -3085,7 +2795,9 @@ return sa?s:s[0];},_verifyWrapper:function(){if($('#gritter-notice-wrapper').len
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-
+$.ajaxSetup({
+  dataType: 'string',
+});
 
 Array.prototype.contains = function (element)
 {
@@ -3106,7 +2818,7 @@ $(document).ready(function(){
   $("div.tag-search input").keyup(function(){
     var tag = $(this).val();
     $.ajax({type: "GET",
-            url: "/tags/" + tag,
+            url: "/tags.js?tags[q]=" + tag,
             success: function(data){
               $("div.tag-list").html(data);
             }});
@@ -3116,9 +2828,18 @@ $(document).ready(function(){
   $("div.user-search input").keyup(function(){
     var tag = $(this).val();
     $.ajax({type: "GET",
-            url: "/users/search/" + tag,
+            url: "/users/search/?q=" + tag,
             success: function(data){
-              $("div.user-list").html(data);
+              if(data){
+                var header = "<tr>" + $("div.user-list table tr").html() + "</tr>";
+                $("div.user-list table").html(header + data);
+                $("div.user-list .no-result").hide();
+                $("div.user-list table").show();
+              }
+              else{
+                $("div.user-list table").hide();
+                $("div.user-list .no-result").fadeIn();
+              }
             }});
     
   });
@@ -3168,20 +2889,50 @@ $(document).ready(function(){
   $("input.toggle").toggleValue();
   
   /* Fancy question button */
-  $(".tags a, #sidebar a.new_question").click(function(){
+  $(".tags a, #sidebar a.new_question, #menu li, .tag-list span a").click(function(){
       $(this).effect("pulsate", { times:2, mode: "show" }, 200);
-
+      
+      if($(this).attr("href") == undefined){
+        
+        if($(this).children("a:first").length > 0) {
+          window.location.href = $(this).children("a:first").attr("href");
+        }
+      }
   });
-  $("#search_searchstring").focus(function()
-    {
-      $(this).addClass("active");
+
+  
+  /* Tag auto-completion */
+ 
+  $("input.tags").autocomplete('/tags.json', {
+      dataType: 'json',
+      parse: function(data) {
+          var rows = new Array();
+          for(var i=0; i<data.length; i++){
+              rows[i] = { data: data[i], value:data[i], result:data[i]};
+          }
+          return rows;
+      },
+      formatItem: function(row, i, n) {
+          return row;
+      },
+      multiple: true,
+      autoFill: true
+  });
+  
+  /* Tag auto-completion */
+ 
+  $("#question_searchstring").keyup(function() {
+    $.ajax({ url: "/questions/search.js", 
+             data: "question[searchstring]="+$("#question_searchstring").val(),
+             dataType: "html",
+             success:function(data) {
+                      $("#ajax-search").html(data).show();
+                     }
+    });
+    if ($(this).val() == "") {
+      $("#ajax-search").hide().html("");
     }
-  );
-  $("#search_searchstring").blur(function()
-    {
-      $(this).removeClass("active");
-    }
-  );
+  });
   
   $(".status a").hover(
     function(){

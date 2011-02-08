@@ -21,7 +21,7 @@ describe Comment do
       end
 
       it "requires a minimum length" do
-        comment.body = "Too short!"
+        comment.body = "mini"
         comment.should_not be_valid
       end
       

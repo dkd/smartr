@@ -54,7 +54,6 @@ Smartr::Application.routes.draw do
     end
     
     member do
-      get :tag_cloud
       get :reputation
     end
     
