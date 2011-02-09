@@ -10,4 +10,4 @@ describe ApplicationHelper do
       helper.direction("sdsad").should == "down"
     end
   end
-end  
+end
