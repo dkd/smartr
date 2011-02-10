@@ -1,6 +1,11 @@
 class Admin::QuestionsController < ApplicationController
+  
+  # Filter
   before_filter :authenticate_admin!
+  
+  # MIME Types
   respond_to :html, :js
+  
   def index
     @admin_questions = Admin::Question.all
   end
@@ -14,7 +19,6 @@ class Admin::QuestionsController < ApplicationController
     if @question.update_attributes(params[:question])
       flash[:notice] = 'Admin::Question was successfully updated.'
       redirect_to(@question)
-
     else
       render :action => "edit"
     end

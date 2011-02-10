@@ -1,8 +1,8 @@
 class Reputation
   
   def self.set(direction, record, user, owner)
-    model = record.downcase
-    points = Settings.reputation.fetch(model).fetch(direction)
+    model = record.downcase.to_sym
+    points = Smartr::Settings[:reputation][model][direction.to_sym]
     if (owner.reputation.nil?)
       owner.reputation = 0
     end
@@ -24,7 +24,8 @@ class Reputation
     model = record.downcase
     penalty = Settings.reputation.fetch(model).fetch("penalty")
     reputation = user.reputation.nil?? 0 : user.reputation
-    user.update_attributes(:reputation => (reputation + penalty.abs))
+    user.reputation = reputation + penalty.abs
+    user.save(:validate => false)
   end
   
   def self.toggle_acceptance(question, answer)
@@ -58,7 +59,7 @@ class Reputation
     
     if question.user != question.accepted_answer.user
       question.accepted_answer.user.reputation = new_reputation
-      question.accepted_answer.user.save(false)
+      question.accepted_answer.user.save(:validate => false)
     end
     
     question.attributes = {:answer_id => 0}
