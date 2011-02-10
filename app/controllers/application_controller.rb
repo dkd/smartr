@@ -48,16 +48,7 @@ class ApplicationController < ActionController::Base
         false
       end
     end
-    
-    def require_admin
-      if user_signed_in? && current_user.is_admin?
-       true
-     else
-       flash[:notice] = "You must be logged in as admin to access this page"
-       redirect_to root_url
-     end
-    end
-    
+
     def authenticate_admin!
       if user_signed_in? && current_user.is_admin?
         true

@@ -1,20 +1,20 @@
 class Vote < ActiveRecord::Base
   
-  #Associations
+  # Associations
   belongs_to :user
   belongs_to :voteable, :polymorphic => true
   
-  #filter
+  # Filter
   #after_save :count_on
   
-  #scopes
+  # Scopes
   default_scope :order => "updated_at asc"
   
-  #Virtual Attribute
+  # Virtual Attribute
   attr_accessor :direction
   
-  #validations
-  #validates :direction, :presence => true, :format => /u|down/
+  # Validations
+  validates :value, :presence => true
   
   def self.has_voted?(user, record)
     vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
