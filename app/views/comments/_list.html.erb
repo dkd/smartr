@@ -1,6 +1,7 @@
 <% if comments.present? %>
   <h3><%=t("comments.label.other") %></h3>
-  <%=comments_order_menu(session[:comments_order])%><br class="clear" />
+  <%=comments_order_menu(session[:comments_order], "#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}")%><br class="clear" />
+  <a name="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>"></a>
   <% for comment in comments do %>
     <%=render comment -%>
   <% end -%>
