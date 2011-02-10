@@ -17,6 +17,9 @@ gem "stringex"
 gem "annotate"
 
 # bundler requires these gems in development
+group :development do
+  gem 'rails-footnotes', :git => 'git://github.com/romanvbabenko/rails-footnotes.git', :branch => 'rails3'
+end
 
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
@@ -31,9 +34,8 @@ platforms :mri_19 do
 end  
 
 
-
+# bundler requires these gems while running tests
 group :test do
-  # bundler requires these gems while running tests
   gem "metric_fu"
   gem 'rspec-rails', '>= 2.4.0'
   gem 'factory_girl_rails', '>=1.1.beta1'
