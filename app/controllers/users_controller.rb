@@ -54,6 +54,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account updated!"
       redirect_to user_url(:id => current_user.id)
     else
+      flash[:error] = "Could not save record!"
       render :action => :edit
     end
   end

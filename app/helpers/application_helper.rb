@@ -36,13 +36,14 @@ module ApplicationHelper
         }))
   end
   
-  def current_url
-    port = ""
-    port = ":#{request.port}" unless request.port == 80
-    request.host + port 
+  def current_url(overwrite={})
+    request.url # :params => params.merge(overwrite)
   end
-  
+
   def mark_required(model, attribute)
+    #logger.info model.inspect
+    #logger.info attribute.inspect
+    #return "*" if model.class==User && attribute == :login
     "*" if model.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
   

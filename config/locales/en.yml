@@ -18,6 +18,9 @@ en:
     label:
       one: comment
       other: comments
+    order:
+      latest: latest
+      reputation: reputation
   
   questions:
     label: 
