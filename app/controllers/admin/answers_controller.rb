@@ -1,5 +1,5 @@
 class Admin::AnswersController < ApplicationController
-  before_filter :require_admin
+  before_filter :authenticate_admin!
   respond_to :html
   # GET /admin_answers
   def index

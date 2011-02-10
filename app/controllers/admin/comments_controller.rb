@@ -1,5 +1,11 @@
 class Admin::CommentsController < ApplicationController
+  
+  # Filter
+  before_filter :authenticate_admin!
+  
+  # MIME Types
   respond_to :html
+  
   # GET /admin_comments
   def index
     @admin_comments = Admin::Comment.all

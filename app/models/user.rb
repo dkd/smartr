@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
   attr_accessible :email, :login, :password, :password_confirmation, :remember_me, :avatar, :interesting_tag_list, :uninteresting_tag_list
   
-  #Associations
+  # Associations
   has_many :questions
   has_many :answers
   has_many :comments
@@ -17,23 +17,24 @@ class User < ActiveRecord::Base
   
   attr_accessor :image_url
   
-  #Plugins
+  # Plugins
   acts_as_taggable_on :interesting_tags
   acts_as_taggable_on :uninteresting_tags
   acts_as_tagger
   has_friendly_id :login
   
-  #Named Scopes
+  # Named Scopes
   scope :latest, :order => "created_at DESC"
   scope :online, lambda {
     where "last_request_at > ?", (Time.now - 5.minutes)
   }
+  scope :reputation, :order => "reputation DESC"
   
-  #Validations
+  # Validations
   validates :email, :presence => true
   validates :login, :presence => true, :length => {:within => 6..12}, :uniqueness => true
   
-  #filter
+  # Filter
   before_validation :strip_and_downcase_login
   
   def is_online?
@@ -44,9 +45,9 @@ class User < ActiveRecord::Base
     end
   end
   
-  def count_view
-    views = self.views.nil?? 0 : self.views
-    self.update_attributes :views => (views+1)
+  def count_view!
+    self.views = self.views.nil?? 0 : (self.views + 1)
+    self.save(:validate => false)
   end
   
   def latest_questions
@@ -74,7 +75,8 @@ class User < ActiveRecord::Base
       login.downcase!
     end
   end
-
+  
+  # Sunspot Solr
   searchable do
     text :login
   end

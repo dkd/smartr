@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :is_admin?, :only => [:admin]
   
   def index
-    @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10
+    @users = User.reputation.paginate :page => params[:page], :per_page => 10
   end
 
   def search
@@ -35,14 +35,13 @@ class UsersController < ApplicationController
     end
   end
 
-  
   def reputation
     @user = User.find(params[:id])
   end
   
   def show
     @user = User.find(params[:id])
-    @user.count_view unless current_user == @user
+    @user.count_view! unless current_user == @user
   end
 
   def edit

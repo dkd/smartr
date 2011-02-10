@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :require_admin
+  before_filter :authenticate_admin!
   
   # GET /admin_users
   def index
