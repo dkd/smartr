@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :is_admin?
   before_filter :search_options
   before_filter :set_last_request_at, :store_location
-  
+  before_filter :set_order
   def rescue_action(exception)
      
      return super if Rails.env != "production"
@@ -18,6 +18,11 @@ class ApplicationController < ActionController::Base
    end
 
   protected
+    
+    def set_order 
+      session[:comments_order] = "latest" if session[:comments_order].blank?
+      session[:comments_order] = params[:comments_order] if Comment::ORDER.include?(params[:comments_order])
+    end
     
     def search_options
       @user_facet = nil

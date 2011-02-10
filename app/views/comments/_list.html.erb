@@ -1,9 +1,11 @@
 <% if comments.present? %>
   <h3><%=t("comments.label.other") %></h3>
+  <%=comments_order_menu(session[:comments_order])%><br class="clear" />
   <% for comment in comments do %>
     <%=render comment -%>
   <% end -%>
 <% end -%>
-<%= link_to(t("comments.new"), new_comment_path(:comment => {:commentable_type => parent.class.name, :commentable_id => parent.id}),
-            :remote => true,
-            :class => "comment-new") %>
+<%= link_to(t("comments.new"), new_comment_path(:comment => { :commentable_type => parent.class.name, 
+                                                              :commentable_id => parent.id}),
+                                                              :remote => true,
+                                                              :class => "comment-new") %>
