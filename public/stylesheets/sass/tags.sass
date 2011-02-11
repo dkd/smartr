@@ -7,48 +7,22 @@
     color = !color_2
     font-weight: bold
 
-.tag-list, .tag-cloud
-  margin-top: 10px
-  
-  .tag
-    padding: 5px
-    float: left
-    margin-bottom: 10px
-    color: black
-    
-    a:link, a:visited
-      text-decoration: none
-      color: white
-      background = !color_4
-      padding: 5px
-      +border_radius
-    
-      a:hover
-        background = !color_2_hover
-  
-  a:link, a:visited
-    text-decoration: none
-    color: white
-    background = !color_2
-    padding: 5px
-    +border_radius
-
-  a:hover
-    background: black !important
-
-.tag-cloud
-  
-  a
-    margin-right: 3px
-    margin-left: 3px
-    float: left
-    
-  .size1
-    font-size: 1em
-  .size2
-    font-size: 1.5em
-  .size3
-    font-size: 2.25em
-  .size4
-    font-size: 3em
-  
+a.tag:link, 
+a.tag:visited,
+#sidebar a.tag:link, 
+#sidebar a.tag:visited
+  text-decoration: none
+  font-weight: normal
+  font-size: 12px
+  color: #ffffff
+  padding: 5px
+  +border_radius
+  margin: 4px 4px 0px 0px
+  float: left
+  background: #C75D00
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#A85500), to(#853e00))
+  background: -moz-linear-gradient(#A85500, #853e00)
+  background: linear-gradient(#A85500, #853e00)
+a.tag:hover,
+#sidebar a.tag:hover
+  background = $color_2_hover

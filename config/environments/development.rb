@@ -27,4 +27,6 @@ Smartr::Application.configure do
       Footnotes.run!
     end
   
+  Sass::Plugin.options[:debug_info] = true
+  
 end

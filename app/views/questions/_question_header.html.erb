@@ -25,8 +25,7 @@
          <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
        <% end -%>
      </span><br />
-    <%=question.user.reputation%> Points
-    
+    <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points
     <br class="clear" />
    </div>
    

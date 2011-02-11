@@ -9,7 +9,7 @@
   <h3>Interested in ...</h3>
   <div class="tags">
   <% @user.interesting_tag_list.each do |tag| %>
-    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <%= link_to(tag, questions_path(:tag => tag), :class => "tag")%>
     <% end -%>
   </div>
   <br class="clear" />
@@ -18,7 +18,7 @@
   <h3>Not interested in ...</h3>
   <div class="tags">
   <% @user.uninteresting_tag_list.each do |tag| %>
-    <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+    <%= link_to(tag, questions_path(:tag => tag), :class => "tag") %>
     <% end -%>
   </div>
   <br class="clear" />
