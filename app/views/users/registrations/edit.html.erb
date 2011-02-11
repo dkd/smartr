@@ -8,12 +8,12 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 <div class="left">
   <div class="text_field">
-    <%= f.label :login %>
+    <%= f.label :login %><%= mark_required(User, :login) %>
     <%= f.text_field :login %>
     <%= f.error_message_on :login%>
   </div>
   <div class="text_field">
-    <%= f.label :email %>
+    <%= f.label :email %><%= mark_required(User, :email) %>
     <%= f.text_field :email %>
     <%= f.error_message_on :email %>
   </div>
@@ -41,16 +41,13 @@
 --></div>
 <div class="right">
   <div class="text_field">
-    <%= f.label :avatar %>
+    <%= f.label :avatar %><br class="clear" />
     <%= image_tag @user.avatar.url(:medium), :align => :top %>
-    <div href="#">Choose File<%= f.file_field :avatar %></a>
+    <%= f.file_field :avatar %>
   </div>
   <%= f.submit "Register", :class => "submit" %>
 </div>
 
 <% end %>
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 <% main_menu :users %>
-<%= link_to "Back", :back %>

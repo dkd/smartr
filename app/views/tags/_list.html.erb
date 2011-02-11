@@ -3,7 +3,7 @@
       <div style="width: 25%; float: left">
        <span class="tag">
          <%=tag.count %>x 
-         <%=link_to tag, :controller => :questions, :tag => tag.name-%>
+         <%=link_to tag, questions_path(:tag => tag.name), :class => "tag" -%>
        </span>
        </div>
     <% end -%>

@@ -8,14 +8,14 @@
     </div>
      <div class="tags uninteresting" style="display:none">
       <% current_user.uninteresting_tag_list.each do |tag| %>
-        <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag)%>
+        <%= link_to(h(tag), questions_path(:tag => tag), :class => "tag")%>
       <% end -%>
       </div>
     <br class="clear">
   <% end -%>
   <h3><%= t('sidebar.tags.recent')%></h3>
-  <div class="tags">
+  <div>
   <% ActsAsTaggableOn::Tag.limit(20).includes(:taggings).joins(:taggings).group("tags.id").where("taggings.taggable_type='Question'").order('created_at desc').each do |tag| -%>
-    <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name))%>
+    <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name), :class => "tag")%>
   <% end -%>
-  </div>
+</div>

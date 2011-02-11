@@ -1,10 +1,6 @@
 class Admin::CommentsController < ApplicationController
-  
-  # Filter
-  before_filter :authenticate_admin!
-  
-  # MIME Types
-  respond_to :html
+  before_filter :require_admin
+  respond_to :html, :js
   
   # GET /admin_comments
   def index
