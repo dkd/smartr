@@ -23,9 +23,9 @@ Smartr::Application.configure do
   Sunspot.config.solr.url = 'http://localhost:8982/solr'
   
   # Rails Footnotes
-  if defined?(Footnotes) && Rails.env.development?
-      Footnotes.run!
-    end
+  #if defined?(Footnotes) && Rails.env.development?
+  #  Footnotes.run!
+  #end
   
   Sass::Plugin.options[:debug_info] = true
   

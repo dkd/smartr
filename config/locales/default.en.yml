@@ -1,0 +1,12 @@
+en:
+  datetime:
+    distance_in_words:
+      about_x_months:
+        one: 'etwa ein Monat'
+        other: 'etwa %{count} Monate'
+      x_days:
+        one: '1 day ago'
+        other: '%{count} days ago'
+      x_months:
+        one: '1 month ago'
+        other: '%{count} months ago'

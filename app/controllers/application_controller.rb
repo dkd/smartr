@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :search_options
   before_filter :set_last_request_at, :store_location
   before_filter :set_order
+  
   def rescue_action(exception)
      
      return super if Rails.env != "production"
@@ -88,6 +89,7 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
+
     
     private
     

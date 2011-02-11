@@ -8,6 +8,11 @@ en:
     tags: Tags
     users: Users
   
+  tags:
+    label:
+      one: tag
+      other: tags
+  
   answers:
     label:
       one: answer
@@ -22,11 +27,17 @@ en:
       latest: latest
       reputation: reputation
   
+  votes:
+    one: vote
+    other: votes
+  
   questions:
     label: 
       one: question
       other: questions
-      
+    asked_by: Asked by
+    saved_in: saved_in
+    related: Related questions  
     sub_menu:
       latest: Latest
       hot:  Hot
@@ -40,3 +51,7 @@ en:
   
   sidebar:
     ask_a_question: Ask a question!
+    tags:
+      interesting: Interesting Tags
+      recent: Recent Tags
+    

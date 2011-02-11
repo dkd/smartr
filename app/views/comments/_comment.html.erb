@@ -11,7 +11,7 @@ end
 
 <div class="comment-item" id="comment-<%=comment.id%>">
   <div class="inner">
-    <div class="user-info"><span id="<%="votes-comment-#{comment.id}"%>"><%=comment.votes.count%></span> votes &middot; 
+    <div class="user-info"><span id="<%="votes-comment-#{comment.id}"%>"><%=comment.votes.count%></span> <%=t("votes", :count => comment.votes.count)%> &middot; 
       <%= link_to raw("&uarr;"), 
                        votes_path(
                        :model => "comment",
@@ -23,7 +23,8 @@ end
                        :remote => true,
                        :class => upclass -%> &middot;
       <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> &middot; 
-      <span class="<%="user-#{comment.user.id}-reputation"-%>"><%=comment.user.reputation%></span> &middot; <%=link_to comment.user.login, user_path(comment.user)%>
+      <span class="<%="user-#{comment.user.id}-reputation"-%>"><%=comment.user.reputation%></span> &middot; 
+      <%=link_to comment.user.login, user_path(comment.user)%>
     </div>
     <br class="clear" />
     <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />

@@ -26,6 +26,15 @@ module ApplicationHelper
       end
       content_tag(:ul, raw( li))
     end
+    
+  def build_ajax_menu(menu, active)
+      li = ""
+      menu.each do |m|
+        class_name = (m[:id]==active.to_s)? 'active' : ''
+        li +=content_tag(:li, m[:link])
+      end
+      content_tag(:ul, raw( li))
+    end
   
   def code(html)
     auto_link(Sanitize.clean(BlueCloth.new(html).to_html,

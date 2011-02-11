@@ -1,24 +1,31 @@
 /*
-Syntax error: Undefined variable: "$color_2".
-        on line 15 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass
+Syntax error: Undefined mixin 'text_shadow'.
+        on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/flash.sass, in `text_shadow'
+        from line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/flash.sass
 
-10:     padding-left: 0px
-11:     padding-right: 0px
-12:   
-13:   a:hover
-14:     text-decoration: none
-15:     color: $color_2
-16:     
-17: .question-header
-18:   position: relative
-19:   margin-top: 45px !important
-20:   margin-bottom: 10px
+4:     p
+5:       padding: 8px
+6:       margin: 0px
+7:       font-weight: bold
+8:       color: white
+9:       +text_shadow
+10:     &.notice
+11:       background: $color_2 * 1.3
+12:       border-color: $color_2 * 1.2
+13:       
+14:     &.error
 
 Backtrace:
-/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass:15
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/variable.rb:39:in `_perform'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/node.rb:61:in `perform'
-/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/prop_node.rb:132:in `perform!'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/flash.sass:9:in `text_shadow'
+/Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/flash.sass:9
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/mixin_node.rb:62:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
 /opt/local/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
@@ -109,4 +116,4 @@ script/rails:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_2\".\A         on line 15 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/questions.sass\A \A 10:     padding-left: 0px\A 11:     padding-right: 0px\A 12:   \A 13:   a:hover\A 14:     text-decoration: none\A 15:     color: $color_2\A 16:     \A 17: .question-header\A 18:   position: relative\A 19:   margin-top: 45px !important\A 20:   margin-bottom: 10px"; }
+  content: "Syntax error: Undefined mixin 'text_shadow'.\A         on line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/flash.sass, in `text_shadow'\A         from line 9 of /Users/dkd_hayes/Rails/smartr/public/stylesheets/sass/flash.sass\A \A 4:     p\A 5:       padding: 8px\A 6:       margin: 0px\A 7:       font-weight: bold\A 8:       color: white\A 9:       +text_shadow\A 10:     &.notice\A 11:       background: $color_2 * 1.3\A 12:       border-color: $color_2 * 1.2\A 13:       \A 14:     &.error"; }

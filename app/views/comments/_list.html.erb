@@ -1,7 +1,10 @@
 <% if comments.present? %>
   <h3><%=t("comments.label.other") %></h3>
-  <%=comments_order_menu(session[:comments_order], "#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}")%><br class="clear" />
-  <a name="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>"></a>
+  <div id="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>">
+  <% if comments.count > 1 %>
+    <%=comments_order_menu(session[:comments_order], comments.first.commentable)%><br class="clear" />
+  <% end %>
+  <a name="<%="#{parent.class.name}-comments-#{parent.id}"%>"></a>
   <% for comment in comments do %>
     <%=render comment -%>
   <% end -%>
@@ -10,3 +13,4 @@
                                                               :commentable_id => parent.id}),
                                                               :remote => true,
                                                               :class => "comment-new") %>
+</div>

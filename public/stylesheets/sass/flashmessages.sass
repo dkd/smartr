@@ -1,4 +1,16 @@
-div.flash
-  div.message
-    &.error, &.alert
-      color: red
+.flash
+  .message
+    border: 2px solid 
+    p
+      padding: 8px
+      margin: 0px
+      font-weight: bold
+      color: black
+    &.notice
+      border-color: rgba(237, 255, 232, 1) * 0.9
+      background: rgba(237, 255, 232, 0.7)
+      
+    &.alert
+      border-color: rgba(255, 232, 232, 1) * 0.9
+      background: rgba(255, 232, 232, 0.7)
+

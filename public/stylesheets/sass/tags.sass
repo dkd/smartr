@@ -10,19 +10,31 @@
 a.tag:link, 
 a.tag:visited,
 #sidebar a.tag:link, 
-#sidebar a.tag:visited
+#sidebar a.tag:visited,
+.question .body a.tag:link, 
+.question .body a.tag:visited
   text-decoration: none
   font-weight: normal
   font-size: 12px
   color: #ffffff
-  padding: 5px
+  padding: 4px
   +border_radius
   margin: 4px 4px 0px 0px
-  float: left
+  display: inline
   background: #C75D00
   background: -webkit-gradient(linear, 0 0, 0 bottom, from(#A85500), to(#853e00))
   background: -moz-linear-gradient(#A85500, #853e00)
   background: linear-gradient(#A85500, #853e00)
+  
 a.tag:hover,
-#sidebar a.tag:hover
+#sidebar a.tag:hover,
+.question .body a.tag:hover
   background = $color_2_hover
+  
+span.tags
+  display: inline
+
+#sidebar a.tag:link, 
+#sidebar a.tag:visited
+  float: left
+  display: inline
