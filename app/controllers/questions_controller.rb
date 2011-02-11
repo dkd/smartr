@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @question.update_views if @question.present?
+    @related_questions = @question.find_related_tags.limit(10)
     @answer = Answer.new
     @answer.question = @question
   end

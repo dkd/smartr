@@ -42,13 +42,15 @@
     </div>
     <div id="content">
       <div id="ajax-search" style="display: none"></div>
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
+      <% if flash.present? %>
+        <div class="flash">
+          <% flash.each do |type, message| -%>
+            <div class="message <%= type %>">
+              <p><%= message %></p>
+            </div>
+          <% end -%>
+        </div>
+      <% end -%>
       <%= yield  %>
     </div>
     <div id="sidebar">

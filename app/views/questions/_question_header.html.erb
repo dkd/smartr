@@ -17,12 +17,12 @@
 </div>
   <div class="body">
     <%= code(question.body) %>
-    <div class="user">Asked by 
+    <div class="user"><%=t("questions.asked_by")%>
     <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0), user_path(question.user) unless question.user.avatar.nil?%>
-    <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %> ago, 
-    saved in <span class="tags">
-       <%question.tags.each do |tag| %>
-         <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
+    <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %>, 
+    <%=t("questions.saved_in")%><span class="tags">
+       <% question.tags.each do |tag| %>
+         <%= link_to(h(tag), questions_path(:tag => tag.name), :class => "tag")%>
        <% end -%>
      </span><br />
     <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points

@@ -1,13 +1,11 @@
 module CommentsHelper
-  def comments_order_menu(active, anchor)
+  def comments_order_menu(active, commentable)
       @question ||= @parent
       menu = []
-      menu << { :name => I18n.t(:"comments.order.latest"), 
-                :id => "latest", 
-                :link => question_url(@question, :id => @question.id, :comments_order => "latest", :anchor => anchor) }
-      menu << { :name => I18n.t(:"comments.order.reputation"), 
-                :id => "reputation",
-                :link => question_url(@question, :id => @question.id, :comments_order => "reputation", :anchor => anchor)  }
-      build_menu(menu, active)
+      menu << { :id => "latest", 
+                :link => link_to (I18n.t(:"comments.order.latest"), comments_path(:model => commentable.class.name, :id => commentable.id, :comments_order => "latest"), :remote => true) }
+      menu << { :id => "reputation", 
+                :link => link_to (I18n.t(:"comments.order.reputation"), comments_path(:model => commentable.class.name, :id => commentable.id, :comments_order => "reputation"), :remote => true) }
+     build_ajax_menu(menu, active)
   end
 end

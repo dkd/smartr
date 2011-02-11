@@ -36,9 +36,9 @@
   --></div>
   <div class="right">
     <div class="text_field">
-      <%= f.label :avatar %>
+      <%= f.label :avatar %><br class="clear" />
       <%= image_tag @user.avatar.url(:medium), :align => :top %>
-      <a href="#">Choose File<%= f.file_field :avatar %></a>
+      <%= f.file_field :avatar %>
     </div>
     <%= f.submit "Register", :class => "submit" %>
   </div>

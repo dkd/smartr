@@ -5,14 +5,14 @@ h2.show-question
   
   a:link, a:visited
     text-decoration: none
-    color = !color_2
+    color = black
     padding: 10px
     padding-left: 0px
     padding-right: 0px
   
   a:hover
     text-decoration: none
-    color: black
+    color: $color_2
     
 .question-header
   position: relative
@@ -216,18 +216,4 @@ h2.show-question
         color: black
         text-decoration: underline
     
-    .tags
-      
-      a:link, a:visited
-        font-size: 12px
-        text-decoration: none
-        background = !color_4
-        +border_radius 
-        color: white
-        padding: 5px
-        background: #C75D00
-        background: -webkit-gradient(linear, 0 0, 0 bottom, from(#A85500), to(#853e00))
-        background: -moz-linear-gradient(#A85500, #853e00)
-        background: linear-gradient(#A85500, #853e00)
-      a:hover
-        background = !color_4_hover
+    
