@@ -37,6 +37,15 @@ class CommentsController < ApplicationController
 
   protected
   
+  def sorting
+    case session[:comments_order]
+    when "latest"
+      "created_at"
+    when "reputation"
+      ""
+    end
+  end
+  
   def require_commentable
     if %w(Question Answer).include?(params[:model])
       @parent = params[:model].constantize.find(params[:id])

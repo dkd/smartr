@@ -16,10 +16,6 @@ gem "unicorn", :platform => :mri_19
 gem "stringex"
 gem "annotate"
 
-# bundler requires these gems in development
-group :development do
-  gem 'rails-footnotes', :git => 'git://github.com/romanvbabenko/rails-footnotes.git', :branch => 'rails3'
-end
 
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'

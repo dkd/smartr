@@ -6,6 +6,7 @@ class Vote < ActiveRecord::Base
   
   # Filter
   #after_save :count_on
+  after_save :update_votes_count
   
   # Scopes
   default_scope :order => "updated_at asc"
@@ -48,13 +49,8 @@ class Vote < ActiveRecord::Base
         Reputation.set("down", self.voteable_type, self.user, target_user) if self.value == 1 || self.value == 0
         Reputation.penalize(self.voteable_type, self.user, target_user) if value == -1
     end
-    
-    if(value == 1 || value == -1)
-      self.update_attributes :value => value      
-    elsif(value == 0)
-      self.destroy
-    end
-    
+    self.update_attributes :value => value
+    self.update_votes_count
     Vote.count_on(self.voteable_type, self.voteable_id)
     
   end
@@ -67,6 +63,13 @@ class Vote < ActiveRecord::Base
      rating = rating + vote.value
     end
      rating
+  end
+  
+  def update_votes_count
+    rating = 0
+    voteable.votes {|vote| rating += vote.value}
+    voteable.update_attributes(:votes_count => rating)
+    puts "UPDATE BITCH"
   end
 
 end

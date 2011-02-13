@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101230164240) do
+ActiveRecord::Schema.define(:version => 20110212231239) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20101230164240) do
     t.boolean  "accepted"
     t.text     "body_plain"
     t.boolean  "send_email",  :default => false
+    t.integer  "votes_count", :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20101230164240) do
     t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count",      :default => 0
   end
 
   create_table "favourites", :force => true do |t|
@@ -107,7 +109,7 @@ ActiveRecord::Schema.define(:version => 20101230164240) do
     t.datetime "current_sign_in_at"
     t.string   "last_sign_in_ip"
     t.string   "current_sign_in_ip"
-    t.integer  "views"
+    t.integer  "views",                :default => 0
     t.string   "email"
     t.integer  "reputation",           :default => 0
     t.string   "avatar_file_name"
