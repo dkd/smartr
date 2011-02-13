@@ -2,15 +2,32 @@
   <h3><%=t("comments.label.other") %></h3>
   <div id="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>">
   <% if comments.count > 1 %>
-    <%=comments_order_menu(session[:comments_order], comments.first.commentable)%><br class="clear" />
+    <ul>
+      <li><%=link_to(I18n.t(:"comments.order.latest"), 
+                            comments_path(:model => parent.class.name, 
+                                          :id => parent.id, 
+                                          :comments_order => "latest"), 
+                                          :remote => true, 
+                                          :class => ("active" if (session[:comments_order] == "latest")))%>
+      </li>
+      <li><%=link_to(I18n.t(:"comments.order.reputation"), 
+                            comments_path(:model => parent.class.name, 
+                                          :id => parent.id, 
+                                          :comments_order => "reputation"), 
+                                          :remote => true, 
+                                          :class => ("active" if (session[:comments_order] == "reputation")))%>
+      </li>
+    </ul>
+    <br class="clear" />
   <% end %>
   <a name="<%="#{parent.class.name}-comments-#{parent.id}"%>"></a>
   <% for comment in comments do %>
     <%=render comment -%>
   <% end -%>
+  </div>
 <% end -%>
 <%= link_to(t("comments.new"), new_comment_path(:comment => { :commentable_type => parent.class.name, 
                                                               :commentable_id => parent.id}),
                                                               :remote => true,
                                                               :class => "comment-new") %>
-</div>
+
