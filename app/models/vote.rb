@@ -111,7 +111,11 @@ class Vote < ActiveRecord::Base
         Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
         Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
     end
-    if value_was + value == 0
+    Rails.logger.info "#{value_was} / #{value}"
+    if value == 0
+      Rails.logger.info "VOTEABLE COUNT SHOULD BE #{(voteable.votes_count + value)}"
+      
+      voteable.update_attributes(:votes_count => (voteable.votes_count + value))
       self.destroy
     end
   end

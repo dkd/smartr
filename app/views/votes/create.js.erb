@@ -1,4 +1,4 @@
-$('#<%= @vote_box_id %>').html('<%= escape_javascript(render(:partial => "/#{@vote.voteable_type.downcase.pluralize}/vote_box", :locals => {@vote.voteable_type.downcase.to_sym => @record})) %>');
+$('#vote-box-<%=@vote.voteable.id %>').html('<%= escape_javascript(render(:partial => "/#{@vote.voteable_type.downcase.pluralize}/vote_box", :locals => {@vote.voteable_type.downcase.to_sym => @record})) %>');
 $('#<%=@vote.voteable.class.name.downcase%>-votes-count-<%=@vote.voteable.id%>').html('<%=@vote.voteable.votes_count%>');
 $('.user-<%=@vote.voteable.user.id %>-reputation').html('<%=@vote.voteable.user.reputation%>');
 $('.user-<%=@current_user.id %>-reputation').html('<%=@vote.user.reputation%>');
