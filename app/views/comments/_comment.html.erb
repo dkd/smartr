@@ -11,13 +11,11 @@ end
 
 <div class="comment-item">
   <div class="inner">
-    <div class="user-info"><span id="<%="comment-#{comment.id}"%>"><%=comment.votes.count%></span> <%=t("votes", :count => comment.votes.count)%> &middot; 
+    <div class="user-info"><span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes.count%></span> <%=t("votes", :count => comment.votes.count)%> &middot; 
       <%= link_to raw("&uarr;"), 
                        votes_path(
                        :model => "comment",
-                       :direction => "up",
-                       :dom_id => "votes-comment-#{comment.id}",
-                       :vote_box_id => "vote-box-#{comment.id}",
+                       :value => (vote_value==1? "-1" : "1"),
                        :id => comment.id),
                        :method => "post",
                        :remote => true,

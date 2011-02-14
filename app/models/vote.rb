@@ -31,7 +31,6 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, :polymorphic => true
   
   # Filter
-  after_save :update_votes_count
   after_save :update_reputation
   
   # Scopes
@@ -63,25 +62,7 @@ class Vote < ActiveRecord::Base
       false
     end
   end
-  
-  def self.can_vote?(user)
-    vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, self.voteable.class.name, self.voteable.id)
-    if(vote)
-      vote.value
-    else
-      false
-    end
-  end
-  
-  def self.count_on(type, id)
-    rating = 0
-    record = type.constantize.find(id)    
-    
-    record.votes.each do |vote|
-     rating = rating + vote.value
-    end
-     rating
-  end
+
   
   def update_votes_count
     rating = 0
@@ -102,22 +83,29 @@ class Vote < ActiveRecord::Base
     case direction
       when "up"
         Rails.logger.info "Trying to vote up"
-        value = value_was + 1
+        new_value = value_was + 1
         Reputation.set("up", self.voteable_type, self.user, target_user) if value_was == -1 || value_was == 0
         Reputation.unpenalize(self.voteable_type, self.user, target_user) if value_was == -1
       when "down"
         Rails.logger.info "Trying to vote down"
-        value = value_was - 1
+        new_value = value_was - 1
         Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
         Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
     end
-    Rails.logger.info "#{value_was} / #{value}"
-    if value == 0
+    Rails.logger.info "was :#{value_was} / is:#{value} / calc: #{new_value}"
+    Rails.logger.info "votable.votes_count: #{voteable.votes_count}"
+    if new_value == 0
       Rails.logger.info "VOTEABLE COUNT SHOULD BE #{(voteable.votes_count + value)}"
-      
-      voteable.update_attributes(:votes_count => (voteable.votes_count + value))
-      self.destroy
+      self.delete
     end
+    rating = 0
+    voteable.reload
+    voteable.votes.each {|vote|
+      rating += vote.value
+      Rails.logger.info "Rating is #{rating}"
+      }
+    voteable.update_attributes(:votes_count => rating)
+    voteable.votes.reload
   end
   
 end
