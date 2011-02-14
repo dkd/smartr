@@ -10,7 +10,7 @@ module ApplicationHelper
       menu << {:name => I18n.t(:"main_menu.questions"), :id => "questions", :link => root_url}
       menu << {:name => I18n.t(:"main_menu.tags"), :id => "tags", :link => tags_path}
       menu << {:name => I18n.t(:"main_menu.users"), :id => "users", :link => users_path}
-      menu << {:name => 'Admin', :id => "admin", :link => "/admin"} if is_admin?
+      menu << {:name => 'Admin', :id => "admin", :link => admin_url} if is_admin?
       content_for :main_menu, build_menu(menu, active)
   end
   
@@ -23,15 +23,6 @@ module ApplicationHelper
       menu.each do |m|
         class_name = (m[:id]==active.to_s)? 'active' : ''
         li +=content_tag(:li, link_to(m[:name], m[:link]), :class => class_name)
-      end
-      content_tag(:ul, raw( li))
-    end
-    
-  def build_ajax_menu(menu, active)
-      li = ""
-      menu.each do |m|
-        class_name = (m[:id]==active.to_s)? 'active' : ''
-        li +=content_tag(:li, m[:link])
       end
       content_tag(:ul, raw( li))
     end
@@ -50,9 +41,6 @@ module ApplicationHelper
   end
 
   def mark_required(model, attribute)
-    #logger.info model.inspect
-    #logger.info attribute.inspect
-    #return "*" if model.class==User && attribute == :login
     "*" if model.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
   

@@ -103,7 +103,6 @@ class QuestionsController < ApplicationController
   
   def update_for_toggle_acceptance
     @question = Question.find(params[:id])
-    logger.info request.inspect
     respond_to do |format|
       format.js{
           @answer = Answer.find(params[:answer_id])

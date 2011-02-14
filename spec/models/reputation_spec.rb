@@ -25,7 +25,7 @@ describe Reputation do
         it "then will unpenalize the voter and increase the reputation of the answer's owner" do
           question_owner_reputation = question.user.reputation
           vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question".classify, question.id, user.id)
-          vote.set("up")
+          vote.update_attributes(:value => 1)
           question.user.reload
           question.user.reputation.should  == question_owner_reputation + Smartr::Settings[:reputation][:answer][:up]
           user.reload

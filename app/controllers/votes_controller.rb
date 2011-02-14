@@ -5,11 +5,14 @@ class VotesController < ApplicationController
   respond_to :js
   
   def create
-      @vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("#{params[:model]}".classify, params[:id], current_user.id)
-      @dom_id = params[:dom_id]
-      @vote_count = @vote.set(params[:direction])
-      @vote_box_id = params[:vote_box_id]
-      @model = params[:model]
+    @vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("#{params[:model]}".classify, params[:id], current_user.id)
+    if @vote.update_attributes(:value => params[:value]) == false
+     render "shared/message"
+    end
+    #@dom_id = params[:dom_id]
+    #@vote_count = @vote.set(params[:direction])
+    #@vote_box_id = params[:vote_box_id]
+    #@model = params[:model]
   end
   
   private
