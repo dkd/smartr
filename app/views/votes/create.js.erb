@@ -2,3 +2,6 @@ $('#vote-box-<%=@vote.voteable.id %>').html('<%= escape_javascript(render(:parti
 $('#<%=@vote.voteable.class.name.downcase%>-votes-count-<%=@vote.voteable.id%>').html('<%=@vote.voteable.votes_count%>');
 $('.user-<%=@vote.voteable.user.id %>-reputation').html('<%=@vote.voteable.user.reputation%>');
 $('.user-<%=@current_user.id %>-reputation').html('<%=@vote.user.reputation%>');
+<% if @vote.voteable.is_a?(Comment)%>
+$('#comment-votes-<%=@vote.voteable.id%>').html('<%=t("votes", :count => @vote.voteable.votes_count)%>');
+<% end-%>
