@@ -40,17 +40,18 @@ class CommentsController < ApplicationController
   def sorting
     case session[:comments_order]
     when "latest"
-      "created_at"
+      "created_at ASC"
     when "reputation"
-      ""
+      "votes_count DESC"
+    else "created_at ASC"
     end
   end
   
   def require_commentable
     if %w(Question Answer).include?(params[:model])
       @parent = params[:model].constantize.find(params[:id])
-      
-      @comments = @parent.comments.all
+      logger.info sorting
+      @comments = @parent.comments.order(sorting)
     else
       false
     end

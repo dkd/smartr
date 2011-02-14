@@ -1,6 +1,7 @@
 class Reputation
   
   def self.set(direction, record, user, owner)
+    Rails.logger.info "Direction: #{direction}, #{record.downcase.to_sym}, #{user.login}, #{owner.login}"
     model = record.downcase.to_sym
     points = Smartr::Settings[:reputation][model][direction.to_sym]
     if (owner.reputation.nil?)
