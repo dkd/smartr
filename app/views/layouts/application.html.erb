@@ -7,7 +7,7 @@
   <%= csrf_meta_tag %>
   <title><%= yield :title %>SmartR - be a smartass!</title>
   <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "/javascripts/highlight/styles/vs.css" %>
+  <%= stylesheet_link_tag "/javascripts/highlight/styles/sunburst" %>
   <style type="text/css" media="screen">
     @-webkit-keyframes redPulse {
       from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
@@ -62,10 +62,6 @@
       <%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%>
     </div>
   </div>
-  <%= javascript_include_tag "highlight/highlight" %>
-  <% Smartr::Settings[:syntax_highlighting][:languages].split(/,/).each do |lang| %>
-    <%= javascript_include_tag "highlight/languages/#{lang.strip}" %>
-  <% end -%>
   <%= javascript_include_tag "jquery",
                              "jquery-ui",
                              "rails",
@@ -77,6 +73,7 @@
                              "jquery.toggle-value",
                              "jquery.gritter.min",
                              "application", :cache => true %>
+  <%= javascript_include_tag Smartr::Settings[:syntax_highlighting][:languages].split(",").map{|x| "/javascripts/highlight/languages/"+x.strip} %>
 
   </body>
 </html>
