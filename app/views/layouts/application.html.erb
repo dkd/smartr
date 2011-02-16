@@ -18,8 +18,9 @@
   <!--<link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="#" />-->
 </head>
 <body>
-  <div id="user">
+  <div id="topheader">
     <div class="inner">
+      <h1><%= link_to("SmartR", root_url) %></h1>
       <%= render 'users/menu/registration_items' %> |
       <%= render 'users/menu/login_items' %>
     </div>
@@ -27,7 +28,7 @@
 
   <div id="wrapper">
     <div id="header">
-      <h1><%= link_to("SmartR", root_url) %></h1>
+      
           <br class="clear" />
       <div id="menu">
         <br class="clear" />
