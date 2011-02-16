@@ -43,7 +43,7 @@ form
     float: right
     text-align: center
     font-weight: bold
-    font-size: 18px
+    font-size: 12px
     padding-top: 5px
     padding-bottom: 5px
     background: -moz-linear-gradient(#98ba40, #a6c250 35%, #618926)
@@ -53,9 +53,11 @@ form
     +text_shadow
     font-family: Helvetica, Arial, sans-serif
     
-    input:hover
-      background-color: black
-      
+  input.submit:hover
+    border-color: black
+  input.submit:active
+    border-color: black
+    color: #ffff99
     
   div.text_field,
   div.text_field_long

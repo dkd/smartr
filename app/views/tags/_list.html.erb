@@ -1,10 +1,7 @@
 <% unless @tags.nil? %>  
   <% @tags.each do |tag| %>
       <div style="width: 25%; float: left">
-       <span class="tag">
-         <%=tag.count %>x 
-         <%=link_to tag, questions_path(:tag => tag.name), :class => "tag" -%>
-       </span>
+         <%=link_to "#{tag.count} x #{tag}", questions_path(:tag => tag.name), :class => "tag" -%>
        </div>
     <% end -%>
 <% else -%>
