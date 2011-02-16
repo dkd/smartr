@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :votes
   has_many :favourites
+  has_many :favourite_questions, :through => :favourites, :source => :question
   
   attr_accessor :image_url
   

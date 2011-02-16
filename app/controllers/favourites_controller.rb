@@ -5,7 +5,7 @@ class FavouritesController < ApplicationController
   
   def index
     @user = User.find params[:user_id]
-    @questions = Question.find(:all, :joins => :favourites, :conditions => ['favourites.user_id=?', params[:user_id]]).paginate :page => params[:page], :per_page => 25
+    @questions = @user.favourite_questions.paginate :page => params[:page], :per_page => 25
     render "/users/favourites", :layout => true
   end
   

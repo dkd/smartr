@@ -9,6 +9,7 @@ class Question < ActiveRecord::Base
   belongs_to  :accepted_answer, :class_name => "Answer", :foreign_key => :answer_id
 
   #Validations
+  before_validation :sanitize_tags
   validates_presence_of [:body, :name]
   validates_uniqueness_of [:name, :body]
   validates_length_of :name, :minimum => 20
@@ -96,6 +97,15 @@ class Question < ActiveRecord::Base
 
     string :sort_title do
       name.downcase.sub(/^(an?|the) /, '')
+    end
+  end
+  
+  protected
+  
+  def sanitize_tags
+    tag_list.inject([]) do |result, element|
+      result << element.to_s.gsub(/[\.\s\+]+/, "")
+      result
     end
   end
 

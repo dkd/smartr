@@ -1,7 +1,9 @@
 <div class="<%="error" if f.error_message_on(:name).present? %>">
   <h3>Enter your question here<%= mark_required(Question, :name) %></h3>
-  <%= f.text_field :name, :class => "text_field" %>
-  <%= f.error_message_on(:name) %>
+  <div class="text_field_long">
+    <%= f.text_field :name %>
+    <%= f.error_message_on(:name) %>
+  </div>
 </div>
 
 <div class="<%="error" if f.error_message_on(:body).present? %>">

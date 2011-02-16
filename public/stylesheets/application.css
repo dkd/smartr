@@ -330,22 +330,10 @@ h2.show-question {
     -webkit-border-radius: 3px;
     border-radius: 3px;
     padding-right: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000372}}
-  .question-new input.text_field, .question-edit input.text_field {
-    border: 1px solid black;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    height: 20px;
-    width: 100%;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 5px;
-    padding-right: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000374}}
   .question-new input.tags, .question-edit input.tags {
     width: 75%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000377}}
   .question-new input.save, .question-edit input.save {
     background: #738500;
     padding: 7px;
@@ -358,14 +346,14 @@ h2.show-question {
     border-radius: 3px;
     display: block;
     float: right; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000388}}
   .question-new input.save:hover, .question-edit input.save:hover {
     background: black; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003105}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\0000397}}
 .question .actions {
   float: right; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003100}}
   .question .actions a:link, .question .actions a:visited {
     background: green;
     color: white;
@@ -374,10 +362,10 @@ h2.show-question {
     -webkit-border-radius: 3px;
     border-radius: 3px;
     text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003107}}
   .question .actions a:hover {
     background: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003110}}
 .question .body {
   padding: 10px;
   padding-top: 0px;
@@ -385,26 +373,26 @@ h2.show-question {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003116}}
   .question .body a:link, .question .body a:visited {
     padding: 5px;
     font-weight: normal;
     line-height: 25px;
     color: #738500; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003122}}
   .question .body a:hover {
     color: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003125}}
   .question .body p {
     margin-top: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003129}}
   .question .body pre code {
     padding: 5px;
     overflow: auto;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003134}}
   .question .body .user {
     font-size: 16px;
     -moz-border-radius: 3px;
@@ -416,24 +404,24 @@ h2.show-question {
     margin-left: 0px;
     margin-right: 0px;
     line-height: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003152}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003144}}
     .question .body .user a:link, .question .body .user a:visited {
       color: #738500;
       font-weight: bold;
       text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003149}}
     .question .body .user a:hover {
       color: black;
       font-weight: bold;
       text-decoration: underline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003162}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003154}}
     .question .body .user img {
       margin-right: 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003165}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003157}}
   .question .body .edit {
     float: right;
     margin-top: 1em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003169}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003161}}
     .question .body .edit a:link,
     .question .body .edit a:visited {
       background: #738500;
@@ -443,47 +431,47 @@ h2.show-question {
       border-radius: 3px;
       text-decoration: none;
       padding: 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003176}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003168}}
     .question .body .edit a:hover {
       background: black; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003179}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003171}}
 .question-list {
   padding: 5px 0px 5px 0px;
   border-bottom: 1px dotted #333333; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003183}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003175}}
   .question-list .body {
     margin-left: 21%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003186}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003178}}
     .question-list .body h3 {
       margin-top: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003188}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003180}}
       .question-list .body h3 a:link {
         text-decoration: none;
         color: #313900; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003192}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003184}}
       .question-list .body h3 a:visited {
         text-decoration: none;
         color: #313900; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003196}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003188}}
       .question-list .body h3 a:hover {
         color: black;
         text-decoration: underline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003200}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003192}}
     .question-list .body .user {
       float: right;
       font-size: 12px;
       text-align: right;
       padding: 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003206}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003198}}
       .question-list .body .user img {
         border: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003210}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003202}}
       .question-list .body .user a:link, .question-list .body .user a:visited {
         text-decoration: none;
         color: #738500;
         font-weight: bold; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003215}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/questions\.sass}line{font-family:\00003207}}
       .question-list .body .user a:hover {
         color: black;
         text-decoration: underline; }
