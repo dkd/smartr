@@ -98,7 +98,7 @@ class Vote < ActiveRecord::Base
         Rails.logger.info "Trying to vote down"
         new_value = value_was - 1
         Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
-        Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
+        Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 0
     end
     Rails.logger.info "was :#{value_was} / is:#{value} / calc: #{new_value}"
     Rails.logger.info "votable.votes_count: #{voteable.votes_count}"
