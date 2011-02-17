@@ -30,16 +30,19 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :voteable, :polymorphic => true
   
-  # Filter
+  # Callbacks
+  before_save :check_for_vote
   after_save :update_reputation
   
   # Scopes
   default_scope :order => "updated_at asc"
   
-  # Virtual Attribute
+  # Virtual Attributs
   attr_reader :direction
   
   # Validations
+  validates :user, :presence => true
+  validates :voteable, :presence => true
   validates :value, :presence => true, :check_direction => true, :check_vote => true
   validates :direction, :presence => true, :format => {:with =>  /up|down/}
   
@@ -52,6 +55,11 @@ class Vote < ActiveRecord::Base
       else
         nil
     end
+  end
+  
+  
+  def check_for_vote
+    vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(self.user.id, self.voteable.class.name, self.voteable.id)
   end
   
   def self.has_voted?(user, record)
