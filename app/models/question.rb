@@ -9,7 +9,6 @@ class Question < ActiveRecord::Base
   belongs_to  :accepted_answer, :class_name => "Answer", :foreign_key => :answer_id
 
   #Validations
-  before_validation :sanitize_tags
   validates_presence_of [:body, :name]
   validates_uniqueness_of [:name, :body]
   validates_length_of :name, :minimum => 20
@@ -29,6 +28,7 @@ class Question < ActiveRecord::Base
   
   # Callbacks
   before_validation :set_permalink
+  before_validation :clean_up_tags
   before_save :check_answer_count
   
   #Methods
@@ -63,7 +63,11 @@ class Question < ActiveRecord::Base
       false
     end
   end
- 
+  
+  def clean_up_tags
+    @tag_list.map! {|tag| tag.scan(/[\d\w\d{0,2}]+/).first}.map!(&:downcase) unless @tag_list.nil?
+  end
+   
   #Sunspot Configuration
   searchable do
     text :name, :boost => 5.0
@@ -99,15 +103,7 @@ class Question < ActiveRecord::Base
       name.downcase.sub(/^(an?|the) /, '')
     end
   end
-  
-  protected
-  
-  def sanitize_tags
-    tag_list.inject([]) do |result, element|
-      result << element.to_s.gsub(/[\.\s\+]+/, "")
-      result
-    end
-  end
+
 
 end
 
