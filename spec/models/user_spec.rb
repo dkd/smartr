@@ -68,6 +68,13 @@ describe User do
     
     end
     
+    describe "of reputation" do
+      it "cannot be mass-assigned" do
+        user = Factory.create(:user)
+        user.update_attributes(:reputation => 1000).should == false
+      end
+    end
+    
     describe "of email"  do
       
       it "requires presence" do

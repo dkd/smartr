@@ -18,4 +18,5 @@ FactoryGirl.define do
     tag_list 'testing, rspec'
     association :user, :factory => :user2
   end
+  
 end

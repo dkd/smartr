@@ -13,5 +13,11 @@ FactoryGirl.define do
     sequence(:body) {|n| "#{n} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
     association :user, :factory => :endless_user
   end
-
+  
+  factory :endless_answer_with_question, :class => Answer do
+    sequence(:body) {|n| "#{n} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
+    association :user, :factory => :endless_user
+    association :question, :factory => :question
+  end
+  
 end
