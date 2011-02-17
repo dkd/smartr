@@ -55,7 +55,15 @@ describe Question do
       end
       
       it "should have only downcase tags" do
-        
+        question = Factory.build(:question, :tag_list => "RUBY,JAVASCRIPT")
+        question.should be_valid
+        question.tag_list.should == ["ruby","javascript"]
+      end
+      
+      it "should have only valid tags" do
+        question = Factory.build(:question, :tag_list => "ruby .+,%JAVASCRIPT")
+        question.should be_valid
+        question.tag_list.should == ["ruby","javascript"]
       end
     
     end
