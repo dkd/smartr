@@ -12,10 +12,8 @@ describe Reputation do
           answer.user.reputation.should == 0
           user_reputation = user.reputation
           vote = Factory(:vote, :user => user, :voteable => answer, :value => "1")
-          answer.user.reload
-          user.reload
-          answer.user.reputation.should == Smartr::Settings[:reputation][:answer][:up]
-          user.reputation == user_reputation
+          answer.user.reload.reputation.should == Smartr::Settings[:reputation][:answer][:up]
+          user.reload.reputation == user_reputation
         end
       end
 
@@ -24,12 +22,11 @@ describe Reputation do
         let(:user) { Factory(:endless_user, :reputation => 100) }
         it "then will unpenalize the voter and increase the reputation of the answer's owner" do
           answer_owner_reputation = answer.user.reputation
-          vote_down = Factory(:vote, :user => user, :voteable => answer, :value => "-1")
-          vote_up = Factory(:vote, :user => user, :voteable => answer, :value => "1")
-          answer.user.reload
-          answer.user.reputation.should  == answer_owner_reputation + Smartr::Settings[:reputation][:answer][:up]
-          user.reload
-          user.reputation == 100 + Smartr::Settings[:reputation][:answer][:penalty].to_i.abs
+          vote = Factory(:vote, :user => user, :voteable => answer, :value => "-1")
+          vote.value = "1" 
+          vote.save
+          answer.user.reload.reputation.should  == answer_owner_reputation + Smartr::Settings[:reputation][:answer][:up]
+          user.reload.reputation == 100 + Smartr::Settings[:reputation][:answer][:penalty].to_i.abs
         end
       end
       
@@ -44,10 +41,8 @@ describe Reputation do
           answer.user.save
           user.reputation.should == 0
           vote_down = Factory(:vote, :user => user, :voteable => answer, :value => "-1")
-          answer.user.reload
-          answer.user.reputation.should == 1000 + Smartr::Settings[:reputation][:answer][:down].to_i
-          user.reload
-          user.reputation.should == 0
+          answer.user.reload.reputation.should == 1000 + Smartr::Settings[:reputation][:answer][:down].to_i
+          user.reload.reputation.should == 0
         end
       end
 
@@ -67,14 +62,13 @@ describe Reputation do
         it "will decrease the reputation of the answer's owner while the voter's reputation doesn't change" do
           answer.user.reputation = 1000
           answer.user.save
-          vote_up = Factory(:vote, :user => user, :voteable => answer, :value => "1")
+          vote = Factory(:vote, :user => user, :voteable => answer, :value => "1")
           answer.user.reputation.should == 1000 + Smartr::Settings[:reputation][:answer][:up].to_i
           user.reputation.should == 100
-          vote_down = Factory(:vote, :user => user, :voteable => answer, :value => "-1")
-          user.reload
-          answer.user.reload
-          user.reputation.should == 100
-          answer.user.reputation.should == (1000 + Smartr::Settings[:reputation][:answer][:up].to_i) + Smartr::Settings[:reputation][:answer][:down].to_i
+          vote.reload.value = "-1"
+          vote.save
+          user.reload.reputation.should == 100
+          answer.user.reload.reputation.should == (1000 + Smartr::Settings[:reputation][:answer][:up].to_i) + Smartr::Settings[:reputation][:answer][:down].to_i
         end
       end
     end  
