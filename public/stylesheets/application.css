@@ -589,34 +589,16 @@ h2.show-question {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\000031}}
 .answer-edit {
   position: relative; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\000036}}
-  .answer-edit a.cancel:link, .answer-edit a.cancel:visited {
-    background: #853e00;
-    padding: 7px;
-    color: white;
-    text-decoration: none;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    margin-top: 10px;
-    font-weight: bold;
-    position: relative;
-    left: 0px;
-    font-size: 14px;
-    bottom: -8px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000319}}
-  .answer-edit a.cancel:hover {
-    background: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\000035}}
   .answer-edit h2 {
     margin: 0px;
     margin-bottom: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\000039}}
   .answer-edit label {
     font-weight: bold;
     display: block;
     margin-top: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000314}}
   .answer-edit textarea {
     border: 1x solid #737373;
     -moz-border-radius: 3px;
@@ -624,7 +606,7 @@ h2.show-question {
     border-radius: 3px;
     padding: 5px;
     width: 890px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000320}}
   .answer-edit input.text {
     border: 1x solid #737373;
     -moz-border-radius: 3px;
@@ -634,7 +616,7 @@ h2.show-question {
     width: 100%;
     font-weight: bold;
     font-size: 14px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000328}}
   .answer-edit input.save {
     float: right;
     background: #738500;
@@ -649,22 +631,22 @@ h2.show-question {
     border-radius: 3px;
     display: block;
     font-weight: bold; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000341}}
   .answer-edit input.save:hover {
     background: black; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000344}}
 h2.answer-header {
   border-bottom: 3px solid #737373; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000349}}
 .answer-item {
   border-bottom: 1px dotted black;
   padding: 10px 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000352}}
   .answer-item .stats {
     float: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000356}}
     .answer-item .stats .status a {
       display: block;
       width: 44px;
@@ -672,31 +654,31 @@ h2.answer-header {
       padding: 0px;
       background: url(../images/unchecked.png) no-repeat 0 0;
       color: white; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000363}}
     .answer-item .stats .status a.accepted {
       background: url(../images/checked.png) no-repeat 0 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000365}}
   .answer-item .counter {
     font-weight: bold; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000368}}
   .answer-item .body {
     margin-top: 5px;
     margin-bottom: 5px;
     overflow: auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000374}}
     .answer-item .body pre code {
       padding: 5px;
       overflow: auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000378}}
     .answer-item .body a:link, .answer-item .body a:visited {
       padding: 5px;
       font-weight: normal;
       line-height: 25px;
       color: #738500; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000384}}
     .answer-item .body a:hover {
       color: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000387}}
     .answer-item .body a.edit:link, .answer-item .body a.edit:visited {
       background: #738500;
       color: white;
@@ -707,14 +689,14 @@ h2.answer-header {
       text-decoration: none;
       font-weight: normal;
       line-height: 25px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003113}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000396}}
     .answer-item .body a.edit:hover {
       background: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\0000398}}
     .answer-item .body p {
       margin-bottom: 1em;
       margin-top: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003102}}
     .answer-item .body .user {
       float: right;
       font-size: 12px;
@@ -725,19 +707,19 @@ h2.answer-header {
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003128}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003111}}
       .answer-item .body .user img {
         margin-right: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003131}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003114}}
       .answer-item .body .user a:link, .answer-item .body .user a:visited {
         text-decoration: none;
         color: #738500;
         background: none;
         font-weight: bold; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003120}}
       .answer-item .body .user a:hover {
         color: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/answers\.sass}line{font-family:\00003123}}
         .answer-item .body .user a:hover img {
           border: 0px; }
 

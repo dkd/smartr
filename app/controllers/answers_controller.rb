@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
   end
   
   def edit
-    @answer = Answer.find(params[:id])
+    @answer = current_user.answers.find(params[:id])
     @question = @answer.question
     @answer.body = @answer.body
   end
@@ -31,29 +31,27 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer.question = @question
     @answer.user = current_user
-    respond_to do |format|
-      if @answer.save
-        flash[:notice] = 'Answer was successfully created.'
-        format.html { redirect_to question_url(@question.id, @question.friendly_id) }
-      else
-        format.html { render("_new", :locals => {:answer => @answer, :question => @question}, :layout => true) }
-      end
+    if @answer.save
+      flash[:notice] = 'Answer was successfully created.'
+      redirect_to question_url(@question.id, @question.friendly_id)
+    else
+      render("_new", :locals => {:answer => @answer, :question => @question}, :layout => true)
     end
+
   end
 
   def update
     params.delete(:accepted)
-    @answer = Answer.find(params[:id])
+    @answer = current_user.answers.find(params[:id])
     @question = @answer.question
     
      if @answer.update_attributes(params[:answer])
-       flash[:notice] = "Saved your answer."
+       flash[:notice] = 'Answer was successfully updated.'
          redirect_to question_path(@question.id, @question.friendly_id)
       else
           render "edit"
       end
   end
-
 
   def destroy
     @answer.destroy
@@ -62,7 +60,6 @@ class AnswersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
   
   def update_for_switch_acceptance
      @answer.toggle_acception
@@ -74,7 +71,6 @@ class AnswersController < ApplicationController
        }
      end
    end
-  
   
   private
   
