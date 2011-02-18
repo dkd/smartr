@@ -5,9 +5,9 @@
   
   <%= form_for(answer, :url => question_answers_path(:question_id => question.id, :friendly_id => question.friendly_id)) do |f| %>
     <div id="wmd-button-bar"></div>
-    <div class="<%="error" if f.error_message_on(:body).present? %>">
+    <div class="<%="error" if f.error_message_on(:body).present? %>"><%= f.error_message_on(:body) %>
     <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
-    <%= f.error_message_on(:body) %>
+    
     </div>
     <%= f.submit 'Save', :class => "save" %>
     <%= f.hidden_field :body_plain, :class => "plain" %>

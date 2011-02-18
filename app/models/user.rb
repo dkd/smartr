@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :uninteresting_tags
   acts_as_tagger
   has_friendly_id :login
-  
+   
   # Named Scopes
   scope :latest, :order => "created_at DESC"
   scope :online, lambda {
@@ -34,9 +34,12 @@ class User < ActiveRecord::Base
   # Validations
   validates :email, :presence => true
   validates :login, :presence => true, :length => {:within => 6..12}, :uniqueness => true
+  validates :interesting_tag_list, :length => {:maximum => 8}, :allow_blank => true
+  validates :uninteresting_tag_list, :length => {:maximum => 8}, :allow_blank => true
   
   # Filter
   before_validation :strip_and_downcase_login
+  before_validation :clean_up_tags
   
   def is_online?
     if self.last_request_at > (Time.now - 5.minutes)
@@ -44,6 +47,11 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+  
+  def clean_up_tags
+    @interesting_tag_list.map! {|tag| tag.scan(/[\d\w\d{0,2}]+/).first}.map!(&:downcase) unless @interesting_tag_list.nil?
+    @uninteresting_tag_list.map! {|tag| tag.scan(/[\d\w\d{0,2}]+/).first}.map!(&:downcase) unless @uninteresting_tag_list.nil?
   end
   
   def count_view!

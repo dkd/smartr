@@ -31,14 +31,16 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, :polymorphic => true
   
   # Callbacks
-  before_save :check_for_vote
   after_save :update_reputation
   
   # Scopes
   default_scope :order => "updated_at asc"
   
-  # Virtual Attributs
+  # Virtual Attributes
   attr_reader :direction
+  
+  # Protect Attributes
+  attr_accessible :value
   
   # Validations
   validates :user, :presence => true
@@ -56,12 +58,7 @@ class Vote < ActiveRecord::Base
         nil
     end
   end
-  
-  
-  def check_for_vote
-    vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(self.user.id, self.voteable.class.name, self.voteable.id)
-  end
-  
+
   def self.has_voted?(user, record)
     vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
     if(vote)
@@ -83,10 +80,7 @@ class Vote < ActiveRecord::Base
   end
   
   def update_reputation
-    
     target_user = self.voteable.user
-    Rails.logger.info "Original Value #{value_was}"
-    Rails.logger.info "Current Value #{value}"
     
     case direction
       when "up"
@@ -100,22 +94,18 @@ class Vote < ActiveRecord::Base
         Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
         Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 0
     end
-    Rails.logger.info "was :#{value_was} / is:#{value} / calc: #{new_value}"
-    Rails.logger.info "votable.votes_count: #{voteable.votes_count}"
+
     if new_value == 0
-      Rails.logger.info "VOTEABLE COUNT SHOULD BE #{(voteable.votes_count + value)}"
       self.delete
     end
+
     rating = 0
     voteable.reload
-    voteable.votes.each {|vote|
-      rating += vote.value
-      Rails.logger.info "Rating is #{rating}"
-      }
+    voteable.votes.each {|vote| rating += vote.value }
     voteable.update_attributes(:votes_count => rating)
-    voteable.votes.reload
+    #voteable.votes.reload
   end
-  
+
 end
 
 # == Schema Information

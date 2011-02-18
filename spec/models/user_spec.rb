@@ -34,6 +34,15 @@ describe User do
       end
     
     end
+    
+    describe "of reputation" do
+      
+      it "cannot be mass-assigned" do
+        user = Factory(:endless_user, :reputation => 1000)
+        expect { user.update_attributes(:reputation => 2000) }.to_not change {user.reputation}
+      end
+       
+    end
   
     describe "of login name"  do
       
@@ -83,6 +92,50 @@ describe User do
         duplicate_user.should have(1).error_on(:email)
       end
     
+    end
+    
+    describe "of interesting_tags" do
+      let(:user) {Factory.create(:endless_user)}
+      
+      it "should have not more than 8 tags" do
+        user.interesting_tag_list = "tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9"
+        user.should_not be_valid
+      end
+      
+      it "should have only downcase tags" do
+        user.interesting_tag_list = "RUBY,JAVASCRIPT"
+        user.should be_valid
+        user.interesting_tag_list.should == ["ruby","javascript"]
+      end
+      
+      it "should fix invalid tag names" do
+        user.interesting_tag_list = "ruby .+,%JAVASCRIPT"
+        user.should be_valid
+        user.interesting_tag_list.should == ["ruby","javascript"]
+      end
+      
+    end
+     
+    describe "of uninteresting_tags" do
+      let(:user) {Factory.create(:endless_user)}
+      
+      it "should have not more than 8 tags" do
+        user.uninteresting_tag_list = "tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9"
+        user.should_not be_valid
+      end
+      
+      it "should have only downcase tags" do
+        user.uninteresting_tag_list = "RUBY,JAVASCRIPT"
+        user.should be_valid
+        user.uninteresting_tag_list.should == ["ruby","javascript"]
+      end
+      
+      it "should fix invalid tag names" do
+        user.uninteresting_tag_list = "ruby .+,%JAVASCRIPT"
+        user.should be_valid
+        user.uninteresting_tag_list.should == ["ruby","javascript"]
+      end
+      
     end
   
   end

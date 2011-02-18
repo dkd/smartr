@@ -49,7 +49,6 @@ describe Question do
       end
       
       it "should have not more than 8 tags" do
-
         question = Factory.build(:question, :tag_list => "tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9")
         question.should_not be_valid
       end
