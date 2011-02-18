@@ -5,10 +5,10 @@ describe "Settings" do
     describe " on answers" do
       it "it should have an have numerical values" do
         answer = Smartr::Settings[:reputation][:answer]
-        answer[:up].should be_an_integer
-        answer[:down].should be_an_integer
-        answer[:penalty].should be_an_integer
-        answer[:accept].should be_an_integer
+        answer[:up].should be_a_kind_of(Integer)
+        answer[:down].should be_a_kind_of(Integer)
+        answer[:penalty].should be_a_kind_of(Integer)
+        answer[:accept].should be_a_kind_of(Integer)
       end
       it "should return zero" do
         answer = Smartr::Settings[:reputation][:answer]
@@ -18,10 +18,10 @@ describe "Settings" do
     describe " on answers" do
       it "it should have an have numerical values" do
         question = Smartr::Settings[:reputation][:question]
-        question[:up].should be_an_integer
-        question[:down].should be_an_integer
-        question[:penalty].should be_an_integer
-        question[:new].should be_an_integer
+        question[:up].should be_a_kind_of(Integer)
+        question[:down].should be_a_kind_of(Integer)
+        question[:penalty].should be_a_kind_of(Integer)
+        question[:new].should be_a_kind_of(Integer)
       end
       it "should return zero" do
         question = Smartr::Settings[:reputation][:question]
@@ -31,9 +31,9 @@ describe "Settings" do
     describe " on comments" do
       it "it should have an have numerical values" do
         comment = Smartr::Settings[:reputation][:comment]
-        comment[:up].should be_an_integer
-        comment[:down].should be_an_integer
-        comment[:penalty].should be_an_integer
+        comment[:up].should be_a_kind_of(Integer)
+        comment[:down].should be_a_kind_of(Integer)
+        comment[:penalty].should be_a_kind_of(Integer)
       end
       it "should return zero" do
         comment = Smartr::Settings[:reputation][:comment]
