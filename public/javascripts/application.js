@@ -138,8 +138,8 @@ $(document).ready(function(){
       formatItem: function(row, i, n) {
           return row;
       },
-      multiple: true,
-      autoFill: true
+      multiple: false,
+      autoFill: false
   });
   /*
   $("#question_searchstring").keyup(function() {
