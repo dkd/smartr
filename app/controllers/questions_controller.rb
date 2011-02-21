@@ -86,23 +86,22 @@ class QuestionsController < ApplicationController
   
   def search
     if params[:q].present?
-      @searchstring = params[:q]
-    else
-      @searchstring = params[:question][:searchstring]
+      params[:question] = {}
+      params[:question][:searchstring] = params[:q]
     end
-    
+    Rails.logger.info "Search for #{@searchstring}"
     @questions = Sunspot.search(Question) do
-      fulltext @searchstring do
+      fulltext params[:question][:searchstring] do
         highlight :name
         tie 0.1
       end
       #with :user_id, params[:question][:user_id] unless (params[:question].nil? && params[:question][:user_id].nil?)
       facet :user_id, :minimum_count => 2
-      paginate(:page =>  params[:page], :per_page => 15)
+      paginate(:page =>  params[:page], :per_page => 15) if params[:q].nil?
     end
     respond_with(@questions) do |format|
       format.html
-      format.json { render :json, @questions.to_json(:only => [:name])}
+      format.json { render :json => @questions.results.map {|question| question.name }.to_json }
     end
   end
   
