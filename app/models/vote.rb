@@ -1,17 +1,7 @@
 class CheckVoteValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-
-    if record.value_was == 1
-      if record.value_changed?
-        record.errors[attribute] << "Already Voted in that direction" unless (record.value == -1)
-      end
-    end
-    
-    if record.value_was == -1
-      if record.value_changed?
-        record.errors[attribute] << "Already Voted in that direction" unless (record.value == 1)
-      end
-    end
+    votes = Vote.where("user_id =? and voteable_type=? and voteable_id=?", record.user_id, record.voteable_type, record.voteable_id)
+    record.errors[attribute] << "This user already voted" if votes.count > 0 && record.id.nil?
   end
 end
 
@@ -21,8 +11,21 @@ class CheckDirectionValidator < ActiveModel::EachValidator
       record.errors[attribute] << "Direction is invalid"
     end
     record.errors[attribute] << "Nothing changed" if record.value_was == record.value
+    
+   if record.value_was == 1
+      if record.value_changed?
+        record.errors[attribute] << "Already Voted in that direction" unless (record.value == -1)
+      end
+    end
+
+    if record.value_was == -1
+      if record.value_changed?
+        record.errors[attribute] << "Already Voted in that direction" unless (record.value == 1)
+      end
+    end
   end
 end
+
 
 class Vote < ActiveRecord::Base
   
@@ -43,9 +46,9 @@ class Vote < ActiveRecord::Base
   attr_accessible :value
   
   # Validations
-  validates :user, :presence => true
+  validates :user, :presence => true, :check_vote => true
   validates :voteable, :presence => true
-  validates :value, :presence => true, :check_direction => true, :check_vote => true
+  validates :value, :presence => true, :check_direction => true
   validates :direction, :presence => true, :format => {:with =>  /up|down/}
   
   def direction

@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
   
   before_filter :require_user, :only => [:edit, :create, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :check_ownership, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
-  respond_to :html, :js, :xml
+  respond_to :html, :js, :xml, :json
+  
   def index
       if (params[:tag].present?)
         @questions = Question.latest.list.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
@@ -84,20 +85,24 @@ class QuestionsController < ApplicationController
   #end
   
   def search
-    @searchstring = params[:question][:searchstring]
+    if params[:q].present?
+      @searchstring = params[:q]
+    else
+      @searchstring = params[:question][:searchstring]
+    end
+    
     @questions = Sunspot.search(Question) do
-      logger.info @searchstring
-      fulltext params[:question][:searchstring] do
+      fulltext @searchstring do
         highlight :name
         tie 0.1
       end
-      with :user_id, params[:question][:user_id] unless params[:question][:user_id].blank?
+      #with :user_id, params[:question][:user_id] unless (params[:question].nil? && params[:question][:user_id].nil?)
       facet :user_id, :minimum_count => 2
       paginate(:page =>  params[:page], :per_page => 15)
     end
     respond_with(@questions) do |format|
       format.html
-      format.js
+      format.json { render :json, @questions.to_json(:only => [:name])}
     end
   end
   

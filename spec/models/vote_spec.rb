@@ -5,6 +5,28 @@ describe Vote do
     it { should belong_to :user }
     it { should belong_to :voteable }
   end
+  
+  
+  context "Validation" do
+
+    describe "of user" do
+      let(:question) { Factory.create(:question2)}
+      let(:user) { Factory.create(:user2, :reputation => 100)}
+      it "allows only 1 one per user on one subject" do
+        user = Factory(:endless_user, :reputation => 100)
+        vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
+        vote.update_attributes(:value => "1")
+        Vote.where("user_id =? and voteable_type=? and voteable_id=?", vote.user_id, vote.voteable_type, vote.voteable_id).count.should eq(1)
+        another_vote = Vote.new
+        another_vote.user = vote.user
+        another_vote.voteable_type = vote.voteable_type
+        another_vote.voteable_id = vote.voteable_id
+        another_vote.should have(1).error_on(:user)
+        another_vote.should_not be_valid
+      end
+    end
+    
+  end
  
   context "Question voting:" do
     let(:question) { Factory.create(:question2)}
