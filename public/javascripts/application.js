@@ -124,8 +124,24 @@ $(document).ready(function(){
       autoFill: true
   });
   
-  /* Tag auto-completion */
- 
+  /* Question auto-completion */
+  
+  $("#question_searchstring").autocomplete('/questions/search.json', {
+      dataType: 'json',
+      parse: function(data) {
+          var rows = new Array();
+          for(var i=0; i<data.length; i++){
+              rows[i] = { data: data[i], value:data[i], result:data[i]};
+          }
+          return rows;
+      },
+      formatItem: function(row, i, n) {
+          return row;
+      },
+      multiple: true,
+      autoFill: true
+  });
+  /*
   $("#question_searchstring").keyup(function() {
     $.ajax({ url: "/questions/search.js", 
              data: "question[searchstring]="+$("#question_searchstring").val(),
@@ -138,7 +154,7 @@ $(document).ready(function(){
       $("#ajax-search").hide().html("");
     }
   });
-  
+  */
   $(".status a").hover(
     function(){
     
