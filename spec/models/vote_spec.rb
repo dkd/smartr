@@ -11,7 +11,6 @@ describe Vote do
 
     describe "of user" do
       let(:question) { Factory.create(:question2)}
-      let(:user) { Factory.create(:user2, :reputation => 100)}
       it "allows only 1 one per user on one subject" do
         user = Factory(:endless_user, :reputation => 100)
         vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
@@ -23,6 +22,18 @@ describe Vote do
         another_vote.voteable_id = vote.voteable_id
         another_vote.should have(1).error_on(:user)
         another_vote.should_not be_valid
+      end
+    end
+    
+    describe "of voteable" do
+      let(:question) { Factory.create(:question2)}
+      it "allows only a vote with a voteable relation" do
+        user = Factory(:endless_user, :reputation => 100)
+        vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)
+        vote.update_attributes(:value => "1")
+        vote.voteable = nil
+        vote.should have(1).error_on(:voteable)
+        vote.should_not be_valid
       end
     end
     

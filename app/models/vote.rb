@@ -23,6 +23,7 @@ class CheckDirectionValidator < ActiveModel::EachValidator
         record.errors[attribute] << "Already Voted in that direction" unless (record.value == 1)
       end
     end
+ 
   end
 end
 
