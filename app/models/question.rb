@@ -7,7 +7,8 @@ class Question < ActiveRecord::Base
   has_many    :answers, :dependent => :destroy
   has_many    :favourites, :dependent => :destroy
   belongs_to  :accepted_answer, :class_name => "Answer", :foreign_key => :answer_id
-
+  has_many :edits, :as => :editable, :dependent => :destroy
+  
   #Validations
   validates_presence_of [:body, :name]
   validates_uniqueness_of [:name, :body]

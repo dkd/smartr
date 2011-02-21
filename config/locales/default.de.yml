@@ -35,8 +35,8 @@ de:
         one: 'weniger als eine Minute'
         other: 'weniger als %{count} Minuten'
       x_minutes:
-        one: 'eine Minute'
-        other: '%{count} Minuten'
+        one: 'vor einer Minute'
+        other: 'vor %{count} Minuten'
       about_x_hours:
         one: 'etwa eine Stunde'
         other: 'etwa %{count} Stunden'

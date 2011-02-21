@@ -28,7 +28,11 @@
     <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points
     <br class="clear" />
    </div>
-   
+  <% if question.edits.last.present? %>
+  <div class="edit">
+    <b>Edit:</b><span class="body"><%=question.edits.last.body%></span><span><%= distance_of_time_in_words_to_now question.edits.last.created_at %>
+  </div>
+  <% end %> 
   <% if (user_signed_in? && current_user == question.user) %>
     <div class="edit">
       <%= link_to "Edit Question",  url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id) %>   
