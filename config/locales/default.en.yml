@@ -10,3 +10,6 @@ en:
       x_months:
         one: '1 month ago'
         other: '%{count} months ago'
+      x_minutes:
+        one: '1 minute ago'
+        other: '%{count} minutes ago'
