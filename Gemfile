@@ -40,4 +40,5 @@ group :test do
   gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
   gem 'shoulda'
   gem 'capybara'
+  gem 'spork', '~> 0.9.0.rc'
 end
