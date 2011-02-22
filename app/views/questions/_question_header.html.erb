@@ -6,7 +6,7 @@
     </div>
     <div class="views">
       <%=question.views.humanize %>
-      <span class="desc"><%= "View".correctize_plural(question.views) %></span>
+      <span class="desc"><%=  t("views", :count => question.views) %></span>
     </div>
       <% if user_signed_in? %>
         <div class="<%=question.favourited?(current_user)? "favourite-saved": "favourite"%>" id="favourite-question-<%=question.id%>">
@@ -26,18 +26,19 @@
        <% end -%>
      </span><br />
     <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points
-    <br class="clear" />
-   </div>
+    
+    <% if (user_signed_in? && current_user == question.user) %>
+      <span class="edit">
+        <%= link_to t("questions.edit_question"),  url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id) %>   
+      <br class="clear" /></span>
+    <% end -%>
+   </div><br class="clear" />
   <% if question.edits.last.present? %>
   <div class="edit">
-    <b>Edit:</b><span class="body"><%=question.edits.last.body%></span><span><%= distance_of_time_in_words_to_now question.edits.last.created_at %>
+    <b>Edit:</b><span class="body"><%=question.edits.last.body%></span><br /><span><%= distance_of_time_in_words_to_now question.edits.last.created_at %> by <%=question.edits.last.user.login%>
   </div>
   <% end %> 
-  <% if (user_signed_in? && current_user == question.user) %>
-    <div class="edit">
-      <%= link_to "Edit Question",  url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id) %>   
-    </div>
-  <% end -%>
+
   </div>
   <br class="clear" /> 
   <div class="actions">

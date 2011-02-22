@@ -64,6 +64,8 @@ class Vote < ActiveRecord::Base
   end
 
   def self.has_voted?(user, record)
+    Rails.logger.info user.inspect
+    Rails.logger.info record.inspect
     vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
     if(vote)
       vote.value

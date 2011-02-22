@@ -13,3 +13,6 @@ en:
       x_minutes:
         one: '1 minute ago'
         other: '%{count} minutes ago'
+      less_than_x_minutes:
+        one: 'less than a minute ago'
+        other: 'less than %{count} minutes ago'

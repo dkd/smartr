@@ -33,6 +33,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @question = Question.find(params[:id])
+    @edit = @question.edits.new
+    @related_questions = @question.find_related_tags.limit(10)
   end
 
   # POST /questions
@@ -49,20 +51,25 @@ class QuestionsController < ApplicationController
   end
 
   def update
-      if @question.update_attributes(params[:question])
-        flash[:notice] = 'Question was successfully updated.'
-        redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id)
-      else
-        render :action => "edit"
-      end
-
+    @related_questions = @question.find_related_tags.limit(10)
+    Rails.logger.info params[:question][:edits_attributes][:"0"].inspect
+    params[:question][:edits_attributes][:"0"][:user_id] = {}
+    params[:question][:edits_attributes][:"0"][:user_id] = current_user.id
+    
+    if @question.update_attributes(params[:question])
+      flash[:notice] = 'Question was successfully updated.'
+      redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id)
+    else
+      flash[:error] = 'Please fill in all requested fields!'
+      @edit = @question.edits.last
+      render :action => "edit"
+    end
   end
 
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
     redirect_to(questions_url)
-
   end
 
   def hot

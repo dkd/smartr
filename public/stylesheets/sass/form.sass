@@ -60,7 +60,9 @@ form
     color: #ffff99
     
   div.text_field,
-  div.text_field_long
+  div.text_field_long,
+  div.text_field_extra_long,
+  div.textarea_extra
     margin-bottom: 15px
     
     label
@@ -76,7 +78,8 @@ form
       display: block
       +border_radius
     
-    input:focus
+    input:focus, 
+    textarea:focus
       background-color: rgba(200, 255, 113, 0.4)
     
     div.field_with_errors
@@ -88,3 +91,13 @@ form
   div.text_field_long
     input
       width: 230px
+  div.text_field_extra_long,
+  div.textarea_extra
+    input
+      width: 890px
+      height: 20px
+      font-size: 14px
+      margin-right: 10px
+    textarea
+      width: 890px
+      font-family: "Courier"
