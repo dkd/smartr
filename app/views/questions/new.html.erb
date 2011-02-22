@@ -1,4 +1,4 @@
-<h2>New question</h2>
+<h2><%=t("questions.new")%></h2>
 <div class="question-edit">
   <%= form_for(@question) do |f| %>
       <%= render :partial => '/questions/form', :locals => {:f => f}%>

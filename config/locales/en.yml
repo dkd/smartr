@@ -32,6 +32,9 @@ en:
     other: votes
   
   questions:
+    new: New Question
+    name: Enter your question here
+    body: Please provide more detail
     label: 
       one: question
       other: questions

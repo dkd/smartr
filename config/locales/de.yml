@@ -4,7 +4,9 @@
 #  - Alexander Dreher - http://github.com/alexdreher - Rails 3 update
 
 de:
-
+  views:
+    one: Zugriff
+    other: Zugriffe
   searchstring_default: Hier nach Fragen suchen ...
   cancel: abbrechen
   save: speichern
@@ -15,6 +17,9 @@ de:
     users: Benutzer
   
   answers:
+    my_answer: Meine Antwort
+    howto:
+      header: So wird geantwortet
     label:
       one: Antwort
       other: Antworten
@@ -26,6 +31,12 @@ de:
       other: Kommentare
   
   questions:
+    new: Neue Frage
+    name: Hier Frage formulieren
+    body: Bitte hier hilfreichen Inhalt einstellen
+    asked_by: gestellt von
+    saved_in: gespeichert in
+    edit_question: Frage bearbeiten
     related: Ähnliche Fragen
     label: 
       one: Frage

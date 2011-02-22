@@ -12,6 +12,6 @@
     border-color: #d5e5d0;
     background: rgba(237, 255, 232, 0.7); }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/flashmessages\.sass}line{font-family:\0000313}}
-  .flash .message.alert {
+  .flash .message.alert, .flash .message.error {
     border-color: #e5d0d0;
     background: rgba(255, 232, 232, 0.7); }

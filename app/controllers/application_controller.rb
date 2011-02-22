@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :search_options
   before_filter :set_last_request_at, :store_location
   before_filter :set_order
+  before_filter :set_locale
   
   def rescue_action(exception)
      
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
    end
 
   protected
+    
+    def set_locale
+      I18n.locale = params[:locale]
+    end
     
     def set_order 
       session[:comments_order] = "latest" if session[:comments_order].blank?

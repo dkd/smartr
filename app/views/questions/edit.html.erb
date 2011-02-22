@@ -2,6 +2,16 @@
 <div class="question-edit">
   <%= form_for(@question, :url => question_path(:id => @question.id), :method => "put") do |f| %>
       <%= render :partial => '/questions/form', :locals => {:f => f}%>
+      <%=Rails.logger.info @question.edits.last.inspect%>
+      <%= f.fields_for :edits, @edit do |builder| %>
+      <%=Rails.logger.info @question.errors.inspect%>
+      <div class="<%="error " if f.error_message_on(:"edits.body") %>text_field_long">
+        <%= builder.label "Edit Message" %><%= mark_required(Edit, :body) %>
+        <%= builder.text_field :body %>
+        <%= f.error_message_on(:"edits.body") %>
+      </div>
+      <%= f.submit 'Save Question' %>
+      <% end %>
   <% end %>
 </div>
 <% main_menu :questions %>
