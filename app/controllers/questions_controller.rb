@@ -96,14 +96,23 @@ class QuestionsController < ApplicationController
       params[:question] = {}
       params[:question][:searchstring] = params[:q]
     end
-    Rails.logger.info "Search for #{@searchstring}"
+    @searchstring = params[:question][:searchstring]
     @questions = Sunspot.search(Question) do
       fulltext params[:question][:searchstring] do
         highlight :name
         tie 0.1
       end
-      #with :user_id, params[:question][:user_id] unless (params[:question].nil? && params[:question][:user_id].nil?)
+      
+      if params[:question].present? && params[:question][:user_id].present?
+         with(:user_id, params[:question][:user_id].to_i) 
+      end
+      
+      if params[:question].present? && params[:question][:question_state].present?
+        with(:question_state, question_state)
+      end
+      
       facet :user_id, :minimum_count => 2
+      facet :question_state, :minimum_count => 2
       paginate(:page =>  params[:page], :per_page => 15) if params[:q].nil?
     end
     respond_with(@questions) do |format|
@@ -126,6 +135,12 @@ class QuestionsController < ApplicationController
   end
   
   protected
+  
+  def question_state
+    if params[:question].present? && params[:question][:question_state].present?
+      params[:question][:question_state] == "true"? true : false
+    end
+  end
   
   def check_for_tag
     if (params[:tag].present?)
