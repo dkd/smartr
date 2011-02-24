@@ -8,21 +8,21 @@ describe QuestionsController do
   describe "GET index" do
     it "has a 200 status code" do
       get :index
-      response.code.should eq("200")
+      response.should be_success
     end
   end
   
   describe "GET XML feed" do
     it "has a 200 status code" do
       get :index, :format => :xml
-      response.code.should eq("200")
+      response.should be_success
     end
   end
   
   describe "GET show" do
     it "should should show the question" do
       get :show, :id => question.id, :friendly_id => question.friendly_id
-      response.code.should eq("200")
+      response.should be_success
       assigns(:question).should eq(Question.find(question.id))
     end
   end 
@@ -30,7 +30,7 @@ describe QuestionsController do
   describe "GET hot" do
     it "should show the latest questions" do
       get :hot
-      response.code.should eq("200")
+      response.should be_success
       response.should render_template("index_for_hot")
     end
   end
@@ -38,7 +38,7 @@ describe QuestionsController do
   describe "GET active" do
     it "should show the most active questions" do
       get :active
-      response.code.should eq("200")
+      response.should be_success
       response.should render_template("index_for_active")
     end
   end
@@ -46,7 +46,7 @@ describe QuestionsController do
   describe "GET unanswered" do
     it "should show the latest unanswered questions" do
       get :unanswered
-      response.code.should eq("200")
+      response.should be_success
       response.should render_template("index_for_unanswered")
     end
   end
@@ -119,11 +119,11 @@ describe QuestionsController do
       sign_in question.user
     end
     
-   describe "PUT question with with incorrect parameters" do
-       it "should render edit form" do
-         put :update, :id => question.id, :question => {:name => ""}
-         response.should render_template(:edit)
+    describe "PUT question with with incorrect parameters" do
+      it "should render edit form" do
+         put :update, :id => question.id, :question => {:name => "", :edits_attributes => {:"0" => {:body => "I am just a commit message!"}}}
          assigns(:question).should eq(question)
+         response.should render_template(:edit)
        end
      end
   end

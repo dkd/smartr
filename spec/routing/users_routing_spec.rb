@@ -35,10 +35,6 @@ describe UsersController do
     it "recognizes and generates #who_is_online" do
       { :get => "/users/who_is_online" }.should route_to(:controller => "users", :action => "who_is_online")
     end
-    
-    it "recognizes and generates #who_is_online" do
-      { :get => "/users/who_is_online" }.should route_to(:controller => "users", :action => "who_is_online")
-    end
   
   end
 end

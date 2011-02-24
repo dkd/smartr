@@ -52,7 +52,6 @@ class QuestionsController < ApplicationController
 
   def update
     @related_questions = @question.find_related_tags.limit(10)
-    Rails.logger.info params[:question][:edits_attributes][:"0"].inspect
     params[:question][:edits_attributes][:"0"][:user_id] = {}
     params[:question][:edits_attributes][:"0"][:user_id] = current_user.id
     
@@ -122,7 +121,7 @@ class QuestionsController < ApplicationController
   end
   
   def update_for_toggle_acceptance
-    @question = Question.find(params[:id])
+    @question = current_user.questions.wh(params[:id])
     respond_to do |format|
       format.js{
           @answer = Answer.find(params[:answer_id])
@@ -157,6 +156,8 @@ class QuestionsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id) }
       end
+    else
+      true
     end
   end
   
