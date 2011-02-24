@@ -112,6 +112,41 @@ class QuestionsController < ApplicationController
       
       facet :user_id, :minimum_count => 2
       facet :question_state, :minimum_count => 2
+      facet :created_at do
+        row("last 7 days") do
+          with(:created_at).greater_than(Time.now - 7.day)
+        end
+        row("last month") do
+          with(:created_at).greater_than(Time.now - 31.day)
+        end
+        row("last 3 months") do
+          with(:created_at).greater_than(Time.now - 3.month)
+        end
+        row("last 6 months") do
+          with(:created_at).greater_than(Time.now - 6.month)
+        end
+        row("last 12 months") do
+          with(:created_at).greater_than(Time.now - 12.month)
+        end
+      end
+      
+      if params[:question].present? && params[:question][:created_at].present?
+        date_range = case params[:question][:created_at]
+                      when "last 7 days" then
+                        Time.now - 7.day
+                      when "last month" then
+                        Time.now - 31.day
+                      when "last 3 months" then
+                        Time.now - 3.month
+                      when "last 6 months" then
+                        Time.now - 6.month
+                      when "last 12 months" then
+                        Time.now - 12.month
+                      else
+                        10.years.ago
+                      end
+        with(:created_at).greater_than(date_range)
+      end
       paginate(:page =>  params[:page], :per_page => 15) if params[:q].nil?
     end
     respond_with(@questions) do |format|
