@@ -79,6 +79,10 @@ class Question < ActiveRecord::Base
         answer.body_plain
       }
     end
+    
+    boolean :question_state do
+      accepted_answer.nil? ? false : true
+    end
 
     text :comments do
       comments.map {|comment|
