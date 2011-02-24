@@ -99,7 +99,7 @@ class Question < ActiveRecord::Base
     end
 
     time :updated_at
-    time :created_at
+    date :created_at
 
     integer :id
 
