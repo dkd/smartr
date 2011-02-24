@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Edit do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to :editable }
+  it { should belong_to :user }
+  it { should validate_presence_of :body }
+  it { should ensure_length_of :body }
 end
