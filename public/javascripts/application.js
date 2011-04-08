@@ -126,7 +126,7 @@ $(document).ready(function(){
   
   /* Question auto-completion */
   
-  $("#question_searchstring").autocomplete('/questions/search.json', {
+  /*$("#question_searchstring").autocomplete('/questions/search.json', {
       dataType: 'json',
       parse: function(data) {
           var rows = new Array();
@@ -141,20 +141,24 @@ $(document).ready(function(){
       multiple: false,
       autoFill: false
   });
-  /*
-  $("#question_searchstring").keyup(function() {
-    $.ajax({ url: "/questions/search.js", 
-             data: "question[searchstring]="+$("#question_searchstring").val(),
-             dataType: "html",
-             success:function(data) {
-                      $("#ajax-search").html(data).show();
-                     }
-    });
-    if ($(this).val() == "") {
-      $("#ajax-search").hide().html("");
-    }
-  });
   */
+  $("#question_searchstring").typeWatch({callback: function() {
+    	$.ajax({ url: "/questions/search.js", 
+	             data: "question[searchstring]="+$("#question_searchstring").val(),
+	             dataType: "html",
+	             success:function(data) {
+	                      $("#ajax-search").html(data).show();
+	                     }
+	    });
+	    if ($(this).val() == "") {
+	      $("#ajax-search").hide().html("");
+	    }
+  	},
+	wait: 250,
+	highlight: true,
+	captureLength: 3
+	});
+
   $(".status a").hover(
     function(){
     

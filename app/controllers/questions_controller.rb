@@ -150,6 +150,7 @@ class QuestionsController < ApplicationController
       paginate(:page =>  params[:page], :per_page => 15) if params[:q].nil?
     end
     respond_with(@questions) do |format|
+      format.js
       format.html
       format.json { render :json => @questions.results.map {|question| question.name }.to_json }
     end

@@ -70,8 +70,9 @@ class Question < ActiveRecord::Base
    
   #Sunspot Configuration
   searchable do
-    text :name, :boost => 5.0
-    text :body
+    text :name, :boost => 5.0, :stored => true
+    text :body, :stored => true
+    text :friendly_id, :stored => true
     integer :user_id, :references => User
 
     text :answers do 
@@ -101,7 +102,7 @@ class Question < ActiveRecord::Base
     time :updated_at
     date :created_at
 
-    integer :id
+    integer :id, :stored => true
 
     string :sort_title do
       name.downcase.sub(/^(an?|the) /, '')
