@@ -6,6 +6,7 @@ log/development.log
 log/*
 tmp/**/*
 tmp/*
+public/mobile
 doc/api
 doc/appla
 public/system

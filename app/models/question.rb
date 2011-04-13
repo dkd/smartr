@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include ActionView::Helpers
+  include ::ApplicationHelper
   
   #Associations
   belongs_to  :user
@@ -38,6 +40,32 @@ class Question < ActiveRecord::Base
   before_save :check_answer_count
   
   #Methods
+  
+  def helpers
+    ActionController::Base.helpers
+  end
+  
+  def as_json
+    {
+			:id => self.id,
+			:name => self.name,
+			:body => code(self.body),
+			:starts_at => Time.now,
+      :ends_at => Time.now,
+      :reasons => self.name,
+      :consequences => self.name,
+      :stops => self.name,
+      :direction => self.name,
+			:lines => {
+				:busses => self.name,
+				:trams => self.name,
+				:subways => self.name,
+			},
+      :comment => self.name
+		}
+  end
+
+  
   def favourited?(user)
     Favourite.find_by_user_id_and_question_id(user.id, self).present?
   end
