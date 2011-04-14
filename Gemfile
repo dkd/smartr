@@ -16,6 +16,7 @@ gem "unicorn", :platform => :mri_19
 gem "stringex"
 gem "annotate"
 gem "jammit"
+gem "ya2yaml"
 
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'

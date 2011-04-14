@@ -1,0 +1,67 @@
+--- 
+activemodel: 
+  errors: 
+    template: 
+      body: "Bitte überprüfen Sie die folgenden Felder:"
+      header: 
+        one: "Konnte %{model} nicht speichern: ein Fehler."
+        other: "Konnte %{model} nicht speichern: %{count} Fehler."
+activerecord: 
+  errors: 
+    full_messages: 
+      format: "%{attribute}%{message}"
+    messages: 
+      accepted: "muss akzeptiert werden"
+      blank: "muss ausgefüllt werden"
+      confirmation: "stimmt nicht mit der Bestätigung überein"
+      empty: "muss ausgefüllt werden"
+      equal_to: "muss genau %{count} sein"
+      even: "muss gerade sein"
+      exclusion: "ist nicht verfügbar"
+      greater_than: "muss größer als %{count} sein"
+      greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
+      inclusion: "ist kein gültiger Wert"
+      invalid: "ist nicht gültig"
+      less_than: "muss kleiner als %{count} sein"
+      less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
+      not_a_number: "ist keine Zahl"
+      not_an_integer: "muss ganzzahlig sein"
+      odd: "muss ungerade sein"
+      too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
+      too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
+      wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
+    template: 
+      body: "Bitte überprüfen Sie die folgenden Felder:"
+      header: 
+        one: "Konnte %{model} nicht speichern: ein Fehler."
+        other: "Konnte %{model} nicht speichern: %{count} Fehler."
+answers: 
+  howto: 
+    header: "So wird geantwortet"
+  my_answer: "Meine Antwort"
+date: 
+  formats: 
+    only_day: "%e"
+number: 
+  human: 
+    decimal_units: 
+      units: 
+        billion: 
+          one: Milliarde
+          others: Milliarden
+        quadrillion: 
+          one: Billiarde
+          others: Billiarden
+questions: 
+  edit_question: "Frage bearbeiten"
+support: 
+  select: 
+    prompt: "Bitte wählen:"
+tags: 
+  lates_tags: "Latest tags"
+time: 
+  formats: 
+    time: "%H:%M"
+views: 
+  one: Zugriff
+  other: Zugriffe
