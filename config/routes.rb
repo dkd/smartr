@@ -73,19 +73,10 @@ Smartr::Application.routes.draw do
       resources :users, :only => [:index]
     end
   end
-
-
-  scope '/translate' do
-    match '/translate_list', :to => 'translate#index'
-    match '/translate', :to => 'translate#translate'
-    match '/translate_reload', :to => 'translate#reload', :as => 'translate_reload'
-  end if RAILS_ENV != "production"
   
   root :to => 'questions#index'
   match '*a', :to => 'errors#routing' 
 end
-
-
 
 #ActionController::Routing::Routes.draw do |map|
 #  
