@@ -1,6 +1,5 @@
 class VotesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_votee
   before_filter :check_params
   respond_to :js
   

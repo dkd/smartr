@@ -1,330 +1,60 @@
---- 
-en: 
-  activemodel: 
-    errors: 
-      template: 
-        body: ""
-        header: 
-          one: ""
-          other: ""
-  activerecord: 
-    errors: 
-      full_messages: 
-        format: ""
-      messages: 
-        accepted: ""
-        blank: ""
-        confirmation: ""
-        empty: ""
-        equal_to: ""
-        even: ""
-        exclusion: ""
-        greater_than: ""
-        greater_than_or_equal_to: ""
-        inclusion: ""
-        invalid: ""
-        less_than: ""
-        less_than_or_equal_to: ""
-        not_a_number: ""
-        not_an_integer: ""
-        odd: ""
-        record_invalid: "Validation failed: %{errors}"
-        taken: "has already been taken"
-        too_long: ""
-        too_short: ""
-        wrong_length: ""
-      template: 
-        body: ""
-        header: 
-          one: ""
-          other: ""
-  answers: 
-    howto: 
-      header: ""
-    label: 
-      one: answer
-      other: answers
-    my_answer: ""
+en:
+  searchstring_default: Search for question ...
   cancel: cancel
-  comments: 
-    label: 
-      one: comment
-      other: comments
-    new: "Write a comment"
-    order: 
-      latest: latest
-      reputation: reputation
-  date: 
-    abbr_day_names: 
-      - Sun
-      - Mon
-      - Tue
-      - Wed
-      - Thu
-      - Fri
-      - Sat
-    abbr_month_names: 
-      - ~
-      - Jan
-      - Feb
-      - Mar
-      - Apr
-      - May
-      - Jun
-      - Jul
-      - Aug
-      - Sep
-      - Oct
-      - Nov
-      - Dec
-    day_names: 
-      - Sunday
-      - Monday
-      - Tuesday
-      - Wednesday
-      - Thursday
-      - Friday
-      - Saturday
-    formats: 
-      default: "%Y-%m-%d"
-      long: "%B %d, %Y"
-      only_day: ""
-      short: "%b %d"
-    month_names: 
-      - ~
-      - January
-      - February
-      - March
-      - April
-      - May
-      - June
-      - July
-      - August
-      - September
-      - October
-      - November
-      - December
-    order: 
-      - !ruby/symbol year
-      - !ruby/symbol month
-      - !ruby/symbol day
-  datetime: 
-    distance_in_words: 
-      about_x_hours: 
-        one: "about 1 hour"
-        other: "about %{count} hours"
-      about_x_months: 
-        one: "etwa ein Monat"
-        other: "etwa %{count} Monate"
-      about_x_years: 
-        one: "about 1 year"
-        other: "about %{count} years"
-      almost_x_years: 
-        one: "almost 1 year"
-        other: "almost %{count} years"
-      half_a_minute: "half a minute"
-      less_than_x_minutes: 
-        one: "less than a minute ago"
-        other: "less than %{count} minutes ago"
-      less_than_x_seconds: 
-        one: "less than 1 second"
-        other: "less than %{count} seconds"
-      over_x_years: 
-        one: "over 1 year"
-        other: "over %{count} years"
-      x_days: 
-        one: "1 day ago"
-        other: "%{count} days ago"
-      x_minutes: 
-        one: "1 minute ago"
-        other: "%{count} minutes ago"
-      x_months: 
-        one: "1 month ago"
-        other: "%{count} months ago"
-      x_seconds: 
-        one: "1 second"
-        other: "%{count} seconds"
-    prompts: 
-      day: Day
-      hour: Hour
-      minute: Minute
-      month: Month
-      second: Seconds
-      year: Year
-  devise: 
-    confirmations: 
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-    failure: 
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid login or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
-    mailer: 
-      confirmation_instructions: 
-        subject: "Confirmation instructions"
-      reset_password_instructions: 
-        subject: "Reset password instructions"
-      unlock_instructions: 
-        subject: "Unlock Instructions"
-    passwords: 
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-    registrations: 
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."
-      updated: "You updated your account successfully."
-    sessions: 
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-    unlocks: 
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      unlocked: "Your account was successfully unlocked. You are now signed in."
+  save: speichern
   edit: edit
-  errors: 
-    format: "%{attribute} %{message}"
-    messages: 
-      accepted: "must be accepted"
-      already_confirmed: "was already confirmed"
-      blank: "can't be blank"
-      confirmation: "doesn't match confirmation"
-      empty: "can't be empty"
-      equal_to: "must be equal to %{count}"
-      even: "must be even"
-      exclusion: "is reserved"
-      greater_than: "must be greater than %{count}"
-      greater_than_or_equal_to: "must be greater than or equal to %{count}"
-      inclusion: "is not included in the list"
-      invalid: "is invalid"
-      less_than: "must be less than %{count}"
-      less_than_or_equal_to: "must be less than or equal to %{count}"
-      not_a_number: "is not a number"
-      not_an_integer: "must be an integer"
-      not_found: "not found"
-      not_locked: "was not locked"
-      odd: "must be odd"
-      too_long: "is too long (maximum is %{count} characters)"
-      too_short: "is too short (minimum is %{count} characters)"
-      wrong_length: "is the wrong length (should be %{count} characters)"
-    template: 
-      body: "There were problems with the following fields:"
-      header: 
-        one: "1 error prohibited this %{model} from being saved"
-        other: "%{count} errors prohibited this %{model} from being saved"
-  helpers: 
-    select: 
-      prompt: "Please select"
-    submit: 
-      create: "Create %{model}"
-      submit: "Save %{model}"
-      update: "Update %{model}"
-  main_menu: 
+  main_menu:
     questions: Questions
     tags: Tags
     users: Users
-  number: 
-    currency: 
-      format: 
-        delimiter: ","
-        format: "%u%n"
-        precision: 2
-        separator: "."
-        significant: false
-        strip_insignificant_zeros: false
-        unit: $
-    format: 
-      delimiter: ","
-      precision: 3
-      separator: "."
-      significant: false
-      strip_insignificant_zeros: false
-    human: 
-      decimal_units: 
-        format: "%n %u"
-        units: 
-          billion: 
-            one: ""
-            others: ""
-          million: Million
-          quadrillion: 
-            one: ""
-            others: ""
-          thousand: Thousand
-          trillion: Trillion
-          unit: ""
-      format: 
-        delimiter: ""
-        precision: 3
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units: 
-        format: "%n %u"
-        units: 
-          byte: 
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
-    percentage: 
-      format: 
-        delimiter: ""
-    precision: 
-      format: 
-        delimiter: ""
-  questions: 
-    asked_by: "Asked by"
-    body: "Please provide more detail"
-    edit_question: ""
+  
+  tags:
+    label:
+      one: tag
+      other: tags
+  
+  answers:
+    label:
+      one: answer
+      other: answers
+  
+  comments:
+    new: Write a comment
+    label:
+      one: comment
+      other: comments
+    order:
+      latest: latest
+      reputation: reputation
+  
+  votes:
+    one: vote
+    other: votes
+  
+  questions:
+    new: New Question
+    name: Enter your question here
+    body: Please provide more detail
     label: 
       one: question
       other: questions
-    latest: 
-      header: "Latest questions"
-    name: "Enter your question here"
-    new: "New Question"
-    related: "Related questions"
+    asked_by: Asked by
     saved_in: saved_in
-    sub_menu: 
-      active: Active
-      hot: Hot
+    related: Related questions  
+    sub_menu:
       latest: Latest
+      hot:  Hot
+      active: Active
       unanswered: Unanswered
-  remove_tag: "Remove Tag"
-  save: speichern
-  searchstring_default: "Search for question ..."
-  sidebar: 
-    ask_a_question: "Ask a question!"
-    tags: 
-      interesting: "Interesting Tags"
-      recent: "Recent Tags"
-  support: 
-    array: 
-      last_word_connector: ", and "
-      two_words_connector: " and "
-      words_connector: ", "
-    select: 
-      prompt: ""
-  tags: 
-    label: 
-      one: tag
-      other: tags
-    lates_tags: ""
-  time: 
-    am: am
-    formats: 
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
-      short: "%d %b %H:%M"
-      time: ""
-    pm: pm
-  views: 
-    one: view
-    other: views
-  votes: 
-    one: vote
-    other: votes
+    
+    latest:
+      header: Latest questions
+  
+  remove_tag: Remove Tag
+  
+  sidebar:
+    ask_a_question: Ask a question!
+    tags:
+      interesting: Interesting Tags
+      recent: Recent Tags
+    
