@@ -5,6 +5,12 @@ class CheckVoteValidator < ActiveModel::EachValidator
   end
 end
 
+class CheckVoteOwnerValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    record.errors[attribute] << "You cannot vote on yourself" if record.user == record.voteable.user
+  end
+end
+
 class CheckDirectionValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     unless value.to_s.match(/(^up$)|(^down$)/).nil?
