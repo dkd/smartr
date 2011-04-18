@@ -29,8 +29,8 @@
     
     <% if (user_signed_in? && current_user == question.user) %>
       <span class="edit">
-        <%= link_to t("questions.edit_question"),  url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id) %>   
-      <br class="clear" /></span>
+        <%=raw button_to(t("questions.edit"), url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id), :class => "g-button") %>   
+      </span><br class="clear" />
     <% end -%>
    </div><br class="clear" />
   <% if question.edits.last.present? %>
