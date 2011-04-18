@@ -33,6 +33,9 @@ en:
   
   questions:
     new: New Question
+    edit: Edit
+    update: Update Question
+    save: Save Question
     name: Enter your question here
     body: Please provide more detail
     label: 
