@@ -1,0 +1,44 @@
+button.g-button, a.g-button, input[type=submit].g-button
+  padding: 6px 10px
+  -webkit-border-radius: 2px 2px
+  border: solid 1px rgb(153, 153, 153)
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(221, 221, 221)))
+  color: #333
+  text-decoration: none
+  cursor: pointer
+  display: inline-block
+  text-align: center
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 1)
+  line-height: 1
+
+.g-button
+  &:hover
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(248, 248, 248)), to(rgb(221, 221, 221)))
+  &:active
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(204, 204, 204)), to(rgb(221, 221, 221)))
+  &.large
+    padding: 12px 20px
+    font-size: 21px
+    font-weight: bold
+  &.scaled
+    -webkit-transform: scale(2)
+    -webkit-transform-origin: bottom left
+  &.blue
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(98, 202, 227)))
+    border-color: rgb(98, 202, 227)
+  &.green
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(213, 224, 77)))
+    border-color: rgb(213, 224, 77)
+  &.red
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(241, 93, 34)), to(rgb(146, 60, 6)))
+    border-color: rgb(146, 60, 6)
+    text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5)
+    color: #fff
+  &.purple
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(202, 0, 108)), to(rgb(124, 0, 64)))
+    border-color: rgb(202, 0, 108)
+    text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5)
+    color: #fff
+  &.orange
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(245, 132, 38)))
+    border-color: rgb(245, 132, 38)

@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="body">
-    <%= code(answer.body) %>
+    <%= raw(code(answer.body)) %>
       <span class="user">
         <%= link_to( image_tag(answer.user.avatar.url(:tiny), :border =>"0"), user_path(answer.user)) %>
         <%= link_to answer.user.login, user_path(answer.user) %> &middot; 

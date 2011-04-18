@@ -21,9 +21,11 @@
 <% end -%>
 
 <div>
-  <%= f.submit "Sign in", :class => "submit" %>
+  <button type="submit" class="g-button">Sign in</button>
 </div>
 <% end %>
+<br />
+<%= render(:partial => "devise/shared/links") %>
 </div>
-<% content_for :sidebar, render(:partial => "devise/shared/links") %>
+
 <% main_menu :users %>

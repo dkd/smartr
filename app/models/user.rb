@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  devise :encryptable, :encryptor => :authlogic_sha512, :authentication_keys => [:login]
   
   has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
   attr_accessible :email, :login, :password, :password_confirmation, :remember_me, :avatar, :interesting_tag_list, :uninteresting_tag_list

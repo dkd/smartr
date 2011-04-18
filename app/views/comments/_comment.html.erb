@@ -25,7 +25,7 @@ end
       <%=link_to comment.user.login, user_path(comment.user)%>
     </div>
     <br class="clear" />
-    <%=code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
+    <%= raw code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
     <%= link_to(t("edit"),
                 edit_comment_path(comment),
                 :remote => true,
