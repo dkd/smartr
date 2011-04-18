@@ -16,6 +16,7 @@ gem "unicorn", :platform => :mri_19
 gem "stringex"
 gem "annotate"
 gem "jammit"
+gem "bcrypt-ruby", :require => "bcrypt"
 
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
@@ -27,7 +28,7 @@ end
 
 platforms :mri_19 do
   gem 'unicorn'
-end  
+end
 
 
 # bundler requires these gems while running tests
