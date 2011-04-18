@@ -26,7 +26,7 @@ describe Vote do
     end
     
     describe "of voteable" do
-      let(:question) { Factory.create(:question2)}
+      let(:question) { Factory.create(:question2, :user => Factory(:endless_user, :reputation => 100))}
       it "allows only a vote with a voteable relation" do
         user = Factory(:endless_user, :reputation => 100)
         vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, user.id)

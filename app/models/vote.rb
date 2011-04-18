@@ -7,7 +7,7 @@ end
 
 class CheckVoteOwnerValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors[attribute] << "You cannot vote on yourself" if record.user == record.voteable.user
+    record.errors[attribute] << "You cannot vote on yourself" if record.voteable.present? && record.user == record.voteable.user
   end
 end
 
