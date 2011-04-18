@@ -55,7 +55,8 @@ class Vote < ActiveRecord::Base
   # Validations
   validates :user, :presence => true, :check_vote => true
   validates :voteable, :presence => true
-  validates :value, :presence => true, :check_direction => true
+
+  validates :value, :presence => true, :check_direction => true, :check_vote_owner => true
   validates :direction, :presence => true, :format => {:with =>  /up|down/}
   
   def direction
