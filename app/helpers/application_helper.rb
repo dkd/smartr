@@ -13,11 +13,7 @@ module ApplicationHelper
       menu << {:name => 'Admin', :id => "admin", :link => admin_url} if is_admin?
       content_for :main_menu, build_menu(menu, active)
   end
-  
-  def has_voted?(record)
-    vote = record.constantize.votes.where(:user_id => current_user.id)
-  end
-  
+
   def title(text)
     content_for(:title, "#{text} | " ) if text.present?
   end
