@@ -1,6 +1,6 @@
 class FixVotesCount < ActiveRecord::Migration
   def self.up
-    
+
     %w(Answer Question Comment).each do |model|
       model.constantize.all.each do |voteable|
         rating = 0
@@ -9,7 +9,7 @@ class FixVotesCount < ActiveRecord::Migration
       end
     end
 
-    
+
   end
 
   def self.down

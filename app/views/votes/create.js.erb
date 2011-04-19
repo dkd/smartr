@@ -3,5 +3,5 @@ $('#<%=@vote.voteable.class.name.downcase%>-votes-count-<%=@vote.voteable.id%>')
 $('.user-<%=@vote.voteable.user.id %>-reputation').html('<%=@vote.voteable.user.reputation%>');
 $('.user-<%=@current_user.id %>-reputation').html('<%=@vote.user.reputation%>');
 <% if @vote.voteable.is_a?(Comment)%>
-$('#comment-votes-<%=@vote.voteable.id%>').html('<%=t("votes", :count => @vote.voteable.votes_count)%>');
+  $('#comment-votes-<%=@vote.voteable.id%>').html('<%=t("votes", :count => @vote.voteable.votes_count)%>');
 <% end-%>
