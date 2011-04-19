@@ -23,10 +23,23 @@ describe Edit do
     
     describe "of user" do
       
-      pending "it should be either the owner of editable or an admin"
+      it "allows the editable owner to edit" do
+        user = question.user
+        edit = Factory.build(:edit, :editable => question, :user => question.user)
+        edit.should be_valid
+      end
       
+      it "does not allow any user to edit" do
+        user = Factory.create(:endless_user)
+        edit = Factory.build(:edit, :editable => question, :user => user)
+        edit.should_not be_valid
+      end
+      
+      it "allows an admin to edit" do
+        user = Factory.create(:endless_user, :is_admin => true)
+        edit = Factory.build(:edit, :editable => question, :user => user)
+        edit.should be_valid
+      end
     end
-    
   end
-  
 end
