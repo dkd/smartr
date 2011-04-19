@@ -1,7 +1,7 @@
 class Reputation
   
   def self.set(direction, record, user, owner)
-    Rails.logger.info "Direction: #{direction}, #{record.downcase.to_sym}, #{user.login}, #{owner.login}"
+
     model = record.downcase.to_sym
     points = Smartr::Settings[:reputation][model][direction.to_sym]
     if (owner.reputation.nil?)
@@ -13,17 +13,17 @@ class Reputation
   end
   
   def self.penalize(record, user, owner)
-    model = record.downcase
-    penalty = Settings.reputation.fetch(model).fetch("penalty")
+    model = record.downcase.to_sym
+    penalty = Smartr::Settings[:reputation][model][:penalty]
     reputation = user.reputation.nil?? 0 : user.reputation
-    new_reputation = (reputation + penalty) <0 ? 0:(reputation + penalty)
+    new_reputation = (reputation + penalty) < 0 ? 0 : (reputation + penalty)
     user.reputation = new_reputation
     user.save(:validate => false)
   end
   
   def self.unpenalize(record, user, owner)
-    model = record.downcase
-    penalty = Settings.reputation.fetch(model).fetch("penalty")
+    model = record.downcase.to_sym
+    penalty = Smartr::Settings[:reputation][model][:penalty]
     reputation = user.reputation.nil?? 0 : user.reputation
     user.reputation = reputation + penalty.abs
     user.save(:validate => false)
