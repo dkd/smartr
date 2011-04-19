@@ -9,11 +9,16 @@ describe Edit do
   
   describe "validation" do
     let(:question) { Factory.create :question2 }
+    
     describe "of body" do
-      
-      pending "it should not have more than 255 chars"
-      pending "it should have at least 10 chars"
-      
+      it "should not have more than 255 chars" do
+        edit = Factory.build(:edit, :editable => question, :body => "a"*256)
+        edit.should_not be_valid
+      end
+      it "should have at least 10 chars" do
+        edit = Factory.build(:edit, :editable => question, :body => "a"*9)
+        edit.should_not be_valid
+      end
     end
     
     describe "of user" do

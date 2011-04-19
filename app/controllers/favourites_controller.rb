@@ -11,20 +11,24 @@ class FavouritesController < ApplicationController
   
   def toggle
     @favourite = Favourite.find_by_user_id_and_question_id(current_user.id, params[:id])
-    @question_id = params[:id]
+    @question = Question.find params[:id]
     respond_to do |format|
-      format.js {
-        if @favourite.blank?
-          @message = "You successfully saved this question!"
+       if @favourite.blank?
+          @message = "You successfully saved this question from your favourites!"
+          flash[:notice] = @message
           @class = "favourite-saved"
-          @favourite = Favourite.new({:question_id => @question_id})
+          @favourite = Favourite.new({:question_id => @question.id})
           @favourite.user = current_user
           @favourite.save
         else
-          @message = "You successfully deleted this question!"
+          @message = "You successfully deleted this question from your favourites!"
+          flash[:notice] = @message
           @class = "favourite"
           @favourite.destroy
         end
+      format.js { }
+      format.html {
+        redirect_to question_url(@question.id, @question.friendly_id)
       }
     end    
   end

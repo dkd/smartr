@@ -7,6 +7,6 @@ class AddDefaultValues < ActiveRecord::Migration
   end
 
   def self.down
-    
+
   end
 end
