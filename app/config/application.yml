@@ -13,7 +13,7 @@ defaults: &defaults
     restrict_access: true
   
   mailer:
-    from: do-not-reply@smartr.localhost
+    from: SmartR Notification <do-not-reply@smartr.dev>
   
   reputation:
     answer:

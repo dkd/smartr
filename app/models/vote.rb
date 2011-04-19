@@ -97,12 +97,10 @@ class Vote < ActiveRecord::Base
     
     case direction
       when "up"
-        Rails.logger.info "Trying to vote up"
         new_value = value_was + 1
         Reputation.set("up", self.voteable_type, self.user, target_user) if value_was == -1 || value_was == 0
         Reputation.unpenalize(self.voteable_type, self.user, target_user) if value_was == -1
       when "down"
-        Rails.logger.info "Trying to vote down"
         new_value = value_was - 1
         Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
         Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 0
