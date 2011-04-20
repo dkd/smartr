@@ -8,16 +8,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_last_request_at, :store_location
   before_filter :set_order
   before_filter :set_locale
-  
-  def rescue_action(exception)
-     
-     return super if Rails.env != "production"
-     
-     log_error(exception) if logger
-     if exception
-       render :text => "The page you requested, does not exist."
-     end
-   end
 
   protected
     

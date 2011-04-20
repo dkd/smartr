@@ -1201,7 +1201,7 @@ form.user div.text_field {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/footer\.sass}line{font-family:\000031}}
 #footer {
   margin-top: 20px;
-  padding: 10px; }
+  padding: 10px 0px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gritter\.sass}line{font-family:\000032}}
 * html #gritter-notice-wrapper {

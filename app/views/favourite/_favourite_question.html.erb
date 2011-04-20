@@ -1,6 +1,0 @@
-<h4 class="favourite" id="user-favourite-question-<%=question.id%>">
-  <span><%=question.answers_count %></span><%= link_to(h(question.name), question_path(question)) %>
-   <% if current_user && question.favourited?(current_user) && params[:user_id].to_i == current_user.id %>
-         <%= link_to_remote "-remove", :url => toggle_favourite_path(:id => question.id, :favourite => {:question_id => question.id}), :method => "put", :html => {:class => :remove} %>
-   <% end -%>
-</h4>
