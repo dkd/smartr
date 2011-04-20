@@ -26,7 +26,6 @@ class Answer < ActiveRecord::Base
     end
   end
   
-  
   #Sunspot Solr Configuration
   searchable do
     text :body
