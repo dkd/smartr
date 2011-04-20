@@ -35,10 +35,6 @@ module ApplicationHelper
           'img' => ['src','title','alt']
         }))
   end
-  
-  def current_url(overwrite={})
-    request.url # :params => params.merge(overwrite)
-  end
 
   def mark_required(model, attribute)
     "*" if model.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
