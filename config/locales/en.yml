@@ -14,8 +14,13 @@ en:
       other: tags
   
   answers:
+    save: Save
+    cancel: Cancel
     one: answer
     other: answers
+    label:
+      one: Answer
+      other: Answers
   
   comments:
     new: Write a comment
@@ -32,7 +37,14 @@ en:
     one: vote
     other: votes
   
+  users:
+    one: user
+    other: users
+    views: Views
+    reputation_history: Reputation History
+  
   questions:
+    latest_questions: Latest Questions
     new: New Question
     edit: Edit
     update: Update Question
@@ -58,6 +70,11 @@ en:
   
   sidebar:
     ask_a_question: Ask a question!
+    users:
+      interested_in:  Users are interested in ...
+      not_interested_in: Users are not interested in ...
+    interested_in:  Interested in ...
+    not_interested_in: Not interested in ...
     tags:
       interesting: Interesting Tags
       recent: Recent Tags

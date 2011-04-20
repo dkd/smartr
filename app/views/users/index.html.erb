@@ -1,5 +1,5 @@
 <div class="header-with-tabs">
-  <h2>Users</h2>
+  <h2><%= t("users.other").capitalize %></h2>
   <div class="tabs">
     <%=user_submenu(:winner) %>
   </div>
@@ -15,12 +15,12 @@
       <th>Avatar</th>
       <th>User</th>
       <th class="activity">Latest activity</th>
-      <th class="number">Views</th>
-      <th class="number">Reputation</th>
+      <th class="number"><%= t("views.other").capitalize %></th>
+      <th class="number"><%= t("users.reputation") %></th>
     </tr>
     <%= render :partial => "list", :locals => {:users => @users}%>
  </table>
- <div class="no-result">Sorry, could not find user.</div>
+ <div class="no-result"><%= t("users.not_found_msg")%></div>
 </div>
 <br class="clear" />
 <%= will_paginate @users%>
