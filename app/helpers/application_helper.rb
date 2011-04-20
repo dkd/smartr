@@ -5,6 +5,10 @@ module ApplicationHelper
     value==1? "up" : "down"
   end
   
+  def button_tag(value, options)
+    content_tag(:button, t(value), options)
+  end
+  
   def main_menu(active)
       menu = []
       menu << {:name => I18n.t(:"main_menu.questions"), :id => "questions", :link => root_url}
