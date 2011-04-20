@@ -14,9 +14,8 @@ en:
       other: tags
   
   answers:
-    label:
-      one: answer
-      other: answers
+    one: answer
+    other: answers
   
   comments:
     new: Write a comment
@@ -26,7 +25,9 @@ en:
     order:
       latest: latest
       reputation: reputation
-  
+  views:
+    one: view
+    other: views
   votes:
     one: vote
     other: votes

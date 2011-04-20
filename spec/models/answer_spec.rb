@@ -27,6 +27,17 @@ describe Answer do
       end
       
     end
+    
+    describe "model methods" do
+      let(:answer) { Factory.create(:full_answer) }
+      it "should not be the accepted answer" do
+        answer.accepted?.should be_false
+      end
+      it "should be the accepted answer" do
+        answer.question.accepted_answer = answer
+        answer.accepted?.should be_true
+      end
+    end
      
     describe "restrict number of answers for question" do
       it "permit only one one answer from the same user" do

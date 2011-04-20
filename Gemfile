@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 gem 'rails', "3.0.7"
 gem "haml"
-#gem "settingslogic"
 gem "friendly_id"
 gem "sanitize"
 gem "bluecloth"
