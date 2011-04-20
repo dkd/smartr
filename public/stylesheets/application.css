@@ -1062,16 +1062,19 @@ form.user div.text_field {
     border-radius: 3px;
     margin: 10px 10px 0px 0px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/user\.sass}line{font-family:\00003107}}
-    .user-list .user-item img {
-      margin-right: 5px;
-      background: white;
-      box-shadow: 0px 4px 5px #888888; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/user\.sass}line{font-family:\00003112}}
-    .user-list .user-item a:link, .user-list .user-item a:visited {
+  .user-list img {
+    margin-right: 5px;
+    background: white;
+    border: 1px solid #e9e9e9;
+    padding: 5px;
+    clear: both;
+    box-shadow: 0px 4px 5px #888888; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/user\.sass}line{font-family:\00003115}}
+    .user-list img a:link, .user-list img a:visited {
       text-decoration: none;
       color: #4e7700; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/user\.sass}line{font-family:\00003116}}
-    .user-list .user-item a:hover {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/user\.sass}line{font-family:\00003119}}
+    .user-list img a:hover {
       text-decoration: underline;
       color: #5d8e00; }
 
@@ -1612,7 +1615,7 @@ table {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/table\.sass}line{font-family:\0000321}}
   table td {
     padding: 10px;
-    border-bottom: 1px dashed #e9e9e9; }
+    border-bottom: 1px dashed #939393; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/table\.sass}line{font-family:\0000325}}
   table td.link {
     font-size: 1.5em; }
