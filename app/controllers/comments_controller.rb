@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   
-  before_filter :require_user, :only => [:new, :edit, :create, :update]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update]
   before_filter :require_owner, :only => [:edit, :update]
   before_filter :require_commentable, :only => [:index]
   respond_to :js

@@ -1,5 +1,6 @@
 <div class="header-with-tabs">
   <h2><%= t("users.other").capitalize %></h2>
+  <span style="float: right"><%= page_entries_info @questions %></span>
   <div class="tabs">
     <%=user_submenu(:winner) %>
   </div>

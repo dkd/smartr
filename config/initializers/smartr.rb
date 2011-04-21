@@ -1,7 +1,7 @@
 module Smartr
   class Settings < Hash
     def self.[](value, environment = Rails.env)
-      @@settings ||= YAML::load( File.open( 'app/config/application.yml' ) ).with_indifferent_access
+      @@settings ||= YAML::load( File.open( 'config/smartr.yml' ) ).with_indifferent_access
       @@settings[environment][value]
     rescue Exception => e
       []

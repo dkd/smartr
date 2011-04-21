@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   
-  before_filter :require_user, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :require_owner, :only => [:edit, :destroy]
   before_filter :require_question_owner, :only => :update_for_switch_acceptance
   

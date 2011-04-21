@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   
-  before_filter :require_user, :only => [:edit, :create, :new, :update, :destroy, :update_for_toggle_acceptance]
+  before_filter :authenticate_user!, :only => [:edit, :create, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :check_ownership, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
   respond_to :html, :js, :xml, :json
   
