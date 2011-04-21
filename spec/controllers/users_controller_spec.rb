@@ -12,7 +12,21 @@ describe UsersController do
       get :index
       response.should be_success
       assigns(:users).count.should eq(1)
-      response.should render_template(:index) 
+      response.should render_template(:index)
+    end
+  end
+  
+  describe "GET :search" do
+    let(:user) {Factory.create(:user)}
+    it "shows the searched user" do
+      get :index, :q => user.login
+      response.should be_success
+      response.should render_template(:index)
+    end
+    it "shows the searched user (AJAX)" do
+      xhr :get, :index, :q => user.login
+      response.should be_success
+      response.should render_template(:index)
     end
   end
   
