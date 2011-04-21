@@ -66,7 +66,7 @@ en:
     latest:
       header: Latest questions
   
-  remove_tag: Remove Tag
+  remove_tag: -remove
   
   sidebar:
     ask_a_question: Ask a question!

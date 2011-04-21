@@ -30,26 +30,23 @@ class ApplicationController < ActionController::Base
       end
     end
     
-    def require_user
+    def authenticate_user!
       if user_signed_in?
         true
       else
         respond_to do |format|
-          format.html{
-            flash[:notice] = "You must be logged in to access this page"
-            redirect_to new_user_session_url
+          format.html { flash[:notice] = "You must be logged in as admin to access this page"
+                        redirect_to new_user_session_url
+                      }
+          format.js {
+            render "/shared/not_authorized", :status => 403
           }
-          format.xml{
-              authenticate_or_request_with_http_basic do |username, password|
-                username == "smartr" && password == "dingdongdiehexisttod"
-            end
-          }
-          format.js{ render "shared/not_authorized" }
+
         end
         false
       end
     end
-
+    
     def authenticate_admin!
       if user_signed_in? && current_user.is_admin?
         true
@@ -85,7 +82,6 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
-    
     private
     
     def set_last_request_at 

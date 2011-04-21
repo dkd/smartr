@@ -7,8 +7,11 @@ describe VotesController do
 
     context "not logged in" do
       describe "he votes on a question" do
+        let(:question) {Factory.create(:question2)}
         it "and fails" do
-          xhr :post, :create, :id => 1000
+          xhr :post, :create, :model => "question",
+                              :value => "1",
+                              :id => question.id
           response.should_not be_successful
         end 
       end
