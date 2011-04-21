@@ -123,6 +123,10 @@ describe Reputation do
           question.user.reputation.should == 0
         end
       end
+      
+      describe "reject an answer" do
+        pending "so the question has no accepted answer and the reputation of the answer's owner will be reset"
+      end
 
       describe "accepts an answer" do
         before do
