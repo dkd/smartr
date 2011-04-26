@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.datetime "current_sign_in_at"
     t.string   "last_sign_in_ip"
     t.string   "current_sign_in_ip"
-    t.integer  "views"
+    t.integer  "views",                :default => 0
     t.string   "email"
     t.integer  "reputation",           :default => 0
     t.string   "avatar_file_name"

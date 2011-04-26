@@ -152,6 +152,8 @@ GEM
       activesupport (= 3.0.7)
       bundler (~> 1.0)
       railties (= 3.0.7)
+    rails-footnotes (3.7.1)
+      rails (>= 3.0.0)
     rails_best_practices (0.7.5)
       activesupport
       colored (~> 1.2)
@@ -252,6 +254,7 @@ DEPENDENCIES
   mysql2
   paperclip
   rails (= 3.0.7)
+  rails-footnotes (>= 3.7)
   rspec-rails (>= 2.4.0)
   sanitize
   shoulda
