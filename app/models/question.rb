@@ -28,7 +28,8 @@ class Question < ActiveRecord::Base
   has_friendly_id :permalink
   
   #Named Scopes
-  scope :list, :joins => [:taggings, :user], :group => "questions.id", :include => [:user, :votes, :taggings]
+  scope :list, :group => "questions.id", 
+               :include => [:user]
   scope :latest, :order => "questions.created_at DESC"
   scope :hot, :order => "answers_count DESC, questions.updated_at DESC"
   scope :active, :order => "questions.updated_at DESC, answers_count DESC"
@@ -123,7 +124,7 @@ class Question < ActiveRecord::Base
       user.login
     end
 
-    text(:tags) do
+    string(:tags, :multiple => true) do
       tags.map{|tag| tag.name}
     end
 

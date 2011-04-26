@@ -29,6 +29,8 @@ platforms :mri_19 do
   gem 'unicorn'
 end
 
+gem 'rails-footnotes', '>= 3.7', :group => :development
+
 
 # bundler requires these gems while running tests
 group :test do
