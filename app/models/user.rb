@@ -49,6 +49,15 @@ class User < ActiveRecord::Base
     end
   end
   
+  def vote_value_on(record)
+    vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(self.id, record.class.name, record.id)
+    if(vote)
+      vote.value
+    else
+      0
+    end
+  end
+  
   def clean_up_tags
     @interesting_tag_list.map! {|tag| tag.scan(/[\d\w\d{0,2}]+/).first}.map!(&:downcase) unless @interesting_tag_list.nil?
     @uninteresting_tag_list.map! {|tag| tag.scan(/[\d\w\d{0,2}]+/).first}.map!(&:downcase) unless @uninteresting_tag_list.nil?

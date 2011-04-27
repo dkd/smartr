@@ -1,7 +1,7 @@
 <div class="question-list">
   <div class="stats">
     <div class="votes">
-      <%=question.votes_count == 0? 0 : question.votes_count %>
+      <%= question.votes_count == 0? 0 : question.votes_count %>
       <span class="desc"><%= t("votes", :count => question.votes_count) %></span>
     </div>
 
@@ -10,9 +10,9 @@
       <span class="desc"><%= t("views", :count => question.views) %></span>
     </div>
 
-    <div class="answers <%=" zero" if question.answers.size == 0 %><%=" answered" unless question.accepted_answer.blank? %>">
-      <%= question.answers.size %>
-      <span class="desc"><%= t("answers", :count => question.answers.size) %></span>
+    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.accepted_answer.blank? %>">
+      <%= question.answers_count %>
+      <span class="desc"><%= t("answers", :count => question.answers_count) %></span>
     </div>
   </div>
   <div class="body">

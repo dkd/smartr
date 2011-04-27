@@ -66,7 +66,7 @@ class Question < ActiveRecord::Base
 		}
   end
 
-  
+
   def favourited?(user)
     Favourite.find_by_user_id_and_question_id(user.id, self).present?
   end
