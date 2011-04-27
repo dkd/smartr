@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'rails', "3.0.7"
-gem "haml"
+gem "sass"
 gem "friendly_id"
 gem "sanitize"
 gem "bluecloth"
@@ -9,7 +9,7 @@ gem 'will_paginate', '3.0.pre2'
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
 gem "sunspot_rails", "1.2.rc4"
-gem "mysql2"
+gem "mysql2", "0.2.7"
 gem "devise"
 gem "unicorn", :platform => :mri_19
 gem "stringex"

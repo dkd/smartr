@@ -68,8 +68,8 @@ GEM
     closure-compiler (1.1.1)
     colored (1.2)
     culerity (0.2.15)
-    daemons (1.1.2)
-    devise (1.3.0)
+    daemons (1.1.3)
+    devise (1.3.3)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -96,15 +96,15 @@ GEM
     friendly_id (3.2.1.1)
       babosa (~> 0.3.0)
     gem_plugin (0.2.3)
-    haml (3.0.25)
-    hirb (0.4.3)
+    haml (3.1.1)
+    hirb (0.4.5)
     i18n (0.5.0)
     jammit (0.6.0)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
     json_pure (1.5.1)
     kgio (2.3.3)
-    mail (2.2.17)
+    mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -154,14 +154,14 @@ GEM
       railties (= 3.0.7)
     rails-footnotes (3.7.1)
       rails (>= 3.0.0)
-    rails_best_practices (0.7.5)
+    rails_best_practices (0.8.2)
       activesupport
-      colored (~> 1.2)
-      erubis (~> 2.6.6)
-      haml (~> 3.0.18)
+      colored
+      erubis
+      haml
       i18n
-      ruby-progressbar (~> 0.0.9)
-      ruby_parser (~> 2.0.4)
+      ruby-progressbar
+      ruby_parser
     railties (3.0.7)
       actionpack (= 3.0.7)
       activesupport (= 3.0.7)
@@ -199,7 +199,8 @@ GEM
     rubyzip (0.9.4)
     sanitize (2.0.1)
       nokogiri (~> 1.4.4)
-    selenium-webdriver (0.1.4)
+    sass (3.1.1)
+    selenium-webdriver (0.2.0)
       childprocess (>= 0.1.7)
       ffi (>= 1.0.7)
       json_pure
@@ -219,14 +220,14 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.26)
-    unicorn (3.5.0)
+    tzinfo (0.3.27)
+    unicorn (3.6.1)
       kgio (~> 2.3)
       rack
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
-    xpath (0.1.3)
+    xpath (0.1.4)
       nokogiri (~> 1.3)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
@@ -247,16 +248,16 @@ DEPENDENCIES
   factory_girl_rails (>= 1.1.beta1)
   faker
   friendly_id
-  haml
   jammit
   metric_fu
   mongrel
-  mysql2
+  mysql2 (= 0.2.7)
   paperclip
   rails (= 3.0.7)
   rails-footnotes (>= 3.7)
   rspec-rails (>= 2.4.0)
   sanitize
+  sass
   shoulda
   spork (~> 0.9.0.rc)
   sqlite3-ruby (= 1.3.1)

@@ -52,8 +52,9 @@ describe Answer do
     describe "saving record" do
       it "should create the record" do
         user = Factory(:user2) 
-        question = Factory(:question, :user_id => user.id)
-        answer = Factory(:answer, :question => question, :user => question.user)
+        question = Factory.create(:question, :user_id => user.id)
+        answer = Factory.create(:answer, :question => question, :user => question.user)
+        question.reload.answers_count.should eq(1)
         answer.should be_valid
       end
     end

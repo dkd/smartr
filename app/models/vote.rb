@@ -70,28 +70,6 @@ class Vote < ActiveRecord::Base
     end
   end
 
-  def self.has_voted?(user, record)
-    Rails.logger.info user.inspect
-    Rails.logger.info record.inspect
-    vote = Vote.find_by_user_id_and_voteable_type_and_voteable_id(user.id, record.class.name, record.id)
-    if(vote)
-      vote.value
-    else
-      false
-    end
-  end
-
-  
-  def update_votes_count
-    rating = 0
-    Rails.logger.info "Rating is 0"
-    voteable.votes.each {|vote|
-      rating += vote.value
-      Rails.logger.info "Rating is #{rating}"
-      }
-    voteable.update_attributes(:votes_count => rating)
-  end
-  
   def update_reputation
     target_user = self.voteable.user
     
@@ -113,9 +91,10 @@ class Vote < ActiveRecord::Base
     rating = 0
     voteable.reload
     voteable.votes.each {|vote| rating += vote.value }
-    voteable.update_attributes(:votes_count => rating)
-    #voteable.votes.reload
+    voteable.votes_count = rating
+    voteable.save(:validate => false)
   end
+
 
 end
 

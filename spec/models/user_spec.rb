@@ -19,6 +19,31 @@ describe User do
     
   end
   
+  describe "voting on a voteable record:" do
+    let(:question) { Factory.create(:question2)}
+    let(:current_user) { Factory.create(:endless_user)}
+
+    describe "the method vote_value_on" do
+
+      it "returns +1 when the user upvoted" do
+        vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, current_user.id)
+        vote.update_attributes(:value => "1") 
+        current_user.vote_value_on(question).should eq(1)
+      end
+
+      it "returns -1 when the user upvotes" do
+        vote = Vote.find_or_create_by_voteable_type_and_voteable_id_and_user_id("Question", question.id, current_user.id)
+        vote.update_attributes(:value => "-1") 
+        current_user.vote_value_on(question).should eq(-1)
+      end
+
+      it "returns 0 when the user downvotes" do
+        current_user.vote_value_on(question).should eq(0)
+      end
+
+    end
+  end
+  
   describe "validation" do
     
     describe "of passwords" do
