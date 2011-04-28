@@ -41,6 +41,12 @@ class User < ActiveRecord::Base
   before_validation :strip_and_downcase_login
   before_validation :clean_up_tags
   
+  class << self
+    def reputation
+      order("reputation DESC")
+    end
+  end
+  
   def is_online?
     if self.last_request_at > (Time.now - 5.minutes)
       true

@@ -7,10 +7,10 @@ describe Favourite do
   end
   describe "validation of" do
     describe "user" do
-      it {should validate_presence_of :user_id}
+      it {should validate_presence_of :user}
     end
     describe "question" do
-      it {should validate_presence_of :question_id}
+      it {should validate_presence_of :user}
     end
   end  
   

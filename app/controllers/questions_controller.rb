@@ -176,14 +176,6 @@ class QuestionsController < ApplicationController
       params[:question][:question_state] == "true"? true : false
     end
   end
-  
-  def check_for_tag
-    if (params[:tag].present?)
-      @questions = @questions.tagged_with(params[:tag])
-    else
-      @questions
-    end
-  end
 
   def check_ownership
     @question = Question.find(params[:id])
