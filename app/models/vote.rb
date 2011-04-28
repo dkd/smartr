@@ -73,28 +73,31 @@ class Vote < ActiveRecord::Base
   def update_reputation
     target_user = self.voteable.user
     
-    case direction
-      when "up"
+    if direction == "up"
         new_value = value_was + 1
         Reputation.set("up", self.voteable_type, self.user, target_user) if value_was == -1 || value_was == 0
         Reputation.unpenalize(self.voteable_type, self.user, target_user) if value_was == -1
-      when "down"
+    elsif direction == "down"
         new_value = value_was - 1
         Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
         Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 0
     end
 
     if new_value == 0
-      self.delete
+      self.destroy
     end
-
-    rating = 0
-    voteable.reload
-    voteable.votes.each {|vote| rating += vote.value }
-    voteable.votes_count = rating
-    voteable.save(:validate => false)
+    update_votes_count
   end
+  
+  private
 
+  def update_votes_count
+    rating = 0
+    self.voteable.reload
+    self.voteable.votes.each { |vote| rating += vote.value }
+    self.voteable.votes_count = rating
+    self.voteable.save(:validate => false)
+  end
 
 end
 

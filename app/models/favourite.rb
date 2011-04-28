@@ -5,8 +5,8 @@ class Favourite < ActiveRecord::Base
   belongs_to :question
   
   #Validations
-  validates :user_id, :presence => true
-  validates :question_id, :presence => true
+  validates :user, :presence => true
+  validates :user, :presence => true
   
 end
 

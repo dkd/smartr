@@ -15,17 +15,15 @@ class FavouritesController < ApplicationController
     respond_to do |format|
        if @favourite.blank?
           @message = "You successfully saved this question from your favourites!"
-          flash[:notice] = @message
           @class = "favourite-saved"
-          @favourite = Favourite.new({:question_id => @question.id})
-          @favourite.user = current_user
+          @favourite = Favourite.new({:question => @question, :user => current_user})
           @favourite.save
         else
           @message = "You successfully deleted this question from your favourites!"
-          flash[:notice] = @message
           @class = "favourite"
           @favourite.destroy
         end
+      flash[:notice] = @message  
       format.js { }
       format.html {
         redirect_to question_url(@question.id, @question.friendly_id)
