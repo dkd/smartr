@@ -1,8 +1,37 @@
 en:
   searchstring_default: Search for question ...
-  cancel: cancel
-  save: speichern
+  cancel: Cancel
+  save: Save
   edit: edit
+  
+  activerecord: 
+    attributes:
+      question:
+      answer:
+      comment:
+      user:
+      favourite:
+      edit:
+    models:
+      question:
+        one: questions
+        other: questions
+      answer:
+        one: answer
+        other: answers
+      comment:
+        one: comment
+        other: comments
+      user:
+        one: user
+        other: users
+      favourite:
+        one: favourite
+        other: favourites
+      edit:
+        one: edit
+        other: edits
+
   main_menu:
     questions: Questions
     tags: Tags
@@ -14,8 +43,6 @@ en:
       other: tags
   
   answers:
-    save: Save
-    cancel: Cancel
     one: answer
     other: answers
     label:

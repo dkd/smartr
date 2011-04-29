@@ -106,7 +106,7 @@ class Question < ActiveRecord::Base
 
     text :answers do 
       answers.map {|answer| 
-        answer.body_plain
+        answer.body
       }
     end
     
