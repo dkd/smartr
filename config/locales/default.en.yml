@@ -2,8 +2,8 @@ en:
   datetime:
     distance_in_words:
       about_x_months:
-        one: 'etwa ein Monat'
-        other: 'etwa %{count} Monate'
+        one: 'about 1 month ago'
+        other: 'about %{count} months ago'
       x_days:
         one: '1 day ago'
         other: '%{count} days ago'

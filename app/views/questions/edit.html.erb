@@ -8,7 +8,7 @@
         <%= builder.text_field :body %>
         <%= f.error_message_on(:"edits.body") %>
       </div>
-      <button type="submit" class="g-button"><%=t("questions.update")%></button>
+      <button type="submit" class="g-button"><%=t("question.update")%></button> <%= link_to t("cancel"), question_path(@question.id, @friendly_id), :class => "cancel" %>
       <% end %>
   <% end %>
 </div>

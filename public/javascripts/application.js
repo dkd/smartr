@@ -53,9 +53,9 @@ $(document).ready(function(){
   $("#top-flash span").click(function(){$(this).parent().slideUp("fast")});
   
   
-  $(".question-edit form, .answer-edit form").submit(function(){
-    $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
-  });
+  //$(".question-edit form, .answer-edit form").submit(function(){
+  //  $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
+  //});
   
   /* Highlight interesting questions */
   $(".tags.interesting a").each(function(i){
@@ -172,10 +172,10 @@ $(document).ready(function(){
     }
   );
   
-     hljs.tabReplace = '    ';
-     hljs.initHighlightingOnLoad();
-     
-     $("textarea").tabby();
+   hljs.tabReplace = '    ';
+   hljs.initHighlightingOnLoad();
+   
+   $("textarea").tabby();
    
    $("#wmd-input").wmd();
 
