@@ -3,6 +3,7 @@ en:
   cancel: Cancel
   save: Save
   edit: edit
+  update: Update
   
   activerecord: 
     attributes:
@@ -12,10 +13,15 @@ en:
       user:
       favourite:
       edit:
+      vote:
+
     models:
       question:
         one: questions
         other: questions
+        views:
+          one: view
+          other: views
       answer:
         one: answer
         other: answers
@@ -31,6 +37,8 @@ en:
       edit:
         one: edit
         other: edits
+      vote:
+
 
   main_menu:
     questions: Questions
@@ -41,46 +49,31 @@ en:
     label:
       one: tag
       other: tags
-  
-  answers:
-    one: answer
-    other: answers
-    label:
-      one: Answer
-      other: Answers
-  
-  comments:
-    new: Write a comment
-    label:
-      one: comment
-      other: comments
+
+  answer:
+    save: Save Answer
+    update: Update Answer
+
+  comment:
+    new: Add Comment
     order:
-      latest: latest
-      reputation: reputation
-  views:
-    one: view
-    other: views
-  votes:
-    one: vote
-    other: votes
-  
-  users:
-    one: user
-    other: users
+      latest: Latest
+      reputation: Reputation
+
+  user:
     views: Views
     reputation_history: Reputation History
-  
-  questions:
-    latest_questions: Latest Questions
+
+  question:
+    latest: Latest Questions
+    active: Active Questions
+    hot: Hot Questions
     new: New Question
-    edit: Edit
+    edit: Edit Question
     update: Update Question
     save: Save Question
     name: Enter your question here
     body: Please provide more detail
-    label: 
-      one: question
-      other: questions
     asked_by: Asked by
     saved_in: saved_in
     related: Related questions  
@@ -90,11 +83,12 @@ en:
       active: Active
       unanswered: Unanswered
     
-    latest:
-      header: Latest questions
-  
+  vote:
+    one: vote
+    other: votes
+    
   remove_tag: -remove
-  
+
   sidebar:
     ask_a_question: Ask a question!
     users:
@@ -105,4 +99,3 @@ en:
     tags:
       interesting: Interesting Tags
       recent: Recent Tags
-    

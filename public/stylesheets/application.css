@@ -1652,49 +1652,52 @@ table {
   table th.right, table td.right {
     text-align: right; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\000033}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\000032}}
+form textarea:focus {
+  background-color: rgba(200, 255, 113, 0.4); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\000035}}
 form div.left {
   float: left;
   padding-right: 2em;
   border-right: 1px dashed black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000310}}
   form div.left.noborder {
     border-right: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000313}}
   form div.left.middle {
     margin-left: 2em;
     height: 250px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000316}}
     form div.left.middle div.description {
       font-size: 0.9em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000318}}
 form div.right {
   float: left;
   margin-left: 2em;
   min-width: 290px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000320}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000322}}
   form div.right img {
     border: 1px solid #e9e9e9;
     padding: 5px;
     background: white;
     box-shadow: 0px 4px 5px #888888;
     margin-bottom: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000328}}
   form div.right a:hover {
     color: green; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000330}}
   form div.right a {
     color: black;
     position: absolute;
     z-index: 1; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000334}}
     form div.right a #user_avatar {
       position: relative;
       z-index: 2;
       top: -20px;
       opacity: 0;
       cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000341}}
 form input.submit {
   background: green;
   color: white;
@@ -1713,20 +1716,20 @@ form input.submit {
   border-radius: 3px;
   text-shadow: 1px 1px 1px #444444;
   font-family: Helvetica, Arial, sans-serif; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000358}}
 form input.submit:hover {
   border-color: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000360}}
 form input.submit:active {
   border-color: black;
   color: #ffff99; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000364}}
 form div.text_field,
 form div.text_field_long,
 form div.text_field_extra_long,
 form div.textarea_extra {
   margin-bottom: 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000370}}
   form div.text_field label,
   form div.text_field_long label,
   form div.text_field_extra_long label,
@@ -1735,7 +1738,7 @@ form div.textarea_extra {
     font-weight: bold;
     font-size: 0.8em;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000376}}
   form div.text_field input,
   form div.text_field_long input,
   form div.text_field_extra_long input,
@@ -1747,39 +1750,37 @@ form div.textarea_extra {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000383}}
   form div.text_field input:focus,
-  form div.text_field textarea:focus,
-  form div.text_field_long input:focus,
-  form div.text_field_long textarea:focus,
-  form div.text_field_extra_long input:focus,
-  form div.text_field_extra_long textarea:focus,
-  form div.textarea_extra input:focus,
-  form div.textarea_extra textarea:focus {
-    background-color: rgba(200, 255, 113, 0.4); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000385}}
   form div.text_field div.field_with_errors,
+  form div.text_field_long input:focus,
   form div.text_field_long div.field_with_errors,
+  form div.text_field_extra_long input:focus,
   form div.text_field_extra_long div.field_with_errors,
+  form div.textarea_extra input:focus,
   form div.textarea_extra div.field_with_errors {
     margin-bottom: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000389}}
+    form div.text_field input:focus label,
     form div.text_field div.field_with_errors label,
+    form div.text_field_long input:focus label,
     form div.text_field_long div.field_with_errors label,
+    form div.text_field_extra_long input:focus label,
     form div.text_field_extra_long div.field_with_errors label,
+    form div.textarea_extra input:focus label,
     form div.textarea_extra div.field_with_errors label {
       color: red; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000393}}
 form div.text_field_long input {
   width: 230px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\0000397}}
 form div.text_field_extra_long input,
 form div.textarea_extra input {
   width: 890px;
   height: 20px;
   font-size: 14px;
   margin-right: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/form\.sass}line{font-family:\00003102}}
 form div.text_field_extra_long textarea,
 form div.textarea_extra textarea {
   width: 890px;

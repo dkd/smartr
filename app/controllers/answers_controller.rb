@@ -17,7 +17,7 @@ class AnswersController < ApplicationController
       flash[:notice] = 'Answer was successfully created.'
       redirect_to question_url(@question.id, @question.friendly_id)
     else
-      render("new", :locals => {:answer => @answer, :question => @question}, :layout => true)
+      render "new"
     end
 
   end
