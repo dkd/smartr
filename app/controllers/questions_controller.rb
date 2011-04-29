@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
     @related_questions = @question.find_related_tags.limit(10)
     @answer = Answer.new
     @answer.question = @question
+    @related_questions = related_questions
   end
 
   # GET /questions/new
@@ -170,6 +171,16 @@ class QuestionsController < ApplicationController
   end
   
   protected
+  
+  def related_questions
+    tags = @question.tags.collect {|tag| tag.name}
+    question_id = @question.id
+    search = Sunspot.search(Question) do
+      with(:tags).any_of(tags)
+      paginate(:per_page => 10)
+      without :id, question_id
+    end
+  end
   
   def question_state
     if params[:question].present? && params[:question][:question_state].present?

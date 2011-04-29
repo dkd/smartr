@@ -2,54 +2,85 @@ require "spec_helper"
 
 describe AnswersController do
   include Devise::TestHelpers
-  let(:answer) {Factory.create :full_answer}
+  let(:question) {Factory.create :question2}
+  let(:user) {Factory.create :endless_user }
   render_views
-  
+
   describe "unauthorized user" do
-    
+
     describe "POST answer" do
       it "should redirect to the login page" do
-        post :create, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id
+        post :create, :question_id => question.id, :friendly_id => question.friendly_id
         response.should redirect_to :controller => "devise/sessions", :action => "new"
       end
     end
-    
+
     describe "PUT answer" do
       it "should redirect to the login page" do
-        put :update, :question_id => answer.question.id, :id => answer.id, :friendly_id => answer.question.friendly_id
+        answer = Factory.create(:full_answer, :user => user, :question => question)
+        put :update, :question_id => question.id, :id => answer.id, :friendly_id => answer.question.friendly_id
         response.should redirect_to :controller => "devise/sessions", :action => "new"
       end
     end
-    
+
     describe "GET answer" do
       it "edit should redirect to the login page" do
+        answer = Factory.create(:full_answer, :user => user, :question => question)
         get :edit, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :id => answer.id
         response.should redirect_to :controller => "devise/sessions", :action => "new"
       end
     end
 
-    
   end
-  
-  describe "authorized user" do
+
+  context "An authorized user" do
     before do
-      sign_in answer.user
+      sign_in user
     end
 
-    describe "POST answer" do
-      it "should redirect to the question of the answer" do
-        post :create, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :answer => {:body => Faker::Lorem.sentences(10).to_s}
-        response.should redirect_to(:controller => "questions", :action => "show", :id => answer.question.id, :friendly_id => answer.question.friendly_id)
-        assigns(:question).should eq(answer.question)
+    context "with valid answer parameters" do
+
+      describe "POST answer" do
+        it "should redirect to the question of the answer" do
+          answer = Factory.create(:full_answer, :user => user, :question => question)
+          post :create, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :answer => {:body => Faker::Lorem.sentences(10).to_s}
+          response.should redirect_to(:controller => "questions", :action => "show", :id => answer.question.id, :friendly_id => answer.question.friendly_id)
+          assigns(:question).should eq(answer.question)
+        end
       end
+
+      describe "PUT answer" do
+        it "should redirect to the question of the answer" do
+          answer = Factory.create(:full_answer, :user => user, :question => question)
+          put :update, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :id => answer.id, :answer => {:body => Faker::Lorem.sentences(10).to_s}
+          response.should redirect_to(:controller => "questions", :action => "show", :id => answer.question.id, :friendly_id => answer.question.friendly_id)
+          assigns(:question).should eq(answer.question) 
+        end
+      end
+
     end
 
-    describe "PUT answer" do
-      it "should redirect to the question of the answer" do
-        put :update, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :id => answer.id, :answer => {:body => Faker::Lorem.sentences(10).to_s}
-        response.should redirect_to(:controller => "questions", :action => "show", :id => answer.question.id, :friendly_id => answer.question.friendly_id)
-        assigns(:question).should eq(answer.question)
+    context "with invalid answer parameters" do
+
+      let(:question) {Factory.create :question2}
+      describe "POST answer" do
+        it "should redirect to the edit answer page" do
+          answer = Factory.create(:full_answer, :user => user, :question => question)
+          post :create, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :answer => {:body => nil}
+          response.should render_template(:new)
+          assigns(:question).should eq(answer.question)
+        end
       end
+
+      describe "PUT answer" do
+        it "should redirect to the edit answer page" do
+          answer = Factory.create(:full_answer, :user => user, :question => question)
+          put :update, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :id => answer.id, :answer => {:body => nil}
+          response.should render_template(:edit)
+          assigns(:question).should eq(answer.question)
+        end
+      end
+      
     end
     
   end

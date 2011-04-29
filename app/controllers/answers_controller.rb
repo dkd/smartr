@@ -1,29 +1,11 @@
 class AnswersController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :require_owner, :only => [:edit, :destroy]
-  before_filter :require_question_owner, :only => :update_for_switch_acceptance
-  
-  def index
-    if params[:question_id]
-      redirect_to question_path(params[:question_id])
-    end
-  end
-  
-  def show
-    @answer = Answer.find(params[:id])
-    respond_to do |format|
-        format.html { 
-          render :partial => "/questions/answer", :locals => {:answer => @answer}
-        }
-    end
-    
-  end
-  
+  before_filter :require_question_owner, :only => [:update_for_switch_acceptance]
+
   def edit
-    @answer = current_user.answers.find(params[:id])
     @question = @answer.question
-    @answer.body = @answer.body
   end
   
   def create
@@ -35,7 +17,7 @@ class AnswersController < ApplicationController
       flash[:notice] = 'Answer was successfully created.'
       redirect_to question_url(@question.id, @question.friendly_id)
     else
-      render("_new", :locals => {:answer => @answer, :question => @question}, :layout => true)
+      render("new", :locals => {:answer => @answer, :question => @question}, :layout => true)
     end
 
   end
@@ -53,14 +35,6 @@ class AnswersController < ApplicationController
       end
   end
 
-  def destroy
-    @answer.destroy
-    respond_to do |format|
-      format.html { redirect_to(answers_url) }
-      format.xml  { head :ok }
-    end
-  end
-  
   def update_for_switch_acceptance
      @answer.toggle_acception
      respond_to do |format|
@@ -71,23 +45,21 @@ class AnswersController < ApplicationController
        }
      end
    end
-  
+
   private
-  
+
   def require_owner
-    @answer = Answer.find_by_id_and_user_id(params[:id], current_user.id)
+    @answer = current_user.answers.find(params[:id])
   end
-  
+
   def require_question_owner
-    logger.info "Calling filter require_question_owner"
     @answer = Answer.find(params[:answer_id])
     @question = Question.find_by_id_and_user_id(@answer.question_id, current_user.id)
-    if @question
+    if @question.present?
       true
     else
       false
     end
   end
-    
-  
+
 end

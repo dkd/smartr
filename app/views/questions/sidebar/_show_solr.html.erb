@@ -1,15 +1,6 @@
-<%
-tags = @question.tags.collect {|tag| tag.name}
-search = Sunspot.search(Question) do
-  with(:tags).any_of(tags)
-  paginate(:per_page => 10)
-end
-%>
-<%=tags%>
-
 <h3><%=t("questions.related") %></h3>
 <ul>
-  <% search.results.each do |question| %>
-    <li><%=link_to question.name, question_path(:id => question.id, :friendly_id => question.friendly_id)%></li>
+  <% @related_questions.results.each do |question| %>
+    <li><%= link_to question.name, question_path(:id => question.id, :friendly_id => question.friendly_id)%></li>
   <% end %>
 </ul>

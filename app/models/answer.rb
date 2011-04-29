@@ -48,7 +48,7 @@ end
 #  created_at  :datetime
 #  updated_at  :datetime
 #  accepted    :boolean(1)
-#  body_plain  :text
+#  body  :text
 #  send_email  :boolean(1)      default(FALSE)
 #
 

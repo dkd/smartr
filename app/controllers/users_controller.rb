@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    unless params[:q].blank?
+    if params[:q].present?
       @users = User.find(:all, :conditions => ["login like ?","%#{params[:q]}%"], :order => "reputation desc").paginate :page => params[:page], :per_page => 10
     else
       @users = User.find(:all, :order => "reputation desc").paginate :page => params[:page], :per_page => 10

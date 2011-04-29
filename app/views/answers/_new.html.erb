@@ -1,4 +1,4 @@
-<%= render(:partial => "/questions/question_header", :locals => {:question => question}) if controller.controller_name == "answers"%>
+
 <br class="clear" />
 <h2><%=t("answers.my_answer")%></h2>
 <div class="answer-edit">
@@ -16,4 +16,3 @@
   <% end -%>
 <br class="clear" />
 </div>
-<% main_menu :questions if controller.controller_name == "answers" %>
