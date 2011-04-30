@@ -1113,50 +1113,16 @@ form.user div.text_field {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000320}}
   .comments .comment-edit {
     margin-top: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000322}}
-    .comments .comment-edit a.cancel {
-      margin-top: 4px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000323}}
   .comments .comment-new, .comments .comment-edit {
-    float: right;
-    margin-right: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000330}}
+    float: right; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000326}}
     .comments .comment-new textarea, .comments .comment-edit textarea {
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px;
       padding: 2px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000334}}
-    .comments .comment-new a.cancel:link, .comments .comment-new a.cancel:visited, .comments .comment-edit a.cancel:link, .comments .comment-edit a.cancel:visited {
-      color: white;
-      background: #853e00;
-      padding: 5px;
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-      float: left;
-      margin-left: 0px;
-      padding-top: 4px;
-      padding-bottom: 3px;
-      text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000346}}
-    .comments .comment-new a.cancel:hover, .comments .comment-new input.save:hover, .comments .comment-edit a.cancel:hover, .comments .comment-edit input.save:hover {
-      background: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000349}}
-    .comments .comment-new input.save, .comments .comment-edit input.save {
-      background: #ff8400;
-      color: white;
-      padding: 5px;
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-      border: none;
-      float: right;
-      padding-top: 2px;
-      padding-bottom: 2px;
-      margin-top: 10px;
-      font-size: 12px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000330}}
   .comments .comment-item {
     border: 1px solid #ffe7bd;
     display: block;
@@ -1167,23 +1133,23 @@ form.user div.text_field {
     margin-right: 0px;
     margin-bottom: 5px;
     background: rgba(255, 231, 189, 0.3); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000338}}
     .comments .comment-item p {
       margin: 0px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000341}}
     .comments .comment-item .user-info {
       float: right;
       margin-bottom: 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000345}}
       .comments .comment-item .user-info a:link, .comments .comment-item .user-info a:visited {
         color: #6a1b00;
         text-decoration: none;
         font-weight: bold; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000349}}
       .comments .comment-item .user-info a:hover {
         color: black;
         text-decoration: underline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000352}}
     .comments .comment-item a:link, .comments .comment-item a:visited {
       background: none;
       text-decoration: underline;
@@ -1194,24 +1160,10 @@ form.user div.text_field {
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
       border-radius: 3px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000361}}
     .comments .comment-item .inner {
       border: 1px solid rgba(255, 255, 255, 0.8);
       padding: 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\0000396}}
-  .comments a:link, .comments a:visited {
-    float: right;
-    margin: 10px;
-    text-decoration: none;
-    font-size: 12px;
-    background: #ff8400;
-    padding: 5px;
-    color: white;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/comments\.sass}line{font-family:\00003107}}
-  .comments a:hover {
-    background: black; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/footer\.sass}line{font-family:\000031}}
 #footer {

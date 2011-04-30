@@ -55,7 +55,11 @@ en:
     update: Update Answer
 
   comment:
-    new: Add Comment
+    new: New Comment
+    edit: Edit Comment
+    save: Save Comment
+    one: comment
+    other: comments
     order:
       latest: Latest
       reputation: Reputation

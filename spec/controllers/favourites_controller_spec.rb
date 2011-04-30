@@ -3,7 +3,21 @@ require "spec_helper"
 describe FavouritesController do
   include Devise::TestHelpers
   let(:question) { Factory.create :question2 }
-
+  
+  describe "Any User" do
+    let(:user) { Factory.create(:endless_user) }
+    describe "with one favourited question" do
+      it "shows the user's favourites page" do
+        Factory.create(:favourite, :user => user, :question => question)
+        get :index, :user_id => user.id
+        assigns(:questions).first.should eq(question)
+        response.should render_template("users/favourites")
+        response.should be_success
+      end
+    end
+    
+  end
+  
   describe "An authorized user" do
     before do
       sign_in question.user
