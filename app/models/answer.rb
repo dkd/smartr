@@ -7,17 +7,17 @@ class AnswerCountValidator < ActiveModel::Validator
 end
 
 class Answer < ActiveRecord::Base
-  
+
   #Associations
   belongs_to :question, :counter_cache => true
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :votes, :as => :voteable, :dependent => :destroy
-  
+
   #Validations
   validates_with AnswerCountValidator
   validates :body, :presence => true, :length => {:minimum => 75, :maximum => 2048}
-  
+
   def accepted?
     if self.question.accepted_answer == self
       true
@@ -25,7 +25,7 @@ class Answer < ActiveRecord::Base
       false
     end
   end
-  
+
   #Sunspot Solr Configuration
   searchable do
     text :body
@@ -34,7 +34,7 @@ class Answer < ActiveRecord::Base
     time :created_at
     time :updated_at
   end
-  
+
 end
 
 # == Schema Information
@@ -51,4 +51,3 @@ end
 #  body  :text
 #  send_email  :boolean(1)      default(FALSE)
 #
-

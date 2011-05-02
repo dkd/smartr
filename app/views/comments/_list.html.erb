@@ -3,18 +3,18 @@
   <div id="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>">
   <% if comments.count > 1 %>
     <ul>
-      <li><%=link_to(I18n.t(:"comment.order.latest"), 
-                            comments_path(:model => parent.class.name, 
-                                          :id => parent.id, 
-                                          :comments_order => "latest"), 
-                                          :remote => true, 
+      <li><%=link_to(I18n.t(:"comment.order.latest"),
+                            comments_path(:model => parent.class.name,
+                                          :id => parent.id,
+                                          :comments_order => "latest"),
+                                          :remote => true,
                                           :class => ("active" if (session[:comments_order] == "latest")))%>
       </li>
-      <li><%=link_to(I18n.t(:"comment.order.reputation"), 
-                            comments_path(:model => parent.class.name, 
-                                          :id => parent.id, 
-                                          :comments_order => "reputation"), 
-                                          :remote => true, 
+      <li><%=link_to(I18n.t(:"comment.order.reputation"),
+                            comments_path(:model => parent.class.name,
+                                          :id => parent.id,
+                                          :comments_order => "reputation"),
+                                          :remote => true,
                                           :class => ("active" if (session[:comments_order] == "reputation")))%>
       </li>
     </ul>
@@ -26,8 +26,7 @@
   <% end -%>
   </div>
 <% end -%>
-<%= link_to(t("comment.new"), new_comment_path(:comment => { :commentable_type => parent.class.name, 
+<%= link_to(t("comment.new"), new_comment_path(:comment => { :commentable_type => parent.class.name,
                                                               :commentable_id => parent.id}),
                                                               :remote => true,
                                                               :class => "comment-new g-button") %>
-

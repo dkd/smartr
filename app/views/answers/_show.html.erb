@@ -1,7 +1,7 @@
 <div class="answer-item<%=" accepted" unless answer != answer.question.accepted_answer%>" id="answer_<%=answer.id%>">
   <div class="stats">
     <div class="votes" id="vote-box-<%=answer.id%>">
-      <%= render :partial => "/answers/vote_box", :locals => {:answer => answer} %> 
+      <%= render :partial => "/answers/vote_box", :locals => {:answer => answer} %>
     </div>
     <div class="status">
       <%= render :partial => "/answers/status", :locals => {:answer => answer} %>
@@ -11,8 +11,8 @@
     <%= raw(code(answer.body)) %>
       <span class="user">
         <%= link_to( image_tag(answer.user.avatar.url(:tiny), :border =>"0"), user_path(answer.user)) %>
-        <%= link_to answer.user.login, user_path(answer.user) %> &middot; 
-        <span class="user-<%=answer.user.id%>-reputation"><%=answer.user.reputation %></span> &middot; 
+        <%= link_to answer.user.login, user_path(answer.user) %> &middot;
+        <span class="user-<%=answer.user.id%>-reputation"><%=answer.user.reputation %></span> &middot;
         <%= distance_of_time_in_words_to_now answer.created_at %></span>
       <%= link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id), :class => "edit") if (answer.user == current_user) %>
     </div>

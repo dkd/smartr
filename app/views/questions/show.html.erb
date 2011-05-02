@@ -10,7 +10,7 @@
 
 <% if (current_user.present? && !@question.answered_by?(current_user)) %>
   <%= render :partial => "/answers/new", :locals => {:answer => @answer, :question => @question} %>
-<% end -%>  
+<% end -%>
 <% main_menu :questions %>
 <% title @question.name %>
 <% content_for :sidebar, render( :partial => "questions/sidebar/show_solr") %>

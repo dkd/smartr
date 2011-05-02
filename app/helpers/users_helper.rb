@@ -1,6 +1,6 @@
 module UsersHelper
   include ActsAsTaggableOn::TagsHelper
-  
+
   def user_submenu(active)
        menu = []
        menu << {:name => t("users.winner"), :id => "winner", :link => users_path(:page => nil)}
@@ -8,7 +8,7 @@ module UsersHelper
        menu << {:name => t("users.who_is_online"), :id => "who_is_online", :link => who_is_online_users_path}
        build_menu(menu, active)
    end
-   
+
   def user_show_submenu(active)
       menu = []
       menu << {:name => t("users.detail"), :id => "detail", :link => user_path(:id => @user.id)}
@@ -17,5 +17,5 @@ module UsersHelper
       menu << {:name => t("users.favourites"), :id => "favourites", :link => user_favourites_path(@user)}
       build_menu(menu, active)
   end
-   
+
 end

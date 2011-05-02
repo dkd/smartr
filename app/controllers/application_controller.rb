@@ -4,32 +4,22 @@
 class ApplicationController < ActionController::Base
   has_mobile_fu
   helper_method :current_user_session, :current_user, :is_admin?
-  before_filter :search_options
+
   before_filter :set_last_request_at, :store_location
   before_filter :set_order
   before_filter :set_locale
 
   protected
-    
+
     def set_locale
       I18n.locale = params[:locale]
     end
-    
-    def set_order 
+
+    def set_order
       session[:comments_order] = "latest" if session[:comments_order].blank?
       session[:comments_order] = params[:comments_order] if Comment::ORDER.include?(params[:comments_order])
     end
-    
-    def search_options
-      @user_facet = nil
-      if params[:search] && params[:search][:searchstring]
-        @searchstring =  params[:search][:searchstring]
-        @user_facet = params[:user_id] unless params[:user_id].nil?
-      else
-        @searchstring = ""
-      end
-    end
-    
+
     def authenticate_user!
       if user_signed_in?
         true
@@ -46,7 +36,7 @@ class ApplicationController < ActionController::Base
         false
       end
     end
-    
+
     def authenticate_admin!
       if user_signed_in? && current_user.is_admin?
         true
@@ -56,7 +46,7 @@ class ApplicationController < ActionController::Base
         false
       end
     end
-    
+
     def is_admin?
       if user_signed_in? && current_user.is_admin?
        true
@@ -65,26 +55,18 @@ class ApplicationController < ActionController::Base
      end
     end
 
-    def require_no_user
-      if user_signed_in?
-        flash[:notice] = "You must be logged out to access this page"
-        redirect_to root_url
-        false
-      end
-    end
-    
     def store_location
       session[:return_to] = request.fullpath
     end
-    
+
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
 
     private
-    
-    def set_last_request_at 
-      current_user.update_attribute(:last_request_at, Time.now) if current_user.present? 
+
+    def set_last_request_at
+      current_user.update_attribute(:last_request_at, Time.now) if current_user.present?
     end
 end

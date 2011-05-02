@@ -3,7 +3,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>SmartR - question update</title>
     <style type="text/css" media="screen">
-      
+
       h3{
         color: #738500;
         font-size: 16px;
@@ -11,7 +11,7 @@
       a:link,a:visited{
         color: #738500;
       }
-      
+
       .body-section{
         padding: 5px;
         background: #f4f4f4;
@@ -33,7 +33,7 @@
   <h3><%=link_to(@question.name, "#{Smartr::Settings[:host]}#{url_for(@question)}")%></h3>
   <br />
   <div class="object-info">
-    <%= @object.class.name %> posted <%= @object.updated_at %> by 
+    <%= @object.class.name %> posted <%= @object.updated_at %> by
     <b><%=link_to(@object.user.login, "#{Smartr::Settings[:host]}#{url_for(@object.user)}")%></b>.
   </div>
   <div class="body-section">

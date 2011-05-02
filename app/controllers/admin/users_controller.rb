@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_filter :authenticate_admin!
-  
+
   # GET /admin_users
   def index
     @users = User.all
@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
         flash[:notice] = 'Admin::User was successfully created.'
           redirect_to(admin_user_url(@user))
       else
-        render :action => "new"
+        render :new
       end
   end
 
@@ -39,7 +39,7 @@ class Admin::UsersController < ApplicationController
         flash[:notice] = 'Admin::User was successfully updated.'
         redirect_to(admin_user_url(@user))
       else
-        render :action => "edit"
+        render :edit
       end
   end
 

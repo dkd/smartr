@@ -1,13 +1,13 @@
 class Favourite < ActiveRecord::Base
-  
+
   #Associations
   belongs_to :user
   belongs_to :question
-  
+
   #Validations
   validates :user, :presence => true
   validates :user, :presence => true
-  
+
 end
 
 # == Schema Information

@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
   before_filter :require_admin
   respond_to :html, :js
-  
+
   # GET /admin_comments
   def index
     @admin_comments = Admin::Comment.all

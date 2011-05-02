@@ -14,15 +14,15 @@ Smartr::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.perform_deliveries = false
-  
+
   config.active_support.deprecation = :log
-  
+
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
-  
+
   config.secret_token ='94b9c594695e69bdef6b1d4be037af5853be976b39a52a02f260fca0d0a36a8f913572bfdb631f55971a3b10b8dd9a875f9776ca61371741544e6ccc064dd41e'
   Sunspot.config.solr.url = 'http://localhost:8982/solr'
 
   Sass::Plugin.options[:debug_info] = true
-  
+
 end

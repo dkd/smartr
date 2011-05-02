@@ -7,7 +7,7 @@
   <%= f.text_field :login %>
   <%= f.error_message_on :login%>
 </div>
-<div class="text_field">  
+<div class="text_field">
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.error_message_on :password %>
@@ -15,7 +15,7 @@
 
 <% if devise_mapping.rememberable? -%>
   <div>
-    <%= f.check_box :remember_me %> 
+    <%= f.check_box :remember_me %>
     <%= f.label :remember_me %>
   </div>
 <% end -%>
@@ -27,5 +27,4 @@
 <br />
 <%= render(:partial => "devise/shared/links") %>
 </div>
-
 <% main_menu :users %>

@@ -11,8 +11,8 @@ end
 
 <div class="comment-item" id="comment-<%=comment.id%>">
   <div class="inner">
-    <div class="user-info"><span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes_count%></span> <span id="comment-votes-<%=comment.id%>"><%=t("votes", :count => comment.votes_count)%></span> &middot; 
-      <%= link_to raw("&uarr;"), 
+    <div class="user-info"><span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes_count%></span> <span id="comment-votes-<%=comment.id%>"><%=t("votes", :count => comment.votes_count)%></span> &middot;
+      <%= link_to raw("&uarr;"),
                        votes_path(
                        :model => "comment",
                        :value => (vote_value==1? "-1" : "1"),
@@ -20,8 +20,8 @@ end
                        :method => "post",
                        :remote => true,
                        :class => upclass -%> &middot;
-      <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> &middot; 
-      <span class="<%="user-#{comment.user.id}-reputation"-%>"><%=comment.user.reputation%></span> &middot; 
+      <%= distance_of_time_in_words_to_now comment.created_at, :include_seconds => true %> &middot;
+      <span class="<%="user-#{comment.user.id}-reputation"-%>"><%=comment.user.reputation%></span> &middot;
       <%=link_to comment.user.login, user_path(comment.user)%>
     </div>
     <br class="clear" />
