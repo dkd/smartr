@@ -9,9 +9,9 @@
 <div class="user-header">
   <%= image_tag @user.avatar.url(:medium), :alt => @user.login, :title => @user.login %>
   <p>
-    <span><%=@user.questions.count%></span> <%=t(:"question.label", :count => @user.questions.count) %>,
-    <span><%=@user.answers.count %></span> <%=t("answer.label", :count => @user.answers.count) %> &amp;
-    <span><%=@user.comments.count%></span> <%=t(:"comment.label", :count => @user.comments.count) %>.
+    <span><%= @user.questions.count %></span> <%= t(:"question.label", :count => @user.questions.count) %>,
+    <span><%= @user.answers.count %></span> <%= t("answer.label", :count => @user.answers.count) %> &amp;
+    <span><%= @user.comments.count %></span> <%= t(:"comment.label", :count => @user.comments.count) %>.
   </p>
 </div>
 
@@ -20,7 +20,7 @@
   <div class="user-questions">
     <h2><%= t("questions.latest_questions") %></h2>
     <% @user.latest_questions.each do |question| %>
-      <%= render :partial => "question", :locals => { :question => question}  %>
+      <%= render "question", :question => question %>
     <% end -%>
   </div>
   <br class="clear" />
@@ -29,10 +29,10 @@
   <div class="user-questions">
     <h2><%= t("answers.latest_answers") %></h2>
     <% @user.latest_answers.each do |question| %>
-      <%= render :partial => "question", :locals => {:question => question} %>
+      <%= render "question", :question => question %>
     <% end -%>
   </div>
 <% end -%>
 
 <% main_menu :users %>
-<% content_for :sidebar, render(:partial => "/users/sidebar/user", :locals => {:user => @user}) %>
+<% content_for :sidebar, render("/users/sidebar/user", :user => @user) %>

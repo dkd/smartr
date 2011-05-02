@@ -58,7 +58,7 @@ class Vote < ActiveRecord::Base
 
   validates :value, :presence => true, :check_direction => true, :check_vote_owner => true
   validates :direction, :presence => true, :format => {:with =>  /up|down/}
-  
+
   def direction
     case value
     when 1
