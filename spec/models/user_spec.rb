@@ -40,8 +40,20 @@ describe User do
       it "returns 0 when the user downvotes" do
         current_user.vote_value_on(question).should eq(0)
       end
-
     end
+  end
+  
+  describe "count_views!" do
+    pending "it should increase the views count"
+  end
+  
+  describe "is_online" do
+    pending "it returns true if user has been logged in during the last 5 minutes"
+    pending "it returns false if user hasn't logged in during the last 5 minutes"
+  end
+  
+  describe "image_url" do
+    pending "it returns the image_url of the user's avatar"
   end
   
   describe "validation" do

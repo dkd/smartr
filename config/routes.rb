@@ -17,7 +17,7 @@ Smartr::Application.routes.draw do
 
   resources :questions, :except => [:show, :edit] do
 
-    member do 
+    member do
       put :update_for_toggle_acceptance
     end
 
@@ -76,5 +76,5 @@ Smartr::Application.routes.draw do
   end
 
   root :to => 'questions#index'
-  match '*a', :to => 'errors#routing' 
+  match '*a', :to => 'errors#routing'
 end

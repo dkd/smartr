@@ -12,7 +12,7 @@ end
 <% if vote_value == 1 %>
   <%= link_to raw("&nbsp;"), "javascript:;", :class => upclass %>
 <% else %>
-  <%= link_to raw("&nbsp;"), 
+  <%= link_to raw("&nbsp;"),
                    votes_path(
                    :model => "question",
                    :value => "1",

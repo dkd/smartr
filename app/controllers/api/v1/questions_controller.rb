@@ -3,10 +3,10 @@ class Api::V1::QuestionsController < ApplicationController
   def index
     @questions = Question.latest.paginate :page => params[:page], :per_page => 30
     respond_to do |format|
-      format.json { 
+      format.json {
         render :json => { :items => @questions.map(&:as_json),
                           :count => @questions.size }
-        
+
         }
     end
   end

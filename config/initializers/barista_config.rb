@@ -26,7 +26,7 @@
 
 # or, prefix the path for the app files:
 
-# c.change_output_prefix! :default, 'my-app-name'  
+# c.change_output_prefix! :default, 'my-app-name'
 
 # or, hook into the compilation:
 

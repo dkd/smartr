@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
-  
+
   before_filter :authenticate_user!, :only => [:edit, :create, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :check_ownership, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
   respond_to :html, :js, :xml, :json
-  
+
   def index
       if (params[:tag].present?)
         @questions = Question.latest.list.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
         redirect_to question_url(@question.id, @question.friendly_id)
       else
         flash[:error] = 'Please fill in all requested fields!'
-        render :action => "new"
+        render :new
       end
   end
 
@@ -55,14 +55,14 @@ class QuestionsController < ApplicationController
     @related_questions = @question.find_related_tags.limit(10)
     params[:question][:edits_attributes][:"0"][:user_id] = {}
     params[:question][:edits_attributes][:"0"][:user_id] = current_user.id
-    
+
     if @question.update_attributes(params[:question])
       flash[:notice] = 'Question was successfully updated.'
       redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id)
     else
       flash[:error] = 'Please fill in all requested fields!'
       @edit = @question.edits.last
-      render :action => "edit"
+      render :edit
     end
   end
 
@@ -76,21 +76,21 @@ class QuestionsController < ApplicationController
     @questions = Question.hot.list.paginate :page => params[:page], :per_page => 15
     render :index_for_hot
   end
-  
+
   def active
     @questions = Question.active.list.paginate :page => params[:page], :per_page => 15
     render :index_for_active
   end
-  
+
   def unanswered
     @questions = Question.unanswered.list.paginate :page => params[:page], :per_page => 15
     render :index_for_unanswered
   end
-  
+
   #def tagged
   #  @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
   #end
-  
+
   def search
     if params[:q].present?
       params[:question] = {}
@@ -102,15 +102,15 @@ class QuestionsController < ApplicationController
         highlight :name
         tie 0.1
       end
-      
+
       if params[:question].present? && params[:question][:user_id].present?
-         with(:user_id, params[:question][:user_id].to_i) 
+         with(:user_id, params[:question][:user_id].to_i)
       end
-      
+
       if params[:question].present? && params[:question][:question_state].present?
         with(:question_state, question_state)
       end
-      
+
       facet :user_id, :minimum_count => 2
       facet :question_state, :minimum_count => 2
       facet :created_at do
@@ -130,7 +130,7 @@ class QuestionsController < ApplicationController
           with(:created_at).greater_than(Time.now - 12.month)
         end
       end
-      
+
       if params[:question].present? && params[:question][:created_at].present?
         date_range = case params[:question][:created_at]
                       when "last 7 days" then
@@ -156,7 +156,7 @@ class QuestionsController < ApplicationController
       format.json { render :json => @questions.results.map {|question| question.name }.to_json }
     end
   end
-  
+
   def update_for_toggle_acceptance
     @question = current_user.questions.wh(params[:id])
     respond_to do |format|
@@ -169,9 +169,9 @@ class QuestionsController < ApplicationController
       }
     end
   end
-  
+
   protected
-  
+
   def related_questions
     tags = @question.tags.collect {|tag| tag.name}
     question_id = @question.id
@@ -181,7 +181,7 @@ class QuestionsController < ApplicationController
       without :id, question_id
     end
   end
-  
+
   def question_state
     if params[:question].present? && params[:question][:question_state].present?
       params[:question][:question_state] == "true"? true : false
@@ -199,5 +199,5 @@ class QuestionsController < ApplicationController
       true
     end
   end
-  
+
 end

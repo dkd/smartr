@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  
+
   before_filter :authenticate_user!, :except => [:show]
   before_filter :require_owner, :only => [:edit, :destroy]
   before_filter :require_question_owner, :only => [:update_for_switch_acceptance]
@@ -7,7 +7,7 @@ class AnswersController < ApplicationController
   def edit
     @question = @answer.question
   end
-  
+
   def create
     @answer = Answer.new(params[:answer])
     @question = Question.find(params[:question_id])
@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
     params.delete(:accepted)
     @answer = current_user.answers.find(params[:id])
     @question = @answer.question
-    
+
      if @answer.update_attributes(params[:answer])
        flash[:notice] = 'Answer was successfully updated.'
          redirect_to question_path(@question.id, @question.friendly_id)

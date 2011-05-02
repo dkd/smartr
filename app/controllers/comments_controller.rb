@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
-  
+
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update]
   before_filter :require_owner, :only => [:edit, :update]
   before_filter :require_commentable, :only => [:index]
   respond_to :js
-  
+
   def index
   end
-  
+
   def new
     @comment = Comment.new(params[:comment])
   end
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
   # PUT /comments/1
   def update
-    
+
     if @comment.update_attributes(params[:comment])
     else
       render "invalid_comment"
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   end
 
   protected
-  
+
   def sorting
     case session[:comments_order]
     when "latest"
@@ -47,17 +47,16 @@ class CommentsController < ApplicationController
     else "created_at ASC"
     end
   end
-  
+
   def require_commentable
     if %w(Question Answer).include?(params[:model])
       @parent = params[:model].constantize.find(params[:id])
-      logger.info sorting
       @comments = @parent.comments.order(sorting)
     else
       false
     end
   end
-  
+
   def require_owner
     @comment = Comment.find(params[:id])
     if @comment.present? && @comment.user == current_user
@@ -66,5 +65,5 @@ class CommentsController < ApplicationController
       render :partial => "shared/not_authorized"
     end
   end
-  
+
 end

@@ -9,7 +9,7 @@ class TagsController < ApplicationController
       @q = "Search ..."
       @tags = Question.tag_counts_on(:tags).order("count(*) desc").paginate :page => params[:page], :per_page => 60
     end
-    
+
     respond_to do |format|
       format.html {}
       format.js{ render :partial => "list"}

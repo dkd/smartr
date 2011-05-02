@@ -1,7 +1,6 @@
 <br class="clear" />
 <h2><%= t "user.my_answer" %></h2>
 <div class="answer-edit">
-  
   <%= form_for(answer, :url => question_answers_path(:question_id => question.id, :friendly_id => question.friendly_id)) do |f| %>
     <div id="wmd-button-bar"></div>
     <div class="<%="error" if f.error_message_on(:body).present? %>">

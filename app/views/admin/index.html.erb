@@ -11,11 +11,11 @@
     <% @votes.each do |vote| %>
       <tr>
         <td><%= distance_of_time_in_words_to_now(vote.updated_at) %> ago<br /><%= vote.updated_at %></td>
-        <td><%= link_to image_tag(vote.user.avatar.url(:tiny)), admin_user_path(vote.user) %> 
-            <%= link_to vote.user.login, admin_user_path(vote.user)%> 
-            voted 
+        <td><%= link_to image_tag(vote.user.avatar.url(:tiny)), admin_user_path(vote.user) %>
+            <%= link_to vote.user.login, admin_user_path(vote.user)%>
+            voted
             <%= link_to image_tag(vote.voteable.user.avatar.url(:tiny)), admin_user_path(vote.voteable.user) %>
-            <%= link_to vote.voteable.user.login, admin_user_path(vote.voteable.user)%>'s 
+            <%= link_to vote.voteable.user.login, admin_user_path(vote.voteable.user)%>'s
             <%= vote.voteable.class%>  <%=direction(vote.value)%>
         </td>
         <td class="right">

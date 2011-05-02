@@ -50,44 +50,28 @@ describe UsersController do
     end
     
   end
+
   
-  describe "An authorized User" do
-    let(:user) {Factory.create(:user)}
-    before do
-      sign_in user
-    end
-    
-    #describe "edits his account" do
-    #  it "and sees the edit form" do
-    #    get :edit, :id => user.id
-    #    response.should be_success
-    #    response.should render_template("users/devise/registrations/edit")
-    #  end
-    #end
-    
-  end
-  
-  describe "An unauthorized User" do
-    let(:user) {Factory.create(:user)}
-    
-    describe "tries to edit an account" do
-      it "should not load the edit form" do
-        get :edit, :id => user.id
-        response.should_not be_success
-        response.should redirect_to(:controller => "devise/sessions", :action => "new")
-      end
-    end
-    
-    describe "tries to post an update to an user account" do
-      it "should not load the edit form" do
-        put :update, :id => user.id
-        response.should_not be_success
-        response.should redirect_to(:controller => "devise/sessions", :action => "new")
-      end
-    end
-    
-  end
-  
+  #describe "An unauthorized User" do
+  #  let(:user) {Factory.create(:user)}
+  #  
+  #  describe "tries to edit an account" do
+  #    it "should not load the edit form" do
+  #      get :edit, :id => user.id
+  #      response.should_not be_success
+  #      response.should redirect_to(:controller => "devise/sessions", :action => "new")
+  #    end
+  #  end
+  #  
+  #  describe "tries to post an update to an user account" do
+  #    it "should not load the edit form" do
+  #      put :update, :id => user.id
+  #      response.should_not be_success
+  #      response.should redirect_to(:controller => "devise/sessions", :action => "new")
+  #    end
+  #  end
+  #  
+  #end
   
   describe "Counting number of users online within the last 5 minutes" do
     

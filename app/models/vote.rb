@@ -17,8 +17,8 @@ class CheckDirectionValidator < ActiveModel::EachValidator
       record.errors[attribute] << "Direction is invalid"
     end
     record.errors[attribute] << "Nothing changed" if record.value_was == record.value
-    
-   if record.value_was == 1
+
+    if record.value_was == 1
       if record.value_changed?
         record.errors[attribute] << "Already Voted in that direction" unless (record.value == -1)
       end
@@ -29,29 +29,28 @@ class CheckDirectionValidator < ActiveModel::EachValidator
         record.errors[attribute] << "Already Voted in that direction" unless (record.value == 1)
       end
     end
- 
+
   end
 end
 
-
 class Vote < ActiveRecord::Base
-  
+
   # Associations
   belongs_to :user
   belongs_to :voteable, :polymorphic => true
-  
+
   # Callbacks
   after_save :update_reputation
-  
+
   # Scopes
   default_scope :order => "updated_at asc"
-  
+
   # Virtual Attributes
   attr_reader :direction
-  
+
   # Protect Attributes
   attr_accessible :value
-  
+
   # Validations
   validates :user, :presence => true, :check_vote => true
   validates :voteable, :presence => true
@@ -61,26 +60,28 @@ class Vote < ActiveRecord::Base
   
   def direction
     case value
-      when 1
-        "up"
-      when -1
-        "down"
-      else
-        nil
+    when 1
+      "up"
+    when -1
+      "down"
+    else
+      nil
     end
   end
 
+  private
+
   def update_reputation
     target_user = self.voteable.user
-    
+
     if direction == "up"
-        new_value = value_was + 1
-        Reputation.set("up", self.voteable_type, self.user, target_user) if value_was == -1 || value_was == 0
-        Reputation.unpenalize(self.voteable_type, self.user, target_user) if value_was == -1
+      new_value = value_was + 1
+      Reputation.set("up", self.voteable_type, self.user, target_user) if value_was == -1 || value_was == 0
+      Reputation.unpenalize(self.voteable_type, self.user, target_user) if value_was == -1
     elsif direction == "down"
-        new_value = value_was - 1
-        Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
-        Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 0
+      new_value = value_was - 1
+      Reputation.set("down", self.voteable_type, self.user, target_user) if value_was == 1 || value_was == 0
+      Reputation.penalize(self.voteable_type, self.user, target_user) if value_was == 0
     end
 
     if new_value == 0
@@ -88,8 +89,6 @@ class Vote < ActiveRecord::Base
     end
     update_votes_count
   end
-  
-  private
 
   def update_votes_count
     rating = 0
@@ -113,4 +112,3 @@ end
 #  created_at    :datetime
 #  updated_at    :datetime
 #
-

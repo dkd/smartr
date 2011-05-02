@@ -1,12 +1,11 @@
 class Comment < ActiveRecord::Base
-  
   #Associations
   belongs_to :user
   belongs_to :commentable, :polymorphic => true
   has_many :votes, :as => :voteable
-  
+
   ORDER = ["latest", "reputation"]
-  
+
   #Validations
   validates :body, :presence => true, :length => {:minimum => 10, :maximum => 280}
   searchable do
@@ -25,4 +24,3 @@ end
 #  created_at       :datetime
 #  updated_at       :datetime
 #
-

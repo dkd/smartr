@@ -1,4 +1,4 @@
-<% unless @tags.nil? %>  
+<% unless @tags.nil? %>
   <% @tags.each do |tag| %>
       <div style="width: 25%; float: left">
          <%=link_to "#{tag.count} x #{tag}", questions_path(:tag => tag.name), :class => "tag" -%>
@@ -7,4 +7,3 @@
 <% else -%>
 <p>Nothing found. I am sorry</p>
 <% end -%>
- 
