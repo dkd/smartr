@@ -28,7 +28,7 @@ class Admin::AnswersController < ApplicationController
       flash[:notice] = 'Admin::Answer was successfully created.'
       redirect_to(@answer)
     else
-      render :action => "new"
+      render :new
     end
   end
 
@@ -39,7 +39,7 @@ class Admin::AnswersController < ApplicationController
       flash[:notice] = 'Admin::Answer was successfully updated.'
       redirect_to(@answer)
     else
-      render :action => "edit"
+      render :edit
     end
   end
 

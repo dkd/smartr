@@ -87,10 +87,6 @@ class QuestionsController < ApplicationController
     render :index_for_unanswered
   end
 
-  #def tagged
-  #  @questions = Question.latest.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
-  #end
-
   def search
     if params[:q].present?
       params[:question] = {}

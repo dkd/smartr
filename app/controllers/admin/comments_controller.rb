@@ -29,7 +29,7 @@ class Admin::CommentsController < ApplicationController
       flash[:notice] = 'Admin::Comment was successfully created.'
       redirect_to(@comment)
     else
-      render :action => "new"
+      render :new
     end
   end
 
@@ -40,7 +40,7 @@ class Admin::CommentsController < ApplicationController
       flash[:notice] = 'Admin::Comment was successfully updated.'
       redirect_to(@comment)
     else
-      render :action => "edit"
+      render :edit
     end
   end
 
