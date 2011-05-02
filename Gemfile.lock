@@ -69,7 +69,7 @@ GEM
     colored (1.2)
     culerity (0.2.15)
     daemons (1.1.3)
-    devise (1.3.3)
+    devise (1.3.4)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -152,7 +152,7 @@ GEM
       activesupport (= 3.0.7)
       bundler (~> 1.0)
       railties (= 3.0.7)
-    rails-footnotes (3.7.1)
+    rails-footnotes (3.7.2)
       rails (>= 3.0.0)
     rails_best_practices (0.8.2)
       activesupport
@@ -221,7 +221,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
-    unicorn (3.6.1)
+    unicorn (3.6.2)
       kgio (~> 2.3)
       rack
     warden (1.0.3)

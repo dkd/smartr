@@ -1,4 +1,4 @@
-<h2 class="show-question"><%=link_to(h(question.name), question_path(question.id,question.friendly_id)) %></h2><br class="clear" />
+<h2 class="show-question"><%= link_to h(question.name), question_path(question.id, question.friendly_id) %></h2><br class="clear" />
 <div class="question">
   <div class="stats">
     <div class="votes" id="vote-box-<%=question.id %>">
@@ -17,36 +17,33 @@
 </div>
   <div class="body">
     <%= raw(code(question.body)) %>
-    <div class="user"><%=t("question.asked_by")%>
+    <div class="user"><%=t("questions.asked_by")%>
     <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0), user_path(question.user) unless question.user.avatar.nil?%>
-    <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %>,
+    <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %>, 
     <%=t("questions.saved_in")%><span class="tags">
        <% question.tags.each do |tag| %>
          <%= link_to(h(tag), questions_path(:tag => tag.name), :class => "tag")%>
        <% end -%>
      </span><br />
     <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points
+    
     <% if (user_signed_in? && current_user == question.user) %>
-      <%= raw button_to(t("question.edit"), url_for( :controller => :questions,
-                                                     :action => :edit,
-                                                     :id => question.id,
-                                                     :friendly_id => question.friendly_id),
-                                                     :class => "g-button") %>
+      <span class="edit">
+        <%=raw button_to(t("questions.edit"), url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id), :class => "g-button") %>   
+      </span><br class="clear" />
     <% end -%>
-   </div>
+   </div><br class="clear" />
   <% if question.edits.last.present? %>
   <div class="edit">
-    <b>Edit:</b>
-    <span class="body"><%=question.edits.last.body%></span>
-    <br />
-    <span><%= distance_of_time_in_words_to_now question.edits.last.created_at %> by <%=question.edits.last.user.login %>
+    <b>Edit:</b><span class="body"><%=question.edits.last.body%></span><br /><span><%= distance_of_time_in_words_to_now question.edits.last.created_at %> by <%=question.edits.last.user.login%>
   </div>
-  <% end %>
+  <% end %> 
 
   </div>
-  <br class="clear" />
+  <br class="clear" /> 
   <div class="actions">
     <br class="clear" />
+     
    </div>
      <div class="comments" id="Question-comments-<%= question.id %>">
       <%= render(:partial => "/comments/list", :locals => {:comments => question.comments, :parent => question}) %>

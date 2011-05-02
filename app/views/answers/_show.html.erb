@@ -1,14 +1,14 @@
 <div class="answer-item<%=" accepted" unless answer != answer.question.accepted_answer%>" id="answer_<%=answer.id%>">
   <div class="stats">
     <div class="votes" id="vote-box-<%=answer.id%>">
-      <%= render :partial => "/answers/vote_box", :locals => {:answer => answer} %>
+      <%= render "/answers/vote_box", :locals => :answer => answer %>
     </div>
     <div class="status">
-      <%= render :partial => "/answers/status", :locals => {:answer => answer} %>
+      <%= render "/answers/status", :answer => answer %>
     </div>
   </div>
   <div class="body">
-    <%= raw(code(answer.body)) %>
+    <%= raw code(answer.body) %>
       <span class="user">
         <%= link_to( image_tag(answer.user.avatar.url(:tiny), :border =>"0"), user_path(answer.user)) %>
         <%= link_to answer.user.login, user_path(answer.user) %> &middot;
@@ -18,7 +18,7 @@
     </div>
   <br class="clear" />
   <div class="comments" id="Answer-comments-<%= answer.id %>">
-      <%= render(:partial => "/comments/list", :locals => {:comments => answer.comments, :parent => answer}) %>
+      <%= render "/comments/list", :comments => answer.comments, :parent => answer %>
     </div>
      <br class="clear" />
 </div>
