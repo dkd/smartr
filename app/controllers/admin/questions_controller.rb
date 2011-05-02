@@ -20,7 +20,7 @@ class Admin::QuestionsController < ApplicationController
       flash[:notice] = 'Admin::Question was successfully updated.'
       redirect_to(@question)
     else
-      render :action => "edit"
+      render :edit
     end
   end
 

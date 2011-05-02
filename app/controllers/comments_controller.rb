@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-
   end
 
   def create
@@ -29,7 +28,6 @@ class CommentsController < ApplicationController
 
   # PUT /comments/1
   def update
-
     if @comment.update_attributes(params[:comment])
     else
       render "invalid_comment"
@@ -63,6 +61,7 @@ class CommentsController < ApplicationController
       true
     else
       render :partial => "shared/not_authorized"
+      false
     end
   end
 

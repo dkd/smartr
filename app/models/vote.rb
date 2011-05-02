@@ -1,10 +1,11 @@
+# Checks if user has already voted on model
 class CheckVoteValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     votes = Vote.where("user_id =? and voteable_type=? and voteable_id=?", record.user_id, record.voteable_type, record.voteable_id)
     record.errors[attribute] << "This user already voted" if votes.count > 0 && record.id.nil?
   end
 end
-
+# Checks if user tries to vote on an object he owns
 class CheckVoteOwnerValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     record.errors[attribute] << "You cannot vote on yourself" if record.voteable.present? && record.user == record.voteable.user

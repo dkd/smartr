@@ -3,36 +3,53 @@ require "spec_helper"
 describe CommentsController do
   include Devise::TestHelpers
   render_views
-  let(:question){Factory.create :question2}
+  let(:question) { Factory.create :question2 }
 
   context "An unauthorized User" do
-    context " with Javascript enabled"
-    describe "posts a comment" do
-      it "should redirect to the question" do
-        xhr :post, :create
-        response.should_not be_success
-        response.should render_template("not_authorized")
+    context " with Javascript enabled" do
+
+      describe "comment order" do
+        before do
+          question.comments << Factory.build(:comment, :user => Factory(:endless_user))
+          question.comments << Factory.build(:comment, :user => Factory(:endless_user))
+        end
+        it "orders by date" do
+          xhr :get, :index, :comments_order => "latest", :id => question.id, :model => "Question"
+          response.should be_success
+        end
+        it "orders by reputation" do
+          xhr :get, :index, :comments_order => "reputation", :id => question.id, :model => "Question"
+          response.should be_success
+        end
       end
-    end
-    describe "edits a comment" do
-      it "should redirect to the question" do
-        xhr :post, :update, :id => 1, :commentable_type => "question", :commentable_id => question.id
-        response.should_not be_success
-        response.should render_template("not_authorized")
+
+      describe "posts a comment" do
+        it "should redirect to the question" do
+          xhr :post, :create
+          response.should_not be_success
+          response.should render_template("not_authorized")
+        end
       end
-    end
-    describe "tries to load the new comment form" do
-      it "should redirect to the question" do
-        xhr :get, :new, :commentable_type => "question", :commentable_id => question.id
-        response.should_not be_success
-        response.should render_template("not_authorized")
+      describe "edits a comment" do
+        it "should redirect to the question" do
+          xhr :post, :update, :id => 1, :commentable_type => "question", :commentable_id => question.id
+          response.should_not be_success
+          response.should render_template("not_authorized")
+        end
       end
-    end
-    describe "tries to load the edit comment form" do
-      it "should redirect to the question" do
-        xhr :get, :edit, :id => 1
-        response.should_not be_success
-        response.should render_template("not_authorized")
+      describe "tries to load the new comment form" do
+        it "should redirect to the question" do
+          xhr :get, :new, :commentable_type => "question", :commentable_id => question.id
+          response.should_not be_success
+          response.should render_template("not_authorized")
+        end
+      end
+      describe "tries to load the edit comment form" do
+        it "should redirect to the question" do
+          xhr :get, :edit, :id => 1
+          response.should_not be_success
+          response.should render_template("not_authorized")
+        end
       end
     end
   end
