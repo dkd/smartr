@@ -9,4 +9,4 @@
 
 <br class="clear" />
 <% main_menu :users %>
-<% content_for :sidebar, render(:partial => "/users/sidebar/user", :locals => {:user => @user}) %>
+<% content_for :sidebar, render("/users/sidebar/user", :user => @user) %>

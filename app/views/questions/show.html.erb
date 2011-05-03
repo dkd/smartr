@@ -13,4 +13,4 @@
 <% end -%>
 <% main_menu :questions %>
 <% title @question.name %>
-<% content_for :sidebar, render("questions/sidebar/show_solr") %>
+<% content_for :sidebar, render("questions/sidebar/show_solr", :related_questions => @related_questions) %>
