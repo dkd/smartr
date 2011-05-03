@@ -67,6 +67,18 @@ class Vote < ActiveRecord::Base
     user
   end
 
+  def type_pluralize
+    voteable_type.downcase.pluralize
+  end
+
+  def type_to_sym
+    voteable_type.downcase.to_sym
+  end
+
+  def voteables_count
+    voteable.votes_count
+  end
+
   def direction
     case value
     when 1

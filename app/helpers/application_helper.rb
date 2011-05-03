@@ -22,6 +22,10 @@ module ApplicationHelper
     content_for(:title, "#{text} | " ) if text.present?
   end
 
+  def image_for(user, size)
+    image_tag(user.avatar.url(size.to_sym))
+  end
+
   def build_menu(menu, active)
       li = ""
       menu.each do |m|

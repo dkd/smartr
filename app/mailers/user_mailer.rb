@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     content_type  "text/html"
     @question = question
     @object = object
-    mail(:to => question.user.email, :subject => "New #{object.class.name.downcase} on your question!")
+    mail :to => question.user.email, :subject => "New #{object.class.name.downcase} on your question!"
   end
 
 end

@@ -40,6 +40,14 @@ class Question < ActiveRecord::Base
   before_validation :clean_up_tags
   before_save :check_answer_count
 
+  # Delegates
+
+  delegate :id,
+           :login, 
+           :email,
+           :to	=> :user,
+           :prefix => true
+
   #Methods
 
   def helpers
@@ -84,7 +92,7 @@ class Question < ActiveRecord::Base
     self.views = number_of_views + 1
     self.save(:validate => false)
   end
-  
+
   def last_edit
     edits.last
   end

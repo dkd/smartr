@@ -17,10 +17,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new params[:comment]
     @comment.user = current_user
       if @comment.save
-        @parent = @comment.commentable_type.classify.constantize.find(@comment.commentable_id)
+        @parent = @comment.commentable
       else
         render "invalid_comment"
       end
