@@ -33,7 +33,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @question = Question.find(params[:id])
     @edit = @question.edits.new
     @related_questions = @question.find_related_tags.limit(10)
   end
@@ -154,7 +153,6 @@ class QuestionsController < ApplicationController
   end
 
   def update_for_toggle_acceptance
-    @question = current_user.questions.wh(params[:id])
     respond_to do |format|
       format.js{
           @answer = Answer.find(params[:answer_id])
@@ -180,7 +178,7 @@ class QuestionsController < ApplicationController
 
   def question_state
     if params[:question].present? && params[:question][:question_state].present?
-      params[:question][:question_state] == "true"? true : false
+      params[:question][:question_state] == "true" ? true : false
     end
   end
 

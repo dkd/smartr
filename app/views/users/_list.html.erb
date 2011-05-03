@@ -1,9 +1,9 @@
 <% users.each do |user| %>
-<tr>
-  <td class="avatar"><%= link_to image_tag(user.avatar.url(:medium), :border => 0, :align => "left"), user_path(user)%></td>
-  <td class="link"><%= link_to user.login, user_path(user) %></td>
-  <td class="activity"><%= h(distance_of_time_in_words_to_now(user.last_request_at)) unless user.last_sign_in_at.nil? %></td>
-  <td class="number"><%= user.views %></td>
-  <td class="number"><%= user.reputation %></td>
-</tr>
+  <tr>
+    <td class="avatar"><%= link_to image_tag(user.avatar.url(:medium), :border => 0, :align => "left"), user_path(user) %></td>
+    <td class="link"><%= link_to user.login, user_path(user) %></td>
+    <td class="activity"><%= h(distance_of_time_in_words_to_now(user.last_request_at)) if user.last_sign_in_at? %></td>
+    <td class="number"><%= user.views %></td>
+    <td class="number"><%= user.reputation %></td>
+  </tr>
 <% end -%>

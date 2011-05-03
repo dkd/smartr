@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221163733) do
+ActiveRecord::Schema.define(:version => 20110503171536) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.integer  "votes_count", :default => 0
   end
 
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
   create_table "comments", :force => true do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -34,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.integer  "votes_count",      :default => 0
   end
 
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "edits", :force => true do |t|
     t.integer  "user_id"
     t.string   "editable_type"
@@ -43,12 +49,18 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.datetime "updated_at"
   end
 
+  add_index "edits", ["editable_id", "editable_type"], :name => "index_edits_on_editable_id_and_editable_type"
+  add_index "edits", ["user_id"], :name => "index_edits_on_user_id"
+
   create_table "favourites", :force => true do |t|
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "favourites", ["question_id"], :name => "index_favourites_on_question_id"
+  add_index "favourites", ["user_id"], :name => "index_favourites_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.string   "name"
@@ -66,6 +78,9 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.boolean  "send_email",    :default => false
   end
 
+  add_index "questions", ["answer_id"], :name => "index_questions_on_answer_id"
+  add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
   create_table "reputation_histories", :force => true do |t|
     t.integer  "user_id"
     t.string   "context"
@@ -77,7 +92,9 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.datetime "updated_at"
   end
 
+  add_index "reputation_histories", ["answer_id"], :name => "index_reputation_histories_on_answer_id"
   add_index "reputation_histories", ["user_id", "context"], :name => "index_reputation_histories_on_user_id_and_context"
+  add_index "reputation_histories", ["vote_id"], :name => "index_reputation_histories_on_vote_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -101,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -152,6 +170,7 @@ ActiveRecord::Schema.define(:version => 20110221163733) do
     t.datetime "updated_at"
   end
 
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
   add_index "votes", ["voteable_id", "voteable_type"], :name => "index_votes_on_voteable_id_and_voteable_type"
 
 end

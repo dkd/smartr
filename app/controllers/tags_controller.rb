@@ -12,8 +12,8 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.js{ render :partial => "list"}
-      format.json{ render :json => @tags.map { |tag| tag.name}.to_json }
+      format.js { render :partial => "list", :locals => { :tags => @tags }}
+      format.json { render :json => @tags.map { |tag| tag.name}.to_json }
     end
   end
 

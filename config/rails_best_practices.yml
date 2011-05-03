@@ -18,7 +18,7 @@ MoveCodeIntoModelCheck: { use_count: 2 }
 MoveCodeIntoHelperCheck: { array_count: 3 }
 ReplaceInstanceVariableWithLocalVariableCheck: { }
 DryBundlerInCapistranoCheck: { }
-UseSayWithTimeInMigrationsCheck: { }
+#UseSayWithTimeInMigrationsCheck: { }
 UseQueryAttributeCheck: { }
 RemoveTrailingWhitespaceCheck: { }
 UseMultipartAlternativeAsContentTypeOfEmailCheck: {}

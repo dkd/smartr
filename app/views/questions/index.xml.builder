@@ -10,7 +10,7 @@ xml.rss :version => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
 
     for question in @questions
       xml.item do
-        xml.tag!("dc:creator", question.user.login)
+        xml.tag!("dc:creator", question.user_login)
         xml.title question.name
         xml.description code(question.body)
         xml.pubDate question.created_at.to_s(:rfc822)

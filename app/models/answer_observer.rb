@@ -1,7 +1,10 @@
 class AnswerObserver < ActiveRecord::Observer
 
   def after_create(answer)
-    UserMailer.question_update(answer.question, answer).deliver if (answer.user != answer.question.user && answer.question.send_email == true)
+    question = answer.question
+    if (answer.user != question.user && question.send_email == true)
+      UserMailer.question_update(question, answer).deliver
+    end
   end
 
 end

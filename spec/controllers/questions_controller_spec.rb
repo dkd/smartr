@@ -118,7 +118,7 @@ describe QuestionsController do
     before do
       sign_in question.user
     end
-    
+
     describe "PUT question with with incorrect parameters" do
       it "should render edit form" do
          put :update, :id => question.id, :question => {:name => "", :edits_attributes => {:"0" => {:body => "I am just a commit message!"}}}
