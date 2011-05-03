@@ -84,6 +84,10 @@ class Question < ActiveRecord::Base
     self.views = number_of_views + 1
     self.save(:validate => false)
   end
+  
+  def last_edit
+    edits.last
+  end
 
   def answered_by?(user)
     if(Answer.find_by_user_id_and_question_id(user.id, self.id))
