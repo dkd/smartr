@@ -20,6 +20,7 @@ Spork.prefork do
     # config.mock_with :flexmock
     # config.mock_with :rr
     config.mock_with :rspec
+    config.include Devise::TestHelpers, :type => :controller
     config.before(:each) do
       ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
     end
