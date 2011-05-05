@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
 
   def count_view!
-    self.views = self.views.nil?? 0 : (self.views + 1)
+    self.views = self.views.nil? ? 0 : (self.views + 1)
     self.save(:validate => false)
   end
 

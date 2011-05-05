@@ -42,18 +42,31 @@ describe User do
       end
     end
   end
-  
-  describe "count_views!" do
-    pending "it should increase the views count"
+
+  describe "count_view!" do
+    let(:current_user) { Factory.create(:endless_user) }
+    it "should increase the views count" do
+      lambda { current_user.count_view! }.should change(current_user, :views).by(1)
+    end
   end
   
   describe "is_online" do
-    pending "it returns true if user has been logged in during the last 5 minutes"
-    pending "it returns false if user hasn't logged in during the last 5 minutes"
+    it "returns true if user has been logged in during the last 5 minutes" do
+      Factory.create(:endless_user, :last_request_at => Time.now).is_online?.should eq(true)
+    end
+    it "returns false if user hasn't logged in during the last 5 minutes" do
+      Factory.create(:endless_user, :last_request_at => Time.now - 6.minutes).is_online?.should eq(false)
+    end
   end
   
   describe "image_url" do
-    pending "it returns the image_url of the user's avatar"
+    context "no image uploaded" do
+      pending "it returns the placeholder url"
+    end
+    context "image uploaded" do
+      pending "it returns the image_url of the user's avatar"
+    end
+    
   end
   
   describe "validation" do
