@@ -19,8 +19,8 @@
     <h3><%= link_to(h(question.name), question_path(question.id, question.friendly_id))%></h3>
     <% unless controller.controller_name == "users" %>
     <span class="user">
-      <%= link_to image_tag(question.user.avatar.url(:tiny)), user_path(question.user) %>
-      <%= link_to question.user.login, user_path(question.user) %> &middot; <%=question.user.reputation%>
+      <%= link_to image_for(question.user, :tiny), user_path(question.user) %>
+      <%= link_to question.user.login, user_path(question.user) %> &middot; <%= question.user_reputation %>
       &middot; <%= distance_of_time_in_words_to_now question.created_at %>
     </span>
     <% end -%>

@@ -72,7 +72,7 @@ class QuestionsController < ApplicationController
   end
 
   def hot
-    @questions = Question.hot.list.paginate :page => params[:page], :per_page => 15
+    @questions = Question.list.hot.paginate :page => params[:page], :per_page => 15
     render :index_for_hot
   end
 
