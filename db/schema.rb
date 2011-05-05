@@ -161,6 +161,43 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
+  create_table "users_copy", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "login"
+    t.string   "encrypted_password"
+    t.string   "password_salt"
+    t.integer  "sign_in_count",        :default => 0,     :null => false
+    t.datetime "last_request_at"
+    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at"
+    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.integer  "views",                :default => 0
+    t.string   "email"
+    t.integer  "reputation",           :default => 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.boolean  "is_admin",             :default => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer  "failed_attempts"
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+  end
+
+  add_index "users_copy", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users_copy", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users_copy", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users_copy", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users_copy", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
   create_table "votes", :force => true do |t|
     t.string   "voteable_type"
     t.integer  "voteable_id"
