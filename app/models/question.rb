@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   include ActionView::Helpers
   include ::ApplicationHelper
 
-  #Associations
+  # Associations
   belongs_to  :user
   has_many    :comments, :as => :commentable, :dependent => :destroy
   has_many    :votes, :as => :voteable, :dependent => :destroy
@@ -11,25 +11,21 @@ class Question < ActiveRecord::Base
   belongs_to  :accepted_answer, :class_name => "Answer", :foreign_key => :answer_id
   has_many :edits, :as => :editable, :dependent => :destroy
 
-  #Validations
-  validates_presence_of [:body, :name]
-  validates_uniqueness_of [:name, :body]
-  validates_length_of :name, :minimum => 20
-  validates_length_of :body, :minimum => 75
+  # Validations
+  validates :name, :presence => true, :length => { :minimum => 20, :maximum => 200 }, :uniqueness => true
+  validates :body, :presence => true, :length => { :minimum => 75 }, :uniqueness => true
   validates :tag_list, :presence => true, :length => {:maximum => 8}
-
 
   # Nested Forms
   accepts_nested_attributes_for :edits
 
-  #Extensions
+  # Extensions
   acts_as_taggable_on :tags
   acts_as_tagger
   has_friendly_id :permalink
 
-  #Named Scopes
-  scope :list, :group => "questions.id",
-               :include => [:user]
+  # Named Scopes
+  scope :list, :group => "questions.id", :include => [:user]
   scope :latest, :order => "questions.created_at DESC"
   scope :hot, :order => "answers_count DESC, questions.updated_at DESC"
   scope :active, :order => "questions.updated_at DESC, answers_count DESC"
@@ -41,10 +37,11 @@ class Question < ActiveRecord::Base
   before_save :check_answer_count
 
   # Delegates
-
   delegate :id,
-           :login, 
+           :friendly_id,
+           :login,
            :email,
+           :reputation,
            :to	=> :user,
            :prefix => true
 
