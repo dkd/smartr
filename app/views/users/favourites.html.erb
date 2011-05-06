@@ -7,10 +7,10 @@
 </div>
 <div class="user-questions">
   <% @questions.each do |question| %>
-    <%= render "/users/favourite_question", :locals => {:question => question} %>
+    <%= render "/users/favourite_question", :question => question %>
   <% end -%>
 </div>
 <br class="clear" />
 <%= will_paginate @questions %>
-<% main_menu :users%>
-<% content_for :sidebar, render("/users/sidebar/user", :locals => {:user => @user}) %>
+<% main_menu :users %>
+<% content_for :sidebar, render("/users/sidebar/user", :user => @user) %>

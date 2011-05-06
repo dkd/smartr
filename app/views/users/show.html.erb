@@ -9,9 +9,9 @@
 <div class="user-header">
   <%= image_tag @user.avatar.url(:medium), :alt => @user.login, :title => @user.login %>
   <p>
-    <span><%= @user.questions.count %></span> <%= t(:"question.label", :count => @user.questions.count) %>,
-    <span><%= @user.answers.count %></span> <%= t("answer.label", :count => @user.answers.count) %> &amp;
-    <span><%= @user.comments.count %></span> <%= t(:"comment.label", :count => @user.comments.count) %>.
+    <span><%= @user.questions.count %></span> <%= t("question", :count => @user.questions.count).capitalize %>,
+    <span><%= @user.answers.count %></span> <%= t("answer", :count => @user.answers.count).capitalize %> &amp;
+    <span><%= @user.comments.count %></span> <%= t("comment", :count => @user.comments.count).capitalize %>.
   </p>
 </div>
 

@@ -14,6 +14,7 @@ FactoryGirl.define do
     password 'tester2000'
     password_confirmation 'tester2000'
     is_admin false
+    last_request_at Time.now
   end
   
   factory :user2, :class => User do
@@ -22,6 +23,7 @@ FactoryGirl.define do
     password 'leanderTaler3000'
     password_confirmation 'leanderTaler3000'
     is_admin false
+    last_request_at Time.now
   end
   
   factory :endless_user, :class => User do
@@ -30,6 +32,7 @@ FactoryGirl.define do
     password 'leanderTaler3000'
     password_confirmation 'leanderTaler3000'
     is_admin false
+    last_request_at Time.now
   end
   
 end

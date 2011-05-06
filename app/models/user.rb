@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   scope :online, lambda {
     where "last_request_at > ?", (Time.now - 5.minutes)
   }
-  scope :reputation, :order => "reputation DESC"
+  scope :default, :order => "reputation DESC"
 
   # Validations
   validates :email, :presence => true
@@ -42,13 +42,19 @@ class User < ActiveRecord::Base
   before_validation :clean_up_tags
 
   class << self
+
     def reputation
       order("reputation DESC")
     end
+
+    def search(q, page=1, per_page=10)
+      where(["login like ?","%#{q}%"]).order("reputation desc").paginate :page => page, :per_page => per_page
+    end
+
   end
 
   def is_online?
-    if self.last_request_at > (Time.now - 5.minutes)
+    if last_request_at > (Time.now - 5.minutes)
       true
     else
       false

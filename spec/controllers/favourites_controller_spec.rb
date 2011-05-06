@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe FavouritesController do
   include Devise::TestHelpers
+  render_views
   let(:question) { Factory.create :question2 }
   
   describe "Any User" do

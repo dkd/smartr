@@ -81,5 +81,22 @@ describe Question do
     end
 
   end
+  
+  describe "methods" do
+    describe "answered_by?" do
+      let(:question) { Factory.create(:question2) }
+
+      it "returns true if question has an answer by user" do
+        answer = Factory.create(:answer, :user => Factory(:endless_user), :question => question)
+        question.answered_by?(answer.user).should eq(true)
+      end
+
+      it "returns false if question has no answers by user" do
+        question.answered_by?(Factory(:endless_user)).should eq(false)
+      end
+
+    end
+  end
+  
 
 end

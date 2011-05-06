@@ -17,16 +17,16 @@ describe UsersController do
   end
   
   describe "GET :search" do
-    let(:user) {Factory.create(:user)}
+    let(:user) { Factory.create(:user) }
     it "shows the searched user" do
-      get :index, :q => user.login
+      get :search, :q => user.login
       response.should be_success
       response.should render_template(:index)
     end
     it "shows the searched user (AJAX)" do
-      xhr :get, :index, :q => user.login
+      xhr :get, :search, :q => user.login
       response.should be_success
-      response.should render_template(:index)
+      response.should render_template(:search)
     end
   end
   
