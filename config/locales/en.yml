@@ -51,10 +51,14 @@ en:
       other: tags
 
   answer:
+    one: answer
+    other: answers
     save: Save Answer
     update: Update Answer
 
   comment:
+    one: comment
+    other: comments
     new: New Comment
     edit: Edit Comment
     save: Save Comment
@@ -65,10 +69,14 @@ en:
       reputation: Reputation
 
   user:
+    one: user
+    other: users
     views: Views
     reputation_history: Reputation History
 
-  question:
+  question:  
+    one: question
+    other: questions
     latest: Latest Questions
     active: Active Questions
     hot: Hot Questions
