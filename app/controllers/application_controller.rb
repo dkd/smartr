@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   has_mobile_fu
   helper_method :current_user_session, :current_user, :is_admin?
 
-  before_filter :set_last_request_at, :store_location
+  before_filter :set_last_request_at#, :store_location
   before_filter :set_order
   before_filter :set_locale
 
@@ -60,6 +60,9 @@ class ApplicationController < ActionController::Base
     end
 
     private
+    def after_sign_in_path_for(user)
+        root_path
+    end
 
     def set_last_request_at
       current_user.update_attribute(:last_request_at, Time.now) if current_user.present?

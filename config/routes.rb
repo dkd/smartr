@@ -1,8 +1,8 @@
 Smartr::Application.routes.draw do
 
-  devise_for :users, :controllers => { :registrations => "registrations",
-                                       :password      => "devise/passwords",
-                                       :sessions      => "devise/sessions" }
+  devise_for :users#, :controllers => { :registrations => "devise/registrations",
+                   #                    :password      => "devise/passwords",
+                   #                    :sessions      => "devise/sessions" }
   namespace :admin do
     resources :comments
     resources :answers

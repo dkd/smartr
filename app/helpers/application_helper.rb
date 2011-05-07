@@ -2,7 +2,7 @@
 module ApplicationHelper
 
   def direction(value)
-    value==1? "up" : "down"
+    value==1 ? "up" : "down"
   end
 
   def button_tag(value, options)

@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
     if @comment.present? && @comment.user == current_user
       true
     else
-      render :partial => "shared/not_authorized"
+      render :partial => "shared/not_authorizeds"
       false
     end
   end
