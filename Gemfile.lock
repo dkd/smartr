@@ -224,8 +224,8 @@ GEM
     unicorn (3.6.2)
       kgio (~> 2.3)
       rack
-    warden (1.0.3)
-      rack (>= 1.0.0)
+    warden (1.0.4)
+      rack (>= 1.0)
     will_paginate (3.0.pre2)
     xpath (0.1.4)
       nokogiri (~> 1.3)

@@ -3,7 +3,7 @@ module CommentsHelper
       @question ||= @parent
       menu = []
       menu << { :id => "latest",
-                :link => link_to(I18n.t(:"comments.order.latest"),
+                :link => link_to(t("comments.order.latest"),
                 comments_path(:model => commentable.class.name,
                               :id => commentable.id,
                               :comments_order => "latest"),
