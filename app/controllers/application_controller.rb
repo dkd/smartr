@@ -60,9 +60,6 @@ class ApplicationController < ActionController::Base
     end
 
     private
-    def after_sign_in_path_for(user)
-        root_path
-    end
 
     def set_last_request_at
       current_user.update_attribute(:last_request_at, Time.now) if current_user.present?

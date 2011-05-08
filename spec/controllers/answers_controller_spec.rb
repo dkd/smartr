@@ -11,7 +11,7 @@ describe AnswersController do
     describe "POST answer" do
       it "should redirect to the login page" do
         post :create, :question_id => question.id, :friendly_id => question.friendly_id
-        response.should redirect_to :controller => "devise/sessions", :action => "new"
+        response.should redirect_to :controller => "sessions", :action => "new"
       end
     end
 
@@ -19,7 +19,7 @@ describe AnswersController do
       it "should redirect to the login page" do
         answer = Factory.create(:full_answer, :user => user, :question => question)
         put :update, :question_id => question.id, :id => answer.id, :friendly_id => answer.question.friendly_id
-        response.should redirect_to :controller => "devise/sessions", :action => "new"
+        response.should redirect_to :controller => "sessions", :action => "new"
       end
     end
 
@@ -27,7 +27,7 @@ describe AnswersController do
       it "edit should redirect to the login page" do
         answer = Factory.create(:full_answer, :user => user, :question => question)
         get :edit, :question_id => answer.question.id, :friendly_id => answer.question.friendly_id, :id => answer.id
-        response.should redirect_to :controller => "devise/sessions", :action => "new"
+        response.should redirect_to :controller => "sessions", :action => "new"
       end
     end
 

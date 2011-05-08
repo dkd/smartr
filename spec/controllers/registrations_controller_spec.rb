@@ -13,10 +13,18 @@ describe RegistrationsController do
                       }
                     }
   end
-  describe "#create" do
+
+  describe "GET new" do
+    
+    it "shows the sign up page" do
+      get :new
+      response.should be_success
+    end
+    
+  end
+  
+  describe "POST create" do
     context "with valid parameters" do
-     
-        
       it "creates a user" do
         lambda {
           post :create, @valid_params
