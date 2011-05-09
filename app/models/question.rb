@@ -103,7 +103,7 @@ class Question < ActiveRecord::Base
   end
 
   def clean_up_tags
-    @tag_list.map! {|tag| tag.scan(/[\d\w\d{0,2}]+/).first}.map!(&:downcase) unless @tag_list.nil?
+    @tag_list.map! { |tag| tag.scan(/[\d\w\d{0,2}]+/).first }.map!(&:downcase) unless @tag_list.nil?
   end
 
   #Sunspot Configuration

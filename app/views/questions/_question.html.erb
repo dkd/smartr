@@ -1,12 +1,12 @@
 <div class="question-list">
   <div class="stats">
     <div class="votes">
-      <%= question.votes_count == 0? 0 : question.votes_count %>
-      <span class="desc"><%= t("vote", :count => question.votes_count).capitalize %></span>
+      <%= question.votes_count.humanize %>
+      <span class="desc"><%= t("vote", :count => question.votes_count) %></span>
     </div>
 
     <div class="views">
-      <%=question.views.humanize %>
+      <%= question.views.humanize %>
       <span class="desc"><%= t("views", :count => question.views) %></span>
     </div>
 
