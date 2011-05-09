@@ -29,7 +29,9 @@
 
     <% if user_signed_in? && current_user == question.user %>
       <span class="edit">
-        <%= raw button_to(t("questions.edit"), url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id), :class => "g-button") %>
+        <%= raw(button_to(t("question.edit"), 
+                url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id),
+                :class => "g-button")) %>
       </span><br class="clear" />
     <% end -%>
    </div><br class="clear" />

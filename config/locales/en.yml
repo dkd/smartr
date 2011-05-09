@@ -38,6 +38,8 @@ en:
         one: edit
         other: edits
       vote:
+        one: vote
+        other: votes
 
 
   main_menu:

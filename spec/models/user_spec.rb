@@ -44,9 +44,10 @@ describe User do
   end
 
   describe "count_view!" do
-    let(:current_user) { Factory.create(:endless_user) }
+    
     it "should increase the views count" do
-      lambda { current_user.count_view! }.should change(current_user, :views).by(1)
+      @current_user = Factory.create(:endless_user)
+      lambda{@current_user.count_view!}
     end
   end
   
