@@ -4,6 +4,7 @@ Smartr::Application.routes.draw do
                                        :password      => "devise/passwords",
                                        :sessions      => "sessions" }
 
+
   namespace :admin do
     resources :comments
     resources :answers
