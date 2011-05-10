@@ -28,7 +28,7 @@ namespace :smartr do
   end
   
   namespace :reputation do  
-    desc "Recalaculate Reputation"  
+    desc "Recalculate Reputation"  
     task :redo => :environment do
     
       User.all.each do |user|
