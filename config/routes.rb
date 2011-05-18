@@ -1,10 +1,18 @@
 Smartr::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations",
-                                       :password      => "devise/passwords",
+                                       :passwords      => "passwords",
                                        :sessions      => "sessions" }
-
-
+                                       #,
+                                       #:skip => [:sessions] do
+                                       #      get "/login" => "sessions#new" 
+                                       #      get "/logout" => "sessions#destroy" 
+                                       #      get "/users/sign_in" => "sessions#new", :as => :new_user_session 
+                                       #      get "/users/sign_out" => "sessions#destroy", :as => :destroy_user_session 
+                                       #      post "/users/sign_in" => "sessions#create", :as => :user_session
+                                       #end
+                                       
+  
   namespace :admin do
     resources :comments
     resources :answers
