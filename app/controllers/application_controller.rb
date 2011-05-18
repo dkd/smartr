@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
         true
       else
         respond_to do |format|
-          format.html { flash[:notice] = "You must be logged in as admin to access this page"
+          format.html { flash[:notice] = "You must be signed in to access this page"
                         redirect_to new_user_session_url
                       }
           format.js {
@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
         end
         false
       end
+    end
+    
+    def after_sign_in_path_for(resource)
+        stored_location_for(:user) || root_path
     end
 
     def authenticate_admin!
