@@ -1,15 +1,14 @@
-<%= render :partial => "/questions/question_header", :locals => {:answer => @answer, :question => @question}%>
+<%= render :partial => "/questions/question_header", :locals => {:answer => @answer, :question => @answer.question}%>
 <br class="clear" />
-<h2>Editing Answer</h2>
+<h2><%=t("answer.edit")%></h2>
 <div class="answer-edit">
-  <% form_for(@answer, :url => question_answer_path) do |f| %>
+  <%= form_for(@answer, :url => question_answer_path(:question_id => @answer.question.id, :friendly_id =>@answer.question.friendly_id, :id => @answer.id), :method => "put") do |f| %>
     <div class="<%="error" if f.error_message_on(:body).present? %>">
-    <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
-    <%= f.error_message_on(:body) %>
+      <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
+      <%= f.error_message_on(:body) %>
     </div>
-    <%= f.submit 'Save', :class => "save" %>
-    <%= f.hidden_field :body_plain, :class => "plain" %>
-    <%= link_to "Cancel", question_path(@answer.question), :class => "cancel" %>
+    <%= button_tag t("save"), :type => :submit, :class => "g-button" %>
+    <%= link_to t("cancel"), question_path(@answer.question.id, @answer.question.friendly_id), :class => "cancel" %>
     <br class="clear" />
   <% end -%>
  <br class="clear" />

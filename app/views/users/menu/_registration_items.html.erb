@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= link_to image_tag(current_user.avatar.url(:tiny), :border => 0), user_path(current_user) %>
+  <%= link_to(current_user.login, user_path(current_user)) %> &middot; <span class="<%="user-#{current_user.id}-reputation"-%>"><%=current_user.reputation%></span>
+<% else %>
+  <%= link_to('Register', new_user_registration_path)  %>
+<% end %>

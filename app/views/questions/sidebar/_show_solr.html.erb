@@ -1,0 +1,6 @@
+<h3><%= t("questions.related") %></h3>
+<ul>
+  <% related_questions.results.each do |question| %>
+    <li><%= link_to question.name, question_path(:id => question.id, :friendly_id => question.friendly_id)%></li>
+  <% end %>
+</ul>

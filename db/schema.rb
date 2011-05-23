@@ -1,15 +1,16 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507085516) do
+ActiveRecord::Schema.define(:version => 20110503171536) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -20,7 +21,11 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.boolean  "accepted"
     t.text     "body_plain"
     t.boolean  "send_email",  :default => false
+    t.integer  "votes_count", :default => 0
   end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -29,7 +34,23 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count",      :default => 0
   end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "edits", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "editable_type"
+    t.integer  "editable_id"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "edits", ["editable_id", "editable_type"], :name => "index_edits_on_editable_id_and_editable_type"
+  add_index "edits", ["user_id"], :name => "index_edits_on_user_id"
 
   create_table "favourites", :force => true do |t|
     t.integer  "user_id"
@@ -37,6 +58,9 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "favourites", ["question_id"], :name => "index_favourites_on_question_id"
+  add_index "favourites", ["user_id"], :name => "index_favourites_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.string   "name"
@@ -53,6 +77,24 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.integer  "answer_id"
     t.boolean  "send_email",    :default => false
   end
+
+  add_index "questions", ["answer_id"], :name => "index_questions_on_answer_id"
+  add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
+  create_table "reputation_histories", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "context"
+    t.integer  "points",     :default => 0
+    t.integer  "reputation", :default => 0
+    t.integer  "vote_id",    :default => 0
+    t.integer  "answer_id",  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reputation_histories", ["answer_id"], :name => "index_reputation_histories_on_answer_id"
+  add_index "reputation_histories", ["user_id", "context"], :name => "index_reputation_histories_on_user_id_and_context"
+  add_index "reputation_histories", ["vote_id"], :name => "index_reputation_histories_on_vote_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -76,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -85,30 +128,38 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "login"
-    t.string   "crypted_password"
+    t.string   "encrypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token",                      :null => false
-    t.integer  "login_count",         :default => 0,     :null => false
+    t.integer  "sign_in_count",        :default => 0,     :null => false
     t.datetime "last_request_at"
-    t.datetime "last_login_at"
-    t.datetime "current_login_at"
-    t.string   "last_login_ip"
-    t.string   "current_login_ip"
-    t.string   "openid_identifier"
+    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at"
+    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
     t.integer  "views"
     t.string   "email"
-    t.integer  "reputation",          :default => 0
+    t.integer  "reputation",           :default => 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "is_admin",            :default => false
+    t.boolean  "is_admin",             :default => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer  "failed_attempts"
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
-  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
-  add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
   create_table "votes", :force => true do |t|
     t.string   "voteable_type"
@@ -118,5 +169,8 @@ ActiveRecord::Schema.define(:version => 20100507085516) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+  add_index "votes", ["voteable_id", "voteable_type"], :name => "index_votes_on_voteable_id_and_voteable_type"
 
 end

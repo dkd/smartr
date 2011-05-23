@@ -1,7 +1,8 @@
 require 'active_record'
+require 'sunspot'
 
 namespace :smartr do
-  
+ 
   namespace :tags do
      task :reformat => :environment do
        Tag.all.each do |tag|
@@ -27,14 +28,15 @@ namespace :smartr do
   end
   
   namespace :reputation do  
-    desc "Recalaculate Reputation"  
+    desc "Recalculate Reputation"  
     task :redo => :environment do
     
       User.all.each do |user|
         user.update_attributes :reputation => 0
       end
-    
       
+      ReputationHistory.destroy_all
+
       %w(question answer comment).each do |model|
         puts "Processing #{model.classify.constantize}"
         model.classify.constantize.all.each do |record|
@@ -48,7 +50,16 @@ namespace :smartr do
                 value = Settings.reputation.fetch(vote.voteable_type.downcase).fetch("down")
             end
             user.update_attributes :reputation => (user.reputation += value)
-            puts "#{user.login}: #{value} (#{user.reputation})"
+            
+            history = ReputationHistory.new
+            history.user = user
+            history.vote = vote
+            history.points = value
+            history.context = "Vote"
+            history.created_at = vote.created_at
+            history.save
+            
+            #puts "#{user.login}: #{value} (#{user.reputation})"
           end
         end
       end
@@ -60,17 +71,32 @@ namespace :smartr do
             new_reputation = (user.reputation + penalty) < 0 ? 0:(user.reputation + penalty)
             user.update_attributes(:reputation => (new_reputation))
             puts "#{user.login}: #{penalty} (#{user.reputation})"
+            
+            history = ReputationHistory.new
+            history.user = user
+            history.vote = vote
+            history.points = penalty
+            history.context = "Penalty"
+            history.created_at = vote.created_at
+            history.save
           end
         end
       end
       
       puts "Setting reputation for accepted answers"
       Question.find(:all, :conditions => "answer_id>0").each do |question|
-        
         if(question.user != question.answer.user)
-          
           question.answer.user.update_attributes(:reputation => question.answer.user.reputation += Settings.reputation.answer.accept)
-          puts "#{question.answer.user.login}: +#{Settings.reputation.answer.accept} (#{question.answer.user.reputation}) #{question.name}"
+          
+          history = ReputationHistory.new
+          history.user = question.answer.user
+          history.answer = question.answer
+          history.points = Settings.reputation.answer.accept
+          history.context = "AcceptedAnswer"
+          history.created_at = question.updated_at
+          history.save
+          
+          #puts "#{question.answer.user.login}: +#{Settings.reputation.answer.accept} (#{question.answer.user.reputation}) #{question.name}"
         end
       end
       
@@ -86,5 +112,11 @@ namespace :smartr do
       end
     end
   end
-  
+end
+
+def write_reputation_history(user, points, context, vote)
+  history = ReputationHistory.new
+  history.user = user
+  history.reputation = user.reputation
+  history.save
 end

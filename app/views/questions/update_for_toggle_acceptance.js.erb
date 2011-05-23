@@ -1,0 +1,3 @@
+$('.answer-item').removeClass('accepted');
+$('.answer-item .status a,.answer-item .votes div').removeClass('accepted');
+<%="$('#answer_#{@answer.id} .status a, #answer_#{@answer.id}').addClass('accepted');" if @answer.accepted? %>

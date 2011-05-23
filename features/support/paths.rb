@@ -10,20 +10,16 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the new question page/
-      new_question_path
     when /the new user page/
       new_user_path
-    when /login page/
-      new_user_session_path
-    when /questions page/
-      questions_path
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
-    when /^(.*)'s profile page$/i
-      user_path(User.find_by_login($1).id)
+    #   when /^(.*)'s profile page$/i
+    #     user_profile_path(User.find_by_login($1))
+
     else
       begin
         page_name =~ /the (.*) page/

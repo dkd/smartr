@@ -1,87 +1,45 @@
-#user
-  color = !color_2
-  float: right
-  text-align: right
-  width: 220px
-  margin-bottom: 1em
-  margin-top: 0.5em
-  font-size: 12px
-  
-  a:link, a:visited
-    text-decoration: none
-    color = !color_2
-    font-size: 12px
-    text-decoration: underline
-    
-  a:hover
-    color = !color_1
-    text-decoration: underline
-
 .user-search
   input
     +border_radius
     padding: 5px
     border: 1px solid #e9e9e9
     background: #f4f4f4
-    color = !color_2
+    color: $color_2
     font-weight: bold
-
-#new_user_session
-  label
-    color = !color_2
-    font-weight: bold
-    font-size: 0.8em
-    
-  input
-    border: 1px solid #e9e9e9
-    +border_radius
-    padding: 5px
-    background: #f4f4f4
-  #user_session_submit
-    background = !color_2
-    border-color = !color_1
-    +box_shadow
-    color: white
-  #user_session_submit:focus
-    +box_shadow_focus
-    
 
 form.user
-  div
-    border-bottom: 1px dashed
-    border-color = !color_5
-    padding-top: 10px
-    padding-bottom: 10px
+  img
+    width: 100px
+    float: left
+    +image_border
+    padding: 5px
+    clear: both
+    margin-bottom: 10px
+    background: white
+    box-shadow: 0px 4px 5px #888
     
-    img
-      width: 100px
-      float: left
-      +image_border
-      padding: 5px
-      clear: both
-    
-    label
-      font-weight: bold
-      margin-bottom: 15px
+  div.label
+    display: inline
+    font-weight: bold
+
+    div.field_with_errors
+      display: inline
       
+  div.text_field
+    margin-bottom: 15px
+    
     input
       +border_radius
       border-width: 1px
-      border-color = !color_5
+      border-color: $color_5
       padding: 5px
       &.tags
         width: 400px
-    #user_avatar
-      +border_radius
-      border-width: 0px
-      border-color = !color_5
-      padding: 5px
-      margin-left: 10px
 
 .user-questions
   h2
     font-size: 24px !important
-  
+
   h4
     margin: 0px
     padding: 0px
@@ -89,7 +47,7 @@ form.user
     
     span
       margin-right: 5px
-      background = !color_2
+      background: $color_2
       color: white
       padding: 5px
       float: left
@@ -97,7 +55,7 @@ form.user
     a
       &:link,
       &:visited
-        color = !color_1
+        color: $color_1
         text-decoration: none
         font-size: 14px
       &:hover
@@ -117,6 +75,8 @@ form.user
     +image_border
     padding: 5px
     clear: both
+    background: white
+    box-shadow: 0px 4px 5px #888
 
   p
     font-size: 1.5em
@@ -129,7 +89,7 @@ form.user
     
     span
       font-size: 2em
-      color = !color_2
+      color: $color_2
       
 .user-list
   margin-top: 2em
@@ -144,13 +104,18 @@ form.user
     +border_radius
     margin: 10px 10px 0px 0px
     
-    img
-      margin-right: 5px
+  img
+    margin-right: 5px
+    background: white
+    +image_border
+    padding: 5px
+    clear: both
+    box-shadow: 0px 4px 5px #888
     
     a:link, a:visited
       text-decoration: none
-      color = !standard_color
+      color: $standard_color
       
     a:hover
       text-decoration: underline
-      color = !standard_color * 1.2
+      color: $standard_color * 1.2

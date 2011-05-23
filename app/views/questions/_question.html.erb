@@ -1,37 +1,36 @@
 <div class="question-list">
   <div class="stats">
     <div class="votes">
-      <%=question.votes.length == 0? 0 : Vote.count_on("Question", question.id) %>
-      <span class="desc"><%= "Vote".correctize_plural(question.votes.length) %></span>
+      <%= question.votes_count.humanize %>
+      <span class="desc"><%= t("vote", :count => question.votes_count) %></span>
     </div>
 
     <div class="views">
-      <%=question.views.humanize %>
-      <span class="desc"><%= "View".correctize_plural(question.views) %></span>
+      <%= question.views.humanize %>
+      <span class="desc"><%= t("views", :count => question.views) %></span>
     </div>
 
-    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.answer.nil? %>">
-      <%=question.answers_count %>
-      <span class="desc"><%= "Answer".correctize_plural(question.answers_count) %></span>
+    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.accepted_answer.blank? %>">
+      <%= question.answers_count %>
+      <span class="desc"><%= t("answers", :count => question.answers_count) %></span>
     </div>
   </div>
   <div class="body">
-    <h3><%= link_to(h(question.name), question_path(question)) %></h3>
-      <% unless controller.controller_name == "users" %>
-      <span class="user">
-        <%= link_to image_tag(question.user.avatar.url(:tiny)), user_path(question.user) %>
-        <%= link_to question.user.login, user_path(question.user) %> &middot; <%=question.user.reputation%>
-        &middot; <%= distance_of_time_in_words_to_now question.created_at %> ago
-        </span>
-      <% end -%>
-      <% if question.tags.present? %>
+    <h3><%= link_to(h(question.name), question_path(question.id, question.friendly_id))%></h3>
+    <% unless controller.controller_name == "users" %>
+    <span class="user">
+      <%= link_to image_for(question.user, :tiny), user_path(question.user) %>
+      <%= link_to question.user.login, user_path(question.user) %> &middot; <%= question.user_reputation %>
+      &middot; <%= distance_of_time_in_words_to_now question.created_at %>
+    </span>
+    <% end -%>
+    <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>
-          <%= link_to(h(tag), :controller => "questions", :action => "index", :tag => tag.name)%>
+          <%= link_to(h(tag), questions_path(:tag => tag), :class => "tag")%>
         <% end -%>
-        </div>
-      <% end -%>
-      
     </div>
-    <br class="clear" />
+    <% end -%>
   </div>
+  <br class="clear" />
+</div>

@@ -1,12 +1,47 @@
+# German translations for Ruby on Rails 
+# by Clemens Kofler (clemens@railway.at)
+# contributors:
+#  - Alexander Dreher - http://github.com/alexdreher - Rails 3 update
+
 de:
-  
+  views:
+    one: Zugriff
+    other: Zugriffe
+  searchstring_default: Hier nach Fragen suchen ...
+  cancel: abbrechen
+  save: speichern
+  edit: bearbeiten
   main_menu:
     questions: Fragen
-    tags: Schlagworte
+    tags: Tags
     users: Benutzer
   
+  answers:
+    my_answer: Meine Antwort
+    howto:
+      header: So wird geantwortet
+    label:
+      one: Antwort
+      other: Antworten
+  
+  comments:
+    new: Kommentar schreiben
+    label:
+      one: Kommentar
+      other: Kommentare
+  
   questions:
-    
+    new: Neue Frage
+    name: Hier Frage formulieren
+    body: Bitte hier hilfreichen Inhalt einstellen
+    asked_by: gestellt von
+    saved_in: gespeichert in
+    edit_question: Frage bearbeiten
+    related: Ähnliche Fragen
+    label: 
+      one: Frage
+      other: Fragen
+
     sub_menu:
       latest: Neu
       hot:  Heiß
@@ -15,3 +50,16 @@ de:
     
     latest:
       header: Neuste Fragen
+  
+  remove_tag: Remove Tag
+  
+  sidebar:
+    ask_a_question: Stelle eine Frage!
+    tags:
+      interesting: Interested in ...
+      recent: Neuste Tags...
+  tags:
+    lates_tags: Latest tags
+  
+    
+    

@@ -1,30 +1,115 @@
 en:
+  searchstring_default: Search for question ...
+  cancel: Cancel
+  save: Save
+  edit: edit
+  update: Update
   
+  activerecord: 
+    attributes:
+      question:
+      answer:
+      comment:
+      user:
+      favourite:
+      edit:
+      vote:
+
+    models:
+      question:
+        one: questions
+        other: questions
+        views:
+          one: view
+          other: views
+      answer:
+        one: answer
+        other: answers
+      comment:
+        one: comment
+        other: comments
+      user:
+        one: user
+        other: users
+      favourite:
+        one: favourite
+        other: favourites
+      edit:
+        one: edit
+        other: edits
+      vote:
+        one: vote
+        other: votes
+
+
   main_menu:
     questions: Questions
     tags: Tags
     users: Users
   
-  answers:
+  tags:
     label:
-      one: answer
-      other: answers
-  
-  comments:
-    label:
-      one: comment
-      other: comments
-  
-  questions:
-    label: 
-      one: question
-      other: questions
-      
+      one: tag
+      other: tags
+
+  answer:
+    one: answer
+    other: answers
+    save: Save Answer
+    update: Update Answer
+
+  comment:
+    one: comment
+    other: comments
+    new: New Comment
+    edit: Edit Comment
+    save: Save Comment
+    one: comment
+    other: comments
+    order:
+      latest: Latest
+      reputation: Reputation
+
+  user:
+    one: user
+    other: users
+    views: Views
+    reputation_history: Reputation History
+
+  question:  
+    one: question
+    other: questions
+    latest: Latest Questions
+    active: Active Questions
+    hot: Hot Questions
+    new: New Question
+    edit: Edit Question
+    update: Update Question
+    save: Save Question
+    name: Enter your question here
+    body: Please provide more detail
+    asked_by: Asked by
+    saved_in: saved_in
+    related: Related questions  
     sub_menu:
       latest: Latest
       hot:  Hot
       active: Active
       unanswered: Unanswered
     
-    latest:
-      header: Latest questions
+  vote:
+    one: vote
+    other: votes
+    
+  remove_tag: -remove
+
+  sidebar:
+    ask_a_question: Ask a question!
+    users:
+      interested_in:  Users are interested in ...
+      not_interested_in: Users are not interested in ...
+    interested_in:  Interested in ...
+    not_interested_in: Not interested in ...
+    tags:
+      interesting: Interesting Tags
+      recent: Recent Tags

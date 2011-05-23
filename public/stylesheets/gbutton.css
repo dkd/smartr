@@ -1,0 +1,53 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\000031}}
+button.g-button, a.g-button, input[type=submit].g-button {
+  padding: 6px 10px;
+  -webkit-border-radius: 2px 2px;
+  border: solid 1px #999999;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#dddddd));
+  color: #333333;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-shadow: 0px 1px 1px white;
+  line-height: 1; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000315}}
+.g-button:hover {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f8f8f8), to(#dddddd)); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000317}}
+.g-button:active {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#cccccc), to(#dddddd)); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000319}}
+.g-button.large {
+  padding: 12px 20px;
+  font-size: 21px;
+  font-weight: bold; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000323}}
+.g-button.scaled {
+  -webkit-transform: scale(2);
+  -webkit-transform-origin: bottom left; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000326}}
+.g-button.blue {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#62cae3));
+  border-color: #62cae3; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000329}}
+.g-button.green {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#d5e04d));
+  border-color: #d5e04d; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000332}}
+.g-button.red {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f15d22), to(#923c06));
+  border-color: #923c06;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5);
+  color: white; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000337}}
+.g-button.purple {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ca006c), to(#7c0040));
+  border-color: #ca006c;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5);
+  color: white; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dkd_hayes\/Rails\/smartr\/public\/stylesheets\/sass\/gbutton\.sass}line{font-family:\0000342}}
+.g-button.orange {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#f58426));
+  border-color: #f58426; }

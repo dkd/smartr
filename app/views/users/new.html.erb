@@ -1,6 +1,5 @@
 <h2>Register</h2>
-<% form_for @user, :url => users_path, :html => { :multipart => true, :class => :user } do |f| %>
-  <%= f.error_messages %>
+<%= form_for @user, :url => users_path, :html => { :multipart => true, :class => :user } do |f| %>
   <%= render :partial => "form", :object => f %>
   <%= f.submit "Register" %>
 <% end %>

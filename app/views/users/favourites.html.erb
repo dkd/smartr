@@ -1,16 +1,16 @@
 <div class="header-with-tabs">
   <h2><%=h @user.login %></h2>
     <div class="tabs">
-      <%=show_submenu(:favourites) %>
+      <%=user_show_submenu(:favourites) %>
     </div>
     <br class="clear" />
 </div>
 <div class="user-questions">
   <% @questions.each do |question| %>
-    <%= render :partial => "/users/favourite_question", :locals => {:question => question} %>
+    <%= render "/users/favourite_question", :question => question %>
   <% end -%>
 </div>
 <br class="clear" />
 <%= will_paginate @questions %>
-<% main_menu :users%>
-<% content_for :sidebar, render(:partial => "/users/sidebar/user", :locals => {:user => @user}) %>
+<% main_menu :users %>
+<% content_for :sidebar, render("/users/sidebar/user", :user => @user) %>
