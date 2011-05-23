@@ -8,7 +8,6 @@
     vertical-align: center
     text-align: center
     float: left
-    margin-left: 5px
     margin-right: 10px
     padding-top: 5px
     padding-bottom: 2px
@@ -20,14 +19,14 @@
       display: block
   
   .votes
-    background = !color_5 * 1.1
+    background: $color_5 * 1.1
 
   .views
-    background = !color_6
+    background: $color_6
     color: white
   
   .answers
-    background = !color_2
+    background: $color_2
     color: white
     span.desc
       font-size: 10px
@@ -36,24 +35,23 @@
     span.desc
       color: white
   .zero
-    background = !color_3
+    background: $color_3
     span.desc
       font-size: 10px
   
 .answer-item, .question
   .stats
-    
+  
     div.status
-     
-      width:30px
+      width: 30px
       clear: left
       font-size: 10px
     
     div.views
       clear: left
       margin-bottom: 10px
-      background: white
-      color = !color_6
+      background: transparent
+      color: $color_6
     
     div.favourite,
     div.favourite-saved
@@ -84,7 +82,7 @@
     
     div.votes
       width: 50px
-      background: white
+      background: transparent
       height: 74px
       font-size: 12px
       font-weight: bold
@@ -106,7 +104,7 @@
       a.up:link, a:visited.up
         width: 50px
         height: 10px
-        padding: 0x
+        padding: 0px
         background: url(/images/arrow-up.png) no-repeat center top
         display: block
         text-decoration: none
@@ -116,7 +114,7 @@
       a.down:link, a:visited.down
         width: 50px
         height: 10px
-        padding: 0x
+        padding: 0px
         background: url(/images/arrow-down.png) no-repeat center bottom
         display: block
         text-decoration: none

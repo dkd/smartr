@@ -1,0 +1,33 @@
+it:
+
+  main_menu:
+    questions: Domande
+    tags: Tag
+    users: Utenti
+
+  answers:
+    label:
+      one: risposta
+      other: risposte
+
+  comments:
+    label:
+      one: commento
+      other: commenti
+
+  questions:
+    label:
+      one: domanda
+      other: domande
+
+    sub_menu:
+      latest: Recenti
+      hot:  Popolari
+      active: Attive
+      unanswered: Senza risposta
+
+    latest:
+      header: Domande recenti
+
+  remove_tag: Rimuovi Tag
+

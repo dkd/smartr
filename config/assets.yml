@@ -1,0 +1,58 @@
+package_assets: yes
+compress_assets: on
+
+javascripts:
+
+  # Javascript for sencha frontend
+  mobile:
+    - public/mobile/js/ext.js
+    - public/mobile/js/index.js
+    - public/mobile/js/proxies/Proxy.Twitter.js
+    - public/mobile/js/views/View.Start.js
+    - public/mobile/js/views/View.About.js
+    - public/mobile/js/views/View.QuestionList.js
+    - public/mobile/js/views/View.Detail.js
+    - public/mobile/js/views/View.Malfunction.js
+    - public/mobile/js/views/View.MalfunctionList.js
+    - public/mobile/js/views/View.MalfunctionMap.js
+    - public/mobile/js/views/View.Station.js
+    - public/mobile/js/views/View.StationList.js
+    - public/mobile/js/views/View.StationMap.js
+    - public/mobile/js/views/View.DirectionList.js
+    - public/mobile/js/views/View.TweetList.js
+    - public/mobile/js/views/View.Topbar.js
+    - public/mobile/js/views/View.TabPanel.js
+    - public/mobile/js/views/View.DisturbanceDetail.js
+    - public/mobile/js/views/View.DisturbanceList.js
+    - public/mobile/js/views/View.Viewport.js
+    - public/mobile/js/views/View.QuestionDetail.js
+    - public/mobile/js/models/Model.Station.js
+    - public/mobile/js/models/Model.Question.js
+    - public/mobile/js/models/Model.Direction.js
+    - public/mobile/js/models/Model.Tweet.js
+    - public/mobile/js/models/Model.Disturbance.js
+    - public/mobile/js/stores/Store.Question.js
+    - public/mobile/js/stores/Store.Stations.js
+    - public/mobile/js/stores/Store.Directions.js
+    - public/mobile/js/stores/Store.Malfunction.js
+    - public/mobile/js/stores/Store.Tweets.js
+    - public/mobile/js/stores/Store.Disturbance.js
+    - public/mobile/js/templates/Template.QuestionList.js
+    - public/mobile/js/templates/Template.QuestionDetail.js
+    - public/mobile/js/templates/Template.StationList.js
+    - public/mobile/js/templates/Template.DirectionList.js
+    - public/mobile/js/templates/Template.TweetList.js
+    - public/mobile/js/templates/Template.StationDetail.js
+    - public/mobile/js/templates/Template.About.js
+    - public/mobile/js/templates/Template.Start.js
+    - public/mobile/js/templates/Template.DisturbanceDetail.js
+    - public/mobile/js/templates/Template.DisturbanceList.js
+    - public/mobile/js/controllers/Controller.Station.js
+    - public/mobile/js/controllers/Controller.Malfunction.js
+    - public/mobile/js/controllers/Controller.Viewport.js
+
+stylesheets:
+
+  # Stylesheets for mobile frontend
+  mobile:
+    - public/mobile/css/smartr.css

@@ -1,0 +1,53 @@
+<div class="header-with-tabs">
+  <h2><%=h @user.login %></h2>
+    <div class="tabs">
+      <%=user_show_submenu(:edit) %>
+    </div>
+    <br class="clear" />
+</div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<div class="left">
+  <div class="text_field">
+    <%= f.label :login %><%= mark_required(User, :login) %>
+    <%= f.text_field :login %>
+    <%= f.error_message_on :login%>
+  </div>
+  <div class="text_field">
+    <%= f.label :email %><%= mark_required(User, :email) %>
+    <%= f.text_field :email %>
+    <%= f.error_message_on :email %>
+  </div>
+  <div class="text_field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.error_message_on :password %>
+  </div>
+  <div class="text_field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.error_message_on :password_confirmation %>
+  </div>
+</div>
+<div class="left middle">
+  <div class="text_field_long">
+    <%= f.label :interesting_tag_list %>
+    <%= f.text_field :interesting_tag_list%>
+  </div>
+  <div class="text_field_long">
+    <%= f.label :uninteresting_tag_list %>
+    <%= f.text_field :uninteresting_tag_list%>
+  </div>
+  <!--<div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>-->
+</div>
+<div class="right">
+  <div class="text_field">
+    <%= f.label :avatar %><br class="clear" />
+    <%= image_tag @user.avatar.url(:medium), :align => :top %>
+    <%= f.file_field :avatar %>
+  </div>
+  <%= f.submit "Register", :class => "submit" %>
+</div>
+
+<% end %>
+
+<% main_menu :users %>

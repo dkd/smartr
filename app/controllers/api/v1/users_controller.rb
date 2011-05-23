@@ -1,14 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-  
+  respond_to :json
   def index
      @users = User.latest.paginate :page => params[:page], :per_page => 15
-
-     respond_to do |format|
-       format.json{
-         render :json => @users.to_json(:methods => :image_url)
-       }
-     end
-
+     respond_with @users.to_json(:only => [:login])
    end
-  
 end

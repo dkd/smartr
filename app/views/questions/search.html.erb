@@ -1,0 +1,21 @@
+<div class="header-with-tabs">
+  <h2>Solr Search</h2>
+  <span style="float: right"><%= page_entries_info @questions.results %></span>
+  <div class="tabs">
+    <%#=question_submenu(:latest) %>
+  </div>
+  <br class="clear" />
+</div>
+<br class="clear" />
+<% if @questions.results.present? %>
+  <% @questions.each_hit_with_result do |hit, question| %>
+  <%= render "/questions/question", :question => question %>
+  <% end -%>
+  <br class="clear" />
+  <%= will_paginate @questions.results %>
+<% else %>
+  <p>No results found. I am very sorry.</p>
+<% end -%>
+<% content_for :sidebar, render("/questions/sidebar/default") %>
+<% content_for :facets, render("facets", :results => @questions ) %>
+<% main_menu :questions  %>

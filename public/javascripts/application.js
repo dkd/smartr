@@ -1,6 +1,8 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-
+$.ajaxSetup({
+  dataType: 'string',
+});
 
 Array.prototype.contains = function (element)
 {
@@ -21,7 +23,7 @@ $(document).ready(function(){
   $("div.tag-search input").keyup(function(){
     var tag = $(this).val();
     $.ajax({type: "GET",
-            url: "/tags?q=" + tag,
+            url: "/tags.js?tags[q]=" + tag,
             success: function(data){
               $("div.tag-list").html(data);
             }});
@@ -51,9 +53,9 @@ $(document).ready(function(){
   $("#top-flash span").click(function(){$(this).parent().slideUp("fast")});
   
   
-  $(".question-edit form, .answer-edit form").submit(function(){
-    $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
-  });
+  //$(".question-edit form, .answer-edit form").submit(function(){
+  //  $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
+  //});
   
   /* Highlight interesting questions */
   $(".tags.interesting a").each(function(i){
@@ -102,16 +104,7 @@ $(document).ready(function(){
         }
       }
   });
-  $("input[type=text],input[type=password]").focus(function()
-    {
-      $(this).addClass("active");
-    }
-  );
-  $("input[type=text],input[type=password]").blur(function()
-    {
-      $(this).removeClass("active");
-    }
-  );
+
   
   /* Tag auto-completion */
  
@@ -131,6 +124,41 @@ $(document).ready(function(){
       autoFill: true
   });
   
+  /* Question auto-completion */
+  
+  /*$("#question_searchstring").autocomplete('/questions/search.json', {
+      dataType: 'json',
+      parse: function(data) {
+          var rows = new Array();
+          for(var i=0; i<data.length; i++){
+              rows[i] = { data: data[i], value:data[i], result:data[i]};
+          }
+          return rows;
+      },
+      formatItem: function(row, i, n) {
+          return row;
+      },
+      multiple: false,
+      autoFill: false
+  });
+  */
+  $("#question_searchstring").typeWatch({callback: function() {
+    	$.ajax({ url: "/questions/search.js", 
+	             data: "question[searchstring]="+$("#question_searchstring").val(),
+	             dataType: "html",
+	             success:function(data) {
+	                      $("#ajax-search").html(data).show();
+	                     }
+	    });
+	    if ($(this).val() == "") {
+	      $("#ajax-search").hide().html("");
+	    }
+  	},
+	wait: 250,
+	highlight: true,
+	captureLength: 3
+	});
+
   $(".status a").hover(
     function(){
     
@@ -144,11 +172,16 @@ $(document).ready(function(){
     }
   );
   
-     hljs.tabReplace = '    ';
-     hljs.initHighlightingOnLoad();
-     
-     $("textarea").tabby();
+   hljs.tabReplace = '    ';
+   hljs.initHighlightingOnLoad();
+   
+   $("textarea").tabby();
    
    $("#wmd-input").wmd();
+
+	$(document).ajaxSend(function(e, xhr, options) {
+	  var token = $("meta[name='csrf-token']").attr("content");
+	  xhr.setRequestHeader("X-CSRF-Token", token);
+	});
      
 });

@@ -1,12 +1,39 @@
-<% if results.facet(:user_id).rows %>
-<h3>By user</h3>
-<ul class="facets">
-<% results.facet(:user_id).rows.each do |result| %>
-  <li><%=link_to result.instance.login, questions_path(:search => params[:search], :user_id => result.value) %>
-    <%=link_to "-remove", questions_path(:search => params[:search]), :class => "remove" if params[:user_id]%>
-  </li>
-<% end -%>
-</ul>
+<% if results.facet(:user_id).rows && results.facet(:user_id).rows.count > 0 || params[:question][:user_id].present? %>
+  <h3>By user</h3>
+  <ul class="facets">
+  <% results.facet(:user_id).rows.each do |result| %>
+    <li><%=link_to "#{result.instance.login} (#{result.count})", search_questions_path(:question => {:user_id => result.value}.reverse_merge(params[:question])) %>
+      <%=link_to "-remove", search_questions_path(:question => {:user_id => ""}.reverse_merge(params[:question])), :class => "remove" if params[:question][:user_id].present? %>
+    </li>
+    <% end -%>
+  </ul>
 <% end -%>
 
 <br class="clear" />
+<% if results.facet(:question_state).rows && results.facet(:question_state).rows.count > 0 %>
+  <h3>State</h3>
+  <ul class="facets">
+  <% results.facet(:question_state).rows.each do |result| %>
+    <li>
+      <%=link_to "#{result.value} (#{result.count})", search_questions_path(:question => {:question_state => result.value}.reverse_merge(params[:question])) %>
+      <%=link_to "-remove", search_questions_path(:question => {:question_state => ""}.reverse_merge(params[:question])), :class => "remove" if params[:question][:question_state].present? %>
+    </li>
+    <% end -%>
+  </ul>
+<% end -%>
+
+<br class="clear" />
+<% if results.facet(:created_at).rows && results.facet(:created_at).rows.count > 0 %>
+  <h3>Time Range</h3>
+  <ul class="facets">
+
+  <% results.facet(:created_at).rows.each do |result| %>
+    <li><%=link_to "#{result.value} (#{result.count})", search_questions_path(:question => {:created_at => result.value}.reverse_merge(params[:question])) %>
+      <%=link_to "-remove", search_questions_path(:question => {:created_at => ""}.reverse_merge(params[:question])),
+                            :class => "remove" if params[:question][:created_at].present? %>
+      <% break if params[:question][:created_at].present? && params[:question][:created_at]==result.value %>
+
+    </li>
+    <% end -%>
+  </ul>
+<% end -%>

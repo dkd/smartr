@@ -1,0 +1,6 @@
+<%= form_for(comment, :url => url, :remote => true) do |f| %>
+    <%= f.text_area :body, :style => "width: 300px;height:75px;border: 1px solid black;", :class => "wmd-ignore" %>
+    <%= f.hidden_field :commentable_type %>
+    <%= f.hidden_field :commentable_id %>
+    <br /><%= f.submit t("comment.save"), :class => "g-button" %>
+<% end -%>

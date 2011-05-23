@@ -1,26 +1,7 @@
 .answer-edit
-  background: #FFF5E1
-  padding: 10px 20px
-  +border_radius
+
   position: relative
-  
-  
-  a.cancel:link, a.cancel:visited
-    background = !color_4
-    padding: 7px
-    color: white
-    text-decoration: none
-    +border_radius
-    margin-top: 10px
-    font-weight: bold
-    position: relative
-    left: 0px
-    font-size: 14px
-    bottom: -8px
-    
-  a.cancel:hover
-    background: black
-  
+
   h2
     margin: 0px
     margin-bottom: 20px
@@ -46,7 +27,7 @@
     
   input.save
     float: right
-    background = !color_2
+    background: $color_2
     padding: 5px
     padding-left: 7px
     padding-right: 7px
@@ -85,8 +66,6 @@ h2.answer-header
     font-weight: bold
     
   .body
-    float: left
-    width: 875px
     margin-top: 5px
     margin-bottom: 5px
     overflow: auto
@@ -100,13 +79,13 @@ h2.answer-header
       padding: 5px
       font-weight: normal
       line-height: 25px
-      color = !color_2
+      color: $color_2
       
     a:hover
       color: black
       
     a.edit:link, a.edit:visited
-      background = !color_2
+      background: $color_2
       color: white
       padding: 5px
       +border_radius
@@ -134,12 +113,12 @@ h2.answer-header
         
       a:link, a:visited
         text-decoration: none
-        color = !color_2
+        color: $color_2
         background: none
         font-weight: bold
       
       a:hover
-        color = !color_2_hover
+        color: $color_2_hover
         
         img
           border: 0px

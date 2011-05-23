@@ -1,0 +1,2 @@
+
+$("#<%=@parent.class.name%>-comments-<%=@parent.id%>").html('<%=escape_javascript(render("list",:comments => @comments, :parent => @parent))%>');

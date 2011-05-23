@@ -1,7 +1,7 @@
 <div class="header-with-tabs">
   <h2><%=h @user.login %></h2>
     <div class="tabs">
-      <%=show_submenu(:reputation) %>
+      <%=user_show_submenu(:reputation) %>
     </div>
     <br class="clear" />
 </div>
@@ -9,8 +9,8 @@
 <div class="user-header">
   <%= image_tag @user.avatar.url(:medium), :alt => @user.login, :title => @user.login %>
   <p>
-    <span><%=@user.questions.count%></span> <%=t(:"questions.label", :count => @user.questions.count) %>, 
-    <span><%=@user.answers.count %></span> <%=t(:"answers.label", :count => @user.answers.count) %> & 
+    <span><%=@user.questions.count%></span> <%=t(:"questions.label", :count => @user.questions.count) %>,
+    <span><%=@user.answers.count %></span> <%=t(:"answers.label", :count => @user.answers.count) %> &
     <span><%=@user.comments.count%></span> <%=t(:"comments.label", :count => @user.comments.count) %>.
   </p>
 </div>
@@ -20,7 +20,7 @@
   <div class="user-questions">
     <h2>Latest Questions</h2>
     <% @user.latest_questions.each do |question| %>
-      <%= render :partial => "question", :locals => {:question => question} %>
+      <%= render "question", :locals => {:question => question} %>
     <% end -%>
   </div>
   <br class="clear" />
@@ -29,10 +29,10 @@
   <div class="user-questions">
     <h2>Latest Answers</h2>
     <% @user.latest_answers.each do |question| %>
-      <%= render :partial => "question", :locals => {:question => question} %>
+      <%= render "question", :locals => {:question => question} %>
     <% end -%>
   </div>
 <% end -%>
 
 <% main_menu :users %>
-<% content_for :sidebar, render(:partial => "/users/sidebar/user", :locals => {:user => @user}) %>
+<% content_for :sidebar, render("/users/sidebar/user", :locals => {:user => @user}) %>

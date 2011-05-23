@@ -1,13 +1,9 @@
-<% if @tags.present? %>  
-  <% @tags.each do |tag| %>
-    <% cache (:key => "tag_list_view_#{tag.name}") do %>
-       <span class="tag">
-         <%=Tagging.find_all_by_taggable_type_and_tag_id("Question", tag.id).size %>x 
-         <%=link_to tag, :controller => :questions, :tag => tag.name-%>
-       </span>
+<% if tags.present? %>
+  <% tags.each do |tag| %>
+      <div style="width: 25%; float: left">
+         <%=link_to "#{tag.count} x #{tag}", questions_path(:tag => tag.name), :class => "tag" -%>
+       </div>
     <% end -%>
-  <% end -%>
 <% else -%>
 <p>Nothing found. I am sorry</p>
 <% end -%>
- 

@@ -1,0 +1,6 @@
+$('#favourite-question-<%=@question.id%>').attr('class', '<%=@class%>');
+$.gritter.add({	title: '<%=@message%>',              	
+              	text: '<%=@message%>',
+              	time: 5000,
+              	class_name: 'gritter-info'
+              });

@@ -1,0 +1,23 @@
+<div class="text_field_extra_long<%=" error" if f.error_message_on(:name).present? %>">
+  <h3><%=t("questions.name")%><%= mark_required(Question, :name) %></h3>
+    <%= f.text_field :name %>
+    <%= f.error_message_on(:name) %>
+  </div>
+
+<div class="textarea_extra<%=" error" if f.error_message_on(:body).present? %>">
+  <h3><%=t("questions.body")%><%= mark_required(Question, :body) %></h3>
+  <div id="wmd-button-bar"></div>
+  <%= f.text_area :body, :id => "wmd-input", :class => "markdown" %>
+  <%= f.error_message_on(:body) %>
+</div>
+<div class="text_field_extra_long<%=" error" if f.error_message_on(:tag_list).present? %>">
+  <h3>Tags<%= mark_required(Question, :tag_list) %></h3>
+  <%= f.text_field :tag_list, :class => "tags" %>
+  <%= f.error_message_on(:tag_list) %>
+
+  <br class="clear" />
+  <div class="send-email">
+    <%= f.check_box :send_email %> <%=f.label :send_email, "Send E-Mail if an answer or comment is posted." %>
+  </div>
+</div>
+<br class="clear" />

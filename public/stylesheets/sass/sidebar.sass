@@ -1,25 +1,36 @@
 #sidebar
   float: left
-  width: 240px
   padding: 10px
   padding-top: 0px
   padding-right: 0px
   margin-top: 0px
-  margin-left: 10px
+  margin-left: 20px
   +border_radius
-  
+  width: 250px
+  #devise-shared-links
+    div
+      border-bottom: 1px solid black
+      margin-bottom: 10px
+      a:link, a:visited
+        background: none
+        color: $color_1
+        padding: 10px 0px
+      a:hover
+        color: $color_1_hover
+      
+      
   .guide
-    background = #FFDAAF
+    background: #FFDAAF
     +border_radius
     padding: 10px
     color: black
     
     h3
       margin-top: 0px
-      color = !color_3
+      color: $color_3
  
   a.new_question:link, a.new_question:visited
-    background = #bc330d
+    background: #bc330d
     width: 100%
     display: block
     text-align: center
@@ -27,16 +38,20 @@
     font-size: 26px
     padding-top: 10px
     padding-bottom: 10px
-    margin-top: -8px
+    margin-top: 1em
+    color: white
     -webkit-animation-name:  redPulse
     -webkit-animation-duration: 5s
     -webkit-animation-iteration-count: infinite
+    -moz-background-color: #e33100
+    -moz-box-shadow: 0 0 9px #e33100
     border: 1px solid #bc330d
     +border_radius
      
   a.new_question:hover
-    border: 1px solid black
-      
+    order: 1px solid black
+    +text_shadow
+    
   .facets
     font-size: 12px
     a:link, a:visited
@@ -62,32 +77,25 @@
     img
       margin-right: 5px
   
+  
   a:link, a:visited
     text-decoration: none
-    background = !color_1
-    padding: 5px
-    font-size: 16px
-    color: white
-    width: 100% 
+    font-size: 0.9em
+    color: $color_1
+    font-weight: bold
+  a:hover
+    color: black
     
+  ul
+    padding-left: 0px
+    margin-left: 0px
+    li
+      margin-left: 0px
+      list-style-type: none
+      padding-left: 0px
+      margin-bottom: 5px
   h3
     margin-top: 20px
     margin-bottom: 5px
-    
-  .tags
-    
-    a:link, a:visited
-      color: black
-      width: auto
-      text-decoration: none
-      +border_radius
-      background = !color_4
-      padding: 5px
-      font-size: 12px
-      color: white
-      float: left
-      margin: 2px
-      
-    a:hover
-      background = !color_2_hover
+
       

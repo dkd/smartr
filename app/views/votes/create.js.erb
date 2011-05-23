@@ -1,0 +1,8 @@
+$('#vote-box-<%= @vote.voteable.id %>').html('<%= escape_javascript(render("/#{@vote.type_pluralize}/vote_box",
+                                                                           @vote.type_to_sym => @vote.voteable)) %>');
+$('#<%= @vote.type_to_sym%>-votes-count-<%=@vote.voteable.id %>').html('<%= @vote.voteables_count %>');
+$('.user-<%=@vote.receiver.id %>-reputation').html('<%=@vote.receiver.reputation%>');
+$('.user-<%=current_user.id %>-reputation').html('<%=@vote.owner.reputation%>');
+<% if @vote.voteable.is_a?(Comment)%>
+  $('#comment-votes-<%= @vote.voteable.id %>').html('<%=t("votes", :count => @vote.voteables_count) %>');
+<% end-%>

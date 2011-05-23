@@ -3,10 +3,16 @@ config/database.yml
 config/sunspot.yml
 log/*.log
 log/development.log
+log/*
 tmp/**/*
+tmp/*
+public/mobile
 doc/api
 doc/appla
 public/system
 solr/data/*
 vendor/gems/*
 vendor/plugins/access_settings
+coverage
+.rspec
+.rvmrc

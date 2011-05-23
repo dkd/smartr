@@ -1,0 +1,14 @@
+<%= link_to t("sidebar.ask_a_question"), new_question_path, :class => "new_question", :id => "new_question" %>
+<h3><%= t("sidebar.users.interested_in") %></h3>
+<div class="tags">
+<% ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='interesting_tags'").order('created_at desc').each do |tag| -%>
+  <%= link_to(tag.name, questions_path(:tag => tag.name), :class => "tag") %>
+<% end -%>
+</div>
+<br class="clear" />
+<h3><%= t("sidebar.users.not_interested_in") %></h3>
+<div class="tags">
+<% ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='uninteresting_tags'").order('created_at desc').each do |tag| -%>
+  <%= link_to(tag.name, questions_path(:tag => tag.name), :class => "tag")%>
+<% end -%>
+</div>

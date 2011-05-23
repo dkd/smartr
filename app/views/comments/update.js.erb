@@ -1,0 +1,2 @@
+$("#comment-<%=@comment.id%> .comment-edit").remove();
+$("#comment-<%=@comment.id%>").replaceWith('<%=escape_javascript(render(@comment))%>');
