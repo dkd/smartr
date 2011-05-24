@@ -23,16 +23,7 @@ class Question < ActiveRecord::Base
   acts_as_taggable_on :tags
   acts_as_tagger
   has_friendly_id :permalink
-<<<<<<< HEAD
-  
-  #Named Scopes
-  default_scope :include => :user
-  named_scope :latest, :order => "created_at DESC"
-  named_scope :hot, :order => "answers_count DESC,updated_at DESC"
-  named_scope :active, :order => "updated_at DESC, answers_count DESC"
-  named_scope :unanswered, :order => "created_at DESC", :conditions => ["answers_count = ?", "0"]
-  
-=======
+
 
   # Named Scopes
   scope :list, :group => "questions.id", :include => [:user]
@@ -41,7 +32,6 @@ class Question < ActiveRecord::Base
   scope :active, :order => "questions.updated_at DESC, answers_count DESC"
   scope :unanswered, :order => "questions.created_at ASC", :conditions => ["answers_count = ?", "0"]
 
->>>>>>> 290ac7343aa2e49c9d90b7a31d987d1ffeedc116
   # Callbacks
   before_validation :set_permalink
   before_validation :clean_up_tags
