@@ -14,7 +14,7 @@ Feature: Manage users
     And I should see "leander" within "#topheader"
     
   @password
-  Scenario: Reset Password
+  Scenario: Wrong credentials
     Given there is an user "alzheimer"
     Given I am on the homepage
     And I follow "Sign in"
@@ -22,4 +22,10 @@ Feature: Manage users
     When I fill in "user_login" with "alzheimer"
     And I fill in "user_password" with "i dunno"
     And I press "Sign in"
-    Then I should be on the new user password page
+    Then I should be on the new user session page
+
+	@password
+	Scenario: Reset Password
+		Given I am on the new user session page
+		When I follow "Forgot your password?"
+		Then I should be on the new user password page
