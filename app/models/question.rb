@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   include ActionView::Helpers
   include ::ApplicationHelper
-
+  include VotingModule
   # Associations
   belongs_to  :user
   has_many    :comments, :as => :commentable, :dependent => :destroy

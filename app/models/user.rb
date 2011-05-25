@@ -17,7 +17,10 @@ class User < ActiveRecord::Base
   has_many :favourite_questions, :through => :favourites, :source => :question
 
   attr_accessor :image_url
-
+  
+  # Modules
+  include VoterModule
+  
   # Plugins
   acts_as_taggable_on :interesting_tags
   acts_as_taggable_on :uninteresting_tags

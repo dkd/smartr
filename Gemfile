@@ -17,6 +17,7 @@ gem "annotate"
 gem "jammit"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "jquery-rails"
+gem "rake", "0.8.7"
 
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
