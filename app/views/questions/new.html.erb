@@ -2,6 +2,7 @@
 <div class="question-edit">
   <%= form_for(@question) do |f| %>
       <%= render :partial => '/questions/form', :locals => {:f => f}%>
+      <%= f.submit t("question.save")%>
   <% end %>
 </div>
 <% main_menu :questions %>
