@@ -115,6 +115,9 @@ GEM
     jammit (0.6.0)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
+    jquery-rails (1.0.7)
+      railties (~> 3.0)
+      thor (~> 0.14)
     json (1.5.1)
     json_pure (1.5.1)
     kgio (2.3.3)
@@ -181,7 +184,7 @@ GEM
       activesupport (= 3.0.7)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
-    rake (0.8.7)
+    rake (0.9.0)
     rcov (0.9.9)
     reek (1.2.8)
       ruby2ruby (~> 1.2)
@@ -266,6 +269,7 @@ DEPENDENCIES
   faker
   friendly_id
   jammit
+  jquery-rails
   metric_fu
   mongrel
   mysql2 (= 0.2.7)

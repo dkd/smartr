@@ -16,6 +16,7 @@ gem "stringex"
 gem "annotate"
 gem "jammit"
 gem "bcrypt-ruby", :require => "bcrypt"
+gem "jquery-rails"
 
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
