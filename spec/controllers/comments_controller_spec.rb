@@ -15,39 +15,35 @@ describe CommentsController do
         end
         it "orders by date" do
           xhr :get, :index, :comments_order => "latest", :id => question.id, :model => "Question"
-          response.should be_success
+          response.should render_template("index")
         end
         it "orders by reputation" do
           xhr :get, :index, :comments_order => "reputation", :id => question.id, :model => "Question"
-          response.should be_success
+          response.should render_template("index")
         end
       end
 
       describe "posts a comment" do
         it "should redirect to the question" do
           xhr :post, :create
-          response.should_not be_success
           response.should render_template("not_authorized")
         end
       end
       describe "edits a comment" do
         it "should redirect to the question" do
           xhr :post, :update, :id => 1, :commentable_type => "question", :commentable_id => question.id
-          response.should_not be_success
           response.should render_template("not_authorized")
         end
       end
       describe "tries to load the new comment form" do
         it "should redirect to the question" do
           xhr :get, :new, :commentable_type => "question", :commentable_id => question.id
-          response.should_not be_success
           response.should render_template("not_authorized")
         end
       end
       describe "tries to load the edit comment form" do
         it "should redirect to the question" do
           xhr :get, :edit, :id => 1
-          response.should_not be_success
           response.should render_template("not_authorized")
         end
       end

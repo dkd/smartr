@@ -61,12 +61,10 @@
       <%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%>
     </div>
   </div>
-  <%#= javascript_include_tag(:defaults)%>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
                              "jquery-ui.min",
-                             "jquery_ujs"
-  %>
-  <%= javascript_include_tag "wmd/jquery.wmd.min",
+                             "jquery_ujs",
+                             "wmd/jquery.wmd.min",
                              "wmd/showdown",
                              "jquery-autocomplete/jquery.autocomplete.pack",
                              "highlight/highlight",
@@ -74,8 +72,7 @@
                              "jquery.toggle-value",
                              "jquery.gritter.min",
                              "jquery.typewatch", :cache => true %>
-  <%= javascript_include_tag Smartr::Settings[:syntax_highlighting][:languages].split(",").map{|x| "/javascripts/highlight/languages/"+x.strip} %>
-
+  <%= javascript_include_tag Smartr::Settings[:syntax_highlighting][:languages].split(",").map{ |x| "/javascripts/highlight/languages/#{x.strip}" } %>
   </body>
 </html>
 <% title "SmartR - be a smartass!" %>

@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe VotesController do
   include Devise::TestHelpers
- 
+  render_views
   describe "As a user who is" do
 
     context "not logged in" do
@@ -12,7 +12,7 @@ describe VotesController do
           xhr :post, :create, :model => "question",
                               :value => "1",
                               :id => question.id
-          response.should_not be_successful
+          response.should render_template("shared/not_authorized")
         end 
       end
     end

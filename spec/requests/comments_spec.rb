@@ -7,11 +7,4 @@ describe "Comments" do
       response.should_not be_successful
     end
   end
-  
-  describe "GET /comments/new" do
-    it "works!" do
-      xhr :get, new_comment_path
-      response.should_not be_successful
-    end
-  end
 end
