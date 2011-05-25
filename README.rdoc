@@ -1,9 +1,9 @@
-= smartR 
+= SmartR 
 == A knowledge base for small companies
 
 === Overview
 
-smartR is a Ruby on Rails 2.3.5 application heavily inspired by stackoverflow.com
+SmartR is a Ruby on Rails 3 application heavily inspired by stackoverflow.com
 
 === Features 
 * Completely configurable voting system by a single YAML-File
@@ -13,11 +13,9 @@ smartR is a Ruby on Rails 2.3.5 application heavily inspired by stackoverflow.co
 * Powerful search, thanks to the great sunspot solr gem
 
 === Upcoming Features
-* Support for more facets in search
-* Autocompletion for tags
 * Timeline of events
 * Badges
 * More RSS Feeds
 * Installation guide
 
-Copyright (c) 2009 by d.k.d Internet Service GmbH, released under the MIT license
+Copyright (c) 2009-2011 by dkd Internet Service GmbH, released under the MIT license
