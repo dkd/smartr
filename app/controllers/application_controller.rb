@@ -28,9 +28,7 @@ class ApplicationController < ActionController::Base
           format.html { flash[:notice] = "You must be signed in to access this page"
                         redirect_to new_user_session_url
                       }
-          format.js {
-            render "/shared/not_authorized", :status => 403
-          }
+          format.js { render "/shared/not_authorized" }
 
         end
         false
