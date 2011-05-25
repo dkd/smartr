@@ -7,7 +7,7 @@
     <%= f.error_message_on :email %>
   </div>
 
-  <p><%= f.submit "Send me reset password instructions" %></p>
+  <p><%= f.submit t("devise.passwords.reset_button") %></p>
 <% end %>
 <% main_menu :users %>
 <%= render :partial => "devise/shared/links" %>
