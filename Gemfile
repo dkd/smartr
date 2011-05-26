@@ -10,8 +10,7 @@ gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
 gem "sunspot_rails", "1.2.rc4"
 gem "mysql2", "0.2.7"
-gem "devise"
-gem "unicorn", :platform => :mri_19
+gem "devise", "1.3.4"
 gem "stringex"
 gem "annotate"
 gem "jammit"
@@ -30,9 +29,6 @@ end
 platforms :mri_19 do
   gem 'unicorn'
 end
-
-gem 'rails-footnotes', '>= 3.7', :group => :development
-
 
 # bundler requires these gems while running tests
 group :test do

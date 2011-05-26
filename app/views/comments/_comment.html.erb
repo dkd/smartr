@@ -11,7 +11,8 @@ end
 
 <div class="comment-item" id="comment-<%=comment.id%>">
   <div class="inner">
-    <div class="user-info"><span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes_count%></span> <span id="comment-votes-<%=comment.id%>"><%=t("votes", :count => comment.votes_count)%></span> &middot;
+    <div class="user-info"><span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes_count%></span> <span id="comment-votes-<%=comment.id%>">
+    <%=t("votes", :count => comment.votes_count)%></span> &middot;
       <%= link_to raw("&uarr;"),
                        votes_path(
                        :model => "comment",
