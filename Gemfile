@@ -46,5 +46,4 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
-  gem 'spork', '~> 0.9.0.rc'
 end
