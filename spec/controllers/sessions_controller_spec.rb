@@ -28,6 +28,7 @@ describe SessionsController do
       describe "POST create" do
         it "should redirect to the homepage" do
           post :create, :user => { :login => user.login, :password => "leanderTaler3000" }
+          controller.current_user.should eq(user)
           response.should redirect_to root_url
         end
       end
@@ -43,6 +44,13 @@ describe SessionsController do
         get :new
         response.should redirect_to root_url
         flash[:alert].should eq(I18n.t("devise.failure.already_authenticated"))
+      end
+    end
+    describe "GET destroy" do
+      it "redirects to the homepage" do
+        get :destroy
+        flash[:notice].should eq(I18n.t("devise.sessions.signed_out"))
+        response.should redirect_to root_url
       end
     end
   end
