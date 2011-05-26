@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<h2><%=t("devise.sessions.sign_in")%></h2>
 <%= devise_error_messages! %>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 <div class="left noborder">
@@ -21,7 +21,7 @@
 <% end -%>
 
 <div>
-  <button type="submit" class="g-button"><%=t("devise.sessions.sign_in_button")%></button>
+  <button type="submit" class="g-button"><%=t("devise.sessions.sign_in")%></button>
 </div>
 <% end %>
 <br />

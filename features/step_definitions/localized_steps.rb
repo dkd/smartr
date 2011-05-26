@@ -11,5 +11,17 @@ When /^(?:|I )follow localized "([^\"]*)" within "([^\"]*)"$/ do |key, parent|
 end
 
 Then /^I should see localized "([^\"]*)"$/ do |key|
-  response.should contain(I18n.t(key))
+  if page.respond_to? :should
+    page.should have_content(I18n.t(key))
+  else
+    assert page.has_content?(I18n.t(key))
+  end
+end
+
+Then /^I should not see localized "([^\"]*)"$/ do |key|
+  if page.respond_to? :should
+    page.should_not have_content(I18n.t(key))
+  else
+    assert page.has_no_content?(I18n.t(key))
+  end
 end

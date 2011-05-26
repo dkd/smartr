@@ -32,3 +32,12 @@ Feature: Manage users
     When I fill in "user_email" with "alzheimer@test.com"
     And I press localized "devise.passwords.reset_button"
     Then I should be on the new user session page
+  
+    Scenario: Sign out user
+      Given I am an authenticated user "leander"
+      When I am on the homepage
+      Then I should see localized "devise.sessions.sign_out" within "#topheader"
+      And I should see "leander" within "#topheader"
+      When I follow localized "devise.sessions.sign_out"
+      Then I should be on the homepage
+      And I should not see localized "leander" within "#topheader"
