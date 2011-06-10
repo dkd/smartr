@@ -32,7 +32,6 @@
       <%=link_to "-remove", search_questions_path(:question => {:created_at => ""}.reverse_merge(params[:question])),
                             :class => "remove" if params[:question][:created_at].present? %>
       <% break if params[:question][:created_at].present? && params[:question][:created_at]==result.value %>
-
     </li>
     <% end -%>
   </ul>

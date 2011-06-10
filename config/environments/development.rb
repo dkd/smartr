@@ -13,7 +13,7 @@ Smartr::Application.configure do
   config.action_controller.perform_caching = false
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
   config.active_support.deprecation = :log
 
@@ -24,5 +24,19 @@ Smartr::Application.configure do
   Sunspot.config.solr.url = 'http://localhost:8982/solr'
 
   Sass::Plugin.options[:debug_info] = true
+  
+  # SMTP Configuration
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => "localhost:3000"}
+  #config.action_mailer.smtp_settings = {
+  #    :address              => "smtp.gmail.com",
+  #    :port                 => 587,
+  #    :domain               => 'gmail.com',
+  #    :user_name            => 'rails3buch',
+  #    :password             => 'VlJvV0DxZPoq7K',
+  #    :authentication       => 'plain',
+  #    :enable_starttls_auto => true
+  #  }
+  config.action_mailer.smtp_settings = { :host => "localhost", :port => 1025 }
 
 end

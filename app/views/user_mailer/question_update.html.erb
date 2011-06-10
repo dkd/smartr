@@ -37,7 +37,7 @@
     <b><%=link_to(@object.user.login, "#{Smartr::Settings[:host]}#{url_for(@object.user)}")%></b>.
   </div>
   <div class="body-section">
-    <%= code(@object.body) %>
+    <%= raw(code(@object.body)) %>
   </div>
 </body>
 </html>
