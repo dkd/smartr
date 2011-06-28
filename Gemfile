@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-gem 'rails', "3.0.8"
+gem 'rails', "3.0.9"
 gem "sass"
 gem "friendly_id"
 gem "sanitize"
