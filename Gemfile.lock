@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/reactualize/react_reporter.git
+  revision: 293e86f2e44a190a9ec3a7e5c67e5f0a686ce46a
+  specs:
+    react_reporter (1.0.0.dev)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -66,6 +72,7 @@ GEM
       ruby_parser (~> 2.0.4)
       sexp_processor (~> 3.0.3)
     closure-compiler (1.1.1)
+    coderay (0.9.8)
     colored (1.2)
     cucumber (0.10.2)
       builder (>= 2.1.2)
@@ -129,6 +136,8 @@ GEM
     main (4.4.0)
       arrayfields (>= 4.7.4)
       fattr (>= 2.1.0)
+    method_source (0.6.0)
+      ruby_parser (>= 2.0.5)
     metric_fu (2.1.1)
       Saikuro (>= 1.1.0)
       activesupport (>= 2.0.0)
@@ -156,6 +165,11 @@ GEM
       activesupport (>= 2.3.2)
     polyglot (0.3.1)
     pr_geohash (1.0.0)
+    pry (0.9.3)
+      coderay (>= 0.9.8)
+      method_source (>= 0.6.0)
+      ruby_parser (>= 2.0.5)
+      slop (~> 1.9.0)
     rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -224,6 +238,7 @@ GEM
       rubyzip
     sexp_processor (3.0.5)
     shoulda (2.11.3)
+    slop (1.9.1)
     sqlite3-ruby (1.3.1)
     stringex (1.2.1)
     sunspot (1.2.rc4)
@@ -273,8 +288,10 @@ DEPENDENCIES
   mongrel
   mysql2 (= 0.2.7)
   paperclip
+  pry
   rails (= 3.0.9)
   rake (= 0.8.7)
+  react_reporter!
   rspec-rails (>= 2.4.0)
   sanitize
   sass

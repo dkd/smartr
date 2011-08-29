@@ -37,3 +37,6 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+at_exit do
+  system "bundle exec rake react_reporter:send"
+end

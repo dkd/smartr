@@ -40,3 +40,4 @@ Smartr::Application.configure do
   config.action_mailer.smtp_settings = { :host => "localhost", :port => 1025 }
 
 end
+require 'net/http'

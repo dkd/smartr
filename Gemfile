@@ -17,7 +17,7 @@ gem "jammit"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "jquery-rails"
 gem "rake", "0.8.7"
-
+gem 'react_reporter', :git => "git://github.com/reactualize/react_reporter.git"
 platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
 end
@@ -43,3 +43,5 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
 end
+
+gem 'pry', :group => :development

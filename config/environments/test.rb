@@ -31,3 +31,9 @@ Smartr::Application.configure do
   #Sunspot.config.solr.url = 'http://localhost:8981/solr'
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
+require 'net/http'
+ReactReporter.configure do |c|
+  c.api_key = "f6cc822def064ecab9595ba2568a3435"
+  c.host = "reactualize.dkd.de"
+  c.port = 80
+end
