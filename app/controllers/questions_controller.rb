@@ -97,17 +97,14 @@ class QuestionsController < ApplicationController
         highlight :name
         tie 0.1
       end
-
-      if params[:question].present? && params[:question][:user_id].present?
-         with(:user_id, params[:question][:user_id].to_i)
+      
+      %w(user state).each do |easy_facet|
+        facet easy_facet, :minimum_count => 2
+        if params[:question][easy_facet].present?
+          with(easy_facet, params[:question][easy_facet])
+        end
       end
 
-      if params[:question].present? && params[:question][:question_state].present?
-        with(:question_state, question_state)
-      end
-
-      facet :user_id, :minimum_count => 2
-      facet :question_state, :minimum_count => 2
       facet :created_at do
         row("last 7 days") do
           with(:created_at).greater_than(Time.now - 7.day)
@@ -125,8 +122,32 @@ class QuestionsController < ApplicationController
           with(:created_at).greater_than(Time.now - 12.month)
         end
       end
+      
+      facet :number_of_comments do
+        row("zero") do
+          with(:number_of_comments, 0)
+        end
+        row("at_least_1") do
+          with(:number_of_comments).greater_than(0)
+        end
+        row("at_least_3") do
+          with(:number_of_comments).greater_than(2)
+        end
+      end
+      
+      if params[:question][:number_of_comments].present?
+        number_of_comments = case params[:question][:number_of_comments]
+                               when "zero"
+                                 with(:number_of_comments, 0)
+                               when "at_least_1"
+                                 with(:number_of_comments).greater_than(0)
+                               when "at_least_3"
+                                 with(:number_of_comments).greater_than(2)
+                              end
+                              
+      end
 
-      if params[:question].present? && params[:question][:created_at].present?
+      if params[:question][:created_at].present?
         date_range = case params[:question][:created_at]
                       when "last 7 days" then
                         Time.now - 7.day
@@ -176,11 +197,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def question_state
-    if params[:question].present? && params[:question][:question_state].present?
-      params[:question][:question_state] == "true" ? true : false
-    end
-  end
 
   def check_ownership
     @question = Question.find(params[:id])

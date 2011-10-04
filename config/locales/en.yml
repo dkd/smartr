@@ -113,3 +113,14 @@ en:
     tags:
       interesting: Interesting Tags
       recent: Recent Tags
+  facets:
+    user: User
+    state: State
+    number_of_comments: Number of Comments
+    values:
+      "true": Answered
+      "false": Unanswered
+      zero: Zero
+      at_least_1: At least one
+      at_least_3: At least 3
+      last_12_months: Last 12 months

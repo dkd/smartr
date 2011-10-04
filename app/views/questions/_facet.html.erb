@@ -1,0 +1,12 @@
+<% if results.facet(facet).rows && results.facet(facet).rows.count > 0 || params[:question][facet].present? %>
+  <h3><%=t "facet.#{facet.to_sym}"%></h3>
+  <ul class="facets">
+  <% results.facet(facet.to_sym).rows.each do |result| %>
+    <li>
+      <%= link_to "#{t('facets.values.'+result.value.to_s.tr(" ", "_"), :default => result.value)} (#{result.count})", search_questions_path(:question => {facet.to_sym => result.value}.reverse_merge(params[:question])) %>
+      <%= link_to t("facet.remove"), search_questions_path(:question => { facet.to_sym => ""}.reverse_merge(params[:question])), 
+                                                   :class => "remove" if params[:question][facet].present?  %>
+    </li>
+    <% end -%>
+  </ul>
+<% end -%>

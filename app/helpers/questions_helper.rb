@@ -8,4 +8,9 @@ module QuestionsHelper
       menu << {:name => I18n.t(:"question.sub_menu.unanswered"), :id => "unanswered", :link => unanswered_questions_path}
       build_menu(menu, active)
   end
+  
+  def facet(name, results)
+    render :partial => "facet", :locals => {:facet => name, :results => results }
+  end
+  
 end

@@ -118,7 +118,7 @@ class Question < ActiveRecord::Base
       answers.map { |answer| answer.body }
     end
 
-    boolean :question_state do
+    boolean :state do
       accepted_answer.nil? ? false : true
     end
 
@@ -126,8 +126,12 @@ class Question < ActiveRecord::Base
       comments.map { |comment| comment.body }
     end
 
-    text :user do
+    string :user do
       user.login
+    end
+    
+    integer :number_of_comments do
+      comments.count
     end
 
     string(:tags, :multiple => true) do

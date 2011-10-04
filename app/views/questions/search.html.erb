@@ -17,5 +17,10 @@
   <p>No results found. I am very sorry.</p>
 <% end -%>
 <% content_for :sidebar, render("/questions/sidebar/default") %>
-<% content_for :facets, render("facets", :results => @questions ) %>
+<% content_for :facets do %>
+  <%=facet(:user, @questions) %>
+  <%=facet(:state, @questions) %>
+  <%=facet(:created_at, @questions) %>
+  <%=facet(:number_of_comments, @questions) %>
+<% end %>
 <% main_menu :questions  %>

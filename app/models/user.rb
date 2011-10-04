@@ -111,8 +111,10 @@ class User < ActiveRecord::Base
 
   # Sunspot Solr
   searchable do
-    text :login
+    string :login
   end
+  
+
 
 end
 
