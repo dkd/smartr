@@ -1,10 +1,5 @@
 <h3>Trouble with your account?</h3>
 <div id="devise-shared-links">
-  <%- if controller_name != 'sessions' %>
-    <div>
-      <%= link_to "Sign in", new_session_path(resource_name) %><br />
-    </div>
-  <% end -%>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <div>

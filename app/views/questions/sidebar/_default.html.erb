@@ -1,14 +1,14 @@
-  <%= link_to t('sidebar.ask_a_question'), new_question_path, :class => "new_question", :id => "new_question" %>
+  <%= link_to t('sidebar.ask_a_question'), new_question_path, :class => "btn danger large", :id => "new_question" %>
   <% if current_user && current_user.interesting_tag_list %>
     <h3><%= t('sidebar.tags.interesting')%></h3>
     <div class="tags interesting">
     <% current_user.interesting_tag_list.each do |tag| %>
-      <%= link_to(h(tag), questions_path(:tag => tag), :class => "tag")%>
+      <%= link_to(h(tag), questions_path(:tag => tag), :class => "btn js-btn")%>
       <% end -%>
     </div>
      <div class="tags uninteresting" style="display:none">
       <% current_user.uninteresting_tag_list.each do |tag| %>
-        <%= link_to(h(tag), questions_path(:tag => tag), :class => "tag")%>
+        <%= link_to(h(tag), questions_path(:tag => tag), :class => "btn js-btn")%>
       <% end -%>
       </div>
     <br class="clear">
@@ -16,6 +16,6 @@
   <h3><%= t('sidebar.tags.recent')%></h3>
   <div>
   <% ActsAsTaggableOn::Tag.limit(20).includes(:taggings).joins(:taggings).group("tags.id").where("taggings.taggable_type='Question'").order('created_at desc').each do |tag| -%>
-    <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name), :class => "tag")%>
+    <%= link_to(tag.name, url_for(:controller => :questions, :action => :index, :tag => tag.name), :class => "btn js-btn")%>
   <% end -%>
 </div>

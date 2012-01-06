@@ -12,6 +12,6 @@ MetricFu::Configuration.run do |config|
   config.rcov[:rcov_opts] << "-Ispec" # Needed to find spec_helper
   config.reek = { :dirs_to_reek => ['app/models', 'lib'] }
 end
-require "rspec-rails"
-#require 'sunspot/rails/tasks'
+require 'rspec-rails'
+
 Smartr::Application.load_tasks

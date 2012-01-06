@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :interesting_tags
   acts_as_taggable_on :uninteresting_tags
   acts_as_tagger
-  has_friendly_id :login
+  
+  # Friendly ID
+  extend FriendlyId
+  friendly_id :login
 
   # Named Scopes
   scope :latest, :order => "created_at DESC"

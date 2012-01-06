@@ -22,7 +22,10 @@ class Question < ActiveRecord::Base
   # Extensions
   acts_as_taggable_on :tags
   acts_as_tagger
-  has_friendly_id :permalink
+  
+  # Friendly ID
+  extend FriendlyId
+  friendly_id :permalink
 
 
   # Named Scopes

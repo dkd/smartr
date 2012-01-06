@@ -18,8 +18,9 @@ module ApplicationHelper
       content_for :main_menu, build_menu(menu, active)
   end
 
-  def title(text)
-    content_for(:title, "#{text} | " ) if text.present?
+  def title(name, subtitle="")
+    content_for :title, name
+    content_for :subtitle, subtitle unless subtitle.blank?
   end
 
   def image_for(user, size)
@@ -32,7 +33,7 @@ module ApplicationHelper
         class_name = (m[:id]==active.to_s)? 'active' : ''
         li +=content_tag(:li, link_to(m[:name], m[:link]), :class => class_name)
       end
-      content_tag(:ul, raw( li))
+      raw(li)
     end
 
   def code(html)

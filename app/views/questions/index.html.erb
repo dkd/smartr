@@ -1,8 +1,5 @@
+<% title t("question.latest"), page_entries_info(@questions) %>
 <div class="header-with-tabs">
-  <h2><%= t("question.latest")%><%= raw "<span class='tagged'>##{params[:tag]}</span>" if params[:tag].present? %></h2>
-  <span style="float: right">
-    <%= page_entries_info @questions %>
-  </span>
   <div class="tabs">
     <%= question_submenu(:latest) %>
   </div>

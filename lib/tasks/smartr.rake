@@ -1,5 +1,5 @@
 require 'active_record'
-require 'sunspot'
+
 
 namespace :smartr do
  

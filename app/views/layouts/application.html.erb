@@ -1,13 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <%= csrf_meta_tag %>
   <title><%= yield :title %>SmartR - be a smartass!</title>
   <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "/javascripts/highlight/styles/sunburst" %>
   <style type="text/css" media="screen">
     @-webkit-keyframes redPulse {
       from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
@@ -18,61 +15,51 @@
   <!--<link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="#" />-->
 </head>
 <body>
-  <div id="topheader">
-    <div class="inner">
-      <h1><%= link_to("SmartR", root_url) %></h1>
-      <%= render 'users/menu/registration_items' %> |
-      <%= render 'users/menu/login_items' %>
-    </div>
-  </div>
-
-  <div id="wrapper">
-    <div id="header">
-      <br class="clear" />
-      <div id="menu">
-        <br class="clear" />
-        <%= yield :main_menu %>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+          <%= link_to("SmartR", root_url, :class => "brand") %>
+        <ul class="nav">
+          <%= yield :main_menu %>
+        </ul>
         <%= form_for(:question, :url => search_questions_path, :html => {:method => :get}) do |f| %>
-            <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "toggle") %>
-            <%#= f.submit "Search" %>
-          <% end -%>
-      </div>
-    </div>
-    <div id="content">
-      <div id="ajax-search" style="display: none"></div>
-      <% if flash.present? %>
-        <div class="flash">
-          <% flash.each do |type, message| -%>
-            <div class="message <%= type %>">
-              <p><%= message %></p>
-            </div>
-          <% end -%>
+          <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "pull-left") %>
+          <%#= f.submit "Search" %>
+        <% end -%>
+        <div id="profile">
+          <%= render 'users/menu/registration_items' %>
+          <%= render 'users/menu/login_items' %>
+        </div><!-- profile -->
+      </div><!-- container -->
+    </div><!-- fill -->
+  </div><!-- topbar -->
+  <div class="container">
+    <div class="content">
+      <div class="page-header">
+        <h1><%= yield :title %>
+        <% if content_for?(:subtitle) %>
+          <small><%= yield :subtitle %></small>
+          <% end %></h1>
+      </div><!-- page-header -->
+      <div class="row">
+        <div class="span10">
+          <%= content_tag(:div, flash[:error], :class => "alert-message error") if flash[:error] %>
+          <%= content_tag(:div, flash[:notice], :class => "alert-message success") if flash[:notice] %>
+          <%= content_tag(:div, flash[:alert], :class => "alert-message error") if flash[:alert] %>
+          <%= yield %>
         </div>
-      <% end -%>
-      <%= yield  %>
-    </div>
-    <div id="sidebar">
-      <%= yield :facets %>
-      <%= yield :sidebar%>
-      <br class="clear" />
-    </div>
-    <br class="clear" />
-    <div id="footer">
-      <%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%>
-    </div>
-  </div>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js",
-                             "jquery-ui.min",
-                             "jquery_ujs",
-                             "wmd/jquery.wmd.min",
-                             "wmd/showdown",
-                             "jquery-autocomplete/jquery.autocomplete.pack",
-                             "highlight/highlight",
-                             "jquery.textarea",
-                             "jquery.toggle-value",
-                             "jquery.gritter.min",
-                             "jquery.typewatch", :cache => true %>
+        <div class="span4">
+          <%= yield :facets %>
+          <%= yield :sidebar%>
+        </div>
+      </div>
+    </div><!-- content -->
+      <footer>
+        <p><%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%></p>
+      </footer>
+    </div> <!-- /container -->
+  <%= javascript_include_tag "application" %>
+                             
   <%= javascript_include_tag Smartr::Settings[:syntax_highlighting][:languages].split(",").map{ |x| "/javascripts/highlight/languages/#{x.strip}" } %>
   </body>
 </html>
-<% title "SmartR - be a smartass!" %>

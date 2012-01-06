@@ -16,3 +16,4 @@ vendor/plugins/access_settings
 coverage
 .rspec
 .rvmrc
+.sass-cache/
