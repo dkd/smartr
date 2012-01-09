@@ -5,5 +5,7 @@
  *= require_self
  *= require bootstrap
  *= require formtastic-bootstrap
- *= require smartr
 */
+@import "settings.css.scss";
+@import "smartr.css.scss";
+@import "boxes.css.scss";

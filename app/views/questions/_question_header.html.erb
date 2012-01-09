@@ -1,4 +1,5 @@
-<h2 class="show-question"><%= link_to h(question.name), question_path(question.id, question.friendly_id) %></h2><br class="clear" />
+<% title link_to h(question.name), question_path(question.id, question.friendly_id)%>
+
 <div class="question">
   <div class="stats">
     <div class="votes" id="vote-box-<%=question.id %>">
