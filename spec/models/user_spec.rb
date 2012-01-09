@@ -100,7 +100,7 @@ describe User do
       it "requires presence" do
         user = Factory.build(:user, :login => nil)
         user.should_not be_valid
-        user.should have(3).error_on(:login)
+        user.should have(2).error_on(:login)
       end
 
       it "requires uniqueness" do

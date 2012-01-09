@@ -14,6 +14,7 @@ gem "devise", "1.5.3"
 gem "stringex"
 gem 'bootstrap-sass'
 gem 'formtastic-bootstrap'
+gem 'rails_autolink'
 
 #gem 'react_reporter', :git => "git://github.com/reactualize/react_reporter.git"
 

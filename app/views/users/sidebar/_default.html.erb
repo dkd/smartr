@@ -10,4 +10,5 @@
 <div class="tags">
 <% ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='uninteresting_tags'").order('created_at desc').each do |tag| -%>
   <%= link_to(tag.name, questions_path(:tag => tag.name), :class => "btn js-btn")%>
+<% end -%>
 </div>
