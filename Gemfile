@@ -8,7 +8,7 @@ gem "escape"
 gem 'will_paginate', '3.0.pre2'
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.0.6"
-gem "sunspot_rails", "1.2.rc4"
+gem "sunspot", "1.2.rc4", :git => "https://github.com/outoftime/sunspot.git", :tag => "v1.2.rc4"
 gem "mysql2", "0.2.7"
 gem "devise", "1.3.4"
 gem "stringex"
