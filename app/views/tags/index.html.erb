@@ -1,8 +1,8 @@
-<h2><%= t "tag.find_tags"%></h2>
+<% title t("tag.find_tags") %>
 <div class="tag-search">
   <%= form_for("tags", :url => tags_path, :html => {:method => "get"}) do |f| %>
-    <%= f.text_field(:q, :value => @q, :title => "Search ...", :class => "toggle") %>
-    <%= f.submit "Search"%>
+    <%= f.text_field(:q, :value => @q, :hint => "Search ...", :class => "toggle") %>
+    <%= f.submit "Search", :class => "btn" %>
   <% end %>
 </div>
 <br class="clear" />
@@ -11,6 +11,6 @@
 </div>
 <br class="clear" />
 <br class="clear" />
-<%=paginate @tags%>
+<%= paginate @tags %>
 <% main_menu :tags %>
 <% content_for :sidebar, render("sidebar")%>

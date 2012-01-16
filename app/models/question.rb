@@ -54,6 +54,11 @@ class Question < ActiveRecord::Base
       where("answers_count = ?", 0)
     end
 
+    def tags
+      tag_counts_on(:tags).
+      order("taggings.tags_count desc")
+    end
+
   end
 
   # Callbacks

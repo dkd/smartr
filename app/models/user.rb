@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
   friendly_id :login
 
   # Named Scopes
-  scope :latest, :order => "created_at DESC"
   scope :online, lambda {
     where "last_request_at > ?", (Time.now - 5.minutes)
   }
@@ -49,10 +48,14 @@ class User < ActiveRecord::Base
 
   class << self
 
-    def reputation
-      order("reputation DESC")
+    def latest
+      order("users.created_at DESC")
     end
-
+    
+    def best
+      order("users.reputation DESC")
+    end
+    
     def search(q, page=1, per_page=10)
       where(["login like ?","%#{q}%"]).order("reputation desc").page :page => page, :per_page => per_page
     end

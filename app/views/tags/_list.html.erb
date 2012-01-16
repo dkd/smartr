@@ -1,6 +1,6 @@
 <% if tags.present? %>
   <% tags.each do |tag| %>
-      <div style="width: 25%; float: left">
+      <div style="width: 25%; float: left">yo
          <%=link_to "#{tag.count} x #{tag}", questions_path(:tag => tag.name), :class => "tag" -%>
        </div>
     <% end -%>

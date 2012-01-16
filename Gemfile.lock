@@ -135,8 +135,10 @@ GEM
       thor (~> 0.14)
     json (1.6.1)
     json_pure (1.6.4)
-    kaminari (0.12.4)
-      rails (>= 3.0.0)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -307,7 +309,7 @@ DEPENDENCIES
   formtastic-bootstrap
   friendly_id (= 4.0.0)
   jquery-rails
-  kaminari
+  kaminari (~> 0.13.0)
   metric_fu
   mysql2
   paperclip

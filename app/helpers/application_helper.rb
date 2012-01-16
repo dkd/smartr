@@ -21,6 +21,7 @@ module ApplicationHelper
   def title(name, subtitle="")
     content_for :title, name
     content_for :subtitle, subtitle unless subtitle.blank?
+    content_for :html_title, Sanitize.clean(name)
   end
 
   def image_for(user, size)
@@ -49,8 +50,8 @@ module ApplicationHelper
     "*" if model.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
-  def page_entries_info(collection)
-    "FIXME!!!"
-  end
+#  def page_entries_info(collection)
+#    "FIXME!!!"
+#  end
 
 end

@@ -13,6 +13,8 @@ en:
       answer:
       comment:
       user:
+        one: user
+        other: users
       favourite:
       edit:
       vote:
@@ -39,6 +41,9 @@ en:
       edit:
         one: edit
         other: edits
+      user:
+        one: user
+        other: users
       vote:
         one: vote
         other: votes

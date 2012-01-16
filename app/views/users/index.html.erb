@@ -1,11 +1,7 @@
-<div class="header-with-tabs">
-  <h2><%= t("users.other").capitalize %></h2>
-  <span style="float: right"><%= page_entries_info @questions %></span>
-  <div class="tabs">
-    <%=user_submenu(:winner) %>
-  </div>
-  <br class="clear" />
-</div>
+<% title t("user.other").capitalize, page_entries_info(@users).html_safe  %>
+<ul class="pills">
+  <%= user_submenu(:winner) %>
+</ul>
 <div class="user-search">
   <input type="text" class="toggle" title="Enter a username ..." size="25" />
 </div>

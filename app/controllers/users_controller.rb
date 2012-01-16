@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [:edit, :update]
 
   def index
-    @users = User.reputation.page params[:page]
+    @users = User.best.page params[:page]
   end
 
   def search

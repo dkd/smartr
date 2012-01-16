@@ -1,10 +1,7 @@
-<div class="header-with-tabs">
-  <h2><%=h @user.login %></h2>
-    <div class="tabs">
-      <%=user_show_submenu(:reputation) %>
-    </div>
-    <br class="clear" />
-</div>
+<% title @user.login  %>
+<ul class="pills">
+  <%= user_submenu(:reputation) %>
+</ul>
 
 <div class="user-header">
   <%= image_tag @user.avatar.url(:medium), :alt => @user.login, :title => @user.login %>
@@ -16,23 +13,23 @@
 </div>
 
 <br class="clear" />
-<% if @user.latest_questions.size > 0 %>
+<% if @user.questions.size > 0 %>
   <div class="user-questions">
     <h2>Latest Questions</h2>
-    <% @user.latest_questions.each do |question| %>
-      <%= render "question", :locals => {:question => question} %>
+    <% @user.questions.latest.limit(5).each do |question| %>
+      <%= render "question", :question => question %>
     <% end -%>
   </div>
   <br class="clear" />
 <% end -%>
-<% if @user.latest_answers.size > 0 %>
+<% if @user.answers.latest.size > 0 %>
   <div class="user-questions">
     <h2>Latest Answers</h2>
-    <% @user.latest_answers.each do |question| %>
-      <%= render "question", :locals => {:question => question} %>
+    <% @user.answers.latest.each do |answer| %>
+      <%= render "question", :question => answer.question %>
     <% end -%>
   </div>
 <% end -%>
 
 <% main_menu :users %>
-<% content_for :sidebar, render("/users/sidebar/user", :locals => {:user => @user}) %>
+<% content_for :sidebar, render("/users/sidebar/user", :user => @user ) %>

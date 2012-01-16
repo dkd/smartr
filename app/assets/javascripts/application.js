@@ -8,9 +8,16 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require wmd/jquery.wmd.min
+//= require jquery.toggle-value
+//= require jquery.typewatch
+//= require jquery.textarea
+//= require jquery-autocomplete/jquery.autocomplete.pack
+//= require highlight/highlight.pack
+//= require jquery.gritter.min
 
-$.ajaxSetup({
-  dataType: 'string',
+
+$(document).ajaxSend(function(event, xhr, settings) {
+  xhr.setRequestHeader("Accept", "text/javascript, application/javascript");     
 });
 
 Array.prototype.contains = function (element)
@@ -36,9 +43,9 @@ $(document).ready(function(){
             success: function(data){
               $("div.tag-list").html(data);
             }});
-    
+
   });
-  
+
   $("div.user-search input").keyup(function(){
     var tag = $(this).val();
     $.ajax({type: "GET",
@@ -55,39 +62,39 @@ $(document).ready(function(){
                 $("div.user-list .no-result").fadeIn();
               }
             }});
-    
+
   });
-  
+
   //$("#top-flash").slideDown("slow");
   $("#top-flash span").click(function(){$(this).parent().slideUp("fast")});
-  
-  
+
+
   //$(".question-edit form, .answer-edit form").submit(function(){
   //  $("textarea.markdown").parent().find("input.plain").val($("textarea.markdown").val());
   //});
-  
+
   /* Highlight interesting questions */
   $(".tags.interesting a").each(function(i){
     interesting_tags.push($(this).html());
   });
-  
+
   $(".question-list .tags a").each(function(i){
     if(interesting_tags.contains($(this).html())){
       $(this).parents(".question-list").addClass("highlight-question");
     }
   });
-  
+
   $(".highlight-question").each(function(i){
     //jQuery.easing.def = "easeInCubic";
     $(this).animate({"backgroundColor":"#FFF4BF"}, 4000);
   });
-  
-  
+
+
   /* Fade uninteresting questions */
   $(".tags.uninteresting a").each(function(i){
     uninteresting_tags.push($(this).html());
   });
-  
+
   $(".question-list .tags a").each(function(i){
     if(uninteresting_tags.contains($(this).html())){
       $(this).parents(".question-list").addClass("fade-question");
@@ -98,25 +105,25 @@ $(document).ready(function(){
     //jQuery.easing.def = "easeInCubic";
     $(this).animate({"opacity":"0.5"}, 4000);
   });
-  
+
   /* Show values from rel attribute in form fields */
   $("input.toggle").toggleValue();
-  
+
   /* Fancy question button */
   $(".tags a, #sidebar a.new_question, #menu li, .tag-list span a").click(function(){
       $(this).effect("pulsate", { times:2, mode: "show" }, 200);
-      
+
       if($(this).attr("href") == undefined){
-        
+
         if($(this).children("a:first").length > 0) {
           window.location.href = $(this).children("a:first").attr("href");
         }
       }
   });
 
-  
+
   /* Tag auto-completion */
- 
+
   $("input.tags").autocomplete('/tags.json', {
       dataType: 'json',
       parse: function(data) {
@@ -132,9 +139,9 @@ $(document).ready(function(){
       multiple: true,
       autoFill: true
   });
-  
+
   /* Question auto-completion */
-  
+
   /*$("#question_searchstring").autocomplete('/questions/search.json', {
       dataType: 'json',
       parse: function(data) {
@@ -152,7 +159,7 @@ $(document).ready(function(){
   });
   */
   $("#question_searchstring").typeWatch({callback: function() {
-    	$.ajax({ url: "/questions/search.js", 
+    	$.ajax({ url: "/questions/search.js",
 	             data: "question[searchstring]="+$("#question_searchstring").val(),
 	             dataType: "html",
 	             success:function(data) {
@@ -170,27 +177,27 @@ $(document).ready(function(){
 
   $(".status a").hover(
     function(){
-    
+
       $(this).toggleClass("accepted");
-    
+
     },
     function(){
-    
+
       $(this).toggleClass("accepted");
-    
+
     }
   );
-  
+
    hljs.tabReplace = '    ';
    hljs.initHighlightingOnLoad();
-   
+
    $("textarea").tabby();
-   
+
    $("#wmd-input").wmd();
 
 	$(document).ajaxSend(function(e, xhr, options) {
 	  var token = $("meta[name='csrf-token']").attr("content");
 	  xhr.setRequestHeader("X-CSRF-Token", token);
 	});
-     
+
 });

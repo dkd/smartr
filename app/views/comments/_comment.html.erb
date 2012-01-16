@@ -30,6 +30,6 @@ end
     <%= link_to(t("comment.edit"),
                 edit_comment_path(comment),
                 :remote => true,
-                :class => "comment-edit") if user_signed_in? && current_user == comment.user %>
+                :class => "btn small success") if user_signed_in? && current_user == comment.user %>
   </div>
 </div>

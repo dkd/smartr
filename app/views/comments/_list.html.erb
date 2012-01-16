@@ -2,20 +2,20 @@
   <h3><%= t("comment.other").capitalize %></h3>
   <div id="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>">
   <% if comments.count > 1 %>
-    <ul>
-      <li><%=link_to(I18n.t(:"comment.order.latest"),
-                            comments_path(:model => parent.class.name,
-                                          :id => parent.id,
-                                          :comments_order => "latest"),
-                                          :remote => true,
-                                          :class => ("active" if (session[:comments_order] == "latest")))%>
+    <ul class="pills">
+      <li class="<%= (session[:comments_order] == "latest") ? "active" : "" %>">
+      <%= link_to(t(:"comment.order.latest"),
+                  comments_path(:model => parent.class.name,
+                                :id => parent.id,
+                                :comments_order => "latest"),
+                                :remote => true) %>
       </li>
-      <li><%=link_to(I18n.t(:"comment.order.reputation"),
+      <li class="<%= (session[:comments_order] == "reputation") ? "active" : "" %>">
+          <%=link_to(t(:"comment.order.reputation"),
                             comments_path(:model => parent.class.name,
                                           :id => parent.id,
                                           :comments_order => "reputation"),
-                                          :remote => true,
-                                          :class => ("active" if (session[:comments_order] == "reputation")))%>
+                                          :remote => true) %>
       </li>
     </ul>
     <br class="clear" />
@@ -29,4 +29,4 @@
 <%= link_to(t("comment.new"), new_comment_path(:comment => { :commentable_type => parent.class.name,
                                                               :commentable_id => parent.id}),
                                                               :remote => true,
-                                                              :class => "comment-new g-button") %>
+                                                              :class => "btn small") %>

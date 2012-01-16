@@ -1,7 +1,0 @@
-$('#<%="#{@comment.commentable_type}-comments-#{@comment.commentable_id} .comment-new"%>').hide();
-var html = '<div class="comment-new">';
-html += '<h3><%=t("comment.new")%></h3>';
-html += '<%=escape_javascript(render("form", :comment => @comment, :url => comments_path))%>';
-html += '<a href="#" onclick="$.gritter.removeAll();$(\'.comments a.comment-new\').show();$(\'.comments div.comment-new\').hide(); return false;" class="cancel"><%=t('cancel')%></a>';
-html += '</div>';
-$('#<%="#{@comment.commentable_type}-comments-#{@comment.commentable_id}"%>').append(html);

@@ -4,9 +4,9 @@
 </ul>
 <br class="clear" />
 <% @questions.each do |question| %>
-  <%= render "/questions/question",:question => question %>
+  <%= render "/questions/question", :question => question %>
 <% end -%>
 <br class="clear" />
 <%= paginate @questions %>
 <% content_for :sidebar, render("/questions/sidebar/default") %>
-<% main_menu :questions  %>
+<% main_menu :questions %>

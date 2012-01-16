@@ -18,6 +18,17 @@ class Answer < ActiveRecord::Base
   validates_with AnswerCountValidator
   validates :body, :presence => true, :length => {:minimum => 75, :maximum => 2048}
 
+
+  # Scopes
+
+  class << self
+
+    def latest
+      order("created_at DESC")
+    end
+
+  end
+
   def accepted?
     if self.question.accepted_answer == self
       true
