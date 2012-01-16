@@ -22,9 +22,9 @@ class ApplicationController < ActionController::Base
       true
     else
       respond_to do |format|
-        
+
         format.js { render "shared/not_authorized" }
-        format.html { 
+        format.html {
                       flash[:notice] = "You must be signed in to access this page"
                       redirect_to new_user_session_url
                     }

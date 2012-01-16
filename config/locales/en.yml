@@ -8,6 +8,8 @@ en:
   activerecord: 
     attributes:
       question:
+        one: question
+        other: questions
       answer:
       comment:
       user:
@@ -90,18 +92,23 @@ en:
     body: Please provide more detail
     asked_by: Asked by
     saved_in: saved_in
-    related: Related questions  
+    related: Related questions
+    tagged: "%{page_entries}<br />tagged with <span>%{tag}</span>"
     sub_menu:
       latest: Latest
       hot:  Hot
       active: Active
       unanswered: Unanswered
-    
+  
+  views:
+    one: view
+    other: views
+  
   vote:
     one: vote
     other: votes
     
-  remove_tag: -remove
+  remove_tag: remove
 
   sidebar:
     ask_a_question: Ask a question!

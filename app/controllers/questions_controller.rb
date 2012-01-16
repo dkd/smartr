@@ -6,9 +6,9 @@ class QuestionsController < ApplicationController
 
   def index
       if (params[:tag].present?)
-        @questions = Question.latest.list.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => 15
+        @questions = Question.latest.list.tagged_with(params[:tag]).page(params[:page])
       else
-        @questions = Question.latest.list.paginate :page => params[:page], :per_page => 15
+        @questions = Question.latest.list.page(params[:page])
       end
       respond_to do |format|
         format.xml
@@ -72,17 +72,17 @@ class QuestionsController < ApplicationController
   end
 
   def hot
-    @questions = Question.list.hot.paginate :page => params[:page], :per_page => 15
+    @questions = Question.list.hot.page(params[:page])
     render :index_for_hot
   end
 
   def active
-    @questions = Question.active.list.paginate :page => params[:page], :per_page => 15
+    @questions = Question.active.list.page(params[:page])
     render :index_for_active
   end
 
   def unanswered
-    @questions = Question.unanswered.list.paginate :page => params[:page], :per_page => 15
+    @questions = Question.unanswered.list.page(params[:page])
     render :index_for_unanswered
   end
 
@@ -97,7 +97,7 @@ class QuestionsController < ApplicationController
         highlight :name
         tie 0.1
       end
-      
+
       %w(user state).each do |easy_facet|
         facet easy_facet, :minimum_count => 2
         if params[:question][easy_facet].present?
@@ -122,7 +122,7 @@ class QuestionsController < ApplicationController
           with(:created_at).greater_than(Time.now - 12.month)
         end
       end
-      
+
       facet :number_of_comments do
         row("zero") do
           with(:number_of_comments, 0)
@@ -134,7 +134,7 @@ class QuestionsController < ApplicationController
           with(:number_of_comments).greater_than(2)
         end
       end
-      
+
       if params[:question][:number_of_comments].present?
         number_of_comments = case params[:question][:number_of_comments]
                                when "zero"
@@ -144,7 +144,7 @@ class QuestionsController < ApplicationController
                                when "at_least_3"
                                  with(:number_of_comments).greater_than(2)
                               end
-                              
+
       end
 
       if params[:question][:created_at].present?

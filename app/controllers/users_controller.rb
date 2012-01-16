@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [:edit, :update]
 
   def index
-    @users = User.reputation.paginate :page => params[:page], :per_page => 10
+    @users = User.reputation.page params[:page]
   end
 
   def search
     if params[:q].present?
       @users = User.search(params[:q])
     else
-      @users = User.paginate :page => params[:page], :per_page => 10
+      @users = User.page params[:page], :per_page => 10
     end
     respond_to do |format|
       format.js {}

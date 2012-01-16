@@ -1,5 +1,5 @@
-<div class="question-list">
-  <div class="stats">
+<div class="row question-list-item">
+  <div class="stats span3">
     <div class="votes">
       <%= question.votes_count.humanize %>
       <span class="desc"><%= t("vote", :count => question.votes_count) %></span>
@@ -15,7 +15,8 @@
       <span class="desc"><%= t("answers", :count => question.answers_count) %></span>
     </div>
   </div>
-  <div class="body">
+
+  <div class="span7">
     <h3><%= link_to(h(question.name), question_path(question.id, question.friendly_id))%></h3>
     <% unless controller.controller_name == "users" %>
     <span class="user">
@@ -27,10 +28,9 @@
     <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>
-          <%= link_to(h(tag.name), questions_path(:tag => tag.name), :class => "tag")%>
+          <%= link_to(h(tag.name), questions_path(:tag => tag.name), :class => "btn small") %>
         <% end -%>
     </div>
     <% end -%>
   </div>
-  <br class="clear" />
 </div>

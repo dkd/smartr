@@ -22,18 +22,39 @@ class Question < ActiveRecord::Base
   # Extensions
   acts_as_taggable_on :tags
   acts_as_tagger
-  
+
   # Friendly ID
   extend FriendlyId
   friendly_id :permalink
 
+  # Kaminari Pagination
+  paginates_per 15
 
   # Named Scopes
-  scope :list, :group => "questions.id", :include => [:user]
-  scope :latest, :order => "questions.created_at DESC"
-  scope :hot, :order => "answers_count DESC, questions.updated_at DESC"
-  scope :active, :order => "questions.updated_at DESC, answers_count DESC"
-  scope :unanswered, :order => "questions.created_at ASC", :conditions => ["answers_count = ?", "0"]
+  class << self
+
+    def list
+      group("questions.id").includes(:user)
+    end
+
+    def latest
+      order("questions.created_at DESC")
+    end
+
+    def hot
+      order("answers_count DESC, questions.updated_at DESC")
+    end
+
+    def active
+      order("questions.updated_at DESC, answers_count DESC")
+    end
+
+    def unanswered
+      order("questions.created_at ASC").
+      where("answers_count = ?", 0)
+    end
+
+  end
 
   # Callbacks
   before_validation :set_permalink
@@ -132,7 +153,7 @@ class Question < ActiveRecord::Base
     string :user do
       user.login
     end
-    
+
     integer :number_of_comments do
       comments.count
     end

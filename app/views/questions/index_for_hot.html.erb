@@ -1,15 +1,12 @@
 <% title t("question.hot"), page_entries_info(@questions) %>
-<div class="header-with-tabs">
-  <div class="tabs">
-    <%=question_submenu(:hot) %>
-  </div>
-  <br class="clear" />
-</div>
+<ul class="pills">
+  <%= question_submenu(:hot) %>
+</ul>
 <br class="clear" />
 <% @questions.each do |question| %>
   <%= render "/questions/question",:question => question %>
 <% end -%>
 <br class="clear" />
-<%= will_paginate @questions %>
+<%= paginate @questions %>
 <% content_for :sidebar, render("/questions/sidebar/default") %>
 <% main_menu :questions  %>

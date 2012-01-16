@@ -49,4 +49,8 @@ module ApplicationHelper
     "*" if model.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
+  def page_entries_info(collection)
+    "FIXME!!!"
+  end
+
 end

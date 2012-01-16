@@ -1,15 +1,22 @@
-<% title t("question.latest"), page_entries_info(@questions) %>
-<div class="header-with-tabs">
-  <div class="tabs">
-    <%= question_submenu(:latest) %>
-  </div>
-  <br class="clear" />
-</div>
+<% if params[:tag].present? %>
+  <% title t("question.latest"), t("question.tagged",
+                                :tag => params[:tag],
+                                :page_entries => page_entries_info(@questions)).html_safe +
+                                "&nbsp;".html_safe +
+                                 link_to(t("remove_tag"), root_path, :class => "btn small danger") %>
+<% else %>
+  <% title t("question.latest"), page_entries_info(@questions) %>
+<% end %>
+
+<ul class="pills">
+  <%= question_submenu(:latest) %>
+</ul>
+
 <br class="clear" />
 <% @questions.each do |question| %>
   <%= render "/questions/question", :question => question %>
 <% end -%>
 <br class="clear" />
-<%= will_paginate @questions %>
+<%= paginate @questions %>
 <% content_for :sidebar, render("/questions/sidebar/default") %>
 <% main_menu :questions  %>

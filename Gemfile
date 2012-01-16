@@ -4,7 +4,7 @@ gem "friendly_id", "4.0.0"
 gem "sanitize"
 gem "bluecloth"
 gem "escape"
-gem 'will_paginate', '3.0.2'
+gem "kaminari"
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.2.1"
 gem "sunspot_rails", "1.3.0"

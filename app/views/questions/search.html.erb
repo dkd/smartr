@@ -12,7 +12,7 @@
   <%= render "/questions/question", :question => question %>
   <% end -%>
   <br class="clear" />
-  <%= will_paginate @questions.results %>
+  <%= paginate @questions.results %>
 <% else %>
   <p>No results found. I am very sorry.</p>
 <% end -%>

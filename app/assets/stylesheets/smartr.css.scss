@@ -33,11 +33,19 @@ body {
   margin: -20px -20px 20px;
 }
 
-/* Styles you shouldn't keep as they are for displaying this base example only */
-.content .span10,
-.content .span4 {
-  min-height: 500px;
+.page-header {
+  h1 {
+    small {
+      span{
+      color: green;
+      font-weight: bold;
+      font-style: italic;
+    }
+    }
+  }
 }
+
+
 /* Give a quick and non-cross-browser friendly divider */
 .content .span4 {
   margin-left: 0;
@@ -52,5 +60,35 @@ body {
 .question-list {
   h3 {
     line-height: 22px;
+  }
+}
+
+#new_question {
+  text-align: center;
+  width: 190px;
+  font-size: 1.7em;
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+div.tags > a {
+  margin: 0 4px 4px 0px;
+}
+
+.question-list-item {
+  h3 {
+    line-height: 1em;
+  }
+  margin-bottom: 1em;
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 1em;
+  .user {
+    display: block;
+    background: #f4f4f4;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 2px;
+    border: 1px solid #e9e9e9;
   }
 }

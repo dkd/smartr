@@ -30,7 +30,7 @@ describe UsersHelper do
   
   describe "user_submenu" do
     it "activates the winner's link" do
-      helper.user_submenu(:winner).should match(content_tag(:li, link_to(t("users.winner"), users_path(:page => nil)), :class => "active"))
+      helper.user_submenu(:winner).should match(content_tag(:li, link_to(t("users.winner"), users_path), :class => "active"))
     end
     it "activates the who_is_online link" do
       helper.user_submenu(:who_is_online).should match(content_tag(:li, link_to(t("users.who_is_online"), who_is_online_users_path), :class => "active"))

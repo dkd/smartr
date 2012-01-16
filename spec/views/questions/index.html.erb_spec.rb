@@ -13,7 +13,7 @@ describe "questions/index.html.erb" do
     end
   it "displays questions list" do
     question = Factory.create :question2
-    assign(:questions, (Question.latest.includes([:user,:votes]).paginate :page => params[:page], :per_page => 15))
+    assign(:questions, (Question.latest.includes([:user,:votes]).page :page => params[:page], :per_page => 15))
     render
     rendered.should include(question.name)
   end

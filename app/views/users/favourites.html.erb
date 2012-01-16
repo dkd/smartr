@@ -11,6 +11,6 @@
   <% end -%>
 </div>
 <br class="clear" />
-<%= will_paginate @questions %>
+<%= paginate @questions %>
 <% main_menu :users %>
 <% content_for :sidebar, render("/users/sidebar/user", :user => @user) %>

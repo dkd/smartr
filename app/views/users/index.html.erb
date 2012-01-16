@@ -24,6 +24,6 @@
  <div class="no-result"><%= t("users.not_found_msg")%></div>
 </div>
 <br class="clear" />
-<%= will_paginate @users%>
+<%= paginate @users%>
 <% main_menu :users %>
 <% content_for :sidebar, render("/users/sidebar/default") %>

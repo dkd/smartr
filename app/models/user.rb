@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     end
 
     def search(q, page=1, per_page=10)
-      where(["login like ?","%#{q}%"]).order("reputation desc").paginate :page => page, :per_page => per_page
+      where(["login like ?","%#{q}%"]).order("reputation desc").page :page => page, :per_page => per_page
     end
 
   end
