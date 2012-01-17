@@ -1,4 +1,4 @@
-<% title t("question.active"), page_entries_info(@questions) %>
+<% title t("question.active"), page_entries_info(@questions).html_safe %>
 <ul class="pills">
   <%= question_submenu(:active) %>
 </ul>

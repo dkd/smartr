@@ -1,4 +1,4 @@
-<% title t("question.unanswered"), page_entries_info(@questions) %>
+<% title t("question.unanswered"), page_entries_info(@questions).html_safe %>
 <ul class="pills">
   <%= question_submenu(:unanswered) %>
 </ul>

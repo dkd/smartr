@@ -14,7 +14,7 @@ class Question < ActiveRecord::Base
   # Validations
   validates :name, :presence => true, :length => { :minimum => 20, :maximum => 200 }, :uniqueness => true
   validates :body, :presence => true, :length => { :minimum => 75 }, :uniqueness => true
-  validates :tag_list, :presence => true, :length => {:maximum => 8}
+  validates :tag_list, :presence => true, :length => { :maximum => 8 }
 
   # Nested Forms
   accepts_nested_attributes_for :edits
@@ -34,7 +34,7 @@ class Question < ActiveRecord::Base
   class << self
 
     def list
-      group("questions.id").includes(:user)
+      includes(:user)
     end
 
     def latest
@@ -42,7 +42,7 @@ class Question < ActiveRecord::Base
     end
 
     def hot
-      order("answers_count DESC, questions.updated_at DESC")
+      order("questions.answers_count DESC, questions.updated_at DESC")
     end
 
     def active

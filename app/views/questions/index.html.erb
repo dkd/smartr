@@ -5,7 +5,7 @@
                                 "&nbsp;".html_safe +
                                  link_to(t("remove_tag"), root_path, :class => "btn small danger") %>
 <% else %>
-  <% title t("question.latest"), "" %>
+  <% title t("question.latest"), page_entries_info(@questions).html_safe %>
 <% end %>
 
 <ul class="pills">

@@ -16,8 +16,11 @@
     -webkit-border-radius: 3px;
     border-radius: 3px;
     span.desc {
-      font-size: 12px;
-      display: block; } }
+      font-size: 11px;
+      display: block;
+      font-weight: normal;
+    } 
+  }
   .votes {
     background: $color5 * 1.1; }
   .views {
@@ -26,8 +29,7 @@
   .answers {
     background: $color2;
     color: white;
-    span.desc {
-      font-size: 10px; } }
+  }
   .answered {
     color: #ffff99;
     span.desc {
