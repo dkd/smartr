@@ -1,7 +1,7 @@
 class Api::V1::QuestionsController < ApplicationController
   respond_to :json
   def index
-    @questions = Question.latest.page :page => params[:page], :per_page => 30
+    @questions = Question.latest.page(params[:page]).per(30)
     respond_to do |format|
       format.json {
         render :json => { :items => @questions.map(&:as_json),

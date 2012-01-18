@@ -1,7 +1,5 @@
 <% title t("question.unanswered"), page_entries_info(@questions).html_safe %>
-<ul class="pills">
-  <%= question_submenu(:unanswered) %>
-</ul>
+<%= question_submenu(:unanswered) %>
 <br class="clear" />
 <% @questions.each do |question| %>
   <%= render "/questions/question", :question => question %>

@@ -7,11 +7,7 @@
 <% else %>
   <% title t("question.latest"), page_entries_info(@questions).html_safe %>
 <% end %>
-
-<ul class="pills">
-  <%= question_submenu(:latest) %>
-</ul>
-
+<%= question_submenu(:latest) %>
 <br class="clear" />
 <% @questions.each do |question| %>
   <%= render "/questions/question", :question => question %>

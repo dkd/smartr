@@ -1,12 +1,15 @@
 class Favourite < ActiveRecord::Base
 
-  #Associations
+  # Associations
   belongs_to :user
   belongs_to :question
 
-  #Validations
+  # Validations
   validates :user, :presence => true
   validates :user, :presence => true
+
+  # Kaminari Pagination
+  paginates_per 15
 
 end
 

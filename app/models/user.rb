@@ -17,18 +17,21 @@ class User < ActiveRecord::Base
   has_many :favourite_questions, :through => :favourites, :source => :question
 
   attr_accessor :image_url
-  
+
   # Modules
   include VoterModule
-  
+
   # Plugins
   acts_as_taggable_on :interesting_tags
   acts_as_taggable_on :uninteresting_tags
   acts_as_tagger
-  
+
   # Friendly ID
   extend FriendlyId
   friendly_id :login
+
+  # Kaminari Pagination
+  paginates_per 10
 
   # Named Scopes
   scope :online, lambda {
@@ -51,13 +54,13 @@ class User < ActiveRecord::Base
     def latest
       order("users.created_at DESC")
     end
-    
+
     def best
       order("users.reputation DESC")
     end
-    
-    def search(q, page=1, per_page=10)
-      where(["login like ?","%#{q}%"]).order("reputation desc").page :page => page, :per_page => per_page
+
+    def search(q, page = 1)
+      where(["login like ?","%#{q}%"]).order("reputation desc").page(page)
     end
 
   end
@@ -119,7 +122,7 @@ class User < ActiveRecord::Base
   searchable do
     string :login
   end
-  
+
 
 
 end

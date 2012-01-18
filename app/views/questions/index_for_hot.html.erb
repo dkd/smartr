@@ -1,7 +1,5 @@
 <% title t("question.hot"), page_entries_info(@questions).html_safe %>
-<ul class="pills">
-  <%= question_submenu(:hot) %>
-</ul>
+<%= question_submenu(:hot) %>
 <br class="clear" />
 <% @questions.each do |question| %>
   <%= render "/questions/question", :question => question %>

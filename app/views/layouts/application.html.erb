@@ -20,9 +20,7 @@
     <div class="navbar-inner">
       <div class="container">
         <%= link_to("SmartR", root_url, :class => "brand pull-left") %>
-        <ul class="nav">
           <%= yield :main_menu %>
-        </ul>
         <%= form_for(:question, :url => search_questions_path, :html => {:method => :get, :class => "form-search navbar-search pull-left"}) do |f| %>
           <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "search-query span3", :placeholder => "Search ...") %>
           <%#= f.submit "Search" %>

@@ -8,9 +8,9 @@ class UsersController < ApplicationController
 
   def search
     if params[:q].present?
-      @users = User.search(params[:q])
+      @users = User.search(params[:q], params[:page])
     else
-      @users = User.page params[:page], :per_page => 10
+      @users = User.page(params[:page])
     end
     respond_to do |format|
       format.js {}

@@ -77,12 +77,12 @@ class QuestionsController < ApplicationController
   end
 
   def active
-    @questions = Question.active.list..page(params[:page])
+    @questions = Question.active.list.page(params[:page])
     render :index_for_active
   end
 
   def unanswered
-    @questions = Question.unanswered.list..page(params[:page])
+    @questions = Question.unanswered.list.page(params[:page])
     render :index_for_unanswered
   end
 

@@ -15,7 +15,7 @@ module ApplicationHelper
       menu << {:name => I18n.t(:"main_menu.tags"), :id => "tags", :link => tags_path}
       menu << {:name => I18n.t(:"main_menu.users"), :id => "users", :link => users_path}
       menu << {:name => 'Admin', :id => "admin", :link => admin_url} if is_admin?
-      content_for :main_menu, build_menu(menu, active)
+      content_for :main_menu, build_menu(menu, active, "nav")
   end
 
   def title(name, subtitle="")
@@ -28,13 +28,13 @@ module ApplicationHelper
     image_tag(user.avatar.url(size.to_sym))
   end
 
-  def build_menu(menu, active)
+  def build_menu(menu, active, css_class = "")
       li = ""
       menu.each do |m|
         class_name = (m[:id]==active.to_s)? 'active' : ''
         li +=content_tag(:li, link_to(m[:name], m[:link]), :class => class_name)
       end
-      raw(li)
+      content_tag :ul, raw(li), :class => css_class
     end
 
   def code(html)
