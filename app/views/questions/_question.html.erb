@@ -1,5 +1,5 @@
-<div class="row question-list-item">
-  <div class="stats span3">
+<div class="row question-list-item pull-left">
+  <div class="stats span2 pull-left">
     <div class="votes">
       <%= question.votes_count.humanize %>
       <span class="desc"><%= t("vote", :count => question.votes_count) %></span>
@@ -10,13 +10,13 @@
       <span class="desc"><%= t("views", :count => question.views) %></span>
     </div>
 
-    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.accepted_answer.blank? %>">
+    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.accepted_answer.nil? %>">
       <%= question.answers_count %>
       <span class="desc"><%= t("answers", :count => question.answers_count) %></span>
     </div>
   </div>
 
-  <div class="span7">
+  <div class="span7 question-cell pull-left">
     <h3><%= link_to(h(question.name), question_path(question.id, question.friendly_id))%></h3>
     <% unless controller.controller_name == "users" %>
     <span class="user">

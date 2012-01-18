@@ -1,5 +1,5 @@
 <% title "Register", "... you are almost there!"%>
-<%= semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-stacked"} ) do |f| %>
+<%= semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "vertical-form"} ) do |f| %>
   <%= f.inputs do %>
     <%= f.input :login %>
     <%= f.input :email, :hint =>"Enter your email address" %>

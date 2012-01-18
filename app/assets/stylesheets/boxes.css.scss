@@ -1,14 +1,14 @@
 .stats {
   margin-top: 5px;
   div {
-    width: 50px;
-    height: 44px;
+    width: 56px;
+    height: 48px;
     font-size: 20px;
     font-weight: bold;
     vertical-align: center;
     text-align: center;
     float: left;
-    margin-right: 2px;
+    margin-right: 6px;
     padding-top: 5px;
     padding-bottom: 2px;
     line-height: 23px;
@@ -29,6 +29,7 @@
   .answers {
     background: $color2;
     color: white;
+    margin-right: 0px;
   }
   .answered {
     color: #ffff99;

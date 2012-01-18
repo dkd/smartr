@@ -15,24 +15,25 @@
   <!--<link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="#" />-->
 </head>
 <body>
-  <div class="topbar">
-    <div class="fill">
+
+  <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+    <div class="navbar-inner">
       <div class="container">
-          <%= link_to("SmartR", root_url, :class => "brand") %>
+        <%= link_to("SmartR", root_url, :class => "brand pull-left") %>
         <ul class="nav">
           <%= yield :main_menu %>
         </ul>
-        <%= form_for(:question, :url => search_questions_path, :html => {:method => :get}) do |f| %>
-          <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "pull-left") %>
+        <%= form_for(:question, :url => search_questions_path, :html => {:method => :get, :class => "form-search navbar-search pull-left"}) do |f| %>
+          <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "search-query span3", :placeholder => "Search ...") %>
           <%#= f.submit "Search" %>
         <% end -%>
-        <div id="profile">
+        <div id="profile" class="pull-left">
           <%= render 'users/menu/registration_items' %>
           <%= render 'users/menu/login_items' %>
         </div><!-- profile -->
       </div><!-- container -->
-    </div><!-- fill -->
-  </div><!-- topbar -->
+    </div><!-- navbar-inner -->
+  </div><!-- navbar -->
   <div class="container">
     <div class="content">
       <div class="page-header">
@@ -42,13 +43,13 @@
           <% end %></h1>
       </div><!-- page-header -->
       <div class="row">
-        <div class="span10">
+        <div class="span9">
           <%= content_tag(:div, flash[:error], :class => "alert-message error") if flash[:error] %>
           <%= content_tag(:div, flash[:notice], :class => "alert-message success") if flash[:notice] %>
           <%= content_tag(:div, flash[:alert], :class => "alert-message error") if flash[:alert] %>
           <%= yield %>
         </div>
-        <div class="span4">
+        <div class="span3">
           <%= yield :facets %>
           <%= yield :sidebar%>
         </div>

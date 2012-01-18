@@ -12,7 +12,7 @@ gem "sunspot_solr"
 gem "mysql2"
 gem "devise", "1.5.3"
 gem "stringex"
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', :git => "git://github.com/thomas-mcdonald/bootstrap-sass.git", :branch => "2.0"
 gem 'formtastic-bootstrap'
 gem 'rails_autolink'
 

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: ffbf4988b59751828e989526aa862829e3509092
+  branch: 2.0
+  specs:
+    bootstrap-sass (2.0.0)
+      sass-rails (~> 3.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -39,8 +47,6 @@ GEM
       ZenTest (>= 4.4.1)
     bcrypt-ruby (3.0.1)
     bluecloth (2.2.0)
-    bootstrap-sass (1.4.3)
-      sass-rails (~> 3.1)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -297,7 +303,7 @@ DEPENDENCIES
   acts-as-taggable-on (>= 2.2.1)
   autotest
   bluecloth
-  bootstrap-sass
+  bootstrap-sass!
   capybara
   coffee-rails
   cucumber-rails
