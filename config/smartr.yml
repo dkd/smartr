@@ -7,10 +7,10 @@ defaults: &defaults
     languages: "ruby, php, html-xml, typoscript"
   
   questions:
-    restrict_access: true
+    restrict_access: "true"
   
   user:
-    restrict_access: true
+    restrict_access: "true"
   
   mailer:
     from: 'SmartR Notification <do-not-reply@smartr.dev>'
