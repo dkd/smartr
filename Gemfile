@@ -23,7 +23,7 @@ gem 'rails_autolink'
 group :test do
   gem "metric_fu"
   gem 'rspec-rails', '>= 2.8.1'
-  gem 'factory_girl_rails', '>=1.4.0'
+  gem 'factory_girl_rails', '1.4.0'
   gem 'autotest'
   gem 'faker'
   gem 'sqlite3-ruby', '1.3.3', :require => 'sqlite3'
