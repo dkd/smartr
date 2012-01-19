@@ -10,7 +10,7 @@
       <span class="desc"><%= t("views", :count => question.views) %></span>
     </div>
 
-    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" unless question.accepted_answer.nil? %>">
+    <div class="answers <%=" zero" if question.answers_count == 0 %><%=" answered" if question.answer_id.present? %>">
       <%= question.answers_count %>
       <span class="desc"><%= t("answers", :count => question.answers_count) %></span>
     </div>

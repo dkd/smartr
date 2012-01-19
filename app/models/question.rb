@@ -9,7 +9,7 @@ class Question < ActiveRecord::Base
   has_many    :answers, :dependent => :destroy
   has_many    :favourites, :dependent => :destroy
   belongs_to  :accepted_answer, :class_name => "Answer", :foreign_key => :answer_id
-  has_many :edits, :as => :editable, :dependent => :destroy
+  has_many    :edits, :as => :editable, :dependent => :destroy
 
   # Validations
   validates :name, :presence => true, :length => { :minimum => 20, :maximum => 200 }, :uniqueness => true

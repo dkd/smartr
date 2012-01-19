@@ -5,7 +5,7 @@ require File.expand_path('../config/application', __FILE__)
 
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rake/task'
 require 'metric_fu'
 MetricFu::Configuration.run do |config|
   config.rcov[:test_files] = ['spec/**/*_spec.rb']
