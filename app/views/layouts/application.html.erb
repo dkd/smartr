@@ -39,8 +39,9 @@
         <% if content_for?(:subtitle) %>
           <small><%= yield :subtitle %></small>
           <% end %></h1>
+          <%= yield :page_header_infobox if content_for :page_header_infox %>
       </div><!-- page-header -->
-      <div class="row">
+      <div class="row pull-left">
         <div class="span9">
           <%= content_tag(:div, flash[:error], :class => "alert-message error") if flash[:error] %>
           <%= content_tag(:div, flash[:notice], :class => "alert-message success") if flash[:notice] %>
@@ -51,7 +52,7 @@
           <%= yield :facets %>
           <%= yield :sidebar%>
         </div>
-      </div>
+      </div><!-- row end -->
     </div><!-- content -->
       <footer>
         <p><%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%></p>

@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require wmd/jquery.wmd.min
+//= require wmd/jquery.wmd.min.js
 //= require jquery.toggle-value
 //= require jquery.typewatch
 //= require jquery.textarea

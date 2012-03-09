@@ -4,13 +4,12 @@ class UserMailer < ActionMailer::Base
   default :from => Smartr::Settings[:mailer][:from]
 
   def question_update(question, object)
-    recipients    question.user.email
-    subject       "New #{object.class.name.downcase} on your question!"
-    sent_on       Time.now
-    content_type  "text/html"
+
     @question = question
     @object = object
-    mail :to => question.user.email, :subject => "New #{object.class.name.downcase} on your question!"
+    mail :to => question.user.email,
+         :subject => "New #{object.class.name.downcase} on your question!",
+         :content_type => "text/html"
   end
 
 end

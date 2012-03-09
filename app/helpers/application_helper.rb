@@ -18,10 +18,11 @@ module ApplicationHelper
       content_for :main_menu, build_menu(menu, active, "nav")
   end
 
-  def title(name, subtitle="")
+  def title(name, subtitle="", page_header_infobox="")
     content_for :title, name
     content_for :subtitle, subtitle unless subtitle.blank?
     content_for :html_title, Sanitize.clean(name)
+    content_for :page_header_infobox, page_header_infobox
   end
 
   def image_for(user, size)
@@ -29,13 +30,13 @@ module ApplicationHelper
   end
 
   def build_menu(menu, active, css_class = "")
-      li = ""
-      menu.each do |m|
-        class_name = (m[:id]==active.to_s)? 'active' : ''
-        li +=content_tag(:li, link_to(m[:name], m[:link]), :class => class_name)
-      end
-      content_tag :ul, raw(li), :class => css_class
+    li = ""
+    menu.each do |m|
+      class_name = (m[:id]==active.to_s)? 'active' : ''
+      li +=content_tag(:li, link_to(m[:name], m[:link]), :class => class_name)
     end
+    content_tag :ul, raw(li), :class => css_class
+  end
 
   def code(html)
     auto_link(Sanitize.clean(BlueCloth.new(html).to_html,

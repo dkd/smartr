@@ -1,7 +1,8 @@
 <% title link_to h(question.name), question_path(question.id, question.friendly_id)%>
 
-<div class="question">
-  <div class="stats">
+<div class="question row">
+
+  <div class="stats span2">
     <div class="votes" id="vote-box-<%=question.id %>">
       <%= render "/questions/vote_box", :question => question %>
     </div>
@@ -16,14 +17,15 @@
           </div>
       <% end -%>
 </div>
-  <div class="body">
+  <div class="body span6">
     <%= raw code(question.body) %>
+    <%= content_for :page_header_infobox do %>
     <div class="user"><%=t("questions.asked_by")%>
-    <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0), user_path(question.user) unless question.user.avatar.nil?%>
+    <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0, :class => "thumbnail"), user_path(question.user) unless question.user.avatar.nil?%>
     <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %>,
     <%= t "questions.saved_in" %><span class="tags">
        <% question.tags.each do |tag| %>
-         <%= link_to(h(tag), questions_path(:tag => tag.name), :class => "tag")%>
+         <%= link_to(h(tag), questions_path(:tag => tag.name), :class => "label notice")%>
        <% end -%>
      </span><br />
     <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points
@@ -44,8 +46,9 @@
     <%= distance_of_time_in_words_to_now(question.last_edit.created_at) %> by <%= question.last_edit.user.login %>
   </div>
   <% end %>
-
+<% end %>
   </div>
+  
   <br class="clear" />
   <div class="actions">
     <br class="clear" />

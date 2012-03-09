@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
   def index
       if (params[:tag].present?)
-        @questions = Question.latest.list.includes(:answer).tagged_with(params[:tag]).page(params[:page])
+        @questions = Question.latest.list.tagged_with(params[:tag]).page(params[:page])
       else
         @questions = Question.latest.list.page(params[:page])
       end
@@ -125,7 +125,7 @@ class QuestionsController < ApplicationController
 
       facet :number_of_comments do
         row("zero") do
-          with(:number_of_comments, 0)
+          with(:number_of_comments).less_than(1)
         end
         row("at_least_1") do
           with(:number_of_comments).greater_than(0)

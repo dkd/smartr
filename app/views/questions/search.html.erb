@@ -1,12 +1,4 @@
-<div class="header-with-tabs">
-  <h2>Solr Search</h2>
-  <span style="float: right"><%= page_entries_info @questions.results %></span>
-  <div class="tabs">
-    <%#=question_submenu(:latest) %>
-  </div>
-  <br class="clear" />
-</div>
-<br class="clear" />
+<% title t("search"), page_entries_info(@questions.results).html_safe %>
 <% if @questions.results.present? %>
   <% @questions.each_hit_with_result do |hit, question| %>
   <%= render "/questions/question", :question => question %>
