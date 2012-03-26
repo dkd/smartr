@@ -19,7 +19,7 @@
   <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
     <div class="navbar-inner">
       <div class="container">
-        <%= link_to("SmartR", root_url, :class => "brand pull-left") %>
+        <%= link_to("SmartR", root_url, :class => "brand") %>
           <%= yield :main_menu %>
         <%= form_for(:question, :url => search_questions_path, :html => {:method => :get, :class => "form-search navbar-search pull-left"}) do |f| %>
           <%= f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "search-query span3", :placeholder => "Search ...") %>
@@ -41,11 +41,11 @@
           <% end %></h1>
           <%= yield :page_header_infobox if content_for :page_header_infox %>
       </div><!-- page-header -->
-      <div class="row pull-left">
+      <div class="row">
         <div class="span9">
-          <%= content_tag(:div, flash[:error], :class => "alert-message error") if flash[:error] %>
-          <%= content_tag(:div, flash[:notice], :class => "alert-message success") if flash[:notice] %>
-          <%= content_tag(:div, flash[:alert], :class => "alert-message error") if flash[:alert] %>
+          <%= content_tag(:div, flash[:error], :class => "alert error") if flash[:error] %>
+          <%= content_tag(:div, flash[:notice], :class => "alert success") if flash[:notice] %>
+          <%= content_tag(:div, flash[:alert], :class => "alert error") if flash[:alert] %>
           <%= yield %>
         </div>
         <div class="span3">
