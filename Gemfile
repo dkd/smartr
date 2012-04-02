@@ -31,6 +31,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
+  gem 'test-unit', :require => "test/unit"
 end
 
 group :development do
