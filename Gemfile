@@ -14,6 +14,7 @@ gem "devise", "2.0.4"
 gem "stringex"
 gem "simple_form"
 gem 'rails_autolink'
+gem "dynamic_form"
 
 #gem 'react_reporter', :git => "git://github.com/reactualize/react_reporter.git"
 

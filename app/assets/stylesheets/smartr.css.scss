@@ -119,9 +119,18 @@ div.tags > a {
     }
   }
 }
-.label.notice {
+.label.notice:link,
+.label.notice:visited
+ {
+    color: #08C;
     padding: 6px;
-    background: black;
+    border: 1px solid #d6f6ff * 0.8;
+    background: #d6f6ff;
+    //margin: 8px;
+
+}
+.label.notice:hover {
+    background: #d6f6ff * 1.2;
     //margin: 8px;
 }
 form label {
