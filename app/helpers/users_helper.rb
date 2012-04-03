@@ -6,7 +6,7 @@ module UsersHelper
        menu << {:name => t("users.winner"), :id => "winner", :link => users_path}
        #menu << {:name => "Loser", :id => "loser", :link => url_for(:controller => :users, :action => :index, :page => nil)}
        menu << {:name => t("users.who_is_online"), :id => "who_is_online", :link => who_is_online_users_path}
-       build_menu(menu, active, "nav pills")
+       build_menu(menu, active, "nav nav-pills")
    end
 
   def user_show_submenu(active)

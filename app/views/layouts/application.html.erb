@@ -16,7 +16,7 @@
 </head>
 <body>
 
-  <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+  <div class="navbar navbar-fixed-top" data-scrollspy="scrollspy">
     <div class="navbar-inner">
       <div class="container">
         <%= link_to("SmartR", root_url, :class => "brand") %>
@@ -48,7 +48,7 @@
           <%= content_tag(:div, flash[:alert], :class => "alert error") if flash[:alert] %>
           <%= yield %>
         </div>
-        <div class="span3">
+        <div class="span3 sidebar">
           <%= yield :facets %>
           <%= yield :sidebar%>
         </div>

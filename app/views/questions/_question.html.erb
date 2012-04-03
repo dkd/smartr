@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="span7 question-cell pull-left">
+  <div class="span7 question-cell pull-right">
     <h3><%= link_to(h(question.name), question_path(question.id, question.friendly_id))%></h3>
     <% unless controller.controller_name == "users" %>
     <span class="user">
@@ -28,7 +28,7 @@
     <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>
-          <%= link_to(h(tag.name), questions_path(:tag => tag.name), :class => "label notice") %>
+          <%= link_to(h(tag.name), questions_path(:tag => tag.name), :class => "btn btn-small") %>
         <% end -%>
     </div>
     <% end -%>

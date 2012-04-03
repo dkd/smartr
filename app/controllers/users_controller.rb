@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def who_is_online
-    @users = User.online
+    @users = User.online.page(params[:page])
   end
 
   def reputation
