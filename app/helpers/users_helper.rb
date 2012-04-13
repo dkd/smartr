@@ -15,7 +15,7 @@ module UsersHelper
       menu << {:name => t("users.reputation.history"), :id => "reputation", :link => reputation_user_path(@user)}
       menu << {:name => t("users.edit_account"), :id => "edit", :link => edit_user_registration_path}  if user_signed_in? && current_user == @user
       menu << {:name => t("users.favourites"), :id => "favourites", :link => user_favourites_path(@user)}
-      build_menu(menu, active)
+      build_menu(menu, active, "nav nav-pills")
   end
 
 end

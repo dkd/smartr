@@ -8,7 +8,7 @@
       <%= f.input :password %>
       <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
     </div>
-    <%= f.button :submit, t("devise.sessions.sign_in").html_safe %>
+    <%= f.button :submit, t("devise.sessions.sign_in").html_safe, :class => "pull-right btn btn-success" %>
   <% end %>
 </div>
 <% content_for :sidebar do %>

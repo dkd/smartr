@@ -1,16 +1,5 @@
-<% title @user.login  %>
-<ul class="pills">
-  <%= user_submenu(:reputation) %>
-</ul>
-
-<div class="user-header">
-  <%= image_tag @user.avatar.url(:medium), :alt => @user.login, :title => @user.login %>
-  <p>
-    <span><%=@user.questions.count%></span> <%=t(:"questions.label", :count => @user.questions.count) %>,
-    <span><%=@user.answers.count %></span> <%=t(:"answers.label", :count => @user.answers.count) %> &
-    <span><%=@user.comments.count%></span> <%=t(:"comments.label", :count => @user.comments.count) %>.
-  </p>
-</div>
+<%= render "user_header"%>
+<%= user_show_submenu(:reputation) %>
 
 <br class="clear" />
 <% if @user.questions.size > 0 %>

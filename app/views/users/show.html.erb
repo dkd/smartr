@@ -1,24 +1,9 @@
-<% title @user.login %>
-<div class="header-with-tabs">
-    <div class="tabs">
-      <%= user_show_submenu(:detail) %>
-    </div>
-    <br class="clear" />
-</div>
-
-<div class="user-header">
-  <%= image_tag @user.avatar.url(:medium), :alt => @user.login, :title => @user.login %>
-  <p>
-    <span><%= @user.questions.count %></span> <%= t("question", :count => @user.questions.count).capitalize %>,
-    <span><%= @user.answers.count %></span> <%= t("answer", :count => @user.answers.count).capitalize %> &amp;
-    <span><%= @user.comments.count %></span> <%= t("comment", :count => @user.comments.count).capitalize %>.
-  </p>
-</div>
-
+<%= render "user_header"%>
+<%= user_show_submenu(:detail) %>
 <br class="clear" />
 <% if @user.latest_questions.size > 0 %>
   <div class="user-questions">
-    <h2><%= t("questions.latest_questions") %></h2>
+    <h3><%= t("questions.latest_questions") %></h3>
     <% @user.latest_questions.each do |question| %>
       <%= render "question", :question => question %>
     <% end -%>
@@ -27,7 +12,7 @@
 <% end -%>
 <% if @user.latest_answers.size > 0 %>
   <div class="user-questions">
-    <h2><%= t("answers.latest_answers") %></h2>
+    <h3><%= t("answers.latest_answers") %></h3>
     <% @user.latest_answers.each do |question| %>
       <%= render "question", :question => question %>
     <% end -%>

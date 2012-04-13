@@ -1,15 +1,13 @@
-<div class="header-with-tabs">
-  <h2><%=h @user.login %></h2>
-    <div class="tabs">
-      <%=user_show_submenu(:favourites) %>
-    </div>
-    <br class="clear" />
-</div>
+<%= render "/users/user_header" %>
+<%= user_show_submenu(:favourites) %>
 <div class="user-questions">
   <% @questions.each do |question| %>
     <%= render "/users/favourite_question", :question => question %>
   <% end -%>
 </div>
+<% if @questions.count == 0 %>
+Sorry, but no favourites found ....
+<% end %>
 <br class="clear" />
 <%= paginate @questions %>
 <% main_menu :users %>

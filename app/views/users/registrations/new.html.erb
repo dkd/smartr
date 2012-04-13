@@ -5,8 +5,8 @@
     <%= f.input :email, :hint =>"Enter your email address" %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
-    <%= f.input :interesting_tag_list, :input_html => {:class => "span6"}, :hint => "We need a hint" %>
-    <%= f.input :uninteresting_tag_list, :input_html => {:class => "span6"} %>
+    <%= f.input :interesting_tag_list, :input_html => {:class => "span6"}, :hint => "e.g. ruby, php, programming" %>
+    <%= f.input :uninteresting_tag_list, :input_html => {:class => "span6"}, :hint => "e.g. sneezing, cold feet" %>
     <%= image_tag @user.avatar.url(:medium), :align => :top %>
     <%= f.input :avatar %>
   </div>

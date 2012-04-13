@@ -21,6 +21,10 @@ html, body {
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+.help-block {
+  margin-top: 0px;
+}
+
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 body > .navbar-fixed .brand {
@@ -46,7 +50,7 @@ body > .navbar-fixed .brand:hover {
     width:180px;
   }
   .question-cell {
-    width: 500px;
+    width: 660px;
   }
 }
 
@@ -79,11 +83,6 @@ body > .navbar-fixed .brand:hover {
   display: block;
   margin-left: 0px;
 }
-#new_question:hover {
-  background: $color2 * 1.1;
-}
-
-
 
 .question-list-item {
   h3 {
@@ -113,13 +112,11 @@ body > .navbar-fixed .brand:hover {
 
 .sidebar {
   .tags {
-    a.btn:link,
-    a.btn:visited {
-      margin-bottom: 1em !important;
-      color: red;
+    
+    a {
+      margin-bottom: 0.5em !important;
     }
   }
-  
 }
 
 .label.notice:link,
@@ -147,4 +144,8 @@ input[type=checkbox] {
 
 .btn-wide {
   width: 100%;
+}
+
+label.span9 {
+  margin-left: 0px;
 }

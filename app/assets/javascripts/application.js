@@ -15,7 +15,6 @@
 //= require highlight/highlight.pack
 //= require jquery.gritter.min
 
-
 $(document).ajaxSend(function(event, xhr, settings) {
   xhr.setRequestHeader("Accept", "text/javascript, application/javascript");     
 });
@@ -38,12 +37,21 @@ function top_message(message, type){
 $(document).ready(function(){
   $("div.tag-search input").keyup(function(){
     var tag = $(this).val();
-    $.ajax({type: "GET",
-            url: "/tags.js?tags[q]=" + tag,
-            success: function(data){
-              $("div.tag-list").html(data);
-            }});
-
+    $.ajax(
+            {
+              type: "GET",
+              url: "/tags.js?tags[q]=" + tag,
+              processData: false,
+              dataType: "html",
+              error: function(e, jqxhr, settings, exception) {
+                console.log("mist!");
+                console.debug(jqxhr);
+              },
+              success: function(data){
+                $("#taglist").html(data);
+              }
+            }
+          );
   });
 
   $("div.user-search input").keyup(function(){
@@ -52,14 +60,16 @@ $(document).ready(function(){
             url: "/users/search/?q=" + tag,
             success: function(data){
               if(data){
-                var header = "<tr>" + $("div.user-list table tr").html() + "</tr>";
-                $("div.user-list table").html(header + data);
-                $("div.user-list .no-result").hide();
-                $("div.user-list table").show();
+
+                var header = "<tr>" + $("table.user-list tr").html() + "</tr>";
+                $("table.user-list").html(header + data);
+								console.log("header");
+                $("table.user-list .no-result").hide();
+                $("table.user-list").show();
               }
               else{
-                $("div.user-list table").hide();
-                $("div.user-list .no-result").fadeIn();
+                $("table.user-list").hide();
+                $("table.user-list .no-result").fadeIn();
               }
             }});
 

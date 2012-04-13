@@ -1,18 +1,20 @@
-en:
-  datetime:
-    distance_in_words:
-      about_x_months:
-        one: 'about 1 month ago'
-        other: 'about %{count} months ago'
-      x_days:
-        one: '1 day ago'
-        other: '%{count} days ago'
-      x_months:
-        one: '1 month ago'
-        other: '%{count} months ago'
-      x_minutes:
-        one: '1 minute ago'
-        other: '%{count} minutes ago'
-      less_than_x_minutes:
-        one: 'less than a minute ago'
-        other: 'less than %{count} minutes ago'
+end:
+  hallo: "welt"
+#en:
+#  datetime:
+#    distance_in_words:
+#      about_x_months:
+#        one: 'about 1 month ago'
+#        other: 'about %{count} months ago'
+#      x_days:
+#        one: '1 day ago'
+#        other: '%{count} days ago'
+#      x_months:
+#        one: '1 month ago'
+#        other: '%{count} months ago'
+#      x_minutes:
+#        one: '1 minute ago'
+#        other: '%{count} minutes ago'
+#      less_than_x_minutes:
+#        one: 'less than a minute ago'
+#        other: 'less than %{count} minutes ago'

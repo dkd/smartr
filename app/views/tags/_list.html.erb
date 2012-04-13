@@ -1,7 +1,7 @@
 <% if tags.present? %>
   <% tags.each do |tag| %>
       <div class="span2">
-         <%= link_to "#{tag.count} x #{tag}", questions_path(:tag => tag.name), :class => "label notice" -%>
+         <%= link_to "#{tag.count} x #{tag}", questions_path(:tag => tag.name), :class => "btn btn-small" -%>
       </div>
     <% end -%>
 <% else -%>

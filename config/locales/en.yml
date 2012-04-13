@@ -5,17 +5,18 @@ en:
   save: Save
   edit: edit
   update: Update
-  
-  activerecord: 
+
+  activerecord:
     attributes:
       question:
-        one: question
-        other: questions
+        name: "Title"
+        body: "Question"
+        send_mail: "Send E-Mail if an answer or comment is posted."
       answer:
+        body: "Answer"
       comment:
       user:
-        one: user
-        other: users
+        login: "Nickname"
       favourite:
       edit:
       vote:

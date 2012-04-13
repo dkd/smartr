@@ -1,15 +1,14 @@
-<h2><%= t "question.edit" %></h2>
+<% title (t"question.edit") %></h2>
 <div class="question-edit">
-  <%= form_for(@question, :url => question_path(:id => @question.id), :method => "put") do |f| %>
+  <%= simple_form_for(@question, :url => question_path(:id => @question.id), :method => "put") do |f| %>
       <%= render :partial => '/questions/form', :locals => {:f => f}%>
-      <%= f.fields_for :edits, @edit do |builder| %>
-      <div class="<%="error " if f.error_message_on(:"edits.body") %>text_field_long">
-        <%= builder.label "Edit Message" %><%= mark_required(Edit, :body) %>
-        <%= builder.text_field :body %>
-        <%= f.error_message_on(:"edits.body") %>
-      </div>
-      <button type="submit" class="g-button"><%=t("question.update")%></button> <%= link_to t("cancel"), question_path(@question.id, @friendly_id), :class => "cancel" %>
+      <%= f.simple_fields_for :edits, @edit do |builder| %>
+        <%= builder.input :body %>
+        <%= link_to t("cancel"), question_path(@question.id, @friendly_id), :class => "btn btn-danger" %>
       <% end %>
+      <div class="span9">
+        <%= f.submit t("question.update"), :class => "btn btn-large btn-success pull-right"%>
+      </div>
   <% end %>
 </div>
 <% main_menu :questions %>

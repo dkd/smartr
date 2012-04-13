@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       format.js {}
       format.html { render :index }
     end
+    Rails.logger.info @users.inspect 
   end
 
   def who_is_online

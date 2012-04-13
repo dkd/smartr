@@ -3,6 +3,7 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
+ *= 
 */
 
 @import "bootstrap";
@@ -11,3 +12,5 @@
 @import "boxes.css.scss";
 @import "gritter.css.scss";
 @import "smartr.css.scss";
+@import "wmd.sass";
+@import "autocomplete.sass";

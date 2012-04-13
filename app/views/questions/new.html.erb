@@ -1,10 +1,9 @@
-<h2><%=t("question.new")%></h2>
-<div class="question-edit">
-  <%= form_for(@question) do |f| %>
-      <%= render :partial => '/questions/form', :locals => {:f => f}%>
-      <%= f.submit t("question.save")%>
-  <% end %>
-</div>
 <% main_menu :questions %>
 <% title t("question.new") %>
+<%= simple_form_for(@question) do |f| %>
+  <%= render :partial => '/questions/form', :locals => {:f => f } %>
+  <div class="span9">
+    <%= f.submit t("question.save"), :class => "btn btn-large btn-success pull-right"%>
+  </div>
+<% end %>
 <% content_for :sidebar, render("/questions/sidebar/new") %>

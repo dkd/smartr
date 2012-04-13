@@ -57,7 +57,7 @@ Smartr::Application.routes.draw do
     end
 
     resources :favourites, :only => [:index]
-
+    resources :questions
   end
 
   resources :favourites, :only => [:toggle] do
