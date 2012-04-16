@@ -1,0 +1,55 @@
+/* Ask a question Button */
+#new_question_button {
+  text-align: center;
+  font-size: 1.7em;
+/*  -webkit-animation-name: redPulse; */
+/*  -webkit-animation-duration: 5s;*/
+/*  -webkit-animation-iteration-count: infinite;*/
+  margin-bottom: 1em;
+  width: 240px;
+  display: block;
+  margin-left: 0px;
+}
+
+.question-list-item {
+  h3 {
+    line-height: 1em;
+  }
+  margin-bottom: 1em;
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 1em;
+  .user {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    @include clearfix;
+  }
+}
+
+/* Question form */
+form#new_question,
+form#edit_question {
+  label {
+    text-align: left;
+  }
+}
+
+.span9 {
+  .question {
+    .span1.stats {
+      width: 40px;
+    }
+    .span8.stats {
+      width: 630px;
+    }
+  }
+}
+table td.tiny-stats {
+  text-align: right;
+  width: 30px;
+  span {
+    color: white;
+    background: $blue;
+    padding: 4px;
+  }
+}

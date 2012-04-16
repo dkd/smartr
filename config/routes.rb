@@ -53,11 +53,13 @@ Smartr::Application.routes.draw do
     end
 
     member do
+      get :questions
+      get :answers
       get :reputation
     end
 
     resources :favourites, :only => [:index]
-    resources :questions
+    
   end
 
   resources :favourites, :only => [:toggle] do

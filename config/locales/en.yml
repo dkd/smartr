@@ -5,6 +5,8 @@ en:
   save: Save
   edit: edit
   update: Update
+  datetime:
+    distance: "%{distance} ago"
 
   activerecord:
     attributes:
@@ -66,7 +68,7 @@ en:
     other: answers
     save: Save Answer
     update: Update Answer
-
+    latest: Latest Answers
   comment:
     one: comment
     other: comments
@@ -101,6 +103,7 @@ en:
     saved_in: saved_in
     related: Related questions
     tagged: "%{page_entries}<br />tagged with <span>%{tag}</span>"
+    
     sub_menu:
       latest: Latest
       hot:  Hot

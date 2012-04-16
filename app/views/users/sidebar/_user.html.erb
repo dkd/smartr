@@ -1,4 +1,4 @@
-<%= link_to 'Ask a question!', new_question_path, :class => "btn btn-success btn-large btn-wide", :id => "new_question" %>
+<%= link_to 'Ask a question!', new_question_path, :class => "btn btn-success btn-large btn-wide", :id => "new_question_button" %>
 <h3>Reputation</h3>
 <div class="stats"><%= user.reputation.to_s %></div>
 
@@ -9,7 +9,7 @@
   <h3>Interested in ...</h3>
   <div class="tags">
   <% user.interesting_tag_list.each do |tag| %>
-    <%= link_to(tag, questions_path(:tag => tag), :class => "tag")%>
+    <%= link_to(tag, questions_path(:tag => tag), :class => "btn btn-small")%>
     <% end -%>
   </div>
   <br class="clear" />
@@ -18,7 +18,7 @@
   <h3>Not interested in ...</h3>
   <div class="tags">
   <% user.uninteresting_tag_list.each do |tag| %>
-    <%= link_to(tag, questions_path(:tag => tag), :class => "tag") %>
+    <%= link_to(tag, questions_path(:tag => tag), :class => "btn btn-small") %>
     <% end -%>
   </div>
   <br class="clear" />

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:edit, :update]
-
+  before_filter :load_user, :only => [:show, :reputation, :questions, :answers]
   def index
     @users = User.best.page params[:page]
   end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       format.js {}
       format.html { render :index }
     end
-    Rails.logger.info @users.inspect 
+    Rails.logger.info @users.inspect
   end
 
   def who_is_online
@@ -24,12 +24,25 @@ class UsersController < ApplicationController
   end
 
   def reputation
-    @user = User.find(params[:id])
+
   end
 
   def show
-    @user = User.find(params[:id])
     @user.count_view! unless current_user == @user
+  end
+
+  def questions
+    @questions = @user.questions.page params[:page]
+  end
+
+  def answers
+    @questions = Question.joins(:answers).where("answers.user_id = ?", @user.id).group("questions.id").page params[:page]
+  end
+
+  protected
+
+  def load_user
+    @user = User.find(params[:id])
   end
 
 end

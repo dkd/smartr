@@ -4,5 +4,5 @@
     <%= link_to(current_user.login, user_path(current_user)) %> &middot; <span class="<%="user-#{current_user.id}-reputation"-%>"><%=current_user.reputation%></span>
   </div>
 <% else %>
-  <%= link_to 'Register', new_user_registration_path, :class => "btn primary register" %>
+  <%= link_to 'Register', new_user_registration_path, :class => "btn btn-primary register" %>
 <% end %>

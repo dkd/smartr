@@ -72,32 +72,7 @@ body > .navbar-fixed .brand:hover {
   }
 }
 
-#new_question {
-  text-align: center;
-  font-size: 1.7em;
-/*  -webkit-animation-name: redPulse; */
-/*  -webkit-animation-duration: 5s;*/
-/*  -webkit-animation-iteration-count: infinite;*/
-  margin-bottom: 1em;
-  width: 240px;
-  display: block;
-  margin-left: 0px;
-}
 
-.question-list-item {
-  h3 {
-    line-height: 1em;
-  }
-  margin-bottom: 1em;
-  border-bottom: 1px solid #e9e9e9;
-  padding-bottom: 1em;
-  .user {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    @include clearfix;
-  }
-}
 
 #profile {
   float: right;
@@ -148,4 +123,9 @@ input[type=checkbox] {
 
 label.span9 {
   margin-left: 0px;
+}
+#taglist {
+  span2 {
+    margin-bottom: 0.5em;
+  }
 }

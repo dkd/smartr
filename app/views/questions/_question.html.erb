@@ -18,13 +18,15 @@
 
   <div class="span7 question-cell pull-right">
     <h3><%= link_to(h(question.name), question_path(question.id, question.friendly_id))%></h3>
-    <% unless controller.controller_name == "users" %>
+
     <span class="user">
-      <%= link_to image_for(question.user, :tiny), user_path(question.user) %>
-      <%= link_to question.user.login, user_path(question.user) %> &middot; <%= question.user_reputation %>
-      &middot; <%= distance_of_time_in_words_to_now question.created_at %>
+      <% unless controller.controller_name == "users" %>
+        <%= link_to image_for(question.user, :tiny), user_path(question.user) %>
+        <%= link_to question.user.login, user_path(question.user) %> &middot; <%= question.user_reputation %>
+        &middot; 
+      <% end -%>
+      <%= t "datetime.distance", :distance => distance_of_time_in_words_to_now(question.created_at) %>
     </span>
-    <% end -%>
     <% if question.tags.present? %>
       <div class="tags">
         <% question.tags.each do |tag| -%>

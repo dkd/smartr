@@ -13,8 +13,9 @@ module UsersHelper
       menu = []
       menu << {:name => t("users.detail"), :id => "detail", :link => user_path(:id => @user.id)}
       menu << {:name => t("users.reputation.history"), :id => "reputation", :link => reputation_user_path(@user)}
-      menu << {:name => t("users.edit_account"), :id => "edit", :link => edit_user_registration_path}  if user_signed_in? && current_user == @user
       menu << {:name => t("users.favourites"), :id => "favourites", :link => user_favourites_path(@user)}
+      menu << {:name => t("users.questions"), :id => "questions", :link => questions_user_path(@user)} if @user.questions.size > 5
+      menu << {:name => t("users.answers"), :id => "answers", :link => answers_user_path(@user)} if @user.answers.size > 5
       build_menu(menu, active, "nav nav-pills")
   end
 

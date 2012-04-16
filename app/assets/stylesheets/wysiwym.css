@@ -1,0 +1,111 @@
+/*-------------------------------------------------------------
+ * Styles for Wysiwym Buttons
+ *------------------------------------------------------------- */
+div.wysiwym-buttons {
+  height: 18px;
+}
+div.wysiwym-buttons div.button {
+  float: left;
+  background-image: url(wysisym/buttons.light.png);
+  background-repeat: repeat-x;
+  background-position: 0px 0px;
+  border-right: 1px solid #aaa;
+}
+div.wysiwym-buttons div.button.first {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+}
+div.wysiwym-buttons div.button.last {
+  border-right: 0px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+}
+div.wysiwym-buttons div.button span.wrap {
+  display: block;
+  height: 18px;
+}
+div.wysiwym-buttons div.button span.text {
+  padding: 0px 4px;
+  color: #555;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  cursor: default;
+  user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+}
+
+/*--- Disable Text for all known button types ---*/
+div.wysiwym-buttons div.button.bold span.text { display: none; }
+div.wysiwym-buttons div.button.italic span.text { display: none; }
+div.wysiwym-buttons div.button.link span.text { display: none; }
+div.wysiwym-buttons div.button.bulletlist span.text { display: none; }
+div.wysiwym-buttons div.button.numberlist span.text { display: none; }
+div.wysiwym-buttons div.button.quote span.text { display: none; }
+div.wysiwym-buttons div.button.code span.text { display: none; }
+
+/*--- Button Image Offsets (Default) ---*/
+div.wysiwym-buttons div.button.bold span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -1px -54px; }
+div.wysiwym-buttons div.button.italic span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -1px -81px; }
+div.wysiwym-buttons div.button.link span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -1px -106px; }
+div.wysiwym-buttons div.button.bulletlist span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -1px -132px; }
+div.wysiwym-buttons div.button.numberlist span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -2px -158px; }
+div.wysiwym-buttons div.button.quote span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -1px -184px; }
+div.wysiwym-buttons div.button.code span.wrap { width: 22px; background-image: url(wysisym/buttons.light.png); background-position: -1px -211px; }
+
+/*--- Button Images Offsets (Hover) ---*/
+div.wysiwym-buttons div.button:hover { background-position: 0px -30px; }
+div.wysiwym-buttons div.button.bold:hover span.wrap { background-position: -27px -54px; }
+div.wysiwym-buttons div.button.italic:hover span.wrap { background-position: -27px -81px; }
+div.wysiwym-buttons div.button.link:hover span.wrap { background-position: -27px -106px; }
+div.wysiwym-buttons div.button.bulletlist:hover span.wrap { background-position: -27px -132px; }
+div.wysiwym-buttons div.button.numberlist:hover span.wrap { background-position: -28px -158px; }
+div.wysiwym-buttons div.button.quote:hover span.wrap { background-position: -27px -184px; }
+div.wysiwym-buttons div.button.code:hover span.wrap { background-position: -27px -211px; }
+
+
+/*-------------------------------------------------------------
+ * Styles for Wysiwym Help
+ *------------------------------------------------------------- */
+a.wysiwym-help-toggle {
+  float: left;
+  font-size: 10px;
+  line-height: 18px;
+}
+div.wysiwym-help {
+  clear: left;
+  float: left;
+  padding: 0px 5px;
+  line-height: 18px;
+  font-size: 10px;
+  background-color: #eee;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+div.wysiwym-help td,
+div.wysiwym-help th {
+  color: #666;
+  border-bottom: 1px dotted #ddd;
+}
+
+div.wysiwym-help tr:last-child td,
+div.wysiwym-help tr:last-child th {
+  border-width: 0px;
+}
+div.wysiwym-help th {
+  padding-right: 10px;
+  text-align: left;
+  color: #777;
+}
