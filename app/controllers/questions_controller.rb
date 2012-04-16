@@ -82,7 +82,11 @@ class QuestionsController < ApplicationController
   end
 
   def unanswered
-    @questions = Question.unanswered.list.page(params[:page])
+    if (params[:tag].present?)
+      @questions = Question.unanswered.list.tagged_with(params[:tag]).page(params[:page])
+    else
+      @questions = Question.unanswered.list.page(params[:page])
+    end
     render :index_for_unanswered
   end
 
