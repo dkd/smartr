@@ -26,25 +26,25 @@ describe CommentsController do
       describe "posts a comment" do
         it "should redirect to the question" do
           xhr :post, :create
-          response.should render_template("not_authorized")
+          response.code.should == "401"
         end
       end
       describe "edits a comment" do
         it "should redirect to the question" do
           xhr :post, :update, :id => 1, :commentable_type => "question", :commentable_id => question.id
-          response.should render_template("not_authorized")
+          response.code.should == "401"
         end
       end
       describe "tries to load the new comment form" do
         it "should redirect to the question" do
           xhr :get, :new, :commentable_type => "question", :commentable_id => question.id
-          response.should render_template("not_authorized")
+          response.code.should == "401"
         end
       end
       describe "tries to load the edit comment form" do
         it "should redirect to the question" do
           xhr :get, :edit, :id => 1
-          response.should render_template("not_authorized")
+          response.code.should == "401"
         end
       end
     end

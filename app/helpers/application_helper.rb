@@ -8,13 +8,18 @@ module ApplicationHelper
   def button_tag(value, options)
     content_tag(:button, t(value), options)
   end
+  
+  def can_edit?(object)
+     return false if !user_signed_in?
+     return true if (current_user == object.user) || current_user.is_admin?
+  end
 
   def main_menu(active)
       menu = []
       menu << {:name => I18n.t(:"main_menu.questions"), :id => "questions", :link => root_url}
       menu << {:name => I18n.t(:"main_menu.tags"), :id => "tags", :link => tags_path}
       menu << {:name => I18n.t(:"main_menu.users"), :id => "users", :link => users_path}
-      menu << {:name => 'Admin', :id => "admin", :link => admin_url} if is_admin?
+      #menu << {:name => 'Admin', :id => "admin", :link => admin_url} if is_admin?
       content_for :main_menu, build_menu(menu, active, "nav")
   end
 

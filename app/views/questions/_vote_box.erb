@@ -10,7 +10,11 @@ end
 
 %>
 <% if vote_value == 1 %>
-  <%= link_to raw("&nbsp;"), "javascript:;", :class => upclass %>
+<%= link_to raw("&nbsp;"), "javascript:;",
+                           :class => "#{upclass}",
+                           :rel => "popover",
+                           :"data-content" => "You already upvoted this question.",
+                           :"data-title" => "Info" %>
 <% else %>
   <%= link_to raw("&nbsp;"),
                    votes_path(

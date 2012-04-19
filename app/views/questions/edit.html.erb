@@ -1,7 +1,9 @@
 <% main_menu :questions %>
+<% title t("question.edit") %>
 <div class="question-edit">
   <%= simple_form_for(@question, :url => question_path(:id => @question.id), :method => "put") do |f| %>
       <%= render :partial => '/questions/form', :locals => {:f => f}%>
+      
       <%= f.simple_fields_for :edits, @edit do |builder| %>
         <%= builder.input :body %>
         <%= link_to t("cancel"), question_path(@question.id,  @question.friendly_id), :class => "btn btn-danger" %>
@@ -11,7 +13,6 @@
       </div>
   <% end %>
 </div>
-<div id='livepreview'></div>
 <% content_for :sidebar,
                render("/questions/sidebar/edit",
                :related_questions => @related_questions) %>

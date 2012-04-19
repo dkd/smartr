@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:edit, :create, :new, :update, :destroy, :update_for_toggle_acceptance]
   before_filter :check_ownership, :only => [:update, :destroy, :edit, :update_for_toggle_acceptance]
+  before_filter :build_tags, :only => [:index, :hot, :active, :unanswered]
   respond_to :html, :js, :xml, :json
 
   def index
@@ -201,10 +202,18 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def build_tags
+    if params[:tag].present?
+      @tags = params[:tag].split(",")
+    else
+      @tags = nil
+    end
+    Rails.logger.info @tags.inspect
+  end
 
   def check_ownership
     @question = Question.find(params[:id])
-    if @question.user != current_user
+    if (@question.user != current_user) && !current_user.is_admin?
       flash[:error] = "You are not the owner of the question!"
       respond_to do |format|
         format.html { redirect_to question_url(:id => @question.id, :friendly_id => @question.friendly_id) }

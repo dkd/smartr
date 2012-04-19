@@ -1,10 +1,10 @@
 <%= render "question_header", :question => @question %>
 <% if @question.answers.length > 0 %>
-  <br class="clear" />
+
   <h2 class="answer-header"><%= @question.answers_count%> Answers</h2>
   <% @question.answers.each do |answer| -%>
     <%= render "/answers/show", :answer => answer, :question => @question %>
-    <br class="clear" />
+    
   <% end -%>
 <% end -%>
 

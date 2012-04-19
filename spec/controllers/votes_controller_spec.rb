@@ -12,7 +12,7 @@ describe VotesController do
           xhr :post, :create, :model => "question",
                               :value => "1",
                               :id => question.id
-          response.should render_template("shared/not_authorized")
+          response.code.should == "401"
         end 
       end
     end

@@ -1,5 +1,5 @@
-<div class="answer-item<%=" accepted" unless answer != answer.question.accepted_answer%>" id="answer_<%=answer.id%>">
-  <div class="stats">
+<div class="clearfix row answer-item<%=" accepted" unless answer != answer.question.accepted_answer%>" id="answer_<%=answer.id%>">
+  <div class="stats span1">
     <div class="votes" id="vote-box-<%=answer.id%>">
       <%= render "/answers/vote_box", :answer => answer %>
     </div>
@@ -7,7 +7,7 @@
       <%= render "/answers/status", :answer => answer %>
     </div>
   </div>
-  <div class="body">
+  <div class="body span8">
     <%= raw code(answer.body) %>
       <span class="user">
         <%= link_to( image_tag(answer.user.avatar.url(:tiny), :border =>"0"), user_path(answer.user)) %>
@@ -15,10 +15,10 @@
         <span class="user-<%=answer.user.id%>-reputation"><%=answer.user.reputation %></span> &middot;
         <%= distance_of_time_in_words_to_now answer.created_at %></span>
       <%= link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id), :class => "edit") if (answer.user == current_user) %>
+      <div class="comments clearfix" id="Answer-comments-<%= answer.id %>">
+          <%= render "/comments/list", :comments => answer.comments, :parent => answer %>
+      </div>
     </div>
-  <br class="clear" />
-  <div class="comments" id="Answer-comments-<%= answer.id %>">
-      <%= render "/comments/list", :comments => answer.comments, :parent => answer %>
-    </div>
-     <br class="clear" />
+
+
 </div>

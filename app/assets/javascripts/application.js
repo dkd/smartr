@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require wysiwym/showdown
+//= require wysiwym/Markdown.Converter
 //= require wysiwym/wysiwym
 //= require jquery.toggle-value
 //= require jquery.typewatch
@@ -17,7 +17,7 @@
 //= require jquery.gritter.min
 
 $(document).ajaxSend(function(event, xhr, settings) {
-  xhr.setRequestHeader("Accept", "text/javascript, application/javascript");     
+  xhr.setRequestHeader("Accept", "text/javascript, application/javascript");
 });
 
 Array.prototype.contains = function (element)
@@ -149,7 +149,7 @@ $(document).ready(function(){
 
   /* Question auto-completion */
 
-  /*$("#question_searchstring").autocomplete('/questions/search.json', {
+  $("#question_searchstring").autocomplete('/questions/search.json', {
       dataType: 'json',
       parse: function(data) {
           var rows = new Array();
@@ -164,7 +164,7 @@ $(document).ready(function(){
       multiple: false,
       autoFill: false
   });
-  */
+  
   $("#question_searchstring").typeWatch({callback: function() {
     	$.ajax({ url: "/questions/search.js",
 	             data: "question[searchstring]="+$("#question_searchstring").val(),
@@ -201,31 +201,48 @@ $(document).ready(function(){
    $("textarea").tabby();
 
    $("#markdown-editor").wysiwym(Wysiwym.Markdown, {});
+   
+   if($("#markdown-editor").length == 1) {
+     var converter = new Markdown.Converter({});
+     console.debug(converter);
+     var update_live_preview = function() {
+      var content = $("#markdown-editor").val();
+      var html = converter.makeHtml(content);
+      $('#markdown-preview').html(html);
+      
+     }
+     $(".wysiwym-help-toggle").hide();
+     setInterval(update_live_preview, 200);
+   }
+   
    // For the Live Preview we want to check the value of
    // textarea changes as some set interval.  If it's
    // changed, we'll call Showdown to convert the textarea
    // input to HTML then prettify to colorize code blocks.
-   var showdown = new Showdown.converter();
-   var prev_text = "";
-   var update_live_preview = function() {
-       var input_text = $('#markdown-editor').val();
-       if (input_text != prev_text) {
-           var text = $("<div>"+ showdown.makeHtml(input_text) +"</div>");
-           text.find('pre').addClass('prettyprint');
-           text.find('p code').addClass('prettyprint');
-           //text.find('code').each(function() {
-           //   $(this).html(prettyPrintOne($(this).html()));
-           // });
-           $('#livepreview').html(text);
-           prev_text = input_text;
-       }
-   }
-   setInterval(update_live_preview, 200);
-   
+   //var showdown = new Showdown.converter();
+   //var prev_text = "";
+   //var update_live_preview = function() {
+   //    var input_text = $('#markdown-editor').val();
+   //    if (input_text != prev_text) {
+   //        var text = $("<div>"+ showdown.makeHtml(input_text) +"</div>");
+   //        text.find('pre').addClass('prettyprint');
+   //        text.find('p code').addClass('prettyprint');
+   //        //text.find('code').each(function() {
+   //        //   $(this).html(prettyPrintOne($(this).html()));
+   //        // });
+   //        $('#livepreview').html(text);
+   //        prev_text = input_text;
+   //    }
+   //}
+   //setInterval(update_live_preview, 200);
+
 
 	$(document).ajaxSend(function(e, xhr, options) {
 	  var token = $("meta[name='csrf-token']").attr("content");
 	  xhr.setRequestHeader("X-CSRF-Token", token);
 	});
+
+	// Popover
+	$("a[rel=popover]").popover();
 
 });

@@ -17,41 +17,36 @@
           </div>
       <% end -%>
 </div>
-  <div class="body span8">
+  <div class="body span8" id="Question-comments-<%= @question.id %>">
     <%= raw code(question.body) %>
-    <%= content_for :page_header_infobox do %>
+    <h3><%= t("comment.other").capitalize %></h3>
+    <%= render("/comments/list", :comments => question.comments, :parent => question ) %>
+  </div>
+</div><!-- end of row -->
+<% content_for :sidebar, render("/answers/sidebar/default") %>
+  <%= content_for :page_header_infobox do %>
     <div class="user"><%=t("questions.asked_by")%>
-    <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0, :class => "thumbnail"), user_path(question.user) unless question.user.avatar.nil?%>
-    <%= link_to question.user.login, user_path(question.user) %> <%= distance_of_time_in_words_to_now question.created_at %>,
-    <%= t "questions.saved_in" %>
+      <%= link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0, :class => "thumbnail"), user_path(question.user) unless question.user.avatar.nil?%>
+      <%= link_to question.user.login, user_path(question.user) %> (<span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points) <%= distance_of_time_in_words_to_now question.created_at %>,
+      <%= t "questions.saved_in" %>
     <span class="tags">
        <% question.tags.each do |tag| %>
          <%= link_to(h(tag), questions_path(:tag => tag.name), :class => "btn btn-small")%>
        <% end -%>
-     </span>
-    <span class="<%="user-#{question.user.id}-reputation"-%>"><%=question.user.reputation%></span> Points
-
-    <% if user_signed_in? && current_user == question.user %>
-        <%= raw(button_to(t("question.edit"),
-                url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id),
-                :class => "btn btn-success btn-large")) %>
-    <% end -%>
-   </div>
-  <% if question.last_edit.present? %>
+   </span>
+  <% if can_edit?(@question)%>
+    <%= raw(button_to(t("question.edit"),
+            url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id),
+            :class => "btn btn-success btn-large")) %>
+  <% end -%>
+ </div>
+ <% if question.last_edit.present? %>
   <div class="edit">
-    <strong>Edit:</strong><span class="body">
+    <strong>Last Edit:</strong><span class="body hl">
     <%= question.last_edit.body %></span>
     <br /><span>
-    <%= distance_of_time_in_words_to_now(question.last_edit.created_at) %> by <%= question.last_edit.user.login %>
+    <%= t "datetime.distance", :distance => distance_of_time_in_words_to_now(question.last_edit.created_at) %> 
+    by <%= link_to question.last_edit.user.login, user_path(@question.last_edit.user) %>
   </div>
-  <% end %>
+ <% end %>
 <% end %>
- <div class="comments" id="Question-comments-<%= question.id %>">
-  <%= render("/comments/list", :comments => question.comments, :parent => question ) %>
-</div>
-  </div>
-
-
-
-</div>
-<% content_for :sidebar, render("/answers/sidebar/default") %>

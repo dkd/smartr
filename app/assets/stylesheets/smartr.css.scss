@@ -64,12 +64,19 @@ body > .navbar-fixed .brand:hover {
     }
     }
   }
+  .user {
+    margin-top: 4px;
+  }
+  img {
+    margin-right: 4px;
+  }
 }
 
 .question-list {
   h3 {
     line-height: 22px;
   }
+
 }
 
 
@@ -127,5 +134,20 @@ label.span9 {
 #taglist {
   span2 {
     margin-bottom: 0.5em;
+  }
+}
+
+.hl {
+  background: #FE8;
+}
+
+.answer-item {
+  margin-top: 1em;
+  border-bottom: 1px solid #e9e9e9;
+  .span1.stats {
+    width: 40px;
+  }
+  .span8.stats {
+    width: 630px;
   }
 }

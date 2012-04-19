@@ -27,7 +27,7 @@
   </div><!-- navbar -->
   <div class="container">
     <div class="content">
-      <div class="page-header">
+      <div class="page-header clearfix">
         <h1><%= yield :title %>
         <% if content_for?(:subtitle) %>
           <small><%= yield :subtitle %></small>
@@ -46,6 +46,8 @@
           <%= yield :sidebar%>
         </div>
       </div><!-- row end -->
+      <br class="clearfix">
+      <br class="clearfix">
     </div><!-- content -->
       <footer>
         <p><%= pluralize User.online.count, "user"%> currently logged in. <%=Smartr::Settings[:copyright]%></p>

@@ -17,22 +17,6 @@ class ApplicationController < ActionController::Base
     session[:comments_order] = params[:comments_order] if Comment::ORDER.include?(params[:comments_order])
   end
 
-  def authenticate_user!
-    if user_signed_in?
-      true
-    else
-      respond_to do |format|
-
-        format.js { render "shared/not_authorized" }
-        format.html {
-                      flash[:notice] = "You must be signed in to access this page"
-                      redirect_to new_user_session_url
-                    }
-      end
-      false
-    end
-  end
-
   def after_sign_in_path_for(resource)
       stored_location_for(:user) || root_path
   end
