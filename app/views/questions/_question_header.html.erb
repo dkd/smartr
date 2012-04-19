@@ -17,7 +17,7 @@
           </div>
       <% end -%>
 </div>
-  <div class="body span8" id="Question-comments-<%= @question.id %>">
+  <div class="body span8">
     <%= raw code(question.body) %>
     <h3><%= t("comment.other").capitalize %></h3>
     <%= render("/comments/list", :comments => question.comments, :parent => question ) %>
