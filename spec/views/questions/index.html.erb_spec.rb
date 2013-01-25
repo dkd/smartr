@@ -12,7 +12,7 @@ describe "questions/index.html.erb" do
       end
     end
   it "displays questions list" do
-    question = Factory.create :question2
+    question = FactoryGirl.create :question2
     assign(:questions, (Question.latest.includes([:user,:votes]).page(params[:page])))
     render
     rendered.should include(question.name)

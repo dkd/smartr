@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Api::V1::UsersController do
   include Devise::TestHelpers
-  let(:user) {Factory.create :user}
+  let(:user) {FactoryGirl.create :user}
  
   describe "GET index" do
     it "has a 200 status code" do

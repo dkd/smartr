@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe QuestionsController do
   include Devise::TestHelpers
-  let(:question) {Factory.create :question2}
+  let(:question) {FactoryGirl.create :question2}
   render_views
   
   describe "GET index" do
@@ -85,7 +85,7 @@ describe QuestionsController do
 
   context "authorized user" do
     before do
-      sign_in Factory.create(:user2) 
+      sign_in FactoryGirl.create(:user2) 
     end
       
     describe "GET new" do

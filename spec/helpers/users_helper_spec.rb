@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe UsersHelper do
   include Devise::TestHelpers
-  let(:user) { Factory.create(:endless_user) }
+  let(:user) { FactoryGirl.create(:endless_user) }
   context "logged in" do
     before do
       sign_in user

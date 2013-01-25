@@ -3,15 +3,15 @@ require "spec_helper"
 describe CommentsController do
   include Devise::TestHelpers
   render_views
-  let(:question) { Factory.create :question2 }
+  let(:question) { FactoryGirl.create :question2 }
 
   context "An unauthorized User" do
     context " with Javascript enabled" do
 
       describe "comment order" do
         before do
-          question.comments << Factory.build(:comment, :user => Factory(:endless_user))
-          question.comments << Factory.build(:comment, :user => Factory(:endless_user))
+          question.comments << FactoryGirl.build(:comment, :user => FactoryGirl.create(:endless_user))
+          question.comments << FactoryGirl.build(:comment, :user => FactoryGirl.create(:endless_user))
         end
         it "orders by date" do
           xhr :get, :index, :comments_order => "latest", :id => question.id, :model => "Question"

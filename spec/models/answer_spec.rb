@@ -12,24 +12,24 @@ describe Answer do
 
     describe "of body" do
       it "requires presence" do
-        answer = Factory.build(:answer, :body => nil)
+        answer = FactoryGirl.build(:answer, :body => nil)
         answer.should_not be_valid
       end
 
       it "requires a minimum length of 75 characters" do
-        answer = Factory.build(:answer, :body => "This answer is too short!")
+        answer = FactoryGirl.build(:answer, :body => "This answer is too short!")
         answer.should_not be_valid
       end
 
       it "cannot be longer than 2048 characters" do
-        answer = Factory.build(:answer, :body => "a"*2049)
+        answer = FactoryGirl.build(:answer, :body => "a"*2049)
         answer.should_not be_valid
       end
 
     end
 
     describe "model methods" do
-      let(:answer) { Factory.create(:full_answer) }
+      let(:answer) { FactoryGirl.create(:full_answer) }
       it "should not be the accepted answer" do
         answer.accepted?.should be_false
       end
@@ -41,19 +41,19 @@ describe Answer do
 
     describe "restrict number of answers for question" do
       it "permit only one one answer from the same user" do
-        user = Factory(:user2) 
-        question = Factory(:question, :user_id => user.id)
-        answer = Factory(:answer, :question => question, :user => question.user)
-        another_answer_from_same_user = Factory(:answer, :question => question, :user => question.user)
+        user = FactoryGirl.create(:user2) 
+        question = FactoryGirl.create(:question, :user_id => user.id)
+        answer = FactoryGirl.create(:answer, :question => question, :user => question.user)
+        another_answer_from_same_user = FactoryGirl.create(:answer, :question => question, :user => question.user)
         another_answer_from_same_user.should_not be_valid
       end
     end
 
     describe "saving record" do
       it "should create the record" do
-        user = Factory(:user2) 
-        question = Factory.create(:question, :user_id => user.id)
-        answer = Factory.create(:answer, :question => question, :user => question.user)
+        user = FactoryGirl.create(:user2) 
+        question = FactoryGirl.create(:question, :user_id => user.id)
+        answer = FactoryGirl.create(:answer, :question => question, :user => question.user)
         question.reload.answers_count.should eq(1)
         answer.should be_valid
       end

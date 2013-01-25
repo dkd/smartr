@@ -6,7 +6,7 @@ describe ApplicationController do
     describe "is_admin?" do
       it "should return true if user is an admin" do
         controller do
-          user = Factory.create(:endless_user, :is_admin => true)
+          user = FactoryGirl.create(:endless_user, :is_admin => true)
           sign_in user
           is_admin?(user).should eq(true)
           
@@ -14,7 +14,7 @@ describe ApplicationController do
       end
       it "should return false if user is not an admin" do
         controller do
-          user = Factory.create(:endless_user, :is_admin => false)
+          user = FactoryGirl.create(:endless_user, :is_admin => false)
           sign_in user
           is_admin?(user).should eq(false)
         end

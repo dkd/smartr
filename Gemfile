@@ -26,7 +26,7 @@ end
 group :test do
   gem "rspec-rails", ">= 2.12.2"
   gem "factory_girl_rails", "4.1.0"
-  gem "autotest"
+  gem "autotest"#
   gem "ZenTest", "4.8.3"
   gem "faker"
   gem "sqlite3-ruby", "1.3.3", :require => "sqlite3"

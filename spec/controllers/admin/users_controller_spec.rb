@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe Admin::UsersController do
   include Devise::TestHelpers
-  let(:user) {Factory.create(:user)}
-  let(:admin) { Factory.create(:endless_user, :is_admin => true)}
+  let(:user) {FactoryGirl.create(:user)}
+  let(:admin) { FactoryGirl.create(:endless_user, :is_admin => true)}
   render_views
   
   context "unauthorized user" do
@@ -20,7 +20,7 @@ describe Admin::UsersController do
     describe "GET :show" do
       it "requires an admin" do
         sign_in user
-        get :show, :id => Factory(:endless_user)
+        get :show, :id => FactoryGirl.create(:endless_user)
         response.should_not be_successful
         response.should redirect_to(root_url)
       end

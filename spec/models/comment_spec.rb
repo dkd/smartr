@@ -13,7 +13,7 @@ describe Comment do
   describe "Validations of" do
   
     describe "body" do
-      let(:comment) { Factory.build :comment }
+      let(:comment) { FactoryGirl.build :comment }
       
       it "requires presence" do
         comment.body = nil

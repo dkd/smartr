@@ -5,7 +5,7 @@ describe UsersController do
   
   describe "GET :index" do
     before do
-      Factory.create(:user)
+      FactoryGirl.create(:user)
     end
    
     it "shows the users list" do
@@ -17,7 +17,7 @@ describe UsersController do
   end
   
   describe "GET :search" do
-    let(:user) { Factory.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
     it "shows the searched user" do
       get :search, :q => user.login
       response.should be_success
@@ -31,7 +31,7 @@ describe UsersController do
   end
   
   describe "GET :who_is_online" do
-    let(:user) {Factory.create(:user)}
+    let(:user) {FactoryGirl.create(:user)}
     
     it "shows the people online" do
       sign_in user
@@ -53,7 +53,7 @@ describe UsersController do
 
   
   #describe "An unauthorized User" do
-  #  let(:user) {Factory.create(:user)}
+  #  let(:user) {FactoryGirl.create(:user)}
   #  
   #  describe "tries to edit an account" do
   #    it "should not load the edit form" do
@@ -84,7 +84,7 @@ describe UsersController do
     
     describe "with one user" do
       before do
-        sign_in Factory(:user)
+        sign_in FactoryGirl.create(:user)
       end
      
       it "counts to one" do
@@ -94,8 +94,8 @@ describe UsersController do
     end
     
     describe "with more than one user" do
-      let(:user) {Factory.create(:user)}
-      let(:user2) {Factory.create(:user2)}
+      let(:user) {FactoryGirl.create(:user)}
+      let(:user2) {FactoryGirl.create(:user2)}
       
       it "counts to 2" do
         sign_in user

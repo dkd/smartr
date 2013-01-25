@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SessionsController do
   include Devise::TestHelpers
   render_views
-  let (:user) { Factory(:endless_user)}
+  let (:user) { FactoryGirl.create(:endless_user)}
   before do
     request.env["devise.mapping"] = Devise.mappings[:user]
   end

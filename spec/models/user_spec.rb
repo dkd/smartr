@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) {Factory.create :user}
+  let(:user) {FactoryGirl.create :user}
   
   it { should have_many :questions }
   it { should have_many :answers }
@@ -13,15 +13,15 @@ describe User do
   describe "new user record" do
     
     it "has zero reputation" do
-      user = Factory.create(:endless_user)
+      user = FactoryGirl.create(:endless_user)
       user.reputation.should == 0
     end
     
   end
   
   describe "voting on a voteable record:" do
-    let(:question) { Factory.create(:question2)}
-    let(:current_user) { Factory.create(:endless_user)}
+    let(:question) { FactoryGirl.create(:question2)}
+    let(:current_user) { FactoryGirl.create(:endless_user)}
 
     describe "the method vote_value_on" do
 
@@ -46,17 +46,17 @@ describe User do
   describe "count_view!" do
     
     it "should increase the views count" do
-      @current_user = Factory.create(:endless_user)
+      @current_user = FactoryGirl.create(:endless_user)
       lambda{@current_user.count_view!}
     end
   end
   
   describe "is_online" do
     it "returns true if user has been logged in during the last 5 minutes" do
-      Factory.create(:endless_user, :last_request_at => Time.now).is_online?.should eq(true)
+      FactoryGirl.create(:endless_user, :last_request_at => Time.now).is_online?.should eq(true)
     end
     it "returns false if user hasn't logged in during the last 5 minutes" do
-      Factory.create(:endless_user, :last_request_at => Time.now - 6.minutes).is_online?.should eq(false)
+      FactoryGirl.create(:endless_user, :last_request_at => Time.now - 6.minutes).is_online?.should eq(false)
     end
   end
   
@@ -75,12 +75,12 @@ describe User do
     describe "of passwords" do
     
       it "fails if password doesn't match confirmation" do
-        user = Factory.build(:user, :password => "password", :password_confirmation => "nope")
+        user = FactoryGirl.build(:user, :password => "password", :password_confirmation => "nope")
         user.should_not be_valid
       end
     
       it "succeeds if password matches confirmation" do
-        user = Factory.build(:user, :password => "password", :password_confirmation => "password")
+        user = FactoryGirl.build(:user, :password => "password", :password_confirmation => "password")
         user.should be_valid
       end
     
@@ -89,7 +89,7 @@ describe User do
     describe "of reputation" do
       
       it "cannot be mass-assigned" do
-        user = Factory(:endless_user, :reputation => 1000)
+        user = FactoryGirl.create(:endless_user, :reputation => 1000)
         expect { user.update_attributes(:reputation => 2000) }.to_not change {user.reputation}
       end
        
@@ -98,30 +98,30 @@ describe User do
     describe "of login name"  do
       
       it "requires presence" do
-        user = Factory.build(:user, :login => nil)
+        user = FactoryGirl.build(:user, :login => nil)
         user.should_not be_valid
         user.should have(2).error_on(:login)
       end
 
       it "requires uniqueness" do
-        duplicate_user =  Factory.build(:user, :login => user.login, :email => Faker::Internet.email)
+        duplicate_user =  FactoryGirl.build(:user, :login => user.login, :email => Faker::Internet.email)
         duplicate_user.should_not be_valid
         duplicate_user.should have(1).error_on(:login)
       end
       
       it "downcases login name" do
-        user = Factory.build(:user, :login => "eLiTeHackR")
+        user = FactoryGirl.build(:user, :login => "eLiTeHackR")
         user.should be_valid
         user.login.should == "eLiTeHackR".downcase
       end
       
       it "fails if the requested login name is only different in case from an existing username" do
-        duplicate_user = Factory.build(:user, :login => user.login.upcase, :email => Faker::Internet.email)
+        duplicate_user = FactoryGirl.build(:user, :login => user.login.upcase, :email => Faker::Internet.email)
         duplicate_user.should_not be_valid
       end
 
       it "strips leading and trailing whitespace" do
-        user = Factory.build(:user, :login => " leandertaler ")
+        user = FactoryGirl.build(:user, :login => " leandertaler ")
         user.should be_valid
         user.login.should == "leandertaler" 
       end
@@ -132,13 +132,13 @@ describe User do
     describe "of email"  do
       
       it "requires presence" do
-        user = Factory.build(:user, :login => "anotheruser", :email => nil)
+        user = FactoryGirl.build(:user, :login => "anotheruser", :email => nil)
         user.should_not be_valid
         user.should have(2).error_on(:email)
       end
 
       it "requires uniqueness" do
-        duplicate_user =  Factory.build(:user, :login => "anotheruser", :email => user.email)
+        duplicate_user =  FactoryGirl.build(:user, :login => "anotheruser", :email => user.email)
         duplicate_user.should_not be_valid
         duplicate_user.should have(1).error_on(:email)
       end
@@ -146,7 +146,7 @@ describe User do
     end
     
     describe "of interesting_tags" do
-      let(:user) {Factory.create(:endless_user)}
+      let(:user) {FactoryGirl.create(:endless_user)}
       
       it "should have not more than 8 tags" do
         user.interesting_tag_list = "tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9"
@@ -168,7 +168,7 @@ describe User do
     end
      
     describe "of uninteresting_tags" do
-      let(:user) {Factory.create(:endless_user)}
+      let(:user) {FactoryGirl.create(:endless_user)}
       
       it "should have not more than 8 tags" do
         user.uninteresting_tag_list = "tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9"

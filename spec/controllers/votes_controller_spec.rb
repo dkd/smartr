@@ -7,7 +7,7 @@ describe VotesController do
 
     context "not logged in" do
       describe "he votes on a question" do
-        let(:question) {Factory.create(:question2)}
+        let(:question) { FactoryGirl.create(:question2) }
         it "and fails" do
           xhr :post, :create, :model => "question",
                               :value => "1",
@@ -18,13 +18,13 @@ describe VotesController do
     end
     
     context "logged in" do
-      let(:user2) {Factory.create :user2}
+      let(:user2)  {FactoryGirl.create :user2 }
       before do
         sign_in user2
       end
       
       describe "and is the owner of the question" do
-        let(:question) {Factory.create(:question2, :user => user2)}
+        let(:question) { FactoryGirl.create(:question2, :user => user2) }
         it "will fail" do
            xhr :post, :create, :model => "question", :id => question.id
            response.should render_template("shared/message")
@@ -32,7 +32,7 @@ describe VotesController do
       end
       
       describe "and is the owner of the question" do
-        let(:answer) { Factory(:endless_answer, :question => Factory(:question2), :user => user2) }
+        let(:answer) { FactoryGirl.create(:endless_answer, :question => FactoryGirl.create(:question2), :user => user2) }
         it "will fail" do
           xhr :post, :create, :model => "answer",
                               :id => answer.id
@@ -41,7 +41,7 @@ describe VotesController do
       end
        
       describe "and votes up a question" do
-        let(:question) { Factory.create :question2 }
+        let(:question) { FactoryGirl.create :question2 }
         it "will render an updated votebox" do
           xhr :post, :create, :model => "question",
                               :value => "1",
@@ -52,7 +52,7 @@ describe VotesController do
       end
       
       describe "and votes down a question" do
-        let(:question) { Factory.create :question2 }
+        let(:question) { FactoryGirl.create :question2 }
         it "will render an updated votebox" do
           xhr :post, :create, :model => "question",
                               :value => "-1",
@@ -63,7 +63,7 @@ describe VotesController do
       end
       
       describe "and votes up an answer" do
-        let(:answer) { Factory(:endless_answer, :question => Factory(:question2)) }
+        let(:answer) { FactoryGirl.create(:endless_answer, :question => FactoryGirl.create(:question2)) }
         it "will render an updated votebox" do
           xhr :post, :create, :model => "answer",
                               :value => "1",
@@ -74,7 +74,7 @@ describe VotesController do
       end
       
       describe "and votes down an answer" do
-        let(:answer) { Factory(:endless_answer, :question => Factory(:question2)) }
+        let(:answer) { FactoryGirl.create(:endless_answer, :question => FactoryGirl.create(:question2)) }
         it "will render an updated votebox" do
           xhr :post, :create, :model => "answer",
                               :value => "-1",
