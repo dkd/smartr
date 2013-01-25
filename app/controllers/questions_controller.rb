@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 
   def index
       if (params[:tag].present?)
-        @questions = Question.latest.list.tagged_with(params[:tag]).page(params[:page])
+        @questions = Question.latest.list.tagged_with(params[:tag].split(",").map(&:strip)).page(params[:page])
       else
         @questions = Question.latest.list.page(params[:page])
       end
@@ -206,9 +206,9 @@ class QuestionsController < ApplicationController
     if params[:tag].present?
       @tags = params[:tag].split(",")
     else
-      @tags = nil
+      @tags = []
     end
-    Rails.logger.info @tags.inspect
+
   end
 
   def check_ownership
