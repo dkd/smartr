@@ -19,3 +19,5 @@ coverage
 .rvmrc
 .sass-cache/
 public/assets
+config/
+secret_token

@@ -4,4 +4,12 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Smartr::Application.config.secret_token = 'cddea85947628ea5bea0020a61203be4c755d7709293b2a3cee12fadc939a75dcdc28bf0f1c5d41750a9fe57a6b860660586c21ec1e07cf386203e53714df99c'
+begin 
+    token_file = Rails.root.to_s + "/secret_token"
+    to_load = open(token_file).read
+    Smartr::Application.configure do
+        config.secret_token = to_load
+    end
+rescue LoadError, Errno::ENOENT => e
+    raise "Secret token couldn't be loaded! Error: #{e}"
+end
