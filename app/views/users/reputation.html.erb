@@ -4,7 +4,7 @@
 <br class="clear" />
 <% if @user.questions.size > 0 %>
   <div class="user-questions">
-    <h3>Latest Questions</h3>
+    <h3><%= t("question.latest", :default => "Latest Questions")%></h3>
     <table class="table table-striped">
     <% @user.questions.latest.limit(5).each do |question| %>
       <%= render "question", :question => question %>
@@ -15,9 +15,9 @@
 <% end -%>
 <% if @user.answers.latest.size > 0 %>
   <div class="user-questions">
-    <h3>Latest Answers</h3>
+    <h3><%= t("answer.latest", :default => "Latest Answers")%></h3>
     <table class="table table-striped">
-    <% @user.answers.latest.each do |answer| %>
+    <% @user.answers.latest.limit(5).each do |answer| %>
       <%= render "question", :question => answer.question %>
     <% end -%>
     </table>
