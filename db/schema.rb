@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,8 +17,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.text     "body"
     t.integer  "question_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.boolean  "accepted"
     t.text     "body_plain"
     t.boolean  "send_email",  :default => false
@@ -32,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "votes_count",      :default => 0
   end
 
@@ -45,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.string   "editable_type"
     t.integer  "editable_id"
     t.string   "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "edits", ["editable_id", "editable_type"], :name => "index_edits_on_editable_id_and_editable_type"
@@ -55,8 +56,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
   create_table "favourites", :force => true do |t|
     t.integer  "user_id"
     t.integer  "question_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "favourites", ["question_id"], :name => "index_favourites_on_question_id"
@@ -67,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "views",         :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "answers_count", :default => 0
     t.integer  "votes_count",   :default => 0
     t.text     "body_plain"
@@ -88,8 +89,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.integer  "reputation", :default => 0
     t.integer  "vote_id",    :default => 0
     t.integer  "answer_id",  :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "reputation_histories", ["answer_id"], :name => "index_reputation_histories_on_answer_id"
@@ -99,8 +100,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
@@ -125,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
   end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "login"
     t.string   "encrypted_password"
     t.string   "password_salt"
@@ -136,7 +137,7 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.datetime "current_sign_in_at"
     t.string   "last_sign_in_ip"
     t.string   "current_sign_in_ip"
-    t.integer  "views",                :default => 0
+    t.integer  "views"
     t.string   "email"
     t.integer  "reputation",           :default => 0
     t.string   "avatar_file_name"
@@ -166,8 +167,8 @@ ActiveRecord::Schema.define(:version => 20110503171536) do
     t.integer  "voteable_id"
     t.integer  "user_id"
     t.integer  "value",         :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
