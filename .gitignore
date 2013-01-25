@@ -11,6 +11,7 @@ doc/api
 doc/appla
 public/system
 solr/data/*
+solr/pids/*
 vendor/gems/*
 vendor/plugins/access_settings
 coverage
