@@ -27,18 +27,6 @@ en:
       vote:
 
     models:
-      question:
-        one: questions
-        other: questions
-        views:
-          one: view
-          other: views
-      answer:
-        one: answer
-        other: answers
-      comment:
-        one: comment
-        other: comments
       user:
         one: user
         other: users
@@ -55,26 +43,23 @@ en:
         one: vote
         other: votes
 
-
   main_menu:
     questions: Questions
     tags: Tags
     users: Users
-  
+
   tags:
-    label:
-      one: tag
-      other: tags
+    search_input: "Search for a tag"
+    search_hint: "e.g. ruby"
 
   answer:
-    one: answer
-    other: answers
+    one: 1 Answer
+    other: "%{count} Answers"
+    zero: 0 Answers
     save: Save Answer
     update: Update Answer
     latest: Latest Answers
   comment:
-    one: comment
-    other: comments
     new: New Comment
     edit: Edit Comment
     save: Save Comment
@@ -85,14 +70,10 @@ en:
       reputation: Reputation
 
   user:
-    one: user
-    other: users
     views: Views
     reputation_history: Reputation History
 
-  question:  
-    one: question
-    other: questions
+  question:
     latest: Latest Questions
     active: Active Questions
     hot: Hot Questions
@@ -106,23 +87,23 @@ en:
     saved_in: saved_in
     related: Related questions
     tagged: "%{page_entries}<br />tagged with <span>%{tag}</span>"
-    
+
     sub_menu:
       latest: Latest
       hot:  Hot
       active: Active
       unanswered: Unanswered
-  
+
   views:
     one: view
     other: views
-  
+
   vote:
     one: vote
     other: votes
-    
+
   remove_tag: remove
-  
+
   sidebar:
     ask_a_question: Ask a question!
     users:
@@ -133,6 +114,7 @@ en:
     questions:
       related: "Related Questions"
     tags:
+      search_hint: "e.g. ruby"
       interesting: Interesting Tags
       recent: Recent Tags
   facets:
@@ -146,3 +128,7 @@ en:
       at_least_1: At least one
       at_least_3: At least 3
       last_12_months: Last 12 months
+  popover:
+    login_header: "Login required"
+    login_msg: "Please sign in or register."
+  preview: Preview

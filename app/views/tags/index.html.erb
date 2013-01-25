@@ -1,11 +1,10 @@
 <% title t("tag.find_tags") %>
 <div class="tag-search">
-  <%= simple_form_for(:tag, :url => tags_path, :html => {:method => :get}) do |f| %>
-    <%= f.input(:q, :value => @q, :placeholder => "Enter a tag ...") %>
+  <%= simple_form_for(:tag, :url => tags_path, :html => { :method => :get }) do |f| %>
+    <%= f.input(:q, :value => @q, :placeholder => t("tags.search_hint"), :label => t("tags.search_input")) %>
     <noscript><%= f.submit "Search", :class => "btn btn-success" %></noscript>
   <% end %>
 </div>
-<br class="clear" />
 <div class="fluid-content row" id="taglist">
  <%= render "list", :tags => @tags %>
 </div>

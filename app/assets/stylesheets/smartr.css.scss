@@ -132,13 +132,20 @@ label.span9 {
   margin-left: 0px;
 }
 #taglist {
-  span2 {
-    margin-bottom: 0.5em;
+  .span2 {
+      margin-bottom: 0.5em;
   }
 }
 
 .hl {
   background: #FE8;
+}
+
+input[type=text]:focus,
+textarea:focus {
+  background-color: #ffff99 * 1.3;
+  $x: background-color 0.5s ease;
+  @include transition($x);
 }
 
 .answer-item {

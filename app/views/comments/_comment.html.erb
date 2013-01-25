@@ -9,9 +9,10 @@ else
 end
 %>
 
-<div class="comment-item well" id="comment-<%=comment.id%>">
+<div class="comment-item" id="comment-<%=comment.id%>">
   <div class="inner">
-    <div class="user-info"><span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes_count%></span> <span id="comment-votes-<%=comment.id%>">
+    <div class="user-info">
+      <span class="arrow" id="<%="comment-votes-count-#{comment.id}"%>"><%=comment.votes_count%></span> <span id="comment-votes-<%=comment.id%>">
     <%=t("votes", :count => comment.votes_count)%></span> &middot;
       <%= link_to raw("&uarr;"),
                        votes_path(
@@ -26,10 +27,10 @@ end
       <%=link_to comment.user.login, user_path(comment.user)%>
     </div>
     
-    <%= raw code(auto_link_urls(comment.body,{:target => "_blank"})) %><br class="clear" />
+    <%= raw code(auto_link_urls(comment.body,{:target => "_blank"})) %>
     <%= link_to(t("comment.edit"),
                 edit_comment_path(comment),
                 :remote => true,
-                :class => "pull-right") if user_signed_in? && current_user == comment.user %>
+                :class => "") if user_signed_in? && current_user == comment.user %>
   </div>
 </div>

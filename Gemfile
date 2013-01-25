@@ -1,22 +1,21 @@
 source 'http://rubygems.org'
-gem 'rails', "3.2.2"
+gem 'rails', "3.2.8"
 gem "friendly_id", "4.0.1"
 gem "sanitize"
 gem "bluecloth"
 gem "escape"
 gem "kaminari", "~>0.13.0"
 gem "paperclip"
-gem "acts-as-taggable-on", ">=2.2.1"
-gem "sunspot_rails", "1.3.0"
-gem "sunspot_solr"
+gem "acts-as-taggable-on", ">=2.3.3"
+gem "sunspot_rails", "1.3.3"
 gem "mysql2"
 gem "devise", "2.0.4"
 gem "stringex"
 gem "simple_form"
 gem 'rails_autolink'
 gem "dynamic_form"
+gem "progress_bar"
 
-#gem 'react_reporter', :git => "git://github.com/reactualize/react_reporter.git"
 
 
 # bundler requires these gems while running tests

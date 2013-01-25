@@ -23,7 +23,7 @@ end
               :class => upclass -%>
 <% end %>
 
-<div class="value" id="<%="answer-votes-count-#{answer.id}"%>"><%=answer.votes_count%></div>
+<span class="value" id="<%="answer-votes-count-#{answer.id}"%>"><%=answer.votes_count%></span>
 <% if vote_value == -1 %>
   <%= link_to raw("&nbsp;"), "javascript:;", :class => downclass %>
 <% else %>

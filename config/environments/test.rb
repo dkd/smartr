@@ -37,9 +37,3 @@ Smartr::Application.configure do
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
   config.assets.allow_debugging = true
 end
-#require 'net/http'
-#ReactReporter.configure do |c|
-#  c.api_key = "f6cc822def064ecab9595ba2568a3435"
-#  c.host = "reactualize.dkd.de"
-#  c.port = 80
-#end

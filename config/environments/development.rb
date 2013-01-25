@@ -42,5 +42,8 @@ Smartr::Application.configure do
     # Expands the lines which load the assets
     config.assets.debug = true
 
+  # Sunspot Solr
+  Sunspot.config.solr.url = 'https://6823c2bdc2e-thermonuclear:ecd58f9abba@solr.hosted-solr.com/6823c2bdc2e-thermonuclear/core/'
+
 end
 require 'net/http'

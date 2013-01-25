@@ -1,0 +1,21 @@
+h2.answers {
+  border-bottom: 3px solid black;
+  margin-top: 1em;
+  line-height: 24px;
+}
+
+.answer-item {
+  .stats {
+    img {
+      max-width: none;
+    }
+    .votes {
+      text-align: center;
+      .value {
+        padding: 0px;
+        font-size: 36px;
+        line-height: 36px;
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@ end
                    :remote => true,
                    :class => upclass -%>
 <% end -%>
-<div class="value" id="<%="question-votes-count-#{question.id}"%>"><%=count_votes question%></div>
+<span class="value" id="<%="question-votes-count-#{question.id}"%>"><%=count_votes question%></span>
 <% if vote_value == -1 %>
   <%= link_to raw("&nbsp;"), "javascript:;", :class => downclass %>
 <% else %>
