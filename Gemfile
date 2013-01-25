@@ -40,6 +40,9 @@ end
 
 group :development do
   gem "pry"
+end
+
+group :production do
   gem "thin"
 end
 
