@@ -6,6 +6,6 @@
 - if @questions.count == 0
   Sorry, but no favourites found ....
 %br.clear/
-= paginate @questions
+= will_paginate @questions, renderer: BootstrapPagination::Rails
 - main_menu :users
 - content_for :sidebar, render("/users/sidebar/user", :user => @user)
