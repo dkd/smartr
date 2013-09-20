@@ -17,7 +17,7 @@ gem "rails_autolink"
 gem "dynamic_form"
 gem "progress_bar"
 gem 'angularjs-rails'
-
+gem "haml"
 
 group :development do
   gem "sunspot_solr"
