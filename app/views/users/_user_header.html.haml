@@ -1,5 +1,5 @@
 - content_for :title do
-  = image_tag(@user.avatar.url(:medium), :alt => @user.login, :title => @user.login, :class => "thumbnail pull-left", :style => "margin-right: 6px") + @user.login
+  = image_tag(@user.avatar.url(:medium), :alt => @user.login, :title => @user.login, :class => "round pull-left", :style => "margin-right: 6px") + @user.login
 - content_for :subtitle do
   %br/
   = t("activerecord.models.question", :count => @user.questions.count).html_safe

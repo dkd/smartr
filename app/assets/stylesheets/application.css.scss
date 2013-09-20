@@ -19,3 +19,11 @@
 @import "github.css.scss";
 @import "comments.css.scss";
 @import "answers.css.scss";
+
+img.round {
+  border-radius: 100%;
+  border: 3px solid #0088CC;
+}
+img.round-tiny {
+  border-radius: 100%;
+}

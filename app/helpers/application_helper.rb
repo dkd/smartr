@@ -36,7 +36,7 @@ module ApplicationHelper
   end
 
   def image_for(user, size)
-    image_tag(user.avatar.url(size.to_sym))
+    image_tag(user.avatar.url(size.to_sym), :class => "round-#{size}")
   end
 
   def build_menu(menu, active, css_class = "")
