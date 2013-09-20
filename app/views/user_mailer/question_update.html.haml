@@ -1,0 +1,41 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
+    %title SmartR - question update
+    %style{:media => "screen", :type => "text/css"}
+      h3{
+      color: #738500;
+      font-size: 16px;
+      }
+      a:link,a:visited{
+      color: #738500;
+      }
+      
+      \.body-section{
+      padding: 5px;
+      background: #f4f4f4;
+      }
+      \.object-info{
+      padding: 5px;
+      color: #000000;
+      font-size: 11px;
+      font-weight:bold;
+      border-bottom: 3px solid black;
+      }
+  %body
+    %p
+      %b
+        Hi #{h @question.user.login}!,
+    %p
+      a new #{@object.class.name.downcase} has just been posted by
+      %b= link_to(@object.user.login, "#{Smartr::Settings[:host]}#{url_for(@object.user)}")
+      on your question:
+    %h3= link_to(@question.name, "#{Smartr::Settings[:host]}#{url_for(@question)}")
+    %br/
+    .object-info
+      = @object.class.name
+      posted #{@object.updated_at} by
+      = succeed "." do
+        %b= link_to(@object.user.login, "#{Smartr::Settings[:host]}#{url_for(@object.user)}")
+    .body-section
+      = raw(code(@object.body))

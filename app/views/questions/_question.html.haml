@@ -1,0 +1,24 @@
+.row.question-list-item.pull-left
+  .stats.span2.pull-left
+    .votes
+      = question.votes_count.humanize
+      %span.desc= t("vote", :count => question.votes_count)
+    .views
+      = question.views.humanize
+      %span.desc= t("views", :count => question.views)
+    %div{:class => "answers #{" zero" if question.answers_count == 0}#{" answered" if question.answer_id.present?}"}
+      = question.answers_count
+      %span.desc= t("answers", :count => question.answers_count)
+  .span7.question-cell.pull-right
+    %h3= link_to(h(question.name), question_path(question.id, question.friendly_id))
+    %span.user
+      - unless controller.controller_name == "users"
+        = link_to image_for(question.user, :tiny), user_path(question.user)
+        = link_to question.user.login, user_path(question.user)
+        \&middot; #{question.user_reputation}
+        \&middot;
+      = t "datetime.distance", :distance => distance_of_time_in_words_to_now(question.created_at)
+    - if question.tags.present?
+      .tags
+        - question.tags.each do |tag|
+          = link_to(h(tag.name), questions_path(:tag => tag.name), :class => "btn btn-small")

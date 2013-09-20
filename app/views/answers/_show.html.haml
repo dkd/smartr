@@ -1,0 +1,18 @@
+%div{:class => "clearfix row answer-item#{" accepted" unless answer != answer.question.accepted_answer}", :id => "answer_#{answer.id}"}
+  .stats.span1
+    .votes{:id => "vote-box-#{answer.id}"}
+      = render "/answers/vote_box", :answer => answer
+    .status
+      = render "/answers/status", :answer => answer
+  .body.span8
+    = raw code(answer.body)
+    %span.user
+      = link_to( image_tag(answer.user.avatar.url(:tiny), :border =>"0"), user_path(answer.user))
+      = link_to answer.user.login, user_path(answer.user)
+      \&middot;
+      %span{:class => "user-#{answer.user.id}-reputation"}= answer.user.reputation
+      \&middot;
+      \#{distance_of_time_in_words_to_now answer.created_at}
+    = link_to("edit", edit_question_answer_path(:question_id => question.id, :id => answer.id), :class => "edit") if (answer.user == current_user)
+    .comments.clearfix{:id => "Answer-comments-#{answer.id}"}
+      = render "/comments/list", :comments => answer.comments, :parent => answer

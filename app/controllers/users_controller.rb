@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def who_is_online
-    @users = User.online.page(params[:page])
+    @users = User.online.paginate(:page => params[:page])
   end
 
   def reputation
@@ -32,11 +32,11 @@ class UsersController < ApplicationController
   end
 
   def questions
-    @questions = @user.questions.page params[:page]
+    @questions = @user.questions.paginate(:page => params[:page])
   end
 
   def answers
-    @questions = Question.joins(:answers).where("answers.user_id = ?", @user.id).group("questions.id").page params[:page]
+    @questions = Question.joins(:answers).where("answers.user_id = ?", @user.id).group("questions.id").paginate(:page => params[:page])
   end
 
   protected

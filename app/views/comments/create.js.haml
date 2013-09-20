@@ -1,0 +1,1 @@
+$('##{"#{@comment.commentable_type}-comments-#{@comment.commentable_id}"}').html('#{escape_javascript(render("list",  :comments => @parent.comments, :parent => @parent ))}');

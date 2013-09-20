@@ -1,0 +1,19 @@
+- if params[:tag].present?
+  - title t("question.latest"), t("question.tagged",
+  - :tag => params[:tag],
+  - :page_entries => page_entries_info(@questions)).html_safe +
+  - "&nbsp;".html_safe +
+  - link_to(t("remove_tag"), root_path, :class => "btn small danger")
+- else
+  - title t("question.latest"), page_entries_info(@questions).html_safe
+= question_submenu(:latest)
+%br.clear
+- @questions.each do |question|
+  = render "/questions/question", :question => question
+%br.clear
+
+= will_paginate(@questions, renderer: BootstrapPagination::Rails)
+
+- content_for :sidebar do
+  = render("/questions/sidebar/default")
+- main_menu :questions

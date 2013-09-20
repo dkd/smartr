@@ -1,0 +1,16 @@
+- if params[:tag].present?
+  - title t("question.unanswered"), t("question.tagged",
+  - :tag => params[:tag],
+  - :page_entries => page_entries_info(@questions)).html_safe +
+  - "&nbsp;".html_safe +
+  - link_to(t("remove_tag"), unanswered_questions_path, :class => "btn small danger")
+- else
+  - title t("question.unanswered"), page_entries_info(@questions).html_safe
+= question_submenu(:unanswered)
+%br.clear/
+- @questions.each do |question|
+  = render "/questions/question", :question => question
+%br.clear/
+= paginate @questions
+- content_for :sidebar, render("/questions/sidebar/default")
+- main_menu :questions

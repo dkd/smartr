@@ -1,0 +1,9 @@
+- title t("question.hot"), page_entries_info(@questions).html_safe
+= question_submenu(:hot)
+%br.clear/
+- @questions.each do |question|
+  = render "/questions/question", :question => question
+%br.clear/
+= paginate @questions
+- content_for :sidebar, render("/questions/sidebar/default")
+- main_menu :questions

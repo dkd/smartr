@@ -1,0 +1,53 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html;charset=UTF-8", "http-equiv" => "content-type"}/
+    = csrf_meta_tag
+    %title
+      = yield :html_title
+      | SmartR - be a smartass!
+    = stylesheet_link_tag "application"
+    / <link rel="alternate" type="application/rss+xml" title="SmartR - latest questions" href="#" />
+  %body
+    .navbar.navbar-fixed-top{"data-scrollspy" => "scrollspy"}
+      .navbar-inner
+        .container
+          = link_to("SmartR", root_url, :class => "brand")
+          = yield :main_menu
+          = form_for(:question, :url => search_questions_path, :html => {:method => :get, :class => "form-search navbar-search pull-left"}) do |f|
+            = f.text_field(:searchstring, :value => @searchstring, :title => t('searchstring_default'), :class => "search-query span3", :placeholder => "Search ...")
+          #profile.pull-left
+            = render 'users/menu/registration_items'
+            = render 'users/menu/login_items'
+          / profile
+        / container
+      / navbar-inner
+    / navbar
+    .container
+      .content
+        .page-header.clearfix
+          %h1
+            = yield :title
+            - if content_for?(:subtitle)
+              %small= yield :subtitle
+          = yield :page_header_infobox if content_for :page_header_infox
+        / page-header
+        .row
+          .span9
+            = content_tag(:div, flash[:error], :class => "alert error") if flash[:error]
+            = content_tag(:div, flash[:notice], :class => "alert success") if flash[:notice]
+            = content_tag(:div, flash[:alert], :class => "alert error") if flash[:alert]
+            = yield
+          .span3.sidebar
+            = yield :facets
+            = yield :sidebar
+        / row end
+        %br.clearfix/
+        %br.clearfix/
+      / content
+      %footer
+        %p
+          = pluralize User.online.count, "user"
+          currently logged in. #{Smartr::Settings[:copyright]}
+    / /container
+    = javascript_include_tag "application"

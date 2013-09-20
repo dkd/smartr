@@ -1,0 +1,8 @@
+%h1 Editing answer
+- form_for(@answer) do |f|
+  = f.error_messages
+  %p
+    = f.submit 'Update'
+= link_to 'Show', @answer
+|
+\#{link_to 'Back', answers_path}

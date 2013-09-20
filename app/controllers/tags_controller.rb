@@ -4,9 +4,9 @@ class TagsController < ApplicationController
   def index
     if params[:tags].present? && params[:tags][:q].present?
       @q = params[:tags][:q]
-      @tags = Question.tags.where("tags.name like ?", "%#{params[:tags][:q]}%").page(params[:page]).per(10)
+      @tags = Question.tags.where("tags.name like ?", "%#{params[:tags][:q]}%").paginate(params[:page])
     else
-      @tags = Question.tags.page(params[:page]).per(60)
+      @tags = Question.tags.paginate(:page => params[:page], :per_page => 60)
     end
     respond_to do |format|
       format.html

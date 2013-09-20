@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   friendly_id :login
 
   # Kaminari Pagination
-  paginates_per 10
+  #paginates_per 10
 
   # Named Scopes
   scope :online, lambda {

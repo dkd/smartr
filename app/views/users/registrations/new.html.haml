@@ -1,0 +1,14 @@
+- title "Register", "... you are almost there!"
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f|
+  .well
+    = f.input :login
+    = f.input :email, :hint =>"Enter your email address"
+    = f.input :password
+    = f.input :password_confirmation
+    = f.input :interesting_tag_list, :input_html => {:class => "span6"}, :hint => "e.g. ruby, php, programming"
+    = f.input :uninteresting_tag_list, :input_html => {:class => "span6"}, :hint => "e.g. sneezing, cold feet"
+    = image_tag @user.avatar.url(:medium), :align => :top
+    = f.input :avatar
+  = f.submit "Register", :class => "btn btn-success"
+- main_menu :users
+- content_for :sidebar, render("users/shared/links")

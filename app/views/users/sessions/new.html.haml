@@ -1,0 +1,12 @@
+- title t("devise.sessions.sign_in")
+- main_menu :users
+= devise_error_messages!
+.span4
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .well
+      = f.input :login
+      = f.input :password
+      = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+    = f.button :submit, t("devise.sessions.sign_in").html_safe, :class => "pull-right btn btn-success"
+- content_for :sidebar do
+  = render "users/shared/links"

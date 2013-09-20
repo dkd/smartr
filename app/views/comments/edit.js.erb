@@ -1,9 +1,0 @@
-$("#comment-<%=@comment.id%> .comment-edit").fadeOut();
-
-var html = "<div class='comment-edit' style='display: none'>";
-html += '<h3><%=t("comments.edit")%></h3>';
-html += '<%=escape_javascript(render("form", :comment => @comment, :url => comment_path(@comment))) %>';
-html += '<a href="#" onclick="$.gritter.removeAll();$(\'#comment-<%=@comment.id%> .comment-edit\').fadeIn();$(\'#comment-<%=@comment.id%> div.comment-edit\').fadeOut(500,function(){$(this).remove();}); return false;" class="cancel"><%=t('cancel')%></a>';
-html += "</div><br class='clear' />";
-$("#comment-<%=@comment.id%> .inner").append(html);
-$("#comment-<%=@comment.id%> div.comment-edit").fadeIn();

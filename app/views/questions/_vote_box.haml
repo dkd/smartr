@@ -1,0 +1,39 @@
+- if user_signed_in?
+  - vote_value = current_user.vote_value_on(question)
+  - upclass = vote_value==1? "up" : "up-neutral"
+  - downclass = vote_value==-1? "down" : "down-neutral"
+- else
+  - upclass = "up-neutral"
+  - downclass = "down-neutral"
+
+- if vote_value == 1
+  = link_to raw("&nbsp;"), "javascript:;",                   |
+    :class => "#{upclass}",                                  |
+    :rel => "popover",                                       |
+    :"data-content" => "You already upvoted this question.", |
+    :"data-title" => "Info"                                  |
+- else
+  = link_to raw("&nbsp;"),                      |
+    votes_path(                                 |
+    :model => "question",                       |
+    :value => "1",                              |
+    :dom_id => "votes-question-#{question.id}", |
+    :vote_box_id => "vote-box-#{question.id}",  |
+    :id => question.id),                        |
+    :method => "post",                          |
+    :remote => true,                            |
+    :class => upclass                           |
+%span.value{:id => "question-votes-count-#{question.id}"}= count_votes question
+- if vote_value == -1
+  = link_to raw("&nbsp;"), "javascript:;", :class => downclass
+- else
+  = link_to raw("&nbsp;"),                      |
+    votes_path(                                 |
+    :model => "question",                       |
+    :value => "-1",                             |
+    :dom_id => "votes-question-#{question.id}", |
+    :vote_box_id => "vote-box-#{question.id}",  |
+    :id => question.id),                        |
+    :method => "post",                          |
+    :remote => true,                            |
+    :class => downclass                         |

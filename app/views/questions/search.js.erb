@@ -1,9 +1,0 @@
-<ul>
-  <% @questions.each_hit_with_result do |hit, question| %>
-    <% if hit.highlights(:name).present? %>
-      <li><%=link_to raw(hit.highlights(:name).first.format {|word|  "<strong>#{word}</strong>"}), question_path(hit.stored(:id), hit.stored(:friendly_id)) %></li>
-    <% else %>
-      <li><%= link_to hit.stored(:name), question_path(hit.stored(:id), hit.stored(:friendly_id)) %> </li>
-    <% end -%>
-  <% end -%>
-</ul>

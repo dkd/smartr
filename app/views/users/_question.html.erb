@@ -1,8 +1,0 @@
-<tr>
-  <td class="tiny-stats">
-    <span><%=question.answers_count %></span>
-  </td>
-  <td>
-    <%= link_to(h(question.name), question_path(:id => question.id, :friendly_id => question.friendly_id, :user_id => @user.id)) %>
-  </td>
-</tr>

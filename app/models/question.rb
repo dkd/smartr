@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
   friendly_id :permalink
 
   # Kaminari Pagination
-  paginates_per 15
+  #paginates_per 15
 
   # Named Scopes
   class << self

@@ -1,0 +1,6 @@
+%h1 New user
+= form_for(@user) do |f|
+  = f.error_messages
+  %p
+    = f.submit 'Create'
+= link_to 'Back', users_path

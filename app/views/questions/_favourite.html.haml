@@ -1,0 +1,4 @@
+- if current_user
+  %div{:class => question.favourited? "favourite-saved": "favourite", :id => "favourite-question-#{question.id}"}
+    %br/
+    = link_to "*", toggle_favourite_path(:favourite => {:question_id => question.id}), :method => :put, :remote => true

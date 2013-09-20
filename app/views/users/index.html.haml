@@ -1,0 +1,19 @@
+- title t("activerecord.models.user.other"), page_entries_info(@users).html_safe
+= user_submenu(:winner)
+.user-search
+  %input.toggle{:size => "25", :title => "Enter a username ...", :type => "text"}/
+%br.clear/
+.user-list
+  %table.table.table-striped.user-list{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+    %tr
+      %th User
+      %th
+      %th.activity Latest activity
+      %th.number= t("views.other").capitalize
+      %th.number= t("users.reputation")
+    = render :partial => "list", :locals => {:users => @users}
+  .no-result= t("users.not_found_msg")
+%br.clear/
+= will_paginate @users, renderer: BootstrapPagination::Rails
+- main_menu :users
+- content_for :sidebar, render("/users/sidebar/default")

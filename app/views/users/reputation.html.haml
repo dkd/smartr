@@ -1,0 +1,18 @@
+= render "user_header"
+= user_show_submenu(:reputation)
+%br.clear/
+- if @user.questions.size > 0
+  .user-questions
+    %h3= t("question.latest", :default => "Latest Questions")
+    %table.table.table-striped
+      - @user.questions.latest.limit(5).each do |question|
+        = render "question", :question => question
+  %br.clear/
+- if @user.answers.latest.size > 0
+  .user-questions
+    %h3= t("answer.latest", :default => "Latest Answers")
+    %table.table.table-striped
+      - @user.answers.latest.limit(5).each do |answer|
+        = render "question", :question => answer.question
+- main_menu :users
+- content_for :sidebar, render("/users/sidebar/user", :user => @user )

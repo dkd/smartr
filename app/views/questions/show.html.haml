@@ -1,0 +1,9 @@
+= render "question_header", :question => @question
+- if @question.answers.length > 0
+  %h2.answers= t("answer", :count => @question.answers_count)
+  - @question.answers.each do |answer|
+    = render "/answers/show", :answer => answer, :question => @question
+- if (current_user.present? && !@question.answered_by?(current_user))
+  = render "/answers/new", :answer => @answer, :question => @question
+- main_menu :questions
+- content_for :sidebar, render("questions/sidebar/show_solr", :related_questions => @related_questions)

@@ -1,0 +1,5 @@
+- if related_questions.length > 0
+  %h3= t("questions.related")
+  %ul
+    - related_questions.each do |question|
+      %li= link_to question.name, question_path(:id => question.id, :friendly_id => question.friendly_id)

@@ -1,0 +1,6 @@
+%h1 New question
+- form_for(@question) do |f|
+  = f.error_messages
+  %p
+    = f.submit 'Create'
+= link_to 'Back', questions_path

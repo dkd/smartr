@@ -1,0 +1,9 @@
+.comment-new.well
+  %h3= t "comment.new"
+  = simple_form_for(comment, :url => comments_path, :remote => true) do |f|
+    = f.input :body, :style => "width: 300px;height:75px;border: 1px solid black;", :class => "wmd-ignore"
+    = f.input :commentable_type, :value => comment.commentable_type, :as => :hidden
+    = f.input :commentable_id, :value => comment.commentable_id, :as => :hidden
+    %br/
+    = f.submit t("comment.save"), :class => "btn btn-success btn-small"
+  = link_to "Cancel", "", :onclick => "$.gritter.removeAll();$('a.comment-new').show();$('div.comment-new').hide(); return false;", :class => "cancel"

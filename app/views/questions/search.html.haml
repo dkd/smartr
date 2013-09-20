@@ -1,0 +1,15 @@
+- title t("search"), page_entries_info(@questions.results).html_safe
+- if @questions.results.present?
+  - @questions.each_hit_with_result do |hit, question|
+    = render "/questions/question", :question => question
+  %br.clear/
+  = paginate @questions.results
+- else
+  %p No results found. I am very sorry.
+- content_for :sidebar, render("/questions/sidebar/default")
+- content_for :facets do
+  = facet(:user, @questions)
+  = facet(:state, @questions)
+  = facet(:created_at, @questions)
+  = facet(:number_of_comments, @questions)
+- main_menu :questions

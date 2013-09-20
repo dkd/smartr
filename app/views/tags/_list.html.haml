@@ -1,0 +1,6 @@
+- if tags.present?
+  - tags.each do |tag|
+    .span2
+      = link_to "<strong>#{tag.count}</strong> x #{tag}".html_safe, questions_path(:tag => tag.name), :class => "btn btn-small"
+- else
+  %p Nothing found. I am sorry

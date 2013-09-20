@@ -9,7 +9,7 @@ class Favourite < ActiveRecord::Base
   validates :user, :presence => true
 
   # Kaminari Pagination
-  paginates_per 15
+  #paginates_per 15
 
 end
 

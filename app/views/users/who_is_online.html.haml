@@ -1,0 +1,12 @@
+- title t("user.other").capitalize, page_entries_info(@users).html_safe
+= user_submenu(:who_is_online)
+.user-list
+  %table.table.table-striped{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+    %tr
+      %th Avatar
+      %th User
+      %th.activity Latest activity
+      %th.number Views
+      %th.number Reputation
+    = render "list", :users => @users
+- main_menu :users

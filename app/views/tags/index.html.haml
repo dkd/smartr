@@ -1,0 +1,12 @@
+- title t("tag.find_tags")
+.tag-search
+  = simple_form_for(:tag, :url => tags_path, :html => { :method => :get }) do |f|
+    = f.input(:q, :value => @q, :placeholder => t("tags.search_hint"), :label => t("tags.search_input"))
+    %noscript= f.submit "Search", :class => "btn btn-success"
+#taglist.fluid-content.row
+  = render "list", :tags => @tags
+%br.clear/
+%br.clear/
+= will_paginate @tags, renderer: BootstrapPagination::Rails
+- main_menu :tags
+- content_for :sidebar, render("sidebar")

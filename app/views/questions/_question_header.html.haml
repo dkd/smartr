@@ -1,0 +1,55 @@
+- title link_to h(question.name), question_path(question.id, question.friendly_id)
+- content_for :page_header_infobox do
+  .user
+    = t("questions.asked_by")
+    = link_to image_tag(question.user.avatar.url(:thumb), :align => "left", :border => 0, :class => "thumbnail"), user_path(question.user) unless question.user.avatar.nil?
+    = link_to question.user.login, user_path(question.user)
+    (
+    %span{:class => "user-#{question.user.id}-reputation"}= question.user.reputation
+    Points) #{distance_of_time_in_words_to_now question.created_at},
+    \#{t "questions.saved_in"}
+    %span.tags
+      - question.tags.each do |tag|
+        = link_to(h(tag), questions_path(:tag => tag.name), :class => "btn btn-small")
+    - if can_edit?(@question)
+      = raw(button_to(t("question.edit"),                                                                               |
+        url_for(:controller => :questions, :action => :edit, :id => question.id, :friendly_id => question.friendly_id), |
+        :class => "btn btn-success btn-large"))                                                                         |
+  - if question.last_edit.present?
+    .edit
+      %strong Last Edit:
+      %span.body.hl
+        = question.last_edit.body
+      %br/
+      %span
+        = t "datetime.distance", :distance => distance_of_time_in_words_to_now(question.last_edit.created_at)
+        by #{link_to question.last_edit.user.login, user_path(@question.last_edit.user)}
+.question.row
+  .stats.span1
+    .votes{:id => "vote-box-#{question.id}"}
+      = render "/questions/vote_box", :question => question
+    .views
+      = question.views.humanize
+      %span.desc= t("views", :count => question.views)
+    - if user_signed_in?
+      %div{:class => question.favourited?(current_user)? "favourite-saved": "favourite", :id => "favourite-question-#{question.id}"}
+        %br/
+        = link_to "*", toggle_favourite_path(question.id), :method => "post", :remote => true
+  .body.span8
+    = raw code(question.body)
+    %h3.comments= t("comment.other").capitalize
+    = render("/comments/list", :comments => question.comments, :parent => question )
+    - if user_signed_in?
+      = link_to(t("comment.new"), new_comment_path(:comment => { :commentable_type => "Question", |
+        :commentable_id => question.id}),                                                         |
+        :remote => true,                                                                          |
+        :class => "btn btn-small btn-success comment-new")                                        |
+    - else
+      = link_to t("comment.new"), "javascript:;",          |
+        :"data-content" => t("popover.login_msg"),         |
+        :"data-title" => t("popover.login_header"),        |
+        :class => "btn btn-small btn-success comment-new", |
+        :rel => "popover"                                  |
+/ end of row
+- content_for :sidebar do
+  = render("/answers/sidebar/default")

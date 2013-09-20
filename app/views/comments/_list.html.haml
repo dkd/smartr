@@ -1,0 +1,19 @@
+- if comments.present?
+  %div{:id => "#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"}
+    - if comments.count > 1
+      %ul.nav.nav-pills
+        %li{:class => (session[:comments_order] == "latest") ? "active" : ""}
+          = link_to(t(:"comment.order.latest"),        |
+            comments_path(:model => parent.class.name, |
+            :id => parent.id,                          |
+            :comments_order => "latest"),              |
+            :remote => true)                           |
+        %li{:class => (session[:comments_order] == "reputation") ? "active" : ""}
+          = link_to(t(:"comment.order.reputation"),    |
+            comments_path(:model => parent.class.name, |
+            :id => parent.id,                          |
+            :comments_order => "reputation"),          |
+            :remote => true)                           |
+    %a{:name => "#{parent.class.name}-comments-#{parent.id}"}
+    - for comment in comments do
+      = render comment

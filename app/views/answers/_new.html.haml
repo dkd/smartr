@@ -1,0 +1,8 @@
+%h2.answers= t "user.my_answer"
+.answer-edit.span9
+  = simple_form_for(answer, :url => question_answers_path(:question_id => question.id, :friendly_id => question.friendly_id)) do |f|
+    = f.input :body, :input_html => { :id => "markdown-editor", :class => "markdown span9" }, :label_html => { :class => "span9" }, :html => {:rows => 20}
+    %h4= t "preview"
+    #markdown-preview.well.clearfix
+    = f.submit t("answer.save"), :class => "btn btn-success pull-right"
+    = link_to t("cancel"), question_path(answer.question), :class => "cancel" if controller.controller_name == "answers"

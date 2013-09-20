@@ -1,0 +1,8 @@
+- main_menu :questions
+- title t("question.new")
+= simple_form_for(@question) do |f|
+  = render :partial => '/questions/form', :locals => {:f => f }
+  .span9
+    = f.submit t("question.save"), :class => "btn btn-large btn-success pull-right"
+#livepreview
+- content_for :sidebar, render("/questions/sidebar/new")

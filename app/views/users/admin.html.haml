@@ -1,0 +1,9 @@
+.header-with-tabs
+  %h2 Admininistration
+  .tabs
+    = user_show_submenu(:admin)
+  %br.clear/
+%p Here is the place to punish everybody.
+%br.clear/
+- main_menu :users
+- content_for :sidebar, render("/users/sidebar/user", :user => @user)

@@ -1,0 +1,17 @@
+= link_to t("sidebar.ask_a_question"), new_question_path, :class => "btn danger", :id => "new_question_button"
+sss
+%h3= t("sidebar.users.interested_in")
+.tags
+  ss
+  - ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='interesting_tags'").order('created_at desc').each do |tag|
+    - if @tags.present? && @tags.includes?(tag.name)
+      = link_to(tag.name, questions_path(:tag => tag.name), :class => "btn js-btn")
+      yes
+    - else
+      = link_to(tag.name, questions_path(:tag => tag.name), :class => "btn js-btn")
+      nope
+%br.clear/
+%h3= t("sidebar.users.not_interested_in")
+.tags
+  - ActsAsTaggableOn::Tag.limit(40).joins(:taggings).group("tags.id").where("taggings.taggable_type='User' and context='uninteresting_tags'").order('created_at desc').each do |tag|
+    = link_to(tag.name, questions_path(:tag => tag.name), :class => "btn js-btn")

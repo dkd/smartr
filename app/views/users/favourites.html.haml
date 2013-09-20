@@ -1,0 +1,11 @@
+= render "/users/user_header"
+= user_show_submenu(:favourites)
+.user-questions
+  - @questions.each do |question|
+    = render "/users/favourite_question", :question => question
+- if @questions.count == 0
+  Sorry, but no favourites found ....
+%br.clear/
+= paginate @questions
+- main_menu :users
+- content_for :sidebar, render("/users/sidebar/user", :user => @user)

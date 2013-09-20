@@ -1,0 +1,35 @@
+- if user_signed_in?
+- vote_value = current_user.vote_value_on(comment)
+- upclass = vote_value==1? "up" : "up-neutral"
+- downclass = vote_value==-1? "down" : "down-neutral"
+- else
+- upclass = "up-neutral"
+- downclass = "down-neutral"
+- end
+.comment-item{:id => "comment-#{comment.id}"}
+  .inner
+    .user-info
+      %span.arrow{:id => "comment-votes-count-#{comment.id}"}= comment.votes_count
+      %span{:id => "comment-votes-#{comment.id}"}
+        = t("votes", :count => comment.votes_count)
+      \&middot;
+      - if !is_owner?(comment)
+        = link_to raw("&uarr;"),                 |
+          votes_path(                            |
+          :model => "comment",                   |
+          :value => (vote_value==1? "-1" : "1"), |
+          :id => comment.id),                    |
+          :method => "post",                     |
+          :remote => true,                       |
+          :class => upclass                      |
+        \&middot;
+      = distance_of_time_in_words_to_now comment.created_at, :include_seconds => true
+      \&middot;
+      %span{:class => "user-#{comment.user.id}-reputation"}= comment.user.reputation
+      \&middot;
+      \#{link_to comment.user.login, user_path(comment.user)}
+    = raw code(auto_link_urls(comment.body,{:target => "_blank"}))
+    = link_to(t("comment.edit"),                                       |
+      edit_comment_path(comment),                                      |
+      :remote => true,                                                 |
+      :class => "") if user_signed_in? && current_user == comment.user |

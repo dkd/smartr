@@ -4,7 +4,6 @@ gem "friendly_id", "4.0.9"
 gem "sanitize"
 gem "bluecloth"
 gem "escape"
-gem "kaminari", "0.14.1"
 gem "paperclip"
 gem "acts-as-taggable-on", ">=2.3.3"
 gem "sunspot_rails", "~> 2.0.0"
@@ -18,6 +17,7 @@ gem "dynamic_form"
 gem "progress_bar"
 gem 'angularjs-rails'
 gem "haml"
+gem "will_paginate-bootstrap"
 
 group :development do
   gem "sunspot_solr"

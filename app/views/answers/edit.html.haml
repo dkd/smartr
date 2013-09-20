@@ -1,0 +1,13 @@
+= render :partial => "/questions/question_header", :locals => {:answer => @answer, :question => @answer.question}
+%br.clear/
+%h2= t("answer.edit")
+.answer-edit
+  = form_for(@answer, :url => question_answer_path(:question_id => @answer.question.id, :friendly_id =>@answer.question.friendly_id, :id => @answer.id), :method => "put") do |f|
+    %div{:class => "error" if f.error_message_on(:body).present?}
+      = f.text_area :body, :id => "wmd-input", :class => "markdown"
+      = f.error_message_on(:body)
+    = button_tag t("save"), :type => :submit, :class => "g-button"
+    = link_to t("cancel"), question_path(@answer.question.id, @answer.question.friendly_id), :class => "cancel"
+    %br.clear/
+  %br.clear/
+- main_menu :questions

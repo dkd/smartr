@@ -1,0 +1,24 @@
+= link_to 'Ask a question!', new_question_path, :class => "btn btn-success btn-large btn-wide", :id => "new_question_button"
+%h3 Reputation
+.stats= user.reputation.to_s
+%h3 Views
+.stats= user.views
+- if user.interesting_tags.length > 0
+  %h3 Interested in ...
+  .tags
+    - user.interesting_tag_list.each do |tag|
+      = link_to(tag, questions_path(:tag => tag), :class => "btn btn-small")
+  %br.clear/
+- if user.uninteresting_tags.length>0
+  %h3 Not interested in ...
+  .tags
+    - user.uninteresting_tag_list.each do |tag|
+      = link_to(tag, questions_path(:tag => tag), :class => "btn btn-small")
+  %br.clear/
+%h3 Last request
+.stats
+  = h(distance_of_time_in_words_to_now(user.last_request_at)) unless user.last_request_at.nil?
+  ago
+%h3 Is online?
+.stats
+  = user.is_online? ? "Yes" : "No"

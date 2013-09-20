@@ -1,0 +1,5 @@
+%h2 Register
+= form_for @user, :url => users_path, :html => { :multipart => true, :class => :user } do |f|
+  = render :partial => "form", :object => f
+  = f.submit "Register"
+- main_menu :users

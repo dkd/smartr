@@ -1,0 +1,6 @@
+= render "user_header"
+= user_show_submenu(:questions)
+- @questions.each do |question|
+  = render :partial => "/questions/question", :locals => { :question => question }
+= paginate @questions
+- content_for :sidebar, render("/users/sidebar/user", :user => @user)

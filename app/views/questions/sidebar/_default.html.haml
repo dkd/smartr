@@ -1,0 +1,11 @@
+= link_to t('sidebar.ask_a_question'), new_question_path, :class => "btn btn-success btn-large span3", :id => "new_question_button"
+- if current_user && current_user.interesting_tag_list
+  %h3= t('sidebar.tags.interesting')
+  .tags.interesting
+    - current_user.interesting_tag_list.each do |tag|
+      = link_to(h(tag), questions_path(:tag => tag), :class => "btn js-btn")
+  .tags.uninteresting{:style => "display:none"}
+    - current_user.uninteresting_tag_list.each do |tag|
+      = link_to(h(tag), questions_path(:tag => tag), :class => "btn js-btn")
+  %br.clear/
+= render :partial => "/shared/recent_tags"
