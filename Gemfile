@@ -41,7 +41,7 @@ group :test do
   gem "shoulda-matchers", "1.4.2"
   gem "capybara"
   gem "database_cleaner"
-  gem "cucumber-rails"
+  gem "cucumber-rails", :require => false
 #  gem "test-unit", :require => "test/unit"
 end
 
