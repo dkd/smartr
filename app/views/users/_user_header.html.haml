@@ -7,5 +7,5 @@
   \#{t("activerecord.models.answer", :count => @user.answers.count).html_safe},
   \#{t("activerecord.models.comment", :count => @user.comments.count).html_safe}
 - content_for :subtitle do
-  = (user_signed_in? && current_user == @user) ? raw("<br>"+link_to("Edit my Account", edit_user_registration_path, :class => "btn btn-success btn-large")) : ""
+  = (user_signed_in? && current_user == @user) ? raw("<br>" + link_to("Edit my Account", edit_user_registration_path, :class => "btn btn-success btn-large")) : ""
 - end unless controller.action_name == "edit"

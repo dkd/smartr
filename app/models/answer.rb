@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: answers
+#
+#  id          :integer          not null, primary key
+#  body        :text
+#  question_id :integer
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  accepted    :boolean
+#  body_plain  :text
+#  send_email  :boolean          default(FALSE)
+#  votes_count :integer          default(0)
+#
+
 class AnswerCountValidator < ActiveModel::Validator
   def validate(record)
     if(Answer.find_all_by_user_id_and_question_id(record.user_id,record.question_id).size > 1)

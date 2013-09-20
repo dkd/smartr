@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id            :integer          not null, primary key
+#  voteable_type :string(255)
+#  voteable_id   :integer
+#  user_id       :integer
+#  value         :integer          default(0)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'spec_helper'
 
 describe Vote do

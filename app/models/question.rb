@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  body          :text
+#  user_id       :integer
+#  views         :integer          default(0)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  answers_count :integer          default(0)
+#  votes_count   :integer          default(0)
+#  body_plain    :text
+#  body_html     :text
+#  permalink     :string(255)
+#  answer_id     :integer
+#  send_email    :boolean          default(FALSE)
+#
+
 class Question < ActiveRecord::Base
   include ActionView::Helpers
   include ::ApplicationHelper

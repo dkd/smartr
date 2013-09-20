@@ -22,4 +22,4 @@
           \#{vote.voteable.class}  #{direction(vote.value)}
         %td.right
           = Smartr::Settings[:reputation]["#{vote.type_to_sym}"][vote.direction.to_sym]
-  = paginate @votes
+  = will_paginate @votes, renderer: BootstrapPagination::Rails

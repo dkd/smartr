@@ -28,21 +28,26 @@ en:
 
     models:
       user:
-        one: user
-        other: users
+        one: User
+        other: "%{count} Users"
       favourite:
-        one: favourite
-        other: favourites
+        one: Favourite
+        other: "%{count} Favourites"
       edit:
-        one: edit
-        other: edits
-      user:
-        one: user
-        other: users
+        one: Edit
+        other: "%{count} Edits"
       vote:
-        one: vote
-        other: votes
-
+        one: Vote
+        other: "%{count} Votes"
+      question:
+        one: "1 Question"
+        other: "%{count} Questions"
+      answer:
+        one: "1 Answer"
+        other: "%{count} Answers"
+      comment:
+        one: "1 Comment"
+        other: "%{count} Comments"
   main_menu:
     questions: Questions
     tags: Tags

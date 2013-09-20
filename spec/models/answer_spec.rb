@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: answers
+#
+#  id          :integer          not null, primary key
+#  body        :text
+#  question_id :integer
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  accepted    :boolean
+#  body_plain  :text
+#  send_email  :boolean          default(FALSE)
+#  votes_count :integer          default(0)
+#
+
 require 'spec_helper'
 
 describe Answer do

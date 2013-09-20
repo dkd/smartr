@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: favourites
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  question_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Favourite < ActiveRecord::Base
 
   # Associations
@@ -12,15 +23,3 @@ class Favourite < ActiveRecord::Base
   #paginates_per 15
 
 end
-
-# == Schema Information
-#
-# Table name: favourites
-#
-#  id          :integer(4)      not null, primary key
-#  user_id     :integer(4)
-#  question_id :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
-#
-

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: edits
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  editable_type :string(255)
+#  editable_id   :integer
+#  body          :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class CheckOwnershipValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     if record.user.present? && record.editable.user.present?

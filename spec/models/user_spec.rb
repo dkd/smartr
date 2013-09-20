@@ -1,3 +1,38 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                   :integer          not null, primary key
+#  created_at           :datetime
+#  updated_at           :datetime
+#  login                :string(255)
+#  encrypted_password   :string(255)
+#  password_salt        :string(255)
+#  sign_in_count        :integer          default(0), not null
+#  last_request_at      :datetime
+#  last_sign_in_at      :datetime
+#  current_sign_in_at   :datetime
+#  last_sign_in_ip      :string(255)
+#  current_sign_in_ip   :string(255)
+#  views                :integer          default(0)
+#  email                :string(255)
+#  reputation           :integer          default(0)
+#  avatar_file_name     :string(255)
+#  avatar_content_type  :string(255)
+#  avatar_file_size     :integer
+#  avatar_updated_at    :datetime
+#  is_admin             :boolean          default(FALSE)
+#  reset_password_token :string(255)
+#  remember_token       :string(255)
+#  remember_created_at  :datetime
+#  confirmation_token   :string(255)
+#  confirmed_at         :datetime
+#  confirmation_sent_at :datetime
+#  failed_attempts      :integer
+#  unlock_token         :string(255)
+#  locked_at            :datetime
+#
+
 require 'spec_helper'
 
 describe User do
