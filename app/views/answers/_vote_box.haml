@@ -1,11 +1,11 @@
 - if user_signed_in?
-- vote_value = current_user.vote_value_on(answer)
-- upclass = vote_value==1? "up" : "up-neutral"
-- downclass = vote_value==-1? "down" : "down-neutral"
+  - vote_value = current_user.vote_value_on(answer)
+  - upclass = vote_value==1? "up" : "up-neutral"
+  - downclass = vote_value==-1? "down" : "down-neutral"
 - else
-- upclass = "up-neutral"
-- downclass = "down-neutral"
-- end
+  - upclass = "up-neutral"
+  - downclass = "down-neutral"
+
 - if vote_value == 1
   = link_to raw("&nbsp;"), "javascript:;", :class => upclass
 - else

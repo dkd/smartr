@@ -27,12 +27,12 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.find(params[:id])
     @question = @answer.question
 
-     if @answer.update_attributes(params[:answer])
-       flash[:notice] = 'Answer was successfully updated.'
-         redirect_to question_path(@question.id, @question.friendly_id)
-      else
-          render "edit"
-      end
+    if @answer.update_attributes(params[:answer])
+      flash[:notice] = 'Answer was successfully updated.'
+      redirect_to question_path(@question.id, @question.friendly_id)
+    else
+      render "edit"
+    end
   end
 
   def update_for_switch_acceptance

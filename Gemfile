@@ -23,6 +23,9 @@ group :development do
   gem "sunspot_solr"
   gem "binding_of_caller"
   gem "better_errors"
+  gem "guard"
+  gem "guard-bundler"
+  gem "guard-zeus"
   gem 'guard-rspec'
 end
 
@@ -39,7 +42,7 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "cucumber-rails"
-  gem "test-unit", :require => "test/unit"
+#  gem "test-unit", :require => "test/unit"
 end
 
 group :development do

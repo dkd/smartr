@@ -1,11 +1,10 @@
 - if user_signed_in?
-- vote_value = current_user.vote_value_on(comment)
-- upclass = vote_value==1? "up" : "up-neutral"
-- downclass = vote_value==-1? "down" : "down-neutral"
+  - vote_value = current_user.vote_value_on(comment)
+  - upclass = vote_value==1? "up" : "up-neutral"
+  - downclass = vote_value==-1? "down" : "down-neutral"
 - else
-- upclass = "up-neutral"
-- downclass = "down-neutral"
-- end
+  - upclass = "up-neutral"
+  - downclass = "down-neutral"
 .comment-item{:id => "comment-#{comment.id}"}
   .inner
     .user-info

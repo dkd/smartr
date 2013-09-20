@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    if params[:tags].present? && params[:tags][:q].present?
+    if params.has_key?(:tags) && params[:tags].has_key?(:q) 
       @q = params[:tags][:q]
       @tags = Question.tags.where("tags.name like ?", "%#{params[:tags][:q]}%").paginate(params[:page])
     else

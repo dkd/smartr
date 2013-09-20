@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe TagsController do
   include Devise::TestHelpers
-  let(:question) {FactoryGirl.create :question2}
+  let(:question) { FactoryGirl.create :question2 }
   render_views
   
   context "HTML" do

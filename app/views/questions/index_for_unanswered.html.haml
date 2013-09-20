@@ -11,6 +11,6 @@
 - @questions.each do |question|
   = render "/questions/question", :question => question
 %br.clear/
-= paginate @questions
+= will_paginate @questions, renderer: BootstrapPagination::Rails
 - content_for :sidebar, render("/questions/sidebar/default")
 - main_menu :questions

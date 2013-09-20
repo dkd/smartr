@@ -9,5 +9,4 @@
     .span9
       = f.submit t("question.update"), :class => "btn btn-large btn-success pull-right"
 - content_for :sidebar,
-- render("/questions/sidebar/edit",
-- :related_questions => @related_questions)
+- render("/questions/sidebar/edit", :related_questions => @related_questions)

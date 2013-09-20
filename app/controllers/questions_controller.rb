@@ -73,20 +73,20 @@ class QuestionsController < ApplicationController
   end
 
   def hot
-    @questions = Question.hot.list.page(params[:page])
+    @questions = Question.hot.list.paginate(:page =>  params[:page], :per_page => 15)
     render :index_for_hot
   end
 
   def active
-    @questions = Question.active.list.page(params[:page])
+    @questions = Question.active.list.paginate(:page =>  params[:page], :per_page => 15)
     render :index_for_active
   end
 
   def unanswered
     if (params[:tag].present?)
-      @questions = Question.unanswered.list.tagged_with(params[:tag]).page(params[:page])
+      @questions = Question.unanswered.list.tagged_with(params[:tag]).paginate(:page =>  params[:page], :per_page => 15)
     else
-      @questions = Question.unanswered.list.page(params[:page])
+      @questions = Question.unanswered.list.paginate(:page =>  params[:page], :per_page => 15)
     end
     render :index_for_unanswered
   end
