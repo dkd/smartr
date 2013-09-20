@@ -1,6 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  def is_owner?(obj)
+    return false if obj == nil
+    obj.user == current_user
+  end
+
   def direction(value)
     value==1 ? "up" : "down"
   end
@@ -8,7 +13,7 @@ module ApplicationHelper
   def button_tag(value, options)
     content_tag(:button, t(value), options)
   end
-  
+
   def can_edit?(object)
      return false if !user_signed_in?
      return true if (current_user == object.user) || current_user.is_admin?

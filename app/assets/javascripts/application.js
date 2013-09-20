@@ -5,6 +5,7 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery.migrate
 //= require jquery_ujs
 //= require bootstrap
 //= require wysiwym/Markdown.Converter
@@ -15,6 +16,7 @@
 //= require jquery-autocomplete/jquery.autocomplete.pack
 //= require highlight/highlight.pack
 //= require jquery.gritter.min
+//= require angular.js
 
 $(document).ajaxSend(function(event, xhr, settings) {
   xhr.setRequestHeader("Accept", "text/javascript, application/javascript");
@@ -60,7 +62,7 @@ $(document).ready(function(){
 
                 var header = "<tr>" + $("table.user-list tr").html() + "</tr>";
                 $("table.user-list").html(header + data);
-								console.log("header");
+
                 $("table.user-list .no-result").hide();
                 $("table.user-list").show();
               }

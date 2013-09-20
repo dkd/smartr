@@ -1,7 +1,5 @@
 <% if comments.present? %>
-  
   <div id="<%="#{comments.first.commentable.class.name}-comments-#{comments.first.commentable.id}"%>">
-  
   <% if comments.count > 1 %>
     <ul class="nav nav-pills">
       <li class="<%= (session[:comments_order] == "latest") ? "active" : "" %>">

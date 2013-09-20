@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_order
   before_filter :set_locale
 
+  rescue_from Errno::ECONNREFUSED, :with => :render_search_down
+
   protected
 
   def set_locale
@@ -28,6 +30,13 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "You must be logged in as admin to access this page"
       redirect_to root_url
       false
+    end
+  end
+
+  def render_search_down
+    respond_to do |type|
+      type.html { render "errors/search_down", status: "500 Internal Server Error" }
+      type.all  { render nothing: true, status: "500 Internal Server Error" }
     end
   end
 

@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :encryptable, :encryptor => :authlogic_sha512, :authentication_keys => [:login]
 
-  has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" }
+  has_attached_file :avatar, 
+                    :styles => { :medium => "100x100#", :thumb => "48x48#", :tiny => "16x16#" },
+                    :url => "/system/users/avatars/:id/:style/:basename.:extension",
+                    :path => ":rails_root:url"
   attr_accessible :email, :login, :password, :password_confirmation, :remember_me, :avatar, :interesting_tag_list, :uninteresting_tag_list
 
   # Associations
@@ -41,7 +44,7 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :email, :presence => true
-  validates :login, :presence => true, :length => {:within => 6..12}, :uniqueness => true
+  validates :login, :presence => true, :length => {:within => 4..24}, :uniqueness => true
   validates :interesting_tag_list, :length => {:maximum => 8}, :allow_blank => true
   validates :uninteresting_tag_list, :length => {:maximum => 8}, :allow_blank => true
 
