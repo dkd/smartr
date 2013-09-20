@@ -21,5 +21,5 @@ guard "rspec", zeus: true, bundler: false do
   watch("config/routes.rb")                           { "spec/routing" }
   watch("app/controllers/application_controller.rb")  { "spec/controllers" }
 
-  watch(%r{^app/views/(.+)/.*\.(erb|slim|haml)$})          { |m| "spec/views/#{m[1]}_spec.rb" }
+  watch(%r{^app/views/(.+)/.*\.(erb|slim|haml)$})          { |m| "spec/controllers/#{m[1]}_spec.rb" }
 end

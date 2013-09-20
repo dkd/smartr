@@ -11,11 +11,4 @@ describe "questions/index.html.erb" do
           helper_method :is_admin?
       end
     end
-  it "displays questions list" do
-    question = FactoryGirl.create :question2
-    assign(:questions, (Question.latest.includes([:user,:votes]).page(params[:page])))
-    render
-    rendered.should include(question.name)
-  end
-  
 end

@@ -8,5 +8,4 @@
       = link_to t("cancel"), question_path(@question.id,  @question.friendly_id), :class => "btn btn-danger"
     .span9
       = f.submit t("question.update"), :class => "btn btn-large btn-success pull-right"
-- content_for :sidebar,
-- render("/questions/sidebar/edit", :related_questions => @related_questions)
+- content_for :sidebar, render("/questions/sidebar/edit", :related_questions => @related_questions)

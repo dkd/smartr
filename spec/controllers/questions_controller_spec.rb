@@ -4,29 +4,29 @@ describe QuestionsController do
   include Devise::TestHelpers
   let(:question) {FactoryGirl.create :question2}
   render_views
-  
+
   describe "GET index" do
     it "has a 200 status code" do
       get :index
       response.should be_success
     end
   end
-  
+
   describe "GET XML feed" do
     it "has a 200 status code" do
       get :index, :format => :xml
       response.should be_success
     end
   end
-  
+
   describe "GET show" do
     it "should should show the question" do
       get :show, :id => question.id, :friendly_id => question.friendly_id
       response.should be_success
       assigns(:question).should eq(Question.find(question.id))
     end
-  end 
-  
+  end
+
   describe "GET hot" do
     it "should show the latest questions" do
       get :hot
@@ -34,7 +34,7 @@ describe QuestionsController do
       response.should render_template("index_for_hot")
     end
   end
-  
+
   describe "GET active" do
     it "should show the most active questions" do
       get :active
@@ -42,7 +42,7 @@ describe QuestionsController do
       response.should render_template("index_for_active")
     end
   end
-  
+
   describe "GET unanswered" do
     it "should show the latest unanswered questions" do
       get :unanswered
@@ -50,33 +50,33 @@ describe QuestionsController do
       response.should render_template("index_for_unanswered")
     end
   end
-  
+
   context "Unauthorized" do
-    
+
     describe "GET new" do
       it "should redirect to the login page" do
         get :new
         response.should redirect_to :controller => "sessions", :action => "new"
-      end                                           
-    end                                             
-                                                    
-    describe "POST question" do                     
-      it "should redirect to the login page" do     
-        post :create                                
+      end
+    end
+
+    describe "POST question" do
+      it "should redirect to the login page" do
+        post :create
         response.should redirect_to :controller => "sessions", :action => "new"
-      end                                           
-    end                                             
-                                                    
-    describe "PUT question" do                      
-      it "should redirect to the login page" do     
-        post :update, :id => question.id            
+      end
+    end
+
+    describe "PUT question" do
+      it "should redirect to the login page" do
+        post :update, :id => question.id
         response.should redirect_to :controller => "sessions", :action => "new"
-      end                                           
-    end                                             
-                                                    
-    describe "DELETE question" do                   
-      it "should redirect to the login page" do     
-        post :destroy, :id => question.id           
+      end
+    end
+
+    describe "DELETE question" do
+      it "should redirect to the login page" do
+        post :destroy, :id => question.id
         response.should redirect_to :controller => "sessions", :action => "new"
       end
     end
@@ -85,9 +85,9 @@ describe QuestionsController do
 
   context "authorized user" do
     before do
-      sign_in FactoryGirl.create(:user2) 
+      sign_in FactoryGirl.create(:user2)
     end
-      
+
     describe "GET new" do
       it "should show the new question page" do
         get :new
@@ -95,7 +95,7 @@ describe QuestionsController do
         response.should render_template(:new)
       end
     end
-    
+
    describe "POST question with correct parameters" do
       it "should redirect to created question" do
         post :create, :question => {:name => "How many PHP Frameworks try to emulate Ruby on Rails?", :body => Faker::Lorem.sentences(10).to_s, :tag_list => "testing, rails, rspec"}
@@ -103,7 +103,7 @@ describe QuestionsController do
         assigns(:question).should eq(Question.last)
       end
     end
-    
+
     describe "PUT question with wrong question owner" do
        it "should redirect to question" do
          put :update, :id => question.id
@@ -111,7 +111,7 @@ describe QuestionsController do
          assigns(:question).should eq(question)
        end
      end
-    
+
   end
 
   context "authorized question owner" do
@@ -127,5 +127,5 @@ describe QuestionsController do
        end
      end
   end
-  
-end 
+
+end

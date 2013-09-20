@@ -9,4 +9,5 @@
 %br.clear/
 = will_paginate @tags, renderer: BootstrapPagination::Rails
 - main_menu :tags
-- content_for :sidebar, render("sidebar")
+- content_for :sidebar do
+  - render("sidebar")
