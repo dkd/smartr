@@ -71,13 +71,6 @@ Smartr::Application.routes.draw do
 
   match "errors/routing", :to => "errors#routing"
 
-  namespace :api do
-    namespace :v1 do
-      resources :questions, :only => [:index]
-      resources :users, :only => [:index]
-    end
-  end
-
   root :to => 'questions#index'
   match '*a', :to => 'errors#routing'
 end
