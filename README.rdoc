@@ -1,4 +1,7 @@
 = SmartR 
+
+Development has ceased. We no longer support this application.
+
 == A knowledge base for small companies
 
 === Overview
